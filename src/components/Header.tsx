@@ -1,6 +1,13 @@
 import React from 'react';
 
-export const Header: React.FC = () => {
+type ViewType = 'knowledge' | 'cheatsheet';
+
+interface HeaderProps {
+    activeView: ViewType;
+    onViewChange: (view: ViewType) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
     return (
         <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,8 +20,25 @@ export const Header: React.FC = () => {
                             拾艺院 <span className="text-sm font-normal text-gray-500 ml-2 hidden sm:inline">核心知识点库</span>
                         </h1>
                     </div>
-                    <nav>
-                        <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors px-3 py-2 text-sm font-medium">关于我们</a>
+                    <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                        <button
+                            onClick={() => onViewChange('knowledge')}
+                            className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'knowledge'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            知识点
+                        </button>
+                        <button
+                            onClick={() => onViewChange('cheatsheet')}
+                            className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'cheatsheet'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                }`}
+                        >
+                            速查表
+                        </button>
                     </nav>
                 </div>
             </div>

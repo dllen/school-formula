@@ -1,0 +1,153 @@
+import type { GradeLevel } from './knowledge';
+
+export interface CheatSheetTable {
+  headers?: string[];
+  rows: string[][];
+}
+
+export interface CheatSheet {
+  id: string;
+  title: string;
+  grade: GradeLevel;
+  category: string;
+  description: string;
+  table: CheatSheetTable;
+}
+
+export const CHEATSHEET_DATA: CheatSheet[] = [
+  // Primary School
+  {
+    id: 'primary-multiplication',
+    title: '九九乘法口诀表',
+    grade: 'primary',
+    category: '数学',
+    description: '1-9的乘法口诀，帮助快速计算。',
+    table: {
+      headers: ['×', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+      rows: [
+        ['1', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        ['2', '2', '4', '6', '8', '10', '12', '14', '16', '18'],
+        ['3', '3', '6', '9', '12', '15', '18', '21', '24', '27'],
+        ['4', '4', '8', '12', '16', '20', '24', '28', '32', '36'],
+        ['5', '5', '10', '15', '20', '25', '30', '35', '40', '45'],
+        ['6', '6', '12', '18', '24', '30', '36', '42', '48', '54'],
+        ['7', '7', '14', '21', '28', '35', '42', '49', '56', '63'],
+        ['8', '8', '16', '24', '32', '40', '48', '56', '64', '72'],
+        ['9', '9', '18', '27', '36', '45', '54', '63', '72', '81'],
+      ]
+    }
+  },
+  {
+    id: 'primary-pinyin',
+    title: '汉语拼音声母韵母表',
+    grade: 'primary',
+    category: '语文',
+    description: '23个声母和24个韵母。',
+    table: {
+      rows: [
+        ['声母（23个）', 'b', 'p', 'm', 'f', 'd', 't', 'n', 'l'],
+        ['', 'g', 'k', 'h', 'j', 'q', 'x', '', ''],
+        ['', 'zh', 'ch', 'sh', 'r', 'z', 'c', 's', ''],
+        ['单韵母（6个）', 'a', 'o', 'e', 'i', 'u', 'ü', '', ''],
+        ['复韵母（8个）', 'ai', 'ei', 'ui', 'ao', 'ou', 'iu', 'ie', 'üe'],
+        ['鼻韵母（9个）', 'an', 'en', 'in', 'un', 'ün', 'ang', 'eng', 'ing'],
+        ['', 'ong', '', '', '', '', '', '', ''],
+      ]
+    }
+  },
+  // Middle School
+  {
+    id: 'middle-periodic-table',
+    title: '化学元素周期表（前20号）',
+    grade: 'middle',
+    category: '化学',
+    description: '前20号元素及其符号和原子序数。',
+    table: {
+      headers: ['序号', '元素名', '符号', '序号', '元素名', '符号'],
+      rows: [
+        ['1', '氢', 'H', '11', '钠', 'Na'],
+        ['2', '氦', 'He', '12', '镁', 'Mg'],
+        ['3', '锂', 'Li', '13', '铝', 'Al'],
+        ['4', '铍', 'Be', '14', '硅', 'Si'],
+        ['5', '硼', 'B', '15', '磷', 'P'],
+        ['6', '碳', 'C', '16', '硫', 'S'],
+        ['7', '氮', 'N', '17', '氯', 'Cl'],
+        ['8', '氧', 'O', '18', '氩', 'Ar'],
+        ['9', '氟', 'F', '19', '钾', 'K'],
+        ['10', '氖', 'Ne', '20', '钙', 'Ca'],
+      ]
+    }
+  },
+  {
+    id: 'middle-irregular-verbs',
+    title: '英语不规则动词表',
+    grade: 'middle',
+    category: '英语',
+    description: '常用不规则动词的过去式和过去分词。',
+    table: {
+      headers: ['原形', '过去式', '过去分词', '中文'],
+      rows: [
+        ['be', 'was/were', 'been', '是'],
+        ['begin', 'began', 'begun', '开始'],
+        ['break', 'broke', 'broken', '打破'],
+        ['bring', 'brought', 'brought', '带来'],
+        ['buy', 'bought', 'bought', '买'],
+        ['come', 'came', 'come', '来'],
+        ['do', 'did', 'done', '做'],
+        ['eat', 'ate', 'eaten', '吃'],
+        ['get', 'got', 'gotten', '得到'],
+        ['go', 'went', 'gone', '去'],
+        ['have', 'had', 'had', '有'],
+        ['make', 'made', 'made', '制造'],
+        ['see', 'saw', 'seen', '看见'],
+        ['take', 'took', 'taken', '拿'],
+        ['write', 'wrote', 'written', '写'],
+      ]
+    }
+  },
+  // High School
+  {
+    id: 'high-trigonometry',
+    title: '三角函数公式',
+    grade: 'high',
+    category: '数学',
+    description: '常用三角函数公式汇总。',
+    table: {
+      rows: [
+        ['基本关系', 'sin²θ + cos²θ = 1'],
+        ['', 'tanθ = sinθ / cosθ'],
+        ['和差公式', 'sin(α ± β) = sinα cosβ ± cosα sinβ'],
+        ['', 'cos(α ± β) = cosα cosβ ∓ sinα sinβ'],
+        ['二倍角公式', 'sin2α = 2sinα cosα'],
+        ['', 'cos2α = cos²α - sin²α = 2cos²α - 1 = 1 - 2sin²α'],
+        ['', 'tan2α = 2tanα / (1 - tan²α)'],
+        ['半角公式', 'sin²(α/2) = (1 - cosα) / 2'],
+        ['', 'cos²(α/2) = (1 + cosα) / 2'],
+      ]
+    }
+  },
+  {
+    id: 'high-physics-constants',
+    title: '物理常数表',
+    grade: 'high',
+    category: '物理',
+    description: '高中物理常用物理常数。',
+    table: {
+      headers: ['常数名称', '符号', '数值'],
+      rows: [
+        ['重力加速度', 'g', '9.8 m/s² 或 10 m/s²'],
+        ['光速', 'c', '3.0 × 10⁸ m/s'],
+        ['普朗克常量', 'h', '6.63 × 10⁻³⁴ J·s'],
+        ['元电荷', 'e', '1.6 × 10⁻¹⁹ C'],
+        ['电子质量', 'mₑ', '9.1 × 10⁻³¹ kg'],
+        ['质子质量', 'mₚ', '1.67 × 10⁻²⁷ kg'],
+        ['阿伏伽德罗常数', 'Nₐ', '6.02 × 10²³ mol⁻¹'],
+        ['静电力常量', 'k', '9.0 × 10⁹ N·m²/C²'],
+      ]
+    }
+  },
+];
+
+export function getCheatSheetsByGrade(grade: GradeLevel): CheatSheet[] {
+  return CHEATSHEET_DATA.filter(sheet => sheet.grade === grade);
+}
