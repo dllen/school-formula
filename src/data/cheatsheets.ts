@@ -1,6 +1,7 @@
 import { CHARACTERS_2000 } from './characters2000';
 import { CHARACTERS_3500 } from './characters3500';
 import type { GradeLevel } from './knowledge';
+import { PERIODIC_TABLE } from './periodicTable';
 
 export interface CheatSheetTable {
   headers?: string[];
@@ -129,24 +130,13 @@ export const CHEATSHEET_DATA: CheatSheet[] = [
   },
   {
     id: 'middle-periodic-table',
-    title: '化学元素周期表（前20号）',
+    title: '化学元素周期表（全118号元素）',
     grade: 'middle',
     category: '化学',
-    description: '前20号元素及其符号和原子序数。',
+    description: '完整化学元素周期表，包含全部118号元素及其符号和原子序数。',
     table: {
-      headers: ['序号', '元素名', '符号', '序号', '元素名', '符号'],
-      rows: [
-        ['1', '氢', 'H', '11', '钠', 'Na'],
-        ['2', '氦', 'He', '12', '镁', 'Mg'],
-        ['3', '锂', 'Li', '13', '铝', 'Al'],
-        ['4', '铍', 'Be', '14', '硅', 'Si'],
-        ['5', '硼', 'B', '15', '磷', 'P'],
-        ['6', '碳', 'C', '16', '硫', 'S'],
-        ['7', '氮', 'N', '17', '氯', 'Cl'],
-        ['8', '氧', 'O', '18', '氩', 'Ar'],
-        ['9', '氟', 'F', '19', '钾', 'K'],
-        ['10', '氖', 'Ne', '20', '钙', 'Ca'],
-      ]
+      headers: ['序号', '元素名', '符号', '序号', '元素名', '符号', '序号', '元素名', '符号', '序号', '元素名', '符号', '序号', '元素名', '符号'],
+      rows: PERIODIC_TABLE
     }
   },
   {
