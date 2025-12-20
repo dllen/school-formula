@@ -1,6 +1,6 @@
 import { CHARACTERS_2000 } from './characters2000';
 import { CHARACTERS_3500 } from './characters3500';
-import type { GradeLevel } from './knowledge';
+import type { GradeLevel } from './types';
 import { PERIODIC_TABLE } from './periodicTable';
 
 export interface CheatSheetTable {
