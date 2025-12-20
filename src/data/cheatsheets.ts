@@ -1,7 +1,8 @@
 import { CHARACTERS_2000 } from './characters2000';
 import { CHARACTERS_3500 } from './characters3500';
-import type { GradeLevel } from './types';
+import { COMMON_IDIOMS } from './idioms';
 import { PERIODIC_TABLE } from './periodicTable';
+import type { GradeLevel } from './types';
 
 export interface CheatSheetTable {
   headers?: string[];
@@ -115,6 +116,17 @@ export const CHEATSHEET_DATA: CheatSheet[] = [
     table: {
       headers: ['简体', '繁体'],
       rows: CHARACTERS_2000
+    }
+  },
+  {
+    id: 'primary-idioms',
+    title: '常用成语100例',
+    grade: 'primary',
+    category: '语文',
+    description: '小学阶段常用100个成语及解释。',
+    table: {
+      headers: ['成语', '拼音', '释义'],
+      rows: COMMON_IDIOMS
     }
   },
   {
