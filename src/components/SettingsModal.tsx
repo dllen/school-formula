@@ -82,6 +82,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                                 className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
                                 placeholder="sk-..."
                             />
+                            {config.provider === 'openai' && (
+                                <p className="mt-1 text-xs text-gray-400">
+                                    获取密钥：<a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">OpenAI Platform</a>
+                                </p>
+                            )}
+                            {config.provider === 'deepseek' && (
+                                <p className="mt-1 text-xs text-gray-400">
+                                    获取密钥：<a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">DeepSeek Platform</a>
+                                </p>
+                            )}
+                            {config.provider === 'zhipu' && (
+                                <p className="mt-1 text-xs text-gray-400">
+                                    获取密钥：<a href="https://open.bigmodel.cn/usercenter/apikeys" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">智谱AI开放平台</a>
+                                </p>
+                            )}
                         </div>
 
                         <div>
