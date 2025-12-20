@@ -21,10 +21,10 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-slate-800">
+    <div className="min-h-screen bg-gray-50 font-sans text-slate-800 flex flex-col">
       <Header activeView={activeView} onViewChange={setActiveView} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow w-full">
 
         {activeView === 'knowledge' ? (
           <>
