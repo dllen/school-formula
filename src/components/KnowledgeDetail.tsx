@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
+import { generateKnowledgeContent, getAIConfig } from '../services/ai';
+import { SettingsModal } from './SettingsModal';
 
 export const KnowledgeDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
+    const [aiContent, setAiContent] = useState('');
+    const [isGenerating, setIsGenerating] = useState(false);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
     // Find the knowledge point in the data
     const findKnowledgePoint = (pointId: string | undefined) => {
@@ -36,7 +42,30 @@ export const KnowledgeDetail: React.FC = () => {
         );
     }
 
-    const { point, subject } = data;
+    const { point, subject, grade } = data;
+
+    const handleGenerateAI = async () => {
+        const config = getAIConfig();
+        if (!config?.apiKey) {
+            setIsSettingsOpen(true);
+            return;
+        }
+
+        setIsGenerating(true);
+        setAiContent('');
+
+        try {
+            const context = `年级：${grade.name}，学科：${subject.name}，知识点：${point.title}，描述：${point.description}`;
+            await generateKnowledgeContent(point.title, context, (chunk) => {
+                setAiContent(prev => prev + chunk);
+            });
+        } catch (error) {
+            console.error(error);
+            alert('生成失败，请检查 API 配置');
+        } finally {
+            setIsGenerating(false);
+        }
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans text-slate-800">
@@ -137,9 +166,47 @@ export const KnowledgeDetail: React.FC = () => {
                             </div>
                         )}
 
+                        {/* AI Generation Section */}
+                        <div className="pt-8 border-t border-gray-100">
+                            <div className="flex items-center justify-between mb-6">
+                                <h3 className="flex items-center text-xl font-bold text-purple-900">
+                                    <span className="mr-2">✨</span> AI 智能助教
+                                    <span className="ml-3 text-sm font-normal text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
+                                        家长辅导助手
+                                    </span>
+                                </h3>
+                                {!aiContent && !isGenerating && (
+                                    <button
+                                        onClick={handleGenerateAI}
+                                        className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-purple-200 transition-all flex items-center gap-2"
+                                    >
+                                        <span>生成深度辅导指南</span>
+                                    </button>
+                                )}
+                            </div>
+
+                            {isGenerating && !aiContent && (
+                                <div className="bg-purple-50 p-8 rounded-2xl border border-purple-100 text-center animate-pulse">
+                                    <p className="text-purple-800 font-medium">正在思考中，为您生成专属辅导内容...</p>
+                                </div>
+                            )}
+
+                            {(aiContent || (isGenerating && aiContent)) && (
+                                <div className="bg-white border border-purple-100 rounded-2xl p-8 shadow-sm ring-4 ring-purple-50/50">
+                                    <div className="prose prose-purple max-w-none">
+                                        <ReactMarkdown>{aiContent}</ReactMarkdown>
+                                    </div>
+                                    {isGenerating && (
+                                        <p className="mt-4 text-purple-500 animate-pulse text-sm">正在撰写...</p>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+
                     </div>
                 </div>
             </div>
+            <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
         </div>
     );
 };
