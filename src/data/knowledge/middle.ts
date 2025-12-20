@@ -9,9 +9,64 @@ export const MIDDLE_DATA: GradeData = {
             name: '数学',
             icon: '📐',
             knowledgePoints: [
-                { id: 'm-math-1', title: '数与式', description: '有理数、实数、代数式、整式、分式、二次根式。' },
-                { id: 'm-math-2', title: '方程与不等式', description: '一元一次方程、二元一次方程组、一元二次方程、分式方程、一元一次不等式（组）。' },
-                { id: 'm-math-3', title: '函数', description: '平面直角坐标系、一次函数、反比例函数、二次函数。' },
+                {
+                    id: 'm-math-1',
+                    title: '数与式',
+                    description: '有理数、实数、代数式、整式、分式、二次根式。',
+                    detailedExplanation: `
+            **有理数**：整数和分数统称有理数。
+            **实数**：有理数和无理数统称实数。
+            **整式**：单项式和多项式统称整式。
+            **分式**：形如A/B，其中A、B都是整式，且B中含有字母。
+            **二次根式**：形如√a (a≥0)。
+          `,
+                    studyTips: [
+                        '概念要辨析清楚，如"0既不是正数也不是负数"。',
+                        '注意分式有意义的条件是分母不为0。',
+                        '二次根式的化简是重点，掌握积与商的算术平方根性质。'
+                    ],
+                    practiceQuestions: [
+                        { question: '√16 的算术平方根是？', answer: '2 (注意是√16=4, 4的算术平方根是2)' },
+                        { question: '当x取何值时，分式 1/(x-1) 无意义？', answer: 'x=1' }
+                    ]
+                },
+                {
+                    id: 'm-math-2',
+                    title: '方程与不等式',
+                    description: '一元一次方程、二元一次方程组、一元二次方程、分式方程、一元一次不等式（组）。',
+                    detailedExplanation: `
+            **解方程步骤**：去分母、去括号、移项、合并同类项、系数化为1。
+            **一元二次方程解法**：配方法、公式法、因式分解法。
+            **不等式性质**：不等式两边同时乘以/除以同一个负数，不等号方向要改变。
+          `,
+                    studyTips: [
+                        '解不等式组时，口诀"同大取大，同小取小，大小小大中间找，大大小小无处找"。',
+                        '方程应用题的关键是找等量关系。'
+                    ],
+                    practiceQuestions: [
+                        { question: '解方程 x² - 2x - 3 = 0', answer: 'x1=3, x2=-1' },
+                        { question: '不等式 -2x > 6 的解集是？', answer: 'x < -3' }
+                    ]
+                },
+                {
+                    id: 'm-math-3',
+                    title: '函数',
+                    description: '平面直角坐标系、一次函数、反比例函数、二次函数。',
+                    detailedExplanation: `
+            **一次函数**：y=kx+b (k≠0)，图像是一条直线。
+            **反比例函数**：y=k/x (k≠0)，图像是双曲线。
+            **二次函数**：y=ax²+bx+c (a≠0)，图像是抛物线。
+          `,
+                    studyTips: [
+                        '数形结合是学习函数最重要的思想。',
+                        '通过图像理解函数的性质（单调性、对称性）。',
+                        '二次函数的顶点式 y=a(x-h)²+k 非常重要。'
+                    ],
+                    practiceQuestions: [
+                        { question: '一次函数 y=2x+1 经过第几象限？', answer: '一、二、三' },
+                        { question: '二次函数 y=(x-1)²+2 的顶点坐标是？', answer: '(1, 2)' }
+                    ]
+                },
                 { id: 'm-math-4', title: '图形的性质', description: '相交线与平行线、三角形（全等、相似）、四边形、圆。' },
                 { id: 'm-math-5', title: '图形的变化', description: '平移、旋转、轴对称、中心对称、投影与视图。' },
                 { id: 'm-math-6', title: '统计与概率', description: '数据的收集与整理、概率初步。' },

@@ -9,9 +9,55 @@ export const HIGH_DATA: GradeData = {
             name: '数学',
             icon: '∫',
             knowledgePoints: [
-                { id: 'h-math-1', title: '集合与简易逻辑', description: '集合的概念与运算，命题，充分必要条件。' },
-                { id: 'h-math-2', title: '函数', description: '函数的概念，性质（单调性、奇偶性、周期性、最值），指数函数，对数函数，幂函数。' },
-                { id: 'h-math-3', title: '三角函数', description: '任意角，弧度制，三角函数的图像与性质，三角恒等变换，解三角形。' },
+                {
+                    id: 'h-math-1',
+                    title: '集合与简易逻辑',
+                    description: '集合的概念与运算，命题，充分必要条件。',
+                    detailedExplanation: `
+            **集合**：具有某种特定性质的事物的总体。
+            **运算**：交集(∩)、并集(∪)、补集(CuA)。
+            **充分必条件**：
+            - p⇒q，p是q的充分条件。
+            - q⇒p，p是q的必要条件。
+          `,
+                    studyTips: [
+                        '用Venn图辅助理解集合运算。',
+                        '分清"属于"(∈)与"包含"(⊆)的区别。'
+                    ],
+                    practiceQuestions: [
+                        { question: 'A={1,2}, B={2,3}, A∩B=?', answer: '{2}' },
+                        { question: 'x>1 是 x>0 的什么条件？', answer: '充分不必要条件' }
+                    ]
+                },
+                {
+                    id: 'h-math-2',
+                    title: '函数',
+                    description: '函数的概念，性质（单调性、奇偶性、周期性、最值），指数函数，对数函数，幂函数。',
+                    detailedExplanation: `
+            **定义域与值域**：函数存在的"地盘"和"高度"。
+            **单调性**：K>0增函数，K<0减函数（复合函数同增异减）。
+            **奇偶性**：f(-x)=f(x)偶函数（关于y轴对称）；f(-x)=-f(x)奇函数（关于原点对称）。
+          `,
+                    studyTips: [
+                        '函数是高中的核心，一定要掌握图像变换。',
+                        '遇到抽象函数，尝试代入具体数值或画图分析。'
+                    ]
+                },
+                {
+                    id: 'h-math-3',
+                    title: '三角函数',
+                    description: '任意角，弧度制，三角函数的图像与性质，三角恒等变换，解三角形。',
+                    detailedExplanation: `
+            **诱导公式**：奇变偶不变，符号看象限。
+            **和差化积/积化和差**：虽然教材淡化，但对运算很有帮助。
+            **正弦定理**：a/sinA = b/sinB = c/sinC = 2R
+            **余弦定理**：a² = b² + c² - 2bc*cosA
+          `,
+                    studyTips: [
+                        '公式非常多，要成体系地记忆（单位圆推导）。',
+                        '图像即性质，熟记sin, cos, tan的图像。'
+                    ]
+                },
                 { id: 'h-math-4', title: '数列', description: '等差数列，等比数列及其前n项和。' },
                 { id: 'h-math-5', title: '平面向量', description: '向量的概念与运算，数量积，坐标运算。' },
                 { id: 'h-math-6', title: '不等式', description: '不等式的性质，解不等式，基本不等式。' },

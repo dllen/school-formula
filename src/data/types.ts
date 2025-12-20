@@ -5,6 +5,9 @@ export interface KnowledgePoint {
   title: string;
   description: string;
   tags?: string[];
+  detailedExplanation?: string;
+  studyTips?: string[];
+  practiceQuestions?: { question: string; answer: string }[];
 }
 
 export interface Subject {
