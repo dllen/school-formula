@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { CheatSheetView } from './CheatSheetView';
+import { ZizhiView } from './ZizhiView';
 import { GradeSelector } from './GradeSelector';
 import { Header } from './Header';
 import { KnowledgeList } from './KnowledgeList';
 import { SubjectGrid } from './SubjectGrid';
 import { type GradeLevel, KNOWLEDGE_DATA, type Subject } from '../data/knowledge';
 
-type ViewType = 'knowledge' | 'cheatsheet';
+type ViewType = 'knowledge' | 'cheatsheet' | 'zizhi' | 'shiji';
 
 export function Home() {
     const [activeView, setActiveView] = useState<ViewType>('knowledge');
@@ -65,8 +66,12 @@ export function Home() {
 
                         </div>
                     </>
-                ) : (
+                ) : activeView === 'cheatsheet' ? (
                     <CheatSheetView />
+                ) : activeView === 'zizhi' ? (
+                    <ZizhiView />
+                ) : (
+                    <ShijiView />
                 )}
 
             </main>
