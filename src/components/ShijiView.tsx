@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { SHIJI_DATA, type ShijiVolume } from '../data/shiji';
 
 export const ShijiView: React.FC = () => {
@@ -50,6 +51,14 @@ export const ShijiView: React.FC = () => {
                                     {paragraph}
                                 </p>
                             ))}
+                        </div>
+                        <div className="p-8 border-t border-gray-100 bg-gradient-to-r from-stone-50 to-white">
+                            <h3 className="flex items-center text-xl font-bold text-stone-900 mb-6">
+                                <span className="mr-2">✨</span> AI 名师解读
+                            </h3>
+                            <div className="prose max-w-none prose-stone">
+                                <ReactMarkdown>{selectedVolume.interpretation}</ReactMarkdown>
+                            </div>
                         </div>
                     </div>
                 ) : (
