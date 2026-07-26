@@ -114,16 +114,16 @@ export const generateTutorialContent = async (
 
     const prompt = `
 你是一位经验丰富的小学数学教研老师，擅长把抽象的数学概念讲得通俗易懂、生动有趣。
-请为家长和孩子生成一节关于"${unitTitle}"的完整家庭辅导教程。
+请根据以下学习目标，为家长和孩子生成一节关于"${unitTitle}"的完整家庭辅导教程。
 背景信息：${context}
 
 请严格按以下 markdown 格式输出（不要输出其他无关内容）：
 
 # 🎯 本课目标
-（用 3-5 条清晰列出孩子学完这课后应达到的目标）
+（根据学习目标，用 3-5 条清晰列出孩子学完这课后应达到的目标）
 
 # 📖 知识讲解
-（用孩子能听懂的语言讲解核心概念，配合生活案例、比喻或小故事，深入浅出）
+（围绕学习目标，用孩子能听懂的语言讲解核心概念，配合生活案例、比喻或小故事，深入浅出。必要时使用 Mermaid 语法或 SVG 代码插入图解。）
 
 # ✏️ 例题精讲
 （2-3 道由易到难的典型例题，每道题写出完整解题步骤和思路点拨）
@@ -150,6 +150,66 @@ export const generateTutorialContent = async (
         }
     } catch (error) {
         console.error('AI Tutorial Generation Error:', error);
+        throw error;
+    }
+};
+
+export const generatePracticeQuestions = async (
+    unitTitle: string,
+    context: string,
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true
+    });
+
+    const prompt = `
+你是一位经验丰富的小学数学老师。请根据以下信息，再生成 5 道与本单元学习目标匹配的补充练习题。
+单元：${unitTitle}
+背景信息：${context}
+
+要求：
+- 题目类型可以是选择、填空、判断或解答；
+- 难度要有梯度，覆盖基础、提高和挑战；
+- 每道题附参考答案和简要解析。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 📝 补充练习题
+
+1. [题目]
+   - 答案：
+   - 解析：
+
+2. [题目]
+   - 答案：
+   - 解析：
+
+（以此类推，共 5 道题）
+`;
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Practice Generation Error:', error);
         throw error;
     }
 };
