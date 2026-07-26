@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getAIConfig, saveAIConfig, PROVIDER_DEFAULTS } from '../services/ai';
 import type { AIConfig } from '../services/ai';
 
@@ -8,19 +8,15 @@ interface SettingsModalProps {
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
-    const [config, setConfig] = useState<AIConfig>({
-        provider: 'openai',
-        apiKey: '',
-        baseUrl: PROVIDER_DEFAULTS.openai.baseUrl || '',
-        model: PROVIDER_DEFAULTS.openai.model || ''
-    });
-
-    useEffect(() => {
+    const [config, setConfig] = useState<AIConfig>(() => {
         const saved = getAIConfig();
-        if (saved) {
-            setConfig(saved);
-        }
-    }, [isOpen]);
+        return saved ?? {
+            provider: 'openai',
+            apiKey: '',
+            baseUrl: PROVIDER_DEFAULTS.openai.baseUrl || '',
+            model: PROVIDER_DEFAULTS.openai.model || ''
+        };
+    });
 
     const handleProviderChange = (provider: AIConfig['provider']) => {
         const defaults = PROVIDER_DEFAULTS[provider];
