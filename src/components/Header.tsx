@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SettingsModal } from './SettingsModal';
 
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'zizhi' | 'shiji';
+type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'zizhi' | 'shiji';
 
 interface HeaderProps {
     activeView: ViewType;
@@ -52,6 +52,15 @@ export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
                                     }`}
                             >
                                 速查表
+                            </button>
+                            <button
+                                onClick={() => onViewChange('mental-math')}
+                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'mental-math'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                    }`}
+                            >
+                                速算口诀
                             </button>
                             <button
                                 onClick={() => onViewChange('zizhi')}
