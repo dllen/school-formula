@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CheatSheetView } from './CheatSheetView';
+import { MentalMathView } from './MentalMathView';
 import { ShijiView } from './ShijiView';
 import { TutorialView } from './TutorialView';
 import { ZizhiView } from './ZizhiView';
@@ -9,7 +10,7 @@ import { KnowledgeList } from './KnowledgeList';
 import { SubjectGrid } from './SubjectGrid';
 import { type GradeLevel, KNOWLEDGE_DATA, type Subject } from '../data/knowledge';
 
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'zizhi' | 'shiji';
+type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'zizhi' | 'shiji';
 
 export function Home() {
     const [activeView, setActiveView] = useState<ViewType>('knowledge');
@@ -72,6 +73,8 @@ export function Home() {
                     <TutorialView />
                 ) : activeView === 'cheatsheet' ? (
                     <CheatSheetView />
+                ) : activeView === 'mental-math' ? (
+                    <MentalMathView />
                 ) : activeView === 'zizhi' ? (
                     <ZizhiView />
                 ) : (
