@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SettingsModal } from './SettingsModal';
 
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'zizhi' | 'shiji';
+type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'practice' | 'notes' | 'zizhi' | 'shiji';
 
 interface HeaderProps {
     activeView: ViewType;
@@ -61,6 +61,33 @@ export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
                                     }`}
                             >
                                 速算口诀
+                            </button>
+                            <button
+                                onClick={() => onViewChange('formula')}
+                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'formula'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                    }`}
+                            >
+                                公式宝典
+                            </button>
+                            <button
+                                onClick={() => onViewChange('practice')}
+                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'practice'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                    }`}
+                            >
+                                专题练习
+                            </button>
+                            <button
+                                onClick={() => onViewChange('notes')}
+                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'notes'
+                                    ? 'bg-white text-blue-600 shadow-sm'
+                                    : 'text-gray-600 hover:text-gray-900'
+                                    }`}
+                            >
+                                学习笔记
                             </button>
                             <button
                                 onClick={() => onViewChange('zizhi')}

@@ -273,3 +273,276 @@ ${content.join('\n\n')}
         throw error;
     }
 };
+
+export const generateExamQuestions = async (
+    subject: string,
+    grade: string,
+    topic: string,
+    questionTypes: string[],
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true
+    });
+
+    const prompt = `
+你是一位命题经验丰富的${grade}${subject}学科名师。请围绕「${topic}」这一主题，为${grade}学生出一套小型测试卷。
+题型要求包含：${questionTypes.join('、')}。
+
+命题要求：
+- 题目紧扣「${topic}」主题，符合${grade}课程标准与认知水平；
+- 难度分为基础、提高、挑战三个梯度，每道题标注难度等级；
+- 每道题附参考答案和详细解析，解析要讲清思路，方便家长辅导孩子；
+- 语言规范、表述清晰，避免超纲内容。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 📋 ${topic} 专项测试卷
+
+## 一、选择题
+1. [题目]（难度：基础/提高/挑战）
+   A. ... B. ... C. ... D. ...
+   - 答案：
+   - 解析：
+
+## 二、填空题
+1. [题目]（难度：基础/提高/挑战）
+   - 答案：
+   - 解析：
+
+## 三、解答题
+1. [题目]（难度：基础/提高/挑战）
+   - 答案：
+   - 解析：
+
+# 📊 试卷说明
+（简要说明本卷考查重点、难度分布，以及建议的完成时间）
+`;
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Exam Generation Error:', error);
+        throw error;
+    }
+};
+
+export const generateErrorAnalysis = async (
+    question: string,
+    wrongAnswer: string,
+    correctAnswer: string,
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true
+    });
+
+    const prompt = `
+你是一位擅长学情诊断的中小学名师。请针对下面这道错题进行深度分析，帮助家长和孩子找到问题根源。
+
+题目：${question}
+孩子的错误答案：${wrongAnswer}
+正确答案：${correctAnswer}
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 🔍 错因诊断
+（分析孩子的错误类型：概念混淆 / 计算错误 / 理解偏差 / 审题不清 / 方法缺失等，并结合错误答案推测孩子的思考过程）
+
+# 📖 正确解法详解
+（完整讲解正确解法，指出孩子卡在哪一步）
+
+# 💪 针对性改进建议
+（给出 2-3 条具体可操作的改进建议，帮助孩子在同类问题上不再犯错）
+
+# 📚 相关知识点推荐
+（推荐与本题相关的知识点，建议孩子复习巩固）
+
+# ✏️ 举一反三
+（出 1-2 道类似的变式题，附答案，检验孩子是否真正掌握）
+
+请保持语言亲切、鼓励为主，适合家长辅导孩子时使用。
+`;
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Error Analysis Error:', error);
+        throw error;
+    }
+};
+
+export const generateStudyPlan = async (
+    grade: string,
+    subject: string,
+    goals: string,
+    weeks: number,
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true
+    });
+
+    const prompt = `
+你是一位专业的学习规划师，熟悉中小学课程体系。请为一位${grade}学生制定一份${subject}学科的个性化学习计划。
+学习目标：${goals}
+计划周期：${weeks} 周
+
+计划要求：
+- 目标拆解合理，符合${grade}学生的认知水平和学习节奏；
+- 按周分配学习内容，循序渐进、张弛有度；
+- 包含每日学习建议（建议每天 30-60 分钟，可执行、可检验）；
+- 每周设置阶段性目标和复盘检查点；
+- 兼顾复习巩固与新知识学习。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 🎯 总体目标
+（简要概括本计划要达成的目标和预期成果）
+
+# 📅 分周计划
+
+## 第 1 周：[本周主题]
+- 本周目标：
+- 每日安排：
+  - 周一：
+  - 周二：
+  - 周三：
+  - 周四：
+  - 周五：
+  - 周末：复习与复盘
+- 检查点：（本周结束时应能完成的小任务或小测验）
+
+## 第 2 周：[本周主题]
+（格式同上，以此类推，共 ${weeks} 周）
+
+# 💡 给家长的建议
+（2-3 条陪伴与监督建议，帮助家长有效支持孩子执行计划）
+`;
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Study Plan Error:', error);
+        throw error;
+    }
+};
+
+export const generateFormulaDerivation = async (
+    formula: string,
+    grade: string,
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true
+    });
+
+    const prompt = `
+你是一位擅长把抽象公式讲得通俗易懂的中小学名师。请为${grade}学生讲解以下公式的来龙去脉。
+公式：${formula}
+
+讲解要求：
+- 用通俗易懂的语言，配合生活中的例子，让${grade}学生也能听懂；
+- 推导过程分步骤展开，每一步说明"为什么这样做"；
+- 逐一解释公式中每个符号的含义和单位；
+- 给出实际应用场景和典型例题。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 🔤 符号说明
+（逐一列出公式中每个符号的含义、单位和取值范围，可用表格呈现）
+
+# 🧮 推导过程
+（分步骤讲解公式是如何推导出来的，每步说明理由，必要时配合直观比喻或图解）
+
+# 🌍 应用场景
+（列举 2-3 个该公式在生活或学科中的实际应用场景）
+
+# ✏️ 典型例题
+（1-2 道运用该公式的典型例题，附完整解题步骤和答案解析）
+
+# ⚠️ 常见误区
+（提醒学生在使用该公式时容易犯的错误）
+
+请保持语言亲切生动，适合家长辅导孩子时使用。
+`;
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: prompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Formula Derivation Error:', error);
+        throw error;
+    }
+};
