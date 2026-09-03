@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
+import { getQuestionsByKnowledgePoint } from '../data/questions';
 import { generateKnowledgeContent, getAIConfig } from '../services/ai';
 import { SettingsModal } from './SettingsModal';
 
@@ -165,6 +166,33 @@ export const KnowledgeDetail: React.FC = () => {
                                 </div>
                             </div>
                         )}
+
+                        {/* Practice Section */}
+                        {(() => {
+                            const relatedQuestions = getQuestionsByKnowledgePoint(point.id);
+                            if (relatedQuestions.length === 0) return null;
+                            return (
+                                <div className="pt-8 border-t border-gray-100">
+                                    <div className="flex items-center justify-between mb-6">
+                                        <h3 className="flex items-center text-xl font-bold text-green-900">
+                                            <span className="mr-2">✏️</span> 巩固练习
+                                            <span className="ml-3 text-sm font-normal text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                                                {relatedQuestions.length} 道题
+                                            </span>
+                                        </h3>
+                                        <button
+                                            onClick={() => {
+                                                const params = new URLSearchParams({ kp: point.id });
+                                                window.location.href = `/?view=practice&${params.toString()}`;
+                                            }}
+                                            className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-green-200 transition-all"
+                                        >
+                                            开始练习
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })()}
 
                         {/* AI Generation Section */}
                         <div className="pt-8 border-t border-gray-100">
