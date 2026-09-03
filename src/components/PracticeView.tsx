@@ -8,12 +8,15 @@ import { PracticeResult } from './practice/PracticeResult';
 import { ErrorBookButton } from './practice/ErrorBookButton';
 import { filterQuestions, getRandomQuestions, getQuestionById } from '../data/questions';
 import { useErrorBook } from '../hooks/useErrorBook';
+import { useLearningProgress } from '../hooks/useLearningProgress';
+import { ProgressDashboard } from './practice/ProgressDashboard';
 import type { QuestionFilter } from '../data/questions/types';
 
 export const PracticeView: React.FC = () => {
   const [filter, setFilter] = useState<QuestionFilter>({});
   const session = usePracticeSession();
   const errorBook = useErrorBook();
+  const learningProgress = useLearningProgress();
 
   const availableCount = useMemo(() => filterQuestions(filter).length, [filter]);
 
@@ -62,6 +65,10 @@ export const PracticeView: React.FC = () => {
           onStart={handleStart}
           availableCount={availableCount}
         />
+        <ProgressDashboard
+          progress={learningProgress.progress}
+          todayStats={learningProgress.getTodayStats()}
+        />
       </div>
     );
   }
@@ -97,6 +104,12 @@ export const PracticeView: React.FC = () => {
 
   if (session.phase === 'finished' && session.stats) {
     const totalTime = Math.round((Date.now() - session.startTime) / 1000);
+    // Record progress
+    learningProgress.recordPractice(
+      session.stats.total,
+      session.stats.correct,
+      totalTime
+    );
     return (
       <div className="space-y-6">
         <PracticeResult
@@ -105,6 +118,10 @@ export const PracticeView: React.FC = () => {
           totalTime={totalTime}
           onRetry={handleStart}
           onBack={session.resetToFilter}
+        />
+        <ProgressDashboard
+          progress={learningProgress.progress}
+          todayStats={learningProgress.getTodayStats()}
         />
         <div className="flex justify-center">
           <ErrorBookButton
