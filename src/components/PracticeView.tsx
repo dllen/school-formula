@@ -5,14 +5,25 @@ import { QuestionCard } from './practice/QuestionCard';
 import { ExplanationPanel } from './practice/ExplanationPanel';
 import { PracticeProgress } from './practice/PracticeProgress';
 import { PracticeResult } from './practice/PracticeResult';
-import { filterQuestions, getRandomQuestions } from '../data/questions';
+import { ErrorBookButton } from './practice/ErrorBookButton';
+import { filterQuestions, getRandomQuestions, getQuestionById } from '../data/questions';
+import { useErrorBook } from '../hooks/useErrorBook';
 import type { QuestionFilter } from '../data/questions/types';
 
 export const PracticeView: React.FC = () => {
   const [filter, setFilter] = useState<QuestionFilter>({});
   const session = usePracticeSession();
+  const errorBook = useErrorBook();
 
   const availableCount = useMemo(() => filterQuestions(filter).length, [filter]);
+
+  const checkAnswer = (userAnswer: string, question: typeof session.currentQuestion): boolean => {
+    if (!question) return false;
+    if (question.type === 'choice') return userAnswer === question.answer;
+    if (question.type === 'fill-blank') return userAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase();
+    if (question.type === 'true-false') return userAnswer === question.answer;
+    return false;
+  };
 
   const handleStart = () => {
     const questions = getRandomQuestions(filter, 10);
@@ -22,7 +33,14 @@ export const PracticeView: React.FC = () => {
   const [showExplanation, setShowExplanation] = useState(false);
 
   const handleSubmit = (answer: string) => {
+    const currentQ = session.currentQuestion;
     session.submitAnswer(answer);
+    if (currentQ) {
+      const isCorrect = checkAnswer(answer, currentQ);
+      if (!isCorrect) {
+        errorBook.addError(currentQ.id, answer);
+      }
+    }
     setShowExplanation(true);
   };
 
@@ -80,13 +98,24 @@ export const PracticeView: React.FC = () => {
   if (session.phase === 'finished' && session.stats) {
     const totalTime = Math.round((Date.now() - session.startTime) / 1000);
     return (
-      <PracticeResult
-        questions={session.questions}
-        answers={session.answers}
-        totalTime={totalTime}
-        onRetry={handleStart}
-        onBack={session.resetToFilter}
-      />
+      <div className="space-y-6">
+        <PracticeResult
+          questions={session.questions}
+          answers={session.answers}
+          totalTime={totalTime}
+          onRetry={handleStart}
+          onBack={session.resetToFilter}
+        />
+        <div className="flex justify-center">
+          <ErrorBookButton
+            errors={errorBook.errors}
+            onPracticeError={(questionId) => {
+              const q = getQuestionById(questionId);
+              if (q) session.startPractice([q]);
+            }}
+          />
+        </div>
+      </div>
     );
   }
 
