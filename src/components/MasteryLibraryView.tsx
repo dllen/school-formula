@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { TECHNIQUES } from '../../data/mastery/techniques';
-import type { Technique } from '../../data/mastery/types';
+import { TECHNIQUES } from '../data/mastery/techniques';
+import type { Technique } from '../data/mastery/types';
 
 interface Props {
   onSelect: (technique: Technique) => void;

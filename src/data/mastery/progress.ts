@@ -1,4 +1,4 @@
-import type { MasteryProgress, PracticeRecord } from '../types';
+import type { MasteryProgress, PracticeRecord } from './types';
 
 const STORAGE_KEY = 'math_mastery_progress';
 

@@ -86,8 +86,8 @@ function qFraction(): Question {
   const d = rand(2, 8);
   const n1 = rand(1, d - 1);
   const n2 = rand(1, d - 1);
-  const { opts, ans } = generateNumOptions(n1 + n2 <= d ? 1 : 0);
-  return Q(`${n1}/${d} + ${n2}/${d} = ？（${n1 + n2 <= d ? '≤1' : '>1'}）`, ['能直接相加', '需要先通分'], Math.random() > 0.5 ? 0 : 1, 1, `同分母分数相加，分母不变分子相加`, '分数加法');
+  const { opts, ans } = generateNumOptions(n1 + n2);
+  return Q(`${n1}/${d} + ${n2}/${d} = ？`, opts, ans, 1, `同分母分数相加，分母不变分子相加：${n1}/${d} + ${n2}/${d} = ${n1 + n2}/${d}`, '分数加法');
 }
 
 // ========== 初中 ==========

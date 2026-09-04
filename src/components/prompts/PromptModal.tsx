@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react';
-import type { PromptTemplate } from '../../data/prompts/types';
+import type { PromptTemplate, PromptScenario } from '../../data/prompts/types';
 import type { GradeLevel } from '../../data/knowledge';
 import { ALL_PROMPTS, filterPrompts } from '../../data/prompts';
 import { generateFromTemplate } from '../../services/ai';
@@ -18,12 +18,12 @@ interface Props {
   knowledgePointGrade?: string;
 }
 
-export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointId, knowledgePointTitle, knowledgePointGrade }) => {
+export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointId: _knowledgePointId, knowledgePointTitle, knowledgePointGrade }) => {
   const [state, setState] = useState<ModalState>('browse');
   const [selectedTemplate, setSelectedTemplate] = useState<PromptTemplate | null>(null);
   const [grade, setGrade] = useState<GradeLevel | ''>('');
   const [subject, setSubject] = useState('');
-  const [scenario, setScenario] = useState<''>('');
+  const [scenario, setScenario] = useState<PromptScenario | ''>('');
   const [searchQuery, setSearchQuery] = useState('');
   const [result, setResult] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);

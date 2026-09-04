@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import type { Technique, Question } from '../../data/mastery/types';
-import { generateQuestions } from '../../data/mastery/qgen';
-import { recordAttempt } from '../../data/mastery/progress';
+import type { Technique, Question } from '../data/mastery/types';
+import { generateQuestions } from '../data/mastery/qgen';
+import { recordAttempt } from '../data/mastery/progress';
 
 interface Props {
   technique: Technique | null;

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { loadProgress, getWeakTechniques, getReviewTechniques } from '../../data/mastery/progress';
-import { TECHNIQUES } from '../../data/mastery/techniques';
-import type { MasteryProgress } from '../../data/mastery/types';
+import { loadProgress, getWeakTechniques, getReviewTechniques } from '../data/mastery/progress';
+import { TECHNIQUES } from '../data/mastery/techniques';
+import type { MasteryProgress } from '../data/mastery/types';
 
 export const MasteryProgressView: React.FC = () => {
   const [progress, setProgress] = useState<MasteryProgress>({ records: {}, completedTechniques: [] });

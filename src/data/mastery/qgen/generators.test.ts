@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
+import type { Question } from '../types';
 import { GENERATORS } from './generators';
 
 /**
  * Validates that a question produced by any generator is well-formed.
  */
-function assertValidQuestion(q: ReturnType<() => unknown>, techniqueId: string) {
+function assertValidQuestion(q: Question, _techniqueId: string) {
   expect(q).toHaveProperty('q');
   expect(q).toHaveProperty('opts');
   expect(q).toHaveProperty('ans');
@@ -103,7 +104,6 @@ describe('小学 generators', () => {
   });
 
   it('pyth generator uses Pythagorean triples correctly', () => {
-    const triples = [[3,4,5],[6,8,10],[5,12,13],[8,15,17]];
     for (let i = 0; i < 20; i++) {
       const q = GENERATORS.pyth();
       const match = q.q.match(/(\d+)\s*和\s*(\d+)，斜边为/);
