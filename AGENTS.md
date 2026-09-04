@@ -30,7 +30,7 @@
 | 样式 | Tailwind CSS 4.1.17（通过 `@tailwindcss/vite` 插件） |
 | Markdown 渲染 | `react-markdown` 10.1.0 |
 | AI 调用 | `openai` SDK 6.15.0（在浏览器中直接调用第三方兼容 OpenAI 的 API） |
-| 包管理器 | npm（`package-lock.json` 不纳入版本控制，请使用 `npm install` 安装） |
+| 包管理器 | npm（`package-lock.json` 已纳入版本控制，请使用 `npm ci` 安装） |
 
 > 注意：项目未配置测试框架，仓库中不存在 `*.test.*`、`*.spec.*`、`vitest`、`jest`、`playwright`、`cypress` 等测试相关文件。
 
@@ -176,8 +176,7 @@ npm run lint
    - `main` 分支收到 `push`
    - 或手动通过 GitHub Actions UI 触发 `workflow_dispatch`
 2. 工作流（`.github/workflows/deploy.yml`）使用 Node.js 20：
-   - `npm cache clean --force`（清理缓存避免 `edgesOut` 错误）
-   - `npm install --no-audit --no-fund`
+   - `npm ci`（依赖 `package-lock.json` 锁定版本，避免 `edgesOut` 错误）
    - `npm run build`
    - 将 `dist/` 推送到 `gh-pages` 分支
 3. GitHub Pages 源应配置为 `gh-pages` 分支的根目录。
