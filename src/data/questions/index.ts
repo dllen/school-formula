@@ -1,10 +1,22 @@
 import type { Question, QuestionFilter, Difficulty, QuestionType } from './types';
 import { primaryMath } from './primary-math';
+import { primaryMathQuestions } from './primary-math-questions';
+import { primaryChineseQuestions } from './primary-chinese-questions';
+import { primaryEnglishQuestions } from './primary-english-questions';
+import { middleMathQuestions } from './middle-math-questions';
+import { middlePhysicsQuestions } from './middle-physics-questions';
+import { middleChineseQuestions } from './middle-chinese-questions';
 
 export type { Question, QuestionFilter, Difficulty, QuestionType };
 
 export const ALL_QUESTIONS: Question[] = [
   ...primaryMath,
+  ...primaryMathQuestions,
+  ...primaryChineseQuestions,
+  ...primaryEnglishQuestions,
+  ...middleMathQuestions,
+  ...middlePhysicsQuestions,
+  ...middleChineseQuestions,
 ];
 
 /** 按知识点 ID 查找题目 */
