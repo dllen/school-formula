@@ -8,6 +8,18 @@ export interface KnowledgePoint {
   detailedExplanation?: string;
   studyTips?: string[];
   practiceQuestions?: { question: string; answer: string }[];
+  
+  // 趣味化字段
+  /** 主形象 emoji，如 🧮 🔢 📐 */
+  funEmoji?: string;
+  /** 冷知识 / 趣味事实（一句话） */
+  funFact?: string;
+  /** 生活中的有趣故事（50-100字） */
+  funStory?: string;
+  /** 互动小问题 */
+  funQuestion?: string;
+  /** 互动问题答案 */
+  funQuestionAnswer?: string;
 }
 
 export interface Subject {
