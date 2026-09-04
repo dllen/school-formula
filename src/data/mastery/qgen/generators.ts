@@ -155,7 +155,7 @@ function qCongruent(): Question {
     '已知两角及其中一角的对边对应相等'
   ];
   const idx = rand(0, 3);
-  const { opts, ans } = generateOptions(methods[idx], [methods[(idx + 1) % 4]], [methods[(idx + 2) % 4]], [methods[(idx + 3) % 4]]);
+  const { opts, ans } = generateOptions(methods[idx], [methods[(idx + 1) % 4], methods[(idx + 2) % 4], methods[(idx + 3) % 4]]);
   return Q(`${descs[idx]}，判定三角形全等的依据是？`, opts, ans, 1, `${descs[idx]} → ${methods[idx]} 全等判定`, '全等三角形判定');
 }
 
@@ -163,7 +163,7 @@ function qSimilar(): Question {
   const ratio = rand(2, 5);
   const side1 = ratio * rand(2, 5);
   const side2 = rand(2, 5);
-  const { opts, ans } = generateOptions(`${ratio}:1`, [`1:${ratio}`], [`${ratio + 1}:1`], [`${ratio}:${ratio + 1}`]);
+  const { opts, ans } = generateOptions(`${ratio}:1`, [`1:${ratio}`, `${ratio + 1}:1`, `${ratio}:${ratio + 1}`]);
   return Q(`两个相似三角形对应边分别为 ${side1}cm 和 ${side2}cm，相似比是？`, opts, ans, 1, `相似比 = ${side1} : ${side2} = ${ratio} : 1`, '相似三角形');
 }
 
@@ -178,8 +178,8 @@ function qQuad(): Question {
   const props = ['对边平行且相等', '对角线相等', '对角线互相垂直', '对角线相等且垂直'];
   const names = ['平行四边形', '矩形', '菱形', '正方形'];
   const idx = rand(0, 3);
-  const { opts, ans } = generateOptions(props[idx], [props[(idx + 1) % 4]], [props[(idx + 2) % 4]], [props[(idx + 3) % 4]]);
-  return Q(`${names[idx}的性质是？`, opts, ans, 1, `${names[idx]}的性质：${props[idx]}`, '四边形性质');
+  const { opts, ans } = generateOptions(props[idx], [props[(idx + 1) % 4], props[(idx + 2) % 4], props[(idx + 3) % 4]]);
+  return Q(`${names[idx]}的性质是？`, opts, ans, 1, `${names[idx]}的性质：${props[idx]}`, '四边形性质');
 }
 
 function qCircle(): Question {
@@ -202,14 +202,14 @@ function qInverse(): Question {
   const k = rand(2, 12);
   const x = rand(1, 5);
   const y = k / x;
-  const { opts, ans } = generateOptions(String(y), [String(k + x)], [String(k - x)], [String(x / k)]);
+  const { opts, ans } = generateOptions(String(y), [String(k + x), String(k - x), String(x / k)]);
   return Q(`反比例函数 y = ${k}/x，当 x = ${x} 时，y = ？`, opts, ans, 1, `y = ${k} ÷ ${x} = ${y}`, '反比例函数');
 }
 
 function qQuadfunc(): Question {
   const h = rand(-3, 3);
   const k = rand(-3, 3);
-  const { opts, ans } = generateOptions(`(${h},${k})`, [`(${-h},${k})`], [`(${h},${-k})`], [`(${-h},${-k})`]);
+  const { opts, ans } = generateOptions(`(${h},${k})`, [`(${-h},${k})`, `(${h},${-k})`, `(${-h},${-k})`]);
   return Q(`二次函数 y = (x − ${h})² + ${k} 的顶点坐标是？`, opts, ans, 1, `顶点式为 y = a(x−h)² + k，顶点为 (${h},${k})`, '二次函数');
 }
 
@@ -242,7 +242,8 @@ function qTrig(): Question {
   const idx = rand(0, 4);
   const deg = angles[idx];
   const rad = deg === 0 ? '0' : deg === 30 ? 'π/6' : deg === 45 ? 'π/4' : deg === 60 ? 'π/3' : 'π/2';
-  return Q(`sin(${rad}) = ？`, ['0', '1/2', '√2/2', '√3/2', '1'][idx], ['0', '1', '√2/2', '√3/2', '1'][idx], 0, 1, `sin(${deg}°) = ${['0', '1/2', '√2/2', '√3/2', '1'][idx]}`, '三角函数');
+  const opts = ['0', '1/2', '√2/2', '√3/2', '1'];
+  return Q(`sin(${rad}) = ？`, opts, idx, 1, `sin(${deg}°) = ${opts[idx]}`, '三角函数');
 }
 
 function qSequence(): Question {
@@ -251,7 +252,7 @@ function qSequence(): Question {
   const n = rand(5, 10);
   const an = a1 + (n - 1) * d;
   const { opts, ans } = generateNumOptions(an);
-  return Q(`等差数列首项 ${a1}，公差 ${d}，第 ${n} 项是？`, opts, ans, 1, `aₙ = a₁ + (n−1)d = ${a1} + ${n−1}×${d} = ${an}`, '等差数列');
+  return Q(`等差数列首项 ${a1}，公差 ${d}，第 ${n} 项是？`, opts, ans, 1, `aₙ = a₁ + (n-1)d = ${a1} + ${n - 1}×${d} = ${an}`, '等差数列');
 }
 
 function qVector(): Question {
@@ -261,7 +262,7 @@ function qVector(): Question {
   const d = rand(1, 5);
   const x = a + c;
   const y = b + d;
-  const { opts, ans } = generateOptions(`(${x},${y})`, [`(${a - c},${b - d})`], [`(${x + 1},${y})`], [`(${x},${y + 1})`]);
+  const { opts, ans } = generateOptions(`(${x},${y})`, [`(${a - c},${b - d})`, `(${x + 1},${y})`, `(${x},${y + 1})`]);
   return Q(`向量 (${a},${b}) + (${c},${d}) = ？`, opts, ans, 1, `向量相加：对应分量相加 (${a}+${c}, ${b}+${d}) = (${x},${y})`, '向量运算');
 }
 
