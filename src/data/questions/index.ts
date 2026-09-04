@@ -6,6 +6,12 @@ import { primaryEnglishQuestions } from './primary-english-questions';
 import { middleMathQuestions } from './middle-math-questions';
 import { middlePhysicsQuestions } from './middle-physics-questions';
 import { middleChineseQuestions } from './middle-chinese-questions';
+import { middleChemistryQuestions } from './middle-chemistry-questions';
+import { middleBiologyQuestions } from './middle-biology-questions';
+import { middleEnglishQuestions } from './middle-english-questions';
+import { middleHistoryQuestions } from './middle-history-questions';
+import { middleGeographyQuestions } from './middle-geography-questions';
+import { middleMoralQuestions } from './middle-moral-questions';
 
 export type { Question, QuestionFilter, Difficulty, QuestionType };
 
@@ -17,6 +23,12 @@ export const ALL_QUESTIONS: Question[] = [
   ...middleMathQuestions,
   ...middlePhysicsQuestions,
   ...middleChineseQuestions,
+  ...middleChemistryQuestions,
+  ...middleBiologyQuestions,
+  ...middleEnglishQuestions,
+  ...middleHistoryQuestions,
+  ...middleGeographyQuestions,
+  ...middleMoralQuestions,
 ];
 
 /** 按知识点 ID 查找题目 */
