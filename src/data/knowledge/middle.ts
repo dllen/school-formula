@@ -13,6 +13,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-1',
                     title: '数与式',
                     description: '有理数、实数、代数式、整式、分式、二次根式。',
+                    funEmoji: '🌡️',
+                    funFact: '温度计的零下温度就是负数的应用，-273.15°C是绝对零度，是理论上能达到的最低温度！',
+                    funStory: '负数在生活中无处不在：电梯的B1、B2层就是负数，欠债也是负数，零下温度还是负数。没有负数，连天气预报都没法报！',
+                    funQuestion: '负数是谁发明的？',
+                    funQuestionAnswer: '中国！《九章算术》中就有负数的概念，比欧洲早了1000多年。中国人用红色算筹表示正数，黑色算筹表示负数。',
                     detailedExplanation: `
             **有理数**：整数和分数统称有理数。
             **实数**：有理数和无理数统称实数。
@@ -34,6 +39,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-2',
                     title: '方程与不等式',
                     description: '一元一次方程、二元一次方程组、一元二次方程、分式方程、一元一次不等式（组）。',
+                    funEmoji: '🔐',
+                    funFact: '方程的英文 equation 来自拉丁语 aequatio，意思是"使相等"。解方程就是找出让等式成立的未知数！',
+                    funStory: '想象你是一个侦探，方程就是一个谜题："一个数的3倍加上5等于20，这个数是多少？"解方程的过程就是破案的过程，x就是你要找的"嫌疑人"！',
+                    funQuestion: '为什么叫"方程"不叫"等式"？',
+                    funQuestionAnswer: '"方"是并列的意思。古代把未知数和已知数并列成方阵一样的排列，所以叫方程。',
                     detailedExplanation: `
             **解方程步骤**：去分母、去括号、移项、合并同类项、系数化为1。
             **一元二次方程解法**：配方法、公式法、因式分解法。
@@ -52,6 +62,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-3',
                     title: '函数',
                     description: '平面直角坐标系、一次函数、反比例函数、二次函数。',
+                    funEmoji: '📈',
+                    funFact: '函数的概念是数学家莱布尼茨在1673年提出的，现在它是整个现代数学的基石！',
+                    funStory: '函数就像一个"魔法盒子"：你放进去一个数（输入），它就会变出另一个数（输出）。比如超市苹果10元/斤，放进去2斤，变出20元。放进去5斤，变出50元。这就是函数！',
+                    funQuestion: '圆的面积公式S=πr²是函数吗？',
+                    funQuestionAnswer: '是！半径r是自变量，面积S是因变量。每个r对应唯一的S，所以S=πr²是一个函数。',
                     detailedExplanation: `
             **一次函数**：y=kx+b (k≠0)，图像是一条直线。
             **反比例函数**：y=k/x (k≠0)，图像是双曲线。
@@ -71,6 +86,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-4',
                     title: '图形的性质',
                     description: '相交线与平行线、三角形（全等、相似）、四边形、圆。',
+                    funEmoji: '🔺',
+                    funFact: '勾股定理有超过400种证明方法，是数学定理中证明方法最多的定理之一！',
+                    funStory: '古埃及人用绳子围成3:4:5的三角形来建造金字塔的直角。中国《周髀算经》记载了"勾三股四弦5"，比毕达哥拉斯早500年！这个定理帮建筑师、工程师解决了无数问题。',
+                    funQuestion: '直角三角形的两条直角边是3和4，斜边是？',
+                    funQuestionAnswer: '5！因为3²+4²=9+16=25=5²，这就是经典的"勾3股4弦5"。',
                     detailedExplanation: `
             **相交线与平行线**：
             - 对顶角相等，邻补角互补。
@@ -100,6 +120,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-5',
                     title: '图形的变化',
                     description: '平移、旋转、轴对称、中心对称、投影与视图。',
+                    funEmoji: '🔄',
+                    funFact: '平移、旋转、轴对称被称为"几何三大变换"，它们是计算机图形学和动画的基础！',
+                    funStory: '你玩过俄罗斯方块吗？那些方块就是经过平移和旋转才落下来的！还有我们照镜子、坐电梯、坐旋转木马，这些日常活动里都藏着图形变换的奥秘。',
+                    funQuestion: '一个图形旋转180°后和原来一样，它是什么图形？',
+                    funQuestionAnswer: '中心对称图形！比如平行四边形、正方形、圆形等，绕中心旋转180°后和原来完全重合。',
                     detailedExplanation: `
             **平移**：图形沿某方向移动一定距离，对应点连线平行且相等，形状大小不变。
             **旋转**：图形绕某点转动一定角度，对应点到旋转中心距离相等，形状大小不变。
@@ -126,6 +151,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-math-6',
                     title: '统计与概率',
                     description: '数据的收集与整理、概率初步。',
+                    funEmoji: '🎲',
+                    funFact: '中彩票头奖的概率约为1/1770万，比被雷劈中的概率（1/100万）还低17倍！',
+                    funStory: '学校要选一名学生当升旗手，班上有40个同学。如果你也在这个班，被选中的概率是1/40。如果老师用抽签决定，每个人被选中的可能性相等，这就是"等可能事件"。',
+                    funQuestion: '掷两个骰子，点数之和最可能是几？',
+                    funQuestionAnswer: '7！因为7的组合最多：1+6、2+5、3+4、4+3、5+2、6+1，共6种组合。',
                     detailedExplanation: `
             **统计量**：
             - **平均数**：所有数据之和除以数据个数，反映总体水平。
@@ -740,6 +770,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-chi-1',
                     title: '文言文实词虚词',
                     description: '通假字，古今异义，一词多义，词类活用，常见虚词（之、其、而、以、于、乃等）。',
+                    funEmoji: '📖',
+                    funFact: '文言文中的"之"字有5种以上用法：代词（他/它）、助词（的）、动词（去/到）、取消句子独立性、宾语前置标志。一个字顶五个用！',
+                    funStory: '古时候没有标点符号，一句话能读出好几种意思。比如"下雨天留客天留我不加"，加不同标点就变成完全不同的意思。古人写文章还要自己断句，是不是很酷？',
+                    funQuestion: '"学而时习之，不亦说乎"中的"说"是什么意思？',
+                    funQuestionAnswer: '"说"通"悦"，是高兴的意思。整句是：学习后经常复习，不也是很高兴的事吗？这是通假字，用读音相同的字代替本字。',
                     detailedExplanation: `
             **通假字**：用一个读音相同或相近的字代替本字。如"学而时习之，不亦说乎"中"说"通"悦"（高兴）。
 
@@ -775,6 +810,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-chi-2',
                     title: '古诗文默写',
                     description: '初中必背古诗文61篇。',
+                    funEmoji: '🎯',
+                    funFact: '初中必背古诗文61篇，其中《论语》占了12篇！孔子是中国最伟大的教育家，他的话被2500年后的我们还在背诵。',
+                    funStory: '古时候小朋友上学第一天就要"拜师礼"，给孔子像鞠躬，然后学《论语》。现在你们也在背《论语》，是不是和古人成了"同学"？',
+                    funQuestion: '"温故而知新，可以为师矣"是什么意思？',
+                    funQuestionAnswer: '温习旧知识能有新的理解和体会，就可以当老师了。说明复习不是简单的重复，而是要从中发现新的东西。',
                     detailedExplanation: `
             **默写题型**：
             1. **直接型默写**：给出上句写下句（或反之），考查准确记忆。
@@ -806,6 +846,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-chi-3',
                     title: '现代文阅读',
                     description: '记叙文、说明文、议论文阅读技巧。',
+                    funEmoji: '🔍',
+                    funFact: '说明文最怕"下定义"出错。比如"苹果是水果"对，但"水果是苹果"就错了。逻辑学叫"定义过窄"！',
+                    funStory: '有个笑话说：老师问"什么是光合作用？"学生答："就是太阳给植物做饭！"虽然不精确，但挺形象。说明文就是把复杂的事情说得简单明白，让人一听就懂。',
+                    funQuestion: '记叙文和说明文最大的区别是什么？',
+                    funQuestionAnswer: '记叙文讲故事（有情节、有人物），说明文讲知识（有数据、有例子）。记叙文让你"感动"，说明文让你"明白"。',
                     detailedExplanation: `
             **记叙文阅读**：
             - 六要素：时间、地点、人物、起因、经过、结果。
@@ -837,6 +882,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-chi-4',
                     title: '名著导读',
                     description: '《朝花夕拾》《西游记》《水浒传》《骆驼祥子》《繁星·春水》《鲁滨逊漂流记》《格列佛游记》《钢铁是怎样炼成的》等。',
+                    funEmoji: '📚',
+                    funFact: '《西游记》是中国四大名著之一，唐僧师徒取经走了14年，历经81难。但历史上真实的唐僧（玄奘）一个人走了17年！',
+                    funStory: '孙悟空一个筋斗云十万八千里，为什么不让悟空直接背唐僧飞去取经？因为取经的路就是修行的路，每一步都要自己走。读书也是一样，知识要一点一点积累。',
+                    funQuestion: '《朝花夕拾》是什么意思？',
+                    funQuestionAnswer: '早晨的花傍晚才捡起来。这是鲁迅的回忆散文集，意思是"中年以后回忆童年的事"。书名就很有诗意！',
                     detailedExplanation: `
             **《朝花夕拾》**（鲁迅）：回忆性散文集，收录《从百草园到三味书屋》《藤野先生》《阿长与〈山海经〉》等十篇，温馨的回忆与理性的批判交织。
 
@@ -870,6 +920,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-eng-1',
                     title: '时态语态',
                     description: '一般现在/过去/将来时，现在/过去进行时，现在完成时，被动语态。',
+                    funEmoji: '⏰',
+                    funFact: '英语有12种时态，但日常交流最常用的只有4种：一般现在时、一般过去时、一般将来时、现在完成时。',
+                    funStory: '时态就是给动作贴上"时间标签"。"I eat"是现在吃，"I ate"是过去吃，"I will eat"是将来吃，"I have eaten"是已经吃了。英语用动词变形来表示时间，中文则加"了""着""过"。',
+                    funQuestion: '为什么"I have seen this movie"不能加yesterday？',
+                    funQuestionAnswer: '现在完成时表示过去发生的事对现在有影响，不能和具体过去时间连用。要说"I saw this movie yesterday"。',
                     detailedExplanation: `
             **六大时态结构**：
             - 一般现在时：do/does（表习惯、真理）。He often plays football.
@@ -898,6 +953,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-eng-2',
                     title: '从句',
                     description: '宾语从句，定语从句，状语从句。',
+                    funEmoji: '🔗',
+                    funFact: '从句就是"句子套句子"，像俄罗斯套娃。一个句子中可以嵌套多个从句，形成复杂的长难句。',
+                    funStory: '英语从句就像拼乐高：主句是底板，从句是各种配件。定语从句是"形容词配件"，状语从句是"副词配件"，名词从句是"名词配件"。学会拼从句，就能造出任何句子！',
+                    funQuestion: '"The book that I bought yesterday is interesting."中哪个是从句？',
+                    funQuestionAnswer: '"that I bought yesterday"是定语从句，修饰book，说明是"我昨天买的那本书"。',
                     detailedExplanation: `
             **宾语从句**：在句中作宾语的从句。
             - 引导词：that（可省略）、if/whether（是否）、特殊疑问词（what, when, how...）。
@@ -930,6 +990,11 @@ export const MIDDLE_DATA: GradeData = {
                     id: 'm-eng-3',
                     title: '非谓语动词',
                     description: '动词不定式，动名词，分词。',
+                    funEmoji: '🎯',
+                    funFact: '非谓语动词是英语最特别的设计：一个动词"不做谓语"，而是当名词、形容词或副词用。全世界只有少数语言有这种设计！',
+                    funStory: '想象动词是一个"演员"，谓语是"主角"，非谓语是"配角"。"I like to swim"中，like是主角（谓语），to swim是配角（宾语）。配角不能抢主角的戏，所以to swim不能做谓语。',
+                    funQuestion: '"Swimming is fun"和"I am swimming"中的swimming一样吗？',
+                    funQuestionAnswer: '不一样！前者是动名词（当名词用，表示"游泳这件事"），后者是现在分词（表示"正在游泳"）。',
                     detailedExplanation: `
             **动词不定式（to do）**：
             - 作宾语：want/hope/decide/plan + to do。I want to buy a book.

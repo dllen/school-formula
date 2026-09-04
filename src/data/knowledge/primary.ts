@@ -13,6 +13,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-1',
                     title: '数的认识',
                     description: '整数、小数、分数的认识与比较。',
+                    funEmoji: '🔢',
+                    funFact: '古人最早没有"0"的概念，是印度人在公元5世纪才发明了0！',
+                    funStory: '你知道吗？古时候人们数东西都是用手指和石子，根本没有"0"这个概念。后来印度数学家巴格达发明了0，才让数学大大进步。没有0，就没有今天的计算机和互联网！',
+                    funQuestion: '0是偶数还是奇数？',
+                    funQuestionAnswer: '0是偶数！因为0能被2整除（0÷2=0），所以0是偶数。',
                     detailedExplanation: `
             1. **整数**：像0, 1, 2, 3...这样的数叫整数。
             2. **小数**：把整数"1"平均分成10份、100份……这样的一份或几份是十分之几、百分之几……可以用小数表示。
@@ -31,6 +36,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-2',
                     title: '四则运算',
                     description: '加减乘除运算规则，速算与巧算。',
+                    funEmoji: '🧮',
+                    funFact: '加减乘除的符号最早出现在15世纪，"+"和"-"号是德国数学家魏德曼在1489年发明的！',
+                    funStory: '想象一下，如果世界上没有加减乘除，你去超市买东西就没法算账，建筑师没法盖房子，科学家也没法研究宇宙！运算符号是人类最伟大的发明之一。',
+                    funQuestion: '为什么先算乘除后算加减？',
+                    funQuestionAnswer: '因为乘除是加减的"高级版"。比如3+2×4，2×4表示4个2相加，如果不先算乘法，结果就乱套了！',
                     detailedExplanation: `
             1. **加法**：把两个数合并成一个数的运算。
             2. **减法**：已知两个加数的和与其中一个加数，求另一个加数的运算。
@@ -52,6 +62,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-3',
                     title: '常见量',
                     description: '长度、面积、体积、质量、时间、人民币单位及换算。',
+                    funEmoji: '📏',
+                    funFact: '1米的长度最初定义为从北极到赤道距离的千万分之一！',
+                    funStory: '以前各国用的长度单位都不一样，法国人说"米"，英国人说"英尺"，做生意经常搞混。1875年国际计量大会终于统一了"1米"的定义，全世界才有了共同的语言！',
+                    funQuestion: '1千米大概有多长？',
+                    funQuestionAnswer: '1千米就是1000米，大约是你家到学校的距离，或者绕操场跑2圈半！',
                     detailedExplanation: `
             **长度单位**：千米(km)、米(m)、分米(dm)、厘米(cm)、毫米(mm)。
             **质量单位**：吨(t)、千克(kg)、克(g)。
@@ -74,6 +89,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-4',
                     title: '图形与几何',
                     description: '平面图形（长方形、正方形、三角形、梯形、圆）与立体图形（长方体、正方体、圆柱、圆锥）的认识与计算。',
+                    funEmoji: '📐',
+                    funFact: '三角形的稳定性是建筑师最爱的特性，埃菲尔铁塔就是由无数三角形组成的！',
+                    funStory: '你注意过为什么桥梁、塔吊、自行车架都是三角形的吗？因为三角形一旦确定三条边的长度，形状就固定不变了！四边形就容易变形，所以伸缩门用的是四边形。',
+                    funQuestion: '为什么井盖是圆的而不是方的？',
+                    funQuestionAnswer: '圆形井盖不会掉进井口！因为圆的宽度处处相等，无论怎么放都比方形的井口大。方形的对角线比边长，可能会掉下去。',
                     detailedExplanation: `
             **平面图形周长与面积**：
             - 长方形：周长 = (长+宽)×2，面积 = 长×宽
@@ -106,6 +126,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-5',
                     title: '统计与概率',
                     description: '平均数、条形统计图、折线统计图、扇形统计图。',
+                    funEmoji: '📊',
+                    funFact: '天气预报说"明天降水概率70%"，意思是同样的天气条件下，100次中有70次会下雨！',
+                    funStory: '小明考试前问妈妈："我考100分的可能性有多大？"妈妈说："这取决于你复习了没有！"概率就是用来描述事情发生可能性的大小，学会了就能做生活中的"预言家"！',
+                    funQuestion: '抛硬币10次，一定会有5次正面朝上吗？',
+                    funQuestionAnswer: '不一定！每次抛硬币都是独立事件，可能7次正面3次反面。抛的次数越多，越接近一半一半，但很难刚好相等。',
                     detailedExplanation: `
             **平均数**：平均数 = 总数量 ÷ 总份数。它能反映一组数据的总体水平。
 
@@ -131,6 +156,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-math-6',
                     title: '应用题',
                     description: '行程问题、工程问题、鸡兔同笼等典型应用题。',
+                    funEmoji: '🐔',
+                    funFact: '鸡兔同笼问题是中国古代的经典数学题，最早出现在《孙子算经》中，距今1500多年！',
+                    funStory: '想象你被关在一个神秘的房间里，只能看到头数和脚数，要猜出鸡和兔各有多少只。这就像当侦探一样，用数学来破案！古代的小朋友也要做这种题呢。',
+                    funQuestion: '如果笼子里有10个头，32只脚，兔有几只？',
+                    funQuestionAnswer: '假设全是鸡：10×2=20只脚，少了32-20=12只脚。每把1只鸡换成兔多2只脚，12÷2=6只兔。',
                     detailedExplanation: `
             **行程问题**：
             - 路程 = 速度 × 时间
@@ -167,6 +197,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-1',
                     title: '拼音与字词',
                     description: '声母韵母、整体认读音节、查字典、组词造句。',
+                    funEmoji: '🔤',
+                    funFact: '汉语有21个声母、24个韵母，但只有400多个音节组合！却能表达几十万个词语，靠的是四声变化。',
+                    funStory: '你知道吗？汉语是全世界唯一的声调语言。"ma"读一声是"妈"，二声是"麻"，三声是"马"，四声是"骂"！外国人学中文最头疼的就是这个。',
+                    funQuestion: '"西安"的拼音为什么是 xī\'ān 而不是 xiān？',
+                    funQuestionAnswer: "隔音符号'防止混淆！xiān 会读成'先'，加隔音符号 xī'ān 才读成'西安'。",
                     detailedExplanation: `
             **声母**：b, p, m, f, d, t, n, l... 共23个。
             **韵母**：a, o, e, i, u, ü... 共24个。
@@ -188,6 +223,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-2',
                     title: '歇后语与谚语',
                     description: '常见歇后语、谚语积累。',
+                    funEmoji: '🎭',
+                    funFact: '歇后语是中国人独特的语言艺术，前后两部分就像谜面和谜底，全世界只有汉语才有这种形式！',
+                    funStory: '古时候文人聚会喜欢玩"对暗号"的游戏，一个人说前半句，另一个人猜后半句。歇后语就是这样来的！"外甥打灯笼——照旧（舅）"，利用了"舅"和"旧"的谐音，特别有趣。',
+                    funQuestion: '"黄鼠狼给鸡拜年"的下一句是什么？',
+                    funQuestionAnswer: '没安好心！黄鼠狼是鸡的天敌，它去拜年当然不安好心。比喻不怀好意的人假惺惺示好。',
                     detailedExplanation: `
             **歇后语**：由前后两部分组成，前一部分起"引子"作用，像谜面；后一部分起"后衬"作用，像谜底。
             **谚语**：广泛流传于民间的简练通俗而富于意义的短句。
@@ -211,6 +251,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-3',
                     title: '标点符号',
                     description: '逗号、句号、问号、感叹号、引号等的用法。',
+                    funEmoji: '✏️',
+                    funFact: '中国古代文章没有标点符号，小朋友要学会自己断句，叫"句读"。标点符号是20世纪才从西方引进的！',
+                    funStory: '有个幽默故事："下雨天留客天留我不加标点可以读成"下雨天留客天留我不？"（客人问主人）或"下雨天，留客天，留我不留？"（主人自问）。加逗号意思完全不同！',
+                    funQuestion: '"你同意他不同意"加标点可以变成几种意思？',
+                    funQuestionAnswer: '至少3种：①你同意，他不同意。②你同意他？不同意。③你同意他不？同意。',
                     detailedExplanation: `
             **常用标点用法**：
             - **句号（。）**：陈述句末尾，表示一句话说完。
@@ -240,6 +285,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-4',
                     title: '修辞手法',
                     description: '比喻、拟人、排比、夸张、反问、设问。',
+                    funEmoji: '🎨',
+                    funFact: '比喻、拟人、排比这些修辞手法，英文叫 figure of speech（说话的艺术），全世界语言都有，但中文的最丰富！',
+                    funStory: '作家老舍说过："比喻是语言中的盐。"没有比喻的作文就像没放盐的菜。"月亮像大饼"和"月亮像银盘"哪个更美？这就是比喻的魅力！',
+                    funQuestion: '"他瘦得像一根筷子"是什么修辞？',
+                    funQuestionAnswer: '比喻+夸张！把瘦比作筷子是比喻，瘦到那种程度是夸张。',
                     detailedExplanation: `
             **比喻**：把甲事物比作乙事物，有本体、喻体和比喻词（像、好像、仿佛）。
             例：弯弯的月亮像小船。
@@ -274,6 +324,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-5',
                     title: '古诗文诵读',
                     description: '小学生必背古诗75首及注释。',
+                    funEmoji: '📜',
+                    funFact: '《唐诗三百首》收录了77位诗人的311首诗，是中国流传最广的诗歌选集。你背过的每一首唐诗，都是1200多年前的"流行歌曲"！',
+                    funStory: '你知道吗？李白写《静夜思》的时候，可能正躺在客栈的床上想家。他看着地上的月光，以为是霜！这说明月光太亮了，也说明他太想家了，才会产生这样的错觉。',
+                    funQuestion: '"举头望明月，低头思故乡"中，诗人为什么看到月亮就想家？',
+                    funQuestionAnswer: '因为月亮是团圆的象征。中秋节一家人一起赏月，诗人却独自在外，看到月亮圆了，家人却不在身边，所以更加思念故乡。',
                     detailedExplanation: `
             **《静夜思》** 李白
             床前明月光，疑是地上霜。
@@ -299,6 +354,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-chi-6',
                     title: '作文基础',
                     description: '看图写话、记叙文（写人、记事、写景、状物）、应用文（日记、书信）。',
+                    funEmoji: '✍️',
+                    funFact: '中国第一位大作家孔子说"言之无文，行而不远"，意思是文章没有文采就流传不远。好作文=好内容+好文采！',
+                    funStory: '作家老舍说："世界上最好的文字，就是最亲切的文字。"写作文不需要用多难的词，把心里的话写清楚、写生动，就是好作文。就像跟好朋友聊天一样自然。',
+                    funQuestion: '为什么老师说"要写自己的话"？',
+                    funQuestionAnswer: '因为抄别人的话，作文就没有了自己的味道。就像你穿别人的衣服，总是不合身。用自己的话写，哪怕简单，也是独一无二的。',
                     detailedExplanation: `
             **看图写话**：一看（观察图中人物、时间、地点、事件），二想（想象前因后果），三说（口头表达），四写（语句通顺地写下来）。
 
@@ -334,6 +394,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-eng-1',
                     title: '字母与语音',
                     description: '26个字母读写，元音与辅音发音规则。',
+                    funEmoji: '🔡',
+                    funFact: '英语只有26个字母，却能组合出超过100万个单词！这是世界上最强大的"积木系统"。',
+                    funStory: '你知道吗？英语单词是有"家族"的。比如"act"是"做"，加上前缀后缀就变成了action（行动）、active（活跃的）、actor（演员）、activity（活动）。记住一个词根，就能认识一串单词！',
+                    funQuestion: '为什么"minute"（分钟）和"minute"（微小的）拼写一样？',
+                    funQuestionAnswer: '它们是同形异义词！minute（分钟）来自拉丁语pars minuta（小的部分），minute（微小的）来自拉丁语minutus（小的）。',
                     detailedExplanation: `
             **26个字母**：Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz
             **元音字母**：A E I O U
@@ -354,6 +419,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-eng-2',
                     title: '基础词汇',
                     description: '颜色、数字、家庭成员、身体部位、食物、动物、学校用品。',
+                    funEmoji: '🌈',
+                    funFact: '英语中颜色词汇非常丰富：红色就有red、crimson（深红）、scarlet（鲜红）、ruby（红宝石色）等十几种说法！',
+                    funStory: '在英语中，颜色还代表情绪。"blue"是蓝色也是"忧郁"，"green"是绿色也是"嫉妒"（green with envy）。所以当你感觉blue的时候，其实是心情"蓝"了！',
+                    funQuestion: '"black tea"为什么不是"黑茶"？',
+                    funQuestionAnswer: '是红茶！英国人看到茶叶颜色深就叫black tea，中国人看茶汤颜色叫red tea。',
                     detailedExplanation: `
             **Colors**: red, blue, green, yellow, orange, purple, black, white.
             **Numbers**: one, two, three... ten, eleven, twelve... hundred.
@@ -375,6 +445,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-eng-3',
                     title: '日常交际用语',
                     description: '问候、介绍、道别、感谢、道歉、请求。',
+                    funEmoji: '👋',
+                    funFact: '英语中"How are you?"不是真的问你怎么样，而是一种问候，就像中文的"吃了吗"，回答"I\'m fine"就够了！',
+                    funStory: '有个中国学生刚到国外，别人问他"How are you?"他详细描述了自己的身体状况，对方惊呆了！其实这就像中国人见面说"你好"，不需要真的回答"我很好"。',
+                    funQuestion: '英国人见面最喜欢聊什么话题？',
+                    funQuestionAnswer: '天气！因为英国天气多变，"It\'s a lovely day, isn\'t it?"是最常见的闲聊开场白。',
                     detailedExplanation: `
              - Hello! / Hi!
              - How are you? - I'm fine, thank you.
@@ -399,6 +474,11 @@ export const PRIMARY_DATA: GradeData = {
                     id: 'p-eng-4',
                     title: '基本语法',
                     description: '名词单复数、人称代词、be动词、一般现在时、现在进行时。',
+                    funEmoji: '📐',
+                    funFact: '英语语法其实比中文简单！中文没有时态变化，却有量词（一只鸡、一条鱼、一张纸），英语没有量词，却有时态变化。',
+                    funStory: '英语中最常见的动词是"be"，它有三种形式：am、are、is。记住口诀："I用am，you用are，is连着他她它"。比如：I am happy. You are smart. He is tall.',
+                    funQuestion: '为什么"I am a student"有"a"，而"我是学生"没有"一个"？',
+                    funQuestionAnswer: '英语可数名词前面必须加冠词a/an或the，这是英语的规则。中文不需要量词。',
                     detailedExplanation: `
             **Be动词**：I am, You are, He/She/It is, We/They are. (口诀：我用am，你用are，is连着他她它)
             **单复数**：一般加s，特殊变化要记清 (book-books, box-boxes, man-men)。

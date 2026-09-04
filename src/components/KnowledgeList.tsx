@@ -33,10 +33,11 @@ export const KnowledgeList: React.FC<KnowledgeListProps> = ({ subject }) => {
                     <Link
                         key={point.id}
                         to={`/knowledge/${point.id}`}
-                        className="block p-6 hover:bg-blue-50/30 transition-colors group"
+                        className="block p-6 hover:bg-blue-50/30 transition-all hover:shadow-sm group"
                     >
                         <div className="flex justify-between items-start mb-2">
                             <h3 className="text-lg font-bold text-gray-800 group-hover:text-blue-700 transition-colors flex items-center gap-2">
+                                {point.funEmoji && <span className="text-2xl">{point.funEmoji}</span>}
                                 {point.title}
                                 <span className="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-600">
                                     详情
@@ -44,9 +45,27 @@ export const KnowledgeList: React.FC<KnowledgeListProps> = ({ subject }) => {
                             </h3>
                             <span className="text-xs font-mono text-gray-300">#{point.id}</span>
                         </div>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 leading-relaxed mb-3">
                             {point.description}
                         </p>
+
+                        {/* 趣味内容 */}
+                        {point.funFact && (
+                            <div className="bg-amber-50 border border-amber-100 rounded-xl p-3 mb-2">
+                                <p className="text-sm text-amber-800">
+                                    <span className="font-bold">💡 冷知识：</span>{point.funFact}
+                                </p>
+                            </div>
+                        )}
+
+                        {point.funQuestion && (
+                            <div className="bg-purple-50 border border-purple-100 rounded-xl p-3">
+                                <p className="text-sm text-purple-800">
+                                    <span className="font-bold">🔍 {point.funQuestion}</span>
+                                </p>
+                                <p className="text-xs text-purple-500 mt-1">点击查看详情揭晓答案 →</p>
+                            </div>
+                        )}
 
                         {point.tags && point.tags.length > 0 && (
                             <div className="mt-3 flex gap-2">
