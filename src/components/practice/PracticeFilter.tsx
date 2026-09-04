@@ -38,22 +38,23 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 space-y-6">
+    <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-5">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">选择练习范围</h2>
+        <h2 className="text-base font-semibold text-gray-900 mb-1">选择练习范围</h2>
         <p className="text-sm text-gray-500">选择知识点标签、难度和题型开始练习</p>
       </div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-3">知识点标签</label>
-        <div className="flex flex-wrap gap-2">
+      <fieldset>
+        <legend className="text-sm font-medium text-gray-700 mb-2">知识点标签</legend>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="知识点标签筛选">
           {allTags.map(tag => (
             <button
               key={tag}
               onClick={() => toggleTag(tag)}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+              aria-pressed={filter.tags?.includes(tag) ?? false}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors btn-press ${
                 filter.tags?.includes(tag)
-                  ? 'bg-indigo-100 text-indigo-700 ring-2 ring-indigo-200'
+                  ? 'bg-gray-800 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -61,18 +62,19 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-3">难度</label>
-        <div className="flex gap-2">
+      <fieldset>
+        <legend className="text-sm font-medium text-gray-700 mb-2">难度</legend>
+        <div className="flex gap-2" role="group" aria-label="难度筛选">
           {DIFFICULTY_OPTIONS.map(opt => (
             <button
               key={opt.value}
               onClick={() => onChange({ ...filter, difficulty: filter.difficulty === opt.value ? undefined : opt.value })}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              aria-pressed={filter.difficulty === opt.value}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors btn-press ${
                 filter.difficulty === opt.value
-                  ? 'bg-indigo-100 text-indigo-700 ring-2 ring-indigo-200'
+                  ? 'bg-gray-800 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -80,18 +82,19 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-3">题型</label>
-        <div className="flex gap-2">
+      <fieldset>
+        <legend className="text-sm font-medium text-gray-700 mb-2">题型</legend>
+        <div className="flex gap-2" role="group" aria-label="题型筛选">
           {TYPE_OPTIONS.map(opt => (
             <button
               key={opt.value}
               onClick={() => onChange({ ...filter, type: filter.type === opt.value ? undefined : opt.value })}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              aria-pressed={filter.type === opt.value}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors btn-press ${
                 filter.type === opt.value
-                  ? 'bg-indigo-100 text-indigo-700 ring-2 ring-indigo-200'
+                  ? 'bg-gray-800 text-white'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
@@ -99,16 +102,16 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
             </button>
           ))}
         </div>
-      </div>
+      </fieldset>
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
         <span className="text-sm text-gray-500">
-          匹配题目：<span className="font-bold text-indigo-600">{availableCount}</span> 道
+          匹配题目：<span className="font-semibold text-gray-900">{availableCount}</span> 道
         </span>
         <button
           onClick={onStart}
           disabled={availableCount === 0}
-          className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-indigo-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-5 py-2.5 bg-gray-800 text-white rounded-md font-medium hover:bg-gray-900 transition-colors disabled:opacity-40 disabled:cursor-not-allowed btn-press"
         >
           开始练习
         </button>

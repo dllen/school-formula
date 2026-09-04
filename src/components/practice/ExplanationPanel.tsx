@@ -15,38 +15,35 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
   isLast,
 }) => {
   return (
-    <div className="space-y-6">
-      <div className={`p-6 rounded-2xl border-2 ${
+    <div className="space-y-4">
+      <div className={`p-4 rounded-md border ${
         answer.isCorrect
           ? 'bg-green-50 border-green-200'
           : 'bg-red-50 border-red-200'
-      }`}>
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-3xl">{answer.isCorrect ? '✅' : '❌'}</span>
-          <span className={`text-xl font-bold ${answer.isCorrect ? 'text-green-800' : 'text-red-800'}`}>
-            {answer.isCorrect ? '回答正确！' : '回答错误'}
+      }`} role="alert" aria-live="polite">
+        <div className="flex items-center gap-2 mb-1">
+          <span className={`text-lg font-semibold ${answer.isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+            {answer.isCorrect ? '回答正确' : '回答错误'}
           </span>
         </div>
         {!answer.isCorrect && (
-          <p className="text-red-700 mt-2">
+          <p className="text-sm text-red-700 mt-1">
             你的答案：<span className="font-medium">{answer.userAnswer}</span>
-            {' | '}
+            {' · '}
             正确答案：<span className="font-medium">{question.answer}</span>
           </p>
         )}
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-        <h4 className="font-bold text-blue-900 mb-3 flex items-center gap-2">
-          <span>📖</span> 解析
-        </h4>
-        <p className="text-blue-800 leading-relaxed whitespace-pre-line">{question.explanation}</p>
+      <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+        <h3 className="text-sm font-semibold text-blue-900 mb-2">解析</h3>
+        <p className="text-sm text-blue-800 leading-relaxed whitespace-pre-line">{question.explanation}</p>
       </div>
 
       {question.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5">
           {question.tags.map(tag => (
-            <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full">
+            <span key={tag} className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">
               {tag}
             </span>
           ))}
@@ -55,9 +52,9 @@ export const ExplanationPanel: React.FC<ExplanationPanelProps> = ({
 
       <button
         onClick={onNext}
-        className="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-colors"
+        className="w-full py-2.5 bg-gray-800 text-white rounded-md font-medium hover:bg-gray-900 transition-colors btn-press"
       >
-        {isLast ? '查看结果' : '下一题 →'}
+        {isLast ? '查看结果' : '下一题'}
       </button>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { usePracticeSession } from './practice/usePracticeSession';
 import { PracticeFilter } from './practice/PracticeFilter';
@@ -11,6 +11,7 @@ import { filterQuestions, getRandomQuestions, getQuestionById } from '../data/qu
 import { useErrorBook } from '../hooks/useErrorBook';
 import { useLearningProgress } from '../hooks/useLearningProgress';
 import { ProgressDashboard } from './practice/ProgressDashboard';
+import { checkAnswer } from '../utils/questionUtils';
 import type { QuestionFilter } from '../data/questions/types';
 
 export const PracticeView: React.FC = () => {
@@ -19,6 +20,9 @@ export const PracticeView: React.FC = () => {
   const session = usePracticeSession();
   const errorBook = useErrorBook();
   const learningProgress = useLearningProgress();
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [showExitConfirm, setShowExitConfirm] = useState(false);
+  const hasRecordedProgress = useRef(false);
 
   // Auto-filter by knowledge point from URL (?kp=xxx)
   useEffect(() => {
@@ -30,44 +34,76 @@ export const PracticeView: React.FC = () => {
 
   const availableCount = useMemo(() => filterQuestions(filter).length, [filter]);
 
-  const checkAnswer = (userAnswer: string, question: typeof session.currentQuestion): boolean => {
-    if (!question) return false;
-    if (question.type === 'choice') return userAnswer === question.answer;
-    if (question.type === 'fill-blank') return userAnswer.trim().toLowerCase() === question.answer.trim().toLowerCase();
-    if (question.type === 'true-false') return userAnswer === question.answer;
-    return false;
-  };
+  // Record progress when finishing (not during render!)
+  useEffect(() => {
+    if (session.phase === 'finished' && session.stats && !hasRecordedProgress.current) {
+      hasRecordedProgress.current = true;
+      const totalTime = Math.round((Date.now() - session.startTime) / 1000);
+      learningProgress.recordPractice(session.stats.total, session.stats.correct, totalTime);
+    }
+  }, [session.phase, session.stats, session.startTime, learningProgress]);
 
-  const handleStart = () => {
+  // Warn before leaving during active practice
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (session.phase === 'answering') {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [session.phase]);
+
+  const handleStart = useCallback(() => {
     const questions = getRandomQuestions(filter, 10);
+    hasRecordedProgress.current = false;
     session.startPractice(questions);
-  };
+  }, [filter, session]);
 
-  const [showExplanation, setShowExplanation] = useState(false);
-
-  const handleSubmit = (answer: string) => {
+  const handleSubmit = useCallback((answer: string) => {
     const currentQ = session.currentQuestion;
     session.submitAnswer(answer);
     if (currentQ) {
       const isCorrect = checkAnswer(answer, currentQ);
       if (!isCorrect) {
         errorBook.addError(currentQ.id, answer);
+      } else {
+        // Remove from error book if previously wrong
+        errorBook.removeError(currentQ.id);
       }
     }
     setShowExplanation(true);
-  };
+  }, [session, errorBook]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setShowExplanation(false);
     session.nextQuestion();
-  };
+  }, [session]);
+
+  const handlePrev = useCallback(() => {
+    setShowExplanation(false);
+    session.prevQuestion();
+  }, [session]);
+
+  const handleExit = useCallback(() => {
+    if (session.phase === 'answering' && session.answeredCount > 0) {
+      setShowExitConfirm(true);
+    } else {
+      session.resetToFilter();
+    }
+  }, [session]);
+
+  const confirmExit = useCallback(() => {
+    setShowExitConfirm(false);
+    session.resetToFilter();
+  }, [session]);
 
   if (session.phase === 'filtering') {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6 max-w-3xl mx-auto">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">专题练习</h2>
-          <p className="text-sm text-gray-500">选择知识点和难度，开始针对性训练</p>
+          <h1 className="text-xl font-semibold text-gray-900">专题练习</h1>
+          <p className="text-sm text-gray-500 mt-1">选择知识点和难度，开始针对性训练</p>
         </div>
         <PracticeFilter
           filter={filter}
@@ -86,14 +122,21 @@ export const PracticeView: React.FC = () => {
   if (session.phase === 'answering' && session.currentQuestion) {
     const correctCount = session.answers.filter(a => a.isCorrect).length;
     const wrongCount = session.answers.filter(a => !a.isCorrect).length;
+    const isAnswered = session.hasAnsweredCurrent;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-5 max-w-3xl mx-auto">
         <PracticeProgress
           current={session.currentIndex}
           total={session.totalQuestions}
           correctCount={correctCount}
           wrongCount={wrongCount}
+          answeredCount={session.answeredCount}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          onExit={handleExit}
+          canGoBack={session.canGoBack}
+          canGoNext={session.canGoNext && isAnswered}
         />
         {showExplanation && session.currentAnswer ? (
           <ExplanationPanel
@@ -106,7 +149,33 @@ export const PracticeView: React.FC = () => {
           <QuestionCard
             question={session.currentQuestion}
             onSubmit={handleSubmit}
+            disabled={isAnswered}
           />
+        )}
+
+        {/* Exit confirmation modal */}
+        {showExitConfirm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="确认退出">
+            <div className="absolute inset-0 bg-black/40" onClick={() => setShowExitConfirm(false)} />
+            <div className="relative bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+              <h2 className="text-base font-semibold text-gray-900 mb-2">退出练习？</h2>
+              <p className="text-sm text-gray-600 mb-5">当前练习进度将不会保存</p>
+              <div className="flex gap-3 justify-end">
+                <button
+                  onClick={() => setShowExitConfirm(false)}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 btn-press"
+                >
+                  继续练习
+                </button>
+                <button
+                  onClick={confirmExit}
+                  className="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900 btn-press"
+                >
+                  确认退出
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     );
@@ -114,14 +183,8 @@ export const PracticeView: React.FC = () => {
 
   if (session.phase === 'finished' && session.stats) {
     const totalTime = Math.round((Date.now() - session.startTime) / 1000);
-    // Record progress
-    learningProgress.recordPractice(
-      session.stats.total,
-      session.stats.correct,
-      totalTime
-    );
     return (
-      <div className="space-y-6">
+      <div className="space-y-5 max-w-3xl mx-auto">
         <PracticeResult
           questions={session.questions}
           answers={session.answers}
@@ -138,7 +201,10 @@ export const PracticeView: React.FC = () => {
             errors={errorBook.errors}
             onPracticeError={(questionId) => {
               const q = getQuestionById(questionId);
-              if (q) session.startPractice([q]);
+              if (q) {
+                hasRecordedProgress.current = false;
+                session.startPractice([q]);
+              }
             }}
           />
         </div>

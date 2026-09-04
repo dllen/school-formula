@@ -3,6 +3,7 @@ import type { Question } from '../../data/questions/types';
 import { ChoiceQuestion } from './ChoiceQuestion';
 import { FillBlankQuestion } from './FillBlankQuestion';
 import { TrueFalseQuestion } from './TrueFalseQuestion';
+import { getDifficultyLabel, getTypeLabel } from '../../utils/questionUtils';
 
 interface QuestionCardProps {
   question: Question;
@@ -10,29 +11,21 @@ interface QuestionCardProps {
   disabled?: boolean;
 }
 
-const DIFFICULTY_CONFIG: Record<string, { label: string; color: string }> = {
-  basic: { label: '基础', color: 'bg-green-100 text-green-700' },
-  intermediate: { label: '提高', color: 'bg-amber-100 text-amber-700' },
-  advanced: { label: '挑战', color: 'bg-red-100 text-red-700' },
-};
-
-const TYPE_CONFIG: Record<string, string> = {
-  choice: '选择题',
-  'fill-blank': '填空题',
-  'true-false': '判断题',
+const DIFFICULTY_STYLES: Record<string, string> = {
+  basic: 'bg-green-50 text-green-700 ring-1 ring-green-200',
+  intermediate: 'bg-amber-50 text-amber-700 ring-1 ring-amber-200',
+  advanced: 'bg-red-50 text-red-700 ring-1 ring-red-200',
 };
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({ question, onSubmit, disabled }) => {
-  const diffConfig = DIFFICULTY_CONFIG[question.difficulty];
-
   return (
-    <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
-      <div className="flex items-center gap-2 mb-6">
-        <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${diffConfig.color}`}>
-          {diffConfig.label}
+    <div className="bg-white rounded-lg border border-gray-200 p-6">
+      <div className="flex items-center gap-2 mb-4">
+        <span className={`px-2 py-0.5 rounded text-xs font-medium ${DIFFICULTY_STYLES[question.difficulty]}`}>
+          {getDifficultyLabel(question.difficulty)}
         </span>
-        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-600">
-          {TYPE_CONFIG[question.type]}
+        <span className="px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-600 ring-1 ring-gray-200">
+          {getTypeLabel(question.type)}
         </span>
       </div>
 

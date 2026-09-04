@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef } from 'react';
 import type { Question, AnswerRecord } from '../../data/questions/types';
+import { checkAnswer } from '../../utils/questionUtils';
 
 type PracticePhase = 'filtering' | 'answering' | 'reviewing' | 'finished';
 
@@ -37,20 +38,15 @@ export function usePracticeSession() {
     setState(prev => {
       const currentQuestion = prev.questions[prev.currentIndex];
       const timeSpent = Math.round((Date.now() - questionStartTime.current) / 1000);
+      const isCorrect = checkAnswer(userAnswer, currentQuestion);
 
-      let isCorrect = false;
-      if (currentQuestion.type === 'choice') {
-        isCorrect = userAnswer === currentQuestion.answer;
-      } else if (currentQuestion.type === 'fill-blank') {
-        isCorrect = userAnswer.trim().toLowerCase() === currentQuestion.answer.trim().toLowerCase();
-      } else if (currentQuestion.type === 'true-false') {
-        isCorrect = userAnswer === currentQuestion.answer;
-      }
+      // If revisiting a previous question, update its answer in place
+      const existingIdx = prev.answers.findIndex(a => a.questionId === currentQuestion.id);
+      const newRecord: AnswerRecord = { questionId: currentQuestion.id, userAnswer, isCorrect, timeSpent };
 
-      const newAnswers: AnswerRecord[] = [
-        ...prev.answers,
-        { questionId: currentQuestion.id, userAnswer, isCorrect, timeSpent },
-      ];
+      const newAnswers = existingIdx >= 0
+        ? prev.answers.map((a, i) => i === existingIdx ? newRecord : a)
+        : [...prev.answers, newRecord];
 
       return { ...prev, answers: newAnswers };
     });
@@ -64,6 +60,23 @@ export function usePracticeSession() {
       }
       return { ...prev, currentIndex: prev.currentIndex + 1 };
     });
+    questionStartTime.current = Date.now();
+  }, []);
+
+  const prevQuestion = useCallback(() => {
+    setState(prev => {
+      if (prev.currentIndex <= 0) return prev;
+      return { ...prev, currentIndex: prev.currentIndex - 1 };
+    });
+    questionStartTime.current = Date.now();
+  }, []);
+
+  const goToQuestion = useCallback((index: number) => {
+    setState(prev => {
+      if (index < 0 || index >= prev.questions.length) return prev;
+      return { ...prev, currentIndex: index };
+    });
+    questionStartTime.current = Date.now();
   }, []);
 
   const startReview = useCallback(() => {
@@ -85,6 +98,14 @@ export function usePracticeSession() {
   const currentAnswer = state.phase === 'reviewing'
     ? state.answers[state.currentIndex]
     : state.answers[state.answers.length - 1];
+
+  const hasAnsweredCurrent = state.questions[state.currentIndex]
+    ? state.answers.some(a => a.questionId === state.questions[state.currentIndex]?.id)
+    : false;
+
+  const answeredCount = state.answers.length;
+  const canGoBack = state.currentIndex > 0;
+  const canGoNext = state.currentIndex < state.questions.length - 1;
 
   const stats = (() => {
     if (state.answers.length === 0) return null;
@@ -109,9 +130,15 @@ export function usePracticeSession() {
     answers: state.answers,
     startTime: state.startTime,
     stats,
+    hasAnsweredCurrent,
+    answeredCount,
+    canGoBack,
+    canGoNext,
     startPractice,
     submitAnswer,
     nextQuestion,
+    prevQuestion,
+    goToQuestion,
     startReview,
     resetToFilter,
   };

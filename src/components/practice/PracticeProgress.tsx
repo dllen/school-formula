@@ -5,6 +5,12 @@ interface PracticeProgressProps {
   total: number;
   correctCount: number;
   wrongCount: number;
+  answeredCount: number;
+  onPrev: () => void;
+  onNext: () => void;
+  onExit: () => void;
+  canGoBack: boolean;
+  canGoNext: boolean;
 }
 
 export const PracticeProgress: React.FC<PracticeProgressProps> = ({
@@ -12,25 +18,63 @@ export const PracticeProgress: React.FC<PracticeProgressProps> = ({
   total,
   correctCount,
   wrongCount,
+  answeredCount,
+  onPrev,
+  onNext,
+  onExit,
+  canGoBack,
+  canGoNext,
 }) => {
-  const progress = total > 0 ? ((current + 1) / total) * 100 : 0;
+  const progress = total > 0 ? (answeredCount / total) * 100 : 0;
 
   return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm">
-        <span className="font-medium text-gray-700">
-          题目 {current + 1} / {total}
+    <div className="space-y-3">
+      <div className="flex items-center justify-between gap-4">
+        <button
+          onClick={onExit}
+          className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          aria-label="退出练习"
+        >
+          ← 退出
+        </button>
+        <span className="text-sm font-medium text-gray-700">
+          {current + 1} / {total}
         </span>
-        <div className="flex gap-3">
-          <span className="text-green-600 font-medium">✓ {correctCount}</span>
-          <span className="text-red-600 font-medium">✗ {wrongCount}</span>
+        <div className="flex gap-3 text-sm">
+          <span className="text-green-600 font-medium" aria-label={`正确 ${correctCount} 题`}>✓ {correctCount}</span>
+          <span className="text-red-600 font-medium" aria-label={`错误 ${wrongCount} 题`}>✗ {wrongCount}</span>
         </div>
       </div>
-      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+
+      <div
+        className="h-1.5 bg-gray-200 rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuenow={answeredCount}
+        aria-valuemin={0}
+        aria-valuemax={total}
+        aria-label="练习进度"
+      >
         <div
-          className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300"
+          className="h-full bg-gray-700 rounded-full progress-bar-fill"
           style={{ width: `${progress}%` }}
         />
+      </div>
+
+      <div className="flex justify-between">
+        <button
+          onClick={onPrev}
+          disabled={!canGoBack}
+          className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        >
+          ← 上一题
+        </button>
+        <button
+          onClick={onNext}
+          disabled={!canGoNext}
+          className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+        >
+          下一题 →
+        </button>
       </div>
     </div>
   );
