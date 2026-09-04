@@ -182,8 +182,8 @@ export const KnowledgeDetail: React.FC = () => {
                                         </h3>
                                         <button
                                             onClick={() => {
-                                                const params = new URLSearchParams({ kp: point.id });
-                                                window.location.href = `/?view=practice&${params.toString()}`;
+                                                const params = new URLSearchParams({ view: 'practice', kp: point.id });
+                                                window.location.href = `/?${params.toString()}`;
                                             }}
                                             className="px-6 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-green-200 transition-all"
                                         >

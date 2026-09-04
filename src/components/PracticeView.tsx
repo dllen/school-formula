@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { usePracticeSession } from './practice/usePracticeSession';
 import { PracticeFilter } from './practice/PracticeFilter';
 import { QuestionCard } from './practice/QuestionCard';
@@ -13,10 +14,19 @@ import { ProgressDashboard } from './practice/ProgressDashboard';
 import type { QuestionFilter } from '../data/questions/types';
 
 export const PracticeView: React.FC = () => {
+  const [searchParams] = useSearchParams();
   const [filter, setFilter] = useState<QuestionFilter>({});
   const session = usePracticeSession();
   const errorBook = useErrorBook();
   const learningProgress = useLearningProgress();
+
+  // Auto-filter by knowledge point from URL (?kp=xxx)
+  useEffect(() => {
+    const kp = searchParams.get('kp');
+    if (kp) {
+      setFilter(prev => ({ ...prev, knowledgePointIds: [kp] }));
+    }
+  }, [searchParams]);
 
   const availableCount = useMemo(() => filterQuestions(filter).length, [filter]);
 
