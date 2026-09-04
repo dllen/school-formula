@@ -8,13 +8,14 @@ import { PracticeView } from './PracticeView';
 import { ShijiView } from './ShijiView';
 import { TutorialView } from './TutorialView';
 import { ZizhiView } from './ZizhiView';
+import { MasteryView } from './MasteryView';
 import { GradeSelector } from './GradeSelector';
 import { Header } from './Header';
 import { KnowledgeList } from './KnowledgeList';
 import { SubjectGrid } from './SubjectGrid';
 import { type GradeLevel, KNOWLEDGE_DATA, type Subject } from '../data/knowledge';
 
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'practice' | 'notes' | 'zizhi' | 'shiji';
+type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'mastery' | 'practice' | 'notes' | 'zizhi' | 'shiji';
 
 export function Home() {
     const [searchParams] = useSearchParams();
@@ -25,7 +26,7 @@ export function Home() {
     // Initialize view from URL query params (e.g. ?view=practice&kp=p-math-1)
     useEffect(() => {
         const viewParam = searchParams.get('view');
-        if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'practice', 'notes', 'zizhi', 'shiji'].includes(viewParam)) {
+        if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery', 'practice', 'notes', 'zizhi', 'shiji'].includes(viewParam)) {
             setActiveView(viewParam as ViewType);
         }
     }, [searchParams]);
@@ -90,6 +91,8 @@ export function Home() {
                     <MentalMathView />
                 ) : activeView === 'formula' ? (
                     <FormulaView />
+                ) : activeView === 'mastery' ? (
+                    <MasteryView />
                 ) : activeView === 'practice' ? (
                     <PracticeView />
                 ) : activeView === 'notes' ? (

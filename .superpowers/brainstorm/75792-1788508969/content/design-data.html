@@ -1,0 +1,99 @@
+<h2>Design: Data Model</h2>
+<p class="subtitle">TypeScript types and storage structure for prompt templates</p>
+
+<div class="section">
+  <h3>核心类型定义</h3>
+  <div class="mockup">
+    <div class="mockup-header">Preview: Type Definitions</div>
+    <div class="mockup-body" style="font-family:monospace;font-size:13px;line-height:1.6">
+      <pre style="margin:0;color:#374151">// src/data/prompts/types.ts
+
+/** 提示词场景分类 */
+export type PromptScenario =
+  | 'explain'       // 知识讲解
+  | 'generate'      // 出题组卷
+  | 'assess'        // 测评批改
+  | 'plan'          // 学习计划
+  | 'error-analysis'// 错题分析
+  | 'derivation'    // 公式推导
+  | 'explore'       // 拓展探究
+  | 'interaction';  // 亲子互动
+
+/** 模板变量定义 */
+export interface PromptVariable {
+  key: string;           // 变量名，如 "knowledge_point"
+  label: string;         // 显示名，如 "知识点"
+  placeholder: string;   // 输入提示
+  required: boolean;     // 是否必填
+  type: 'text' | 'select' | 'textarea';
+  options?: string[];    // select 类型的选项
+  defaultValue?: string; // 默认值
+}
+
+/** 提示词模板 */
+export interface PromptTemplate {
+  id: string;              // 唯一 ID，如 "explain-deep-concept"
+  title: string;           // 模板名称
+  scenario: PromptScenario;// 场景分类
+  icon: string;            // 图标 emoji
+  description: string;     // 简短描述
+  tags: string[];          // 标签（年级/学科/特色）
+  
+  // 提示词内容（含 {{variable}} 占位符）
+  template: string;
+  
+  // 需要用户填写的变量
+  variables: PromptVariable[];
+  
+  // 适用年级和学科
+  grades: GradeLevel[];
+  subjects: string[];
+  
+  // 关联知识点 ID（可选）
+  knowledgePointIds?: string[];
+  
+  // 元信息
+  usageCount: number;      // 使用次数
+  rating: number;          // 评分 1-5
+  author: string;          // 作者/来源（清北名师）
+}</pre>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>文件结构</h3>
+  <div style="font-family:monospace;font-size:13px;color:#374151">
+    <pre style="margin:0">src/data/prompts/
+├── types.ts              # 类型定义
+├── index.ts              # 汇总导出 + 查询函数
+├── explain/              # 知识讲解类
+│   ├── deep-concept.ts   # 概念深度讲解
+│   ├── story-based.ts    # 故事化讲解
+│   └── ...
+├── generate/             # 出题组卷类
+├── assess/               # 测评批改类
+├── plan/                 # 学习计划类
+├── error-analysis/       # 错题分析类
+├── derivation/           # 公式推导类
+├── explore/              # 拓展探究类
+└── interaction/          # 亲子互动类</pre>
+  </div>
+</div>
+
+<div class="section">
+  <h3>模板示例</h3>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 概念深度讲解模板</div>
+    <div class="mockup-body" style="font-size:13px">
+      <p><strong>标题：</strong>概念深度讲解</p>
+      <p><strong>变量：</strong>知识点、学生年级、前置知识、特殊要求</p>
+      <div style="background:#f3f4f6;padding:12px;border-radius:8px;margin-top:8px">
+        <p style="margin:0;color:#4b5563">你是一位精通{{student_grade}}教学的名师。请用启发式教学法，深入浅出地讲解"{{knowledge_point}}"这一概念。</p>
+        <p style="margin:8px 0 0;color:#4b5563">要求：1. 用一个生活比喻引入 2. 分步骤拆解核心逻辑 3. 设计2个苏格拉底式提问引导学生思考 4. 指出常见误解...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Does this data model cover everything needed?</p>

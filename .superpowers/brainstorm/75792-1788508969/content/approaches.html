@@ -1,0 +1,74 @@
+<h2>Approach Comparison</h2>
+<p class="subtitle">Three approaches for the prompt template feature</p>
+
+<div class="section">
+  <h3>Approach A: 嵌入式增强 (Embedded Enhancement)</h3>
+  <p>Add prompt template selector directly into the existing KnowledgeDetail AI panel. Users see a "模板模式" toggle alongside the existing simple AI mode.</p>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Minimal new code — extends existing AI panel</li>
+        <li>Users discover templates in context (already looking at a knowledge point)</li>
+        <li>Can auto-fill knowledge point context into templates</li>
+        <li>Consistent with "AI 助教子功能" choice</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>Cons</h4>
+      <ul>
+        <li>Limited screen space in the detail page</li>
+        <li>Hard to browse all templates (only sees ones linked to current KP)</li>
+        <li>Less discoverability for the full template library</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Approach B: 独立视图 + 嵌入式入口 (Hybrid)</h3>
+  <p>Add a "提示词中心" accessible from Header or Home, PLUS embed template shortcuts in the KnowledgeDetail AI panel. Best of both worlds.</p>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Full browsing experience in a dedicated view</li>
+        <li>Contextual access from knowledge points</li>
+        <li>Users can discover templates they wouldn't find otherwise</li>
+        <li>Scales well as template library grows</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <ul>
+        <li>More code — new view component + routing</li>
+        <li>Need to decide: new tab or sub-route</li>
+        <li>Slightly more complex navigation</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Approach C: 全屏模态框 (Modal Overlay)</h3>
+  <p>Prompt template selector opens as a full-screen modal from the KnowledgeDetail page. No new navigation needed — everything happens within the AI interaction flow.</p>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>Pros</h4>
+      <ul>
+        <li>Zero navigation changes</li>
+        <li>Rich browsing experience within modal</li>
+        <li>Context-preserving — user never leaves the knowledge point</li>
+        <li>Fastest to implement</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <ul>
+        <li>Modal can feel cramped for browsing 50+ templates</li>
+        <li>Not discoverable from other parts of the app</li>
+        <li>Harder to link to from other features</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Which approach feels right for your vision?</p>

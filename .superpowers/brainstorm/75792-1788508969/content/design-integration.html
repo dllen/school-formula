@@ -1,0 +1,71 @@
+<h2>Design: Integration</h2>
+<p class="subtitle">How prompt templates connect with existing AI features and knowledge points</p>
+
+<div class="section">
+  <h3>与现有 AI 功能的关系</h3>
+  <p>Prompt 模板作为现有 AI 功能的"增强模式"，底层复用同一个 AI 调用服务。</p>
+  <div style="background:#f0fdf4;padding:16px;border-radius:12px;margin-top:12px">
+    <p style="font-size:13px;margin:0;color:#166534"><strong>简单模式</strong>：用户输入少量信息 → 使用固定 prompt → AI 输出</p>
+    <p style="font-size:13px;margin:8px 0 0;color:#166534"><strong>模板模式</strong>：用户选择模板 → 填写结构化变量 → 组装高质量 prompt → AI 输出</p>
+  </div>
+</div>
+
+<div class="section">
+  <h3>与知识点的关联</h3>
+  <div class="pros-cons">
+    <div class="pros">
+      <h4>关联知识点的模板</h4>
+      <ul>
+        <li>知识讲解类：自动填充当前知识点名称和描述</li>
+        <li>公式推导类：自动关联对应公式</li>
+        <li>错题分析类：关联知识点的常见错误模式</li>
+      </ul>
+    </div>
+    <div class="cons">
+      <h4>通用模板</h4>
+      <ul>
+        <li>学习计划：不需要绑定特定知识点</li>
+        <li>亲子互动：跨学科场景</li>
+        <li>拓展探究：开放性主题</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>架构示意</h3>
+  <div style="font-family:monospace;font-size:12px;background:#1e293b;color:#e2e8f0;padding:16px;border-radius:12px;line-height:1.6">
+    <pre style="margin:0">KnowledgeDetail.tsx
+├── AI Panel (现有)
+│   ├── 简单模式 → ai.ts (现有函数)
+│   └── 模板模式 → PromptModal.tsx (新增)
+│       ├── 模板列表 (filter + search)
+│       ├── 模板详情 + 变量填写
+│       └── 组装 prompt → ai.ts (复用 stream 逻辑)
+│
+src/data/prompts/ (新增)
+├── types.ts
+├── index.ts
+├── explain/*.ts
+├── generate/*.ts
+├── ... (8 个场景目录)
+│
+src/services/ai.ts (扩展)
+├── 现有函数保留
+└── 新增: generateFromTemplate()</pre>
+  </div>
+</div>
+
+<div class="section">
+  <h3>新增服务函数</h3>
+  <div style="font-family:monospace;font-size:12px;background:#f3f4f6;padding:16px;border-radius:12px">
+    <pre style="margin:0;color:#374151">/** 根据模板 + 用户填写变量，组装最终 prompt 并调用 AI */
+export async function generateFromTemplate(
+  template: PromptTemplate,
+  variables: Record&lt;string, string&gt;,
+  onStream: (chunk: string) => void
+): Promise&lt;void&gt; { ... }</pre>
+  </div>
+</div>
+
+<p class="subtitle">Does this integration approach make sense?</p>

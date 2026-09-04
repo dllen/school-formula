@@ -1,0 +1,76 @@
+<h2>提示词目录的组织方式</h2>
+<p class="subtitle">How should users browse and find the right prompt template?</p>
+
+<div class="section">
+  <h3>Option A: 年级 → 学科 → 场景</h3>
+  <p>Three-level drill-down: first pick grade, then subject, then scenario category.</p>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 三级导航</div>
+    <div class="mockup-body">
+      <div class="mock-nav" style="margin-bottom:12px">小学 | 初中 | 高中</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="mock-button" style="background:#3b82f6;color:white">数学</button>
+        <button class="mock-button">语文</button>
+        <button class="mock-button">英语</button>
+        <button class="mock-button">物理</button>
+        <button class="mock-button">化学</button>
+        <button class="mock-button">更多...</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="mock-button" style="background:#8b5cf6;color:white">知识讲解</button>
+        <button class="mock-button">出题组卷</button>
+        <button class="mock-button">测评批改</button>
+        <button class="mock-button">错题分析</button>
+        <button class="mock-button">更多...</button>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f9fafb">
+        <p style="font-size:13px;color:#6b7280">提示词卡片列表（含标题、描述、使用次数）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Option B: 场景 → 年级 → 学科</h3>
+  <p>Start with the goal (what do you want to do), then narrow by grade and subject.</p>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 场景优先</div>
+    <div class="mockup-body">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="mock-button" style="background:#8b5cf6;color:white">📖 知识讲解</button>
+        <button class="mock-button">✏️ 出题组卷</button>
+        <button class="mock-button">📊 测评批改</button>
+        <button class="mock-button">🔍 错题分析</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="mock-button" style="background:#3b82f6;color:white">小学</button>
+        <button class="mock-button">初中</button>
+        <button class="mock-button">高中</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="mock-button" style="background:#10b981;color:white">数学</button>
+        <button class="mock-button">语文</button>
+        <button class="mock-button">英语</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Option C: 智能推荐 + 搜索</h3>
+  <p>Landing page shows recommended prompts based on user's browsing history, with prominent search bar.</p>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 智能推荐</div>
+    <div class="mockup-body">
+      <input class="mock-input" placeholder="🔍 搜索提示词（如：浮力、作文、方程...）" style="margin-bottom:12px">
+      <p style="font-size:13px;color:#6b7280;margin-bottom:8px">🔥 常用推荐</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="background:#fef3c7;color:#92400e;padding:4px 10px;border-radius:12px;font-size:12px">小学数学·应用题讲解</span>
+        <span style="background:#dbeafe;color:#1e40af;padding:4px 10px;border-radius:12px;font-size:12px">初中物理·浮力出题</span>
+        <span style="background:#d1fae5;color:#065f46;padding:4px 10px;border-radius:12px;font-size:12px">高中数学·导数专题</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Which organization feels most natural for your users? Or a combination?</p>

@@ -1,0 +1,94 @@
+<h2>Design: UI Flow</h2>
+<p class="subtitle">Full-screen modal for prompt template selection and usage</p>
+
+<div class="section">
+  <h3>Step 1: 触发入口 — KnowledgeDetail AI 面板</h3>
+  <div class="mockup">
+    <div class="mockup-header">Preview: AI 面板增加模板入口</div>
+    <div class="mockup-body">
+      <div style="border:1px solid #e5e7eb;border-radius:12px;padding:16px;background:white">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <h4 style="margin:0">🤖 AI 智能助教</h4>
+          <div style="display:flex;gap:8px">
+            <button class="mock-button" style="background:#3b82f6;color:white;font-size:12px">简单模式</button>
+            <button class="mock-button" style="font-size:12px">📝 模板模式</button>
+          </div>
+        </div>
+        <p style="font-size:13px;color:#6b7280">点击「模板模式」打开全屏提示词选择弹窗</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Step 2: 全屏弹窗 — 提示词目录</h3>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 全屏模态框</div>
+    <div class="mockup-body" style="position:relative">
+      <!-- Simulated modal overlay -->
+      <div style="background:#f9fafb;border-radius:12px;padding:20px;border:2px solid #3b82f6">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <h3 style="margin:0">📝 教学提示词</h3>
+          <span style="font-size:20px;cursor:pointer">✕</span>
+        </div>
+        
+        <!-- Filter bar -->
+        <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+          <select style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option>全部年级</option><option>小学</option><option>初中</option><option>高中</option></select>
+          <select style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option>全部学科</option><option>数学</option><option>语文</option><option>物理</option></select>
+          <select style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option>全部场景</option><option>知识讲解</option><option>出题组卷</option></select>
+          <input style="flex:1;min-width:160px;padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px" placeholder="🔍 搜索提示词...">
+        </div>
+        
+        <!-- Template grid -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:white;cursor:pointer">
+            <div style="font-size:20px;margin-bottom:6px">📖</div>
+            <h5 style="margin:0 0 4px;font-size:13px">概念深度讲解</h5>
+            <p style="font-size:11px;color:#6b7280;margin:0">生活比喻+分步拆解+苏格拉底提问</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:white;cursor:pointer">
+            <div style="font-size:20px;margin-bottom:6px">🎯</div>
+            <h5 style="margin:0 0 4px;font-size:13px">启发式引导</h5>
+            <p style="font-size:11px;color:#6b7280;margin:0">不直接给答案，引导自主发现</p>
+          </div>
+          <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:white;cursor:pointer">
+            <div style="font-size:20px;margin-bottom:6px">🌉</div>
+            <h5 style="margin:0 0 4px;font-size:13px">桥梁类比法</h5>
+            <p style="font-size:11px;color:#6b7280;margin:0">用已知知识搭建理解桥梁</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Step 3: 模板填写 + AI 输出</h3>
+  <div class="mockup">
+    <div class="mockup-header">Preview: 变量填写 → 流式输出</div>
+    <div class="mockup-body">
+      <div style="margin-bottom:12px">
+        <label class="label">知识点</label>
+        <input class="mock-input" value="浮力">
+      </div>
+      <div style="margin-bottom:12px">
+        <label class="label">学生年级</label>
+        <input class="mock-input" value="初二">
+      </div>
+      <div style="margin-bottom:12px">
+        <label class="label">特殊要求（选填）</label>
+        <input class="mock-input" placeholder="如：用航海举例...">
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button class="mock-button" style="background:#3b82f6;color:white">🚀 发送 AI</button>
+        <button class="mock-button">📋 复制 Prompt</button>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;background:#f0fdf4">
+        <p style="font-size:12px;color:#166534;margin:0">📡 AI 流式输出区域...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="subtitle">Does this UI flow feel right?</p>
