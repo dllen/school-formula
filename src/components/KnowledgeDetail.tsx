@@ -5,6 +5,7 @@ import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { getQuestionsByKnowledgePoint } from '../data/questions';
 import { generateKnowledgeContent, getAIConfig } from '../services/ai';
 import { SettingsModal } from './SettingsModal';
+import { PromptModal } from './prompts/PromptModal';
 
 export const KnowledgeDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -12,6 +13,7 @@ export const KnowledgeDetail: React.FC = () => {
     const [aiContent, setAiContent] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isPromptModalOpen, setIsPromptModalOpen] = useState(false);
 
     // Find the knowledge point in the data
     const findKnowledgePoint = (pointId: string | undefined) => {
@@ -250,12 +252,20 @@ export const KnowledgeDetail: React.FC = () => {
                                     </span>
                                 </h3>
                                 {!aiContent && !isGenerating && (
-                                    <button
-                                        onClick={handleGenerateAI}
-                                        className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-purple-200 transition-all flex items-center gap-2"
-                                    >
-                                        <span>生成深度辅导指南</span>
-                                    </button>
+                                    <div className="flex gap-3">
+                                        <button
+                                            onClick={handleGenerateAI}
+                                            className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-purple-200 transition-all flex items-center gap-2"
+                                        >
+                                            <span>生成深度辅导指南</span>
+                                        </button>
+                                        <button
+                                            onClick={() => setIsPromptModalOpen(true)}
+                                            className="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-amber-200 transition-all flex items-center gap-2"
+                                        >
+                                            <span>📝 模板模式</span>
+                                        </button>
+                                    </div>
                                 )}
                             </div>
 
@@ -281,6 +291,13 @@ export const KnowledgeDetail: React.FC = () => {
                 </div>
             </div>
             <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
+            <PromptModal
+                isOpen={isPromptModalOpen}
+                onClose={() => setIsPromptModalOpen(false)}
+                knowledgePointId={point.id}
+                knowledgePointTitle={point.title}
+                knowledgePointGrade={grade.name}
+            />
         </div>
     );
 };
