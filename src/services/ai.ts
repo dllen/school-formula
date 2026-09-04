@@ -1,4 +1,5 @@
 import OpenAI from 'openai';
+import type { PromptTemplate } from '../data/prompts/types';
 
 // Define the configuration structure
 export interface AIConfig {
@@ -543,6 +544,62 @@ export const generateFormulaDerivation = async (
         }
     } catch (error) {
         console.error('AI Formula Derivation Error:', error);
+        throw error;
+    }
+};
+
+/**
+ * 根据模板 + 用户填写变量，组装最终 prompt 并调用 AI
+ */
+export const generateFromTemplate = async (
+    template: PromptTemplate,
+    variables: Record<string, string>,
+    onStream: (chunk: string) => void
+): Promise<void> => {
+    const config = getAIConfig();
+    if (!config || !config.apiKey) {
+        throw new Error('API Key not configured');
+    }
+
+    // 组装最终 prompt：替换 {{variable}} 占位符
+    let finalPrompt = template.template;
+    for (const [key, value] of Object.entries(variables)) {
+        finalPrompt = finalPrompt.replace(
+            new RegExp(`\\{\\{${key}\\}\\}`, 'g'),
+            value
+        );
+    }
+
+    // 处理条件块 {{#if variable}}...{{/if}}
+    finalPrompt = finalPrompt.replace(
+        /\{\{#if (\w+)\}\}([\s\S]*?)\{\{\/if\}\}/g,
+        (_, key, content) => variables[key] ? content : ''
+    );
+
+    // 清理残留占位符
+    finalPrompt = finalPrompt.replace(/\{\{[^}]+\}\}/g, '');
+
+    const client = new OpenAI({
+        baseURL: config.baseUrl,
+        apiKey: config.apiKey,
+        dangerouslyAllowBrowser: true,
+    });
+
+    try {
+        const stream = await client.chat.completions.create({
+            model: config.model,
+            messages: [{ role: 'user', content: finalPrompt }],
+            stream: true,
+        });
+
+        for await (const chunk of stream) {
+            const content = chunk.choices[0]?.delta?.content || '';
+            if (content) {
+                onStream(content);
+            }
+        }
+    } catch (error) {
+        console.error('AI Template Generation Error:', error);
         throw error;
     }
 };
