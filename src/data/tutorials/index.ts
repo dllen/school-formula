@@ -1,11 +1,14 @@
 export * from './types';
 export { PRIMARY_MATH_TUTORIALS } from './primary-math';
+export { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
+import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
-  ...PRIMARY_MATH_TUTORIALS
+  ...PRIMARY_MATH_TUTORIALS,
+  ...PRIMARY_CHINESE_TUTORIALS
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
