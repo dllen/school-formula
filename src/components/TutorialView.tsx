@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+
+type Subject = 'math' | 'chinese' | 'english';
+
+const SUBJECTS: { id: Subject; name: string; icon: string }[] = [
+  { id: 'math', name: '数学', icon: '🔢' },
+  { id: 'chinese', name: '语文', icon: '📝' },
+  { id: 'english', name: '英语', icon: '🔤' },
+];
 import { ALL_TUTORIALS, type Tutorial, type TutorialUnit } from '../data/tutorials';
 import { TutorialUnitDetail } from './tutorials/TutorialUnitDetail';
 
@@ -12,11 +20,19 @@ const GRADES: { id: string; name: string }[] = [
 ];
 
 export const TutorialView: React.FC = () => {
+  const [selectedSubject, setSelectedSubject] = useState<Subject>('math');
   const [selectedGrade, setSelectedGrade] = useState<string>('1');
   const [selectedUnit, setSelectedUnit] = useState<TutorialUnit | null>(null);
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
 
-  const tutorial = ALL_TUTORIALS.find(t => t.grade === selectedGrade) || null;
+  const tutorial = ALL_TUTORIALS.find(t => t.grade === selectedGrade && t.subject === (selectedSubject === 'math' ? '数学' : selectedSubject === 'chinese' ? '语文' : '英语')) || null;
+
+  const handleSubjectChange = (subject: Subject) => {
+    setSelectedSubject(subject);
+    setSelectedGrade('1');
+    setSelectedUnit(null);
+    setSelectedTutorial(null);
+  };
 
   const handleGradeChange = (grade: string) => {
     setSelectedGrade(grade);
@@ -49,7 +65,25 @@ export const TutorialView: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">教程</h2>
-          <p className="text-sm text-gray-500">系统学习小学数学：教、学、练一体化</p>
+          <p className="text-sm text-gray-500">系统学习小学课程：教、学、练一体化</p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <div className="flex space-x-1 bg-gray-100 p-1 rounded-xl shadow-inner">
+            {SUBJECTS.map((subject) => (
+              <button
+                key={subject.id}
+                onClick={() => handleSubjectChange(subject.id)}
+                className={`flex-1 sm:flex-none px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 flex items-center gap-1 ${
+                  selectedSubject === subject.id
+                    ? 'bg-white text-indigo-600 shadow-sm ring-1 ring-black/5'
+                    : 'text-gray-500 hover:text-gray-700 hover:bg-gray-200/50'
+                }`}
+              >
+                <span>{subject.icon}</span>
+                <span>{subject.name}</span>
+              </button>
+            ))}
+          </div>
         </div>
         <div className="flex space-x-1 bg-gray-100 p-1 rounded-xl shadow-inner sm:w-fit w-full">
           {GRADES.map((grade) => (
