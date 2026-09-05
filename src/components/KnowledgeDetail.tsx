@@ -294,7 +294,6 @@ export const KnowledgeDetail: React.FC = () => {
             <PromptModal
                 isOpen={isPromptModalOpen}
                 onClose={() => setIsPromptModalOpen(false)}
-                knowledgePointId={point.id}
                 knowledgePointTitle={point.title}
                 knowledgePointGrade={grade.name}
             />

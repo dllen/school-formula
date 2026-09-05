@@ -5,7 +5,7 @@ import { GENERATORS } from './generators';
 /**
  * Validates that a question produced by any generator is well-formed.
  */
-function assertValidQuestion(q: Question, _techniqueId: string) {
+function assertValidQuestion(q: Question) {
   expect(q).toHaveProperty('q');
   expect(q).toHaveProperty('opts');
   expect(q).toHaveProperty('ans');
@@ -49,7 +49,7 @@ describe('GENERATORS — all techniques', () => {
       const gen = GENERATORS[id];
       for (let i = 0; i < 5; i++) {
         const q = gen();
-        assertValidQuestion(q, id);
+        assertValidQuestion(q);
       }
     });
   });

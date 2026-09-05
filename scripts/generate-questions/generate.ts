@@ -61,7 +61,7 @@ async function generateQuestion(
 }
 
 async function main() {
-  const { all, grade, subject, incremental } = parseArgs();
+  const { grade, subject } = parseArgs();
 
   if (!process.env.OPENAI_API_KEY) {
     console.error('Error: OPENAI_API_KEY not set in environment');

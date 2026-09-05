@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import type { LearningProgress } from '../../hooks/useLearningProgress';
 import { formatTime } from '../../utils/questionUtils';
 
@@ -12,10 +12,13 @@ export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ progress, 
     ? Math.round((progress.totalCorrect / progress.totalAnswered) * 100)
     : 0;
 
-  const last7Days = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(Date.now() - (6 - i) * 86400000);
-    return d.toISOString().split('T')[0];
-  });
+  const last7Days = useMemo(() => {
+    return Array.from({ length: 7 }, (_, i) => {
+      // eslint-disable-next-line react-hooks/purity
+      const d = new Date(Date.now() - (6 - i) * 86400000);
+      return d.toISOString().split('T')[0];
+    });
+  }, []);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-5">

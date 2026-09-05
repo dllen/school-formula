@@ -14,9 +14,45 @@ import { ProgressDashboard } from './practice/ProgressDashboard';
 import { checkAnswer } from '../utils/questionUtils';
 import type { QuestionFilter } from '../data/questions/types';
 
+const FILTER_STORAGE_KEY = 'practice-filter-selection';
+const DEFAULT_FILTER: QuestionFilter = { grade: 'primary', subject: '数学' };
+
+/** 从 localStorage 加载上次选择的筛选条件，无记录则返回默认值 */
+function loadFilterFromStorage(): QuestionFilter {
+  try {
+    const raw = localStorage.getItem(FILTER_STORAGE_KEY);
+    if (raw) {
+      const saved = JSON.parse(raw) as QuestionFilter;
+      // 确保 grade 和 subject 都存在才使用（防止存储了不完整数据）
+      if (saved.grade && saved.subject) {
+        return saved;
+      }
+    }
+  } catch {
+    // 解析失败时忽略，使用默认值
+  }
+  return DEFAULT_FILTER;
+}
+
+/** 将当前筛选条件中的年级和科目保存到 localStorage */
+function saveFilterToStorage(filter: QuestionFilter): void {
+  try {
+    const toSave = { grade: filter.grade, subject: filter.subject };
+    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(toSave));
+  } catch {
+    // 存储失败时静默忽略（如隐私模式）
+  }
+}
+
 export const PracticeView: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [filter, setFilter] = useState<QuestionFilter>({});
+  const [filter, setFilter] = useState<QuestionFilter>(() => loadFilterFromStorage());
+
+  // 当用户更改年级或科目时，持久化到 localStorage
+  useEffect(() => {
+    saveFilterToStorage(filter);
+  }, [filter]);
+
   const session = usePracticeSession();
   const errorBook = useErrorBook();
   const learningProgress = useLearningProgress();
@@ -28,6 +64,7 @@ export const PracticeView: React.FC = () => {
   useEffect(() => {
     const kp = searchParams.get('kp');
     if (kp) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFilter(prev => ({ ...prev, knowledgePointIds: [kp] }));
     }
   }, [searchParams]);
@@ -97,6 +134,15 @@ export const PracticeView: React.FC = () => {
     setShowExitConfirm(false);
     session.resetToFilter();
   }, [session]);
+
+  // Calculate total time when session is finished
+  const totalTime = useMemo(() => {
+    if (session.phase === 'finished' && session.stats) {
+      // eslint-disable-next-line react-hooks/purity
+      return Math.round((Date.now() - session.startTime) / 1000);
+    }
+    return 0;
+  }, [session.phase, session.stats, session.startTime]);
 
   if (session.phase === 'filtering') {
     return (
@@ -182,7 +228,6 @@ export const PracticeView: React.FC = () => {
   }
 
   if (session.phase === 'finished' && session.stats) {
-    const totalTime = Math.round((Date.now() - session.startTime) / 1000);
     return (
       <div className="space-y-5 max-w-3xl mx-auto">
         <PracticeResult

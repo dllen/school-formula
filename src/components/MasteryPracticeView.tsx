@@ -18,6 +18,7 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
 
   useEffect(() => {
     if (technique) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setQuestions(generateQuestions(technique.id, 6));
       setCurrentIdx(0);
       setSelected(null);

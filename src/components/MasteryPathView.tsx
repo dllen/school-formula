@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { TECHNIQUES } from '../data/mastery/techniques';
 import { loadProgress } from '../data/mastery/progress';
 import type { Technique, MasteryProgress } from '../data/mastery/types';
@@ -8,9 +8,7 @@ interface Props {
 }
 
 export const MasteryPathView: React.FC<Props> = ({ onSelect }) => {
-  const [progress, setProgress] = useState<MasteryProgress>({ records: {}, completedTechniques: [] });
-
-  useEffect(() => { setProgress(loadProgress()); }, []);
+  const [progress] = useState<MasteryProgress>(() => loadProgress());
 
   const getStatus = (t: Technique): 'locked' | 'unlocked' | 'learning' | 'completed' => {
     if (progress.completedTechniques.includes(t.id)) return 'completed';

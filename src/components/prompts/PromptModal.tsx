@@ -13,12 +13,11 @@ type ModalState = 'browse' | 'detail' | 'result';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  knowledgePointId?: string;
   knowledgePointTitle?: string;
   knowledgePointGrade?: string;
 }
 
-export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointId: _knowledgePointId, knowledgePointTitle, knowledgePointGrade }) => {
+export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTitle, knowledgePointGrade }) => {
   const [state, setState] = useState<ModalState>('browse');
   const [selectedTemplate, setSelectedTemplate] = useState<PromptTemplate | null>(null);
   const [grade, setGrade] = useState<GradeLevel | ''>('');

@@ -6,6 +6,7 @@ import type { MasteryProgress } from '../data/mastery/types';
 export const MasteryProgressView: React.FC = () => {
   const [progress, setProgress] = useState<MasteryProgress>({ records: {}, completedTechniques: [] });
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { setProgress(loadProgress()); }, []);
 
   const weak = getWeakTechniques();

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { CheatSheetView } from './CheatSheetView';
 import { FormulaView } from './FormulaView';
@@ -19,17 +19,17 @@ type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formu
 
 export function Home() {
     const [searchParams] = useSearchParams();
-    const [activeView, setActiveView] = useState<ViewType>('knowledge');
     const [selectedGradeId, setSelectedGradeId] = useState<GradeLevel>('primary');
     const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
 
     // Initialize view from URL query params (e.g. ?view=practice&kp=p-math-1)
-    useEffect(() => {
+    const [activeView, setActiveView] = useState<ViewType>(() => {
         const viewParam = searchParams.get('view');
         if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery', 'practice', 'notes', 'zizhi', 'shiji'].includes(viewParam)) {
-            setActiveView(viewParam as ViewType);
+            return viewParam as ViewType;
         }
-    }, [searchParams]);
+        return 'knowledge';
+    });
 
     const currentGradeData = KNOWLEDGE_DATA.find(g => g.id === selectedGradeId)!;
 
