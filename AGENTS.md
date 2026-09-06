@@ -36,7 +36,9 @@
 
 ### 当前构建/检查状态
 
-> 以下问题在当前 `main` 分支已存在，并非本次 AGENTS.md 编写引入。
+- `npm run tsc -b --noEmit`（TypeScript 类型检查）：✅ 通过
+- `npm run lint`（ESLint flat config）：✅ 零错误（2026-09-06 更新；历史曾存在 `react-hooks/set-state-in-effect` 与 `react-refresh` 两处 lint 错误，均已修复：`useEffect` 同步 `setState` 改为条件挂载、`useAuth` 从组件文件移至 `auth-context.ts`）
+- `npm run build`（Vite 生产构建）：✅ 通过（2026-09-06 更新）> 以下问题在当前 `main` 分支已存在，并非本次 AGENTS.md 编写引入。
 
 - `npm run lint` 会报错：`src/components/SettingsModal.tsx:21` 中在 `useEffect` 内直接调用 `setState`，触发 `react-hooks/set-state-in-effect` 规则。
 - `npm run build` 会报错：`src/components/Home.tsx` 使用了 `<ShijiView />` 但未导入该组件，导致 TypeScript 编译失败（`TS2304: Cannot find name 'ShijiView'`）。

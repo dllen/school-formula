@@ -1,7 +1,7 @@
 # 登录流程实施设计 Spec
 
 **日期：** 2026-09-06
-**状态：** 已确认，待实现
+**状态：** 方案 2 已实施（2026-09-06），注册免邮箱验证、注册即登录
 **范围：** 前端登录 UI + 前后端对接（Cloudflare Worker API）
 **关联文档：** `docs/superpowers/specs/2026-09-07-auth-membership-design.md`（产品设计：三级会员体系、付费墙）——本文不重复其内容，仅做实施对接。
 
@@ -24,15 +24,16 @@
 
 **后端行为约束（已实现，前端必须对齐）：**
 
-- `POST /api/auth/register` 只发验证码，**不签发 token**（邮箱未激活）
-- `POST /api/auth/login` 检查 `email_verified`，未激活返回 `403 EMAIL_NOT_VERIFIED`
-- `POST /api/auth/verify` 成功返回 `{ message, user, tokens: { access, refresh } }` → 前端直接存 token 完成注册登录
-- `POST /api/auth/resend` `{ email }` → 重发验证码（仅未激活用户，已激活返回 404）
-- 验证码有效期 10 分钟（后端 `expires_at = now + 10min`）
+- `POST /api/auth/register` **不发任何邮件**：创建用户时 `email_verified=1`，直接签发 `{ user, tokens }`，注册即登录
+- `POST /api/auth/login` 不检查 `email_verified`（注册即激活，正常用户恒为 1；仅历史脏数据会 403）
+- `POST /api/auth/forgot` / `POST /api/auth/reset` 发邮件验证码（走 `worker/lib/email.ts` 的 MailChannels；找回通道按需启用）
+- `forgot`/`reset` 验证码有效期 10 分钟
+- `verify` / `resend` 端点——**已删除**（2026-09-06 方案 2）
 
 **非目标（YAGNI）：**
 
 - 第三方登录（微信/GitHub OAuth）
+- 注册环节的邮箱验证（2026-09-06 起停用：邮箱仅找回密码用；安全性依赖密码强度 ≥ 8 位）
 - 三级会员付费墙、订阅（产品 spec 已有规划，本期不消费 tier）
 - 多域名登录态共享（不同域 localStorage 隔离，各域名独立登录）
 
@@ -45,7 +46,7 @@
 | 文件 | 变更 |
 |---|---|
 | `src/services/auth.ts` | 新增：token 管理、API 方法、`authFetch` 拦截器、`useAuth` hook、`initAuth` |
-| `src/components/AuthModal.tsx` | 新增：登录/注册/验证/忘记密码/重置多视图弹窗 |
+| `src/components/AuthModal.tsx` | 新增：登录/注册/忘记密码/重置四视图弹窗（无邮箱验证步骤） |
 | `src/components/Header.tsx` | 改造：登录按钮 / 用户菜单 + 挂载 AuthModal |
 | `src/main.tsx` | 改造：应用启动时调用 `initAuth()` |
 
@@ -55,23 +56,18 @@
 【注册】
 AuthModal → auth.register(email, password)
          → POST /api/auth/register
-         → { message, email }（后端发验证码邮件）
-         → UI 自动切换「验证邮箱」视图（邮箱预填，6 位验证码输入）
-         → [可选] 点击「重新发送验证码」→ POST /api/auth/resend
-         → auth.verify(email, code)
-         → POST /api/auth/verify
-         → { user, tokens } → 写 localStorage → Header 刷新 → 关闭弹窗
+         → 后端直接激活（email_verified=1）并签发 { user, tokens }
+         → 前端写 localStorage → useAuth 更新 → 关闭弹窗（注册即登录）
 
 【登录】
 AuthModal → auth.login(email, password)
          → POST /api/auth/login → { user, tokens }
          → 写 localStorage → Header 刷新 → 关闭弹窗
 
-【后续请求】
-authFetch(path) → 自动附加 Bearer access
-              → 401 → refreshPromise 单例排队 → POST /api/auth/refresh
-              → 新 access 写回 → 重放原请求
-              → refresh 失效 → 清存储 → 回未登录态
+【找回密码（可选）】
+ForgotPasswordModal → services/auth.authApi.forgot(email)
+                   → POST /api/auth/forgot → 后端发邮件验证码（MailChannels 通道激活时）
+                   → POST /api/auth/reset → 验证重置码 → 新密码
 ```
 
 ---
@@ -145,21 +141,17 @@ localStorage 读写 try/catch 包裹（隐私模式可能抛错），失败降�
 ```
 AuthModal
   ├─ view='login'        登录表单（邮箱 + 密码 + 「忘记密码」→ forgot）
-  ├─ view='register'     注册表单（邮箱 + 密码 + 确认密码）
-  │     ↓ register 成功后自动切换
-  ├─ view='verify'       邮箱预填（只读）+ 6 位验证码 + 「重新发送」→ resend
+  ├─ view='register'     注册表单（邮箱 + 密码 + 确认密码）→ 注册成功直接 onClose
   ├─ view='forgot'       邮箱输入 → 发送重置码 → 成功提示（附「返回登录」）
   └─ view='reset'        邮箱 + 重置码 + 新密码（从 forgot 带 email 自动转入）
 ```
 
-**Tab 结构**：仅 login / register 两个 Tab 常驻顶部；verify 是 register 成功后自动切换出的子视图（不带 Tab），底部有「返回注册」小链接。
+**Tab 结构**：仅 login / register 两个 Tab 常驻顶部；注册成功即登录，无验证中间步骤。
 
 **交互要点：**
 
-- 客户端校验前置：邮箱格式、密码 ≥ 8 位、两次密码一致、验证码 6 位
-- `register` 提交 → 后端返回 `{ message, email }` → 自动切 view='verify'，邮件已发
-- `resend` 成功 → 「验证码已重发」提示；后端 resend 仅对未激活用户有效（404 时提示「该邮箱已注册/已验证，请直接登录」）
-- `verify` 成功 → 写 token → 关闭登录弹窗（直接登录态）
+- 客户端校验前置：邮箱格式、密码 ≥ 8 位、两次密码一致
+- `register` 提交 → 后端返回 `{ user, tokens }` → 前端直接 setUser + 写 localStorage → 关闭弹窗（注册即登录）
 - `forgot` 发送成功 → 切 `reset` view（预填邮箱）
 - 提交中按钮 loading + disabled，防重复提交
 - 注册/登录首页：错误内联红字；网络错误兜底文案
@@ -208,12 +200,7 @@ export const useAuth = () => { /* useReducer 订阅、返回 user/isLoggedIn */ 
 |---|---|---|
 | `400 邮箱和密码不能为空` 等字段校验 | 字段下方 | 红字文案（展示后端 `error` 字符串） |
 | `401 INVALID_CREDENTIALS`（登录密码错） | 登录表单底部 | 红字「邮箱或密码错误」 |
-| `403 EMAIL_NOT_VERIFIED` | 登录表单底部 | 红字「请先验证邮箱」+ 「去验证」链接（切 view='verify' 需 email——登录时回填当前输入的邮箱） |
 | `409 EMAIL_TAKEN` | 注册表单底部 | 红字「该邮箱已被注册」 |
-| `400 INVALID_CODE` | verify / reset 表单底部 | 「验证码错误」 |
-| `400 CODE_EXPIRED` | verify / reset 表单底部 | 「验证码已过期，请重新获取」 |
-| `404 用户不存在或已验证`（resend） | verify 表单底部 | 「该邮箱已注册，请直接登录」+ 跳转 login |
-| `400 用户不存在`（verify 时数据库异常） | verify 表单底部 | 「用户不存在，请重新注册」 |
 | `401 INVALID_REFRESH` | 全局 | 静默清状态，回未登录 |
 | fetch 抛异常（断网等） | 当前视图底部 | 「网络异常，请检查网络后重试」 |
 
@@ -241,9 +228,7 @@ initAuth 期间 Header 显示未登录态；完成后如有用户则直接跳已
 
 | 接口 | 请求 | 成功响应 |
 |---|---|---|
-| `POST /api/auth/register` | `{ email, password }` | `{ message, email }`（发验证码） |
-| `POST /api/auth/verify` | `{ email, code }` | `{ message, user, tokens: { access, refresh } }` |
-| `POST /api/auth/resend` | `{ email }` | `{ message: '验证码已重发' }` |
+| `POST /api/auth/register` | `{ email, password }` | `{ user, tokens }`（注册即登录，无验证码） |
 | `POST /api/auth/login` | `{ email, password }` | `{ user, tokens }` |
 | `POST /api/auth/refresh` | `{ refresh }` | `{ tokens: { access, refresh } }` |
 | `POST /api/auth/logout` | Bearer | `{ message }` |
@@ -261,7 +246,7 @@ initAuth 期间 Header 显示未登录态；完成后如有用户则直接跳已
 ## 八、实施顺序
 
 1. `src/services/auth.ts`：存储工具 + API 方法 + `authFetch` + 刷新排队 + `useAuth` + `initAuth`
-2. `src/components/AuthModal.tsx`：五视图弹窗（login/register/verify/forgot/reset）+ 错误内联
+2. `src/components/AuthModal.tsx`：四视图弹窗（login/register/forgot/reset）+ 错误内联；注册成功直接 onClose
 3. `src/components/Header.tsx`：登录按钮 / 用户菜单 + 挂载 AuthModal
 4. `src/main.tsx`：`initAuth()` 调用
 5. `npx tsc -b` 类型检查 + `npm run build` 构建验证
@@ -271,18 +256,17 @@ initAuth 期间 Header 显示未登录态；完成后如有用户则直接跳已
 
 ## 九、验收清单（手动）
 
-- [ ] 注册新邮箱（密码 ≥ 8 位）→ 收验证码 → verify 成功直接登录 → Header 显示用户
+- [ ] 注册新邮箱（密码 ≥ 8 位）→ **注册成功即登录**（无验证码邮件）→ Header 显示用户
 - [ ] 重复注册同一邮箱 → 「该邮箱已被注册」
 - [ ] 登录错误密码 → 「邮箱或密码错误」
-- [ ] 注册后未验证直接登录（同邮箱）→ 「请先验证邮箱」+ 「去验证」跳转正常
-- [ ] 点「重新发送验证码」→ resend 成功提示；对已验证邮箱 resend → 提示去登录
-- [ ] 验证码过期（等 10 分钟或构造过期 code）→ 「验证码已过期，请重新获取」
+- [ ] 刷新浏览器 → 自动恢复登录态
 - [ ] 刷新浏览器 → 自动恢复登录态
 - [ ] 退出登录 → Header 回未登录态
 - [ ] 忘记密码 → 提交邮箱 → 填重置码 + 新密码 → 用新密码登录成功
 - [ ] 构造过期 access → 下次 authFetch 自动 refresh 成功
 - [ ] A 标签页登录 → B 标签页 storage 事件自动同步
 - [ ] 未登录完整回归：AI 助教、知识点、速查表不受影响
+- [ ] 找回密码（可选，需 MailChannels 发信通道）：提交邮箱 → 收重置码 → 新密码登录
 
 ---
 
