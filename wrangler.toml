@@ -17,5 +17,6 @@ bucket = "./dist"
 entry-point = "worker"
 
 [vars]
-FRONTEND_URL = "https://syy.global/"
+FRONTEND_URL = "https://syy.global"
+ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
