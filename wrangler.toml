@@ -14,7 +14,6 @@ id = "e7c94f92016f4458863363fb666b5b33"
 
 [site]
 bucket = "./dist"
-entry-point = "worker"
 
 [vars]
 FRONTEND_URL = "https://syy.global"
