@@ -23,5 +23,6 @@ bucket = "./dist"
 
 [vars]
 FRONTEND_URL = "https://syy.global"
+FROM_EMAIL = "noreply@syy.global"
 ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
