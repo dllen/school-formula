@@ -35,11 +35,28 @@ interface UserResponse {
   user: User;
 }
 
+// 多域名生产环境映射：站点域名 → API 域名
+const API_DOMAIN_MAP: Record<string, string> = {
+  'syy.one': 'api.syy.one',
+  'syy.global': 'api.syy.global',
+  'syy.mobi': 'api.syy.mobi',
+};
+
+function resolveApiBase(): string {
+  const hostname = location.hostname;
+  for (const [suffix, apiDomain] of Object.entries(API_DOMAIN_MAP)) {
+    if (hostname === suffix || hostname.endsWith(`.${suffix}`)) {
+      return `https://${apiDomain}`;
+    }
+  }
+  return `https://api.${hostname}`;
+}
+
 // API base 优先级：VITE_API_BASE（新）> VITE_API_URL（旧/开发 proxy）> 按域名推导（多域名生产环境）
 const API_BASE: string =
   import.meta.env.VITE_API_BASE ||
   import.meta.env.VITE_API_URL ||
-  `https://api.${location.hostname}`;
+  resolveApiBase();
 
 // 并发刷新排队：多个请求同时 401 时只发一次 refresh（后端 refresh 轮换会删旧 token，并发会互相踩）
 let refreshPromise: Promise<boolean> | null = null;
