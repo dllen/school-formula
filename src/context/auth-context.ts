@@ -17,6 +17,8 @@ interface AuthContextValue {
   register: (email: string, password: string) => Promise<{ email: string }>;
   verify: (email: string, code: string) => Promise<void>;
   resendCode: (email: string) => Promise<void>;
+  forgotPassword: (email: string) => Promise<void>;
+  resetPassword: (email: string, code: string, password: string) => Promise<void>;
   logout: () => void;
   refreshUser: () => Promise<void>;
 }
