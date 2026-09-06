@@ -127,16 +127,16 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+      <div className="bg-white rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.16)] w-full max-w-md overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-          <h2 className="text-xl font-bold text-gray-900">
+        <div className="p-6 border-b border-[#F0F1F2] flex justify-between items-center bg-[#F5F6F7]">
+          <h2 className="text-[18px] font-semibold text-[#1F2329]">
             {view === 'login' && '登录'}
             {view === 'register' && '注册'}
             {view === 'forgot' && '忘记密码'}
             {view === 'reset' && '重置密码'}
           </h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors text-2xl leading-none">
+          <button onClick={onClose} className="text-[#8F959E] hover:text-[#1F2329] transition-colors text-2xl leading-none">
             ✕
           </button>
         </div>
@@ -186,23 +186,23 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           {view === 'login' && (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="至少 8 位"
                   autoComplete="current-password"
                 />
@@ -234,34 +234,34 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           {view === 'register' && (
             <form onSubmit={handleRegister} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="至少 8 位"
                   autoComplete="new-password"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">确认密码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">确认密码</label>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="再次输入密码"
                   autoComplete="new-password"
                 />
@@ -281,12 +281,12 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
             <form onSubmit={handleForgot} className="space-y-4">
               <p className="text-sm text-gray-500">输入注册邮箱，我们将发送密码重置码。</p>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
@@ -321,35 +321,35 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 重置码已发送至 <span className="font-medium text-gray-700">{email}</span>，10 分钟内有效。
               </p>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">重置码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">重置码</label>
                 <input
                   type="text"
                   value={code}
                   onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-center text-xl tracking-[0.5em] font-mono"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-center text-xl tracking-[0.5em] font-mono"
                   placeholder="000000"
                   maxLength={6}
                   inputMode="numeric"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">新密码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">新密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="至少 8 位"
                   autoComplete="new-password"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">确认新密码</label>
+                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">确认新密码</label>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
                   placeholder="再次输入新密码"
                   autoComplete="new-password"
                 />

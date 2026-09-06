@@ -100,30 +100,30 @@ export const NotesView: React.FC = () => {
   return (
     <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold text-gray-900">学习笔记</h2>
-        <p className="text-sm text-gray-500">记录学习心得，数据保存在本地浏览器中</p>
+        <h2 className="text-2xl font-bold text-[#1F2329]">学习笔记</h2>
+        <p className="text-sm text-[#646A73]">记录学习心得，数据保存在本地浏览器中</p>
       </div>
 
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 space-y-4">
+      <div className="bg-white p-6 rounded-2xl shadow-sm border border-[#F0F1F2] space-y-4">
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="笔记标题"
-          className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 outline-none text-gray-700 placeholder:text-gray-400 focus:border-indigo-300"
+          className="w-full px-4 py-2.5 rounded-xl bg-[#F5F6F7] border border-[#E5E6EB] outline-none text-[#1F2329] placeholder:text-[#8F959E] focus:border-indigo-300"
         />
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           placeholder="记录你的学习心得、易错点或疑问……"
           rows={4}
-          className="w-full px-4 py-2.5 rounded-xl bg-gray-50 border border-gray-200 outline-none text-gray-700 placeholder:text-gray-400 focus:border-indigo-300 resize-y"
+          className="w-full px-4 py-2.5 rounded-xl bg-[#F5F6F7] border border-[#E5E6EB] outline-none text-[#1F2329] placeholder:text-[#8F959E] focus:border-indigo-300 resize-y"
         />
         <div className="flex justify-end gap-3">
           {editingId && (
             <button
               onClick={resetForm}
-              className="px-5 py-2.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-xl hover:bg-gray-200 transition-all"
+              className="px-5 py-2.5 bg-[#F5F6F7] text-[#646A73] text-sm font-medium rounded-xl hover:bg-gray-200 transition-all"
             >
               取消编辑
             </button>
@@ -138,7 +138,7 @@ export const NotesView: React.FC = () => {
         </div>
       </div>
 
-      <div className="text-sm text-gray-500">
+      <div className="text-sm text-[#646A73]">
         共 {sortedNotes.length} 条笔记
       </div>
 
@@ -147,11 +147,11 @@ export const NotesView: React.FC = () => {
           {sortedNotes.map((note) => (
             <div
               key={note.id}
-              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all h-full flex flex-col"
+              className="bg-white rounded-2xl shadow-sm border border-[#F0F1F2] overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all h-full flex flex-col"
             >
-              <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-indigo-50 to-white">
+              <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-indigo-50 to-white">
                 <div className="flex justify-between items-start gap-3">
-                  <h3 className="text-lg font-bold text-gray-900 break-all">{note.title}</h3>
+                  <h3 className="text-lg font-bold text-[#1F2329] break-all">{note.title}</h3>
                   <div className="flex gap-2 shrink-0">
                     <button
                       onClick={() => handleEdit(note)}
@@ -167,21 +167,21 @@ export const NotesView: React.FC = () => {
                     </button>
                   </div>
                 </div>
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-xs text-[#8F959E] mt-2">
                   更新于 {formatTime(note.updatedAt)}
                 </p>
               </div>
               <div className="p-6 flex-1">
-                <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{note.content}</p>
+                <p className="text-[#1F2329] text-sm leading-relaxed whitespace-pre-line">{note.content}</p>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
+        <div className="text-center py-12 bg-[#F5F6F7] rounded-3xl border border-dashed border-[#E5E6EB]">
           <div className="text-6xl mb-4 grayscale opacity-30">📒</div>
-          <p className="text-lg text-gray-400">还没有笔记</p>
-          <p className="text-sm text-gray-400 mt-1">在上方添加第一条学习笔记吧</p>
+          <p className="text-lg text-[#8F959E]">还没有笔记</p>
+          <p className="text-sm text-[#8F959E] mt-1">在上方添加第一条学习笔记吧</p>
         </div>
       )}
     </div>

@@ -22,7 +22,7 @@ export const CheatSheetView: React.FC = () => {
             <div className="space-y-6">
                 <button
                     onClick={() => setSelectedSheet(null)}
-                    className="flex items-center text-gray-500 hover:text-gray-900 transition-colors"
+                    className="flex items-center text-[#646A73] hover:text-[#1F2329] transition-colors"
                 >
                     <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -39,8 +39,8 @@ export const CheatSheetView: React.FC = () => {
             {/* Header Section */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold text-gray-900">速查表</h2>
-                    <p className="text-sm text-gray-500">快速查看和打印各学科重点记忆表格</p>
+                    <h2 className="text-2xl font-bold text-[#1F2329]">速查表</h2>
+                    <p className="text-sm text-[#646A73]">快速查看和打印各学科重点记忆表格</p>
                 </div>
                 <GradeSelector
                     selectedGrade={selectedGrade}
@@ -60,9 +60,9 @@ export const CheatSheetView: React.FC = () => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12 bg-gray-50 rounded-3xl border border-dashed border-gray-200">
+                <div className="text-center py-12 bg-[#F5F6F7] rounded-3xl border border-dashed border-[#E5E6EB]">
                     <div className="text-6xl mb-4 grayscale opacity-30">📋</div>
-                    <p className="text-lg text-gray-400">该年级暂无速查表</p>
+                    <p className="text-lg text-[#8F959E]">该年级暂无速查表</p>
                 </div>
             )}
         </div>

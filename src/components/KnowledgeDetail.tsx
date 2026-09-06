@@ -31,12 +31,12 @@ export const KnowledgeDetail: React.FC = () => {
 
     if (!data) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-50">
+            <div className="min-h-screen flex items-center justify-center bg-[#F5F6F7]">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4">未找到该知识点</h2>
+                    <h2 className="text-2xl font-bold text-[#1F2329] mb-4">未找到该知识点</h2>
                     <button
                         onClick={() => navigate('/')}
-                        className="text-blue-600 hover:text-blue-800 font-medium"
+                        className="text-[#3370FF] hover:text-blue-800 font-medium"
                     >
                         返回首页
                     </button>
@@ -71,35 +71,35 @@ export const KnowledgeDetail: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 font-sans text-slate-800">
+        <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800">
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <button
                     onClick={() => navigate('/')}
-                    className="mb-6 flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+                    className="mb-6 flex items-center text-[#646A73] hover:text-[#3370FF] transition-colors"
                 >
                     <span className="mr-2">←</span> 返回列表
                 </button>
 
-                <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-3xl shadow-sm border border-[#F0F1F2] overflow-hidden">
                     {/* Header */}
-                    <div className="p-8 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+                    <div className="p-8 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white">
                         <div className="flex items-center gap-4 mb-4">
                             <span className="text-4xl">{subject.icon}</span>
                             <div>
                                 <div className="flex items-center gap-3">
-                                    <h1 className="text-3xl font-bold text-gray-900">{point.title}</h1>
+                                    <h1 className="text-3xl font-bold text-[#1F2329]">{point.title}</h1>
                                     <span className="bg-blue-100 text-blue-800 text-xs px-2.5 py-0.5 rounded-full font-medium">
                                         {subject.name}
                                     </span>
                                 </div>
-                                <p className="text-gray-500 mt-2 text-lg">{point.description}</p>
+                                <p className="text-[#646A73] mt-2 text-lg">{point.description}</p>
                             </div>
                         </div>
 
                         {point.tags && (
                             <div className="flex gap-2 mt-4">
                                 {point.tags.map(tag => (
-                                    <span key={tag} className="px-3 py-1 bg-white border border-blue-100 text-blue-600 text-sm rounded-full shadow-sm">
+                                    <span key={tag} className="px-3 py-1 bg-white border border-blue-100 text-[#3370FF] text-sm rounded-full shadow-sm">
                                         {tag}
                                     </span>
                                 ))}
@@ -113,15 +113,15 @@ export const KnowledgeDetail: React.FC = () => {
                         {/* Detailed Explanation */}
                         {point.detailedExplanation ? (
                             <div className="prose prose-lg prose-blue max-w-none">
-                                <h3 className="flex items-center text-xl font-bold text-gray-900 mb-4">
+                                <h3 className="flex items-center text-xl font-bold text-[#1F2329] mb-4">
                                     <span className="mr-2">💡</span> 详细解析
                                 </h3>
-                                <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-50 text-gray-700 whitespace-pre-line leading-relaxed">
+                                <div className="bg-[#E1EAFF]/50 p-6 rounded-2xl border border-blue-50 text-[#1F2329] whitespace-pre-line leading-relaxed">
                                     {point.detailedExplanation}
                                 </div>
                             </div>
                         ) : (
-                            <div className="text-center py-12 text-gray-400 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
+                            <div className="text-center py-12 text-[#8F959E] bg-[#F5F6F7] rounded-2xl border border-dashed border-[#E5E6EB]">
                                 <p>暂无详细解析内容</p>
                             </div>
                         )}
@@ -158,8 +158,8 @@ export const KnowledgeDetail: React.FC = () => {
                                                 <p className="font-bold text-green-900">Q{idx + 1}: {q.question}</p>
                                             </div>
                                             <div className="p-4 bg-white">
-                                                <p className="text-gray-600">
-                                                    <span className="font-medium text-gray-900 bg-gray-100 px-2 py-0.5 rounded mr-2">参考答案</span>
+                                                <p className="text-[#646A73]">
+                                                    <span className="font-medium text-[#1F2329] bg-[#F5F6F7] px-2 py-0.5 rounded mr-2">参考答案</span>
                                                     {q.answer}
                                                 </p>
                                             </div>
@@ -174,7 +174,7 @@ export const KnowledgeDetail: React.FC = () => {
                             const relatedQuestions = getQuestionsByKnowledgePoint(point.id);
                             if (relatedQuestions.length === 0) return null;
                             return (
-                                <div className="pt-8 border-t border-gray-100">
+                                <div className="pt-8 border-t border-[#F0F1F2]">
                                     <div className="flex items-center justify-between mb-6">
                                         <h3 className="flex items-center text-xl font-bold text-green-900">
                                             <span className="mr-2">✏️</span> 巩固练习
@@ -198,7 +198,7 @@ export const KnowledgeDetail: React.FC = () => {
 
                         {/* Fun Section */}
                         {(point.funFact || point.funStory || point.funQuestion) && (
-                            <div className="pt-8 border-t border-gray-100">
+                            <div className="pt-8 border-t border-[#F0F1F2]">
                                 <h3 className="flex items-center text-xl font-bold text-amber-900 mb-4">
                                     <span className="mr-2">🌟</span> 趣味角
                                 </h3>
@@ -243,7 +243,7 @@ export const KnowledgeDetail: React.FC = () => {
                         )}
 
                         {/* AI Generation Section */}
-                        <div className="pt-8 border-t border-gray-100">
+                        <div className="pt-8 border-t border-[#F0F1F2]">
                             <div className="flex items-center justify-between mb-6">
                                 <h3 className="flex items-center text-xl font-bold text-purple-900">
                                     <span className="mr-2">✨</span> AI 智能助教

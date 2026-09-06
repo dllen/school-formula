@@ -95,15 +95,15 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6 border-b border-gray-100 bg-gradient-to-r from-blue-50 to-white">
+        <div className="bg-white rounded-2xl shadow-sm border border-[#F0F1F2] overflow-hidden hover:shadow-md transition-shadow">
+            <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-gray-900">{cheatsheet.title}</h3>
-                    <span className="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
+                    <h3 className="text-xl font-bold text-[#1F2329]">{cheatsheet.title}</h3>
+                    <span className="px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full">
                         {cheatsheet.category}
                     </span>
                 </div>
-                <p className="text-sm text-gray-600">{cheatsheet.description}</p>
+                <p className="text-sm text-[#646A73]">{cheatsheet.description}</p>
             </div>
 
             <div className="p-6">
@@ -111,11 +111,11 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                     <table className="w-full border-collapse text-sm">
                         {cheatsheet.table.headers && (
                             <thead>
-                                <tr className="bg-gray-50">
+                                <tr className="bg-[#F5F6F7]">
                                     {cheatsheet.table.headers.map((header, idx) => (
                                         <th
                                             key={idx}
-                                            className="border border-gray-200 px-3 py-2 text-left font-semibold text-gray-700"
+                                            className="border border-[#E5E6EB] px-3 py-2 text-left font-semibold text-[#1F2329]"
                                         >
                                             {header}
                                         </th>
@@ -125,11 +125,11 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                         )}
                         <tbody>
                             {cheatsheet.table.rows.map((row, rowIdx) => (
-                                <tr key={rowIdx} className="hover:bg-blue-50/30 transition-colors">
+                                <tr key={rowIdx} className="hover:bg-[#E1EAFF]/30 transition-colors">
                                     {row.map((cell, cellIdx) => (
                                         <td
                                             key={cellIdx}
-                                            className="border border-gray-200 px-3 py-2 text-gray-800"
+                                            className="border border-[#E5E6EB] px-3 py-2 text-[#1F2329]"
                                         >
                                             {cell}
                                         </td>
@@ -143,7 +143,7 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                 <div className="mt-4 flex justify-end">
                     <button
                         onClick={handlePrint}
-                        className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-[#3370FF] text-white rounded-lg hover:bg-[#2962CC] transition-colors font-medium text-sm"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />

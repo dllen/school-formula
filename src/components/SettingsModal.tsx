@@ -37,10 +37,10 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-            <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
-                <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-                    <h2 className="text-xl font-bold text-gray-900">AI 设置</h2>
-                    <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition-colors">
+            <div className="bg-white rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.16)] w-full max-w-md overflow-hidden">
+                <div className="p-6 border-b border-[#F0F1F2] flex justify-between items-center bg-[#F5F6F7]">
+                    <h2 className="text-[18px] font-semibold text-[#1F2329]">AI 设置</h2>
+                    <button onClick={onClose} className="text-[#8F959E] hover:text-[#1F2329] transition-colors">
                         ✕
                     </button>
                 </div>
@@ -48,15 +48,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 <div className="p-6 space-y-6">
                     {/* Provider Selection */}
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">服务提供商</label>
+                        <label className="block text-[14px] font-medium text-[#1F2329] mb-2">服务提供商</label>
                         <div className="grid grid-cols-2 gap-3">
                             {(['openai', 'deepseek', 'zhipu', 'custom'] as const).map(p => (
                                 <button
                                     key={p}
                                     onClick={() => handleProviderChange(p)}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all border ${config.provider === p
-                                        ? 'bg-blue-50 border-blue-500 text-blue-700'
-                                        : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
+                                        ? 'bg-[#E1EAFF] border-[#3370FF] text-[#3370FF]'
+                                        : 'bg-white border-[#E5E6EB] text-[#646A73] hover:border-[#3370FF]'
                                         }`}
                                 >
                                     {p === 'openai' && 'OpenAI'}
@@ -70,12 +70,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+                            <label className="block text-[14px] font-medium text-[#1F2329] mb-1">API Key</label>
                             <input
                                 type="password"
                                 value={config.apiKey}
                                 onChange={e => setConfig({ ...config, apiKey: e.target.value })}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                                className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-[14px]"
                                 placeholder="sk-..."
                             />
                             {config.provider === 'openai' && (
@@ -96,23 +96,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Base URL</label>
+                            <label className="block text-[14px] font-medium text-[#1F2329] mb-1">Base URL</label>
                             <input
                                 type="text"
                                 value={config.baseUrl}
                                 onChange={e => setConfig({ ...config, baseUrl: e.target.value })}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                                className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-[14px]"
                                 placeholder="https://api.openai.com/v1"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">模型名称</label>
+                            <label className="block text-[14px] font-medium text-[#1F2329] mb-1">模型名称</label>
                             <input
                                 type="text"
                                 value={config.model}
                                 onChange={e => setConfig({ ...config, model: e.target.value })}
-                                className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                                className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-[14px]"
                                 placeholder="gpt-4o"
                             />
                         </div>

@@ -17,7 +17,7 @@ export const SubjectGrid: React.FC<SubjectGridProps> = ({ subjects, selectedSubj
                     className={`
             relative group flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300
             ${selectedSubjectId === subject.id
-                            ? 'border-blue-500 bg-blue-50/50 ring-4 ring-blue-100'
+                            ? 'border-[#3370FF] bg-[#E1EAFF]/50 ring-4 ring-blue-100'
                             : 'border-white bg-white hover:border-blue-200 hover:shadow-lg hover:-translate-y-1 shadow-sm'
                         }
           `}
@@ -27,11 +27,11 @@ export const SubjectGrid: React.FC<SubjectGridProps> = ({ subjects, selectedSubj
                     </div>
                     <span className={`
             font-bold text-lg
-            ${selectedSubjectId === subject.id ? 'text-blue-700' : 'text-gray-700'}
+            ${selectedSubjectId === subject.id ? 'text-[#3370FF]' : 'text-[#1F2329]'}
           `}>
                         {subject.name}
                     </span>
-                    <span className="text-xs text-gray-400 mt-1">{subject.knowledgePoints.length} 个知识点</span>
+                    <span className="text-xs text-[#8F959E] mt-1">{subject.knowledgePoints.length} 个知识点</span>
                 </button>
             ))}
         </div>
