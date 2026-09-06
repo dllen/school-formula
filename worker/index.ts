@@ -77,7 +77,7 @@ export default {
       } else if (path.startsWith('/api/user/')) {
         response = await handleUser(request, env, path);
       } else if (path.startsWith('/api/ai/')) {
-        response = await handleAI(request, env, path);
+        response = await handleAI(request, env);
       } else if (path === '/api/health') {
         response = new Response(JSON.stringify({ status: 'ok' }), { headers: corsHeaders });
       } else {
