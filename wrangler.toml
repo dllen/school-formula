@@ -3,6 +3,12 @@ main = "worker/index.ts"
 compatibility_date = "2026-09-06"
 compatibility_flags = ["nodejs_compat"]
 
+routes = [
+  { pattern = "api.syy.global/*", zone_name = "syy.global" },
+  { pattern = "api.syy.mobi/*", zone_name = "syy.mobi" },
+  { pattern = "api.syy.one/*", zone_name = "syy.one" }
+]
+
 [[d1_databases]]
 binding = "DB"
 database_name = "school-formula-db"
