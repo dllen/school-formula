@@ -6,11 +6,11 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "DB"
 database_name = "school-formula-db"
-database_id = "REPLACE_WITH_REAL_ID"
+database_id = "21a53ef9-a1ea-434d-9c18-f3619421f011"
 
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "REPLACE_WITH_REAL_ID"
+id = "e7c94f92016f4458863363fb666b5b33"
 
 [vars]
 FRONTEND_URL = "https://school-formula.pages.dev"
