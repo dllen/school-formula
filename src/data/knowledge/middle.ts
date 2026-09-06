@@ -1418,39 +1418,39 @@ export const MIDDLE_DATA: GradeData = {
             **常用交际用语分类**：
 
             **问候与介绍**：
-            - 问候：Hello/Hi! Good morning/afternoon/evening. How are you? How\'s it going? What\'s up?
+            - 问候：Hello/Hi! Good morning/afternoon/evening. How are you? How's it going? What's up?
             - 回答：Fine, thanks. And you? / Very well, thank you. / Not bad.
             - 介绍：This is... / Nice to meet you. / How do you do?
 
             **问路与指路**：
             - 问路：Excuse me, where is...? / How can I get to...? / Can you tell me the way to...? / Is there a... near here?
-            - 指路：Go straight (along)... / Turn left/right at... / It\'s on your left/right. / It\'s next to/across from/opposite... / You can\'t miss it.
+            - 指路：Go straight (along)... / Turn left/right at... / It's on your left/right. / It's next to/across from/opposite... / You can't miss it.
 
             **购物**：
             - 店员：Can I help you? / What can I do for you? What size/color would you like?
-            - 顾客：I\'m looking for... / Can I try it on? How much is it? That\'s too expensive. Do you have a discount?
+            - 顾客：I'm looking for... / Can I try it on? How much is it? That's too expensive. Do you have a discount?
 
             **打电话**：
             - 接通：Hello, this is... speaking. / May I speak to...?
-            - 接听：Speaking. / Hold on, please. / Sorry, he/she isn\'t in right now. Can I take a message?
+            - 接听：Speaking. / Hold on, please. / Sorry, he/she isn't in right now. Can I take a message?
 
             **就餐**：
-            - 点餐：May I have the menu? / I\'d like... / What would you recommend?
+            - 点餐：May I have the menu? / I'd like... / What would you recommend?
             - 付款：Can I have the bill, please? / Go Dutch (AA制)。
 
             **就医**：
-            - 医生：What\'s the matter/wrong with you? How long have you been like this? Have you taken your temperature?
+            - 医生：What's the matter/wrong with you? How long have you been like this? Have you taken your temperature?
             - 患者：I have a headache/fever/cough. I feel terrible. It hurts here.
 
             **建议与劝告**：
-            - 提建议：Why not...? Why don\'t you...? What/How about...? You\'d better... Let\'s...
-            - 应答：Good idea! That sounds great. I\'d love to, but... Sorry, I can\'t.
+            - 提建议：Why not...? Why don't you...? What/How about...? You'd better... Let's...
+            - 应答：Good idea! That sounds great. I'd love to, but... Sorry, I can't.
 
             **感谢与道歉**：
-            - 感谢：Thank you (very much). Thanks a lot. It\'s very kind of you.
-            - 回答：You\'re welcome. That\'s all right. My pleasure. Not at all.
-            - 道歉：Sorry. I\'m sorry. Excuse me.
-            - 回答：It doesn\'t matter. That\'s OK. Never mind.
+            - 感谢：Thank you (very much). Thanks a lot. It's very kind of you.
+            - 回答：You're welcome. That's all right. My pleasure. Not at all.
+            - 道歉：Sorry. I'm sorry. Excuse me.
+            - 回答：It doesn't matter. That's OK. Never mind.
           `,
                     studyTips: [
                         '交际用语不需要逐字翻译，要记固定搭配。比如"怎么了？"不是"What are you doing?"而是"What\'s the matter?"。',
@@ -1494,7 +1494,7 @@ export const MIDDLE_DATA: GradeData = {
             - 解法：答案不会直接出现在原文中，需要根据已知信息推断。注意：推理要基于原文，不能过度推断。
 
             **4. 主旨大意题**：
-            - 提问方式：What\'s the main idea of...? The passage is mainly about...? The best title for...?
+            - 提问方式：What's the main idea of...? The passage is mainly about...? The best title for...?
             - 解法：找主题句（首段首句/末句，各段首句）。主旨题的选项要"大小合适"——不能太宽也不能太窄。
 
             **解题步骤**：
@@ -1532,8 +1532,8 @@ export const MIDDLE_DATA: GradeData = {
             4. 检查：要点齐全？时态一致？主谓一致？拼写正确？字数达标？
 
             **万能句型与过渡词**：
-            - 开头：Nowadays... / As we all know... / It is important to... / I\'d like to tell you about...
-            - 顺序：First(ly)... Second(ly)... Third(ly)... Besides... What\'s more... Finally...
+            - 开头：Nowadays... / As we all know... / It is important to... / I'd like to tell you about...
+            - 顺序：First(ly)... Second(ly)... Third(ly)... Besides... What's more... Finally...
             - 转折：However... / But... / On the other hand...
             - 因果：Because... So... As a result... Therefore...
             - 总结：In a word... In my opinion... All in all... As for me...
