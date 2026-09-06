@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface User {
   id: string;
@@ -24,3 +24,13 @@ interface AuthContextValue {
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null);
+
+/**
+ * 消费 AuthContext 的 hook —— 与 context 同文件导出（非组件模块），
+ * 避免 react-refresh/only-export-components 对组件文件的 lint 拦截。
+ */
+export function useAuth(): AuthContextValue {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  return ctx;
+}

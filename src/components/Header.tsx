@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { SettingsModal } from './SettingsModal';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/auth-context';
 import { AuthModal } from './AuthModal';
 
 type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'mastery' | 'practice' | 'notes' | 'zizhi' | 'shiji';
@@ -193,7 +193,7 @@ export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
             </div>
 
             <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
+            {isAuthOpen && <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />}
         </header>
     );
 };

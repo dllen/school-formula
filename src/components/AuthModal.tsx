@@ -1,5 +1,5 @@
-import { useState, useEffect, type FormEvent } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useState, type FormEvent } from 'react';
+import { useAuth } from '../context/auth-context';
 
 type View = 'login' | 'register' | 'verify' | 'forgot' | 'reset';
 
@@ -26,18 +26,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
-
-  // 弹窗打开时重置所有输入与消息
-  useEffect(() => {
-    if (isOpen) {
-      setView('login');
-      setPassword('');
-      setConfirmPassword('');
-      setCode('');
-      setError('');
-      setSuccess('');
-    }
-  }, [isOpen]);
 
   if (!isOpen) return null;
 

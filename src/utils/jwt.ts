@@ -1,15 +1,21 @@
-const ACCESS_TOKEN_KEY = 'sf_access_token';
-const REFRESH_TOKEN_KEY = 'sf_refresh_token';
+export const ACCESS_TOKEN_KEY = 'sf_access_token';
+export const REFRESH_TOKEN_KEY = 'sf_refresh_token';
+
+// access token 内存缓存：token 双写（内存 + localStorage），每次读取走内存，
+// 避免高频请求的 localStorage 同步 IO；clearToken 同步置空
+let memoryAccess: string | null = null;
 
 export function getToken(): string | null {
-  return localStorage.getItem(ACCESS_TOKEN_KEY);
+  return memoryAccess ?? localStorage.getItem(ACCESS_TOKEN_KEY);
 }
 
 export function setToken(token: string): void {
+  memoryAccess = token;
   localStorage.setItem(ACCESS_TOKEN_KEY, token);
 }
 
 export function clearToken(): void {
+  memoryAccess = null;
   localStorage.removeItem(ACCESS_TOKEN_KEY);
 }
 
