@@ -5,6 +5,8 @@ export interface Env {
   FROM_EMAIL: string;
   FRONTEND_URL: string;
   ALLOWED_ORIGINS: string;
+  AI_GATEWAY_BASE: string;
+  AI_GATEWAY_TOKEN: string;
   ASSETS: Fetcher;
   ENVIRONMENT: string;
 }

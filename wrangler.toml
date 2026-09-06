@@ -23,6 +23,10 @@ bucket = "./dist"
 
 [vars]
 FRONTEND_URL = "https://syy.global"
+# AI Gateway（Cloudflare），用户免费层：<a href="https://ai.cloudflare.com">ai.cloudflare.com</a> 手动创建网关后填网关 Base URL（留空则 AI 接口返回 503 GATEWAY_NOT_CONFIGURED）
+AI_GATEWAY_BASE = ""
+# Workers 调网关的鉴权 Token（在网关生成 Service Token 或 Cloudflare API Token）
+AI_GATEWAY_TOKEN = ""
 FROM_EMAIL = "noreply@syy.global"
 ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
