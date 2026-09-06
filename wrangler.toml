@@ -13,5 +13,5 @@ binding = "SESSIONS"
 id = "e7c94f92016f4458863363fb666b5b33"
 
 [vars]
-FRONTEND_URL = "https://school-formula.pages.dev"
+FRONTEND_URL = "https://syy.global/"
 ENVIRONMENT = "development"
