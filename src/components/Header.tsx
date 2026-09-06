@@ -10,6 +10,34 @@ interface HeaderProps {
     onViewChange: (view: ViewType) => void;
 }
 
+const NAV_GROUPS: { label: string; views: { value: ViewType; label: string }[] }[] = [
+    {
+        label: '学科学习',
+        views: [
+            { value: 'knowledge', label: '知识点' },
+            { value: 'formula', label: '公式宝典' },
+            { value: 'mental-math', label: '速算口诀' },
+            { value: 'tutorial', label: '教程' },
+        ],
+    },
+    {
+        label: '工具速查',
+        views: [
+            { value: 'cheatsheet', label: '速查表' },
+            { value: 'practice', label: '专题练习' },
+            { value: 'mastery', label: '融会贯通' },
+            { value: 'notes', label: '学习笔记' },
+        ],
+    },
+    {
+        label: '古籍阅读',
+        views: [
+            { value: 'zizhi', label: '资治通鉴' },
+            { value: 'shiji', label: '史记' },
+        ],
+    },
+];
+
 export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
     const { user, isAuthenticated, logout } = useAuth();
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -44,96 +72,2856 @@ export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
 
                     <div className="flex items-center gap-4">
                         <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
-                            <button
-                                onClick={() => onViewChange('knowledge')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'knowledge'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                知识点
-                            </button>
-                            <button
-                                onClick={() => onViewChange('tutorial')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'tutorial'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                教程
-                            </button>
-                            <button
-                                onClick={() => onViewChange('cheatsheet')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'cheatsheet'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                速查表
-                            </button>
-                            <button
-                                onClick={() => onViewChange('mental-math')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'mental-math'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                速算口诀
-                            </button>
-                            <button
-                                onClick={() => onViewChange('formula')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'formula'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                公式宝典
-                            </button>
-                            <button
-                                onClick={() => onViewChange('mastery')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'mastery'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                融会贯通
-                            </button>
-                            <button
-                                onClick={() => onViewChange('practice')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'practice'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                专题练习
-                            </button>
-                            <button
-                                onClick={() => onViewChange('notes')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'notes'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                学习笔记
-                            </button>
-                            <button
-                                onClick={() => onViewChange('zizhi')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'zizhi'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                资治通鉴
-                            </button>
-                            <button
-                                onClick={() => onViewChange('shiji')}
-                                className={`px-4 py-1.5 text-sm font-medium rounded transition-colors ${activeView === 'shiji'
-                                    ? 'bg-white text-blue-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-900'
-                                    }`}
-                            >
-                                史记
-                            </button>
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </nav>
+                        <nav className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+                            {NAV_GROUPS.map((group) => (
+                                <div key={group.label} className="relative group">
+                                    <button
+                                        className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${group.views.some(v => v.value === activeView)
+                                            ? 'bg-white text-blue-600 shadow-sm'
+                                            : 'text-gray-600 hover:text-gray-900'
+                                            }`}
+                                    >
+                                        {group.label}
+                                        <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <div className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-gray-100 py-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150 z-50">
+                                        {group.views.map((view) => (
+                                            <button
+                                                key={view.value}
+                                                onClick={() => onViewChange(view.value)}
+                                                className={`w-full text-left px-4 py-2 text-sm transition-colors ${activeView === view.value
+                                                    ? 'text-blue-600 bg-blue-50 font-medium'
+                                                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+                                                    }`}
+                                            >
+                                                {view.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </nav>
 
                         {/* 登录入口 / 用户菜单 */}
@@ -141,15 +2929,20 @@ export const Header: React.FC<HeaderProps> = ({ activeView, onViewChange }) => {
                             <div className="relative" ref={menuRef}>
                                 <button
                                     onClick={() => setIsUserMenuOpen((o) => !o)}
-                                    className="flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-lg hover:bg-gray-100 transition-colors"
-                                    title={user.email}
+                                    className="flex items-center gap-1 p-1.5 rounded-lg hover:bg-gray-100 transition-colors"
+                                    title={user.nickname || user.email}
                                 >
-                                    <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold uppercase">
-                                        {(user.nickname || user.email || 'U').charAt(0)}
-                                    </span>
-                                    <span className="text-sm font-medium text-gray-700 max-w-[120px] truncate hidden sm:inline">
-                                        {user.nickname || user.email}
-                                    </span>
+                                    {user.avatar_url ? (
+                                        <img
+                                            src={user.avatar_url}
+                                            alt={user.nickname || user.email || 'avatar'}
+                                            className="w-8 h-8 rounded-full object-cover"
+                                        />
+                                    ) : (
+                                        <span className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold uppercase">
+                                            {(user.nickname || user.email || 'U').charAt(0)}
+                                        </span>
+                                    )}
                                     <svg className={`w-4 h-4 text-gray-400 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                     </svg>
