@@ -54,6 +54,7 @@ export default {
 
     if (request.method === 'OPTIONS') {
       return new Response(null, {
+        status: 204,
         headers: {
           'Access-Control-Allow-Origin': corsOrigin,
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
