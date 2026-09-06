@@ -1,0 +1,17 @@
+name = "school-formula-api"
+main = "worker/index.ts"
+compatibility_date = "2026-09-07"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "school-formula-db"
+database_id = "REPLACE_WITH_REAL_ID"
+
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "REPLACE_WITH_REAL_ID"
+
+[vars]
+FRONTEND_URL = "https://school-formula.pages.dev"
+ENVIRONMENT = "development"
