@@ -2,8 +2,7 @@ export interface Env {
   DB: D1Database;
   SESSIONS: KVNamespace;
   JWT_SECRET: string;
-  SENDGRID_API_KEY: string;
-  SENDGRID_FROM_EMAIL: string;
+  FROM_EMAIL: string;
   FRONTEND_URL: string;
   ALLOWED_ORIGINS: string;
   ASSETS: Fetcher;
