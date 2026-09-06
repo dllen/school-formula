@@ -17,9 +17,7 @@ interface AuthContextValue {
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (email: string, password: string) => Promise<{ email: string }>;
-  verify: (email: string, code: string) => Promise<void>;
-  resendCode: (email: string) => Promise<void>;
+  register: (email: string, password: string) => Promise<void>;
   forgotPassword: (email: string) => Promise<void>;
   resetPassword: (email: string, code: string, password: string) => Promise<void>;
   logout: () => void;
@@ -177,6 +175,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(data.user);
   }, [throwError]);
 
+  // 方案 2：注册免邮箱验证，后端直接签发 token；注册即登录
   const register = useCallback(async (email: string, password: string) => {
     const resp = await fetch(`${API_BASE}/api/auth/register`, {
       method: 'POST',
@@ -184,29 +183,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       body: JSON.stringify({ email, password }),
     });
     if (!resp.ok) await throwError(resp, '注册失败');
-    return resp.json() as Promise<{ email: string }>;
-  }, [throwError]);
-
-  const verify = useCallback(async (email: string, code: string) => {
-    const resp = await fetch(`${API_BASE}/api/auth/verify`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, code }),
-    });
-    if (!resp.ok) await throwError(resp, '验证失败');
     const data = (await resp.json()) as AuthSuccessResponse;
     setToken(data.tokens.access);
     setRefreshToken(data.tokens.refresh);
     setUser(data.user);
-  }, [throwError]);
-
-  const resendCode = useCallback(async (email: string) => {
-    const resp = await fetch(`${API_BASE}/api/auth/resend`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    });
-    if (!resp.ok) await throwError(resp, '重发失败');
   }, [throwError]);
 
   const forgotPassword = useCallback(async (email: string) => {
@@ -247,14 +227,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       isLoading,
       login,
       register,
-      verify,
-      resendCode,
       forgotPassword,
       resetPassword,
       logout,
       refreshUser,
     }),
-    [user, isLoading, login, register, verify, resendCode, forgotPassword, resetPassword, logout, refreshUser],
+    [user, isLoading, login, register, forgotPassword, resetPassword, logout, refreshUser],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

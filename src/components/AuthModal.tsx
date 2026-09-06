@@ -17,7 +17,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * - 忘记密码发送成功 → 自动切 view='reset'，回填 email
  */
 export function AuthModal({ isOpen, onClose }: AuthModalProps) {
-  const { login, register, verify, resendCode, forgotPassword, resetPassword } = useAuth();
+  const { login, register, forgotPassword, resetPassword } = useAuth();
   const [view, setView] = useState<View>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,14 +51,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
       await login(email.trim(), password);
       onClose();
     } catch (err) {
-      // 后端 login 对未激活邮箱返回 403 EMAIL_NOT_VERIFIED
-      const e2 = err as Error & { code?: string };
-      if (e2.code === 'EMAIL_NOT_VERIFIED') {
-        setView('verify');
-        showError('请先验证邮箱');
-      } else {
-        showError(errMessage(err, '登录失败'));
-      }
+      showError(errMessage(err, '登录失败'));
     } finally {
       setLoading(false);
     }
@@ -74,59 +67,14 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true);
     try {
       await register(email.trim(), password);
-      setView('verify');
-      showSuccess('注册成功，验证码已发送，请查收邮件');
+      // 注册即登录：后端直接签发 token，关闭弹窗
+      onClose();
     } catch (err) {
       const e2 = err as Error & { code?: string };
       if (e2.code === 'EMAIL_TAKEN') {
         showError('该邮箱已被注册');
       } else {
         showError(errMessage(err, '注册失败'));
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleVerify = async (e: FormEvent) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
-    if (!code || code.length !== 6) return showError('请输入 6 位验证码');
-    setLoading(true);
-    try {
-      await verify(email.trim(), code.trim());
-      onClose();
-    } catch (err) {
-      const e2 = err as Error & { code?: string };
-      if (e2.code === 'CODE_EXPIRED') {
-        showError('验证码已过期，请重新获取');
-      } else if (e2.code === 'INVALID_CODE') {
-        showError('验证码错误');
-      } else {
-        showError(errMessage(err, '验证失败'));
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResend = async () => {
-    setError('');
-    setSuccess('');
-    if (!EMAIL_REGEX.test(email.trim())) return showError('请先填写邮箱');
-    setLoading(true);
-    try {
-      await resendCode(email.trim());
-      showSuccess('验证码已重发');
-    } catch (err) {
-      const e2 = err as Error & { status?: number };
-      // 后端 resend 只对未激活邮箱发码；404 = 用户不存在或已验证
-      if (e2.status === 404) {
-        setView('login');
-        showError('该邮箱已注册，请直接登录');
-      } else {
-        showError(errMessage(err, '重发失败'));
       }
     } finally {
       setLoading(false);
@@ -185,7 +133,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           <h2 className="text-xl font-bold text-gray-900">
             {view === 'login' && '登录'}
             {view === 'register' && '注册'}
-            {view === 'verify' && '验证邮箱'}
             {view === 'forgot' && '忘记密码'}
             {view === 'reset' && '重置密码'}
           </h2>
@@ -326,68 +273,6 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               >
                 {loading ? '注册中...' : '注册'}
               </button>
-            </form>
-          )}
-
-          {/* ============ 验证邮箱视图 ============ */}
-          {view === 'verify' && (
-            <form onSubmit={handleVerify} className="space-y-4">
-              <p className="text-sm text-gray-500">
-                我们已向 <span className="font-medium text-gray-700">{email}</span> 发送了 6 位验证码，10 分钟内有效。
-              </p>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">邮箱</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all bg-gray-50"
-                  readOnly
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">验证码</label>
-                <input
-                  type="text"
-                  value={code}
-                  onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none transition-all text-center text-xl tracking-[0.5em] font-mono"
-                  placeholder="000000"
-                  maxLength={6}
-                  inputMode="numeric"
-                  autoComplete="one-time-code"
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-blue-200"
-              >
-                {loading ? '验证中...' : '验证并登录'}
-              </button>
-              <div className="text-center">
-                <button
-                  type="button"
-                  onClick={handleResend}
-                  disabled={loading}
-                  className="text-sm text-blue-600 hover:text-blue-800 transition-colors disabled:opacity-50"
-                >
-                  没收到？重新发送
-                </button>
-              </div>
-              <div className="text-center">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setView('login');
-                    setError('');
-                    setSuccess('');
-                  }}
-                  className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  返回登录
-                </button>
-              </div>
             </form>
           )}
 

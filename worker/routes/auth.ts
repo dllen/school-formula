@@ -65,65 +65,28 @@ export async function handleAuth(
       return errorResponse('该邮箱已被注册', 409, 'EMAIL_TAKEN');
     }
 
-    // 创建用户
+    // 创建用户（方案 2：注册免验证，邮箱仅用于找回，直接激活）
     const userId = crypto.randomUUID().replace(/-/g, '');
     const passwordHash = await hashPassword(body.password);
     await env.DB.prepare(
-      'INSERT INTO users (id, email, password_hash, email_verified) VALUES (?, ?, ?, 0)'
+      'INSERT INTO users (id, email, password_hash, email_verified) VALUES (?, ?, ?, 1)'
     )
       .bind(userId, body.email.toLowerCase(), passwordHash)
       .run();
 
-    // 发送验证码
-    const code = generateVerificationCode();
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
+    // 记录注册日志
     await env.DB.prepare(
-      'INSERT INTO email_verifications (email, code, purpose, expires_at) VALUES (?, ?, ?, ?)'
+      'INSERT INTO login_logs (user_id, email, success, ip, user_agent) VALUES (?, ?, 1, ?, ?)'
     )
-      .bind(body.email.toLowerCase(), code, 'register', expiresAt)
+      .bind(userId, body.email.toLowerCase(), request.headers.get('cf-connecting-ip') || '', request.headers.get('user-agent') || '')
       .run();
 
-    await sendVerificationEmail(body.email.toLowerCase(), code, env);
-
-    return jsonResponse({ message: '验证码已发送', email: body.email.toLowerCase() });
-  }
-
-  // POST /api/auth/verify
-  if (endpoint === 'verify' && request.method === 'POST') {
-    const body = await request.json().catch(() => null) as { email?: string; code?: string } | null;
-    if (!body?.email || !body?.code) {
-      return errorResponse('邮箱和验证码不能为空');
-    }
-
-    const record = await env.DB.prepare(
-      'SELECT code, expires_at FROM email_verifications WHERE email = ? AND purpose = ? ORDER BY created_at DESC LIMIT 1'
-    )
-      .bind(body.email.toLowerCase(), 'register')
-      .first<{ code: string; expires_at: string }>();
-
-    if (!record || record.code !== body.code) {
-      return errorResponse('验证码错误', 400, 'INVALID_CODE');
-    }
-    if (new Date(record.expires_at) < new Date()) {
-      return errorResponse('验证码已过期', 400, 'CODE_EXPIRED');
-    }
-
-    // 激活用户
-    await env.DB.prepare('UPDATE users SET email_verified = 1, updated_at = ? WHERE email = ?')
-      .bind(new Date().toISOString(), body.email.toLowerCase())
-      .run();
-
-    // 清理验证码
-    await env.DB.prepare('DELETE FROM email_verifications WHERE email = ?')
-      .bind(body.email.toLowerCase())
-      .run();
-
-    // 签发 Token
     const user = await env.DB.prepare('SELECT * FROM users WHERE email = ?')
       .bind(body.email.toLowerCase())
       .first();
-    if (!user) return errorResponse('用户不存在', 404);
+    if (!user) return errorResponse('注册失败，请重试', 500);
 
+    // 注册即登录：签发 access + refresh
     const access = await signJWT(user.id as string, user.tier as string, env);
     const refresh = generateRefreshToken();
     const refreshHash = await hashToken(refresh);
@@ -135,32 +98,9 @@ export async function handleAuth(
       .run();
 
     return jsonResponse({
-      message: '邮箱验证成功',
       user: toUserResponse(user),
       tokens: { access, refresh },
     });
-  }
-
-  // POST /api/auth/resend
-  if (endpoint === 'resend' && request.method === 'POST') {
-    const body = await request.json().catch(() => null) as { email?: string } | null;
-    if (!body?.email) return errorResponse('邮箱不能为空');
-
-    const user = await env.DB.prepare('SELECT * FROM users WHERE email = ? AND email_verified = 0')
-      .bind(body.email.toLowerCase())
-      .first();
-    if (!user) return errorResponse('用户不存在或已验证', 404);
-
-    const code = generateVerificationCode();
-    const expiresAt = new Date(Date.now() + 10 * 60 * 1000).toISOString();
-    await env.DB.prepare(
-      'INSERT INTO email_verifications (email, code, purpose, expires_at) VALUES (?, ?, ?, ?)'
-    )
-      .bind(body.email.toLowerCase(), code, 'register', expiresAt)
-      .run();
-
-    await sendVerificationEmail(body.email.toLowerCase(), code, env);
-    return jsonResponse({ message: '验证码已重发' });
   }
 
   // POST /api/auth/login
