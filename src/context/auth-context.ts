@@ -1,5 +1,13 @@
-import { useContext } from 'react';
-import { AuthContext, type User } from '../context/auth-context';
+import { createContext } from 'react';
+
+export interface User {
+  id: string;
+  email: string;
+  nickname: string | null;
+  avatar_url: string | null;
+  tier: 'free' | 'plus' | 'pro';
+  email_verified: boolean;
+}
 
 interface AuthContextValue {
   user: User | null;
@@ -13,8 +21,4 @@ interface AuthContextValue {
   refreshUser: () => Promise<void>;
 }
 
-export function useAuth(): AuthContextValue {
-  const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
-  return ctx;
-}
+export const AuthContext = createContext<AuthContextValue | null>(null);

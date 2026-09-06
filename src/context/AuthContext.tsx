@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect, useCallback, type ReactNode } from 'react';
+import { useState, useEffect, useCallback, useMemo, type ReactNode } from 'react';
+import { AuthContext } from './auth-context';
 import { getToken, setToken, clearToken, getRefreshToken, setRefreshToken, clearRefreshToken } from '../utils/jwt';
 
 export interface User {
@@ -22,31 +23,11 @@ interface AuthContextValue {
   refreshUser: () => Promise<void>;
 }
 
-export const AuthContext = createContext<AuthContextValue | null>(null);
-
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8787';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const refreshUser = useCallback(async () => {
-    const token = getToken();
-    if (!token) { setUser(null); setIsLoading(false); return; }
-    try {
-      const resp = await fetch(`${API_BASE}/api/user/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      if (resp.ok) {
-        const data = await resp.json();
-        setUser(data.user);
-      } else if (resp.status === 401) {
-        const refreshed = await tryRefresh();
-        if (!refreshed) { clearToken(); clearRefreshToken(); setUser(null); }
-      }
-    } catch { setUser(null); }
-    finally { setIsLoading(false); }
-  }, []);
 
   const tryRefresh = useCallback(async (): Promise<boolean> => {
     const refresh = getRefreshToken();
@@ -61,14 +42,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const data = await resp.json();
         setToken(data.tokens.access);
         setRefreshToken(data.tokens.refresh);
-        await refreshUser();
         return true;
       }
     } catch { /* ignore */ }
     return false;
-  }, [refreshUser]);
+  }, []);
 
-  useEffect(() => { refreshUser(); }, [refreshUser]);
+  const refreshUser = useCallback(async () => {
+    const token = getToken();
+    if (!token) {
+      setUser(null);
+      setIsLoading(false);
+      return;
+    }
+    try {
+      const resp = await fetch(`${API_BASE}/api/user/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        setUser(data.user);
+      } else if (resp.status === 401) {
+        const refreshed = await tryRefresh();
+        if (!refreshed) {
+          clearToken();
+          clearRefreshToken();
+          setUser(null);
+        }
+      }
+    } catch {
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [tryRefresh]);
+
+  useEffect(() => {
+    const load = async () => { await refreshUser(); };
+    load();
+  }, [refreshUser]);
 
   const login = useCallback(async (email: string, password: string) => {
     const resp = await fetch(`${API_BASE}/api/auth/login`, {
@@ -140,11 +152,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
+  const value = useMemo<AuthContextValue>(() => ({
+    user,
+    isAuthenticated: !!user,
+    isLoading,
+    login,
+    register,
+    verify,
+    resendCode,
+    logout,
+    refreshUser,
+  }), [user, isLoading, login, register, verify, resendCode, logout, refreshUser]);
+
   return (
-    <AuthContext.Provider value={{
-      user, isAuthenticated: !!user, isLoading,
-      login, register, verify, resendCode, logout, refreshUser,
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
