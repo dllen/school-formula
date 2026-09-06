@@ -5,6 +5,7 @@ export interface Env {
   SENDGRID_API_KEY: string;
   SENDGRID_FROM_EMAIL: string;
   FRONTEND_URL: string;
+  ASSETS: Fetcher;
   ENVIRONMENT: string;
 }
 
