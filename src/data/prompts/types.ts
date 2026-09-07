@@ -35,6 +35,8 @@ export interface PromptTemplate {
   grades: GradeLevel[];
   subjects: string[];
   knowledgePointIds?: string[];
+  /** 年级专属模板为单值，通用模板为 'all' */
+  gradeLevel?: GradeLevel | 'all';
   usageCount: number;
   rating: number;
   author: string;
