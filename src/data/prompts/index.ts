@@ -28,6 +28,25 @@ export function getPromptsByScenario(scenario: PromptScenario): PromptTemplate[]
   return ALL_PROMPTS.filter(p => p.scenario === scenario);
 }
 
+/** 为指定场景+年级+学科选择最佳模板 */
+export function selectBestTemplate(
+  scenario: PromptScenario,
+  grade: GradeLevel,
+  subject: string,
+): PromptTemplate {
+  const all = ALL_PROMPTS.filter(
+    p => p.scenario === scenario &&
+         (p.subjects.includes(subject) || p.subjects.includes('all')),
+  );
+  // 1. 年级专属
+  const gradeMatch = all.find(p => p.gradeLevel === grade);
+  if (gradeMatch) return gradeMatch;
+  // 2. 通用（gradeLevel 为 undefined 或 'all'）
+  const fallback = all.find(p => !p.gradeLevel || p.gradeLevel === 'all');
+  if (fallback) return fallback;
+  throw new Error(`no template found for ${scenario}/${grade}/${subject}`);
+}
+
 /** 按年级和学科筛选 */
 export function filterPrompts(filters: {
   grade?: GradeLevel;
@@ -61,3 +80,5 @@ export function searchPrompts(query: string): PromptTemplate[] {
 export function getPromptById(id: string): PromptTemplate | undefined {
   return ALL_PROMPTS.find(p => p.id === id);
 }
+
+export default ALL_PROMPTS;
