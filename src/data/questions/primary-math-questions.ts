@@ -12,7 +12,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'C',
     explanation: '负数比0小，所以-1是最小的数。',
     tags: ['数的认识', '整数'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-2', type: 'fill-blank', difficulty: 'basic',
@@ -20,7 +20,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '7/10',
     explanation: '0.7表示十分之七，即7/10。',
     tags: ['数的认识', '小数'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-3', type: 'true-false', difficulty: 'basic',
@@ -28,7 +28,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '假分数（如3/2、5/4）大于1，只有真分数才小于1。',
     tags: ['数的认识', '分数'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-4', type: 'choice', difficulty: 'intermediate',
@@ -37,7 +37,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '2/3≈0.667，3/4=0.75，0.8=0.8，所以2/3 < 3/4 < 0.8。',
     tags: ['数的认识', '比较大小'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -45,7 +45,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '5037',
     explanation: '千位5、百位0、十位3、个位7，合起来是5037。',
     tags: ['数的认识', '读写'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-6', type: 'true-false', difficulty: 'intermediate',
@@ -53,7 +53,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '0.3和0.30大小相等，但0.3的计数单位是0.1，0.30的计数单位是0.01，计数单位不同。',
     tags: ['数的认识', '小数性质'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-7', type: 'choice', difficulty: 'advanced',
@@ -62,7 +62,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '一个分数分子加1等于1，说明分子=分母-1。分母是9，分子就是8，分数为8/9。验证：8/9分子加1=9/9=1✓。',
     tags: ['数的认识', '分数方程'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-8', type: 'fill-blank', difficulty: 'advanced',
@@ -70,7 +70,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '4321000 和 1000234',
     explanation: '最大：从大到小排列4321000；最小：最高位放最小的非零数1，其余从小到大排列1000234。',
     tags: ['数的认识', '组数'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-1-9', type: 'true-false', difficulty: 'advanced',
@@ -78,7 +78,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '小数点右移两位×100，左移三位÷1000，相当于÷10，即缩小到原来的1/10。',
     tags: ['数的认识', '小数点移动'],
-    knowledgePointIds: ['p-math-1'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-001'], subject: '数学', grade: 'primary',
   },
 
   // ==================== 四则运算 ====================
@@ -89,7 +89,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'C',
     explanation: '25×40=1000，末尾有3个0。',
     tags: ['四则运算', '乘法'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-2', type: 'fill-blank', difficulty: 'basic',
@@ -97,7 +97,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '1003',
     explanation: '被除数 = 除数×商+余数 = 8×125+3 = 1003。',
     tags: ['四则运算', '除法'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-3', type: 'true-false', difficulty: 'basic',
@@ -105,7 +105,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '0除以任何不为0的数都得0。0不能做除数。',
     tags: ['四则运算', '除法'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-4', type: 'choice', difficulty: 'intermediate',
@@ -114,7 +114,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'A应先算乘法：36-24=12；B：48÷6+2=8+2=10✓；C：25+3=28；D：40-30=10。',
     tags: ['四则运算', '运算顺序'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -122,7 +122,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '8 4 100000',
     explanation: '125×32×25 = 125×(8×4)×25 = (125×8)×(4×25) = 1000×100 = 100000。',
     tags: ['四则运算', '简便计算'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-6', type: 'true-false', difficulty: 'intermediate',
@@ -130,7 +130,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '从左到右计算：125×8=1000，1000÷125=8，8×8=64。不是1。',
     tags: ['四则运算', '运算顺序'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-7', type: 'choice', difficulty: 'advanced',
@@ -139,7 +139,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '正确：(□+25)×4 = □×4+100；错误：□×4+25。相差100-25=75。',
     tags: ['四则运算', '乘法分配律'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-8', type: 'fill-blank', difficulty: 'advanced',
@@ -147,7 +147,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '30',
     explanation: '逆向计算：15×6÷3 = 30。',
     tags: ['四则运算', '逆运算'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-2-9', type: 'true-false', difficulty: 'advanced',
@@ -155,7 +155,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '这是商不变的性质：被除数和除数同时乘或除以相同的非0数，商不变。',
     tags: ['四则运算', '商不变性质'],
-    knowledgePointIds: ['p-math-2'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-002'], subject: '数学', grade: 'primary',
   },
 
   // ==================== 常见量 ====================
@@ -166,7 +166,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'C',
     explanation: '小明的身高用厘米表示最合适，135厘米=1.35米。',
     tags: ['常见量', '长度单位'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-2', type: 'fill-blank', difficulty: 'basic',
@@ -174,7 +174,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '5030',
     explanation: '5千米=5000米，5000+30=5030米。',
     tags: ['常见量', '单位换算'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-3', type: 'true-false', difficulty: 'basic',
@@ -182,7 +182,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '1吨=1吨，不管什么物体，重量相等。',
     tags: ['常见量', '质量单位'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-4', type: 'choice', difficulty: 'intermediate',
@@ -191,7 +191,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'A',
     explanation: '路程=速度×时间=80×3=240千米。',
     tags: ['常见量', '行程'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -199,7 +199,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '150',
     explanation: '2小时=120分，120+30=150分。',
     tags: ['常见量', '时间单位'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-6', type: 'true-false', difficulty: 'intermediate',
@@ -207,7 +207,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '1分米=10厘米，面积=10×10=100平方厘米=1平方分米。',
     tags: ['常见量', '面积单位'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-7', type: 'choice', difficulty: 'advanced',
@@ -216,7 +216,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '水池能蓄多少水，指的是水池的容积（容器能容纳物体的体积）。',
     tags: ['常见量', '体积容积'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-8', type: 'fill-blank', difficulty: 'advanced',
@@ -224,7 +224,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '400 0.04',
     explanation: '面积=25×16=400平方米；1公顷=10000平方米，400÷10000=0.04公顷。',
     tags: ['常见量', '面积换算'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-3-9', type: 'true-false', difficulty: 'advanced',
@@ -232,7 +232,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '2024能被4整除且不能被100整除，是闰年，2月有29天。',
     tags: ['常见量', '年月日'],
-    knowledgePointIds: ['p-math-3'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-003'], subject: '数学', grade: 'primary',
   },
 
   // ==================== 图形与几何 ====================
@@ -243,7 +243,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '正方形周长=边长×4=6×4=24厘米。',
     tags: ['图形与几何', '正方形'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-2', type: 'fill-blank', difficulty: 'basic',
@@ -251,7 +251,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '60',
     explanation: '长方形面积=长×宽=10×6=60平方米。',
     tags: ['图形与几何', '长方形'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-3', type: 'true-false', difficulty: 'basic',
@@ -259,7 +259,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '四个角都是直角的四边形是长方形，正方形还需要四条边都相等。',
     tags: ['图形与几何', '四边形'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-4', type: 'choice', difficulty: 'intermediate',
@@ -268,7 +268,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '三角形面积=底×高÷2=8×5÷2=20平方厘米。',
     tags: ['图形与几何', '三角形'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -276,7 +276,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '25.12',
     explanation: '圆周长=2πr=2×3.14×4=25.12厘米。',
     tags: ['图形与几何', '圆'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-6', type: 'true-false', difficulty: 'intermediate',
@@ -284,7 +284,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '圆柱体积=底面积×高，圆锥体积=底面积×高÷3，所以等底等高时圆柱体积是圆锥的3倍。',
     tags: ['图形与几何', '圆柱圆锥'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-7', type: 'choice', difficulty: 'advanced',
@@ -293,7 +293,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '正方形边长=36÷4=9厘米，面积=9×9=81平方厘米。',
     tags: ['图形与几何', '周长面积'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-8', type: 'fill-blank', difficulty: 'advanced',
@@ -301,7 +301,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '94',
     explanation: '表面积=(5×4+5×3+4×3)×2=(20+15+12)×2=47×2=94平方厘米。',
     tags: ['图形与几何', '长方体'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-4-9', type: 'true-false', difficulty: 'advanced',
@@ -309,7 +309,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '拉伸后边长不变所以周长不变，但高变小了所以面积变小。',
     tags: ['图形与几何', '变形'],
-    knowledgePointIds: ['p-math-4'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-004'], subject: '数学', grade: 'primary',
   },
 
   // ==================== 统计与概率 ====================
@@ -320,7 +320,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'A',
     explanation: '红球数量多（3>2），所以摸到红球的可能性大。',
     tags: ['统计与概率', '可能性'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-2', type: 'fill-blank', difficulty: 'basic',
@@ -328,7 +328,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '91.67',
     explanation: '(92+88+95)÷3=275÷3≈91.67分（保留两位小数）。',
     tags: ['统计与概率', '平均数'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-3', type: 'true-false', difficulty: 'basic',
@@ -336,7 +336,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '折线统计图能清楚地反映数据的变化趋势，适合表示气温变化。',
     tags: ['统计与概率', '统计图'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-4', type: 'choice', difficulty: 'intermediate',
@@ -345,7 +345,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'D',
     explanation: '平均数反映一组数据的总体水平，一定在最大数和最小数之间，所以比最小的大，比最大的小。',
     tags: ['统计与概率', '平均数'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -353,7 +353,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '蓝',
     explanation: '蓝球数量最少（2个），所以摸到蓝球的可能性最小。',
     tags: ['统计与概率', '可能性'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-6', type: 'true-false', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '扇形统计图（饼图）能清楚地表示各部分占总数的百分比。',
     tags: ['统计与概率', '扇形图'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-7', type: 'choice', difficulty: 'advanced',
@@ -370,7 +370,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'C',
     explanation: '20×3/4=15个红球。',
     tags: ['统计与概率', '概率计算'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-8', type: 'fill-blank', difficulty: 'advanced',
@@ -378,7 +378,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '7 9',
     explanation: '原平均数=(3+5+7+9+11)÷5=7；每个数加2，平均数也加2，新平均数=9。',
     tags: ['统计与概率', '平均数性质'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-5-9', type: 'true-false', difficulty: 'advanced',
@@ -386,7 +386,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '可能性是1/2表示每次抛正面朝上的概率，但抛2次可能两次都反面朝上，不是"一定"有一次正面。',
     tags: ['统计与概率', '概率'],
-    knowledgePointIds: ['p-math-5'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-005'], subject: '数学', grade: 'primary',
   },
 
   // ==================== 应用题 ====================
@@ -397,7 +397,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '科技书比故事书多，用加法：320+80=400本。',
     tags: ['应用题', '加减法'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-2', type: 'fill-blank', difficulty: 'basic',
@@ -405,7 +405,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '5',
     explanation: '3本×5元=15元，20-15=5元。',
     tags: ['应用题', '乘减'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-3', type: 'true-false', difficulty: 'basic',
@@ -413,7 +413,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '假设全是鸡：8×2=16只脚，少26-16=10只脚；每换一只多2只脚，10÷2=5只兔；鸡有8-5=3只。',
     tags: ['应用题', '鸡兔同笼'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-4', type: 'choice', difficulty: 'intermediate',
@@ -422,7 +422,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '已行60×3=180千米，还剩240-180=60千米。',
     tags: ['应用题', '行程'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -430,7 +430,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '4.8',
     explanation: '1÷(1/8+1/12)=1÷(5/24)=24/5=4.8天。',
     tags: ['应用题', '工程'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-6', type: 'true-false', difficulty: 'intermediate',
@@ -438,7 +438,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'true',
     explanation: '200×40%=80页，200-80=120页。',
     tags: ['应用题', '百分数'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-7', type: 'choice', difficulty: 'advanced',
@@ -447,7 +447,7 @@ export const primaryMathQuestions: Question[] = [
     answer: 'B',
     explanation: '设相距x千米，x/80+x/100=9，(5x+4x)/400=9，9x=3600，x=400千米。',
     tags: ['应用题', '往返行程'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-8', type: 'fill-blank', difficulty: 'advanced',
@@ -455,7 +455,7 @@ export const primaryMathQuestions: Question[] = [
     answer: '108',
     explanation: '设宽为x，长为3x，周长=2(x+3x)=8x=48，x=6。长=18，面积=18×6=108平方厘米。',
     tags: ['应用题', '方程'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
   {
     id: 'q-pm-6-9', type: 'true-false', difficulty: 'advanced',
@@ -463,6 +463,6 @@ export const primaryMathQuestions: Question[] = [
     answer: 'false',
     explanation: '设原价100元，涨价后110元，降价10%后110×0.9=99元。99≠100，现价比原价低。',
     tags: ['应用题', '百分数'],
-    knowledgePointIds: ['p-math-6'], subject: '数学', grade: 'primary',
+    knowledgePointIds: ['p-math-006'], subject: '数学', grade: 'primary',
   },
 ];

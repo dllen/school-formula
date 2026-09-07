@@ -12,7 +12,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '公元前221年，秦王嬴政统一六国，建立秦朝，是我国历史上第一个统一的多民族的中央集权封建国家。',
     tags: ['中国古代史', '秦朝'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '隋炀帝设立进士科，标志着科举制度的正式创立。科举制打破了贵族垄断，使有才学的人能够参政。',
     tags: ['中国古代史', '科举制'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '汉武帝采纳董仲舒建议，罢黜百家、尊崇儒术，使儒学成为正统思想，加强思想统一。',
     tags: ['中国古代史', '汉武帝'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '张骞通西域后，开辟了丝绸之路，是古代东西方经济文化交流的重要通道。',
     tags: ['中国古代史', '丝绸之路'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '度量衡',
     explanation: '秦始皇统一六国后，统一文字（小篆）、货币（圆形方孔钱）、度量衡，有利于经济文化交流。',
     tags: ['中国古代史', '秦统一'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '开元盛世',
     explanation: '唐太宗时期出现"贞观之治"，唐玄宗前期出现"开元盛世"，是唐朝的鼎盛时期。',
     tags: ['中国古代史', '唐朝盛世'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '元朝设宣政院管理西藏事务，西藏正式成为中央直接管辖的地方行政区域。',
     tags: ['中国古代史', '元朝'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '明太祖朱元璋废除丞相，权分六部；明成祖设立内阁，君主专制进一步加强。',
     tags: ['中国古代史', '明朝'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '清朝雍正帝设立军机处，军机大臣跪受笔录，君主专制达到顶峰。',
     tags: ['中国古代史', '军机处'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '科举制始于隋朝（隋炀帝设进士科），扩大了官吏选拔范围，使有才学的人能够参政，推动了教育发展。',
     tags: ['中国古代史', '科举制'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '长安是唐朝的都城，宋代经济重心已南移，临安（杭州）成为繁荣的商业都市。',
     tags: ['中国古代史', '宋代经济'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '《本草纲目》是李时珍编写的药物学巨著。活字印刷是北宋毕昇，造纸术是汉代，地动仪是东汉张衡。',
     tags: ['中国古代史', '明朝科技'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '闭关锁国政策使中国逐渐落伍于世界发展的潮流，导致近代中国落后挨打。',
     tags: ['中国古代史', '闭关锁国'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '火药',
     explanation: '中国古代四大发明：造纸术（汉）、印刷术（隋唐/北宋）、指南针（北宋用于航海）、火药（唐末用于军事）。',
     tags: ['中国古代史', '四大发明'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '张骞',
     explanation: '公元前138年和前119年，张骞两次出使西域，开辟了丝绸之路，促进了东西方经济文化交流。',
     tags: ['中国古代史', '张骞'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '秦始皇废除分封制，实行郡县制，郡县长官由皇帝直接任免，加强了中央集权。',
     tags: ['中国古代史', '郡县制'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1405-1433年，郑和七次下西洋，最远到达非洲东海岸和红海沿岸，是世界航海史上的壮举。',
     tags: ['中国古代史', '郑和下西洋'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '元朝创立行省制度，在中央设中书省，地方设行中书省（行省），是我国行省制度的开端。',
     tags: ['中国古代史', '行省制'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '分封制（周）→郡县制（秦）→行省制（元），体现了中央集权的不断加强。丞相在明朝被废除，军机处在清朝设立。',
     tags: ['中国古代史', '制度演变'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '贞观之治和开元盛世都是治世，政治清明、经济繁荣，不是暴政。D选项错误。',
     tags: ['中国古代史', '唐朝盛世'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '朝代顺序：夏→商→西周→东周（春秋战国）→秦→汉。口诀"夏商与西周，东周分两段，春秋和战国，一统秦两汉"。',
     tags: ['中国古代史', '朝代顺序'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '火药最早用于军事是在唐朝末年，不是宋朝。宋朝火药广泛用于军事（如火器）。',
     tags: ['中国古代史', '科技'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '葱岭（或帕米尔高原） 巴尔喀什湖',
     explanation: '清朝前期疆域辽阔，西跨葱岭，西北达巴尔喀什湖，北接西伯利亚，东临太平洋，南含南海诸岛。',
     tags: ['中国古代史', '清朝疆域'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '推恩令',
     explanation: '汉武帝采纳主父偃建议，颁布推恩令，规定诸侯王可将封地分给子弟，从而削弱了诸侯国势力。',
     tags: ['中国古代史', '推恩令'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '经济重心南移从唐朝开始，到南宋最终完成。"国家根本，仰给东南"说明南方成为经济重心。',
     tags: ['中国古代史', '经济重心'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '三省分工：中书省（起草政令）、门下省（审核政令）、尚书省（执行政令）。',
     tags: ['中国古代史', '三省六部'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'false',
     explanation: '闭关锁国不是完全断绝往来，而是严格限制对外贸易，只开放广州一处（广州十三行）作为对外通商口岸。',
     tags: ['中国古代史', '闭关锁国'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '司马迁编写的《史记》是我国第一部纪传体通史，记述了从黄帝到汉武帝时期的历史。',
     tags: ['中国古代史', '史记'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '黄巢',
     explanation: '黄巢起义（875-884年）给唐朝统治以致命打击，907年唐朝灭亡。',
     tags: ['中国古代史', '唐朝灭亡'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '活字',
     explanation: '北宋毕昇发明活字印刷术，用胶泥刻字，大大提高了印刷效率，比欧洲早约400年。',
     tags: ['中国古代史', '活字印刷'],
-    knowledgePointIds: ['m-his-1'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-001'], subject: '历史', grade: 'middle',
   },
 
   // ==================== 中国近代史 ====================
@@ -267,7 +267,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '1842年鸦片战争后签订的《南京条约》是中国近代史上第一个不平等条约。',
     tags: ['中国近代史', '南京条约'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '鸦片战争后签订《南京条约》，中国开始沦为半殖民地半封建社会，是中国近代史的开端。',
     tags: ['中国近代史', '鸦片战争'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '洋务运动前期以"自强"为口号创办军事工业，后期以"求富"为口号创办民用工业。',
     tags: ['中国近代史', '洋务运动'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '孙中山领导了辛亥革命，推翻了清朝统治，结束了两千多年的君主专制制度。',
     tags: ['中国近代史', '辛亥革命'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '甲午中日',
     explanation: '甲午中日战争（1894-1895）后签订《马关条约》，大大加深了中国的半殖民地化程度。',
     tags: ['中国近代史', '甲午战争'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '五四',
     explanation: '1919年五四运动是一次彻底的反帝反封建的爱国运动，是中国新民主主义革命的开端。',
     tags: ['中国近代史', '五四运动'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '辛亥革命推翻了清朝统治，结束了两千多年的君主专制制度，建立了中华民国。',
     tags: ['中国近代史', '辛亥革命'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1921年中共一大召开，标志着中国共产党的成立，是中国历史上开天辟地的大事变。',
     tags: ['中国近代史', '中共成立'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1901年《辛丑条约》的签订，使中国完全沦为半殖民地半封建社会。',
     tags: ['中国近代史', '辛丑条约'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '近代化探索：洋务运动（技术）→戊戌变法/辛亥革命（制度）→新文化运动（思想），层层递进。',
     tags: ['中国近代史', '近代化探索'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '新文化运动高举"民主"（德先生）和"科学"（赛先生）两面大旗，是一次思想解放运动。',
     tags: ['中国近代史', '新文化运动'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1931年九一八事变，是日本局部侵华的开始，也是中国局部抗战的开始。',
     tags: ['中国近代史', '九一八事变'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '1937年平型关大捷是抗战以来中国军队取得的首次重大胜利，粉碎了日军不可战胜的神话。',
     tags: ['中国近代史', '平型关大捷'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '七七',
     explanation: '1937年7月7日卢沟桥事变（七七事变），标志着日本全面侵华和全民族抗战的开始。',
     tags: ['中国近代史', '七七事变'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '8 15',
     explanation: '1945年8月15日，日本宣布无条件投降。9月2日正式签署投降书，抗日战争胜利结束。',
     tags: ['中国近代史', '抗战胜利'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '洋务运动创办近代企业、建立新式海陆军、创办新式学堂，是中国近代化的开端。',
     tags: ['中国近代史', '洋务运动'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1937年12月，日军攻陷南京后进行了长达6周的大屠杀，杀害中国军民30万人以上。',
     tags: ['中国近代史', '南京大屠杀'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'false',
     explanation: '三大战役是辽沈战役、淮海战役、平津战役。渡江战役不属于三大战役。',
     tags: ['中国近代史', '三大战役'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '《南京条约》是第一个不平等条约，不是《马关条约》。D选项错误。',
     tags: ['中国近代史', '不平等条约'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '抗战胜利的根本原因是全民族抗战，即抗日民族统一战线的建立，实现了国共合作共同抗日。',
     tags: ['中国近代史', '抗战胜利原因'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '戊戌变法主张君主立宪，辛亥革命主张民主共和，都主张学习西方制度。戊戌变法不主张推翻清朝，辛亥革命成功了。',
     tags: ['中国近代史', '戊戌与辛亥'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1949年4月23日，人民解放军解放南京，标志着国民党政权的覆灭。',
     tags: ['中国近代史', '渡江战役'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '双十协定',
     explanation: '1945年8-10月，国共在重庆谈判，10月10日签订《政府与中共代表会谈纪要》，即"双十协定"。',
     tags: ['中国近代史', '重庆谈判'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '西安',
     explanation: '1936年12月西安事变和平解决，标志着十年内战基本结束，抗日民族统一战线初步形成。',
     tags: ['中国近代史', '西安事变'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '戊戌变法虽然只持续了103天就失败了，但起到了思想启蒙的作用，对思想文化产生了深远影响。',
     tags: ['中国近代史', '戊戌变法'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '中国近代史（1840-1949）既是一部列强侵华的屈辱史，也是中国人民抗争和探索救国道路的斗争史。',
     tags: ['中国近代史', '总体特征'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '抗日战争是近代以来中国人民反抗外来侵略的第一次完全胜利，洗雪了民族耻辱。',
     tags: ['中国近代史', '抗战胜利意义'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1860年第二次鸦片战争期间，英法联军攻入北京，火烧圆明园。',
     tags: ['中国近代史', '圆明园'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '辛丑条约',
     explanation: '1900年八国联军侵华，1901年签订《辛丑条约》，清政府完全成为帝国主义统治中国的工具。',
     tags: ['中国近代史', '辛丑条约'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '彭德怀',
     explanation: '1940年彭德怀指挥百团大战，是抗日战争中中国军队主动出击日军的最大规模战役。',
     tags: ['中国近代史', '百团大战'],
-    knowledgePointIds: ['m-his-2'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-002'], subject: '历史', grade: 'middle',
   },
 
   // ==================== 中国现代史 ====================
@@ -522,7 +522,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '1949年10月1日开国大典，中华人民共和国成立，开辟了中国历史的新纪元。',
     tags: ['中国现代史', '新中国成立'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '1956年三大改造基本完成，标志着社会主义制度基本建立，我国进入社会主义初级阶段。',
     tags: ['中国现代史', '三大改造'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1978年十一届三中全会作出实行改革开放的伟大决策，是新中国成立以来党的历史上具有深远意义的转折。',
     tags: ['中国现代史', '十一届三中全会'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '1980年设立深圳、珠海、汕头、厦门四个经济特区。深圳发展最快，被称为"一夜崛起之城"。',
     tags: ['中国现代史', '经济特区'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '土地改革',
     explanation: '1950-1952年土地改革，废除了封建地主土地所有制，实行农民土地所有制，农民翻了身成为土地的主人。',
     tags: ['中国现代史', '土地改革'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '香港',
     explanation: '1997年7月1日香港回归，1999年12月20日澳门回归，是"一国两制"伟大构想的成功实践。',
     tags: ['中国现代史', '祖国统一'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1954年第一届全国人大制定了《中华人民共和国宪法》，是我国第一部社会主义类型的宪法。',
     tags: ['中国现代史', '五四宪法'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'false',
     explanation: '家庭联产承包责任制下，土地所有权仍归集体，农民获得的是土地承包经营权（使用权）。',
     tags: ['中国现代史', '农村改革'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '中国梦的基本内涵：实现中华民族伟大复兴，包括国家富强、民族振兴、人民幸福三个方面。',
     tags: ['中国现代史', '中国梦'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '一五计划的基本任务：集中主要力量发展重工业，建立国家工业化的初步基础。',
     tags: ['中国现代史', '一五计划'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1978年安徽小岗村18户农民秘密签订"大包干"契约，成为中国农村改革的起点。',
     tags: ['中国现代史', '农村改革'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '"一国两制"：大陆实行社会主义制度，港澳台保持原有的资本主义制度和生活方式长期不变。',
     tags: ['中国现代史', '一国两制'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1950年10月中国人民志愿军赴朝作战，1953年7月美国被迫在停战协定上签字，抗美援朝战争胜利结束。',
     tags: ['中国现代史', '抗美援朝'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '当前经济文化不能满足人民需要的状况',
     explanation: '中共八大正确分析了国内主要矛盾，是探索建设社会主义道路的良好开端。',
     tags: ['中国现代史', '中共八大'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '沿海经济开放区',
     explanation: '对外开放格局：经济特区→沿海开放城市→沿海经济开放区→内地，全方位、多层次、宽领域。',
     tags: ['中国现代史', '开放格局'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '"大跃进"和人民公社化运动违背了经济发展客观规律，是党在探索建设社会主义道路中的严重失误。',
     tags: ['中国现代史', '大跃进'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '"文化大革命"是一场给党、国家和各族人民带来严重灾难的内乱，留下了惨痛的教训。',
     tags: ['中国现代史', '文革'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '十一届三中全会确立了解放思想、实事求是的思想路线，作出了把党和国家工作重心转移到经济建设上来的政治路线。',
     tags: ['中国现代史', '十一届三中全会'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '新中国成立时是新民主主义社会，1956年三大改造完成后才进入社会主义社会。C选项错误。',
     tags: ['中国现代史', '建国意义'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '改革先从农村开始（家庭联产承包责任制），开放从沿海开始逐步扩大。改革开放使中国实现了从站起来到富起来的转变。',
     tags: ['中国现代史', '改革开放'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '时间顺序：1949年新中国成立→1950-1952年土地改革→1953-1956年三大改造→1978年改革开放。',
     tags: ['中国现代史', '时间顺序'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '"两弹一星"是在改革开放前取得的成就（1964年原子弹、1967年氢弹、1970年卫星）。',
     tags: ['中国现代史', '两弹一星'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '中华人民共和国土地改革法',
     explanation: '1950年颁布《中华人民共和国土地改革法》，全国分批进行土地改革。',
     tags: ['中国现代史', '土地改革'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '中国',
     explanation: '1971年第26届联合国大会恢复中华人民共和国在联合国的一切合法席位，是中国外交的重大胜利。',
     tags: ['中国现代史', '联合国席位'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1972年尼克松访华，双方签署《上海公报》，中美关系开始走向正常化。1979年中美正式建交。',
     tags: ['中国现代史', '中美关系'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '"站起来"（新中国成立）→"富起来"（改革开放）→"强起来"（新时代），是中华民族伟大复兴的三个阶段。',
     tags: ['中国现代史', '发展阶段'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '三大改造：农业（农业生产合作社）、手工业（手工业生产合作社）、资本主义工商业（公私合营）。',
     tags: ['中国现代史', '三大改造'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '1950年10月，彭德怀率领中国人民志愿军赴朝作战，进行了抗美援朝战争。',
     tags: ['中国现代史', '抗美援朝'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '光明日报',
     explanation: '1978年5月《光明日报》发表《实践是检验真理的唯一标准》，为十一届三中全会的召开奠定了思想基础。',
     tags: ['中国现代史', '真理标准'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,7 +766,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '厦门',
     explanation: '1980年设立四个经济特区：深圳、珠海、汕头（广东）、厦门（福建）。深圳成为对外开放的窗口。',
     tags: ['中国现代史', '经济特区'],
-    knowledgePointIds: ['m-his-3'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-003'], subject: '历史', grade: 'middle',
   },
 
   // ==================== 世界史 ====================
@@ -777,7 +777,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '《汉谟拉比法典》是古巴比伦王国制定的，是世界上现存的古代第一部比较完备的成文法典。',
     tags: ['世界史', '古代文明'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-2', type: 'choice', difficulty: 'basic',
@@ -786,7 +786,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '伯里克利时代，雅典民主政治发展到顶峰，全体成年男性公民可以参加最高权力机构公民大会。',
     tags: ['世界史', '雅典民主'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-3', type: 'choice', difficulty: 'basic',
@@ -795,7 +795,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '第一次工业革命（18世纪60年代英国开始）的标志是蒸汽机的广泛应用，人类进入"蒸汽时代"。',
     tags: ['世界史', '工业革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-4', type: 'choice', difficulty: 'basic',
@@ -804,7 +804,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '1939年9月1日德国闪击波兰，英法对德宣战，第二次世界大战全面爆发。',
     tags: ['世界史', '二战'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-5', type: 'fill-blank', difficulty: 'basic',
@@ -812,7 +812,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '权利法案',
     explanation: '1689年英国议会通过《权利法案》，限制了国王的权力，确立了君主立宪制。',
     tags: ['世界史', '英国革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-6', type: 'fill-blank', difficulty: 'basic',
@@ -820,7 +820,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '独立宣言',
     explanation: '1776年7月4日《独立宣言》发表，宣告北美13个殖民地脱离英国独立，美国诞生。',
     tags: ['世界史', '美国独立'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-7', type: 'true-false', difficulty: 'basic',
@@ -828,7 +828,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '古埃及文明发源于尼罗河流域，金字塔是古埃及法老的陵墓，是权力的象征。',
     tags: ['世界史', '古埃及'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-8', type: 'true-false', difficulty: 'basic',
@@ -836,7 +836,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1942年1月1日，26国签署《联合国家宣言》，标志着世界反法西斯联盟的正式形成。',
     tags: ['世界史', '反法西斯联盟'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-9', type: 'true-false', difficulty: 'basic',
@@ -844,7 +844,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1944年6月，美英联军在法国诺曼底登陆，开辟了欧洲第二战场，使德国陷入东西两个战场的夹击。',
     tags: ['世界史', '诺曼底登陆'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-10', type: 'choice', difficulty: 'intermediate',
@@ -853,7 +853,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '1862年林肯颁布《解放黑人奴隶宣言》，激发了黑人参战的积极性，成为南北战争的转折点。',
     tags: ['世界史', '南北战争'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-11', type: 'choice', difficulty: 'intermediate',
@@ -862,7 +862,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '第二次工业革命（19世纪六七十年代）以电力的广泛应用为标志，人类进入"电气时代"。',
     tags: ['世界史', '第二次工业革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-12', type: 'choice', difficulty: 'intermediate',
@@ -871,7 +871,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'A',
     explanation: '1914年萨拉热窝事件（奥匈帝国皇储斐迪南大公遇刺）是一战的导火索。',
     tags: ['世界史', '一战'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-13', type: 'choice', difficulty: 'intermediate',
@@ -880,7 +880,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'C',
     explanation: '废除农奴制是俄国1861年改革的内容。明治维新包括废藩置县、殖产兴业、文明开化。',
     tags: ['世界史', '明治维新'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -888,7 +888,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '人权宣言',
     explanation: '1789年法国制宪议会颁布《人权宣言》，宣称人生来自由、权利平等，私有财产神圣不可侵犯。',
     tags: ['世界史', '法国大革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -896,7 +896,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '农奴制（或1861年）',
     explanation: '1861年俄国沙皇亚历山大二世实行农奴制改革，废除了农奴制，使俄国走上了资本主义道路。',
     tags: ['世界史', '俄国改革'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-16', type: 'true-false', difficulty: 'intermediate',
@@ -904,7 +904,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1825年斯蒂芬森发明了蒸汽机车（火车），标志着铁路时代的到来。',
     tags: ['世界史', '火车发明'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-17', type: 'true-false', difficulty: 'intermediate',
@@ -912,7 +912,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '爱迪生发明耐用碳丝灯泡（电灯），本茨（卡尔·本茨）制造了内燃机汽车，莱特兄弟发明了飞机。',
     tags: ['世界史', '第二次工业革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-18', type: 'true-false', difficulty: 'intermediate',
@@ -920,7 +920,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'false',
     explanation: '一战是帝国主义掠夺战争（非正义战争）。二战才是世界人民反法西斯战争。',
     tags: ['世界史', '一战性质'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-19', type: 'choice', difficulty: 'advanced',
@@ -929,7 +929,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '第一次工业革命发明了火车和汽船，第二次工业革命发明了汽车和飞机。都发明了交通工具。',
     tags: ['世界史', '工业革命比较'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-20', type: 'choice', difficulty: 'advanced',
@@ -938,7 +938,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '一战后形成凡尔赛—华盛顿体系，二战后形成雅尔塔体系（两极格局）。都是新的国际体系。',
     tags: ['世界史', '世界大战比较'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-21', type: 'choice', difficulty: 'advanced',
@@ -947,7 +947,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '英国革命后保留了君主（君主立宪制），没有推翻君主制。D选项错误。',
     tags: ['世界史', '资产阶级革命'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-22', type: 'choice', difficulty: 'advanced',
@@ -956,7 +956,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'D',
     explanation: '德国是在盟军强大攻势下被迫投降的，不是主动投降。D选项错误。',
     tags: ['世界史', '二战胜利'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-23', type: 'fill-blank', difficulty: 'advanced',
@@ -964,7 +964,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '凡尔赛—华盛顿 雅尔塔（或两极）',
     explanation: '一战后：巴黎和会+华盛顿会议=凡尔赛—华盛顿体系。二战后：雅尔塔会议=雅尔塔体系（两极格局）。',
     tags: ['世界史', '国际格局'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-24', type: 'fill-blank', difficulty: 'advanced',
@@ -972,7 +972,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '种姓',
     explanation: '古代印度的种姓制度将社会分为四个等级：婆罗门（祭祀）、刹帝利（军事）、吠舍（平民）、首陀罗（奴隶）。',
     tags: ['世界史', '种姓制度'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-25', type: 'true-false', difficulty: 'advanced',
@@ -980,7 +980,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '古希腊依托海洋发展工商业和民主政治，是海洋文明。古埃及依赖尼罗河发展农业，是大河文明。',
     tags: ['世界史', '文明类型'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-26', type: 'true-false', difficulty: 'advanced',
@@ -988,7 +988,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1941年12月7日日本偷袭珍珠港，美国参战，二战的规模达到最大（涉及全球多数国家）。',
     tags: ['世界史', '珍珠港事件'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-27', type: 'true-false', difficulty: 'advanced',
@@ -996,7 +996,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'true',
     explanation: '1945年5月8日德国正式投降（欧洲战场结束），8月15日日本宣布投降，9月2日正式签署投降书（二战结束）。',
     tags: ['世界史', '二战结束'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-28', type: 'choice', difficulty: 'intermediate',
@@ -1005,7 +1005,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: 'B',
     explanation: '公元前450年左右，罗马颁布《十二铜表法》，是罗马第一部成文法典，是罗马法的基础。',
     tags: ['世界史', '罗马法'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1013,7 +1013,7 @@ export const middleHistoryQuestions: Question[] = [
     answer: '独立（或美国独立）',
     explanation: '1775年来克星顿枪声开始，1783年英国承认美国独立。华盛顿领导了美国独立战争。',
     tags: ['世界史', '美国独立'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
   {
     id: 'q-mhis-4-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1021,6 +1021,6 @@ export const middleHistoryQuestions: Question[] = [
     answer: '凡尔赛—华盛顿',
     explanation: '一战后通过巴黎和会（《凡尔赛和约》）和华盛顿会议，形成了凡尔赛—华盛顿体系。',
     tags: ['世界史', '一战后格局'],
-    knowledgePointIds: ['m-his-4'], subject: '历史', grade: 'middle',
+    knowledgePointIds: ['m-his-004'], subject: '历史', grade: 'middle',
   },
 ];

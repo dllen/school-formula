@@ -12,7 +12,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: 'π是无限不循环小数，是无理数。3.14是有限小数，√4=2是整数，1/3是分数，都是有理数。',
     tags: ['数与式', '实数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-2', type: 'fill-blank', difficulty: 'basic',
@@ -20,7 +20,7 @@ export const middleMathQuestions: Question[] = [
     answer: '2',
     explanation: '√16=4，4的算术平方根是2。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-3', type: 'true-false', difficulty: 'basic',
@@ -28,7 +28,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '0是正数和负数的分界点，既不是正数也不是负数。',
     tags: ['数与式', '有理数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-4', type: 'choice', difficulty: 'intermediate',
@@ -37,7 +37,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '分式有意义的条件是分母不为0，即x-1≠0，所以x≠1。',
     tags: ['数与式', '分式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -45,7 +45,7 @@ export const middleMathQuestions: Question[] = [
     answer: '2√3',
     explanation: '√12 = √(4×3) = √4×√3 = 2√3。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-6', type: 'true-false', difficulty: 'intermediate',
@@ -53,7 +53,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '√a (a≥0) 表示a的算术平方根，结果一定是非负数。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-7', type: 'choice', difficulty: 'advanced',
@@ -62,7 +62,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: 'a²+b² = (a+b)²-2ab = 25-12 = 13。',
     tags: ['数与式', '代数式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-8', type: 'fill-blank', difficulty: 'advanced',
@@ -70,7 +70,7 @@ export const middleMathQuestions: Question[] = [
     answer: '-2',
     explanation: '分式值为0的条件：分子为0且分母不为0。x²-4=0 → x=±2；x-2≠0 → x≠2。所以x=-2。',
     tags: ['数与式', '分式值为零'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-9', type: 'true-false', difficulty: 'advanced',
@@ -78,7 +78,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '|a|=a 时，a可以是正数也可以是0。',
     tags: ['数与式', '绝对值'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 方程与不等式 ====================
@@ -89,7 +89,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '2x-6=0 → 2x=6 → x=3。',
     tags: ['方程与不等式', '一元一次方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-2', type: 'fill-blank', difficulty: 'basic',
@@ -97,7 +97,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'x < -3',
     explanation: '不等式两边除以负数，不等号方向改变：-2x>6 → x<-3。',
     tags: ['方程与不等式', '不等式'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-3', type: 'true-false', difficulty: 'basic',
@@ -105,7 +105,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '1²-1=0，所以x=1是该方程的解。另一个解是x=-1。',
     tags: ['方程与不等式', '一元二次方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-4', type: 'choice', difficulty: 'intermediate',
@@ -114,7 +114,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '因式分解：(x-3)(x+1)=0，所以x=3或x=-1。',
     tags: ['方程与不等式', '一元二次方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -122,7 +122,7 @@ export const middleMathQuestions: Question[] = [
     answer: '-1 < x ≤ 2',
     explanation: 'x+1>0 → x>-1；2x-4≤0 → x≤2。取交集：-1<x≤2。',
     tags: ['方程与不等式', '不等式组'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-6', type: 'true-false', difficulty: 'intermediate',
@@ -130,7 +130,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '1/(x-1)=2 → 1=2(x-1) → 1=2x-2 → 2x=3 → x=1.5。检验：x=1.5时分母不为0，是有效解。',
     tags: ['方程与不等式', '分式方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-7', type: 'choice', difficulty: 'advanced',
@@ -139,7 +139,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '判别式Δ=k²-36=0，所以k²=36，k=±6。',
     tags: ['方程与不等式', '判别式'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-8', type: 'fill-blank', difficulty: 'advanced',
@@ -147,7 +147,7 @@ export const middleMathQuestions: Question[] = [
     answer: '100',
     explanation: '设原价x元，x×(1-10%)²=81，x×0.81=81，x=100。',
     tags: ['方程与不等式', '应用题'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-9', type: 'true-false', difficulty: 'advanced',
@@ -155,7 +155,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '任何实数的平方都大于等于0，所以解集是全体实数。',
     tags: ['方程与不等式', '不等式性质'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 函数 ====================
@@ -166,7 +166,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: 'k=2>0，直线从左下到右上；b=1>0，与y轴正半轴相交。所以经过一、二、三象限。',
     tags: ['函数', '一次函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-2', type: 'fill-blank', difficulty: 'basic',
@@ -174,7 +174,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(1, 2)',
     explanation: '顶点式 y=a(x-h)²+k 的顶点为(h,k)，所以顶点是(1,2)。',
     tags: ['函数', '二次函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-3', type: 'true-false', difficulty: 'basic',
@@ -182,7 +182,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '反比例函数的图像是双曲线，关于原点中心对称。',
     tags: ['函数', '反比例函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-4', type: 'choice', difficulty: 'intermediate',
@@ -191,7 +191,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'k = (5-3)/(2-1) = 2。',
     tags: ['函数', '一次函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -199,7 +199,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'x=2',
     explanation: '对称轴 x = -b/(2a) = 4/2 = 2。',
     tags: ['函数', '二次函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-6', type: 'true-false', difficulty: 'intermediate',
@@ -207,7 +207,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: 'k=-2<0，在每个象限内y随x的增大而增大。',
     tags: ['函数', '反比例函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-7', type: 'choice', difficulty: 'advanced',
@@ -216,7 +216,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '开口向下→a<0；对称轴在y轴右侧→-b/(2a)>0→b>0；与y轴正半轴相交→c>0。',
     tags: ['函数', '二次函数性质'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-8', type: 'fill-blank', difficulty: 'advanced',
@@ -224,7 +224,7 @@ export const middleMathQuestions: Question[] = [
     answer: '±4',
     explanation: '与x轴交点(-b/2, 0)，与y轴交点(0, b)。面积=½×|b/2|×|b|=b²/4=4，b²=16，b=±4。',
     tags: ['函数', '面积'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-9', type: 'true-false', difficulty: 'advanced',
@@ -232,7 +232,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '判别式Δ=4-12=-8<0，所以与x轴没有交点。',
     tags: ['函数', '交点'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 图形的性质 ====================
@@ -243,7 +243,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '三角形内角和定理：三角形三个内角的和等于180°。',
     tags: ['图形的性质', '三角形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-2', type: 'fill-blank', difficulty: 'basic',
@@ -251,7 +251,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'HL',
     explanation: '直角三角形全等判定：斜边和一条直角边对应相等（HL）。',
     tags: ['图形的性质', '全等'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-3', type: 'true-false', difficulty: 'basic',
@@ -259,7 +259,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '对顶角相等是基本几何性质。',
     tags: ['图形的性质', '相交线'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-4', type: 'choice', difficulty: 'intermediate',
@@ -268,7 +268,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '圆周角定理：同弧所对的圆周角等于圆心角的一半。',
     tags: ['图形的性质', '圆'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -276,7 +276,7 @@ export const middleMathQuestions: Question[] = [
     answer: '相等 平行且相等',
     explanation: '平行四边形性质：对角相等，对边平行且相等。',
     tags: ['图形的性质', '平行四边形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-6', type: 'true-false', difficulty: 'intermediate',
@@ -284,7 +284,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: 'SSA（边边角）不能判定两个三角形全等，因为可能有两个不同的三角形满足条件。',
     tags: ['图形的性质', '全等判定'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-7', type: 'choice', difficulty: 'advanced',
@@ -293,7 +293,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: 'AB=√(3²+4²)=5，利用面积：½×3×4=½×5×h，h=12/5=2.4。',
     tags: ['图形的性质', '直角三角形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-8', type: 'fill-blank', difficulty: 'advanced',
@@ -301,7 +301,7 @@ export const middleMathQuestions: Question[] = [
     answer: '六',
     explanation: '每个内角120°，每个外角60°，边数=360°/60°=6。',
     tags: ['图形的性质', '正多边形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-9', type: 'true-false', difficulty: 'advanced',
@@ -309,7 +309,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '对角线互相垂直且平分的四边形是菱形。仅垂直不一定是菱形。',
     tags: ['图形的性质', '菱形判定'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 图形的变化 ====================
@@ -320,7 +320,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '等边三角形只是轴对称，平行四边形只是中心对称，等腰梯形只是轴对称。线段既是轴对称又是中心对称。',
     tags: ['图形的变化', '对称性'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-2', type: 'fill-blank', difficulty: 'basic',
@@ -328,7 +328,7 @@ export const middleMathQuestions: Question[] = [
     answer: '形状 大小',
     explanation: '平移是全等变换，只改变图形的位置，不改变形状和大小。',
     tags: ['图形的变化', '平移'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-3', type: 'true-false', difficulty: 'basic',
@@ -336,7 +336,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '三视图画法口诀：长对正（主、俯）、高平齐（主、左）、宽相等（左、俯）。',
     tags: ['图形的变化', '三视图'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-4', type: 'choice', difficulty: 'intermediate',
@@ -345,7 +345,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '向右平移3：x=2+3=5；向下平移2：y=3-2=1。所以是(5,1)。',
     tags: ['图形的变化', '平移坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -353,7 +353,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(3, 2)',
     explanation: '关于x轴对称：x不变，y变号。',
     tags: ['图形的变化', '轴对称'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-6', type: 'true-false', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '旋转的性质：对应点到旋转中心的距离相等，对应点与旋转中心连线的夹角等于旋转角。',
     tags: ['图形的变化', '旋转'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-7', type: 'choice', difficulty: 'advanced',
@@ -370,7 +370,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '正方体相对面的判断方法：同行或同列隔一个面的是相对面，或者Z字形两端的面是相对面。',
     tags: ['图形的变化', '正方体展开图'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-8', type: 'fill-blank', difficulty: 'advanced',
@@ -378,7 +378,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(-2, 1)',
     explanation: '绕原点逆时针旋转90°：(x,y)→(-y,x)，所以(1,2)→(-2,1)。',
     tags: ['图形的变化', '旋转坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-9', type: 'true-false', difficulty: 'advanced',
@@ -386,7 +386,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '这是中心对称图形的定义：绕对称中心旋转180°后与原图形重合。',
     tags: ['图形的变化', '中心对称'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 统计与概率 ====================
@@ -397,7 +397,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '众数是一组数据中出现次数最多的数。3出现了2次，其他数各出现1次。',
     tags: ['统计与概率', '众数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-2', type: 'fill-blank', difficulty: 'basic',
@@ -405,7 +405,7 @@ export const middleMathQuestions: Question[] = [
     answer: '5',
     explanation: '平均数=(1+3+5+7+9)÷5=25÷5=5。',
     tags: ['统计与概率', '平均数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-3', type: 'true-false', difficulty: 'basic',
@@ -413,7 +413,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '中位数的定义：数据排序后，奇数个取中间，偶数个取中间两个的平均值。',
     tags: ['统计与概率', '中位数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-4', type: 'choice', difficulty: 'intermediate',
@@ -422,7 +422,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '总球数=3+2=5，红球3个，概率=3/5。',
     tags: ['统计与概率', '概率'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -430,7 +430,7 @@ export const middleMathQuestions: Question[] = [
     answer: '8',
     explanation: '平均数=6，方差=[(2-6)²+(4-6)²+(6-6)²+(8-6)²+(10-6)²]÷5=[16+4+0+4+16]÷5=40÷5=8。',
     tags: ['统计与概率', '方差'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-6', type: 'true-false', difficulty: 'intermediate',
@@ -438,7 +438,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '方差反映数据的波动大小，方差越小，数据越集中，越稳定。',
     tags: ['统计与概率', '方差意义'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-7', type: 'choice', difficulty: 'advanced',
@@ -447,7 +447,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '甲的平均数=40/5=8，乙的平均数=40/5=8，平均数相同。甲的数据更集中（方差更小），所以甲的成绩更稳定。',
     tags: ['统计与概率', '数据分析'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-8', type: 'fill-blank', difficulty: 'advanced',
@@ -455,7 +455,7 @@ export const middleMathQuestions: Question[] = [
     answer: '2/5',
     explanation: '两数和为偶数：两奇或两偶。取法：C(3,2)+C(2,2)=3+1=4种。总取法C(5,2)=10种。概率=4/10=2/5。',
     tags: ['统计与概率', '概率计算'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-9', type: 'true-false', difficulty: 'advanced',
@@ -463,7 +463,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '必然事件一定发生，概率=1；不可能事件一定不发生，概率=0。',
     tags: ['统计与概率', '概率基础'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   // ==================== 数与式 新增 ====================
   {
@@ -473,7 +473,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '-|-2| = -2，是负数。A是0，B是3，D是4，都不是负数。',
     tags: ['数与式', '有理数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-11', type: 'choice', difficulty: 'basic',
@@ -482,7 +482,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '|-2| = 2。负数的绝对值是它的相反数。',
     tags: ['数与式', '绝对值'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-12', type: 'choice', difficulty: 'basic',
@@ -491,7 +491,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '3x²+2x-1是多项式，属于整式。A是分式，B是根式，D含有绝对值符号但不是整式定义。',
     tags: ['数与式', '整式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-13', type: 'choice', difficulty: 'basic',
@@ -500,7 +500,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '|x|=3表示x到原点的距离是3，所以x=3或x=-3，即x=±3。',
     tags: ['数与式', '绝对值'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-14', type: 'fill-blank', difficulty: 'basic',
@@ -508,7 +508,7 @@ export const middleMathQuestions: Question[] = [
     answer: '3 9',
     explanation: '√9=3（算术平方根）；(-3)²=9（负数的平方为正数）。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-15', type: 'fill-blank', difficulty: 'basic',
@@ -516,7 +516,7 @@ export const middleMathQuestions: Question[] = [
     answer: '<',
     explanation: '两个负数比较大小，绝对值大的反而小。|-5|>|-3|，所以-5<-3。',
     tags: ['数与式', '有理数大小'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-16', type: 'true-false', difficulty: 'basic',
@@ -524,7 +524,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '无限小数包括无限循环小数（有理数，如1/3=0.333...）和无限不循环小数（无理数，如π）。',
     tags: ['数与式', '实数分类'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-17', type: 'true-false', difficulty: 'basic',
@@ -532,7 +532,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '任何实数的平方都大于等于0。正数的平方为正，负数的平方为正，0的平方为0。',
     tags: ['数与式', '平方性质'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-18', type: 'choice', difficulty: 'intermediate',
@@ -541,7 +541,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '二次根式有意义的条件：被开方数≥0，即x-2≥0，x≥2。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-19', type: 'choice', difficulty: 'intermediate',
@@ -550,7 +550,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '√18 = √(9×2) = √9×√2 = 3√2。',
     tags: ['数与式', '二次根式化简'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-20', type: 'choice', difficulty: 'intermediate',
@@ -559,7 +559,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '分式无意义的条件：分母为0，即x-3=0，x=3。',
     tags: ['数与式', '分式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-21', type: 'choice', difficulty: 'intermediate',
@@ -568,7 +568,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '(a²)³=a⁶正确（幂的乘方，指数相乘）。A不是同类项不能合并；B应为a⁵；D应为a⁴。',
     tags: ['数与式', '幂运算'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-22', type: 'fill-blank', difficulty: 'intermediate',
@@ -576,7 +576,7 @@ export const middleMathQuestions: Question[] = [
     answer: '-1',
     explanation: '非负数之和为0，则每个非负数为0。|x-1|=0→x=1，(y+2)²=0→y=-2，x+y=-1。',
     tags: ['数与式', '非负数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-23', type: 'fill-blank', difficulty: 'intermediate',
@@ -584,7 +584,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(x+2)(x-2)',
     explanation: '平方差公式：a²-b²=(a+b)(a-b)。x²-4=(x+2)(x-2)。',
     tags: ['数与式', '因式分解'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-24', type: 'true-false', difficulty: 'intermediate',
@@ -592,7 +592,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '分式的基本性质与分数类似：B/A = B×M / A×M = B÷M / A÷M（M≠0）。',
     tags: ['数与式', '分式性质'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-25', type: 'true-false', difficulty: 'intermediate',
@@ -600,7 +600,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '√a 有意义的条件是a≥0。当a<0时，√a 在实数范围内无意义。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-26', type: 'choice', difficulty: 'advanced',
@@ -609,7 +609,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: 'a²·a⁻³=a⁻¹（同底数幂相乘，指数相加：2+(-3)=-1）。A中a⁰=1；B中a⁻¹=1/a；D中(a⁻²)⁻¹=a²。',
     tags: ['数与式', '幂运算'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-27', type: 'choice', difficulty: 'advanced',
@@ -618,7 +618,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '√(2x-4)和√(4-2x)同时有意义→2x-4≥0且4-2x≥0→x=2。代入得0+0+y=6→y=6。xy=12。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-28', type: 'choice', difficulty: 'advanced',
@@ -627,7 +627,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '分母有理化：分子分母同乘(√5+2)，得(√5+2)²/(5-4)=(5+4√5+4)/1=9+4√5。',
     tags: ['数与式', '分母有理化'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-29', type: 'fill-blank', difficulty: 'advanced',
@@ -635,7 +635,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'n²',
     explanation: '这组数是连续自然数的平方：1², 2², 3², 4², 5², ...，第n个是n²。',
     tags: ['数与式', '规律探究'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -643,7 +643,7 @@ export const middleMathQuestions: Question[] = [
     answer: '7',
     explanation: '(a+1/a)²=a²+2+1/a²=9，所以a²+1/a²=9-2=7。',
     tags: ['数与式', '代数变形'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-31', type: 'true-false', difficulty: 'advanced',
@@ -651,7 +651,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '绝对值具有非负性。若几个非负数之和为0，则每个非负数都为0。所以|a|=0且|b|=0，即a=b=0。',
     tags: ['数与式', '非负数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-32', type: 'true-false', difficulty: 'advanced',
@@ -659,7 +659,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '只有非负数（≥0）才有算术平方根。负数在实数范围内没有算术平方根。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-33', type: 'true-false', difficulty: 'advanced',
@@ -667,7 +667,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '分式值为0：分子x²-1=0→x=±1，分母x-1≠0→x≠1。所以x=-1。',
     tags: ['数与式', '分式值为零'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-34', type: 'choice', difficulty: 'intermediate',
@@ -676,7 +676,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '-2和|-2|=2互为相反数（符号相反，绝对值相等）。',
     tags: ['数与式', '相反数'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-35', type: 'fill-blank', difficulty: 'intermediate',
@@ -684,7 +684,7 @@ export const middleMathQuestions: Question[] = [
     answer: '>',
     explanation: '√10≈3.16>3，或10>9所以√10>√9=3。',
     tags: ['数与式', '实数比较'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-36', type: 'fill-blank', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleMathQuestions: Question[] = [
     answer: '3',
     explanation: '由x²-3x+1=0，两边除以x（x≠0）得x-3+1/x=0，所以x+1/x=3。',
     tags: ['数与式', '代数变形'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-37', type: 'fill-blank', difficulty: 'advanced',
@@ -700,7 +700,7 @@ export const middleMathQuestions: Question[] = [
     answer: '√2+1',
     explanation: '√(3+2√2)=√(√2+1)²=√2+1。因为3+2√2=(√2)²+2√2+1=(√2+1)²。',
     tags: ['数与式', '二次根式化简'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-38', type: 'true-false', difficulty: 'intermediate',
@@ -708,7 +708,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '实数的定义：有理数和无理数统称实数。有理数包括整数和分数，无理数是无限不循环小数。',
     tags: ['数与式', '实数定义'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-1-39', type: 'true-false', difficulty: 'advanced',
@@ -716,7 +716,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '二次根式的结果≥0。两个非负数之和为0，则每个都为0，所以√a=0且√b=0，即a=b=0。',
     tags: ['数与式', '二次根式'],
-    knowledgePointIds: ['m-math-1'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-001'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 方程与不等式 新增 ====================
@@ -727,7 +727,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '3x+5=14→3x=9→x=3。',
     tags: ['方程与不等式', '一元一次方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-11', type: 'choice', difficulty: 'basic',
@@ -736,7 +736,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '3x-6<0→3x<6→x<2。',
     tags: ['方程与不等式', '一元一次不等式'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-12', type: 'choice', difficulty: 'basic',
@@ -745,7 +745,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: 'x²=9→x=±3。一个正数的平方根有两个，互为相反数。',
     tags: ['方程与不等式', '一元二次方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-13', type: 'fill-blank', difficulty: 'basic',
@@ -753,7 +753,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'x>2',
     explanation: 'x+3>5→x>2。',
     tags: ['方程与不等式', '不等式解集'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-14', type: 'fill-blank', difficulty: 'basic',
@@ -761,7 +761,7 @@ export const middleMathQuestions: Question[] = [
     answer: '4',
     explanation: '5x=20→x=4。',
     tags: ['方程与不等式', '解方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-15', type: 'true-false', difficulty: 'basic',
@@ -769,7 +769,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '不等式两边除以正数2，不等号方向不变：2x>6→x>3。',
     tags: ['方程与不等式', '不等式解集'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-16', type: 'true-false', difficulty: 'basic',
@@ -777,7 +777,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: 'x²+1=0→x²=-1，任何实数的平方都≥0，不可能等于-1，所以无实数解。',
     tags: ['方程与不等式', '方程解'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-17', type: 'choice', difficulty: 'intermediate',
@@ -786,7 +786,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '韦达定理：一元二次方程ax²+bx+c=0的两根之和=-b/a=-(-5)/1=5。',
     tags: ['方程与不等式', '韦达定理'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-18', type: 'choice', difficulty: 'intermediate',
@@ -795,7 +795,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: 'x-1>0→x>1；x-4<0→x<4。取交集：1<x<4（"大小小大中间找"）。',
     tags: ['方程与不等式', '不等式组'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-19', type: 'choice', difficulty: 'intermediate',
@@ -804,7 +804,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: 'x²+6x+5=0→x²+6x=-5→x²+6x+9=4→(x+3)²=4。',
     tags: ['方程与不等式', '配方法'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-20', type: 'fill-blank', difficulty: 'intermediate',
@@ -812,7 +812,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(-b±√(b²-4ac))/(2a)',
     explanation: '求根公式：x=(-b±√Δ)/(2a)，其中Δ=b²-4ac。',
     tags: ['方程与不等式', '求根公式'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-21', type: 'true-false', difficulty: 'intermediate',
@@ -820,7 +820,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '分式方程去分母时乘以含未知数的整式，可能产生使分母为0的增根，所以必须检验。',
     tags: ['方程与不等式', '分式方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-22', type: 'choice', difficulty: 'advanced',
@@ -829,7 +829,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '一元二次方程有两个不等实根：①二次项系数≠0→m≠1；②Δ=4-4(m-1)>0→m<2。所以m<2且m≠1。',
     tags: ['方程与不等式', '判别式应用'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -837,7 +837,7 @@ export const middleMathQuestions: Question[] = [
     answer: '100(1-x%)²=81（或100(1-x/100)²=81）',
     explanation: '设每次降价x%，第一次降价后：100(1-x%)，第二次降价后：100(1-x%)²=81。',
     tags: ['方程与不等式', '应用题'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-24', type: 'true-false', difficulty: 'advanced',
@@ -845,7 +845,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '"大大小小无处找"：x>3和x<1没有公共部分，所以不等式组的解集为空集。',
     tags: ['方程与不等式', '不等式组'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-25', type: 'true-false', difficulty: 'intermediate',
@@ -853,7 +853,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '2x+3=2x+5→3=5，矛盾，所以此方程无解。',
     tags: ['方程与不等式', '方程解'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-26', type: 'choice', difficulty: 'intermediate',
@@ -862,7 +862,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '把x=1代入方程：1²-2×1+k=0→k=1。',
     tags: ['方程与不等式', '方程的根'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-27', type: 'fill-blank', difficulty: 'intermediate',
@@ -870,7 +870,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'x = 3(x-2)',
     explanation: '方程两边同乘x(x-2)：1·x = 3·(x-2)，即x=3(x-2)。',
     tags: ['方程与不等式', '分式方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-28', type: 'fill-blank', difficulty: 'advanced',
@@ -878,7 +878,7 @@ export const middleMathQuestions: Question[] = [
     answer: '11',
     explanation: 'x₁+x₂=3，x₁x₂=-1。x₁²+x₂²=(x₁+x₂)²-2x₁x₂=9+2=11。',
     tags: ['方程与不等式', '韦达定理'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-29', type: 'true-false', difficulty: 'advanced',
@@ -886,7 +886,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '当c=0时，ac²=bc²=0，不等号不成立。只有c≠0时，c²>0，才有ac²>bc²。',
     tags: ['方程与不等式', '不等式性质'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-2-30', type: 'true-false', difficulty: 'advanced',
@@ -894,7 +894,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '去分母：x=x-1→0=-1，矛盾。所以方程无解。',
     tags: ['方程与不等式', '分式方程'],
-    knowledgePointIds: ['m-math-2'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-002'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 函数 新增 ====================
@@ -905,7 +905,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '正比例函数：y=kx（k≠0，b=0）。y=2x符合定义。A是一次函数（b≠0），C是反比例函数，D是二次函数。',
     tags: ['函数', '正比例函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-11', type: 'choice', difficulty: 'basic',
@@ -914,7 +914,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'k=-3<0（从右上到左下），b=2>0（与y轴正半轴相交）。经过一、二、四象限。',
     tags: ['函数', '一次函数图像'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-12', type: 'fill-blank', difficulty: 'basic',
@@ -922,7 +922,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(0, b)',
     explanation: '一次函数与y轴交点：令x=0，得y=b，所以交点为(0,b)。与x轴交点为(-b/k, 0)。',
     tags: ['函数', '函数图像'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-13', type: 'true-false', difficulty: 'basic',
@@ -930,7 +930,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '一次函数单调性：k>0时，y随x增大而增大（递增）；k<0时，y随x增大而减小（递减）。',
     tags: ['函数', '单调性'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-14', type: 'choice', difficulty: 'intermediate',
@@ -939,7 +939,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '把(2,-3)代入y=k/x：-3=k/2，k=-6。',
     tags: ['函数', '反比例函数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-15', type: 'choice', difficulty: 'intermediate',
@@ -948,7 +948,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '判别式Δ=b²-4ac=4+12=16>0，所以与x轴有两个交点。解方程得x=-1或x=3。',
     tags: ['函数', '交点个数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-16', type: 'fill-blank', difficulty: 'intermediate',
@@ -956,7 +956,7 @@ export const middleMathQuestions: Question[] = [
     answer: '向下 (-2, -1)',
     explanation: 'y=a(x-h)²+k中，a=-1<0开口向下，顶点为(h,k)=(-2,-1)。',
     tags: ['函数', '二次函数顶点'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -964,7 +964,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '对称轴公式是 x=-b/(2a)，不是 b/(2a)。注意负号。',
     tags: ['函数', '对称轴'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-18', type: 'choice', difficulty: 'advanced',
@@ -973,7 +973,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '抛物线经过(1,0)和(3,0)，这两点是x轴交点，对称轴是它们的中点：x=(1+3)/2=2。',
     tags: ['函数', '对称轴'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-19', type: 'fill-blank', difficulty: 'advanced',
@@ -981,7 +981,7 @@ export const middleMathQuestions: Question[] = [
     answer: '2',
     explanation: '把(2,7)代入：7=2k+3→2k=4→k=2。',
     tags: ['函数', '待定系数法'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-20', type: 'true-false', difficulty: 'advanced',
@@ -989,7 +989,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: 'a=1>0，抛物线开口向上，有最小值。最小值在顶点处取得：y=-Δ/(4a)=-(-8)/4=2。',
     tags: ['函数', '最值'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-21', type: 'true-false', difficulty: 'basic',
@@ -997,7 +997,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '正比例函数y=kx是一次函数y=kx+b中b=0的特殊情况。所以正比例函数一定是一次函数。',
     tags: ['函数', '函数关系'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-22', type: 'choice', difficulty: 'basic',
@@ -1006,7 +1006,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'k=-1<0，反比例函数图像在二、四象限。在每个象限内y随x增大而增大。',
     tags: ['函数', '反比例图像'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-23', type: 'fill-blank', difficulty: 'intermediate',
@@ -1014,7 +1014,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(x+2)²-1',
     explanation: '平移规律：左加右减（x），上加下减（整体）。y=x²→左移2：y=(x+2)²→下移1：y=(x+2)²-1。',
     tags: ['函数', '图像平移'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1022,7 +1022,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'y=(4ac-b²)/(4a)（或 y=-Δ/(4a)）',
     explanation: '二次函数最值：在顶点处取得，y=(4ac-b²)/(4a)。a>0有最小值，a<0有最大值。',
     tags: ['函数', '最值公式'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-25', type: 'true-false', difficulty: 'intermediate',
@@ -1030,7 +1030,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '反比例关系：xy=k（常数）。一个量扩大，另一个量必须缩小（乘积不变）。',
     tags: ['函数', '反比例关系'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-26', type: 'choice', difficulty: 'advanced',
@@ -1039,7 +1039,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'D',
     explanation: '一次函数图像：k>0过一三象限，k<0过二四象限；b>0交y轴正半轴，b<0交y轴负半轴。ABC都正确。',
     tags: ['函数', '图像判断'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-27', type: 'fill-blank', difficulty: 'advanced',
@@ -1047,7 +1047,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(-b/(2a), (4ac-b²)/(4a))',
     explanation: '顶点坐标公式：(-b/(2a), (4ac-b²)/(4a))或(-b/(2a), -Δ/(4a))。',
     tags: ['函数', '顶点坐标'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-28', type: 'true-false', difficulty: 'advanced',
@@ -1055,7 +1055,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '交点式（两根式）：y=a(x-x₁)(x-x₂)，x₁和x₂是抛物线与x轴交点的横坐标。',
     tags: ['函数', '交点式'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-29', type: 'choice', difficulty: 'intermediate',
@@ -1064,7 +1064,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'y=-3x+1中k=-3<0，y随x增大而减小。A中k=2>0递增；C是二次函数，在不同区间单调性不同；D在每个象限内递减但整体不连续。',
     tags: ['函数', '单调性'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1072,7 +1072,7 @@ export const middleMathQuestions: Question[] = [
     answer: '2 3',
     explanation: 'x=0时y=3→b=3。x=2时y=7→7=2k+3→k=2。',
     tags: ['函数', '待定系数'],
-    knowledgePointIds: ['m-math-3'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-003'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 图形的性质 新增 ====================
@@ -1083,7 +1083,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '四边形内角和=(4-2)×180°=360°。n边形内角和=(n-2)×180°。',
     tags: ['图形的性质', '多边形内角和'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-11', type: 'choice', difficulty: 'basic',
@@ -1092,7 +1092,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '六边形内角和=(6-2)×180°=720°。',
     tags: ['图形的性质', '多边形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-12', type: 'fill-blank', difficulty: 'basic',
@@ -1100,7 +1100,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(n-2)×180°',
     explanation: '多边形内角和公式：(n-2)×180°，其中n为边数（n≥3）。',
     tags: ['图形的性质', '内角和公式'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-13', type: 'true-false', difficulty: 'basic',
@@ -1108,7 +1108,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '任意多边形的外角和都是360°（与边数无关）。三角形外角和=360°。',
     tags: ['图形的性质', '外角和'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-14', type: 'choice', difficulty: 'intermediate',
@@ -1117,7 +1117,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '多边形外角和=360°，每个外角30°，边数=360°/30°=12。',
     tags: ['图形的性质', '多边形边数'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-15', type: 'choice', difficulty: 'intermediate',
@@ -1126,7 +1126,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '菱形性质：四边相等；对角线互相垂直平分；对角线平分一组对角。注意对角线不一定相等。',
     tags: ['图形的性质', '菱形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-16', type: 'fill-blank', difficulty: 'intermediate',
@@ -1134,7 +1134,7 @@ export const middleMathQuestions: Question[] = [
     answer: '相等 互相平分',
     explanation: '矩形性质：四个直角；对角线相等且互相平分。正方形兼具矩形和菱形的性质。',
     tags: ['图形的性质', '矩形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-17', type: 'true-false', difficulty: 'intermediate',
@@ -1142,7 +1142,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '垂径定理：垂直于弦的直径平分弦，并且平分弦所对的两条弧。',
     tags: ['图形的性质', '圆'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-18', type: 'choice', difficulty: 'advanced',
@@ -1151,7 +1151,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '圆周角定理：同弧所对圆心角是圆周角的2倍。∠C=30°是圆周角，∠AOC=2×30°=60°。',
     tags: ['图形的性质', '圆周角'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-19', type: 'fill-blank', difficulty: 'advanced',
@@ -1159,7 +1159,7 @@ export const middleMathQuestions: Question[] = [
     answer: '切点',
     explanation: '切线性质定理：圆的切线垂直于经过切点的半径。',
     tags: ['图形的性质', '切线'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-20', type: 'true-false', difficulty: 'advanced',
@@ -1167,7 +1167,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: 'AAA（三角对应相等）只能判定两个三角形相似，不能判定全等。全等需要至少一条边相等。',
     tags: ['图形的性质', '全等判定'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-21', type: 'true-false', difficulty: 'basic',
@@ -1175,7 +1175,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '三角形外角定理：三角形的一个外角等于与它不相邻的两个内角之和。',
     tags: ['图形的性质', '外角定理'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-22', type: 'choice', difficulty: 'intermediate',
@@ -1184,7 +1184,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: 'B符合SAS（两边及其夹角对应相等）。A是SSA不能判定；C是AAA不能判定；D是SSA不能判定。',
     tags: ['图形的性质', '全等判定'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-23', type: 'fill-blank', difficulty: 'intermediate',
@@ -1192,7 +1192,7 @@ export const middleMathQuestions: Question[] = [
     answer: '相等 夹角',
     explanation: '相似三角形判定：①两角对应相等；②两边对应成比例且夹角相等；③三边对应成比例。',
     tags: ['图形的性质', '相似判定'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1200,7 +1200,7 @@ export const middleMathQuestions: Question[] = [
     answer: '斜边的一半',
     explanation: '直角三角形中30°性质：30°角所对的直角边等于斜边的一半。',
     tags: ['图形的性质', '直角三角形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-25', type: 'true-false', difficulty: 'intermediate',
@@ -1208,7 +1208,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '平行四边形对角线互相平分（不一定垂直）。菱形和正方形的对角线才互相垂直。',
     tags: ['图形的性质', '平行四边形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-26', type: 'choice', difficulty: 'advanced',
@@ -1217,7 +1217,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '在Rt△ABC中，∠A+∠B=90°，所以sinA=cosB=3/5。',
     tags: ['图形的性质', '三角函数'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-27', type: 'fill-blank', difficulty: 'advanced',
@@ -1225,7 +1225,7 @@ export const middleMathQuestions: Question[] = [
     answer: '50°或80°',
     explanation: '80°可能是顶角（底角=(180-80)/2=50°）或底角（底角=80°）。两种情况都满足。',
     tags: ['图形的性质', '等腰三角形'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-28', type: 'true-false', difficulty: 'advanced',
@@ -1233,7 +1233,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '三角形中位线定理：三角形的中位线平行于第三边，且等于第三边的一半。',
     tags: ['图形的性质', '中位线'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-29', type: 'choice', difficulty: 'intermediate',
@@ -1242,7 +1242,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '正方形既是轴对称（4条对称轴）又是中心对称。A只是中心对称，B和D只是轴对称。',
     tags: ['图形的性质', '对称性'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-4-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1250,7 +1250,7 @@ export const middleMathQuestions: Question[] = [
     answer: '弧',
     explanation: '圆心角与弧的关系：圆心角的度数等于它所对弧的度数。',
     tags: ['图形的性质', '圆心角'],
-    knowledgePointIds: ['m-math-4'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-004'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 图形的变化 新增 ====================
@@ -1261,7 +1261,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '电梯升降是沿直线方向的平移运动。A是旋转，C是旋转，D是旋转。',
     tags: ['图形的变化', '平移'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-11', type: 'choice', difficulty: 'basic',
@@ -1270,7 +1270,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '平行四边形只是中心对称（不是轴对称）。A既是轴对称又是中心对称，C和D只是轴对称。',
     tags: ['图形的变化', '中心对称'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-12', type: 'fill-blank', difficulty: 'basic',
@@ -1278,7 +1278,7 @@ export const middleMathQuestions: Question[] = [
     answer: '完全重合',
     explanation: '轴对称图形的定义：沿一条直线折叠后，两旁部分能够完全重合。这条直线叫对称轴。',
     tags: ['图形的变化', '轴对称'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-13', type: 'true-false', difficulty: 'basic',
@@ -1286,7 +1286,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '三种全等变换的共同特点：只改变图形的位置，不改变形状和大小（对应线段相等、对应角相等）。',
     tags: ['图形的变化', '全等变换'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-14', type: 'choice', difficulty: 'intermediate',
@@ -1295,7 +1295,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '关于原点对称：x和y都变号。(-2,5)→(2,-5)。',
     tags: ['图形的变化', '中心对称坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-15', type: 'choice', difficulty: 'intermediate',
@@ -1304,7 +1304,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '绕原点顺时针旋转90°：(x,y)→(y,-x)，所以(3,-1)→(-1,-3)。',
     tags: ['图形的变化', '旋转坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-16', type: 'fill-blank', difficulty: 'intermediate',
@@ -1312,7 +1312,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(-a, b)',
     explanation: '关于y轴对称：y不变，x变号。(a,b)→(-a,b)。',
     tags: ['图形的变化', '轴对称坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-17', type: 'true-false', difficulty: 'intermediate',
@@ -1320,7 +1320,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '三视图口诀：长对正（主、俯）、高平齐（主、左）、宽相等（左、俯）。',
     tags: ['图形的变化', '三视图'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-18', type: 'choice', difficulty: 'advanced',
@@ -1329,7 +1329,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'D',
     explanation: '旋转是全等变换，不改变图形的形状和大小。D选项错误。',
     tags: ['图形的变化', '旋转性质'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-19', type: 'fill-blank', difficulty: 'advanced',
@@ -1337,7 +1337,7 @@ export const middleMathQuestions: Question[] = [
     answer: '俯视',
     explanation: '由三视图还原几何体：先根据俯视图定底面形状，再结合主视图和左视图确定高度。',
     tags: ['图形的变化', '三视图还原'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-20', type: 'true-false', difficulty: 'advanced',
@@ -1345,7 +1345,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '位似是特殊的特殊（特殊的相似），位似图形一定相似，但相似图形不一定位似。',
     tags: ['图形的变化', '位似'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-21', type: 'true-false', difficulty: 'basic',
@@ -1353,7 +1353,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '中心对称图形的判断：将图形旋转180°（倒过来看）后与原图形完全重合。',
     tags: ['图形的变化', '中心对称判断'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-22', type: 'choice', difficulty: 'intermediate',
@@ -1362,7 +1362,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '平行投影：投影线互相平行（如太阳光）。中心投影：投影线交于一点（如灯光）。',
     tags: ['图形的变化', '投影'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-23', type: 'fill-blank', difficulty: 'intermediate',
@@ -1370,7 +1370,7 @@ export const middleMathQuestions: Question[] = [
     answer: '(5, 1)',
     explanation: '向右平移3：x=2+3=5；向上平移4：y=-3+4=1。所以是(5,1)。',
     tags: ['图形的变化', '平移坐标'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1378,7 +1378,7 @@ export const middleMathQuestions: Question[] = [
     answer: '原点',
     explanation: '各点坐标都乘以-1：(x,y)→(-x,-y)，相当于关于原点（中心）对称。',
     tags: ['图形的变化', '中心对称'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-25', type: 'true-false', difficulty: 'intermediate',
@@ -1386,7 +1386,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '轴对称的性质：对称轴是任何一对对应点连线的垂直平分线。',
     tags: ['图形的变化', '轴对称性质'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-26', type: 'choice', difficulty: 'advanced',
@@ -1395,7 +1395,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '位似变换：对应点坐标 = 原坐标×位似比（或×-位似比）。A′=(2,4)或(-2,-4)。',
     tags: ['图形的变化', '位似'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-27', type: 'fill-blank', difficulty: 'advanced',
@@ -1403,7 +1403,7 @@ export const middleMathQuestions: Question[] = [
     answer: '正 左',
     explanation: '三视图方向：主视图（从正面看）、左视图（从左面看）、俯视图（从上面看）。',
     tags: ['图形的变化', '三视图方向'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-28', type: 'true-false', difficulty: 'advanced',
@@ -1411,7 +1411,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '平移后对应线段平行（或共线），旋转后对应线段不一定平行，轴对称后对应线段关于对称轴对称。',
     tags: ['图形的变化', '变换性质'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-29', type: 'choice', difficulty: 'intermediate',
@@ -1420,7 +1420,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '线段既是轴对称（有2条对称轴）又是中心对称（中点是对称中心）。等边三角形只是轴对称。',
     tags: ['图形的变化', '对称关系'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-5-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1428,7 +1428,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'y=(x-1)²',
     explanation: 'y=x²左移1：y=(x+1)²，关于y轴对称：y=(-x+1)²=(x-1)²。',
     tags: ['图形的变化', '函数图像变换'],
-    knowledgePointIds: ['m-math-5'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-005'], subject: '数学', grade: 'middle',
   },
 
   // ==================== 统计与概率 新增 ====================
@@ -1439,7 +1439,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '数据已排序，奇数个取中间的数。第3个数是3。',
     tags: ['统计与概率', '中位数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-11', type: 'choice', difficulty: 'basic',
@@ -1448,7 +1448,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '众数是出现次数最多的数。2出现了2次，其他数各出现1次。',
     tags: ['统计与概率', '众数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-12', type: 'fill-blank', difficulty: 'basic',
@@ -1456,7 +1456,7 @@ export const middleMathQuestions: Question[] = [
     answer: '6',
     explanation: '平均数=(3+5+7+9)÷4=24÷4=6。',
     tags: ['统计与概率', '平均数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-13', type: 'true-false', difficulty: 'basic',
@@ -1464,7 +1464,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '平均数不一定是原数据中的某个数。如1和2的平均数是1.5，不在原数据中。',
     tags: ['统计与概率', '平均数'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-14', type: 'choice', difficulty: 'intermediate',
@@ -1473,7 +1473,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '总球数=2+3=5，白球2个，概率=2/5。',
     tags: ['统计与概率', '概率'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-15', type: 'choice', difficulty: 'intermediate',
@@ -1482,7 +1482,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'C',
     explanation: '骰子6个面，偶数点有2、4、6共3个，概率=3/6=1/2。',
     tags: ['统计与概率', '概率'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-16', type: 'fill-blank', difficulty: 'intermediate',
@@ -1490,7 +1490,7 @@ export const middleMathQuestions: Question[] = [
     answer: '0',
     explanation: '所有数据都相同（无波动），方差=0。方差越小数据越稳定。',
     tags: ['统计与概率', '方差'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-17', type: 'true-false', difficulty: 'intermediate',
@@ -1498,7 +1498,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '平均数受每个数据影响（特别是极端大或小的值），中位数和众数不受极端值影响。',
     tags: ['统计与概率', '统计量特点'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-18', type: 'choice', difficulty: 'advanced',
@@ -1507,7 +1507,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '总取法C(4,2)=6。乘积为奇数：只有1×3=1种。乘积为偶数：6-1=5种。概率=5/6。',
     tags: ['统计与概率', '概率计算'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-19', type: 'fill-blank', difficulty: 'advanced',
@@ -1515,7 +1515,7 @@ export const middleMathQuestions: Question[] = [
     answer: '甲',
     explanation: '方差越小成绩越稳定。甲方差2<乙方差5，甲更稳定。',
     tags: ['统计与概率', '方差意义'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-20', type: 'true-false', difficulty: 'advanced',
@@ -1523,7 +1523,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'false',
     explanation: '随机事件的概率在0到1之间（不包括0和1）。概率0是不可能事件，概率1是必然事件。',
     tags: ['统计与概率', '概率范围'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-21', type: 'true-false', difficulty: 'basic',
@@ -1531,7 +1531,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '列举法：两次抛掷的所有等可能结果：(正,正)、(正,反)、(反,正)、(反,反)，共4种。',
     tags: ['统计与概率', '列举法'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-22', type: 'choice', difficulty: 'intermediate',
@@ -1540,7 +1540,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '平均数=(7+8+9+10+11)/5=9。方差=[(7-9)²+(8-9)²+(9-9)²+(10-9)²+(11-9)²]/5=[4+1+0+1+4]/5=2。',
     tags: ['统计与概率', '平均数方差'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-23', type: 'fill-blank', difficulty: 'intermediate',
@@ -1548,7 +1548,7 @@ export const middleMathQuestions: Question[] = [
     answer: '6',
     explanation: '数据范围=180-150=30(cm)，组距=5，组数=30/5=6组。',
     tags: ['统计与概率', '数据整理'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1556,7 +1556,7 @@ export const middleMathQuestions: Question[] = [
     answer: '22 3',
     explanation: '平均数=(1+2+3+4+100)/5=22，中位数=3。平均数受极端值100影响而偏大。',
     tags: ['统计与概率', '极端值影响'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-25', type: 'true-false', difficulty: 'intermediate',
@@ -1564,7 +1564,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '统计推断的基本思想：通过对样本的分析来估计总体的特征。',
     tags: ['统计与概率', '统计思想'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-26', type: 'choice', difficulty: 'advanced',
@@ -1573,7 +1573,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'A',
     explanation: '频率=命中次数÷总次数=6÷10=0.6。频率是概率的估计值。',
     tags: ['统计与概率', '频率'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-27', type: 'fill-blank', difficulty: 'advanced',
@@ -1581,7 +1581,7 @@ export const middleMathQuestions: Question[] = [
     answer: '1/6',
     explanation: '两骰子共36种等可能结果，和为7有6种：(1,6)(2,5)(3,4)(4,3)(5,2)(6,1)，概率=6/36=1/6。',
     tags: ['统计与概率', '概率计算'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-28', type: 'true-false', difficulty: 'advanced',
@@ -1589,7 +1589,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'true',
     explanation: '树状图适合列举多步试验（特别是三步及以上）的所有等可能结果，做到"不重不漏"。',
     tags: ['统计与概率', '树状图'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-29', type: 'choice', difficulty: 'intermediate',
@@ -1598,7 +1598,7 @@ export const middleMathQuestions: Question[] = [
     answer: 'B',
     explanation: '全国初中生视力调查范围广，适合抽样调查。ACD范围小或要求精确，适合全面调查（普查）。',
     tags: ['统计与概率', '调查方式'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
   {
     id: 'q-mm-6-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1606,7 +1606,7 @@ export const middleMathQuestions: Question[] = [
     answer: '20',
     explanation: '总人数=20+30+40+10=100人，优秀率=20÷100×100%=20%。',
     tags: ['统计与概率', '统计图表'],
-    knowledgePointIds: ['m-math-6'], subject: '数学', grade: 'middle',
+    knowledgePointIds: ['m-math-006'], subject: '数学', grade: 'middle',
   },
 
 ];

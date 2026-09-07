@@ -12,7 +12,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '英语字母表共有26个字母：Aa到Zz。',
     tags: ['字母', '基础'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-2', type: 'fill-blank', difficulty: 'basic',
@@ -20,7 +20,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'U',
     explanation: '英语中A、E、I、O、U是元音字母，其余都是辅音字母。',
     tags: ['字母', '元音'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-3', type: 'true-false', difficulty: 'basic',
@@ -28,7 +28,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"bike" 是开音节词，i 发字母本身的音 /aɪ/，是长音。',
     tags: ['语音', '开音节'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-4', type: 'choice', difficulty: 'intermediate',
@@ -37,7 +37,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '闭音节是以辅音字母结尾的音节。"bag" 以辅音g结尾，是闭音节，a发短音/æ/。',
     tags: ['语音', '闭音节'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -45,7 +45,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: '/æ/',
     explanation: '"cat" 是闭音节词，a 发短音 /æ/。',
     tags: ['语音', '发音'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-6', type: 'true-false', difficulty: 'intermediate',
@@ -53,7 +53,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"make" 是开音节，a 发 /eɪ/；"bag" 是闭音节，a 发 /æ/。发音不同。',
     tags: ['语音', '对比'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-7', type: 'choice', difficulty: 'advanced',
@@ -62,7 +62,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: 'A "cake" 是开音节，a 发 /eɪ/；B、C、D 都是闭音节，a 发 /æ/。',
     tags: ['语音', '辨音'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-8', type: 'fill-blank', difficulty: 'advanced',
@@ -70,7 +70,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: '/iː/',
     explanation: '"ee" 字母组合通常发长音 /iː/。',
     tags: ['语音', '字母组合'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-1-9', type: 'true-false', difficulty: 'advanced',
@@ -78,7 +78,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"book" 中 "oo" 发短音 /ʊ/；"moon" 中 "oo" 发长音 /uː/。发音不同。',
     tags: ['语音', '字母组合'],
-    knowledgePointIds: ['p-eng-1'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-001'], subject: '英语', grade: 'primary',
   },
 
   // ==================== 基础词汇 ====================
@@ -89,7 +89,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: 'blue = 蓝色；red = 红色；green = 绿色；yellow = 黄色。',
     tags: ['词汇', '颜色'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-2', type: 'fill-blank', difficulty: 'basic',
@@ -97,7 +97,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'mother',
     explanation: 'mother = 母亲；father = 父亲；sister = 姐妹；brother = 兄弟。',
     tags: ['词汇', '家庭'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-3', type: 'true-false', difficulty: 'basic',
@@ -105,7 +105,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"dog" 是狗，"cat" 才是猫。',
     tags: ['词汇', '动物'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-4', type: 'choice', difficulty: 'intermediate',
@@ -114,7 +114,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: 'twelve = 12；eleven = 11；thirteen = 13；twenty = 20。',
     tags: ['词汇', '数字'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -122,7 +122,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'eye',
     explanation: 'eye = 眼睛；ear = 耳朵；nose = 鼻子；mouth = 嘴巴。',
     tags: ['词汇', '身体'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-6', type: 'true-false', difficulty: 'intermediate',
@@ -130,7 +130,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'apple（苹果）是水果的一种。',
     tags: ['词汇', '食物'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-7', type: 'choice', difficulty: 'advanced',
@@ -139,7 +139,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: 'grandmother（祖母）+ grandfather（祖父）= grandparents（祖父母/外祖父母）。',
     tags: ['词汇', '家庭'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-8', type: 'fill-blank', difficulty: 'advanced',
@@ -147,7 +147,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'school',
     explanation: 'school = 学校；classroom = 教室；library = 图书馆。',
     tags: ['词汇', '学校'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-2-9', type: 'true-false', difficulty: 'advanced',
@@ -155,7 +155,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'bread（面包）和 rice（米饭）都是食物。',
     tags: ['词汇', '食物'],
-    knowledgePointIds: ['p-eng-2'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-002'], subject: '英语', grade: 'primary',
   },
 
   // ==================== 日常交际用语 ====================
@@ -166,7 +166,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '回应感谢用 "You\'re welcome"（不客气）。',
     tags: ['交际', '感谢'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-2', type: 'fill-blank', difficulty: 'basic',
@@ -174,7 +174,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'Hello/Hi',
     explanation: 'Hello 或 Hi 是最常用的问候语。',
     tags: ['交际', '问候'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-3', type: 'true-false', difficulty: 'basic',
@@ -182,7 +182,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'Goodbye = 再见，用于道别。',
     tags: ['交际', '道别'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-4', type: 'choice', difficulty: 'intermediate',
@@ -191,7 +191,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '初次见面问候回应：Nice to meet you, too.（我也很高兴见到你。）',
     tags: ['交际', '介绍'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -199,7 +199,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'your',
     explanation: 'What\'s your name? = 你叫什么名字？回答：My name is...',
     tags: ['交际', '询问'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-6', type: 'true-false', difficulty: 'intermediate',
@@ -207,7 +207,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'How are you? 是问候语，常用回答：I\'m fine, thank you.',
     tags: ['交际', '问候'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-7', type: 'choice', difficulty: 'advanced',
@@ -216,7 +216,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: 'Can you help me? = 你能帮帮我吗？是请求帮助的常用表达。',
     tags: ['交际', '请求'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-8', type: 'fill-blank', difficulty: 'advanced',
@@ -224,7 +224,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'sorry',
     explanation: 'I\'m sorry. = 对不起。是道歉的常用表达。',
     tags: ['交际', '道歉'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-3-9', type: 'true-false', difficulty: 'advanced',
@@ -232,7 +232,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'See you later = 回头见/待会儿见，用于非正式道别。',
     tags: ['交际', '道别'],
-    knowledgePointIds: ['p-eng-3'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-003'], subject: '英语', grade: 'primary',
   },
 
   // ==================== 基本语法 ====================
@@ -243,7 +243,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: 'I 后面用 am。I am = 我是。',
     tags: ['语法', 'be动词'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-2', type: 'fill-blank', difficulty: 'basic',
@@ -251,7 +251,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'is',
     explanation: 'She（她）是第三人称单数，be动词用 is。',
     tags: ['语法', 'be动词'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-3', type: 'true-false', difficulty: 'basic',
@@ -259,7 +259,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'They（他们）是复数，be动词用 are。',
     tags: ['语法', 'be动词'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-4', type: 'choice', difficulty: 'intermediate',
@@ -268,7 +268,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: 'books 是 book 的复数形式（加s）。其他都是单数。',
     tags: ['语法', '名词复数'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -276,7 +276,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'an',
     explanation: 'apple 以元音音素开头，用 an 不用 a。',
     tags: ['语法', '冠词'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-6', type: 'true-false', difficulty: 'intermediate',
@@ -284,7 +284,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'He（他）和 She（她）都是第三人称单数人称代词。',
     tags: ['语法', '代词'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-7', type: 'choice', difficulty: 'advanced',
@@ -293,7 +293,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: 'My father 是第三人称单数，一般现在时动词要加 s/es。go → goes。',
     tags: ['语法', '时态'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-8', type: 'fill-blank', difficulty: 'advanced',
@@ -301,7 +301,7 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'don\'t',
     explanation: '一般现在时否定句：主语 + don\'t/doesn\'t + 动词原形。I 后用 don\'t。',
     tags: ['语法', '否定句'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
   {
     id: 'q-pe-4-9', type: 'true-false', difficulty: 'advanced',
@@ -309,6 +309,6 @@ export const primaryEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'There is + 单数名词，There are + 复数名词。两种表达都正确。',
     tags: ['语法', 'There be'],
-    knowledgePointIds: ['p-eng-4'], subject: '英语', grade: 'primary',
+    knowledgePointIds: ['p-eng-004'], subject: '英语', grade: 'primary',
   },
 ];

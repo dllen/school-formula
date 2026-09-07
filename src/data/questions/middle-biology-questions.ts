@@ -12,7 +12,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'A',
     explanation: '显微镜成倒像，物像偏哪边，玻片就往哪边移（同向移动）。物像在左上方，玻片向左上方移。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '植物细胞特有：细胞壁、液泡、叶绿体。细胞膜、细胞核、线粒体是动植物细胞共有的。',
     tags: ['细胞', '细胞结构'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '多莉长得像提供细胞核的母羊，说明细胞核控制着生物的遗传（细胞核是遗传信息库）。',
     tags: ['细胞', '细胞核'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '细胞膜的功能：保护细胞内部，控制物质进出（让有用的物质进入，废物排出）。',
     tags: ['细胞', '细胞膜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '物镜',
     explanation: '显微镜放大倍数=目镜倍数×物镜倍数。如目镜10×、物镜40×，则放大400倍。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '线粒体',
     explanation: '叶绿体（光合作用，将光能→化学能）和线粒体（呼吸作用，将化学能→生命活动所需能量）是能量转换器。',
     tags: ['细胞', '能量转换器'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '显微镜成倒像（上下左右都反转），"b"旋转180°后看到的是"q"。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '细胞壁是植物细胞和细菌等特有的结构，具有保护和支持细胞的作用。',
     tags: ['细胞', '细胞壁'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '细胞分裂时，染色体（遗传物质）先复制再平均分配，保证新细胞与原细胞遗传物质相同。',
     tags: ['细胞', '细胞分裂'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '叶绿体（光合作用）和线粒体（呼吸作用）是细胞中的能量转换器。细胞需要物质和能量，需要分裂。',
     tags: ['细胞', '细胞生活'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '细胞分化使细胞在形态、结构和功能上发生差异性变化，形成不同的组织。',
     tags: ['细胞', '细胞分化'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '植物细胞有细胞壁，滴清水不会破裂。动物细胞（如口腔上皮细胞）滴生理盐水。',
     tags: ['细胞', '装片制作'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '细胞壁、液泡、叶绿体是植物细胞特有的结构。细胞膜、细胞质、细胞核、线粒体动植物共有。',
     tags: ['细胞', '结构比较'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '分裂',
     explanation: '生物体由小长大依赖于：细胞生长（体积增大）、细胞分裂（数目增多）、细胞分化（形成组织）。',
     tags: ['细胞', '生长'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '低',
     explanation: '显微镜使用步骤：先低倍后高倍。低倍镜视野大亮度高，便于找到目标。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '细胞分裂使细胞数目增多，细胞分化形成不同组织，都是正常的生命活动。',
     tags: ['细胞', '分裂分化'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '叶绿体主要存在于植物绿色部分的细胞中（如叶片），非绿色部分（如根部）没有叶绿体。',
     tags: ['细胞', '叶绿体'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '细胞核中含有遗传物质DNA，是细胞的控制中心，指导细胞的生命活动和遗传。',
     tags: ['细胞', '细胞核'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '液泡中的液体叫细胞液，含有糖分、色素等物质。A控制物质进出的是细胞膜；B动力车间是线粒体；D非绿色细胞无叶绿体。',
     tags: ['细胞', '结构功能'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '植物结构层次：细胞→组织→器官→个体（无系统层次）。动物有系统层次。',
     tags: ['细胞', '结构层次'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '视野过暗时，用大光圈和凹面镜（聚光）；视野过亮时，用小光圈和平面镜。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '细胞分裂时染色体复制后平均分配，新细胞遗传物质与亲代相同，不会减半。C选项错误。',
     tags: ['细胞', '细胞分裂'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'DNA 基因',
     explanation: 'DNA（脱氧核糖核酸）是遗传信息的载体，基因是有遗传效应的DNA片段，控制生物性状。',
     tags: ['细胞', '遗传物质'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '细',
     explanation: '粗准焦螺旋用于找到物像（大幅度升降），细准焦螺旋用于使物像更清晰（小幅度升降）。',
     tags: ['细胞', '显微镜'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '细胞分化不会改变遗传物质，只是基因的选择性表达导致细胞形态、结构和功能不同。',
     tags: ['细胞', '细胞分化'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '线粒体是动植物细胞共有的能量转换器（呼吸作用场所）。叶绿体才是植物特有的。',
     tags: ['细胞', '线粒体'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '克隆羊多莉的实例证明：细胞核是遗传信息库，控制着生物的发育和遗传。',
     tags: ['细胞', '克隆技术'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '线粒体是呼吸作用的场所，分解有机物释放能量，被称为细胞的"动力车间"。',
     tags: ['细胞', '线粒体'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '保持细胞正常形态（防止细胞破裂）',
     explanation: '动物细胞无细胞壁，滴生理盐水（浓度与细胞液相近）可保持细胞正常形态。',
     tags: ['细胞', '装片制作'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '叶绿体 线粒体',
     explanation: '叶绿体是光合作用场所（合成有机物、储存能量），线粒体是呼吸作用场所（分解有机物、释放能量）。',
     tags: ['细胞', '能量代谢'],
-    knowledgePointIds: ['m-bio-1'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-001'], subject: '生物', grade: 'middle',
   },
 
   // ==================== 生物圈中的绿色植物 ====================
@@ -267,7 +267,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '光合作用在叶绿体中进行，利用光能将二氧化碳和水合成有机物，释放氧气。',
     tags: ['绿色植物', '光合作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'A',
     explanation: '植物需要量最大的无机盐：含氮（促进枝叶生长）、含磷（促进开花结果）、含钾（促进茎秆健壮）。',
     tags: ['绿色植物', '无机盐'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '胚是新植物的幼体，包括胚芽、胚轴、胚根、子叶四部分。种皮保护种子，胚乳储存营养。',
     tags: ['绿色植物', '种子结构'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '移栽时剪去部分枝叶，降低蒸腾作用，减少水分散失，提高成活率。',
     tags: ['绿色植物', '蒸腾作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '有机物（或淀粉）',
     explanation: '光合作用表达式：二氧化碳 + 水 →（光能、叶绿体）→ 有机物 + 氧气。',
     tags: ['绿色植物', '光合作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '能量',
     explanation: '呼吸作用：有机物 + 氧气 → 二氧化碳 + 水 + 能量。实质：分解有机物，释放能量。',
     tags: ['绿色植物', '呼吸作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '酒精脱色步骤：将叶片放入酒精中隔水加热，溶解叶绿素，使叶片变成黄白色。',
     tags: ['绿色植物', '光合作用实验'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '蒸腾作用：水分从叶片气孔以水蒸气形式散失。气孔由两个保卫细胞控制开闭。',
     tags: ['绿色植物', '蒸腾作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '合理密植使植物充分接受光照，增强光合作用，提高产量。过密则互相遮挡，降低产量。',
     tags: ['绿色植物', '农业生产'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '孢子植物：藻类、苔藓、蕨类（用孢子繁殖）。种子植物：裸子植物和被子植物（用种子繁殖）。',
     tags: ['绿色植物', '植物类群'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '苔藓叶片只由一层细胞构成，有害气体可从两面侵入，对空气污染敏感，可作为指示植物。',
     tags: ['绿色植物', '苔藓'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '光合作用合成有机物储存能量，呼吸作用分解有机物释放能量。呼吸作用在所有活细胞时刻进行。',
     tags: ['绿色植物', '光合呼吸'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '低温抑制呼吸作用，减少有机物的消耗。A和D增强光合作用，B促进根的呼吸。',
     tags: ['绿色植物', '呼吸作用应用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '胚',
     explanation: '菜豆（双子叶）：种皮+胚；玉米（单子叶）：种皮+胚+胚乳。都有种皮和胚。',
     tags: ['绿色植物', '种子结构'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '呼吸',
     explanation: '夜间无光，植物不能进行光合作用，只进行呼吸作用消耗氧气、释放二氧化碳。',
     tags: ['绿色植物', '呼吸作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '筛管运输有机物（自上而下），导管运输水和无机盐（自下而上）。',
     tags: ['绿色植物', '物质运输'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '裸子植物种子裸露（如松、柏）；被子植物种子有果皮包被（种类最多，又叫绿色开花植物）。',
     tags: ['绿色植物', '种子植物'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '根尖成熟区有大量根毛，是吸收水分和无机盐的主要部位。',
     tags: ['绿色植物', '根的吸收'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '绿叶在光下制造淀粉实验步骤：暗处理→遮光对照→酒精脱色→清水漂洗→碘液检验→观察。',
     tags: ['绿色植物', '实验步骤'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '蕨类用孢子繁殖，不是种子繁殖。C选项错误。',
     tags: ['绿色植物', '植物类群'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'D',
     explanation: '施肥为植物提供无机盐（矿物质），不是有机物。植物通过光合作用自己制造有机物。',
     tags: ['绿色植物', '农业应用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '黑暗中植物只进行呼吸作用，消耗氧气、释放二氧化碳，所以二氧化碳增加、氧气减少。',
     tags: ['绿色植物', '呼吸作用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '有机物 能量 有机物 能量',
     explanation: '光合作用：合成有机物，储存能量（光能→化学能）。呼吸作用：分解有机物，释放能量。',
     tags: ['绿色植物', '实质对比'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '降低叶片温度',
     explanation: '蒸腾作用意义：①促进水和无机盐运输；②降低叶片温度（水分蒸发吸热）；③增加大气湿度。',
     tags: ['绿色植物', '蒸腾意义'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '光合作用和呼吸作用既对立又联系：光合作用为呼吸提供有机物和氧气，呼吸为光合提供二氧化碳和能量。',
     tags: ['绿色植物', '光合呼吸关系'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '光合作用需要光，一般只在白天进行（有光时）；呼吸作用在所有活细胞时刻都在进行。',
     tags: ['绿色植物', '代谢时间'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '二氧化碳是光合作用的原料，适当增加CO₂浓度可以增强光合作用，提高产量。',
     tags: ['绿色植物', '光合应用'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '双子叶植物（如菜豆）营养储存在子叶中；单子叶植物（如玉米）营养储存在胚乳中。',
     tags: ['绿色植物', '种子结构'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '成熟',
     explanation: '根尖四部分：根冠（保护）→分生区（分裂）→伸长区（生长最快）→成熟区（吸收主要部位）。',
     tags: ['绿色植物', '根尖'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '带火星的木条（或卫生香）',
     explanation: '氧气能使带火星的木条复燃，这是检验氧气的方法。光合作用释放的氧气使带火星木条复燃。',
     tags: ['绿色植物', '氧气检验'],
-    knowledgePointIds: ['m-bio-2'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-002'], subject: '生物', grade: 'middle',
   },
 
   // ==================== 生物圈中的人 ====================
@@ -522,7 +522,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '小肠是消化和吸收的主要场所。特点：长（5-6米）、有皱襞和绒毛、有多种消化液。',
     tags: ['人体', '消化系统'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'D',
     explanation: '左心室壁最厚，因为要把血液泵向全身各处（体循环），距离最远、需要的动力最大。',
     tags: ['人体', '心脏'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '红细胞含有血红蛋白，能运输氧气。白细胞防御疾病，血小板凝血止血。',
     tags: ['人体', '血液'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '肺是呼吸系统的主要器官，是气体交换的场所。肺泡数量多、壁薄、外包毛细血管，利于气体交换。',
     tags: ['人体', '呼吸系统'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '反射',
     explanation: '神经调节的基本方式是反射，结构基础是反射弧（感受器→传入神经→神经中枢→传出神经→效应器）。',
     tags: ['人体', '神经调节'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '过滤（滤过）',
     explanation: '尿液形成两步：①肾小球过滤（形成原尿，无血细胞和大分子蛋白质）；②肾小管重吸收（形成终尿，无葡萄糖）。',
     tags: ['人体', '泌尿系统'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '体循环：左心室→主动脉→全身各处→上下腔静脉→右心房。肺循环：右心室→肺动脉→肺→肺静脉→左心房。',
     tags: ['人体', '循环系统'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '胰岛素调节血糖浓度。分泌不足时血糖升高，超过肾小管重吸收能力，出现糖尿（糖尿病）。',
     tags: ['人体', '激素调节'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '动脉血管指将血液从心脏送出的血管。肺动脉中流的是静脉血（送往肺进行气体交换）。',
     tags: ['人体', '血管'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '胰岛素分泌不足→血糖升高→超过肾糖阈→尿糖（糖尿病）。',
     tags: ['人体', '糖尿病'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '望梅止渴是后天学习形成的复杂反射（条件反射），需要大脑皮层参与。ABC是生来就有的简单反射。',
     tags: ['人体', '反射类型'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '血液流经肺部时，肺泡中的氧气扩散到血液，血液中的二氧化碳扩散到肺泡。氧气增加、二氧化碳减少。',
     tags: ['人体', '气体交换'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '幼年生长激素不足→侏儒症（身材矮小但智力正常）；过多→巨人症。甲状腺激素不足→呆小症。',
     tags: ['人体', '生长激素'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '肺',
     explanation: '血液循环包括体循环（左心室→全身→右心房）和肺循环（右心室→肺→左心房），同时进行。',
     tags: ['人体', '血液循环'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '温暖',
     explanation: '呼吸道功能：保证气体通过，使气体变得温暖（毛细血管）、湿润（黏液）、清洁（鼻毛、黏液）。',
     tags: ['人体', '呼吸道'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '肾小球过滤作用：血细胞和大分子蛋白质不能过滤，所以原尿中不含这些成分，但含葡萄糖。',
     tags: ['人体', '尿液形成'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '四肢静脉内有静脉瓣，防止血液倒流，保证血液流回心脏。',
     tags: ['人体', '静脉瓣'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '胆汁是由肝脏分泌的，胆囊储存胆汁。胆汁不含消化酶，但能乳化脂肪（物理性消化）。',
     tags: ['人体', '消化腺'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '身材矮小但智力正常→侏儒症（幼年生长激素不足）。呆小症（甲状腺激素不足）会智力低下。',
     tags: ['人体', '激素异常'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '小肠吸收营养物质进入血液（营养物质增加），同时小肠细胞进行呼吸消耗氧气（氧气减少）。',
     tags: ['人体', '物质交换'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'D',
     explanation: '体循环的起点是左心室，不是右心室。D选项错误。',
     tags: ['人体', '循环路径'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'A',
     explanation: '反射弧五部分：感受器→传入神经→神经中枢→传出神经→效应器。任何一个部分受损，反射都不能完成。',
     tags: ['人体', '反射弧'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '血小板',
     explanation: '血液成分：血浆（55%，水、蛋白质、葡萄糖等）+ 血细胞（红细胞、白细胞、血小板）。',
     tags: ['人体', '血液成分'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '排泄',
     explanation: '排泄：二氧化碳（肺）、尿素、多余水盐（肾脏、皮肤）。排便（排遗）不属于排泄。',
     tags: ['人体', '排泄'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '人体调节方式：神经调节（主导）和激素调节（辅助）共同作用，协调统一。',
     tags: ['人体', '调节方式'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '原尿中含有葡萄糖（肾小球过滤了小分子物质）。终尿中才不含葡萄糖（被肾小管重吸收了）。',
     tags: ['人体', '原尿成分'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '第一道：皮肤和黏膜；第二道：体液中的杀菌物质和吞噬细胞（非特异性）。第三道：免疫器官和淋巴细胞（特异性）。',
     tags: ['人体', '免疫'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '小肠是消化和吸收的主要场所。胃初步消化蛋白质，胆汁不含消化酶，大肠只吸收少量水、无机盐和维生素。',
     tags: ['人体', '消化系统'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '肝脏 胆囊',
     explanation: '肝脏是最大的消化腺，分泌胆汁（不含消化酶，乳化脂肪）。胆囊储存和浓缩胆汁。',
     tags: ['人体', '消化腺'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,7 +766,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '收缩',
     explanation: '吸气时：膈肌和肋间肌收缩→膈顶下降、肋骨上升→胸腔容积增大→肺扩张→气体入肺。',
     tags: ['人体', '呼吸过程'],
-    knowledgePointIds: ['m-bio-3'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-003'], subject: '生物', grade: 'middle',
   },
 
   // ==================== 生物的遗传与变异 ====================
@@ -777,7 +777,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'A',
     explanation: '染色体主要由DNA和蛋白质组成。DNA是遗传信息的载体，基因是有遗传效应的DNA片段。',
     tags: ['遗传变异', '染色体'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-2', type: 'choice', difficulty: 'basic',
@@ -786,7 +786,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '元素是具有相同核电荷数（质子数）的一类原子的总称。质子数决定元素种类。',
     tags: ['遗传变异', '基因'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-3', type: 'choice', difficulty: 'basic',
@@ -795,7 +795,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '"无中生有"为隐性：父母都是双眼皮（显性），生出单眼皮孩子，说明单眼皮是隐性性状。',
     tags: ['遗传变异', '显隐性'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-4', type: 'choice', difficulty: 'basic',
@@ -804,7 +804,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: '男性：22对+XY；女性：22对+XX。生男生女取决于父亲提供的精子含X还是含Y。',
     tags: ['遗传变异', '性别决定'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-5', type: 'fill-blank', difficulty: 'basic',
@@ -812,7 +812,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'DNA',
     explanation: '基因是有遗传效应的DNA片段，控制生物的性状。一个DNA分子上有许多个基因。',
     tags: ['遗传变异', '基因'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-6', type: 'fill-blank', difficulty: 'basic',
@@ -820,7 +820,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '近亲',
     explanation: '近亲携带相同隐性致病基因的可能性大，近亲结婚会显著提高隐性遗传病的发病率。',
     tags: ['遗传变异', '遗传病'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-7', type: 'true-false', difficulty: 'basic',
@@ -828,7 +828,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '染色体—DNA—基因的包含关系：一条染色体→一个DNA分子→许多个基因。',
     tags: ['遗传变异', '包含关系'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-8', type: 'true-false', difficulty: 'basic',
@@ -836,7 +836,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '父亲产生含X或含Y的两种精子（比例1:1），母亲只产生含X的卵细胞。生男生女概率各50%。',
     tags: ['遗传变异', '性别概率'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-9', type: 'true-false', difficulty: 'basic',
@@ -844,7 +844,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '由遗传物质改变引起的变异可以遗传；仅由环境引起的不可遗传变异（如晒黑的皮肤）不会遗传。',
     tags: ['遗传变异', '变异类型'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-10', type: 'choice', difficulty: 'intermediate',
@@ -853,7 +853,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'D',
     explanation: '显性基因用大写字母（A），隐性用小写（a）。AA和Aa都表现显性性状，只有aa表现隐性。',
     tags: ['遗传变异', '显隐性'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-11', type: 'choice', difficulty: 'intermediate',
@@ -862,7 +862,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '杂交水稻是通过遗传物质改变（基因重组）产生的，可以遗传。ABD都是环境引起的不可遗传变异。',
     tags: ['遗传变异', '可遗传变异'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-12', type: 'choice', difficulty: 'intermediate',
@@ -871,7 +871,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '孩子白化病（aa），父母正常但都能提供隐性基因a，所以父母的基因组成都是Aa。',
     tags: ['遗传遗传', '遗传病'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-13', type: 'choice', difficulty: 'intermediate',
@@ -880,7 +880,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'A',
     explanation: '包含关系：染色体（最大）> DNA > 基因（最小）。一条染色体上有一个DNA，一个DNA上有许多基因。',
     tags: ['遗传变异', '三者关系'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -888,7 +888,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '单眼皮',
     explanation: '相对性状：同种生物（人）同一性状（眼皮）的不同表现形式（双眼皮和单眼皮）。',
     tags: ['遗传变异', '相对性状'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -896,7 +896,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '可遗传 不可遗传',
     explanation: '可遗传变异：遗传物质改变（如杂交、基因突变）；不可遗传变异：仅环境引起（如晒黑、锻炼）。',
     tags: ['遗传变异', '变异分类'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-16', type: 'true-false', difficulty: 'intermediate',
@@ -904,7 +904,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'false',
     explanation: '表现型相同，基因型不一定相同。如AA和Aa都表现显性性状，但基因型不同。',
     tags: ['遗传变异', '表现型基因型'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-17', type: 'true-false', difficulty: 'intermediate',
@@ -912,7 +912,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '遗传病：由遗传物质改变引起的疾病。常见遗传病：白化病、色盲、血友病、先天性愚型等。',
     tags: ['遗传变异', '遗传病'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-18', type: 'true-false', difficulty: 'intermediate',
@@ -920,7 +920,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '太空育种利用太空辐射等诱导遗传物质改变，产生可遗传变异（如果实变大）。',
     tags: ['遗传变异', '太空育种'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-19', type: 'choice', difficulty: 'advanced',
@@ -929,7 +929,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'D',
     explanation: '色盲是X染色体隐性遗传。母亲XᵇXᵇ，父亲XY。儿子一定从母亲得到Xᵇ，从父亲得到Y，所以一定色盲（XᵇY）。',
     tags: ['遗传变异', '色盲遗传'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-20', type: 'choice', difficulty: 'advanced',
@@ -938,7 +938,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '变异是不定向的，可能有利也可能有害。变异为自然选择提供原材料，是生物进化的基础。',
     tags: ['遗传变异', '进化基础'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-21', type: 'choice', difficulty: 'advanced',
@@ -947,7 +947,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'B',
     explanation: 'Aa×Aa后代：AA∶Aa∶aa = 1∶2∶1。只有aa表现隐性性状，占1/4。',
     tags: ['遗传变异', '遗传概率'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-22', type: 'choice', difficulty: 'advanced',
@@ -956,7 +956,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '遗传和变异都是相对的，不是绝对的。C选项错误。',
     tags: ['遗传变异', '遗传变异关系'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-23', type: 'fill-blank', difficulty: 'advanced',
@@ -964,7 +964,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '精子 隐性',
     explanation: '基因通过精子和卵细胞传递给后代。近亲结婚增加隐性致病基因纯合的概率，提高隐性遗传病发病率。',
     tags: ['遗传变异', '基因传递'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-24', type: 'fill-blank', difficulty: 'advanced',
@@ -972,7 +972,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'X Y',
     explanation: '父亲产生含X或Y的两种精子，母亲只产生含X的卵细胞。含X的精子→女孩（XX），含Y的精子→男孩（XY）。',
     tags: ['遗传变异', '性别决定'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-25', type: 'true-false', difficulty: 'advanced',
@@ -980,7 +980,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '表现型 = 基因型 + 环境。相同基因型在不同环境下可能有不同表现型（如种子在不同土壤中的长势）。',
     tags: ['遗传变异', '表现型'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-26', type: 'true-false', difficulty: 'advanced',
@@ -988,7 +988,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '隐性基因在杂合（Aa）时被显性基因掩盖，只有纯合（aa）时才表现隐性性状。',
     tags: ['遗传变异', '隐性基因'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-27', type: 'true-false', difficulty: 'advanced',
@@ -996,7 +996,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'true',
     explanation: '预防遗传病的措施：禁止近亲结婚、遗传咨询、产前检查。这些措施可以有效降低遗传病的发病率。',
     tags: ['遗传变异', '预防遗传病'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-28', type: 'choice', difficulty: 'intermediate',
@@ -1005,7 +1005,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: 'C',
     explanation: '染色体是遗传物质（DNA）的载体。不同生物染色体数目不同（人有46条，果蝇8条）。',
     tags: ['遗传变异', '染色体'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1013,7 +1013,7 @@ export const middleBiologyQuestions: Question[] = [
     answer: '精子 卵细胞（或生殖细胞）',
     explanation: '基因通过精子和卵细胞（生殖细胞）从亲代传递给子代，精子和卵细胞是基因传递的桥梁。',
     tags: ['遗传变异', '基因传递'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
   {
     id: 'q-mbio-4-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1021,6 +1021,6 @@ export const middleBiologyQuestions: Question[] = [
     answer: '23 1',
     explanation: '人体细胞有23对（46条）染色体：22对常染色体 + 1对性染色体（男性XY，女性XX）。',
     tags: ['遗传变异', '染色体数目'],
-    knowledgePointIds: ['m-bio-4'], subject: '生物', grade: 'middle',
+    knowledgePointIds: ['m-bio-004'], subject: '生物', grade: 'middle',
   },
 ];

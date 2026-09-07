@@ -12,7 +12,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '整体认读音节有16个：zhi、chi、shi、ri、zi、ci、si、yi、wu、yu、ye、yue、yuan、yin、yun、ying。',
     tags: ['拼音与字词', '整体认读'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-2', type: 'fill-blank', difficulty: 'basic',
@@ -20,7 +20,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'ua a',
     explanation: '标调规则：有a不放过，没a找o、e。hua中有a，所以标在a上。',
     tags: ['拼音与字词', '标调规则'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-3', type: 'true-false', difficulty: 'basic',
@@ -28,7 +28,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: 'a、o、e开头的音节连接在其他音节后面时，如果音节界限容易混淆，需要用隔音符号（\'）隔开。',
     tags: ['拼音与字词', '隔音符号'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-4', type: 'choice', difficulty: 'intermediate',
@@ -37,7 +37,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: 'A应为"穿戴"，C应为"荒野"，D应为"做工""攻击"。',
     tags: ['拼音与字词', '字形'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -45,7 +45,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'G gao',
     explanation: '音序查字法：先查音序（首字母大写），再查音节（不带声调）。',
     tags: ['拼音与字词', '查字典'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-6', type: 'true-false', difficulty: 'intermediate',
@@ -53,7 +53,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '"长大"读 zhǎng（成长），"长江"读 cháng（长的）。',
     tags: ['拼音与字词', '多音字'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-7', type: 'choice', difficulty: 'advanced',
@@ -62,7 +62,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'C',
     explanation: 'A应读chǔ，B应读jī，D应读xīng。',
     tags: ['拼音与字词', '字音辨析'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-8', type: 'fill-blank', difficulty: 'advanced',
@@ -70,7 +70,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '形声 qing',
     explanation: '这些字都是形声字，"青"是声旁表音，偏旁表义。',
     tags: ['拼音与字词', '形声字'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-1-9', type: 'true-false', difficulty: 'advanced',
@@ -78,7 +78,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'false',
     explanation: '"一"的变调规则：在去声前读阳平（yí），在非去声前读去声（yì）。"一定"中"一"在去声前读阳平（yí），"一个"中"一"在非去声前读去声（yì）。读音不同。',
     tags: ['拼音与字词', '变调'],
-    knowledgePointIds: ['p-chi-1'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-001'], subject: '语文', grade: 'primary',
   },
 
   // ==================== 歇后语与谚语 ====================
@@ -89,7 +89,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '竹篮打水——一场空：比喻白费力气，什么也没得到。',
     tags: ['歇后语与谚语', '歇后语'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-2', type: 'fill-blank', difficulty: 'basic',
@@ -97,7 +97,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '谚语',
     explanation: '谚语是广泛流传于民间的简练通俗而富于意义的短句。"瑞雪兆丰年"是农业谚语。',
     tags: ['歇后语与谚语', '谚语'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-3', type: 'true-false', difficulty: 'basic',
@@ -105,7 +105,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '芝麻开花一节比一节高，比喻生活、事业不断进步。',
     tags: ['歇后语与谚语', '歇后语'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-4', type: 'choice', difficulty: 'intermediate',
@@ -114,7 +114,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'A',
     explanation: '八仙指神话传说中的八位神仙：铁拐李、汉钟离、张果老、蓝采和、何仙姑、吕洞宾、韩湘子、曹国舅。',
     tags: ['歇后语与谚语', '文化常识'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -122,7 +122,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '后人乘凉',
     explanation: '"前人栽树，后人乘凉"比喻前人为后人造福。',
     tags: ['歇后语与谚语', '谚语'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-6', type: 'true-false', difficulty: 'intermediate',
@@ -130,7 +130,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '两者都表示听到的不如亲眼见到的可靠。',
     tags: ['歇后语与谚语', '谚语理解'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-7', type: 'choice', difficulty: 'advanced',
@@ -139,7 +139,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '"绳锯木断，水滴石穿"比喻只要持之以恒，再大的困难也能克服。',
     tags: ['歇后语与谚语', '成语理解'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-8', type: 'fill-blank', difficulty: 'advanced',
@@ -147,7 +147,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '忠言逆耳利于行',
     explanation: '"良药苦口利于病，忠言逆耳利于行"：好药虽苦但能治病，忠言虽不顺耳但有利于行动。',
     tags: ['歇后语与谚语', '谚语积累'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-2-9', type: 'true-false', difficulty: 'advanced',
@@ -155,7 +155,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '这句谚语强调集思广益，团队合作能产生更大的智慧。',
     tags: ['歇后语与谚语', '谚语理解'],
-    knowledgePointIds: ['p-chi-2'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-002'], subject: '语文', grade: 'primary',
   },
 
   // ==================== 标点符号 ====================
@@ -166,7 +166,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: 'A应使用问号，C"苹果"后应使用顿号，D"说"后应使用冒号。',
     tags: ['标点符号', '标点用法'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-2', type: 'fill-blank', difficulty: 'basic',
@@ -174,7 +174,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '：" ， ！"',
     explanation: '提示语后用冒号和前引号，句中停顿用逗号，感叹句用感叹号和后引号。',
     tags: ['标点符号', '对话标点'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-3', type: 'true-false', difficulty: 'basic',
@@ -182,7 +182,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '并列词语之间用顿号，"苹果""香蕉"之间用顿号正确。',
     tags: ['标点符号', '顿号'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-4', type: 'choice', difficulty: 'intermediate',
@@ -191,7 +191,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '顿号用于句子内部并列词语之间的停顿。',
     tags: ['标点符号', '顿号作用'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -199,7 +199,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '。',
     explanation: '这是陈述句，句末用句号。注意书名号的使用。',
     tags: ['标点符号', '句号'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-6', type: 'true-false', difficulty: 'intermediate',
@@ -207,7 +207,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'false',
     explanation: '直接引用完整的话，句末点号放在引号内；引文只是句子的一部分，点号放在引号外。',
     tags: ['标点符号', '引号用法'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-7', type: 'choice', difficulty: 'advanced',
@@ -216,7 +216,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'D',
     explanation: '省略号可表示说话断断续续（B）或列举的省略（C）。A中已有"等"字，不需要省略号。',
     tags: ['标点符号', '省略号'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-8', type: 'fill-blank', difficulty: 'advanced',
@@ -224,7 +224,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '？ 反问',
     explanation: '反问句用疑问的形式表达确定的意思，句末用问号。',
     tags: ['标点符号', '反问句'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-3-9', type: 'true-false', difficulty: 'advanced',
@@ -232,7 +232,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '提示语在中间时，提示语后用逗号。如："今天天气真好，"妈妈说，"我们去公园吧。"',
     tags: ['标点符号', '提示语'],
-    knowledgePointIds: ['p-chi-3'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-003'], subject: '语文', grade: 'primary',
   },
 
   // ==================== 修辞手法 ====================
@@ -243,7 +243,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '把月亮比作小船，是比喻修辞。有本体（月亮）、喻体（小船）、比喻词（像）。',
     tags: ['修辞手法', '比喻'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-2', type: 'fill-blank', difficulty: 'basic',
@@ -251,7 +251,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '拟人',
     explanation: '"偷偷地""钻"把小草当作人来写，赋予它人的动作，是拟人。',
     tags: ['修辞手法', '拟人'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-3', type: 'true-false', difficulty: 'basic',
@@ -259,7 +259,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '"三千尺"是夸张的说法，形容瀑布从高处急冲而下。',
     tags: ['修辞手法', '夸张'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-4', type: 'choice', difficulty: 'intermediate',
@@ -268,7 +268,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '排比是三个或以上结构相似、语气一致的句子排列在一起。"真静啊，真清啊，真绿啊"构成排比。',
     tags: ['修辞手法', '排比'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -276,7 +276,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '设问',
     explanation: '设问是自问自答，先提出问题再回答，引起读者注意和思考。',
     tags: ['修辞手法', '设问'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-6', type: 'true-false', difficulty: 'intermediate',
@@ -284,7 +284,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '比喻需要两个不同事物（本体和喻人），拟人是把事物直接赋予人的特征。',
     tags: ['修辞手法', '比喻拟人区别'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-7', type: 'choice', difficulty: 'advanced',
@@ -293,7 +293,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '反问句改陈述句：去掉"难道""吗"，肯定变否定（或反之），问号改句号。',
     tags: ['修辞手法', '反问句改写'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-8', type: 'fill-blank', difficulty: 'advanced',
@@ -301,7 +301,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '比喻 书籍 阶梯',
     explanation: '把书籍比作阶梯，形象地说明了书籍对人类的帮助和引导作用。',
     tags: ['修辞手法', '比喻分析'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-4-9', type: 'true-false', difficulty: 'advanced',
@@ -309,7 +309,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '用"针掉在地上都能听见"来夸大教室的安静程度，是夸张。',
     tags: ['修辞手法', '夸张'],
-    knowledgePointIds: ['p-chi-4'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-004'], subject: '语文', grade: 'primary',
   },
 
   // ==================== 古诗文诵读 ====================
@@ -320,7 +320,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '这是李白的《静夜思》，表达了诗人对故乡的思念之情。',
     tags: ['古诗文诵读', '静夜思'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-2', type: 'fill-blank', difficulty: 'basic',
@@ -328,7 +328,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '处处闻啼鸟',
     explanation: '出自孟浩然《春晓》：春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。',
     tags: ['古诗文诵读', '春晓'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-3', type: 'true-false', difficulty: 'basic',
@@ -336,7 +336,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '出自李绅《悯农》，提醒人们珍惜粮食，尊重农民的劳动。',
     tags: ['古诗文诵读', '悯农'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-4', type: 'choice', difficulty: 'intermediate',
@@ -345,7 +345,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'A',
     explanation: '诗人抬头看到明月，低头想起故乡，表达了对故乡深深的思念。',
     tags: ['古诗文诵读', '诗意理解'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -353,7 +353,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '农民劳作',
     explanation: '描写了农民在烈日下辛勤劳作的情景。',
     tags: ['古诗文诵读', '诗意理解'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-6', type: 'true-false', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '《春晓》全诗：春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。',
     tags: ['古诗文诵读', '春晓'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-7', type: 'choice', difficulty: 'advanced',
@@ -370,7 +370,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: 'B描写的是夏天的荷花，出自杨万里《晓出净慈寺送林子方》。',
     tags: ['古诗文诵读', '季节判断'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-8', type: 'fill-blank', difficulty: 'advanced',
@@ -378,7 +378,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '王之涣 登鹳雀楼',
     explanation: '出自王之涣《登鹳雀楼》：白日依山尽，黄河入海流。欲穷千里目，更上一层楼。',
     tags: ['古诗文诵读', '文学常识'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-5-9', type: 'true-false', difficulty: 'advanced',
@@ -386,7 +386,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'false',
     explanation: '"佳节"指的是重阳节（九月九日），出自王维《九月九日忆山东兄弟》。',
     tags: ['古诗文诵读', '文化常识'],
-    knowledgePointIds: ['p-chi-5'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-005'], subject: '语文', grade: 'primary',
   },
 
   // ==================== 作文基础 ====================
@@ -397,7 +397,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '记叙文六要素：时间、地点、人物，事情的起因、经过、结果。',
     tags: ['作文基础', '记叙文'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-2', type: 'fill-blank', difficulty: 'basic',
@@ -405,7 +405,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '日期 星期 天气',
     explanation: '日记格式：第一行写日期、星期几和天气情况，正文记录当天见闻感受。',
     tags: ['作文基础', '日记格式'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-3', type: 'true-false', difficulty: 'basic',
@@ -413,7 +413,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'false',
     explanation: '写人除了外貌，还要通过语言、动作、神态、心理描写和具体事例来表现人物特点。',
     tags: ['作文基础', '写人'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-4', type: 'choice', difficulty: 'intermediate',
@@ -422,7 +422,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'A',
     explanation: '书信格式：称呼（顶格）→ 问候语 → 正文 → 祝福语 → 署名和日期（右下角）。',
     tags: ['作文基础', '书信格式'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-5', type: 'fill-blank', difficulty: 'intermediate',
@@ -430,7 +430,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '时间 空间',
     explanation: '写景常用时间顺序（四季、早晚）或空间顺序（远近、上下）来组织。',
     tags: ['作文基础', '写景'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-6', type: 'true-false', difficulty: 'intermediate',
@@ -438,7 +438,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '记事作文要按事情发展顺序写，重点部分（经过）要写详细。',
     tags: ['作文基础', '记事'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-7', type: 'choice', difficulty: 'advanced',
@@ -447,7 +447,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'B',
     explanation: '对调号用于调换相邻词语或句子的位置。删除号删除内容，改正号改正错误，添加号添加内容。',
     tags: ['作文基础', '修改符号'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-8', type: 'fill-blank', difficulty: 'advanced',
@@ -455,7 +455,7 @@ export const primaryChineseQuestions: Question[] = [
     answer: '开头精彩 内容充实 结尾有力',
     explanation: '"凤头"指开头要精彩吸引人，"猪肚"指内容要充实，"豹尾"指结尾要有力。',
     tags: ['作文基础', '写作技巧'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
   {
     id: 'q-pc-6-9', type: 'true-false', difficulty: 'advanced',
@@ -463,6 +463,6 @@ export const primaryChineseQuestions: Question[] = [
     answer: 'true',
     explanation: '状物作文通过描写事物的外形、特点、用途等，表达对事物的喜爱。',
     tags: ['作文基础', '状物'],
-    knowledgePointIds: ['p-chi-6'], subject: '语文', grade: 'primary',
+    knowledgePointIds: ['p-chi-006'], subject: '语文', grade: 'primary',
   },
 ];

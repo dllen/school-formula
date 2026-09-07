@@ -12,7 +12,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '东西半球以20°W和160°E组成的经线圈为界，避免把欧洲和非洲分在两个半球。',
     tags: ['地球与地图', '东西半球'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '夏至（6月22日前后），太阳直射北回归线，北半球昼最长、夜最短。',
     tags: ['地球与地图', '夏至'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '纬线指示东西方向，赤道最长（0°），向两极缩短，到两极缩为点。纬线是圆，指示东西。',
     tags: ['地球与地图', '纬线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '口诀"凸低为脊，凸高为谷"——等高线向高处凸出是山谷（集水线），向低处凸出是山脊（分水岭）。',
     tags: ['地球与地图', '等高线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '自西向东 一天（24小时）',
     explanation: '地球自转方向自西向东，周期约24小时（一天），产生昼夜交替和时间差异。',
     tags: ['地球与地图', '自转'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '赤道',
     explanation: '赤道（0°纬线）是南北半球的分界，以北为北半球，以南为南半球。',
     tags: ['地球与地图', '南北半球'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '经线是连接南北两极的半圆，指示南北方向，所有经线长度都相等。',
     tags: ['地球与地图', '经线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '地球自转产生昼夜交替，地球公转产生四季变化和五带划分。',
     tags: ['地球与地图', '公转与自转'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '等高线密集说明同样的高差内水平距离短，坡度大（坡陡）；稀疏则坡度小（坡缓）。',
     tags: ['地球与地图', '等高线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '比例尺=图上距离/实地距离。实地距离=4cm×100000=400000cm=4km。',
     tags: ['地球与地图', '比例尺'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'A',
     explanation: '经纬度能唯一确定地球上的一个位置。东经120°、北纬30°确定一个点。',
     tags: ['地球与地图', '经纬定位'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '北回归线是23.5°N，南回归线是23.5°S。回归线是热带与温带的分界线。',
     tags: ['地球与地图', '回归线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '春分和秋分，太阳直射赤道，全球昼夜等长。',
     tags: ['地球与地图', '春分'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '自西向东 一年',
     explanation: '地球公转方向自西向东，周期约365天（一年），地轴倾斜66.5°。',
     tags: ['地球与地图', '公转'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '0°-30° 30°-60°',
     explanation: '纬度划分：低纬0°-30°，中纬30°-60°，高纬60°-90°。',
     tags: ['地球与地图', '纬度划分'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '比例尺大小与范围、内容的关系：比例尺大→范围小→内容详细；比例尺小→范围大→内容简略。',
     tags: ['地球与地图', '比例尺'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '等高线重合表示该处坡度为90°（垂直），是陡崖（悬崖）的特征。',
     tags: ['地球与地图', '陡崖'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '本初子午线（0°经线）是东西经的分界线，以东为东经（E），以西为西经（W）。',
     tags: ['地球与地图', '本初子午线'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '冬至太阳直射南回归线（23.5°S），距南回归线越近正午太阳高度角越大。新加坡距南回归线最近。',
     tags: ['地球与地图', '正午太阳高度'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'D',
     explanation: '自转产生昼夜交替和时间差异；公转产生四季变化。自转和公转方向都是自西向东，地轴倾斜。',
     tags: ['地球与地图', '地球运动'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '等高线闭合且中间高四周低是山峰；等高线向低处凸出是山脊（凸低为脊）。',
     tags: ['地球与地图', '等高线判读'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '寒带有极昼极夜现象。C选项说法错误。热带有直射，寒带有极昼极夜，温带四季分明。',
     tags: ['地球与地图', '五带'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '北极星',
     explanation: '地球公转时，地轴是倾斜的，而且它的空间指向保持不变，始终指向北极星附近。',
     tags: ['地球与地图', '地轴'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '鞍部',
     explanation: '鞍部是两座山峰之间的低地部位，形状像马鞍，是登山时的重要休息点。',
     tags: ['地球与地图', '鞍部'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '纬线长度从赤道（最长）向两极递减，到南北两极（90°）纬线缩为一个点。',
     tags: ['地球与地图', '纬线长度'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '纬度30°有30°N和30°S两种，经度120°有120°E和120°W两种，组合共4个点。',
     tags: ['地球与地图', '经纬度'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '地球不自转也有昼夜（面向太阳的一面是昼，背向的是夜），但没有昼夜交替。不自转只会一面永远白天一面永远黑夜。',
     tags: ['地球与地图', '自转意义'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '地球是一个两极稍扁、赤道略鼓的不规则球体。平均半径6371千米，赤道周长约4万千米。',
     tags: ['地球与地图', '地球形状'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '图例（注记）',
     explanation: '地图三要素（地图的"语言"）：比例尺、方向、图例和注记。',
     tags: ['地球与地图', '地图三要素'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '等高线密集坡陡，等高线稀疏坡缓',
     explanation: '等高线密集说明同样高差内水平距离短，坡度大；稀疏则坡度小。',
     tags: ['地球与地图', '坡度判读'],
-    knowledgePointIds: ['m-geo-1'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-001'], subject: '地理', grade: 'middle',
   },
 
   // ==================== 世界地理 ====================
@@ -267,7 +267,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '七大洲面积由大到小：亚洲、非洲、北美洲、南美洲、南极洲、欧洲、大洋洲。口诀"亚非北南美，南极欧大洋"。',
     tags: ['世界地理', '七大洲'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '亚非分界线是苏伊士运河。亚欧分界线是乌拉尔山-乌拉尔河-大高加索山-土耳其海峡。',
     tags: ['世界地理', '大洲分界线'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '地中海气候特点：夏季炎热干燥，冬季温和多雨（雨热不同期）。分布在南北纬30°-40°大陆西岸。',
     tags: ['世界地理', '气候类型'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '四大洋面积由大到小：太平洋、大西洋、印度洋、北冰洋。太平洋面积最大，约占全球海洋面积的一半。',
     tags: ['世界地理', '四大洋'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '地形',
     explanation: '影响气候的三大因素：纬度位置（最基本）、海陆位置、地形（海拔越高气温越低）。',
     tags: ['世界地理', '气候因素'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '赤道',
     explanation: '热带雨林气候主要分布在赤道附近（南北纬10°之间），全年高温多雨，如亚马孙平原、刚果盆地。',
     tags: ['世界地理', '热带雨林'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '日本位于环太平洋火山地震带，地处亚欧板块与太平洋板块交界处，地壳活跃，多火山地震。',
     tags: ['世界地理', '日本'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '澳大利亚因养羊业发达被称为"骑在羊背上的国家"，因矿产资源丰富被称为"坐在矿车上的国家"。',
     tags: ['世界地理', '澳大利亚'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '南北美洲的分界线是巴拿马运河。苏伊士运河是亚非分界线。',
     tags: ['世界地理', '大洲分界线'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'A',
     explanation: '俄罗斯地跨亚欧两大洲，首都莫斯科在欧洲部分，是传统意义上的欧洲国家。',
     tags: ['世界地理', '俄罗斯'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'A',
     explanation: '巴西的亚马孙平原有世界上面积最大的热带雨林（亚马孙雨林），被称为"地球之肺"。',
     tags: ['世界地理', '巴西'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '温带海洋性气候：全年温和湿润（冬温夏凉，降水均匀），分布在南北纬40°-60°大陆西岸。',
     tags: ['世界地理', '温带海洋性'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '美国硅谷（Silicon Valley）位于旧金山附近，是世界著名的高新技术产业中心。',
     tags: ['世界地理', '美国'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '太平洋',
     explanation: '日本资源贫乏、市场狭小，工业集中在太平洋沿岸和濑户内海沿岸，便于进口原料和出口产品。',
     tags: ['世界地理', '日本工业'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '考拉（或鸸鹋、鸭嘴兽等）',
     explanation: '澳大利亚因长期孤立于海洋中，特有动物有袋鼠、考拉、鸸鹋、鸭嘴兽等。',
     tags: ['世界地理', '澳大利亚'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '热带沙漠气候分布在南北回归线附近的大陆西岸和内陆，如撒哈拉沙漠、阿拉伯半岛，全年炎热干燥。',
     tags: ['世界地理', '热带沙漠'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '美国农业特点：地区生产专业化（如玉米带、小麦带）、机械化程度高、商品率高。',
     tags: ['世界地理', '美国农业'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '一般规律是纬度低气温高，但还受海陆位置、地形影响。世界极端高温出现在副热带沙漠（如撒哈拉），不在赤道。',
     tags: ['世界地理', '气温分布'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '板块构造学说：板块交界处地壳活跃，多火山地震；板块内部较稳定。日本位于板块交界处。',
     tags: ['世界地理', '板块运动'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '亚热带季风气候夏季高温多雨（雨热同期）。地中海气候雨热不同期（夏季干、冬季雨）。',
     tags: ['世界地理', '气候特点'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '地球表面71%是海洋，29%是陆地（"三分陆地，七分海洋"）。陆地主要集中在北半球，北极是海洋（北冰洋）。',
     tags: ['世界地理', '海陆分布'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'D',
     explanation: '美国工业集中在东北部（传统工业）和南部、西部（高新技术产业），不是内陆地区。',
     tags: ['世界地理', '国家特色'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '寒冷干燥',
     explanation: '温带季风气候：夏季高温多雨，冬季寒冷干燥。分布在亚洲东部（如中国北方、朝鲜半岛）。',
     tags: ['世界地理', '温带季风'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '亚马孙 巴西',
     explanation: '世界最大平原是亚马孙平原（巴西），最大高原是巴西高原。最高的高原是青藏高原。',
     tags: ['世界地理', '地形之最'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '地中海气候（30°-40°大陆西岸）夏季干冬季雨；温带海洋性气候（40°-60°大陆西岸）全年温和湿润。',
     tags: ['世界地理', '气候对比'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '日本工业集中在太平洋沿岸是因为海岸线曲折、多良港，便于进口原料和出口产品，而不是因为矿产资源丰富（日本资源贫乏）。',
     tags: ['世界地理', '日本工业'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '澳大利亚位于南半球，季节与北半球相反。中国夏季时澳大利亚是冬季。',
     tags: ['世界地理', '澳大利亚'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '南北美洲的分界线是巴拿马运河。亚非分界线是苏伊士运河，亚欧分界线是乌拉尔山等。',
     tags: ['世界地理', '大洲分界线'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '干湿（或旱雨）',
     explanation: '热带草原气候：全年高温，分干湿两季（或旱雨两季）。分布在热带雨林气候南北两侧。',
     tags: ['世界地理', '热带草原'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '俄罗斯 中国',
     explanation: '俄罗斯是世界面积最大的国家（约1709万km²），中国是世界人口最多的国家。',
     tags: ['世界地理', '国家之最'],
-    knowledgePointIds: ['m-geo-2'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-002'], subject: '地理', grade: 'middle',
   },
 
   // ==================== 中国地理 ====================
@@ -522,7 +522,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '我国地势西高东低，呈三级阶梯状分布。使许多大河自西向东流入海洋。',
     tags: ['中国地理', '地势'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'A',
     explanation: '秦岭—淮河一线：1月0℃等温线、800mm等降水量线、亚热带与暖温带、湿润区与半湿润区分界。',
     tags: ['中国地理', '秦岭淮河'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '长江是我国第一大河，全长6300多千米，发源于唐古拉山，注入东海。',
     tags: ['中国地理', '长江'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'A',
     explanation: '我国人口分布以黑河—腾冲一线为界，东多西少。东部自然条件好、经济发达，人口稠密。',
     tags: ['中国地理', '人口分布'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '黄土',
     explanation: '黄河中游流经黄土高原，黄土高原水土流失严重，大量泥沙进入黄河，使黄河含沙量剧增。',
     tags: ['中国地理', '黄河'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '唐古拉 东',
     explanation: '长江发源于青藏高原唐古拉山，全长6300多千米，注入东海。被称为"水能宝库""黄金水道"。',
     tags: ['中国地理', '长江'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '我国行政区划：34个省级行政区（23省+5自治区+4直辖市+2特别行政区），基本为省、县、乡三级。',
     tags: ['中国地理', '行政区划'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '黄河中游黄土高原水土流失严重，泥沙在下游淤积使河床抬高形成"地上河"。治理关键是治沙（中游水土保持）。',
     tags: ['中国地理', '黄河治理'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '我国有56个民族，汉族约占91%，是人口最多的民族。壮族是人口最多的少数民族。',
     tags: ['中国地理', '民族'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '第一级阶梯以青藏高原为主，平均海拔4000米以上。第二级阶梯以高原、盆地为主，第三级阶梯以平原、丘陵为主。',
     tags: ['中国地理', '三级阶梯'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '一二阶梯分界：昆仑山—祁连山—横断山。二三阶梯分界：大兴安岭—太行山—巫山—雪峰山。',
     tags: ['中国地理', '阶梯分界'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'C',
     explanation: '四大地理区域：北方地区、南方地区、西北地区（干旱）、青藏地区（高寒）。',
     tags: ['中国地理', '四大区域'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '长江上游流经阶梯交界处，落差大，水流急，水能资源丰富，被称为"水能宝库"。',
     tags: ['中国地理', '长江水能'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '季风气候',
     explanation: '我国气候特征：①气候复杂多样（跨多个温度带和干湿区）；②季风气候显著（东部季风区面积大）。',
     tags: ['中国地理', '气候特征'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '大',
     explanation: '我国冬季南北温差大（北方纬度高、离冬季风源地近），夏季全国普遍高温（太阳直射北半球）。',
     tags: ['中国地理', '气温分布'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '受海陆位置和夏季风影响，我国降水从东南沿海向西北内陆递减。东南沿海降水多，西北内陆降水少。',
     tags: ['中国地理', '降水分布'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '我国民族分布特点：大散居（广泛分布）、小聚居（集中分布）、交错杂居（相互交错居住）。',
     tags: ['中国地理', '民族分布'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '治理黄河的关键是中游黄土高原的水土保持（治沙），不是加固下游大堤。泥沙来源在中游。',
     tags: ['中国地理', '黄河治理'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'D',
     explanation: '秦岭—淮河是湿润区与半湿润区的分界，不是半干旱与干旱区的分界。D选项错误。',
     tags: ['中国地理', '秦岭淮河'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '长江中下游平原地势低平、河湖众多、气候湿热，盛产稻米和淡水鱼，被称为"鱼米之乡"。',
     tags: ['中国地理', '长江中下游'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '西北地区干旱，以畜牧业为主（内蒙古、新疆牧区）。A北方以旱地为主；C青藏以高寒牧业和河谷农业为主；D南方以亚热带季风气候为主。',
     tags: ['中国地理', '四大区域'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'B',
     explanation: '黄河中游黄土高原水土流失严重，大量泥沙被带到下游，由于下游地势平坦，流速减慢，泥沙淤积使河床不断抬高。',
     tags: ['中国地理', '地上河'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '二 三',
     explanation: '长江三峡位于我国第二级阶梯和第三级阶梯的交界处（巫山附近），落差大，水能丰富。',
     tags: ['中国地理', '三峡'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '960 三',
     explanation: '我国陆地面积约960万平方千米，仅次于俄罗斯和加拿大，居世界第三位。',
     tags: ['中国地理', '疆域'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '长江全长6300多千米，是我国第一大河，也是亚洲第一长河。长度、水量、流域面积均居全国第一。',
     tags: ['中国地理', '长江'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'true',
     explanation: '青藏高原平均海拔4000米以上，海拔越高气温越低（每升高100米气温下降约0.6℃），所以夏季气温最低。',
     tags: ['中国地理', '气温'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'false',
     explanation: '我国自然资源总量丰富，但由于人口众多，人均占有量不足。这是我国资源的基本国情。',
     tags: ['中国地理', '资源'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: 'D',
     explanation: '青藏地区因海拔高（平均4000米以上），形成"高寒"的突出特征。',
     tags: ['中国地理', '四大区域'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleGeographyQuestions: Question[] = [
     answer: '渤 二',
     explanation: '黄河全长5464千米，是我国第二长河，注入渤海。治理黄河的关键是中游水土保持。',
     tags: ['中国地理', '黄河'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
   {
     id: 'q-mgeo-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,6 +766,6 @@ export const middleGeographyQuestions: Question[] = [
     answer: '纬度 冬季风源地',
     explanation: '冬季南北温差大原因：①南北跨纬度近50°，太阳辐射差异大；②北方离冬季风源地近，受寒冷冬季风影响大。',
     tags: ['中国地理', '温差原因'],
-    knowledgePointIds: ['m-geo-3'], subject: '地理', grade: 'middle',
+    knowledgePointIds: ['m-geo-003'], subject: '地理', grade: 'middle',
   },
 ];

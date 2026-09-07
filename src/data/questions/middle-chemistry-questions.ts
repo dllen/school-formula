@@ -12,7 +12,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '蜡烛燃烧生成了二氧化碳和水，有新物质生成，属于化学变化。ABD都是物理变化（没有新物质生成）。',
     tags: ['走进化学世界', '化学变化'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '可燃性需要通过燃烧这一化学变化才能表现，属于化学性质。颜色、状态、气味等是物理性质。',
     tags: ['走进化学世界', '化学性质'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '取用固体药品：粉末用药匙，块状用镊子。不能直接用手拿（"三不"原则：不尝、不闻、不直接触摸）。',
     tags: ['走进化学世界', '药品取用'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '给试管中液体加热：液体不超过1/3；试管与桌面成45°角；先预热再集中加热；试管口不对着人。',
     tags: ['走进化学世界', '加热操作'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '化学 是否有新物质生成',
     explanation: '物理变化：没有新物质生成（如状态、形状改变）。化学变化：有新物质生成。判断标准：是否有新物质生成。',
     tags: ['走进化学世界', '物质变化'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '扇闻',
     explanation: '闻气体的方法：用手轻轻扇闻，不能将鼻子凑到容器口直接闻。',
     tags: ['走进化学世界', '闻气体'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '发光发热的变化不一定是化学变化，如灯泡通电发光发热是物理变化。判断化学变化的唯一标准是有新物质生成。',
     tags: ['走进化学世界', '变化判断'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '酒精灯火焰：外焰（温度最高，约500℃）> 内焰 > 焰心。加热用外焰。',
     tags: ['走进化学世界', '酒精灯'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '气密性检查：导管浸入水中，手握试管，管口有气泡冒出，松手后导管内形成一段水柱，则气密性良好。',
     tags: ['走进化学世界', '气密性'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '氧气由一种物质组成，是纯净物。空气（多种气体）、海水（多种物质）、石灰石（含杂质）都是混合物。',
     tags: ['走进化学世界', '物质分类'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '酒精灯用灯帽盖灭（不能用嘴吹）。块状固体应沿试管壁滑入（不能直接投入，会打破试管底）。',
     tags: ['走进化学世界', '实验操作'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '物理性质（颜色、状态、气味、密度等）不需要化学变化就能表现。化学性质（可燃性、稳定性等）需要化学变化表现。',
     tags: ['走进化学世界', '性质区分'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '量筒只能量取液体体积，不能加热。试管可直接加热，烧杯需垫石棉网加热，蒸发皿可直接加热。',
     tags: ['走进化学世界', '仪器使用'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '倒',
     explanation: '取用液体：瓶塞倒放（防止污染），标签向手心（防止腐蚀标签），瓶口紧挨试管口。',
     tags: ['走进化学世界', '液体取用'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '沉淀',
     explanation: '化学变化常伴随的现象：发光、放热、变色、产生气体、生成沉淀。但这些现象不是判断化学变化的唯一标准。',
     tags: ['走进化学世界', '变化现象'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学变化过程中一定伴随物理变化（如蜡烛燃烧时蜡烛先熔化再燃烧）。但物理变化不一定伴随化学变化。',
     tags: ['走进化学世界', '变化关系'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '托盘天平：左物右码。药品放左盘，砝码放右盘。若放反，药品质量 = 砝码质量 - 游码质量。',
     tags: ['走进化学世界', '天平使用'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '酒精量：不超过2/3（防止溢出着火），不少于1/4（防止灯内酒精蒸气着火）。',
     tags: ['走进化学世界', '酒精灯'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '用剩的药品不能放回原瓶（防止污染），应放入指定容器。B选项错误。',
     tags: ['走进化学世界', '实验安全'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '俯视读数：读数 > 实际体积（偏大），所以实际量取的液体偏小。仰视则相反（读数偏小，实际偏大）。',
     tags: ['走进化学世界', '量筒读数'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '蜡烛燃烧时，蜡烛先熔化（物理变化）再燃烧生成CO₂和H₂O（化学变化），包含两种变化。',
     tags: ['走进化学世界', '综合变化'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '同种元素可能形成不同单质（如O₂和O₃混合），属于混合物。C正确。',
     tags: ['走进化学世界', '物质分类'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '防止冷凝水倒流炸裂试管',
     explanation: '固体加热时试管口略向下倾斜，防止反应生成的水（或湿存水）冷凝后倒流到热的试管底部，使试管炸裂。',
     tags: ['走进化学世界', '加热安全'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '性质',
     explanation: '化学的研究对象：物质的组成、结构、性质及变化规律。',
     tags: ['走进化学世界', '化学定义'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学变化中，旧化学键断裂吸收能量，新化学键形成释放能量，所以一定伴随能量变化（吸热或放热）。',
     tags: ['走进化学世界', '能量变化'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '催化剂特点："一变两不变"——改变化学反应速率，本身质量和化学性质不变。',
     tags: ['走进化学世界', '催化剂'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '发光发热的变化不一定是化学变化。灯泡通电发光发热是物理变化。判断化学变化的唯一标准是有新物质生成。',
     tags: ['走进化学世界', '变化判断'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '能直接加热的仪器：试管、蒸发皿、燃烧匙。烧杯和锥形瓶需垫石棉网加热。集气瓶不能加热。',
     tags: ['走进化学世界', '仪器加热'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '直接闻药品的气味（凑到容器口闻）',
     explanation: '"三不"原则：不直接用手接触药品、不凑到容器口闻气味、不尝药品味道。',
     tags: ['走进化学世界', '三不原则'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '生成沉淀',
     explanation: '化学变化常伴随的现象：发光、放热、变色、产生气体、生成沉淀。注意：有这些现象不一定就是化学变化。',
     tags: ['走进化学世界', '变化现象'],
-    knowledgePointIds: ['m-chem-1'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-001'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 空气与氧气 ====================
@@ -267,7 +267,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '空气成分（体积分数）：氮气约78%、氧气约21%、稀有气体约0.94%、二氧化碳约0.03%。',
     tags: ['空气与氧气', '空气成分'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '氧气检验：将带火星的木条伸入集气瓶中，木条复燃则为氧气。验满：带火星木条放瓶口。',
     tags: ['空气与氧气', '氧气检验'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '铁丝在氧气中：剧烈燃烧，火星四射，生成黑色固体（Fe₃O₄）。瓶底要放少量水或细沙防炸裂。',
     tags: ['空气与氧气', '铁丝燃烧'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '二氧化锰是催化剂，起催化作用（"一变两不变"：改变化学反应速率，本身质量和化学性质不变）。',
     tags: ['空气与氧气', '催化剂'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '无 无',
     explanation: '氧气的物理性质：无色无味气体，密度比空气略大，不易溶于水。液态和固态为淡蓝色。',
     tags: ['空气与氧气', '氧气性质'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '白 二氧化碳（CO₂）',
     explanation: '木炭在氧气中：发白光，生成CO₂（使澄清石灰水变浑浊）。在空气中燃烧发红光。',
     tags: ['空气与氧气', '木炭燃烧'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '氧气具有助燃性（支持燃烧），但本身不可燃。能燃烧的物质叫可燃物。',
     tags: ['空气与氧气', '助燃性'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '硫在氧气中：蓝紫色火焰，生成有刺激性气味的SO₂。在空气中燃烧呈淡蓝色火焰。',
     tags: ['空气与氧气', '硫燃烧'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '收集方法：排水法（较纯，因为O₂不易溶于水）或向上排空气法（较干燥，因为O₂密度比空气大）。',
     tags: ['空气与氧气', '收集方法'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '空气是混合物，各成分含量相对稳定但不是不变，含有少量水蒸气。空气是重要的自然资源。',
     tags: ['空气与氧气', '空气概述'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '试管口放棉花：防止加热时高锰酸钾粉末随氧气流进入导管，堵塞导管。',
     tags: ['空气与氧气', '制氧操作'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '红磷在氧气中燃烧产生大量白烟（P₂O₅固体小颗粒）。注意"烟"是固体小颗粒，"雾"是小液滴。',
     tags: ['空气与氧气', '燃烧现象'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '拉瓦锡通过实验最早得出空气由氧气（约1/5）和氮气（约4/5）组成。',
     tags: ['空气与氧气', '化学史'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '过氧化氢（或双氧水）分解',
     explanation: '三种制氧方法：①2KMnO₄ △→ K₂MnO₄ + MnO₂ + O₂↑ ②2H₂O₂ MnO₂→ 2H₂O + O₂↑ ③2KClO₃ MnO₂/△→ 2KCl + 3O₂↑',
     tags: ['空气与氧气', '制氧原理'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '防止高温熔融物溅落炸裂瓶底',
     explanation: '铁丝燃烧生成高温的Fe₃O₄熔融物，直接落到瓶底会炸裂集气瓶，所以瓶底放水或细沙。',
     tags: ['空气与氧气', '安全操作'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '催化剂参与化学反应（改变反应路径），但反应前后质量和化学性质不变。',
     tags: ['空气与氧气', '催化剂'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '排水法收集气体的条件：气体不易溶于水且不与水反应。O₂不易溶于水，可用排水法。',
     tags: ['空气与氧气', '收集方法'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '空气中氧气的体积分数约为21%，不是质量分数。氧气的质量分数约为23%。',
     tags: ['空气与氧气', '成分含量'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '氧气具有助燃性，但本身不可燃。C选项错误。',
     tags: ['空气与氧气', '氧气性质'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '过氧化氢制氧：常温反应，不需加热，操作简便，节约能源。这是其最大优点。',
     tags: ['空气与氧气', '制氧比较'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '铁丝燃烧放水防炸裂；硫燃烧放水吸收SO₂（防止污染空气）。木炭和红磷燃烧不需要放水。',
     tags: ['空气与氧气', '安全操作'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '催化剂"一变两不变"：改变化学反应速率（可能加快也可能减慢），本身质量和化学性质不变。',
     tags: ['空气与氧气', '催化剂'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '气泡连续均匀冒出',
     explanation: '排水法收集：不能立即收集（开始冒出的是试管内的空气），待气泡连续均匀冒出时再收集。',
     tags: ['空气与氧气', '收集操作'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'MnO₂',
     explanation: '过氧化氢在二氧化锰催化下分解：2H₂O₂ MnO₂→ 2H₂O + O₂↑。MnO₂是催化剂。',
     tags: ['空气与氧气', '方程式'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '工业制氧：分离液态空气（物理变化），利用液氮（沸点-196℃）和液氧（沸点-183℃）的沸点不同。',
     tags: ['空气与氧气', '工业制氧'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '氧气能提供氧，具有氧化性，是一种常见的氧化剂。物质与氧发生的反应叫氧化反应。',
     tags: ['空气与氧气', '氧化性'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '硫燃烧生成SO₂，SO₂有毒会污染空气。水能吸收SO₂，防止空气污染。',
     tags: ['空气与氧气', '环保'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '铁丝在氧气中燃烧火星四射。A硫在空气中是淡蓝色火焰；B木炭在氧气中发白光；D红磷产生白烟（不是白雾）。',
     tags: ['空气与氧气', '燃烧现象'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '加热高锰酸钾 加热氯酸钾',
     explanation: '三种方法：①加热高锰酸钾（需要加热）②过氧化氢分解（不需加热）③加热氯酸钾（需要加热）。',
     tags: ['空气与氧气', '制氧方法'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '集气瓶口 复燃',
     explanation: '验满方法：带火星木条放瓶口（不是伸入瓶中），木条复燃则已满。检验和验满的位置不同。',
     tags: ['空气与氧气', '验满'],
-    knowledgePointIds: ['m-chem-2'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-002'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 物质构成的奥秘 ====================
@@ -522,7 +522,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '分子是保持物质化学性质的最小粒子。水由水分子构成，保持水化学性质的最小粒子是水分子。',
     tags: ['物质构成', '分子'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '水变成水蒸气：分子间隔变大（分子本身大小和数目不变），所以体积变大。',
     tags: ['物质构成', '分子性质'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '地壳中元素含量前四位：氧（O）、硅（Si）、铝（Al）、铁（Fe）。氧最多。',
     tags: ['物质构成', '元素'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '元素是具有相同核电荷数（质子数）的一类原子的总称。质子数决定元素种类。',
     tags: ['物质构成', '元素定义'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '化学 化学变化',
     explanation: '分子：保持物质化学性质的最小粒子。原子：化学变化中的最小粒子（化学变化中原子不可分）。',
     tags: ['物质构成', '分子原子'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '阳离子',
     explanation: '带正电的粒子：阳离子（失去电子的原子）、质子、原子核。阴离子带负电。',
     tags: ['物质构成', '离子'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '分子的基本性质：①质量和体积都很小；②不断运动；③分子之间有间隔。',
     tags: ['物质构成', '分子性质'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '元素是宏观概念，只讲种类不讲个数。如"水由氢元素和氧元素组成"，不能说"两个氢元素"。',
     tags: ['物质构成', '元素'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '原子呈电中性：质子数（正电）= 核外电子数（负电）= 核电荷数。',
     tags: ['物质构成', '原子结构'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '十字交叉法：Al(+3)和O(-2)，最小公倍数6，Al: 6/3=2，O: 6/2=3。化学式Al₂O₃。',
     tags: ['物质构成', '化学式'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'H₂O表示一个水分子由2个氢原子和1个氧原子构成。元素不讲个数，C选项错误。',
     tags: ['物质构成', '化学式意义'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'H⁺是氢离子（失去一个电子），属于阳离子。H₂是分子，H是原子，²H是氢的一种同位素。',
     tags: ['物质构成', '离子'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '原子核（质子+中子）集中了原子的绝大部分质量。电子质量很小。原子核带正电。',
     tags: ['物质构成', '原子结构'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '零（0）',
     explanation: '化合价规则：单质中元素化合价为0；化合物中正负化合价代数和为0。',
     tags: ['物质构成', '化合价'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '①2个氢原子 ②一个氢分子由2个氢原子构成',
     explanation: '化学用语中数字的含义：前面数字=原子/分子个数；右下角数字=一个分子中原子的个数。',
     tags: ['物质构成', '化学用语'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '分子在不断运动，花香分子运动到空气中，进入人的鼻腔，所以能闻到花香。',
     tags: ['物质构成', '分子运动'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '热胀冷缩是因为分子间隔随温度改变（温度高间隔大，温度低间隔小），分子本身大小不变。',
     tags: ['物质构成', '分子间隔'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '元素由质子数决定。Na和Na⁺质子数相同（都是11），属于同种元素。',
     tags: ['物质构成', '元素'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '核外电子总数=2+8+7=17，质子数=17，是氯元素（Cl）。最外层7个电子，易得1个电子形成Cl⁻。',
     tags: ['物质构成', '原子结构'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '构成物质的粒子：分子（如水）、原子（如金属）、离子（如NaCl）。D正确。',
     tags: ['物质构成', '粒子种类'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'Fe₃O₄：3x + 4×(-2) = 0，x = +8/3。Fe₃O₄可看作FeO·Fe₂O₃，含+2和+3两种价态。',
     tags: ['物质构成', '化合价计算'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '3O₂表示3个氧分子。A元素不讲个数（2N是2个氮原子）；C应为4H；D应为Ca²⁺。',
     tags: ['物质构成', '化学用语'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '各原子的相对原子质量之和 18',
     explanation: 'H₂O的相对分子质量 = 1×2 + 16 = 18。',
     tags: ['物质构成', '相对分子质量'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '正 阳 负 阴',
     explanation: '原子失电子→带正电→阳离子（如Na⁺）；原子得电子→带负电→阴离子（如Cl⁻）。',
     tags: ['物质构成', '离子形成'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '同种元素的原子和离子质子数相同，但电子数不同（离子得失了电子）。如Na有11个电子，Na⁺有10个。',
     tags: ['物质构成', '原子离子'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '分子和原子不能笼统比较大小。只能说"由该原子构成的分子比该原子大"。如氢分子比铁原子小。',
     tags: ['物质构成', '分子原子大小'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学式书写规则：正价前、负价后。如NaCl（Na⁺Cl⁻）、H₂O（H⁺O²⁻）。',
     tags: ['物质构成', '化学式书写'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '分子是保持物质化学性质的最小粒子（不是所有性质）。在化学变化中分子可分，原子不可分。',
     tags: ['物质构成', '分子定义'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '铝（Al） 氧（O）',
     explanation: '地壳中元素含量：氧（最多）、硅、铝（最多金属）、铁。',
     tags: ['物质构成', '元素含量'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,7 +766,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '+5（或KCl⁺⁵O₃）',
     explanation: 'K(+1) + Cl(x) + O₃(3×-2) = 0，x = +5。氯酸钾中氯元素为+5价。',
     tags: ['物质构成', '化合价计算'],
-    knowledgePointIds: ['m-chem-3'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-003'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 化学方程式 ====================
@@ -777,7 +777,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '3Fe + 2O₂ 点燃→ Fe₃O₄。配平方法：观察法，先配平氧原子（最小公倍数4），再配平铁。',
     tags: ['化学方程式', '配平'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-2', type: 'choice', difficulty: 'basic',
@@ -786,7 +786,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '不违反。增加的质量是参加反应的氧气的质量。所有化学反应都遵守质量守恒定律。',
     tags: ['化学方程式', '质量守恒'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-3', type: 'choice', difficulty: 'basic',
@@ -795,7 +795,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '2H₂O 通电→ 2H₂↑ + O₂↑。质量比36:4:38。36g水生成4g氢气。',
     tags: ['化学方程式', '方程式计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-4', type: 'choice', difficulty: 'basic',
@@ -804,7 +804,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '质量守恒的微观解释：化学反应前后，原子的种类、数目、质量都不变。',
     tags: ['化学方程式', '质量守恒'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-5', type: 'fill-blank', difficulty: 'basic',
@@ -812,7 +812,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '配（配平）',
     explanation: '书写步骤：写（反应物和生成物的化学式）→配（配平）→注（反应条件、↑↓）→等（改等号）。',
     tags: ['化学方程式', '书写步骤'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-6', type: 'fill-blank', difficulty: 'basic',
@@ -820,7 +820,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '原子',
     explanation: '质量守恒的微观本质：化学反应前后原子的种类、数目、质量都不变。',
     tags: ['化学方程式', '质量守恒本质'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-7', type: 'true-false', difficulty: 'basic',
@@ -828,7 +828,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学方程式标注："↑"表示生成物中有气体（反应物无气体时）；"↓"表示生成物中有沉淀。',
     tags: ['化学方程式', '标注'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-8', type: 'true-false', difficulty: 'basic',
@@ -836,7 +836,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '配平只能改变化学式前的系数，不能改变化学式中的下标（否则就改变了物质的种类）。',
     tags: ['化学方程式', '配平原则'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-9', type: 'true-false', difficulty: 'basic',
@@ -844,7 +844,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '有气体参与的反应，在开放容器中质量会变化（气体逸出或进入），所以必须在密闭容器中验证。',
     tags: ['化学方程式', '实验验证'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-10', type: 'choice', difficulty: 'intermediate',
@@ -853,7 +853,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '正确的方程式：2H₂O 通电→ 2H₂↑ + O₂↑。需要配平、标注条件和气体符号。',
     tags: ['化学方程式', '书写正误'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-11', type: 'choice', difficulty: 'intermediate',
@@ -862,7 +862,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '质量守恒：2×28 + M(B) = 2×44，M(B) = 88-56 = 32。',
     tags: ['化学方程式', '质量计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-12', type: 'choice', difficulty: 'intermediate',
@@ -871,7 +871,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '根据方程式计算时，所用质量必须是纯净物的质量。含杂质的要先换算：纯物质质量 = 不纯物质量 × 纯度。',
     tags: ['化学方程式', '计算要求'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-13', type: 'choice', difficulty: 'intermediate',
@@ -880,7 +880,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '质量比 = 化学计量数×相对分子质量：2×2 : 1×32 : 2×18 = 4∶32∶36 = 1∶8∶9。',
     tags: ['化学方程式', '质量比'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -888,7 +888,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '未知数 化学方程式 相关物质的相对分子质量和已知量、未知量',
     explanation: '计算五步：设（未知数）→写（方程式）→标（相关量）→列（比例式）→解（求解作答）。',
     tags: ['化学方程式', '计算步骤'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -896,7 +896,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '加热（△）',
     explanation: '该反应需要加热（△）才能进行。高锰酸钾在加热条件下分解生成锰酸钾、二氧化锰和氧气。',
     tags: ['化学方程式', '反应条件'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-16', type: 'true-false', difficulty: 'intermediate',
@@ -904,7 +904,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学方程式中，各物质的化学计量数×相对分子质量之比 = 实际质量之比。这是计算的基础。',
     tags: ['化学方程式', '质量关系'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-17', type: 'true-false', difficulty: 'intermediate',
@@ -912,7 +912,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '"△"表示加热，"点燃"要写"点燃"。两者是不同的反应条件。',
     tags: ['化学方程式', '条件标注'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-18', type: 'true-false', difficulty: 'intermediate',
@@ -920,7 +920,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '2H₂ + O₂ 点燃→ 2H₂O，质量比4∶32∶36。4g H₂与32g O₂恰好完全反应生成36g H₂O。',
     tags: ['化学方程式', '质量计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-19', type: 'choice', difficulty: 'advanced',
@@ -929,7 +929,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '质量比A∶B = 7∶24，A+B = 7+24 = 31份。但生成物只有22g，说明不是恰好按7∶24。根据质量守恒，A+B = C+D = 22g。A = 22 × 7/31 ≈ 5g。重新计算：A:B=7:24，设A=7k，B=24k，31k=22，k=22/31，A=7×22/31≈5g。但选项中没有5g，说明题目数据有问题。按最接近的选A。',
     tags: ['化学方程式', '复杂计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-20', type: 'choice', difficulty: 'advanced',
@@ -938,7 +938,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '化学方程式表示的是反应物和生成物的微粒个数比（不是分子数量关系，因为有些物质不是由分子构成的）。',
     tags: ['化学方程式', '意义'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-21', type: 'choice', difficulty: 'advanced',
@@ -947,7 +947,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '质量比：2×28 : 32 = 56 : 32。56g CO需要32g O₂。',
     tags: ['化学方程式', '质量计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-22', type: 'choice', difficulty: 'advanced',
@@ -956,7 +956,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '化学方程式的量的读法：每4份质量的氢气与32份质量的氧气完全反应生成36份质量的水。',
     tags: ['化学方程式', '读法'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-23', type: 'fill-blank', difficulty: 'advanced',
@@ -964,7 +964,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '32 44',
     explanation: '质量比：12∶32∶44。12g碳需要32g O₂，生成44g CO₂。',
     tags: ['化学方程式', '质量计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-24', type: 'fill-blank', difficulty: 'advanced',
@@ -972,7 +972,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '2 1 2',
     explanation: '化学方程式的微观意义：反应物和生成物的微粒个数比。2个H₂分子 + 1个O₂分子 → 2个H₂O分子。',
     tags: ['化学方程式', '微观意义'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-25', type: 'true-false', difficulty: 'advanced',
@@ -980,7 +980,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '化学方程式中，各物质的化学计量数之比 = 其分子（或原子）个数之比 = 物质的量之比。',
     tags: ['化学方程式', '计量数意义'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-26', type: 'true-false', difficulty: 'advanced',
@@ -988,7 +988,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '催化剂写在等号的上方（或下方），表示反应条件之一。如2H₂O₂ MnO₂→ 2H₂O + O₂↑。',
     tags: ['化学方程式', '催化剂标注'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-27', type: 'true-false', difficulty: 'advanced',
@@ -996,7 +996,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '"↑"只在反应物无气体而生成物有气体时标注。如果反应物已有气体，生成物的气体不标"↑"。',
     tags: ['化学方程式', '标注规则'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-28', type: 'choice', difficulty: 'intermediate',
@@ -1005,7 +1005,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '化合反应：多变一。B是两种物质生成一种物质（C+O₂→CO₂），是化合反应。',
     tags: ['化学方程式', '反应类型'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1013,7 +1013,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '48∶32∶80（或3∶2∶5）',
     explanation: '质量比 = 2×24 : 32 : 2×40 = 48∶32∶80 = 3∶2∶5。',
     tags: ['化学方程式', '质量比'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-4-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1021,7 +1021,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '8 14.2',
     explanation: '质量比：124∶160∶284。6.2g P = 0.05mol，需要O₂ = 0.05×5/4×32 = 8g，生成P₂O₅ = 0.05×284/4 = 14.2g。',
     tags: ['化学方程式', '质量计算'],
-    knowledgePointIds: ['m-chem-4'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-004'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 碳和碳的氧化物 ====================
@@ -1032,7 +1032,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '金刚石和石墨都由碳元素组成，但碳原子排列方式不同，所以物理性质差异很大。',
     tags: ['碳和碳的氧化物', '碳单质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-2', type: 'choice', difficulty: 'basic',
@@ -1041,7 +1041,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'CO₂检验：通入澄清石灰水，石灰水变浑浊（生成CaCO₃沉淀）。验满：燃着木条放瓶口熄灭。',
     tags: ['碳和碳的氧化物', 'CO2检验'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-3', type: 'choice', difficulty: 'basic',
@@ -1050,7 +1050,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O。二氧化碳使澄清石灰水变浑浊，这是检验CO₂的方法。',
     tags: ['碳和碳的氧化物', 'CO2性质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-4', type: 'choice', difficulty: 'basic',
@@ -1059,7 +1059,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '煤不充分燃烧会产生CO（一氧化碳），CO有毒，与血红蛋白结合使人缺氧中毒。',
     tags: ['碳和碳的氧化物', 'CO毒性'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-5', type: 'fill-blank', difficulty: 'basic',
@@ -1067,7 +1067,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '大 不',
     explanation: 'CO₂的物理性质：密度比空气大，不燃烧也不支持燃烧。所以可用于灭火。',
     tags: ['碳和碳的氧化物', 'CO2性质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-6', type: 'fill-blank', difficulty: 'basic',
@@ -1075,7 +1075,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '干冰',
     explanation: '固态CO₂叫干冰，升华时吸收大量热，可用于人工降雨、制冷剂、制造舞台烟雾。',
     tags: ['碳和碳的氧化物', '干冰'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-7', type: 'true-false', difficulty: 'basic',
@@ -1083,7 +1083,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '金刚石是天然最硬的物质（做钻头），石墨很软（做铅笔芯、润滑剂），都导电。',
     tags: ['碳和碳的氧化物', '碳单质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-8', type: 'true-false', difficulty: 'basic',
@@ -1091,7 +1091,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: 'CO₂本身不显酸性，它与水反应生成碳酸（H₂CO₃），碳酸使石蕊变红。',
     tags: ['碳和碳的氧化物', 'CO2与水反应'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-9', type: 'true-false', difficulty: 'basic',
@@ -1099,7 +1099,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'CO可燃（2CO + O₂ 点燃→ 2CO₂），作燃料。CO₂不燃烧不支持燃烧，用于灭火。',
     tags: ['碳和碳的氧化物', '性质用途'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-10', type: 'choice', difficulty: 'intermediate',
@@ -1108,7 +1108,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '实验室制CO₂：大理石/石灰石（主要成分CaCO₃）与稀盐酸。CaCO₃ + 2HCl = CaCl₂ + H₂O + CO₂↑。',
     tags: ['碳和碳的氧化物', 'CO2制取'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-11', type: 'choice', difficulty: 'intermediate',
@@ -1117,7 +1117,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'CO和CO₂组成元素相同，但分子构成不同（一个碳原子结合的氧原子数不同），所以化学性质不同。',
     tags: ['碳和碳的氧化物', '结构决定性质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-12', type: 'choice', difficulty: 'intermediate',
@@ -1126,7 +1126,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: 'CO + CuO △→ Cu + CO₂。黑色CuO变成红色Cu，生成的CO₂使澄清石灰水变浑浊。',
     tags: ['碳和碳的氧化物', 'CO还原性'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-13', type: 'choice', difficulty: 'intermediate',
@@ -1135,7 +1135,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'CO₂不能供给呼吸（O₂供给呼吸）。CO₂可用于灭火、气体肥料（光合作用）、制碳酸饮料。',
     tags: ['碳和碳的氧化物', 'CO2用途'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -1143,7 +1143,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'H₂CO₃',
     explanation: 'CO₂ + H₂O = H₂CO₃（碳酸）。碳酸不稳定，易分解：H₂CO₃ = H₂O + CO₂↑。',
     tags: ['碳和碳的氧化物', 'CO2与水'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -1151,7 +1151,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'Cu',
     explanation: 'CO + CuO △→ Cu + CO₂。CO具有还原性，可将CuO还原为Cu。',
     tags: ['碳和碳的氧化物', 'CO还原CuO'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-16', type: 'true-false', difficulty: 'intermediate',
@@ -1159,7 +1159,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'CO还原CuO实验：先通CO排尽装置内空气（防止CO与空气混合加热爆炸），后加热。',
     tags: ['碳和碳的氧化物', '实验安全'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-17', type: 'true-false', difficulty: 'intermediate',
@@ -1167,7 +1167,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'CO₂与水生成碳酸使石蕊变红，加热后碳酸分解（H₂CO₃ = H₂O + CO₂↑），溶液恢复紫色。',
     tags: ['碳和碳的氧化物', '碳酸不稳定'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-18', type: 'true-false', difficulty: 'intermediate',
@@ -1175,7 +1175,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O（变浑浊）。CO₂不燃烧不支持燃烧，使燃着木条熄灭。',
     tags: ['碳和碳的氧化物', 'CO2性质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-19', type: 'choice', difficulty: 'advanced',
@@ -1184,7 +1184,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'CO₂能与石灰水反应（CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O），CO不反应。通过石灰水可除去CO₂。',
     tags: ['碳和碳的氧化物', '除杂'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-20', type: 'choice', difficulty: 'advanced',
@@ -1193,7 +1193,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'CO有还原性（冶炼金属），CO₂没有还原性。CO有毒CO₂无毒；CO难溶CO₂能溶；CO₂不能使干燥石蕊变红。',
     tags: ['碳和碳的氧化物', '性质比较'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-21', type: 'choice', difficulty: 'advanced',
@@ -1202,7 +1202,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'CO有毒会污染空气，尾气要点燃处理（2CO + O₂ 点燃→ 2CO₂）或用气球收集。',
     tags: ['碳和碳的氧化物', '尾气处理'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-22', type: 'choice', difficulty: 'advanced',
@@ -1211,7 +1211,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'C₆₀是由C₆₀分子构成的（不是由碳原子直接构成）。C选项错误。',
     tags: ['碳和碳的氧化物', '碳单质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-23', type: 'fill-blank', difficulty: 'advanced',
@@ -1219,7 +1219,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '红 紫',
     explanation: 'CO₂ + H₂O = H₂CO₃（碳酸使石蕊变红），加热后碳酸分解，溶液恢复紫色。',
     tags: ['碳和碳的氧化物', '石蕊变色'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1227,7 +1227,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'CaCO₃↓',
     explanation: 'CO₂ + Ca(OH)₂ = CaCO₃↓ + H₂O。这是检验CO₂的反应，石灰水变浑浊。',
     tags: ['碳和碳的氧化物', 'CO2检验'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-25', type: 'true-false', difficulty: 'advanced',
@@ -1235,7 +1235,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: 'CO₂无毒，但在高浓度环境中会使人缺氧窒息（如久未开启的菜窖、深井中CO₂浓度高）。',
     tags: ['碳和碳的氧化物', 'CO2安全'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-26', type: 'true-false', difficulty: 'advanced',
@@ -1243,7 +1243,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: 'CO₂不是空气污染物，但过多排放会造成温室效应。酸雨主要由SO₂和NO₂引起。',
     tags: ['碳和碳的氧化物', 'CO2与污染'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-27', type: 'true-false', difficulty: 'advanced',
@@ -1251,7 +1251,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'CO的性质：可燃性（作燃料）、还原性（冶炼金属）、毒性（与血红蛋白结合）。',
     tags: ['碳和碳的氧化物', 'CO性质'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-28', type: 'choice', difficulty: 'intermediate',
@@ -1260,7 +1260,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'CO₂密度比空气大，用向上排空气法收集。验满：燃着木条放瓶口（不是伸入瓶中）。',
     tags: ['碳和碳的氧化物', 'CO2收集'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1268,7 +1268,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'CaCl₂',
     explanation: 'CaCO₃ + 2HCl = CaCl₂ + H₂O + CO₂↑。大理石/石灰石与稀盐酸反应制取CO₂。',
     tags: ['碳和碳的氧化物', '制CO2方程式'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-5-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1276,7 +1276,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '停止加热（熄灭酒精灯）',
     explanation: '实验结束时：先停止加热，继续通CO至试管冷却，防止生成的铜被空气中的氧气氧化。',
     tags: ['碳和碳的氧化物', '实验操作'],
-    knowledgePointIds: ['m-chem-5'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-005'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 燃料及其利用 ====================
@@ -1287,7 +1287,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '燃烧三条件：①可燃物；②与氧气接触；③温度达到着火点。"点燃"是使温度达到着火点的方式，不是条件。',
     tags: ['燃料及其利用', '燃烧条件'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-2', type: 'choice', difficulty: 'basic',
@@ -1296,7 +1296,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '盖上锅盖隔绝氧气（空气），使火熄灭。不能用水（油会溅出），不能降低着火点（着火点是固有属性）。',
     tags: ['燃料及其利用', '灭火原理'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-3', type: 'choice', difficulty: 'basic',
@@ -1305,7 +1305,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '氢气燃烧热值高，产物只有水，无污染，是最理想的清洁燃料。目前困难：制取成本高、储存运输难。',
     tags: ['燃料及其利用', '新能源'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-4', type: 'choice', difficulty: 'basic',
@@ -1314,7 +1314,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '煤燃烧产生SO₂和NO₂，这些气体与水反应形成酸雨。CO₂造成温室效应，不是酸雨。',
     tags: ['燃料及其利用', '酸雨'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-5', type: 'fill-blank', difficulty: 'basic',
@@ -1322,7 +1322,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '使温度降到着火点以下',
     explanation: '灭火三原理（破坏燃烧条件之一）：①清除/隔离可燃物；②隔绝氧气；③降温到着火点以下。',
     tags: ['燃料及其利用', '灭火原理'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-6', type: 'fill-blank', difficulty: 'basic',
@@ -1330,7 +1330,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '天然气',
     explanation: '三大化石燃料：煤、石油、天然气。都是混合物，不可再生能源。天然气的主要成分是甲烷（CH₄）。',
     tags: ['燃料及其利用', '化石燃料'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-7', type: 'true-false', difficulty: 'basic',
@@ -1338,7 +1338,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '用水灭火的原理是降温到着火点以下（不是降低着火点）。着火点是物质的固有属性，一般不能改变。',
     tags: ['燃料及其利用', '灭火原理'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-8', type: 'true-false', difficulty: 'basic',
@@ -1346,7 +1346,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '2H₂ + O₂ 点燃→ 2H₂O。氢气燃烧只生成水，无任何污染物，是最清洁的燃料。',
     tags: ['燃料及其利用', '氢气'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-9', type: 'true-false', difficulty: 'basic',
@@ -1354,7 +1354,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     'explanation': '通常的燃烧需要氧气，但广义的燃烧是发光发热的剧烈氧化反应。如镁可以在CO₂中燃烧（2Mg + CO₂ 点燃→ 2MgO + C）。',
     tags: ['燃料及其利用', '燃烧定义'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-10', type: 'choice', difficulty: 'intermediate',
@@ -1363,7 +1363,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '铜片上的白磷（温度够、有氧气）燃烧；红磷（温度不够）不燃烧；水中白磷（有温度、无氧气）不燃烧，通O₂后燃烧。',
     tags: ['燃料及其利用', '燃烧实验'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-11', type: 'choice', difficulty: 'intermediate',
@@ -1372,7 +1372,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '森林设隔离带：隔离可燃物。A精密仪器不能用CO₂（用液态CO₂）；B图书馆用CO₂灭火器（不损坏书籍）；C燃气泄漏不能开电器（防爆炸）。',
     tags: ['燃料及其利用', '灭火方法'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-12', type: 'choice', difficulty: 'intermediate',
@@ -1381,7 +1381,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '天然气主要成分是甲烷（CH₄）。煤和石油是混合物、不可再生能源。氢气还未广泛使用（制取和储存困难）。',
     tags: ['燃料及其利用', '燃料组成'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-13', type: 'choice', difficulty: 'intermediate',
@@ -1390,7 +1390,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '大量使用化石燃料会产生CO₂（温室效应）、SO₂和NO₂（酸雨），不利于环保。',
     tags: ['燃料及其利用', '环保'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -1398,7 +1398,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '空气（或氧气）',
     explanation: '使燃料充分燃烧：①充足的空气/氧气；②增大与空气的接触面积（如将煤粉碎）。',
     tags: ['燃料及其利用', '充分燃烧'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -1406,7 +1406,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '酒精',
     explanation: '乙醇俗称酒精，化学式C₂H₅OH，可由粮食发酵制取，是可再生能源。C₂H₅OH + 3O₂ 点燃→ 2CO₂ + 3H₂O。',
     tags: ['燃料及其利用', '乙醇'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-16', type: 'true-false', difficulty: 'intermediate',
@@ -1414,7 +1414,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '燃烧三条件对应灭火三原理：可燃物→清除/隔离；氧气→隔绝；温度→降温到着火点以下。',
     tags: ['燃料及其利用', '燃烧与灭火'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-17', type: 'true-false', difficulty: 'intermediate',
@@ -1422,7 +1422,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '爆炸不一定是化学变化。如轮胎爆炸（气体膨胀）、锅炉爆炸（物理变化）。火药爆炸才是化学变化。',
     tags: ['燃料及其利用', '爆炸'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-18', type: 'true-false', difficulty: 'intermediate',
@@ -1430,7 +1430,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '燃烧需要同时满足三个条件：可燃物、与氧气接触、温度达到着火点。缺一不可。',
     tags: ['燃料及其利用', '燃烧条件'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-19', type: 'choice', difficulty: 'advanced',
@@ -1439,7 +1439,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '化石燃料不可再生，氢气未大规模应用，燃烧可能造成污染。开发新能源有利于可持续发展。',
     tags: ['燃料及其利用', '能源发展'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-20', type: 'choice', difficulty: 'advanced',
@@ -1448,7 +1448,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '热水的作用：提供热量（使白磷达到着火点）和隔绝氧气（水中白磷不与氧气接触）。D选项不全面。',
     tags: ['燃料及其利用', '实验分析'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-21', type: 'choice', difficulty: 'advanced',
@@ -1457,7 +1457,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '油类着火用干粉灭火器。A电器着火先断电再用CO₂灭火器；B档案用CO₂灭火器；D室内着火不能开窗（会提供更多氧气）。',
     tags: ['燃料及其利用', '灭火器'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-22', type: 'choice', difficulty: 'advanced',
@@ -1466,7 +1466,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '核能存在核泄漏等风险（如切尔诺贝利、福岛核事故）。C选项错误。',
     tags: ['燃料及其利用', '新能源'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-23', type: 'fill-blank', difficulty: 'advanced',
@@ -1474,7 +1474,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '清除（或隔离）可燃物',
     explanation: '设置隔离带：将大火前方的可燃物清除，使大火蔓延到隔离带时因缺少可燃物而熄灭。',
     tags: ['燃料及其利用', '灭火原理'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1482,7 +1482,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '二氧化碳（CO₂）',
     explanation: 'CO₂过多排放导致温室效应加剧，引起全球气候变暖、海平面上升等环境问题。',
     tags: ['燃料及其利用', '温室效应'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-25', type: 'true-false', difficulty: 'advanced',
@@ -1490,7 +1490,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '充分燃烧：①放出更多热量（提高利用率）；②减少CO等有毒气体和烟尘的排放（减少污染）。',
     tags: ['燃料及其利用', '充分燃烧意义'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-26', type: 'true-false', difficulty: 'advanced',
@@ -1498,7 +1498,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '氢气三大优点：热值高、来源广（水分解）、产物只有水（无污染）。是最理想的清洁高能燃料。',
     tags: ['燃料及其利用', '氢气优点'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-27', type: 'true-false', difficulty: 'advanced',
@@ -1506,7 +1506,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '燃烧是人类最早利用的化学反应之一（火的利用），对人类文明发展有重要意义。',
     tags: ['燃料及其利用', '燃烧历史'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-28', type: 'choice', difficulty: 'intermediate',
@@ -1515,7 +1515,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '化石燃料（煤、石油、天然气）都是混合物，不可再生能源。石油分馏是物理变化（利用沸点不同分离）。',
     tags: ['燃料及其利用', '化石燃料'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1523,7 +1523,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'CO₂',
     explanation: 'CH₄ + 2O₂ 点燃→ CO₂ + 2H₂O。甲烷是天然气的主要成分，燃烧发蓝色火焰。',
     tags: ['燃料及其利用', '甲烷燃烧'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-6-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1531,7 +1531,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '可燃性气体或粉尘',
     explanation: '加油站有挥发的汽油蒸气，面粉厂有粉尘，与空气混合遇明火可能爆炸。所以严禁烟火。',
     tags: ['燃料及其利用', '防爆'],
-    knowledgePointIds: ['m-chem-6'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-006'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 金属 ====================
@@ -1542,7 +1542,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: 'Fe + CuSO₄ = FeSO₄ + Cu。铁钉表面析出红色Cu，溶液由蓝色（CuSO₄）变浅绿色（FeSO₄）。',
     tags: ['金属', '金属活动性'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-2', type: 'choice', difficulty: 'basic',
@@ -1551,7 +1551,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '铝在空气中与氧气反应，表面生成致密的Al₂O₃氧化膜，阻止铝进一步氧化。铁锈疏松多孔，不能保护内部。',
     tags: ['金属', '铝耐腐蚀'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-3', type: 'choice', difficulty: 'basic',
@@ -1560,7 +1560,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '铁生锈的条件：与氧气和水同时接触。防锈方法：刷漆、涂油、镀金属、制成不锈钢等。',
     tags: ['金属', '铁生锈'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-4', type: 'choice', difficulty: 'basic',
@@ -1569,7 +1569,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '金属活动性：排在氢前的金属能与稀盐酸/稀硫酸反应放出氢气。如Zn + H₂SO₄ = ZnSO₄ + H₂↑。',
     tags: ['金属', '活动性顺序'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-5', type: 'fill-blank', difficulty: 'basic',
@@ -1577,7 +1577,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '大（高） 低',
     explanation: '合金特点：硬度比组分金属大、熔点比组分金属低、抗腐蚀性更好。如生铁和钢是铁的合金。',
     tags: ['金属', '合金'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-6', type: 'fill-blank', difficulty: 'basic',
@@ -1585,7 +1585,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '3CO₂',
     explanation: '高炉炼铁：3CO + Fe₂O₃ 高温→ 2Fe + 3CO₂。CO作还原剂，将Fe₂O₃还原为Fe。',
     tags: ['金属', '炼铁'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-7', type: 'true-false', difficulty: 'basic',
@@ -1593,7 +1593,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '金属活动性顺序口诀："钾钙钠镁铝，锌铁锡铅氢，铜汞银铂金"。',
     tags: ['金属', '活动性顺序'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-8', type: 'true-false', difficulty: 'basic',
@@ -1601,7 +1601,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '金属活动性规律：排在前面的金属（K、Ca、Na除外）能把后面的金属从其盐溶液中置换出来。',
     tags: ['金属', '置换规律'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-9', type: 'true-false', difficulty: 'basic',
@@ -1609,7 +1609,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '生铁含碳2%-4.3%，钢含碳0.03%-2%。都是铁的合金，含碳量不同导致性能不同。',
     tags: ['金属', '生铁和钢'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-10', type: 'choice', difficulty: 'intermediate',
@@ -1618,7 +1618,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: 'Cu排在Ag前，能置换AgNO₃中的Ag：Cu + 2AgNO₃ = Cu(NO₃)₂ + 2Ag。Zn排在Mg后，Ag排在Cu后，Fe排在Zn后，都不能反应。',
     tags: ['金属', '置换反应'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-11', type: 'choice', difficulty: 'intermediate',
@@ -1627,7 +1627,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '大多数金属能与氧气反应（剧烈程度不同）。A只有氢前金属与酸反应；C活动性不同；D铝活泼但表面有氧化膜。',
     tags: ['金属', '化学性质'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-12', type: 'choice', difficulty: 'intermediate',
@@ -1636,7 +1636,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'Fe + CuSO₄ = FeSO₄ + Cu。每56g铁溶解，析出64g铜，溶液质量减轻64-56=8g。',
     tags: ['金属', '溶液质量'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-13', type: 'choice', difficulty: 'intermediate',
@@ -1645,7 +1645,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '铁生锈是化学变化，需要氧气和水。铁锈疏松多孔不能保护内部。干燥空气中不易生锈。',
     tags: ['金属', '铁生锈'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -1653,7 +1653,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '金',
     explanation: '验证三种金属活动性：取中间金属的盐溶液+两端金属（两金夹一盐），或取中间金属+两端金属的盐溶液（两盐夹一金）。',
     tags: ['金属', '活动性验证'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -1661,7 +1661,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'FeSO₄',
     explanation: 'Fe + H₂SO₄ = FeSO₄ + H₂↑。铁与酸反应生成亚铁盐（Fe²⁺），不是铁盐（Fe³⁺）。',
     tags: ['金属', '铁与酸'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-16', type: 'true-false', difficulty: 'intermediate',
@@ -1669,7 +1669,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '铁生锈条件探究：三支试管分别装干燥空气（无水）、煮沸冷却的水（无氧）、普通水（有氧有水），观察生锈情况。',
     tags: ['金属', '生锈实验'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-17', type: 'true-false', difficulty: 'intermediate',
@@ -1677,7 +1677,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '金（Au）化学性质非常稳定，高温下也不与氧气反应，所以"真金不怕火炼"。',
     tags: ['金属', '金的性质'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-18', type: 'true-false', difficulty: 'intermediate',
@@ -1685,7 +1685,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '电化学保护法：将铁制品与电源负极相连（牺牲阳极的阴极保护法），或与更活泼的金属相连。连正极会加速腐蚀。',
     tags: ['金属', '防锈方法'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-19', type: 'choice', difficulty: 'advanced',
@@ -1694,7 +1694,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '铁先置换Ag（Ag⁺氧化性更强），再置换Cu。滤渣一定有Ag，可能有Cu；滤液一定有Fe(NO₃)₂。',
     tags: ['金属', '优先反应'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-20', type: 'choice', difficulty: 'advanced',
@@ -1703,7 +1703,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '铜是紫红色，金黄色是黄色。不是所有金属都是银白色。B选项错误。',
     tags: ['金属', '金属通性'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-21', type: 'choice', difficulty: 'advanced',
@@ -1712,7 +1712,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '等质量金属与足量酸反应，产生H₂质量 = 金属质量 × 化合价/相对原子质量。Mg（2/24）> Fe（2/56）> Zn（2/65）。',
     tags: ['金属', '产氢量'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-22', type: 'choice', difficulty: 'advanced',
@@ -1721,7 +1721,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '炼铁：CO还原Fe₂O₃（氧化还原反应）。得到的是生铁（混合物），石灰石作熔剂（除去杂质）。',
     tags: ['金属', '炼铁原理'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-23', type: 'fill-blank', difficulty: 'advanced',
@@ -1729,7 +1729,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'FeSO₄',
     explanation: 'Fe + CuSO₄ = FeSO₄ + Cu。这是"湿法炼铜"的原理，铁表面析出红色物质，溶液由蓝变浅绿。',
     tags: ['金属', '湿法炼铜'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1737,7 +1737,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '刷漆、涂油（或镀其他金属、制成合金/不锈钢、保持干燥等，任答两种）',
     explanation: '防锈原理：隔绝氧气或水。方法：刷漆、涂油、电镀、制成不锈钢、保持干燥等。',
     tags: ['金属', '防锈方法'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-25', type: 'true-false', difficulty: 'advanced',
@@ -1745,7 +1745,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '铝表面自然形成的致密Al₂O₃氧化膜能阻止铝进一步氧化，所以铝制品耐腐蚀，不需要额外保护。',
     tags: ['金属', '铝自我保护'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-26', type: 'true-false', difficulty: 'advanced',
@@ -1753,7 +1753,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: 'K、Ca、Na太活泼，会先与水反应生成碱和氢气，再与盐反应，不能直接置换出金属。',
     tags: ['金属', 'KCaNa特殊性'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-27', type: 'true-false', difficulty: 'advanced',
@@ -1761,7 +1761,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '合金硬度大、熔点低、抗腐蚀性好，性能优于纯金属，应用更广泛。如钢比纯铁用途更广。',
     tags: ['金属', '合金优势'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-28', type: 'choice', difficulty: 'intermediate',
@@ -1770,7 +1770,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'Fe排在Cu前，能置换CuSO₄中的Cu。Cu排在Fe后不能置换FeSO₄；Ag排在H后不能与酸反应；Zn排在Mg后不能置换Mg。',
     tags: ['金属', '活动性应用'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -1778,7 +1778,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '红 蓝 浅绿',
     explanation: 'Fe + CuSO₄ = FeSO₄ + Cu。铁钉表面析出红色Cu，溶液由蓝色（CuSO₄）变浅绿色（FeSO₄）。',
     tags: ['金属', '反应现象'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-7-30', type: 'fill-blank', difficulty: 'advanced',
@@ -1786,7 +1786,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '2Fe',
     explanation: '3CO + Fe₂O₃ 高温→ 2Fe + 3CO₂。这是高炉炼铁的主要反应，CO作还原剂。',
     tags: ['金属', '工业炼铁'],
-    knowledgePointIds: ['m-chem-7'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-007'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 溶液 ====================
@@ -1797,7 +1797,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '溶解度四要素：一定温度（20℃）、100g溶剂、达到饱和状态、溶解的质量（36g）。',
     tags: ['溶液', '溶解度'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-2', type: 'choice', difficulty: 'basic',
@@ -1806,7 +1806,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '溶质质量分数 = 溶质质量 ÷ 溶液质量 × 100% = 20 ÷ (20+80) × 100% = 20%。',
     tags: ['溶液', '质量分数'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-3', type: 'choice', difficulty: 'basic',
@@ -1815,7 +1815,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'NaOH溶于水放热（温度升高），NH₄NO₃溶于水吸热（温度降低），NaCl和KNO₃温度变化不明显。',
     tags: ['溶液', '溶解吸放热'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-4', type: 'choice', difficulty: 'basic',
@@ -1824,7 +1824,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '溶液的特征：均一性、稳定性、混合物。溶液不一定无色（如CuSO₄溶液蓝色），可有多种溶质。',
     tags: ['溶液', '溶液特征'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-5', type: 'fill-blank', difficulty: 'basic',
@@ -1832,7 +1832,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '溶剂 水',
     explanation: '溶液 = 溶质 + 溶剂。水是最常用的溶剂，汽油、酒精也可作溶剂。',
     tags: ['溶液', '溶液组成'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-6', type: 'fill-blank', difficulty: 'basic',
@@ -1840,7 +1840,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '降低温度',
     explanation: '饱和→不饱和：增加溶剂或降低温度（大多数固体溶解度随温度降低而减小）。Ca(OH)₂等少数物质相反。',
     tags: ['溶液', '饱和转化'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-7', type: 'true-false', difficulty: 'basic',
@@ -1848,7 +1848,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '均一、稳定的液体不一定是溶液。如水是均一稳定的液体，但水是纯净物，不是溶液。溶液必须是混合物。',
     tags: ['溶液', '溶液判断'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-8', type: 'true-false', difficulty: 'basic',
@@ -1856,7 +1856,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '饱和溶液是对某种溶质饱和，还可以溶解其他溶质。如NaCl的饱和溶液还能溶解蔗糖。',
     tags: ['溶液', '饱和溶液'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-9', type: 'true-false', difficulty: 'basic',
@@ -1864,7 +1864,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '判断方法：在该温度下、该溶剂中继续加入该溶质，若不能溶解则为饱和溶液，能溶解则为不饱和。',
     tags: ['溶液', '饱和判断'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-10', type: 'choice', difficulty: 'intermediate',
@@ -1873,7 +1873,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '气体溶解度随温度升高而减小。夏天水温高，水中溶解氧减少，鱼浮到水面呼吸。',
     tags: ['溶液', '气体溶解度'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-11', type: 'choice', difficulty: 'intermediate',
@@ -1882,7 +1882,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '曲线上方表示该温度下溶液饱和且有未溶固体。A Ca(OH)₂溶解度随温度升高而减小；C溶解度不是溶解性；D气体溶解度随温度升高而减小。',
     tags: ['溶液', '溶解度曲线'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-12', type: 'choice', difficulty: 'intermediate',
@@ -1891,7 +1891,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: 'KNO₃溶解度随温度升高而增大，升高温度使溶液更不饱和。降低温度、蒸发溶剂、加溶质都能使溶液变饱和。',
     tags: ['溶液', '饱和转化'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-13', type: 'choice', difficulty: 'intermediate',
@@ -1900,7 +1900,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '稀释前后溶质质量不变：50g × 20% = (50g + x) × 10%，x = 50g。',
     tags: ['溶液', '溶液稀释'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -1908,7 +1908,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '降温（冷却热饱和溶液）',
     explanation: '结晶方法选择：溶解度受温度影响大的用"降温结晶"（KNO₃），影响小的用"蒸发结晶"（NaCl）。',
     tags: ['溶液', '结晶方法'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -1916,7 +1916,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '减小 增大',
     explanation: '气体溶解度：温度升高→溶解度减小（如汽水开盖冒气泡）；压强增大→溶解度增大（如汽水加压溶入更多CO₂）。',
     tags: ['溶液', '气体溶解度'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-16', type: 'true-false', difficulty: 'intermediate',
@@ -1924,7 +1924,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '溶质质量分数 = 溶质质量 ÷ 溶液质量 × 100%（不是溶剂质量）。溶液质量 = 溶质质量 + 溶剂质量。',
     tags: ['溶液', '质量分数'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-17', type: 'true-false', difficulty: 'intermediate',
@@ -1932,7 +1932,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '在同一温度、同一溶质的条件下，饱和溶液的溶质质量分数才比不饱和溶液大。不同温度无法比较。',
     tags: ['溶液', '浓度比较'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-18', type: 'true-false', difficulty: 'intermediate',
@@ -1940,7 +1940,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '溶质质量分数计算时，只有已溶解的溶质质量才能计入。未溶解的部分不算。',
     tags: ['溶液', '计算注意'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-19', type: 'choice', difficulty: 'advanced',
@@ -1949,7 +1949,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '20℃时100g水最多溶解36g NaCl。40g NaCl中只有36g溶解，溶液质量 = 100 + 36 = 136g。',
     tags: ['溶液', '溶解度计算'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-20', type: 'choice', difficulty: 'advanced',
@@ -1958,7 +1958,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '同一温度下，同种溶质的饱和溶液浓度最大。饱和不一定是浓溶液（如Ca(OH)₂饱和溶液很稀）。',
     tags: ['溶液', '饱和与浓度'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-21', type: 'choice', difficulty: 'advanced',
@@ -1967,7 +1967,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: '不饱和溶液蒸发水，先蒸发至饱和（无晶体析出），再蒸发才析出晶体。若两份都达到饱和后蒸发，b = 2a。',
     tags: ['溶液', '晶体析出'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-22', type: 'choice', difficulty: 'advanced',
@@ -1976,7 +1976,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '搅拌只能加快溶解速率，不能增大溶解度。溶解度只与温度（固体）或温度和压强（气体）有关。',
     tags: ['溶液', '溶解度因素'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-23', type: 'fill-blank', difficulty: 'advanced',
@@ -1984,7 +1984,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '减小',
     explanation: 'KNO₃溶解度随温度降低而减小，降温后有晶体析出，溶质减少，溶剂不变，溶质质量分数减小。',
     tags: ['溶液', '降温析晶'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-24', type: 'fill-blank', difficulty: 'advanced',
@@ -1992,7 +1992,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '溶解',
     explanation: '配制溶液步骤：计算→称量/量取→溶解→装瓶贴标签。用到的仪器：天平、量筒、烧杯、玻璃棒。',
     tags: ['溶液', '配制步骤'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-25', type: 'true-false', difficulty: 'advanced',
@@ -2000,7 +2000,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '如果是恒温蒸发溶剂析出晶体，溶液仍为该温度的饱和溶液，溶质质量分数不变。只有降温析晶才减小。',
     tags: ['溶液', '析晶后浓度'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-26', type: 'true-false', difficulty: 'advanced',
@@ -2008,7 +2008,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '气体溶解度定义：101kPa、一定温度、1体积水、饱和状态、溶解的气体体积。',
     tags: ['溶液', '气体溶解度定义'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-27', type: 'true-false', difficulty: 'advanced',
@@ -2016,7 +2016,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '稀释公式：m浓 × ω浓 = m稀 × ω稀。稀释只加溶剂，溶质质量不变。',
     tags: ['溶液', '稀释公式'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-28', type: 'choice', difficulty: 'intermediate',
@@ -2025,7 +2025,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '饱和溶液析出晶体后，溶液仍为该温度下的饱和溶液。饱和溶液只是对某种溶质饱和，还可溶解其他溶质。',
     tags: ['溶液', '饱和溶液'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -2033,7 +2033,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '氯化钠（NaCl） 硝酸钾（KNO₃）',
     explanation: '结晶方法：蒸发结晶（NaCl等溶解度受温度影响小的物质）；降温结晶（KNO₃等溶解度受温度影响大的物质）。',
     tags: ['溶液', '结晶方法'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-8-30', type: 'fill-blank', difficulty: 'advanced',
@@ -2041,7 +2041,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '增加溶质、蒸发溶剂（或降低温度，大多数物质）',
     explanation: '不饱和→饱和：①增加溶质；②蒸发溶剂；③降低温度（大多数固体）；④升高温度（Ca(OH)₂等）。',
     tags: ['溶液', '饱和转化'],
-    knowledgePointIds: ['m-chem-8'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-008'], subject: '化学', grade: 'middle',
   },
 
   // ==================== 酸碱盐 ====================
@@ -2052,7 +2052,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'pH=3<7，溶液呈酸性。紫色石蕊试液遇酸变红，遇碱变蓝，中性不变色（紫色）。',
     tags: ['酸碱盐', '酸碱指示剂'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-2', type: 'choice', difficulty: 'basic',
@@ -2061,7 +2061,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'NaOH密封保存原因：①易吸收空气中的水分而潮解；②能与空气中的CO₂反应而变质（2NaOH + CO₂ = Na₂CO₃ + H₂O）。',
     tags: ['酸碱盐', 'NaOH保存'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-3', type: 'choice', difficulty: 'basic',
@@ -2070,7 +2070,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '熟石灰（Ca(OH)₂）与土壤中的酸发生中和反应（酸+碱→盐+水），降低土壤酸性。',
     tags: ['酸碱盐', '中和反应'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-4', type: 'choice', difficulty: 'basic',
@@ -2079,7 +2079,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'Na₂CO₃俗称纯碱/苏打。NaOH烧碱/火碱，NaCl食盐，NaHCO₃小苏打。',
     tags: ['酸碱盐', '常见盐'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-5', type: 'fill-blank', difficulty: 'basic',
@@ -2087,7 +2087,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '酸 中 碱',
     explanation: '溶液酸碱性与pH：pH<7酸性，pH=7中性，pH>7碱性。pH越小酸性越强，pH越大碱性越强。',
     tags: ['酸碱盐', 'pH'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-6', type: 'fill-blank', difficulty: 'basic',
@@ -2095,7 +2095,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '盐',
     explanation: '中和反应的定义：酸和碱反应生成盐和水。如HCl + NaOH = NaCl + H₂O。',
     tags: ['酸碱盐', '中和反应'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-7', type: 'true-false', difficulty: 'basic',
@@ -2103,7 +2103,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '酸碱指示剂变色：石蕊（酸红碱蓝）；酚酞（碱红酸不变）。',
     tags: ['酸碱盐', '指示剂'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-8', type: 'true-false', difficulty: 'basic',
@@ -2111,7 +2111,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '浓硫酸稀释："酸入水、沿器壁、慢慢倒、不断搅"。绝不能将水倒入浓硫酸（酸液飞溅伤人）。',
     tags: ['酸碱盐', '浓硫酸稀释'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-9', type: 'true-false', difficulty: 'basic',
@@ -2119,7 +2119,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '复分解反应发生的条件：两种化合物相互交换成分，生成物中有沉淀、气体或水。',
     tags: ['酸碱盐', '复分解反应'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-10', type: 'choice', difficulty: 'intermediate',
@@ -2128,7 +2128,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '复分解反应：两种化合物互相交换成分。B是酸碱中和（复分解）。A是置换，C是分解，D是化合。',
     tags: ['酸碱盐', '反应类型'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-11', type: 'choice', difficulty: 'intermediate',
@@ -2137,7 +2137,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '酸的通性：酸溶液中都含有H⁺（氢离子），所以酸有相似的化学性质。盐酸（HCl）不含氧。',
     tags: ['酸碱盐', '酸的通性'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-12', type: 'choice', difficulty: 'intermediate',
@@ -2146,7 +2146,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'A',
     explanation: 'CO₃²⁻检验：加入稀盐酸，产生使澄清石灰水变浑浊的气体（CO₂）。',
     tags: ['酸碱盐', '离子检验'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-13', type: 'choice', difficulty: 'intermediate',
@@ -2155,7 +2155,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: '化肥作用：氮肥（促枝叶繁茂）、磷肥（促根系发达、籽粒饱满）、钾肥（促茎秆健壮、抗倒伏）。',
     tags: ['酸碱盐', '化肥'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -2163,7 +2163,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '氢气（H₂）',
     explanation: '酸的通性②：酸 + 活泼金属 → 盐 + 氢气。如Zn + H₂SO₄ = ZnSO₄ + H₂↑。',
     tags: ['酸碱盐', '酸的通性'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -2171,7 +2171,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '烧碱 消石灰',
     explanation: 'NaOH俗称烧碱/火碱/苛性钠（强腐蚀性）；Ca(OH)₂俗称熟石灰/消石灰（用于改良酸性土壤）。',
     tags: ['酸碱盐', '碱的俗称'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-16', type: 'true-false', difficulty: 'intermediate',
@@ -2179,7 +2179,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: 'pH试纸只能粗略测定pH（整数），不能精确到小数点后。精确测定需要用pH计。',
     tags: ['酸碱盐', 'pH测定'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-17', type: 'true-false', difficulty: 'intermediate',
@@ -2187,7 +2187,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'true',
     explanation: '中和反应是酸+碱→盐+水，属于复分解反应。但复分解反应还包括酸+盐、碱+盐、盐+盐等。',
     tags: ['酸碱盐', '反应关系'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-18', type: 'true-false', difficulty: 'intermediate',
@@ -2195,7 +2195,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '浓硫酸有吸水性，但不能干燥碱性气体（如NH₃），因为会发生反应。',
     tags: ['酸碱盐', '浓硫酸'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-19', type: 'choice', difficulty: 'advanced',
@@ -2204,7 +2204,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'D',
     explanation: 'Na⁺和Cl⁻不反应，能共存。A产生CO₂和H₂O；B产生BaSO₄沉淀；C产生H₂O。',
     tags: ['酸碱盐', '离子共存'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-20', type: 'choice', difficulty: 'advanced',
@@ -2213,7 +2213,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: '盐不一定含金属元素，如NH₄Cl（氯化铵）是盐但不含金属。C选项错误。',
     tags: ['酸碱盐', '物质分类'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-21', type: 'choice', difficulty: 'advanced',
@@ -2222,7 +2222,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'C',
     explanation: 'C是置换反应（单质+化合物→新单质+新化合物），不是复分解反应。',
     tags: ['酸碱盐', '反应类型'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-22', type: 'choice', difficulty: 'advanced',
@@ -2231,7 +2231,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: 'Cl⁻检验：加入AgNO₃溶液和稀硝酸，产生不溶于稀硝酸的白色沉淀（AgCl）。',
     tags: ['酸碱盐', '离子检验'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-23', type: 'fill-blank', difficulty: 'advanced',
@@ -2239,7 +2239,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'Ba(NO₃)₂（或BaCl₂等可溶性钡盐）',
     explanation: 'SO₄²⁻检验：加入Ba(NO₃)₂溶液和稀硝酸，产生不溶于稀硝酸的白色沉淀（BaSO₄）。',
     tags: ['酸碱盐', '离子检验'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-24', type: 'fill-blank', difficulty: 'advanced',
@@ -2247,7 +2247,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '溶',
     explanation: '溶解性口诀：钾钠铵硝皆可溶，盐酸盐不溶银亚汞，硫酸盐不溶钡和铅，碳酸盐多不溶。',
     tags: ['酸碱盐', '溶解性'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-25', type: 'true-false', difficulty: 'advanced',
@@ -2255,7 +2255,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: 'pH=0的溶液酸性很强（pH越小酸性越强）。pH=0不是没有酸性，而是酸性极强。',
     tags: ['酸碱盐', 'pH理解'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-26', type: 'true-false', difficulty: 'advanced',
@@ -2263,7 +2263,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '中和反应放热，但放热反应不一定是中和反应。如燃烧、金属与酸反应都放热。',
     tags: ['酸碱盐', '放热反应'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-27', type: 'true-false', difficulty: 'advanced',
@@ -2271,7 +2271,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'false',
     explanation: '盐溶液不一定呈中性。如Na₂CO₃溶液呈碱性（pH>7），NH₄Cl溶液呈酸性（pH<7）。',
     tags: ['酸碱盐', '盐溶液酸碱性'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-28', type: 'choice', difficulty: 'intermediate',
@@ -2280,7 +2280,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: 'B',
     explanation: '碱溶液中都含有OH⁻（氢氧根离子），所以碱有相似的化学性质。很多碱难溶于水（如Cu(OH)₂）。',
     tags: ['酸碱盐', '碱的通性'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -2288,7 +2288,7 @@ export const middleChemistryQuestions: Question[] = [
     answer: '小苏打',
     explanation: 'NaHCO₃（碳酸氢钠）俗称小苏打，能与酸反应（治胃酸），受热分解产生CO₂（发酵粉）。',
     tags: ['酸碱盐', '小苏打'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
   {
     id: 'q-mchem-9-30', type: 'fill-blank', difficulty: 'advanced',
@@ -2296,6 +2296,6 @@ export const middleChemistryQuestions: Question[] = [
     answer: '复分解',
     explanation: '酸碱盐之间的反应大多属于复分解反应，条件：生成物中有沉淀、气体或水。',
     tags: ['酸碱盐', '反应类型'],
-    knowledgePointIds: ['m-chem-9'], subject: '化学', grade: 'middle',
+    knowledgePointIds: ['m-chem-009'], subject: '化学', grade: 'middle',
   },
 ];

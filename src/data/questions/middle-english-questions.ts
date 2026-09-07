@@ -12,7 +12,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"Look!"是现在进行时的标志词，表示正在进行的动作。结构：be + doing。',
     tags: ['时态', '现在进行时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"since + 时间点"是现在完成时的标志，表示从过去持续到现在的动作。结构：have/has + done。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"all over the world"表示经常性动作，用一般现在时。主语Many people是复数，动词用原形。',
     tags: ['时态', '一般现在时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"next week"是将来的时间，用一般将来时 will do 或 be going to do。',
     tags: ['时态', '一般将来时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'goes',
     explanation: '一般现在时，主语She是第三人称单数，动词要加-s/-es。go→goes。',
     tags: ['时态', '一般现在时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'visited',
     explanation: '"yesterday"是过去时的标志，动词用过去式。visit→visited。',
     tags: ['时态', '一般过去时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"am reading"是现在进行时的结构（be + doing），表示正在进行的动作。',
     tags: ['时态', '现在进行时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"has finished"是现在完成时（have/has + done），不是一般过去时。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '被动语态的结构是"be + 过去分词（done）"，如 English is spoken。',
     tags: ['语态', '被动语态'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"in 1921"是过去时间，书是被写的，用一般过去时的被动语态：was/were + done。',
     tags: ['语态', '过去被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"While"引导过去进行时表示过去某时正在进行的动作。"the phone rang"是过去时，所以前面用过去进行时 was cooking。',
     tags: ['时态', '过去进行时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"already"是现在完成时的标志，表示动作已完成并对现在有影响。结构：have/has + done。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"got there"是过去时，会议开始在我到达之前（过去的过去），用过去完成时 had done。',
     tags: ['时态', '过去完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'is spoken',
     explanation: '英语是被说的，用一般现在时的被动语态：is/are + done。English不可数，用is spoken。',
     tags: ['语态', '现在被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'had been',
     explanation: '主句是过去时（said），从句动作发生在"过去的过去"，用过去完成时 had been。',
     tags: ['时态', '过去完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '现在完成时不能和具体过去时间（yesterday）连用。应说"I saw this movie yesterday"。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"since + 时间点"和"for + 时间段"是现在完成时的典型标志词。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '被动语态中动作的执行者（by + 执行者）经常省略，尤其是不知道执行者或不重要时。',
     tags: ['语态', '被动语态'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"By the time + 现在时"表示将来某时前完成的动作，主句用将来完成时 will have done。',
     tags: ['时态', '将来完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"now"表示问题刚被解决且对现在有影响（可以回家了），用现在完成时的被动语态：has been done。',
     tags: ['语态', '完成被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '主句是过去时（didn\'t know, thought），从句也要用相应的过去时态。都用was。',
     tags: ['时态', '时态呼应'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"next year"是将来时间，桥是被建的，用一般将来时的被动语态：will be done。',
     tags: ['语态', '将来被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'had waited（或 had been waiting）',
     explanation: '"came"是过去时，等待发生在"过去的过去"，用过去完成时 had waited 或过去完成进行时。',
     tags: ['时态', '过去完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'had been completed',
     explanation: '"by the end of last month"是"到上个月末为止"，用过去完成时的被动语态：had been done。',
     tags: ['语态', '完成被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"buy"是瞬间动词，不能和"for + 时间段"连用。要换成延续性动词："have had"。',
     tags: ['时态', '瞬间动词'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '时态呼应规则：主句过去时，从句用相应的过去时态。但客观真理除外（如"The earth goes around the sun"）。',
     tags: ['时态', '时态呼应'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"is cleaned"是一般现在时的被动语态（is/are + done），表示房间每天被打扫。',
     tags: ['语态', '被动语态'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"yesterday"用过去时。"a lot of people"是复数，用were。',
     tags: ['时态', '一般过去时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'has worked',
     explanation: '"for + 时间段"是现在完成时的标志，表示从过去持续到现在的动作。',
     tags: ['时态', '现在完成时'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'was written',
     explanation: '"last night"是过去时间，信是被写的，用一般过去时的被动语态：was/were + done。',
     tags: ['语态', '过去被动'],
-    knowledgePointIds: ['m-eng-1'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-001'], subject: '英语', grade: 'middle',
   },
 
   // ==================== 从句 ====================
@@ -267,7 +267,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '宾语从句，根据句意"图书馆在哪里"，用where引导。注意用陈述语序（主语+谓语）。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '定语从句，先行词the boy是人，关系代词用who/that。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '宾语从句，句意"我不知道他明天是否来"，表示"是否"用if/whether。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '定语从句，先行词the book是物，关系代词用which/that。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'that',
     explanation: '宾语从句，陈述句变来的宾语从句用that引导（that可省略）。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'whose',
     explanation: '定语从句，先行词the girl，关系代词作"头发"的定语，表示"谁的"，用whose。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '宾语从句的语序必须是陈述语序，如"I don\'t know where he is"（不是where is he）。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '定语从句的定义：修饰名词的从句，被修饰的名词/代词叫先行词。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: 'because和so不能连用（中文可以说"因为...所以..."，但英语只能用其中一个）。',
     tags: ['从句', '状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"主将从现"：if引导的条件状语从句，主句用将来时，从句用一般现在时表将来。',
     tags: ['从句', '条件状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"主将从现"：as soon as引导的时间状语从句，主句将来时，从句一般现在时。',
     tags: ['从句', '时间状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: 'although/though和but不能连用，只能用一个。although引导让步状语从句。',
     tags: ['从句', '让步状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '因果关系：他没上学是因为生病了。because引导原因状语从句。',
     tags: ['从句', '原因状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'so that',
     explanation: '"so...that..."表示"如此...以至于..."，引导结果状语从句。',
     tags: ['从句', '结果状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'if/whether（或 that）',
     explanation: '宾语从句，"我想知道是否他喜欢这礼物"。表示"是否"用if/whether。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: 'unless = if not，表示"除非/如果不"。"Unless it rains" = "If it doesn\'t rain"。',
     tags: ['从句', '条件状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '宾语从句时态呼应：主句过去时，从句用相应的过去时态（客观真理除外）。',
     tags: ['从句', '时态呼应'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '定语从句关系代词：who/that用于人，which/that用于物，whose表示所属关系。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '表语从句，"问题是我们是否能按时完成工作"，表示"是否"用whether。',
     tags: ['从句', '表语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '定语从句，先行词the man是人，关系代词作介词about的宾语，用whom（口语中也可用who）。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '主语从句，"他在会上说的话"，said缺少宾语，用what引导（= the thing that）。',
     tags: ['从句', '主语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"even if"表示"即使"，引导让步状语从句。句意：即使下雨她也要去公园。',
     tags: ['从句', '让步状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'where',
     explanation: '宾语从句，"最近的医院在哪里"，用where引导。注意用陈述语序。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'why',
     explanation: '定语从句，先行词the reason，关系副词why修饰reason，表示原因。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"That he didn\'t come"是that引导的主语从句，that在从句中不作成分，只起连接作用。',
     tags: ['从句', '主语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '这里的whose引导的是宾语从句（不是定语从句），whose是疑问代词，表示"谁的"。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"No matter what"和"whatever"都可以引导让步状语从句，表示"无论什么"。',
     tags: ['从句', '让步状语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '宾语从句，"我想知道你是否喜欢这部电影"，表示"是否"用if/whether。',
     tags: ['从句', '宾语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'where（或 in which）',
     explanation: '定语从句，先行词the house，关系副词where修饰live，表示居住的地点。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'As',
     explanation: 'as引导的非限制性定语从句，"as is known to us all"表示"正如大家所知"。',
     tags: ['从句', '定语从句'],
-    knowledgePointIds: ['m-eng-2'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-002'], subject: '英语', grade: 'middle',
   },
 
   // ==================== 非谓语动词 ====================
@@ -522,7 +522,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"ask sb. to do sth."是固定搭配，动词不定式作宾语补足语。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"look forward to"中的to是介词，后面接动名词doing。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '动名词（doing）作主语表示一般性、经常性的动作。"Swimming is fun"（游泳是有趣的事）。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"enjoy"后面接动名词doing作宾语。enjoy reading（喜欢阅读）。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'to turn',
     explanation: '"remember to do"表示"记得要去做"（事情还没做）。这里是提醒离开时记得关灯。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'playing',
     explanation: '"be good at"中的at是介词，后面接动名词doing。at playing。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '使役动词let/make/have和感官动词see/hear/watch后接省略to的不定式：let/make sb. do sth.。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '介词后面一律用动名词doing：be good at doing, thank you for doing, be used to doing。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '现在分词（doing）作定语表主动、进行。"the running boy"（正在跑的男孩），boy主动跑。',
     tags: ['非谓语', '分词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"stop to do"表示"停下来去做另一件事"。走了很久后停下来休息，用to have。',
     tags: ['非谓语', 'stop用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '过去分词（done）作定语表被动、完成。"the book written by Lu Xun"（鲁迅写的书），书被写。',
     tags: ['非谓语', '分词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"be used to doing"表示"习惯于做某事"，to是介词，后接动名词。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'C',
     explanation: '"can\'t help doing"表示"忍不住做某事"，后接动名词。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'locking',
     explanation: '"remember doing"表示"记得做过某事"（已做）。这里表示记得锁过门了。',
     tags: ['非谓语', 'remember用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'being discussed（或 discussed）',
     explanation: '分词作定语修饰question。"正在被讨论的"用being discussed，"已讨论的"用discussed。',
     tags: ['非谓语', '分词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"stop doing"表示"停止正在做的事"。"stop to do"才是"停下来去做另一件事"。',
     tags: ['非谓语', 'stop用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"used to do"表示"过去常常做"；"be used to doing"表示"习惯于做某事"。含义不同。',
     tags: ['非谓语', 'used用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '感官动词后：do表示看到动作全过程（已完成），doing表示看到动作正在进行（片段）。',
     tags: ['非谓语', '感官动词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'A',
     explanation: '"be + adj. + to do"结构中，用主动形式表被动含义。"The problem is hard to solve"（问题很难解决）。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '过去分词作条件状语，"Given more time" = "If I had been given more time"（如果给我更多时间）。',
     tags: ['非谓语', '分词状语'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '感官动词用于被动语态时，省略的to要还原：sb. is seen to do sth.。',
     tags: ['非谓语', '被动还原to'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '过去分词作状语，"Seen from..." = "When it is seen from..."（从山顶看），城市是被看的。',
     tags: ['非谓语', '分词状语'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'to reach',
     explanation: 'the first/second/last + n. + to do，序数词修饰名词时后接不定式作定语。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'Not knowing',
     explanation: '现在分词作原因状语，"Not knowing..." = "Because I didn\'t know..."。',
     tags: ['非谓语', '分词状语'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"forget doing"表示"忘记做过某事"（已做但忘了）。"forget to do"表示"忘记要去做"（未做）。',
     tags: ['非谓语', 'forget用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'true',
     explanation: '"try to do"表示"努力去做"；"try doing"表示"尝试做（看效果）"。',
     tags: ['非谓语', 'try用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'false',
     explanation: '"mean to do"表示"打算做"；"mean doing"表示"意味着做"。含义不同。',
     tags: ['非谓语', 'mean用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'B',
     explanation: '"tell sb. not to do sth."是固定搭配，不定式的否定形式是not to do。',
     tags: ['非谓语', '不定式'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'helping',
     explanation: '"thank you for doing"是固定搭配，for是介词，后接动名词。',
     tags: ['非谓语', '动名词'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
   {
     id: 'q-meng-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,6 +766,6 @@ export const middleEnglishQuestions: Question[] = [
     answer: 'repairing（或 to be repaired）',
     explanation: 'require后接doing主动表被动（= to be done），"require repairing" = "require to be repaired"。',
     tags: ['非谓语', 'require用法'],
-    knowledgePointIds: ['m-eng-3'], subject: '英语', grade: 'middle',
+    knowledgePointIds: ['m-eng-003'], subject: '英语', grade: 'middle',
   },
 ];

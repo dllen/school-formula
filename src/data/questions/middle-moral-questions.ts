@@ -12,7 +12,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '他人评价是通过他人的态度和评价来认识自己。"老师说我有责任心"属于他人评价。',
     tags: ['心理健康', '认识自我'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-2', type: 'choice', difficulty: 'basic',
@@ -21,7 +21,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'A',
     explanation: '基本情绪有四种：喜、怒、哀、惧。其他情绪都是由这四种基本情绪派生出来的。',
     tags: ['心理健康', '情绪'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-3', type: 'choice', difficulty: 'basic',
@@ -30,7 +30,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '合理宣泄是调节情绪的有效方法，如运动、倾诉等。暴饮暴食、封闭自己、逃避问题都是不健康的方式。',
     tags: ['心理健康', '情绪调节'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-4', type: 'choice', difficulty: 'basic',
@@ -39,7 +39,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '友谊的特质：亲密关系、平等双向、心灵相遇。真正的友谊需要尊重和信任，是双向的。',
     tags: ['心理健康', '友谊'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-5', type: 'fill-blank', difficulty: 'basic',
@@ -47,7 +47,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '放松训练',
     explanation: '情绪调节四方法：改变认知评价、转移注意、合理宣泄（运动、倾诉）、放松训练。',
     tags: ['心理健康', '情绪调节'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-6', type: 'fill-blank', difficulty: 'basic',
@@ -55,7 +55,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '他人评价',
     explanation: '认识自我的途径：自我评价（自我观察）和他人评价（要重视但客观分析）。',
     tags: ['心理健康', '认识自我'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-7', type: 'true-false', difficulty: 'basic',
@@ -63,7 +63,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '正确认识自己的重要性：可以促进自我发展，促进与他人的交往。',
     tags: ['心理健康', '认识自我'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-8', type: 'true-false', difficulty: 'basic',
@@ -71,7 +71,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '挫折具有普遍性，生活难免有挫折，挫折是生命成长的一部分，可以磨砺意志。',
     tags: ['心理健康', '挫折'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-9', type: 'true-false', difficulty: 'basic',
@@ -79,7 +79,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '面对挫折的态度不同，结果就不同。积极面对挫折可以增长智慧，战胜困难；消极面对则会一蹶不振。',
     tags: ['心理健康', '挫折'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-10', type: 'choice', difficulty: 'intermediate',
@@ -88,7 +88,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '面对挫折的正确做法：正确对待，分析原因，寻求方法改进。自暴自弃、怨天尤人都是错误的。',
     tags: ['心理健康', '挫折应对'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-11', type: 'choice', difficulty: 'intermediate',
@@ -97,7 +97,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '呵护友谊需要：用心关怀、尊重对方、正确处理冲突、正确对待交友中的伤害。',
     tags: ['心理健康', '友谊'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-12', type: 'choice', difficulty: 'intermediate',
@@ -106,7 +106,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '网上交往的特点：虚拟、平等、自主。要增强自我保护意识，慎重把网友转化为现实中的朋友。',
     tags: ['心理健康', '网上交往'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-13', type: 'choice', difficulty: 'intermediate',
@@ -115,7 +115,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '友谊要讲原则，不能没有底线。劝朋友遵守校规校纪是真正为朋友好，体现了友谊的原则性。',
     tags: ['心理健康', '友谊原则'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -123,7 +123,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '寻求帮助',
     explanation: '应对挫折的三方面：①发掘自身力量；②培养勇气和意志；③借助外力，寻求帮助。',
     tags: ['心理健康', '挫折应对'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -131,7 +131,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '客观冷静分析',
     explanation: '对待他人评价的态度：要重视，但客观冷静分析，既不盲从也不忽视，用理性的心态面对。',
     tags: ['心理健康', '他人评价'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-16', type: 'true-false', difficulty: 'intermediate',
@@ -139,7 +139,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '友谊要讲原则，朋友犯错应该善意指出，不能无条件认同对方的一切行为。',
     tags: ['心理健康', '友谊原则'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-17', type: 'true-false', difficulty: 'intermediate',
@@ -147,7 +147,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '情绪具有感染性，一个人的情绪会影响周围的人，所以要学会以恰当方式表达情绪。',
     tags: ['心理健康', '情绪表达'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-18', type: 'true-false', difficulty: 'intermediate',
@@ -155,7 +155,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '认识自我需要自我评价和他人评价相结合，他人评价是认识自己的一面镜子。',
     tags: ['心理健康', '认识自我'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-19', type: 'choice', difficulty: 'advanced',
@@ -164,7 +164,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '挫折具有两面性：一方面可能阻碍人，带来损失和痛苦；另一方面可以磨砺意志，增长智慧。',
     tags: ['心理健康', '挫折两面性'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-20', type: 'choice', difficulty: 'advanced',
@@ -173,7 +173,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '友谊要讲原则。私下劝朋友诚信考试，既维护了友谊的底线，也真正帮助了朋友。',
     tags: ['心理健康', '友谊原则'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-21', type: 'choice', difficulty: 'advanced',
@@ -182,7 +182,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '网上交往要理性辨别、慎重选择，增强自我保护意识，把网友转化为现实朋友要更加慎重。',
     tags: ['心理健康', '网上交往'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-22', type: 'choice', difficulty: 'advanced',
@@ -191,7 +191,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '合理宣泄要注意场合和方式，在合适的地方放声歌唱、运动等都是合理的宣泄方式。',
     tags: ['心理健康', '情绪调节'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-23', type: 'fill-blank', difficulty: 'advanced',
@@ -199,7 +199,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '克服困难（或努力向上、积极行动等）',
     explanation: '情绪的作用非常神奇，影响我们的观念和行动。良好的情绪激励人克服困难、努力向上。',
     tags: ['心理健康', '情绪作用'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-24', type: 'fill-blank', difficulty: 'advanced',
@@ -207,7 +207,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '勇于面对',
     explanation: '对待他人评价的方法：用心聆听、勇于面对（客观面对）、平静拒绝（不合理的要求）。',
     tags: ['心理健康', '他人评价'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-25', type: 'true-false', difficulty: 'advanced',
@@ -215,7 +215,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '面对挫折的态度不同结果不同。积极面对挫折能激发潜能、增长智慧；消极面对则会被挫折击倒。',
     tags: ['心理健康', '挫折'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-26', type: 'true-false', difficulty: 'advanced',
@@ -223,7 +223,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '虽然网上交往具有虚拟性，但网络也是现实世界的延伸，也要对自己的言行负责，遵守网络道德和法律。',
     tags: ['心理健康', '网上交往'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-27', type: 'true-false', difficulty: 'advanced',
@@ -231,7 +231,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '认识自我需要多种途径结合：自我评价和他人评价结合起来，才能更客观、全面地认识自己。',
     tags: ['心理健康', '认识自我'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-28', type: 'choice', difficulty: 'intermediate',
@@ -240,7 +240,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '情绪会相互感染，一个人的情绪会影响周围人，所以要学会以恰当方式表达情绪。',
     tags: ['心理健康', '情绪表达'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -248,7 +248,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '不同（或积极）',
     explanation: '改变认知评价：从不同的角度看问题，换一个角度思考，就会有不同的感受和情绪。',
     tags: ['心理健康', '情绪调节'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-1-30', type: 'fill-blank', difficulty: 'advanced',
@@ -256,7 +256,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '朋友见证了我们一起走过的成长历程（或丰富生活经验、更深刻地体悟生命美好等）',
     explanation: '友谊的力量：①朋友对一个人的影响很大，见证了成长历程；②丰富了生活经验；③让我们更深刻地体悟生命的美好。',
     tags: ['心理健康', '友谊'],
-    knowledgePointIds: ['m-mor-1'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-001'], subject: '道法', grade: 'middle',
   },
 
   // ==================== 法律常识 ====================
@@ -267,7 +267,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '法律的特征：由国家制定或认可；由国家强制力保证实施（最主要特征）；对全体社会成员具有普遍约束力。',
     tags: ['法律常识', '法律特征'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-2', type: 'choice', difficulty: 'basic',
@@ -276,7 +276,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '宪法具有最高的法律效力，是其他法律的立法基础和立法依据。',
     tags: ['法律常识', '宪法'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-3', type: 'choice', difficulty: 'basic',
@@ -285,7 +285,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'D',
     explanation: '犯罪的三个特征：严重社会危害性（最本质特征）、刑事违法性、应受刑罚处罚性。"轻微"不属于犯罪。',
     tags: ['法律常识', '犯罪特征'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-4', type: 'choice', difficulty: 'basic',
@@ -294,7 +294,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'D',
     explanation: '未成年人六大保护：家庭保护、学校保护、社会保护、网络保护、政府保护、司法保护。',
     tags: ['法律常识', '未成年人保护'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-5', type: 'fill-blank', difficulty: 'basic',
@@ -302,7 +302,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '根本',
     explanation: '从内容看，宪法规定国家生活中最根本、最重要的问题，如国家性质、根本制度等。',
     tags: ['法律常识', '宪法'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-6', type: 'fill-blank', difficulty: 'basic',
@@ -310,7 +310,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '刑事违法（犯罪）',
     explanation: '违法行为按性质分：民事违法、行政违法、刑事违法（犯罪是最严重的违法行为）。',
     tags: ['法律常识', '违法分类'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-7', type: 'true-false', difficulty: 'basic',
@@ -318,7 +318,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '法律是最刚性的社会规则。不违法是人们的行为底线，违法必受法律制裁。',
     tags: ['法律常识', '法律'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-8', type: 'true-false', difficulty: 'basic',
@@ -326,7 +326,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '宪法的作用：①是治国安邦的总章程；②是公民权利的保障书；③规范国家权力运行。',
     tags: ['法律常识', '宪法'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-9', type: 'true-false', difficulty: 'basic',
@@ -334,7 +334,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '违法不一定犯罪（一般违法与犯罪有区别），犯罪一定违法。犯罪是最严重的违法行为。',
     tags: ['法律常识', '违法与犯罪'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-10', type: 'choice', difficulty: 'intermediate',
@@ -343,7 +343,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '持刀抢劫致人重伤具有严重社会危害性、刑事违法性、应受刑罚处罚性，属于犯罪行为。',
     tags: ['法律常识', '犯罪'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-11', type: 'choice', difficulty: 'intermediate',
@@ -352,7 +352,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '诉讼（打官司）是处理纠纷和应对侵害最正规、最权威的手段，是维护合法权益的最后屏障。',
     tags: ['法律常识', '依法维权'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-12', type: 'choice', difficulty: 'intermediate',
@@ -361,7 +361,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '社会保护是指社会各主体为未成年人健康成长创造良好环境。商店向学生售烟违反了社会保护。',
     tags: ['法律常识', '社会保护'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-13', type: 'choice', difficulty: 'intermediate',
@@ -370,7 +370,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '宪法具有最高法律效力，是其他法律的立法基础和立法依据，其他法律不得与宪法相抵触。',
     tags: ['法律常识', '宪法效力'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -378,7 +378,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '内容、法律效力、制定和修改程序（任答两点）',
     explanation: '宪法最高地位：①内容规定最根本最重要问题；②具有最高法律效力；③制定和修改程序更严格。',
     tags: ['法律常识', '宪法地位'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -386,7 +386,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '死刑',
     explanation: '主刑：管制、拘役、有期徒刑、无期徒刑、死刑（主刑只能独立适用）。',
     tags: ['法律常识', '刑罚'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-16', type: 'true-false', difficulty: 'intermediate',
@@ -394,7 +394,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '一般违法要承担民事责任或行政处罚；犯罪才会受到刑罚处罚。',
     tags: ['法律常识', '违法与犯罪'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-17', type: 'true-false', difficulty: 'intermediate',
@@ -402,7 +402,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '法律的作用：规范作用（规定权利和义务、规范行为）；保护作用（制裁违法犯罪、保护公民权益）。',
     tags: ['法律常识', '法律作用'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-18', type: 'true-false', difficulty: 'intermediate',
@@ -410,7 +410,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '人民法院对未成年人依法从轻处罚，体现的是司法保护，不是社会保护。',
     tags: ['法律常识', '司法保护'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-19', type: 'choice', difficulty: 'advanced',
@@ -419,7 +419,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '犯罪的最本质特征是严重社会危害性。区分一般违法和犯罪的关键是看社会危害程度是否严重。',
     tags: ['法律常识', '违法与犯罪'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-20', type: 'choice', difficulty: 'advanced',
@@ -428,7 +428,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '依法维权途径：协商→调解→仲裁→诉讼。C选项"协商或向消协投诉"是合法的维权方式。',
     tags: ['法律常识', '依法维权'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-21', type: 'choice', difficulty: 'advanced',
@@ -437,7 +437,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '全国人大及其常委会行使监督宪法实施的职权。公民也有权监督宪法的实施。',
     tags: ['法律常识', '宪法监督'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-22', type: 'choice', difficulty: 'advanced',
@@ -446,7 +446,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '预防犯罪要从杜绝不良行为做起。"偶尔去网吧没关系"是错误的认识，不良行为可能发展为违法犯罪。',
     tags: ['法律常识', '预防犯罪'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-23', type: 'fill-blank', difficulty: 'advanced',
@@ -454,7 +454,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '刑事诉讼',
     explanation: '诉讼的三种类型：民事诉讼（民告民）、行政诉讼（民告官）、刑事诉讼（追究犯罪）。',
     tags: ['法律常识', '诉讼类型'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-24', type: 'fill-blank', difficulty: 'advanced',
@@ -462,7 +462,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '律师事务所、公证处（或法律援助中心等）',
     explanation: '法律服务机构：律师事务所、公证处、法律援助中心等，可提供法律咨询和帮助。',
     tags: ['法律常识', '法律救济'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-25', type: 'true-false', difficulty: 'advanced',
@@ -470,7 +470,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '法律面前人人平等是法律的基本原则。任何组织和个人都不得有超越法律的特权，违法犯罪都要承担法律责任。',
     tags: ['法律常识', '法律平等'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-26', type: 'true-false', difficulty: 'advanced',
@@ -478,7 +478,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '未成年人受到法律的特殊保护，但违法同样要承担法律责任，只是根据年龄和情节可能从轻或减轻处罚。',
     tags: ['法律常识', '未成年人保护'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-27', type: 'true-false', difficulty: 'advanced',
@@ -486,7 +486,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '人民代表大会制度是根本政治制度，保证了人民当家作主，保障了公民的权利。',
     tags: ['法律常识', '政治制度'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-28', type: 'choice', difficulty: 'intermediate',
@@ -495,7 +495,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '法律特征：①由国家制定或认可；②由国家强制力保证实施（最主要）；③对全体成员有普遍约束力。',
     tags: ['法律常识', '法律特征'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -503,7 +503,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '最本质',
     explanation: '犯罪的三个特征中，严重社会危害性是最本质的特征，刑事违法性是法律标志，刑罚处罚性是法律后果。',
     tags: ['法律常识', '犯罪特征'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-2-30', type: 'fill-blank', difficulty: 'advanced',
@@ -511,7 +511,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '坚定捍卫者',
     explanation: '青少年要增强法治意识，成为法治的忠实崇尚者、自觉遵守者、坚定捍卫者。',
     tags: ['法律常识', '法治意识'],
-    knowledgePointIds: ['m-mor-2'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-002'], subject: '道法', grade: 'middle',
   },
 
   // ==================== 国情国策 ====================
@@ -522,7 +522,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '我国仍处于并将长期处于社会主义初级阶段，这是我国的基本国情。',
     tags: ['国情国策', '基本国情'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-2', type: 'choice', difficulty: 'basic',
@@ -531,7 +531,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '公有制为主体、多种所有制经济共同发展。公有制经济在国民经济中处于主体地位。',
     tags: ['国情国策', '基本经济制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-3', type: 'choice', difficulty: 'basic',
@@ -540,7 +540,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '人民代表大会制度是我国的根本政治制度。ABD都是基本政治制度。',
     tags: ['国情国策', '政治制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-4', type: 'choice', difficulty: 'basic',
@@ -549,7 +549,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '发展的根本目的是增进民生福祉，让发展成果惠及全体人民。',
     tags: ['国情国策', '发展思想'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-5', type: 'fill-blank', difficulty: 'basic',
@@ -557,7 +557,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '第一动力',
     explanation: '创新是引领发展的第一动力，是民族进步的灵魂。',
     tags: ['国情国策', '创新'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-6', type: 'fill-blank', difficulty: 'basic',
@@ -565,7 +565,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '基层群众自治制度',
     explanation: '三个基本政治制度：多党合作和政治协商制度、民族区域自治制度、基层群众自治制度。',
     tags: ['国情国策', '政治制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-7', type: 'true-false', difficulty: 'basic',
@@ -573,7 +573,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '国有经济是国民经济的主导力量，对于发挥社会主义制度的优越性具有关键作用。',
     tags: ['国情国策', '经济制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-8', type: 'true-false', difficulty: 'basic',
@@ -581,7 +581,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '人民代表大会是国家权力机关，全国人大是最高国家权力机关。',
     tags: ['国情国策', '人民代表大会'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-9', type: 'true-false', difficulty: 'basic',
@@ -589,7 +589,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '"绿水青山就是金山银山"体现了绿色发展理念和生态文明建设的要求。',
     tags: ['国情国策', '生态文明'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-10', type: 'choice', difficulty: 'intermediate',
@@ -598,7 +598,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '科教兴国战略：把教育摆在优先发展地位，科技与教育相结合，增强科技实力，提高劳动者素质。',
     tags: ['国情国策', '科教兴国'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-11', type: 'choice', difficulty: 'intermediate',
@@ -607,7 +607,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'A',
     explanation: '改革开放是强国之路，是决定当代中国命运的关键抉择，是当代中国最鲜明的特色。',
     tags: ['国情国策', '改革开放'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-12', type: 'choice', difficulty: 'intermediate',
@@ -616,7 +616,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '中国梦的基本内涵：实现中华民族伟大复兴，具体包括国家富强、民族振兴、人民幸福。',
     tags: ['国情国策', '中国梦'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-13', type: 'choice', difficulty: 'intermediate',
@@ -625,7 +625,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '可持续发展要求经济发展与环境保护相协调，坚持节约资源和保护环境的基本国策。',
     tags: ['国情国策', '可持续发展'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-14', type: 'fill-blank', difficulty: 'intermediate',
@@ -633,7 +633,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '基本国策',
     explanation: '节约资源和保护环境是我国的基本国策，要贯彻绿色发展理念，建设美丽中国。',
     tags: ['国情国策', '生态文明'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-15', type: 'fill-blank', difficulty: 'intermediate',
@@ -641,7 +641,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '多种分配方式',
     explanation: '分配制度：按劳分配为主体、多种分配方式并存。',
     tags: ['国情国策', '分配制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-16', type: 'true-false', difficulty: 'intermediate',
@@ -649,7 +649,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '创新是引领发展的第一动力，是民族进步的灵魂，是一个国家兴旺发达的不竭源泉。',
     tags: ['国情国策', '创新'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-17', type: 'true-false', difficulty: 'intermediate',
@@ -657,7 +657,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '改革开放是强国之路，是决定当代中国命运的关键抉择，是当代中国最鲜明的特色。',
     tags: ['国情国策', '改革开放'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-18', type: 'true-false', difficulty: 'intermediate',
@@ -665,7 +665,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '教育是民族振兴和社会进步的基石，是提高国民素质、促进人的全面发展的根本途径。',
     tags: ['国情国策', '教育'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-19', type: 'choice', difficulty: 'advanced',
@@ -674,7 +674,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '共同富裕不是同时富裕、同步富裕，而是一个过程。鼓励一部分人、一部分地区先富起来，带动和帮助后富，逐步实现共同富裕。',
     tags: ['国情国策', '共同富裕'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-20', type: 'choice', difficulty: 'advanced',
@@ -683,7 +683,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'C',
     explanation: '第一个百年目标（建党百年）：全面建成小康社会（已实现）；第二个百年目标（新中国成立百年）：全面建成社会主义现代化强国。',
     tags: ['国情国策', '奋斗目标'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-21', type: 'choice', difficulty: 'advanced',
@@ -692,7 +692,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'D',
     explanation: '国有经济是国民经济的主导力量，不是私营经济。D选项说法错误。',
     tags: ['国情国策', '经济制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-22', type: 'choice', difficulty: 'advanced',
@@ -701,7 +701,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '民族区域自治制度是在国家统一领导下，在少数民族聚居的地方实行区域自治，不是完全独立。',
     tags: ['国情国策', '民族区域自治'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-23', type: 'fill-blank', difficulty: 'advanced',
@@ -709,7 +709,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '创新驱动发展战略',
     explanation: '三大发展战略：科教兴国战略、人才强国战略、创新驱动发展战略。',
     tags: ['国情国策', '发展战略'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-24', type: 'fill-blank', difficulty: 'advanced',
@@ -717,7 +717,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '绿色（或可持续发展）',
     explanation: '坚持绿色发展道路，走生产发展、生活富裕、生态良好的文明发展道路。',
     tags: ['国情国策', '生态文明'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-25', type: 'true-false', difficulty: 'advanced',
@@ -725,7 +725,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'true',
     explanation: '创新的目的是增进人类福祉，让生活更美好。创新让生活更便捷、更美好。',
     tags: ['国情国策', '创新'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-26', type: 'true-false', difficulty: 'advanced',
@@ -733,7 +733,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '人民代表大会制度是我国的根本政治制度。民族区域自治制度、多党合作制度、基层群众自治制度才是基本政治制度。',
     tags: ['国情国策', '政治制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-27', type: 'true-false', difficulty: 'advanced',
@@ -741,7 +741,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'false',
     explanation: '国有经济起主导作用，公有制经济处于主体地位。两者地位不同。',
     tags: ['国情国策', '经济制度'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-28', type: 'choice', difficulty: 'intermediate',
@@ -750,7 +750,7 @@ export const middleMoralQuestions: Question[] = [
     answer: 'B',
     explanation: '垃圾分类、绿色出行是践行生态文明理念的正确做法。ACD都是破坏环境的行为。',
     tags: ['国情国策', '生态文明'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-29', type: 'fill-blank', difficulty: 'intermediate',
@@ -758,7 +758,7 @@ export const middleMoralQuestions: Question[] = [
     answer: '最本质',
     explanation: '中国共产党领导是中国特色社会主义最本质的特征，是中国特色社会主义制度的最大优势。',
     tags: ['国情国策', '党的领导'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
   {
     id: 'q-mmor-3-30', type: 'fill-blank', difficulty: 'advanced',
@@ -766,6 +766,6 @@ export const middleMoralQuestions: Question[] = [
     answer: '不平衡不充分的发展',
     explanation: '新时代主要矛盾：人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。',
     tags: ['国情国策', '主要矛盾'],
-    knowledgePointIds: ['m-mor-3'], subject: '道法', grade: 'middle',
+    knowledgePointIds: ['m-mor-003'], subject: '道法', grade: 'middle',
   },
 ];
