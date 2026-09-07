@@ -1,6 +1,6 @@
 [
   {
-    "id": "p-math-1",
+    "id": "p-math-001",
     "title": "数的认识",
     "description": "整数、小数、分数的认识与比较。",
     "grade": "primary",
@@ -9,7 +9,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-2",
+    "id": "p-math-002",
     "title": "四则运算",
     "description": "加减乘除运算规则，速算与巧算。",
     "grade": "primary",
@@ -18,7 +18,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-3",
+    "id": "p-math-003",
     "title": "常见量",
     "description": "长度、面积、体积、质量、时间、人民币单位及换算。",
     "grade": "primary",
@@ -27,7 +27,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-4",
+    "id": "p-math-004",
     "title": "图形与几何",
     "description": "平面图形（长方形、正方形、三角形、梯形、圆）与立体图形（长方体、正方体、圆柱、圆锥）的认识与计算。",
     "grade": "primary",
@@ -36,7 +36,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-5",
+    "id": "p-math-005",
     "title": "统计与概率",
     "description": "平均数、条形统计图、折线统计图、扇形统计图。",
     "grade": "primary",
@@ -45,7 +45,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-6",
+    "id": "p-math-006",
     "title": "应用题",
     "description": "行程问题、工程问题、鸡兔同笼等典型应用题。",
     "grade": "primary",
@@ -54,7 +54,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-7",
+    "id": "p-math-007",
     "title": "分数运算",
     "description": "分数的意义、基本性质、约分通分、加减乘除四则运算。",
     "grade": "primary",
@@ -63,7 +63,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-math-8",
+    "id": "p-math-008",
     "title": "逻辑推理",
     "description": "找规律、简单推理、判断与推理、数学广角。",
     "grade": "primary",
@@ -72,7 +72,259 @@
     "subjectName": "数学"
   },
   {
-    "id": "p-chi-1",
+    "id": "p-math-009",
+    "title": "植树问题",
+    "description": "间隔数与棵数的关系，生活中的排队、路灯、爬楼问题。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-010",
+    "title": "鸡兔同笼",
+    "description": "假设法解决两类事物混在一起的趣味问题。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-011",
+    "title": "相遇问题",
+    "description": "相向而行，路程和与速度和求相遇时间。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-012",
+    "title": "追及问题",
+    "description": "同向而行，路程差与速度差求追及时间。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-013",
+    "title": "工程问题",
+    "description": "工作效率、工作时间与工作总量的关系。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-014",
+    "title": "浓度问题",
+    "description": "溶质、溶剂与浓度的关系，生活中的盐水糖水问题。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-015",
+    "title": "利润与折扣",
+    "description": "成本、售价与利润率，打折促销的数学。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-016",
+    "title": "年龄问题",
+    "description": "年龄差不变的趣味问题，解答关于年龄的奥秘。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-017",
+    "title": "和差倍问题",
+    "description": "已知两数之和、差、倍数关系求这两个数。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-018",
+    "title": "平均数问题",
+    "description": "总数与份数的关系，求平均数与应用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-019",
+    "title": "数的整除特征",
+    "description": "2、3、5、9的倍数的判断方法与特征。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-020",
+    "title": "质数与合数",
+    "description": "只有两个因数的数叫质数，反之是合数。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-021",
+    "title": "因数与倍数",
+    "description": "一个数的因数有限、倍数无限，理解数的家族关系。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-022",
+    "title": "最大公因数与最小公倍数",
+    "description": "约分与通分的基础，短除法的应用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-023",
+    "title": "小数乘法",
+    "description": "小数点移动的秘密，积的小数位数等于因数小数位数之和。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-024",
+    "title": "小数除法",
+    "description": "除数是小数时如何转化为除数是整数来计算。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-025",
+    "title": "简易方程",
+    "description": "用字母表示数，理解等式性质与解方程。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-026",
+    "title": "多边形的面积",
+    "description": "长方形、正方形、三角形、平行四边形、梯形的面积公式。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-027",
+    "title": "长方体和正方体",
+    "description": "认识顶点棱面，体积与表面积的计算。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-028",
+    "title": "分数的意义",
+    "description": "平均分的另一种表达，单位1与分数单位。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-029",
+    "title": "分数加减法",
+    "description": "同分母直接加减，异分母先通分再计算。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-030",
+    "title": "分数乘除法",
+    "description": "求一个数的几分之几，分数除法转化为乘法。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-031",
+    "title": "百分数",
+    "description": "特殊的分数，表示一个数是另一个数的百分之几。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-032",
+    "title": "比和比例",
+    "description": "两个数的倍数关系，按比例分配的应用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-033",
+    "title": "圆的认识",
+    "description": "直径半径与圆周率，周长与面积的计算。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-034",
+    "title": "圆柱与圆锥",
+    "description": "体积计算，等底等高的圆柱与圆锥体积关系。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-035",
+    "title": "负数的初步认识",
+    "description": "零上零下温度的表示，正数与负数的对比。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-math-036",
+    "title": "位置与方向",
+    "description": "用数对和方向确定位置，认识八个方向。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "math",
+    "subjectName": "数学"
+  },
+  {
+    "id": "p-chi-001",
     "title": "拼音与字词",
     "description": "声母韵母、整体认读音节、查字典、组词造句。",
     "grade": "primary",
@@ -81,7 +333,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-2",
+    "id": "p-chi-002",
     "title": "歇后语与谚语",
     "description": "常见歇后语、谚语积累。",
     "grade": "primary",
@@ -90,7 +342,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-3",
+    "id": "p-chi-003",
     "title": "标点符号",
     "description": "逗号、句号、问号、感叹号、引号等的用法。",
     "grade": "primary",
@@ -99,7 +351,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-4",
+    "id": "p-chi-004",
     "title": "修辞手法",
     "description": "比喻、拟人、排比、夸张、反问、设问。",
     "grade": "primary",
@@ -108,7 +360,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-5",
+    "id": "p-chi-005",
     "title": "古诗文诵读",
     "description": "小学生必背古诗75首及注释。",
     "grade": "primary",
@@ -117,7 +369,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-6",
+    "id": "p-chi-006",
     "title": "作文基础",
     "description": "看图写话、记叙文（写人、记事、写景、状物）、应用文（日记、书信）。",
     "grade": "primary",
@@ -126,7 +378,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-7",
+    "id": "p-chi-007",
     "title": "阅读理解",
     "description": "现代文阅读方法、提取信息、理解词句、概括主要内容、体会思想感情。",
     "grade": "primary",
@@ -135,7 +387,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-chi-8",
+    "id": "p-chi-008",
     "title": "成语故事",
     "description": "常见成语来源、含义辨析、近义反义、成语运用。",
     "grade": "primary",
@@ -144,7 +396,259 @@
     "subjectName": "语文"
   },
   {
-    "id": "p-eng-1",
+    "id": "p-chi-009",
+    "title": "拼音声母韵母",
+    "description": "23个声母与24个韵母的认读与书写。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-010",
+    "title": "拼音拼读规则",
+    "description": "两拼法与三拼法，声母韵母如何组合。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-011",
+    "title": "多音字",
+    "description": "一个字多个读音，根据语境判断读音。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-012",
+    "title": "形近字",
+    "description": "长得很像的字，如何区分与辨认。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-013",
+    "title": "同音字",
+    "description": "读音相同意义不同的字，如何选择正确的字。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-014",
+    "title": "偏旁部首",
+    "description": "汉字的家族标记，通过部首理解字义。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-015",
+    "title": "汉字的间架结构",
+    "description": "左右、上下、包围等结构，正确书写姿势。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-016",
+    "title": "查字典",
+    "description": "音序查字法与部首查字法的使用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-017",
+    "title": "近义词与反义词",
+    "description": "意思相近与相反的词，丰富词汇量。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-018",
+    "title": "词语搭配",
+    "description": "形容词与名词、动词与名词的正确组合。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-019",
+    "title": "成语故事",
+    "description": "成语背后的历史故事与寓言，理解并运用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-020",
+    "title": "比喻句",
+    "description": "用像、仿佛等词打比方，让句子更生动。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-021",
+    "title": "拟人句",
+    "description": "把事物当作人来写，赋予事物人的动作和情感。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-022",
+    "title": "排比句",
+    "description": "三个以上结构相似的句子，增强语言气势。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-023",
+    "title": "陈述句与疑问句",
+    "description": "四大基本句式的区分与转换。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-024",
+    "title": "修改病句",
+    "description": "找出句子的语法错误并修正，常见病因类型。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-025",
+    "title": "缩句与扩句",
+    "description": "句子的变胖与变瘦，掌握主干与修饰成分。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-026",
+    "title": "标点符号",
+    "description": "逗号句号问号感叹号等的使用规则。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-027",
+    "title": "古诗朗诵",
+    "description": "五言与七言绝句的节奏与韵律。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-028",
+    "title": "古诗意境",
+    "description": "读懂古诗的画面与情感，走进诗人的世界。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-029",
+    "title": "写人作文",
+    "description": "抓住人物特点，通过事例展现人物形象。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-030",
+    "title": "记事作文",
+    "description": "六要素与详略得当，把事情写清楚写具体。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-031",
+    "title": "写景作文",
+    "description": "按顺序描写景物，运用多种感官。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-032",
+    "title": "状物作文",
+    "description": "介绍一种物品，从外形到功能有条理地说明。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-033",
+    "title": "日记格式",
+    "description": "第一人称记录生活，日期天气与正文。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-034",
+    "title": "书信格式",
+    "description": "称呼正文祝福语，书信的规范格式。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-035",
+    "title": "阅读理解",
+    "description": "概括段落大意与中心思想，提取关键信息。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-chi-036",
+    "title": "快速阅读",
+    "description": "浏览与跳读技巧，快速获取信息。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "chinese",
+    "subjectName": "语文"
+  },
+  {
+    "id": "p-eng-001",
     "title": "字母与语音",
     "description": "26个字母读写，元音与辅音发音规则。",
     "grade": "primary",
@@ -153,7 +657,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-eng-2",
+    "id": "p-eng-002",
     "title": "基础词汇",
     "description": "颜色、数字、家庭成员、身体部位、食物、动物、学校用品。",
     "grade": "primary",
@@ -162,7 +666,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-eng-3",
+    "id": "p-eng-003",
     "title": "日常交际用语",
     "description": "问候、介绍、道别、感谢、道歉、请求。",
     "grade": "primary",
@@ -171,7 +675,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-eng-4",
+    "id": "p-eng-004",
     "title": "基本语法",
     "description": "名词单复数、人称代词、be动词、一般现在时、现在进行时。",
     "grade": "primary",
@@ -180,7 +684,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-eng-5",
+    "id": "p-eng-005",
     "title": "自然拼读",
     "description": "字母组合发音规则、音节划分、拼读技巧。",
     "grade": "primary",
@@ -189,7 +693,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-eng-6",
+    "id": "p-eng-006",
     "title": "时态拓展",
     "description": "一般过去时、一般将来时的基本用法与时态判断。",
     "grade": "primary",
@@ -198,7 +702,259 @@
     "subjectName": "英语"
   },
   {
-    "id": "p-sci-1",
+    "id": "p-eng-009",
+    "title": "字母认读",
+    "description": "26个英文字母的大小写与发音。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-010",
+    "title": "元音字母",
+    "description": "a/e/i/o/u的发音规律与拼读。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-011",
+    "title": "音标入门",
+    "description": "48个国际音标的认读，学习自然拼读。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-012",
+    "title": "日常问候",
+    "description": "Hello/Good morning等日常交际用语。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-013",
+    "title": "自我介绍",
+    "description": "My name is.../I am...等基本介绍用语。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-014",
+    "title": "家庭成员",
+    "description": "father/mother/brother/sister等家庭成员单词。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-015",
+    "title": "颜色单词",
+    "description": "red/blue/green/yellow等常见颜色词汇。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-016",
+    "title": "数字单词",
+    "description": "one到twenty，认读与拼写数字单词。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-017",
+    "title": "动物单词",
+    "description": "cat/dog/rabbit等常见动物词汇。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-018",
+    "title": "水果单词",
+    "description": "apple/banana/orange等水果词汇。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-019",
+    "title": "文具单词",
+    "description": "pencil/ruler/eraser等学习用品词汇。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-020",
+    "title": "人称代词",
+    "description": "I/you/he/she/they等代词的使用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-021",
+    "title": "be动词",
+    "description": "am/is/are的用法与主谓一致。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-022",
+    "title": "名词单复数",
+    "description": "加s/es的变化规则，不规则变化。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-023",
+    "title": "一般现在时",
+    "description": "I play/He plays，动词第三人称单数变化。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-024",
+    "title": "现在进行时",
+    "description": "be+动词ing形式，表达正在发生的动作。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-025",
+    "title": "一般将来时",
+    "description": "will与be going to表示将要发生的动作。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-026",
+    "title": "形容词比较级",
+    "description": "bigger/biggest等比较级与最高级变化。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-027",
+    "title": "特殊疑问句",
+    "description": "What/Where/When/Who等疑问词引导的问句。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-028",
+    "title": "一般疑问句",
+    "description": "Do you...?/Can you...?及肯否定回答。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-029",
+    "title": "There be句型",
+    "description": "某地有某物，be动词与主语的一致。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-030",
+    "title": "情态动词",
+    "description": "can/must/should等情态动词的基本用法。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-031",
+    "title": "介词",
+    "description": "in/on/at等介词的基本用法与固定搭配。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-032",
+    "title": "日期与月份",
+    "description": "January到December，星期的表达方式。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-033",
+    "title": "时间表达",
+    "description": "整点与半点，时间的读法与写法。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-034",
+    "title": "喜好表达",
+    "description": "I like.../I don\\",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-035",
+    "title": "购物对话",
+    "description": "How much is it?等购物场景用语。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-eng-036",
+    "title": "阅读技巧",
+    "description": "根据图片猜词义，关键词定位等阅读方法。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "english",
+    "subjectName": "英语"
+  },
+  {
+    "id": "p-sci-001",
     "title": "植物",
     "description": "植物的根、茎、叶、花、果实、种子。",
     "grade": "primary",
@@ -207,7 +963,7 @@
     "subjectName": "科学"
   },
   {
-    "id": "p-sci-2",
+    "id": "p-sci-002",
     "title": "动物",
     "description": "昆虫、鱼类、两栖类、爬行类、鸟类、哺乳类特征。",
     "grade": "primary",
@@ -216,7 +972,7 @@
     "subjectName": "科学"
   },
   {
-    "id": "p-sci-3",
+    "id": "p-sci-003",
     "title": "水与空气",
     "description": "水的形态变化，空气的性质。",
     "grade": "primary",
@@ -225,7 +981,7 @@
     "subjectName": "科学"
   },
   {
-    "id": "p-sci-4",
+    "id": "p-sci-004",
     "title": "声光热",
     "description": "声音的产生与传播，光的反射，热胀冷缩。",
     "grade": "primary",
@@ -234,7 +990,7 @@
     "subjectName": "科学"
   },
   {
-    "id": "p-sci-5",
+    "id": "p-sci-005",
     "title": "地球与宇宙",
     "description": "地球的形状、自转与公转，月相变化，太阳系。",
     "grade": "primary",
@@ -243,7 +999,259 @@
     "subjectName": "科学"
   },
   {
-    "id": "p-mor-1",
+    "id": "p-sci-009",
+    "title": "植物的根",
+    "description": "根系类型与功能，吸收水分和养分。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-010",
+    "title": "植物的茎",
+    "description": "支撑与运输作用，茎的结构与功能。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-011",
+    "title": "植物的叶",
+    "description": "光合作用的工厂，叶片的结构。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-012",
+    "title": "植物的花",
+    "description": "花的结构与传粉，认识花瓣花蕊花药。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-013",
+    "title": "种子的萌发",
+    "description": "种子发芽需要的条件，观察种子发芽过程。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-014",
+    "title": "动物的分类",
+    "description": "脊椎动物与无脊椎动物，了解动物大家族。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-015",
+    "title": "昆虫的特征",
+    "description": "头胸腹三部分六条腿，认识常见昆虫。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-016",
+    "title": "鱼类的适应",
+    "description": "鳃呼吸与鳍运动，鱼类适应水中生活。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-017",
+    "title": "鸟类的特征",
+    "description": "羽毛与飞行，鸟类的身体结构适应。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-018",
+    "title": "哺乳动物",
+    "description": "胎生与哺乳，认识常见哺乳动物。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-019",
+    "title": "食物链",
+    "description": "生产者消费者分解者，能量传递的链条。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-020",
+    "title": "生态平衡",
+    "description": "谁也离不开谁，生态系统的稳定性。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-021",
+    "title": "材料的性质",
+    "description": "硬度、韧性与吸水性，常见材料的特点。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-022",
+    "title": "水的循环",
+    "description": "蒸发凝结降水，认识自然界的水循环。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-023",
+    "title": "空气的成分",
+    "description": "氧气与二氧化碳，空气的组成与作用。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-024",
+    "title": "声音的产生",
+    "description": "振动产生声音，声音的传播与大小。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-025",
+    "title": "光的直线传播",
+    "description": "影子是如何形成的，光沿直线传播。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-026",
+    "title": "光的反射",
+    "description": "镜子为什么能照出人，反射定律初探。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-027",
+    "title": "磁铁的性质",
+    "description": "南北极与相互作用，同极相斥异极相吸。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-028",
+    "title": "简单电路",
+    "description": "电池导线灯泡，串联与并联基本认识。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-029",
+    "title": "岩石与矿物",
+    "description": "岩石的种类与特征，矿物的用途。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-030",
+    "title": "土壤的组成",
+    "description": "沙子黏土腐殖质，土壤与植物的关系。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-031",
+    "title": "天气现象",
+    "description": "晴雨雪雾雷电，认识常见天气现象。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-032",
+    "title": "四季更替",
+    "description": "春夏秋冬的划分，季节变化的原因。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-033",
+    "title": "月相变化",
+    "description": "新月上弦月满月，月相的变化规律。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-034",
+    "title": "太阳系",
+    "description": "八大行星与太阳，太阳系的组成。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-035",
+    "title": "地球自转",
+    "description": "白天黑夜的由来，地球自转一周。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-sci-036",
+    "title": "保护动植物",
+    "description": "为什么要保护野生动物，爱护濒危物种。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "science",
+    "subjectName": "科学"
+  },
+  {
+    "id": "p-mor-001",
     "title": "个人生活",
     "description": "生活自理，卫生习惯，诚实守信。",
     "grade": "primary",
@@ -252,7 +1260,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "p-mor-2",
+    "id": "p-mor-002",
     "title": "学校生活",
     "description": "尊敬师长，团结同学，遵守校规。",
     "grade": "primary",
@@ -261,7 +1269,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "p-mor-3",
+    "id": "p-mor-003",
     "title": "家庭生活",
     "description": "孝敬父母，做力所能及的家务。",
     "grade": "primary",
@@ -270,7 +1278,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "p-mor-4",
+    "id": "p-mor-004",
     "title": "公共生活",
     "description": "遵守交通规则，爱护公物，保护环境。",
     "grade": "primary",
@@ -279,7 +1287,259 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "m-math-1",
+    "id": "p-mor-009",
+    "title": "认识自己",
+    "description": "我的优点与缺点，客观评价自己。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-010",
+    "title": "我的家",
+    "description": "家庭成员与亲情，互相关爱温暖的家。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-011",
+    "title": "学校生活",
+    "description": "尊敬老师与团结同学，融入集体。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-012",
+    "title": "课间安全",
+    "description": "文明游戏不追逐，注意课间安全。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-013",
+    "title": "交通安全",
+    "description": "红绿灯与斑马线，遵守交通规则。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-014",
+    "title": "消防安全",
+    "description": "玩火的危险，防火与自救知识。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-015",
+    "title": "防溺水",
+    "description": "水边安全与自救，牢记六不准。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-016",
+    "title": "网络安全",
+    "description": "合理使用电子产品，保护个人信息。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-017",
+    "title": "诚实做人",
+    "description": "说真话不说谎，诚信是最好的品质。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-018",
+    "title": "信守承诺",
+    "description": "说到做到，做一个守信用的孩子。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-019",
+    "title": "尊重他人",
+    "description": "倾听与礼貌用语，尊重每一个人。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-020",
+    "title": "合作分享",
+    "description": "与同学一起完成任务，体验合作的快乐。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-021",
+    "title": "帮助他人",
+    "description": "做一个有爱心的孩子，助人为乐。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-022",
+    "title": "班级规则",
+    "description": "遵守课堂纪律，维护班级秩序。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-023",
+    "title": "爱护公物",
+    "description": "保护学校设施，不乱涂乱画。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-024",
+    "title": "垃圾分类",
+    "description": "可回收与不可回收，保护环境从我做起。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-025",
+    "title": "节约用水",
+    "description": "水是生命之源，养成节水好习惯。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-026",
+    "title": "节约粮食",
+    "description": "光盘行动，珍惜每一粒粮食。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-027",
+    "title": "尊老爱幼",
+    "description": "帮助老人与弟弟妹妹，传承传统美德。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-028",
+    "title": "爱国情感",
+    "description": "认识国旗国徽，热爱自己的祖国。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-029",
+    "title": "传统文化",
+    "description": "春节与中秋节的习俗，了解传统节日。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-030",
+    "title": "环境保护",
+    "description": "不乱扔垃圾保护地球，绿色生活方式。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-031",
+    "title": "紧急求助",
+    "description": "110/119/120紧急电话的正确拨打。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-032",
+    "title": "拒绝欺凌",
+    "description": "校园霸凌的应对，勇敢说不出来。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-033",
+    "title": "合理安排时间",
+    "description": "作息时间表，劳逸结合高效率。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-034",
+    "title": "应对挫折",
+    "description": "失败了不气馁，培养抗挫能力。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-035",
+    "title": "表达情绪",
+    "description": "开心伤心生气的正确表达方式。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "p-mor-036",
+    "title": "自我保护",
+    "description": "不给陌生人开门，提高自我保护意识。",
+    "grade": "primary",
+    "gradeName": "小学",
+    "subject": "moral",
+    "subjectName": "道德与法治"
+  },
+  {
+    "id": "m-math-001",
     "title": "数与式",
     "description": "有理数、实数、代数式、整式、分式、二次根式。",
     "grade": "middle",
@@ -288,7 +1548,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-math-2",
+    "id": "m-math-002",
     "title": "方程与不等式",
     "description": "一元一次方程、二元一次方程组、一元二次方程、分式方程、一元一次不等式（组）。",
     "grade": "middle",
@@ -297,7 +1557,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-math-3",
+    "id": "m-math-003",
     "title": "函数",
     "description": "平面直角坐标系、一次函数、反比例函数、二次函数。",
     "grade": "middle",
@@ -306,7 +1566,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-math-4",
+    "id": "m-math-004",
     "title": "图形的性质",
     "description": "相交线与平行线、三角形（全等、相似）、四边形、圆。",
     "grade": "middle",
@@ -315,7 +1575,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-math-5",
+    "id": "m-math-005",
     "title": "图形的变化",
     "description": "平移、旋转、轴对称、中心对称、投影与视图。",
     "grade": "middle",
@@ -324,7 +1584,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-math-6",
+    "id": "m-math-006",
     "title": "统计与概率",
     "description": "数据的收集与整理、概率初步。",
     "grade": "middle",
@@ -333,7 +1593,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "m-phy-1",
+    "id": "m-phy-001",
     "title": "声现象",
     "description": "声音的产生与传播，声音的特性，噪声的危害与控制。",
     "grade": "middle",
@@ -342,7 +1602,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-2",
+    "id": "m-phy-002",
     "title": "光现象",
     "description": "光的直线传播，反射，平面镜成像，折射，色散。",
     "grade": "middle",
@@ -351,7 +1611,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-3",
+    "id": "m-phy-003",
     "title": "透镜及其应用",
     "description": "凸透镜成像规律及眼睛、显微镜、望远镜。",
     "grade": "middle",
@@ -360,7 +1620,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-4",
+    "id": "m-phy-004",
     "title": "物态变化",
     "description": "温度，熔化与凝固，汽化与液化，升华与凝华。",
     "grade": "middle",
@@ -369,7 +1629,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-5",
+    "id": "m-phy-005",
     "title": "力学与运动",
     "description": "参照物，速度，质量与密度，力，二力平衡，摩擦力，压强，浮力，杠杆，滑轮，功与功率，机械效率。",
     "grade": "middle",
@@ -378,7 +1638,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-6",
+    "id": "m-phy-006",
     "title": "电学",
     "description": "电流，电压，电阻，欧姆定律，电功，电功率，焦耳定律，家庭电路，电生磁，磁生电。",
     "grade": "middle",
@@ -387,7 +1647,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-7",
+    "id": "m-phy-007",
     "title": "简单机械与功",
     "description": "杠杆、滑轮、机械效率、功和功率。",
     "grade": "middle",
@@ -396,7 +1656,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-phy-8",
+    "id": "m-phy-008",
     "title": "内能",
     "description": "分子热运动、内能、热量计算、热机。",
     "grade": "middle",
@@ -405,7 +1665,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "m-chem-1",
+    "id": "m-chem-001",
     "title": "走进化学世界",
     "description": "物质的变化和性质，化学实验基本操作。",
     "grade": "middle",
@@ -414,7 +1674,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-2",
+    "id": "m-chem-002",
     "title": "空气与氧气",
     "description": "空气成分，氧气的性质与制取。",
     "grade": "middle",
@@ -423,7 +1683,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-3",
+    "id": "m-chem-003",
     "title": "物质构成的奥秘",
     "description": "分子、原子、离子，元素，化合价，化学式。",
     "grade": "middle",
@@ -432,7 +1692,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-4",
+    "id": "m-chem-004",
     "title": "化学方程式",
     "description": "质量守恒定律，化学方程式书写与计算。",
     "grade": "middle",
@@ -441,7 +1701,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-5",
+    "id": "m-chem-005",
     "title": "碳和碳的氧化物",
     "description": "金刚石、石墨，二氧化碳，一氧化碳。",
     "grade": "middle",
@@ -450,7 +1710,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-6",
+    "id": "m-chem-006",
     "title": "燃料及其利用",
     "description": "燃烧与灭火，化石燃料，新能源。",
     "grade": "middle",
@@ -459,7 +1719,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-7",
+    "id": "m-chem-007",
     "title": "金属",
     "description": "金属材料，金属的化学性质，金属资源的利用和保护。",
     "grade": "middle",
@@ -468,7 +1728,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-8",
+    "id": "m-chem-008",
     "title": "溶液",
     "description": "溶解度，溶质质量分数。",
     "grade": "middle",
@@ -477,7 +1737,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-9",
+    "id": "m-chem-009",
     "title": "酸碱盐",
     "description": "常见酸碱盐的性质与用途，复分解反应，化肥。",
     "grade": "middle",
@@ -486,7 +1746,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-chem-10",
+    "id": "m-chem-010",
     "title": "化学与生活",
     "description": "六大营养素、化学材料、环境保护。",
     "grade": "middle",
@@ -495,7 +1755,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "m-bio-1",
+    "id": "m-bio-001",
     "title": "细胞",
     "description": "细胞结构，分裂与分化，显微镜使用。",
     "grade": "middle",
@@ -504,7 +1764,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-2",
+    "id": "m-bio-002",
     "title": "生物圈中的绿色植物",
     "description": "孢子植物，种子植物，光合作用，呼吸作用，蒸腾作用。",
     "grade": "middle",
@@ -513,7 +1773,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-3",
+    "id": "m-bio-003",
     "title": "生物圈中的人",
     "description": "消化，呼吸，循环，泌尿，神经，内分泌系统。",
     "grade": "middle",
@@ -522,7 +1782,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-4",
+    "id": "m-bio-004",
     "title": "生物的遗传与变异",
     "description": "基因，DNA，染色体，遗传病。",
     "grade": "middle",
@@ -531,7 +1791,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-5",
+    "id": "m-bio-005",
     "title": "生物的多样性",
     "description": "生物分类、五界系统、珍稀保护。",
     "grade": "middle",
@@ -540,7 +1800,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-6",
+    "id": "m-bio-006",
     "title": "生物的进化",
     "description": "进化证据、自然选择学说、达尔文。",
     "grade": "middle",
@@ -549,7 +1809,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-bio-7",
+    "id": "m-bio-007",
     "title": "健康地生活",
     "description": "免疫与计划免疫、传染病预防、急救常识。",
     "grade": "middle",
@@ -558,7 +1818,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "m-chi-1",
+    "id": "m-chi-001",
     "title": "文言文实词虚词",
     "description": "通假字，古今异义，一词多义，词类活用，常见虚词（之、其、而、以、于、乃等）。",
     "grade": "middle",
@@ -567,7 +1827,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-2",
+    "id": "m-chi-002",
     "title": "古诗文默写",
     "description": "初中必背古诗文61篇。",
     "grade": "middle",
@@ -576,7 +1836,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-3",
+    "id": "m-chi-003",
     "title": "现代文阅读",
     "description": "记叙文、说明文、议论文阅读技巧。",
     "grade": "middle",
@@ -585,7 +1845,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-4",
+    "id": "m-chi-004",
     "title": "名著导读",
     "description": "《朝花夕拾》《西游记》《水浒传》《骆驼祥子》《繁星·春水》《鲁滨逊漂流记》《格列佛游记》《钢铁是怎样炼成的》等。",
     "grade": "middle",
@@ -594,7 +1854,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-5",
+    "id": "m-chi-005",
     "title": "汉字与语法",
     "description": "词性分类、短语类型、句子成分。",
     "grade": "middle",
@@ -603,7 +1863,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-6",
+    "id": "m-chi-006",
     "title": "病句修改",
     "description": "六大语病类型及修改方法。",
     "grade": "middle",
@@ -612,7 +1872,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-7",
+    "id": "m-chi-007",
     "title": "语言运用",
     "description": "口语交际、仿写对联、图文转换。",
     "grade": "middle",
@@ -621,7 +1881,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-chi-8",
+    "id": "m-chi-008",
     "title": "写作技巧",
     "description": "记叙文、议论文、应用文的写作方法。",
     "grade": "middle",
@@ -630,7 +1890,7 @@
     "subjectName": "语文"
   },
   {
-    "id": "m-eng-1",
+    "id": "m-eng-001",
     "title": "时态语态",
     "description": "一般现在/过去/将来时，现在/过去进行时，现在完成时，被动语态。",
     "grade": "middle",
@@ -639,7 +1899,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-2",
+    "id": "m-eng-002",
     "title": "从句",
     "description": "宾语从句，定语从句，状语从句。",
     "grade": "middle",
@@ -648,7 +1908,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-3",
+    "id": "m-eng-003",
     "title": "非谓语动词",
     "description": "动词不定式，动名词，分词。",
     "grade": "middle",
@@ -657,7 +1917,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-4",
+    "id": "m-eng-004",
     "title": "词法综合",
     "description": "名词、冠词、代词、形容词副词、介词。",
     "grade": "middle",
@@ -666,7 +1926,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-5",
+    "id": "m-eng-005",
     "title": "情景交际",
     "description": "问候、问路、购物、就医等日常交际用语。",
     "grade": "middle",
@@ -675,7 +1935,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-6",
+    "id": "m-eng-006",
     "title": "阅读理解",
     "description": "阅读策略、题型解法与解题步骤。",
     "grade": "middle",
@@ -684,7 +1944,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-eng-7",
+    "id": "m-eng-007",
     "title": "书面表达",
     "description": "邮件、通知、日记、话题作文的写作方法。",
     "grade": "middle",
@@ -693,7 +1953,7 @@
     "subjectName": "英语"
   },
   {
-    "id": "m-his-1",
+    "id": "m-his-001",
     "title": "中国古代史",
     "description": "夏商周至明清各朝代政治、经济、文化。",
     "grade": "middle",
@@ -702,7 +1962,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "m-his-2",
+    "id": "m-his-002",
     "title": "中国近代史",
     "description": "鸦片战争，洋务运动，辛亥革命，五四运动，抗日战争，解放战争。",
     "grade": "middle",
@@ -711,7 +1971,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "m-his-3",
+    "id": "m-his-003",
     "title": "中国现代史",
     "description": "新中国成立，改革开放。",
     "grade": "middle",
@@ -720,7 +1980,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "m-his-4",
+    "id": "m-his-004",
     "title": "世界史",
     "description": "古代文明，欧美资产阶级革命，工业革命，世界大战。",
     "grade": "middle",
@@ -729,7 +1989,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "m-his-5",
+    "id": "m-his-005",
     "title": "材料解析题",
     "description": "史料阅读、图表分析、观点论述答题模板。",
     "grade": "middle",
@@ -738,7 +1998,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "m-geo-1",
+    "id": "m-geo-001",
     "title": "地球与地图",
     "description": "经纬网，地球运动，等高线地形图。",
     "grade": "middle",
@@ -747,7 +2007,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "m-geo-2",
+    "id": "m-geo-002",
     "title": "世界地理",
     "description": "七大洲四大洋，气候类型，主要国家。",
     "grade": "middle",
@@ -756,7 +2016,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "m-geo-3",
+    "id": "m-geo-003",
     "title": "中国地理",
     "description": "自然环境，人口民族，自然资源，行政区划，四大地理区域。",
     "grade": "middle",
@@ -765,7 +2025,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "m-geo-4",
+    "id": "m-geo-004",
     "title": "地理读图技巧",
     "description": "等高线图、等值线图、统计图判读方法。",
     "grade": "middle",
@@ -774,7 +2034,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "m-mor-1",
+    "id": "m-mor-001",
     "title": "心理健康",
     "description": "认识自我，情绪管理，挫折应对，人际交往。",
     "grade": "middle",
@@ -783,7 +2043,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "m-mor-2",
+    "id": "m-mor-002",
     "title": "法律常识",
     "description": "宪法，未成年人保护法，预防未成年人犯罪法，民法典基础。",
     "grade": "middle",
@@ -792,7 +2052,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "m-mor-3",
+    "id": "m-mor-003",
     "title": "国情国策",
     "description": "基本经济制度，政治制度，科教兴国，可持续发展。",
     "grade": "middle",
@@ -801,7 +2061,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "m-mor-4",
+    "id": "m-mor-004",
     "title": "权利与义务",
     "description": "人身权、受教育权、权利义务的关系。",
     "grade": "middle",
@@ -810,7 +2070,7 @@
     "subjectName": "道德与法治"
   },
   {
-    "id": "h-math-1",
+    "id": "h-math-001",
     "title": "集合与简易逻辑",
     "description": "集合的概念与运算，命题，充分必要条件。",
     "grade": "high",
@@ -819,7 +2079,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-2",
+    "id": "h-math-002",
     "title": "函数",
     "description": "函数的概念，性质（单调性、奇偶性、周期性、最值），指数函数，对数函数，幂函数。",
     "grade": "high",
@@ -828,7 +2088,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-3",
+    "id": "h-math-003",
     "title": "三角函数",
     "description": "任意角，弧度制，三角函数的图像与性质，三角恒等变换，解三角形。",
     "grade": "high",
@@ -837,7 +2097,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-4",
+    "id": "h-math-004",
     "title": "数列",
     "description": "等差数列，等比数列及其前n项和。",
     "grade": "high",
@@ -846,7 +2106,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-5",
+    "id": "h-math-005",
     "title": "平面向量",
     "description": "向量的概念与运算，数量积，坐标运算。",
     "grade": "high",
@@ -855,7 +2115,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-6",
+    "id": "h-math-006",
     "title": "不等式",
     "description": "不等式的性质，解不等式，基本不等式。",
     "grade": "high",
@@ -864,7 +2124,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-7",
+    "id": "h-math-007",
     "title": "立体几何",
     "description": "空间点、线、面的位置关系，空间几何体的结构、三视图、表面积与体积。",
     "grade": "high",
@@ -873,7 +2133,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-8",
+    "id": "h-math-008",
     "title": "解析几何",
     "description": "直线与圆的方程，圆锥曲线（椭圆、双曲线、抛物线）。",
     "grade": "high",
@@ -882,7 +2142,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-9",
+    "id": "h-math-009",
     "title": "概率与统计",
     "description": "随机事件，古典概型，几何概型，抽样方法，回归分析。",
     "grade": "high",
@@ -891,7 +2151,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-10",
+    "id": "h-math-010",
     "title": "导数及其应用",
     "description": "导数的概念，运算，应用（单调性、极值、最值）。",
     "grade": "high",
@@ -900,7 +2160,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-math-11",
+    "id": "h-math-011",
     "title": "复数",
     "description": "复数的概念，四则运算，几何意义。",
     "grade": "high",
@@ -909,7 +2169,7 @@
     "subjectName": "数学"
   },
   {
-    "id": "h-phy-1",
+    "id": "h-phy-001",
     "title": "运动学",
     "description": "匀变速直线运动，平抛运动，圆周运动。",
     "grade": "high",
@@ -918,7 +2178,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-2",
+    "id": "h-phy-002",
     "title": "静力学",
     "description": "力，重力，弹力，摩擦力，力的合成与分解，共点力平衡。",
     "grade": "high",
@@ -927,7 +2187,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-3",
+    "id": "h-phy-003",
     "title": "牛顿运动定律",
     "description": "牛顿第一、二、三定律，超重失重。",
     "grade": "high",
@@ -936,7 +2196,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-4",
+    "id": "h-phy-004",
     "title": "功与能",
     "description": "功，功率，动能定理，机械能守恒定律，功能关系。",
     "grade": "high",
@@ -945,7 +2205,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-5",
+    "id": "h-phy-005",
     "title": "动量",
     "description": "动量，冲量，动量定理，动量守恒定律，碰撞。",
     "grade": "high",
@@ -954,7 +2214,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-6",
+    "id": "h-phy-006",
     "title": "电场",
     "description": "电场强度，电势，电势能，电容器，带电粒子在电场中的运动。",
     "grade": "high",
@@ -963,7 +2223,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-7",
+    "id": "h-phy-007",
     "title": "电路",
     "description": "欧姆定律，焦耳定律，串并联电路，闭合电路欧姆定律。",
     "grade": "high",
@@ -972,7 +2232,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-8",
+    "id": "h-phy-008",
     "title": "磁场",
     "description": "磁感应强度，安培力，洛伦兹力，带电粒子在磁场中的运动。",
     "grade": "high",
@@ -981,7 +2241,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-9",
+    "id": "h-phy-009",
     "title": "电磁感应",
     "description": "法拉第电磁感应定律，楞次定律，自感。",
     "grade": "high",
@@ -990,7 +2250,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-10",
+    "id": "h-phy-010",
     "title": "交变电流",
     "description": "正弦式交变电流的产生与描述，变压器，远距离输电。",
     "grade": "high",
@@ -999,7 +2259,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-phy-11",
+    "id": "h-phy-011",
     "title": "近代物理",
     "description": "光电效应，波粒二象性，原子结构，原子核。",
     "grade": "high",
@@ -1008,7 +2268,7 @@
     "subjectName": "物理"
   },
   {
-    "id": "h-chem-1",
+    "id": "h-chem-001",
     "title": "化学计量",
     "description": "物质的量，摩尔质量，气体摩尔体积，物质的量浓度。",
     "grade": "high",
@@ -1017,7 +2277,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-2",
+    "id": "h-chem-002",
     "title": "氧化还原反应",
     "description": "氧化剂，还原剂，电子转移，配平。",
     "grade": "high",
@@ -1026,7 +2286,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-3",
+    "id": "h-chem-003",
     "title": "离子反应",
     "description": "电解质，离子方程式，离子共存，离子检验。",
     "grade": "high",
@@ -1035,7 +2295,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-4",
+    "id": "h-chem-004",
     "title": "金属及其化合物",
     "description": "钠，镁，铝，铁，铜及其化合物。",
     "grade": "high",
@@ -1044,7 +2304,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-5",
+    "id": "h-chem-005",
     "title": "非金属及其化合物",
     "description": "氯，硫，氮，硅及其化合物。",
     "grade": "high",
@@ -1053,7 +2313,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-6",
+    "id": "h-chem-006",
     "title": "元素周期律",
     "description": "原子结构，元素周期表，元素周期律，化学键。",
     "grade": "high",
@@ -1062,7 +2322,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-7",
+    "id": "h-chem-007",
     "title": "化学反应原理",
     "description": "化学反应热，化学反应速率，化学平衡，水溶液中的离子平衡（弱电解质电离，盐类水解，沉淀溶解平衡），电化学（原电池，电解池）。",
     "grade": "high",
@@ -1071,7 +2331,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-chem-8",
+    "id": "h-chem-008",
     "title": "有机化学基础",
     "description": "烃（甲烷，乙烯，苯），烃的衍生物（卤代烃，醇，酚，醛，羧酸，酯），糖类，油脂，蛋白质。",
     "grade": "high",
@@ -1080,7 +2340,7 @@
     "subjectName": "化学"
   },
   {
-    "id": "h-bio-1",
+    "id": "h-bio-001",
     "title": "分子与细胞",
     "description": "细胞化学组成，细胞结构，细胞代谢（酶，ATP，呼吸，光合），细胞增殖，分化，衰老，凋亡，癌变。",
     "grade": "high",
@@ -1089,7 +2349,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "h-bio-2",
+    "id": "h-bio-002",
     "title": "遗传与进化",
     "description": "孟德尔遗传定律，减数分裂，伴性遗传，DNA结构与复制，基因表达，基因突变，染色体变异，生物进化。",
     "grade": "high",
@@ -1098,7 +2358,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "h-bio-3",
+    "id": "h-bio-003",
     "title": "稳态与环境",
     "description": "内环境稳态，神经调节，体液调节，免疫调节，植物激素调节，种群与群落，生态系统。",
     "grade": "high",
@@ -1107,7 +2367,7 @@
     "subjectName": "生物"
   },
   {
-    "id": "h-pol-1",
+    "id": "h-pol-001",
     "title": "经济生活",
     "description": "货币，价格，消费，生产，分配，市场经济，宏观调控，经济全球化。",
     "grade": "high",
@@ -1116,7 +2376,7 @@
     "subjectName": "思想政治"
   },
   {
-    "id": "h-pol-2",
+    "id": "h-pol-002",
     "title": "政治生活",
     "description": "公民，政府，人大，中共，政协，民族区域自治，宗教政策，国际关系。",
     "grade": "high",
@@ -1125,7 +2385,7 @@
     "subjectName": "思想政治"
   },
   {
-    "id": "h-pol-3",
+    "id": "h-pol-003",
     "title": "文化生活",
     "description": "文化的作用，文化传承与创新，中华文化，文化自信。",
     "grade": "high",
@@ -1134,7 +2394,7 @@
     "subjectName": "思想政治"
   },
   {
-    "id": "h-pol-4",
+    "id": "h-pol-004",
     "title": "生活与哲学",
     "description": "唯物论，认识论，辩证法，历史唯物主义。",
     "grade": "high",
@@ -1143,7 +2403,7 @@
     "subjectName": "思想政治"
   },
   {
-    "id": "h-his-1",
+    "id": "h-his-001",
     "title": "古代中国",
     "description": "政治制度，农耕经济，传统文化。",
     "grade": "high",
@@ -1152,7 +2412,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-his-2",
+    "id": "h-his-002",
     "title": "近代中国",
     "description": "反侵略求民主，经济结构变动，思想解放。",
     "grade": "high",
@@ -1161,7 +2421,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-his-3",
+    "id": "h-his-003",
     "title": "现代中国",
     "description": "政治建设，经济建设，外交，科教文卫。",
     "grade": "high",
@@ -1170,7 +2430,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-his-4",
+    "id": "h-his-004",
     "title": "古代世界",
     "description": "雅典民主，罗马法。",
     "grade": "high",
@@ -1179,7 +2439,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-his-5",
+    "id": "h-his-005",
     "title": "近代世界",
     "description": "代议制，新航路，殖民扩张，工业革命，科学理论文。",
     "grade": "high",
@@ -1188,7 +2448,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-his-6",
+    "id": "h-his-006",
     "title": "现代世界",
     "description": "苏联建设，罗斯福新政，战后资本主义，二战后世界格局。",
     "grade": "high",
@@ -1197,7 +2457,7 @@
     "subjectName": "历史"
   },
   {
-    "id": "h-geo-1",
+    "id": "h-geo-001",
     "title": "自然地理",
     "description": "地球运动，大气，水，地表形态，地理环境整体性与差异性。",
     "grade": "high",
@@ -1206,7 +2466,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "h-geo-2",
+    "id": "h-geo-002",
     "title": "人文地理",
     "description": "人口，城市，农业，工业，交通，可持续发展。",
     "grade": "high",
@@ -1215,7 +2475,7 @@
     "subjectName": "地理"
   },
   {
-    "id": "h-geo-3",
+    "id": "h-geo-003",
     "title": "区域地理",
     "description": "区域地理环境与人类活动，地理信息技术。",
     "grade": "high",

@@ -1,4 +1,10 @@
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, vi } from 'vitest';
+
+// Mock: 无配置文件时验证默认值逻辑
+vi.mock('node:fs', async (importOriginal) => {
+  const actual = await importOriginal();
+  return { ...actual, existsSync: () => false };
+});
 import { loadProviderConfig, createClient, PROVIDERS } from './provider-config.mjs';
 
 describe('loadProviderConfig', () => {
