@@ -5,6 +5,9 @@ import { mistakeFocusedPrompt } from './mistake-focused';
 import { conceptCheckPrompt } from './concept-check';
 import { challengePrompt } from './challenge';
 import { adaptivePrompt } from './adaptive';
+import { primaryLevelGeneratePrompt } from './primary-level';
+import { middleLevelGeneratePrompt } from './middle-level';
+import { highLevelGeneratePrompt } from './high-level';
 
 export const GENERATE_PROMPTS: PromptTemplate[] = [
   gradientPrompt,
@@ -13,4 +16,7 @@ export const GENERATE_PROMPTS: PromptTemplate[] = [
   conceptCheckPrompt,
   challengePrompt,
   adaptivePrompt,
+  primaryLevelGeneratePrompt,
+  middleLevelGeneratePrompt,
+  highLevelGeneratePrompt,
 ];

@@ -5,6 +5,9 @@ import { experimentKitPrompt } from './experiment-kit';
 import { storyCoCreatePrompt } from './story-co-create';
 import { quizBattlePrompt } from './quiz-battle';
 import { realLifeTaskPrompt } from './real-life-task';
+import { primaryLevelInteractionPrompt } from './primary-level';
+import { middleLevelInteractionPrompt } from './middle-level';
+import { highLevelInteractionPrompt } from './high-level';
 
 export const INTERACTION_PROMPTS: PromptTemplate[] = [
   gameBasedPrompt,
@@ -13,4 +16,7 @@ export const INTERACTION_PROMPTS: PromptTemplate[] = [
   storyCoCreatePrompt,
   quizBattlePrompt,
   realLifeTaskPrompt,
+  primaryLevelInteractionPrompt,
+  middleLevelInteractionPrompt,
+  highLevelInteractionPrompt,
 ];
