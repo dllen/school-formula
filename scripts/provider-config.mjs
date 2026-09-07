@@ -50,7 +50,7 @@ export function loadProviderConfig(env = process.env) {
   }
 
   const preset = PROVIDERS[provider];
-  const apiKey = env.GENERATE_API_KEY || fileConfig.apiKey || '';
+  const apiKey = env.GENERATE_API_KEY || fileConfig.apiKey || env[`${provider.toUpperCase()}_API_KEY`] || '';
 
   return {
     provider,

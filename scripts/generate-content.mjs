@@ -116,13 +116,23 @@ export function validateTutorialContent(tc, id) {
 function parseArgs(argv) {
   const args = { input: null, outDir: null, dryRun: false, limit: 0, force: false };
   for (let i = 2; i < argv.length; i++) {
-    const [k, v] = argv[i].replace(/^--/, '').split('=');
-    if (k === 'input') args.input = v;
-    if (k === 'outDir') args.outDir = v;
-    if (k === 'ranges') args.ranges = JSON.parse(v);
+    const raw = argv[i].replace(/^--/, '');
+    const [k, v] = raw.split('=');
+    if (v !== undefined) {
+      // --key=value 模式
+      if (k === 'input') args.input = v;
+      if (k === 'outDir') args.outDir = v;
+      if (k === 'ranges') args.ranges = JSON.parse(v);
+      if (k === 'limit') args.limit = Number(v);
+    } else {
+      // --key value 模式（下一个 argv 是值）
+      if (k === 'input') { args.input = argv[++i]; }
+      else if (k === 'outDir') { args.outDir = argv[++i]; }
+      else if (k === 'ranges') { args.ranges = JSON.parse(argv[++i]); }
+      else if (k === 'limit') { args.limit = Number(argv[++i]); }
+    }
     if (k === 'dry-run') args.dryRun = true;
     if (k === 'force') args.force = true;
-    if (k === 'limit') args.limit = Number(v);
   }
   return args;
 }
