@@ -1,0 +1,16 @@
+// Provider 配置模板（复制为 scripts/generate-config.json 使用，勿提交 apiKey）
+{
+  "provider": "ollama",    // ollama | deepseek | zhipu | minimax | longcat | moonshot | qwen | openai
+  "apiKey": "",            // 环境变量 GENERATE_API_KEY 优先
+  "baseUrl": "",           // 可选覆盖
+  "model": "",             // 可选覆盖
+  "concurrency": 1,        // Ollama=1, API=3
+  "retryCount": 3,
+  "retryDelayMs": 2000,
+  "temperature": 0.7,
+  "maxTokens": 40096,
+  "outputMode": "files",   // files | json | dry-run
+  "validateOutput": true,
+  "skipExisting": true,
+  "ranges": []             // 例：[{ "grade": "primary", "subject": "math" }]
+}

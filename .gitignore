@@ -26,3 +26,6 @@ dist-ssr
 
 .vitest/
 .wrangler/
+
+# 生成脚本配置（含 apiKey，勿提交脚本内网配置）
+scripts/generate-config.json
