@@ -3,7 +3,7 @@ import type { PromptTemplate } from '../data/prompts/types';
 
 // Define the configuration structure
 export interface AIConfig {
-    provider: 'custom' | 'openai' | 'deepseek' | 'zhipu';
+    provider: 'custom' | 'openai' | 'deepseek' | 'zhipu' | 'gateway';
     apiKey: string;
     baseUrl: string;
     model: string;
@@ -26,7 +26,11 @@ export const PROVIDER_DEFAULTS: Record<string, Partial<AIConfig>> = {
     custom: {
         baseUrl: '',
         model: '',
-    }
+    },
+    gateway: {
+        baseUrl: '',
+        model: '',
+    },
 };
 
 const STORAGE_KEY = 'school_formula_ai_config';
