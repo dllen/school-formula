@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { getAIConfig, saveAIConfig, PROVIDER_DEFAULTS } from '../services/ai';
+import { useAuth } from '../context/auth-context';
 import type { AIConfig } from '../services/ai';
 
 interface SettingsModalProps {
@@ -17,6 +18,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
             model: PROVIDER_DEFAULTS.openai.model || ''
         };
     });
+
+    const { user } = useAuth();
+    const isVip = user?.tier === 'plus' || user?.tier === 'pro';
 
     const handleProviderChange = (provider: AIConfig['provider']) => {
         const defaults = PROVIDER_DEFAULTS[provider];
@@ -46,11 +50,16 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                 </div>
 
                 <div className="p-6 space-y-6">
+                    {isVip && config.provider !== 'gateway' && (
+                        <div className="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-700">
+                            您已是 VIP 会员，推荐切换到「Cloudflare 网关（VIP）」模式，无需配置 API Key。
+                        </div>
+                    )}
                     {/* Provider Selection */}
                     <div>
                         <label className="block text-[14px] font-medium text-[#1F2329] mb-2">服务提供商</label>
                         <div className="grid grid-cols-2 gap-3">
-                            {(['openai', 'deepseek', 'zhipu', 'custom'] as const).map(p => (
+                            {(['openai', 'deepseek', 'zhipu', 'custom', 'gateway'] as const).map(p => (
                                 <button
                                     key={p}
                                     onClick={() => handleProviderChange(p)}
@@ -63,11 +72,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                                     {p === 'deepseek' && 'DeepSeek'}
                                     {p === 'zhipu' && '智谱 AI'}
                                     {p === 'custom' && '自定义'}
+                                    {p === 'gateway' && 'Cloudflare 网关（VIP）'}
                                 </button>
                             ))}
                         </div>
                     </div>
 
+                    {config.provider !== 'gateway' && (
                     <div className="space-y-4">
                         <div>
                             <label className="block text-[14px] font-medium text-[#1F2329] mb-1">API Key</label>
@@ -117,6 +128,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                             />
                         </div>
                     </div>
+                    )}
+                    {config.provider === 'gateway' && (
+                        <div className="rounded-lg bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-700">
+                            您的 AI 调用已通过 Cloudflare AI Gateway 统一提供，无需配置密钥。
+                        </div>
+                    )}
 
                     <div className="pt-4 text-xs text-gray-400">
                         <p>说明：您的 API Key 仅存储在本地浏览器中，不会发送到任何服务器。</p>
