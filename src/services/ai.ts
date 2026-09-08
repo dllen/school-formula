@@ -1,5 +1,6 @@
 import OpenAI from 'openai';
 import type { PromptTemplate } from '../data/prompts/types';
+import { callGateway } from './gateway'
 
 // Define the configuration structure
 export interface AIConfig {
@@ -49,9 +50,41 @@ export const generateKnowledgeContent = async (
     context: string,
     onStream: (chunk: string) => void
 ): Promise<void> => {
-    const config = getAIConfig();
-    if (!config || !config.apiKey) {
-        throw new Error('API Key not configured');
+    const config = getAIConfig()
+    if (!config) {
+        throw new Error('AI 配置未找到')
+    }
+
+    // gateway 模式：走 worker 代理，不需要本地 apiKey
+    if (config.provider === 'gateway') {
+        const prompt = `
+你是一位专业的家庭教育顾问和学科专家。请为家长撰写一份关于"${topic}"的深度辅导指南。
+背景信息：${context}
+
+请严格按以下markdown格式输出（不要输出其他无关内容）：
+
+# 💡 深度解析
+（用通俗易懂的语言，配合生活案例，深入浅出地讲解该知识点的核心逻辑，适合家长讲给孩子听）
+
+# 🌍 生活应用场景
+（列举3-5个日常生活中的具体应用场景，让知识变得有用、有趣）
+
+# 👨‍👩‍👧 亲子互动案例
+（设计一个具体的对话或互动游戏脚本，帮助家长指导孩子）
+
+# ✏️ 实战小测验
+（3道精选练习题，附带答案和解析）
+1. [题目]
+   * 答案：
+   * 解析：
+`
+
+        await callGateway({ prompt }, onStream)
+        return
+    }
+
+    if (!config.apiKey) {
+        throw new Error('API Key not configured')
     }
 
     const client = new OpenAI({
@@ -106,9 +139,42 @@ export const generateTutorialContent = async (
     context: string,
     onStream: (chunk: string) => void
 ): Promise<void> => {
-    const config = getAIConfig();
-    if (!config || !config.apiKey) {
-        throw new Error('API Key not configured');
+    const config = getAIConfig()
+    if (!config) {
+        throw new Error('AI 配置未找到')
+    }
+
+    // gateway 模式：走 worker 代理，不需要本地 apiKey
+    if (config.provider === 'gateway') {
+        const prompt = `
+你是一位经验丰富的小学数学教研老师，擅长把抽象的数学概念讲得通俗易懂、生动有趣。
+请根据以下学习目标，为家长和孩子生成一节关于"${unitTitle}"的完整家庭辅导教程。
+背景信息：${context}
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 🎯 本课目标
+（根据学习目标，用 3-5 条清晰列出孩子学完这课后应达到的目标）
+
+# 📖 知识讲解
+（围绕学习目标，用孩子能听懂的语言讲解核心概念，配合生活案例、比喻或小故事，深入浅出。必要时使用 Mermaid 语法或 SVG 代码插入图解。）
+
+# ✏️ 例题精讲
+（2-3 道由易到难的典型例题，每道题写出完整解题步骤和思路点拨）
+
+# 🧩 亲子互动
+（设计一个 5-10 分钟的小游戏或互动活动，让家长和孩子一起完成，巩固本课内容）
+
+# 📝 课后练习
+（3-5 道练习题，附参考答案和简要解析）
+`
+
+        await callGateway({ prompt }, onStream)
+        return
+    }
+
+    if (!config.apiKey) {
+        throw new Error('API Key not configured')
     }
 
     const client = new OpenAI({
@@ -164,9 +230,44 @@ export const generatePracticeQuestions = async (
     context: string,
     onStream: (chunk: string) => void
 ): Promise<void> => {
-    const config = getAIConfig();
-    if (!config || !config.apiKey) {
-        throw new Error('API Key not configured');
+    const config = getAIConfig()
+    if (!config) {
+        throw new Error('AI 配置未找到')
+    }
+
+    // gateway 模式：走 worker 代理，不需要本地 apiKey
+    if (config.provider === 'gateway') {
+        const prompt = `
+你是一位经验丰富的小学数学老师。请根据以下信息，再生成 5 道与本单元学习目标匹配的补充练习题。
+单元：${unitTitle}
+背景信息：${context}
+
+要求：
+- 题目类型可以是选择、填空、判断或解答；
+- 难度要有梯度，覆盖基础、提高和挑战；
+- 每道题附参考答案和简要解析。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 📝 补充练习题
+
+1. [题目]
+   - 答案：
+   - 解析：
+
+2. [题目]
+   - 答案：
+   - 解析：
+
+（以此类推，共 5 道题）
+`
+
+        await callGateway({ prompt }, onStream)
+        return
+    }
+
+    if (!config.apiKey) {
+        throw new Error('API Key not configured')
     }
 
     const client = new OpenAI({
@@ -420,9 +521,56 @@ export const generateStudyPlan = async (
     weeks: number,
     onStream: (chunk: string) => void
 ): Promise<void> => {
-    const config = getAIConfig();
-    if (!config || !config.apiKey) {
-        throw new Error('API Key not configured');
+    const config = getAIConfig()
+    if (!config) {
+        throw new Error('AI 配置未找到')
+    }
+
+    // gateway 模式：走 worker 代理，不需要本地 apiKey
+    if (config.provider === 'gateway') {
+        const prompt = `
+你是一位专业的学习规划师，熟悉中小学课程体系。请为一位${grade}学生制定一份${subject}学科的个性化学习计划。
+学习目标：${goals}
+计划周期：${weeks} 周
+
+计划要求：
+- 目标拆解合理，符合${grade}学生的认知水平和学习节奏；
+- 按周分配学习内容，循序渐进、张弛有度；
+- 包含每日学习建议（建议每天 30-60 分钟，可执行、可检验）；
+- 每周设置阶段性目标和复盘检查点；
+- 兼顾复习巩固与新知识学习。
+
+请严格按以下 markdown 格式输出（不要输出其他无关内容）：
+
+# 🎯 总体目标
+（简要概括本计划要达成的目标和预期成果）
+
+# 📅 分周计划
+
+## 第 1 周：[本周主题]
+- 本周目标：
+- 每日安排：
+  - 周一：
+  - 周二：
+  - 周三：
+  - 周四：
+  - 周五：
+  - 周末：复习与复盘
+- 检查点：（本周结束时应能完成的小任务或小测验）
+
+## 第 2 周：[本周主题]
+（格式同上，以此类推，共 ${weeks} 周）
+
+# 💡 给家长的建议
+（2-3 条陪伴与监督建议，帮助家长有效支持孩子执行计划）
+`
+
+        await callGateway({ prompt }, onStream)
+        return
+    }
+
+    if (!config.apiKey) {
+        throw new Error('API Key not configured')
     }
 
     const client = new OpenAI({
@@ -560,9 +708,13 @@ export const generateFromTemplate = async (
     variables: Record<string, string>,
     onStream: (chunk: string) => void
 ): Promise<void> => {
-    const config = getAIConfig();
-    if (!config || !config.apiKey) {
-        throw new Error('API Key not configured');
+    const config = getAIConfig()
+    if (!config) {
+        throw new Error('AI 配置未找到')
+    }
+
+    if (!config.apiKey && config.provider !== 'gateway') {
+        throw new Error('API Key not configured')
     }
 
     // 组装最终 prompt：替换 {{variable}} 占位符
@@ -582,6 +734,12 @@ export const generateFromTemplate = async (
 
     // 清理残留占位符
     finalPrompt = finalPrompt.replace(/\{\{[^}]+\}\}/g, '');
+
+    // gateway 模式：走 worker 代理，不需要本地 apiKey
+    if (config.provider === 'gateway') {
+        await callGateway({ prompt: finalPrompt }, onStream)
+        return
+    }
 
     const client = new OpenAI({
         baseURL: config.baseUrl,
