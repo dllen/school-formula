@@ -27,6 +27,7 @@ FRONTEND_URL = "https://syy.global"
 AI_GATEWAY_BASE = ""
 # Workers 调网关的鉴权 Token（在网关生成 Service Token 或 Cloudflare API Token）
 AI_GATEWAY_TOKEN = ""
+AI_GATEWAY_MODEL = "deepseek-chat"
 FROM_EMAIL = "noreply@syy.global"
 ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
