@@ -7,6 +7,7 @@ export interface Env {
   ALLOWED_ORIGINS: string;
   AI_GATEWAY_BASE: string;
   AI_GATEWAY_TOKEN: string;
+  AI_GATEWAY_MODEL: string;
   ASSETS: Fetcher;
   ENVIRONMENT: string;
 }

@@ -67,6 +67,8 @@ async function proxyToGateway(
   body: { prompt?: string; model?: string; stream?: boolean },
   userId: string,
 ): Promise<Response> {
+  const model = body.model?.trim() || env.AI_GATEWAY_MODEL || 'deepseek-chat';
+
   const base = (env.AI_GATEWAY_BASE || '').trim();
   if (!base) {
     return jsonResponse({ error: 'AI 网关未配置（Cloudflare AI Gateway Base URL 缺失）', code: 'GATEWAY_NOT_CONFIGURED' }, 503);
@@ -80,7 +82,7 @@ async function proxyToGateway(
   const stream = body.stream !== false;
 
   const upstreamBody = JSON.stringify({
-    model: body.model || 'deepseek-chat',
+    model,
     stream,
     messages: [
       { role: 'system', content: '你是一个有帮助的 AI 助手，请用中文回答。' },
@@ -167,7 +169,7 @@ async function proxyToGateway(
     }
   } catch { /* quota 写入失败不阻断主流程 */ }
 
-  return new Response(JSON.stringify({ text, model: body.model }), {
+  return new Response(JSON.stringify({ text, model }), {
     status: 200,
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
   });
