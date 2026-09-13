@@ -1,77 +1,102 @@
 import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { usePracticeSession } from './practice/usePracticeSession';
-import { PracticeFilter } from './practice/PracticeFilter';
+import { TopicPicker } from './practice/TopicPicker';
 import { QuestionCard } from './practice/QuestionCard';
 import { ExplanationPanel } from './practice/ExplanationPanel';
 import { PracticeProgress } from './practice/PracticeProgress';
 import { PracticeResult } from './practice/PracticeResult';
 import { ErrorBookButton } from './practice/ErrorBookButton';
-import { filterQuestions, getRandomQuestions, getQuestionById } from '../data/questions';
+import { getQuestionById, getQuestionsByKnowledgePoint } from '../data/questions';
+import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { useErrorBook } from '../hooks/useErrorBook';
 import { useLearningProgress } from '../hooks/useLearningProgress';
+import { useTopicMastery } from '../hooks/useTopicMastery';
 import { ProgressDashboard } from './practice/ProgressDashboard';
 import { checkAnswer } from '../utils/questionUtils';
-import type { QuestionFilter } from '../data/questions/types';
+import type { GradeLevel } from '../data/knowledge';
 
-const FILTER_STORAGE_KEY = 'practice-filter-selection';
-const DEFAULT_FILTER: QuestionFilter = { grade: 'primary', subject: '数学' };
+const QUESTIONS_PER_TOPIC = 20;
 
-/** 从 localStorage 加载上次选择的筛选条件，无记录则返回默认值 */
-function loadFilterFromStorage(): QuestionFilter {
-  try {
-    const raw = localStorage.getItem(FILTER_STORAGE_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw) as QuestionFilter;
-      // 确保 grade 和 subject 都存在才使用（防止存储了不完整数据）
-      if (saved.grade && saved.subject) {
-        return saved;
+interface StartPanelProps {
+  topicId: string;
+  onStart: () => void;
+  onBack: () => void;
+}
+
+/** 专题详情 + 开始按钮 */
+const StartPanel: React.FC<StartPanelProps> = ({ topicId, onStart, onBack }) => {
+  // eslint-disable-next-line react-hooks/preserve-manual-memoization
+  const kp = useMemo(() => {
+    for (const grade of KNOWLEDGE_DATA) {
+      for (const subject of grade.subjects) {
+        const found = subject.knowledgePoints.find((k) => k.id === topicId);
+        if (found) return { ...found, subjectName: subject.name, icon: subject.icon ?? '📚' };
       }
     }
-  } catch {
-    // 解析失败时忽略，使用默认值
-  }
-  return DEFAULT_FILTER;
-}
+    return null;
+  }, [topicId]);
 
-/** 将当前筛选条件中的年级和科目保存到 localStorage */
-function saveFilterToStorage(filter: QuestionFilter): void {
-  try {
-    const toSave = { grade: filter.grade, subject: filter.subject };
-    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(toSave));
-  } catch {
-    // 存储失败时静默忽略（如隐私模式）
-  }
-}
+  const count = getQuestionsByKnowledgePoint(topicId).length;
+
+  if (!kp) return null;
+
+  return (
+    <div className="bg-white rounded-2xl border border-[#F0F1F2] p-6 shadow-sm">
+      <div className="flex items-start gap-4 mb-4">
+        <span className="text-3xl">{kp.icon}</span>
+        <div className="flex-1">
+          <h2 className="text-lg font-bold text-[#1F2329]">{kp.title}</h2>
+          <p className="text-sm text-[#646A73] mt-0.5">{kp.subjectName} · {count} 道题</p>
+          {kp.description && (
+            <p className="text-sm text-[#8F959E] mt-2">{kp.description}</p>
+          )}
+        </div>
+      </div>
+      <p className="text-sm text-[#646A73] mb-5">
+        每次随机抽取 {Math.min(QUESTIONS_PER_TOPIC, count)} 题，完成后记录专题掌握度。
+      </p>
+      <div className="flex gap-3">
+        <button
+          onClick={onBack}
+          className="px-4 py-2 text-sm font-medium text-[#1F2329] bg-[#F5F6F7] rounded-lg hover:bg-gray-200 btn-press"
+        >
+          返回专题列表
+        </button>
+        <button
+          onClick={onStart}
+          className="px-5 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900 btn-press"
+        >
+          开始练习
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export const PracticeView: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [filter, setFilter] = useState<QuestionFilter>(() => loadFilterFromStorage());
-
-  // 当用户更改年级或科目时，持久化到 localStorage
-  useEffect(() => {
-    saveFilterToStorage(filter);
-  }, [filter]);
+  const [selectedGrade, setSelectedGrade] = useState<GradeLevel>('primary');
+  const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
 
   const session = usePracticeSession();
   const errorBook = useErrorBook();
   const learningProgress = useLearningProgress();
+  const topicMastery = useTopicMastery();
   const [showExplanation, setShowExplanation] = useState(false);
   const [showExitConfirm, setShowExitConfirm] = useState(false);
   const hasRecordedProgress = useRef(false);
 
-  // Auto-filter by knowledge point from URL (?kp=xxx)
+  // Auto-pick topic from URL (?kp=xxx)
   useEffect(() => {
     const kp = searchParams.get('kp');
-    if (kp) {
+    if (kp && getQuestionsByKnowledgePoint(kp).length > 0) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setFilter(prev => ({ ...prev, knowledgePointIds: [kp] }));
+      setSelectedTopicId(kp);
     }
   }, [searchParams]);
 
-  const availableCount = useMemo(() => filterQuestions(filter).length, [filter]);
-
-  // Record progress when finishing (not during render!)
+  // Record learning progress when finishing (not during render!)
   useEffect(() => {
     if (session.phase === 'finished' && session.stats && !hasRecordedProgress.current) {
       hasRecordedProgress.current = true;
@@ -91,11 +116,18 @@ export const PracticeView: React.FC = () => {
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [session.phase]);
 
+  const handlePickTopic = useCallback((kpId: string) => {
+    setSelectedTopicId(kpId);
+  }, []);
+
   const handleStart = useCallback(() => {
-    const questions = getRandomQuestions(filter, 10);
+    if (!selectedTopicId) return;
+    const all = getQuestionsByKnowledgePoint(selectedTopicId);
+    // 随机抽 20 题（上限不超过该专题总题量）
+    const questions = [...all].sort(() => Math.random() - 0.5).slice(0, QUESTIONS_PER_TOPIC);
     hasRecordedProgress.current = false;
     session.startPractice(questions);
-  }, [filter, session]);
+  }, [selectedTopicId, session]);
 
   const handleSubmit = useCallback((answer: string) => {
     const currentQ = session.currentQuestion;
@@ -127,13 +159,27 @@ export const PracticeView: React.FC = () => {
       setShowExitConfirm(true);
     } else {
       session.resetToFilter();
+      setSelectedTopicId(null);
     }
   }, [session]);
 
   const confirmExit = useCallback(() => {
     setShowExitConfirm(false);
     session.resetToFilter();
+    setSelectedTopicId(null);
   }, [session]);
+
+  const handleBackToTopics = useCallback(() => {
+    session.resetToFilter();
+    setSelectedTopicId(null);
+  }, [session]);
+
+  const handleTopicResult = useCallback(
+    (topicId: string, correct: number, total: number) => {
+      topicMastery.recordTopicAttempt(topicId, correct, total);
+    },
+    [topicMastery],
+  );
 
   // Calculate total time when session is finished
   const totalTime = useMemo(() => {
@@ -144,23 +190,30 @@ export const PracticeView: React.FC = () => {
     return 0;
   }, [session.phase, session.stats, session.startTime]);
 
-  if (session.phase === 'filtering') {
+  // --- 专题选择阶段 ---
+  if (!selectedTopicId || session.phase === 'filtering') {
     return (
-      <div className="space-y-6 max-w-3xl mx-auto">
-        <div>
-          <h1 className="text-xl font-semibold text-[#1F2329]">专题练习</h1>
-          <p className="text-sm text-[#646A73] mt-1">选择知识点和难度，开始针对性训练</p>
-        </div>
-        <PracticeFilter
-          filter={filter}
-          onChange={setFilter}
-          onStart={handleStart}
-          availableCount={availableCount}
+      <div className="space-y-6 max-w-7xl mx-auto">
+        <TopicPicker
+          selectedGrade={selectedGrade}
+          onGradeChange={setSelectedGrade}
+          masteryById={topicMastery.masteryById}
+          masteryPercent={topicMastery.masteryPercent}
+          onPickTopic={handlePickTopic}
         />
-        <ProgressDashboard
-          progress={learningProgress.progress}
-          todayStats={learningProgress.getTodayStats()}
-        />
+        {selectedTopicId && (
+          <div className="max-w-3xl mx-auto space-y-6">
+            <StartPanel
+              topicId={selectedTopicId}
+              onStart={handleStart}
+              onBack={handleBackToTopics}
+            />
+            <ProgressDashboard
+              progress={learningProgress.progress}
+              todayStats={learningProgress.getTodayStats()}
+            />
+          </div>
+        )}
       </div>
     );
   }
@@ -235,7 +288,9 @@ export const PracticeView: React.FC = () => {
           answers={session.answers}
           totalTime={totalTime}
           onRetry={handleStart}
-          onBack={session.resetToFilter}
+          onBack={handleBackToTopics}
+          topicId={selectedTopicId}
+          onTopicResult={handleTopicResult}
         />
         <ProgressDashboard
           progress={learningProgress.progress}

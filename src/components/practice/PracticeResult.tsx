@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Question, AnswerRecord } from '../../data/questions/types';
 import { formatTime, getDifficultyLabel } from '../../utils/questionUtils';
 
@@ -8,6 +8,9 @@ interface PracticeResultProps {
   totalTime: number;
   onRetry: () => void;
   onBack: () => void;
+  /** 若传入，则在挂载时回写该专题的掌握度（总题数 / 正确数） */
+  topicId?: string;
+  onTopicResult?: (topicId: string, correct: number, total: number) => void;
 }
 
 type TabMode = 'wrong' | 'all';
@@ -18,7 +21,17 @@ export const PracticeResult: React.FC<PracticeResultProps> = ({
   totalTime,
   onRetry,
   onBack,
+  topicId,
+  onTopicResult,
 }) => {
+  useEffect(() => {
+    if (topicId && onTopicResult) {
+      const correct = answers.filter((a) => a.isCorrect).length;
+      onTopicResult(topicId, correct, answers.length);
+    }
+    // 仅在挂载时回写一次
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [tab, setTab] = useState<TabMode>('wrong');
   const correct = answers.filter(a => a.isCorrect).length;
   const total = answers.length;
