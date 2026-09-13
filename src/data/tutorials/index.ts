@@ -2,16 +2,19 @@ export * from './types';
 export { PRIMARY_MATH_TUTORIALS } from './primary-math';
 export { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 export { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
+export { MIDDLE_MATH_TUTORIALS } from './middle-math';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 import { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
+import { MIDDLE_MATH_TUTORIALS } from './middle-math';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
   ...PRIMARY_MATH_TUTORIALS,
   ...PRIMARY_CHINESE_TUTORIALS,
-  ...PRIMARY_ENGLISH_TUTORIALS
+  ...PRIMARY_ENGLISH_TUTORIALS,
+  ...MIDDLE_MATH_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
