@@ -4,12 +4,14 @@ export { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 export { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
 export { MIDDLE_MATH_TUTORIALS } from './middle-math';
 export { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
+export { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 import { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
 import { MIDDLE_MATH_TUTORIALS } from './middle-math';
 import { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
+import { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
@@ -18,6 +20,7 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...PRIMARY_ENGLISH_TUTORIALS,
   ...MIDDLE_MATH_TUTORIALS,
   ...MIDDLE_PHYSICS_TUTORIALS,
+  ...MIDDLE_CHEMISTRY_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
