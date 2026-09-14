@@ -11,7 +11,7 @@ export { MIDDLE_GEOGRAPHY_TUTORIALS } from './middle-geography';
 export { MIDDLE_CHINESE_TUTORIALS } from './middle-chinese';
 export { MIDDLE_ENGLISH_TUTORIALS } from './middle-english';
 export { MIDDLE_MORAL_TUTORIALS } from './middle-moral';
-export { HIGH_HISTORY_TUTORIALS } from './high-history';
+export { HIGH_GEOGRAPHY_TUTORIALS } from './high-geography';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
@@ -30,6 +30,7 @@ import { HIGH_PHYSICS_TUTORIALS } from './high-physics';
 import { HIGH_CHEMISTRY_TUTORIALS } from './high-chemistry';
 import { HIGH_BIOLOGY_TUTORIALS } from './high-biology';
 import { HIGH_HISTORY_TUTORIALS } from './high-history';
+import { HIGH_GEOGRAPHY_TUTORIALS } from './high-geography';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
@@ -50,6 +51,7 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...HIGH_CHEMISTRY_TUTORIALS,
   ...HIGH_BIOLOGY_TUTORIALS,
   ...HIGH_HISTORY_TUTORIALS,
+  ...HIGH_GEOGRAPHY_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
