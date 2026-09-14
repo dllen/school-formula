@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import type { Question, Tutorial } from './types';
 
 const choice = (id: string, question: string, options: string[], answer: string, explanation: string, difficulty: Question['difficulty'] = 'easy'): Question => ({ id, type: 'choice', question, options, answer, explanation, difficulty });

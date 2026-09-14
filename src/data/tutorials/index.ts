@@ -11,6 +11,7 @@ export { MIDDLE_GEOGRAPHY_TUTORIALS } from './middle-geography';
 export { MIDDLE_CHINESE_TUTORIALS } from './middle-chinese';
 export { MIDDLE_ENGLISH_TUTORIALS } from './middle-english';
 export { MIDDLE_MORAL_TUTORIALS } from './middle-moral';
+export { HIGH_MATH_TUTORIALS } from './high-math';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
@@ -24,6 +25,7 @@ import { MIDDLE_GEOGRAPHY_TUTORIALS } from './middle-geography';
 import { MIDDLE_CHINESE_TUTORIALS } from './middle-chinese';
 import { MIDDLE_ENGLISH_TUTORIALS } from './middle-english';
 import { MIDDLE_MORAL_TUTORIALS } from './middle-moral';
+import { HIGH_MATH_TUTORIALS } from './high-math';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
@@ -39,6 +41,7 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...MIDDLE_CHINESE_TUTORIALS,
   ...MIDDLE_ENGLISH_TUTORIALS,
   ...MIDDLE_MORAL_TUTORIALS,
+  ...HIGH_MATH_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
