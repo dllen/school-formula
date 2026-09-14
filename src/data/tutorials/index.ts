@@ -5,6 +5,7 @@ export { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
 export { MIDDLE_MATH_TUTORIALS } from './middle-math';
 export { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
 export { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
+export { MIDDLE_BIOLOGY_TUTORIALS } from './middle-biology';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
@@ -12,6 +13,7 @@ import { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
 import { MIDDLE_MATH_TUTORIALS } from './middle-math';
 import { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
 import { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
+import { MIDDLE_BIOLOGY_TUTORIALS } from './middle-biology';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
@@ -21,6 +23,7 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...MIDDLE_MATH_TUTORIALS,
   ...MIDDLE_PHYSICS_TUTORIALS,
   ...MIDDLE_CHEMISTRY_TUTORIALS,
+  ...MIDDLE_BIOLOGY_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
