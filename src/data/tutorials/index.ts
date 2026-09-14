@@ -8,6 +8,7 @@ export { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
 export { MIDDLE_BIOLOGY_TUTORIALS } from './middle-biology';
 export { MIDDLE_HISTORY_TUTORIALS } from './middle-history';
 export { MIDDLE_GEOGRAPHY_TUTORIALS } from './middle-geography';
+export { MIDDLE_CHINESE_TUTORIALS } from './middle-chinese';
 
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
@@ -18,6 +19,7 @@ import { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
 import { MIDDLE_BIOLOGY_TUTORIALS } from './middle-biology';
 import { MIDDLE_HISTORY_TUTORIALS } from './middle-history';
 import { MIDDLE_GEOGRAPHY_TUTORIALS } from './middle-geography';
+import { MIDDLE_CHINESE_TUTORIALS } from './middle-chinese';
 import type { Tutorial, TutorialUnit } from './types';
 
 export const ALL_TUTORIALS: Tutorial[] = [
@@ -30,6 +32,7 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...MIDDLE_BIOLOGY_TUTORIALS,
   ...MIDDLE_HISTORY_TUTORIALS,
   ...MIDDLE_GEOGRAPHY_TUTORIALS,
+  ...MIDDLE_CHINESE_TUTORIALS,
 ];
 
 export const ALL_UNITS: TutorialUnit[] = ALL_TUTORIALS.flatMap(t => t.units);
