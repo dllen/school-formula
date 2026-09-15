@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { TECHNIQUES, getTechniquesByStage, getLearningPath, getTechniqueById } from './techniques';
 
 describe('TECHNIQUES', () => {
-  it('has 31 techniques', () => {
-    expect(TECHNIQUES.length).toBe(31);
+  it('has 37 techniques', () => {
+    expect(TECHNIQUES.length).toBe(37);
   });
 
   it('every technique has required fields', () => {
@@ -50,6 +50,17 @@ describe('TECHNIQUES', () => {
     });
   });
 
+  it('every technique has examples, mistakes, and realWorld', () => {
+    TECHNIQUES.forEach(t => {
+      expect(t.examples).toBeDefined();
+      expect(t.examples!.length).toBeGreaterThan(0);
+      expect(t.mistakes).toBeDefined();
+      expect(t.mistakes!.length).toBeGreaterThan(0);
+      expect(t.realWorld).toBeDefined();
+      expect(t.realWorld!.length).toBeGreaterThan(0);
+    });
+  });
+
   it('prereqs reference existing techniques or are null', () => {
     const ids = new Set(TECHNIQUES.map(t => t.id));
     TECHNIQUES.forEach(t => {
@@ -61,36 +72,36 @@ describe('TECHNIQUES', () => {
 
   it('has elementary school techniques', () => {
     const elementary = TECHNIQUES.filter(t => t.stage === '小学');
-    expect(elementary.length).toBe(9);
+    expect(elementary.length).toBe(11);
   });
 
   it('has middle school techniques', () => {
     const middle = TECHNIQUES.filter(t => t.stage === '中学');
-    expect(middle.length).toBe(15);
+    expect(middle.length).toBe(17);
   });
 
   it('has high school techniques', () => {
     const high = TECHNIQUES.filter(t => t.stage === '高中');
-    expect(high.length).toBe(7);
+    expect(high.length).toBe(9);
   });
 });
 
 describe('getTechniquesByStage', () => {
   it('returns only elementary techniques for 小学', () => {
     const results = getTechniquesByStage('小学');
-    expect(results.length).toBe(9);
+    expect(results.length).toBe(11);
     results.forEach(t => expect(t.stage).toBe('小学'));
   });
 
   it('returns only middle school techniques for 中学', () => {
     const results = getTechniquesByStage('中学');
-    expect(results.length).toBe(15);
+    expect(results.length).toBe(17);
     results.forEach(t => expect(t.stage).toBe('中学'));
   });
 
   it('returns only high school techniques for 高中', () => {
     const results = getTechniquesByStage('高中');
-    expect(results.length).toBe(7);
+    expect(results.length).toBe(9);
     results.forEach(t => expect(t.stage).toBe('高中'));
   });
 });

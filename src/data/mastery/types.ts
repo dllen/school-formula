@@ -8,6 +8,12 @@ export interface Technique {
   steps: string[];
   prereq: string | null;
   fig?: string | null;
+  /** 典型例题 */
+  examples?: string[];
+  /** 常见错误 */
+  mistakes?: string[];
+  /** 生活应用 */
+  realWorld?: string[];
 }
 
 export interface Question {
@@ -28,7 +34,15 @@ export interface PracticeRecord {
   weakPoints: string[];
 }
 
+/** 按天记录的练习数据，key 为 YYYY-MM-DD */
+export interface DailyLog {
+  attempts: number;
+  correct: number;
+  techniques: string[];
+}
+
 export interface MasteryProgress {
   records: Record<string, PracticeRecord>;
   completedTechniques: string[];
+  dailyLog?: Record<string, DailyLog>;
 }

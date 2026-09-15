@@ -2,6 +2,11 @@ import type { MasteryProgress, PracticeRecord } from './types';
 
 const STORAGE_KEY = 'math_mastery_progress';
 
+function dateKey(ts: number): string {
+  const d = new Date(ts);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 export function loadProgress(): MasteryProgress {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -41,6 +46,15 @@ export function recordAttempt(
   record.lastPracticedAt = Date.now();
 
   progress.records[techniqueId] = record;
+
+  // 按天记录
+  if (!progress.dailyLog) progress.dailyLog = {};
+  const key = dateKey(Date.now());
+  const day = progress.dailyLog[key] || { attempts: 0, correct: 0, techniques: [] };
+  day.attempts++;
+  if (correct) day.correct++;
+  if (!day.techniques.includes(techniqueId)) day.techniques.push(techniqueId);
+  progress.dailyLog[key] = day;
 
   const accuracy = record.correctCount / record.totalAttempts;
   if (accuracy >= 0.8 && record.totalAttempts >= 5) {
@@ -84,4 +98,28 @@ export function getReviewTechniques(): string[] {
     }
   }
   return review;
+}
+
+export interface WeeklyDay {
+  date: string;
+  attempts: number;
+  correct: number;
+}
+
+export function getWeeklyActivity(): WeeklyDay[] {
+  const progress = loadProgress();
+  const days: WeeklyDay[] = [];
+  const now = new Date();
+  for (let i = 6; i >= 0; i--) {
+    const d = new Date(now);
+    d.setDate(d.getDate() - i);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const log = progress.dailyLog?.[key];
+    days.push({
+      date: `${d.getMonth() + 1}/${d.getDate()}`,
+      attempts: log?.attempts ?? 0,
+      correct: log?.correct ?? 0,
+    });
+  }
+  return days;
 }

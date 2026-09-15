@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { Technique, Question } from '../data/mastery/types';
 import { generateQuestions } from '../data/mastery/qgen';
 import { recordAttempt } from '../data/mastery/progress';
@@ -15,16 +15,39 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
   const [correctCount, setCorrectCount] = useState(0);
   const [showExplanation, setShowExplanation] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [timedMode, setTimedMode] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // 计时器
+  useEffect(() => {
+    if (timedMode && !finished && questions.length > 0) {
+      timerRef.current = setInterval(() => {
+        setElapsed(prev => prev + 1);
+      }, 1000);
+      return () => {
+        if (timerRef.current) clearInterval(timerRef.current);
+      };
+    }
+  }, [timedMode, finished, questions.length]);
+
+  // 完成时停止计时
+  useEffect(() => {
+    if (finished && timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+  }, [finished]);
 
   useEffect(() => {
     if (technique) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setQuestions(generateQuestions(technique.id, 6));
       setCurrentIdx(0);
       setSelected(null);
       setCorrectCount(0);
       setShowExplanation(false);
       setFinished(false);
+      setElapsed(0);
+      setTimedMode(false);
     }
   }, [technique]);
 
@@ -49,6 +72,12 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
     }
   };
 
+  const formatTime = (s: number) => {
+    const m = Math.floor(s / 60);
+    const sec = s % 60;
+    return `${m}:${sec.toString().padStart(2, '0')}`;
+  };
+
   if (!technique) {
     return (
       <div className="text-center py-12 text-gray-400">
@@ -64,17 +93,23 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
 
   if (finished) {
     const accuracy = Math.round((correctCount / questions.length) * 100);
+    const avgTime = Math.round(elapsed / questions.length);
     return (
       <div className="text-center py-12">
         <div className="text-4xl mb-4">{accuracy >= 80 ? '🎉' : accuracy >= 60 ? '👍' : '💪'}</div>
         <h3 className="text-xl font-bold mb-2">练习完成！</h3>
-        <p className="text-gray-600 mb-4">正确率：{correctCount}/{questions.length}（{accuracy}%）</p>
+        <p className="text-gray-600 mb-2">正确率：{correctCount}/{questions.length}（{accuracy}%）</p>
+        {timedMode && (
+          <p className="text-sm text-gray-500 mb-4">
+            总用时 {formatTime(elapsed)} · 平均每题 {avgTime}s
+          </p>
+        )}
         <p className="text-sm text-gray-400 mb-6">
           {accuracy >= 80 ? '恭喜通关！可以继续下一个方法了。' : '继续加油，多练习几次就能通关！'}
         </p>
         <div className="flex gap-3 justify-center">
           <button onClick={onBack} className="px-6 py-2 border border-gray-300 rounded-xl font-medium hover:bg-gray-50">返回路径</button>
-          <button onClick={() => { setQuestions(generateQuestions(technique.id, 6)); setCurrentIdx(0); setSelected(null); setCorrectCount(0); setFinished(false); setShowExplanation(false); }}
+          <button onClick={() => { setQuestions(generateQuestions(technique.id, 6)); setCurrentIdx(0); setSelected(null); setCorrectCount(0); setFinished(false); setShowExplanation(false); setElapsed(0); }}
             className="px-6 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700">再练一组</button>
         </div>
       </div>
@@ -90,7 +125,27 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
           <button onClick={onBack} className="text-gray-400 hover:text-gray-600 text-sm">← 返回</button>
           <span className="font-medium text-gray-800">{technique.name}</span>
         </div>
-        <span className="text-sm text-gray-400">{currentIdx + 1} / {questions.length}</span>
+        <div className="flex items-center gap-3">
+          {timedMode && (
+            <span className="text-sm font-mono text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md">
+              ⏱ {formatTime(elapsed)}
+            </span>
+          )}
+          <span className="text-sm text-gray-400">{currentIdx + 1} / {questions.length}</span>
+        </div>
+      </div>
+
+      {/* 计时模式切换 */}
+      <div className="flex items-center gap-2">
+        <label className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer select-none">
+          <input
+            type="checkbox"
+            checked={timedMode}
+            onChange={e => setTimedMode(e.target.checked)}
+            className="w-3.5 h-3.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+          />
+          ⏱ 计时挑战模式
+        </label>
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
