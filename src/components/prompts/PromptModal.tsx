@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import type { PromptTemplate, PromptScenario } from '../../data/prompts/types';
 import type { GradeLevel } from '../../data/knowledge';
 import { ALL_PROMPTS, filterPrompts } from '../../data/prompts';
@@ -27,6 +27,8 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
   const [result, setResult] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [variables, setVariables] = useState<Record<string, string>>({});
+  const [copied, setCopied] = useState(false);
+  const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const filteredTemplates = useMemo(() => {
     let templates = grade || subject || scenario
@@ -72,8 +74,35 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
     for (const [key, value] of Object.entries(variables)) {
       prompt = prompt.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value);
     }
-    navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(prompt).then(() => {
+      setCopied(true);
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = setTimeout(() => setCopied(false), 4000);
+    }).catch(() => {
+      // clipboard API 不可用时 fallback
+      const ta = document.createElement('textarea');
+      ta.value = prompt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      setCopied(true);
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = setTimeout(() => setCopied(false), 4000);
+    });
   }, [selectedTemplate, variables]);
+
+  // 清理 timer
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    };
+  }, []);
+
+  // 切换模板时重置 copied 状态
+  useEffect(() => {
+    setCopied(false);
+  }, [selectedTemplate]);
 
   const handleBack = useCallback(() => {
     if (state === 'result') setState('detail');
@@ -111,13 +140,30 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
             </div>
           )}
           {state === 'detail' && selectedTemplate && (
-            <PromptDetail
-              template={selectedTemplate}
-              prefilledVars={prefilledVars}
-              onSend={handleSend}
-              onCopy={handleCopyPrompt}
-              onBack={handleBack}
-            />
+            <>
+              {copied && (
+                <div className="mb-4 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="flex items-start gap-2">
+                    <span className="text-lg leading-none">✅</span>
+                    <div className="space-y-1">
+                      <p className="font-medium">已复制到剪贴板！</p>
+                      <p className="text-green-600 text-xs leading-relaxed">
+                        粘贴到任意 AI 对话窗口（如 ChatGPT、Claude、文心一言等）即可使用。<br />
+                        提示词中的变量已替换为你填写的内容，直接发送即可 🎉
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <PromptDetail
+                template={selectedTemplate}
+                prefilledVars={prefilledVars}
+                onSend={handleSend}
+                onCopy={handleCopyPrompt}
+                onBack={handleBack}
+                copied={copied}
+              />
+            </>
           )}
           {state === 'result' && (
             <PromptResult

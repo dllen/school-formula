@@ -8,9 +8,10 @@ interface Props {
   onSend: (variables: Record<string, string>) => void;
   onCopy: () => void;
   onBack: () => void;
+  copied?: boolean;
 }
 
-export const PromptDetail: React.FC<Props> = ({ template, prefilledVars, onSend, onCopy, onBack }) => {
+export const PromptDetail: React.FC<Props> = ({ template, prefilledVars, onSend, onCopy, onBack, copied }) => {
   const [variables, setVariables] = useState<Record<string, string>>(() => {
     const initial: Record<string, string> = {};
     template.variables.forEach(v => {
@@ -55,9 +56,13 @@ export const PromptDetail: React.FC<Props> = ({ template, prefilledVars, onSend,
         </button>
         <button
           onClick={onCopy}
-          className="px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50 transition-colors"
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+            copied
+              ? 'bg-green-100 text-green-700 border border-green-200'
+              : 'border border-gray-300 hover:bg-gray-50'
+          }`}
         >
-          📋 复制 Prompt
+          {copied ? '✅ 已复制!' : '📋 复制 Prompt'}
         </button>
       </div>
     </div>
