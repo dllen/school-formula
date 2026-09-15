@@ -14,6 +14,13 @@ import { middleEnglishQuestions } from './middle-english-questions';
 import { middleHistoryQuestions } from './middle-history-questions';
 import { middleGeographyQuestions } from './middle-geography-questions';
 import { middleMoralQuestions } from './middle-moral-questions';
+import { highMathQuestions } from './high-math-questions';
+import { highPhysicsQuestions } from './high-physics-questions';
+import { highChemistryQuestions } from './high-chemistry-questions';
+import { highBiologyQuestions } from './high-biology-questions';
+import { highPoliticsQuestions } from './high-politics-questions';
+import { highHistoryQuestions } from './high-history-questions';
+import { highGeographyQuestions } from './high-geography-questions';
 
 export type { Question, QuestionFilter, Difficulty, QuestionType };
 
@@ -33,6 +40,13 @@ export const ALL_QUESTIONS: Question[] = [
   ...middleHistoryQuestions,
   ...middleGeographyQuestions,
   ...middleMoralQuestions,
+  ...highMathQuestions,
+  ...highPhysicsQuestions,
+  ...highChemistryQuestions,
+  ...highBiologyQuestions,
+  ...highPoliticsQuestions,
+  ...highHistoryQuestions,
+  ...highGeographyQuestions,
 ];
 
 /** 按知识点 ID 查找题目 */
