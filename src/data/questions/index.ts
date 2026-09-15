@@ -3,6 +3,7 @@ import { primaryMath } from './primary-math';
 import { primaryMathQuestions } from './primary-math-questions';
 import { primaryChineseQuestions } from './primary-chinese-questions';
 import { primaryEnglishQuestions } from './primary-english-questions';
+import { primaryScienceQuestions } from './primary-science-questions';
 import { middleMathQuestions } from './middle-math-questions';
 import { middlePhysicsQuestions } from './middle-physics-questions';
 import { middleChineseQuestions } from './middle-chinese-questions';
@@ -20,6 +21,7 @@ export const ALL_QUESTIONS: Question[] = [
   ...primaryMathQuestions,
   ...primaryChineseQuestions,
   ...primaryEnglishQuestions,
+  ...primaryScienceQuestions,
   ...middleMathQuestions,
   ...middlePhysicsQuestions,
   ...middleChineseQuestions,
