@@ -4,6 +4,7 @@ import { primaryMathQuestions } from './primary-math-questions';
 import { primaryChineseQuestions } from './primary-chinese-questions';
 import { primaryEnglishQuestions } from './primary-english-questions';
 import { primaryScienceQuestions } from './primary-science-questions';
+import { primaryMoralQuestions } from './primary-moral-questions';
 import { middleMathQuestions } from './middle-math-questions';
 import { middlePhysicsQuestions } from './middle-physics-questions';
 import { middleChineseQuestions } from './middle-chinese-questions';
@@ -22,6 +23,7 @@ export const ALL_QUESTIONS: Question[] = [
   ...primaryChineseQuestions,
   ...primaryEnglishQuestions,
   ...primaryScienceQuestions,
+  ...primaryMoralQuestions,
   ...middleMathQuestions,
   ...middlePhysicsQuestions,
   ...middleChineseQuestions,
