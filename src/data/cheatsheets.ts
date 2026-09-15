@@ -2,6 +2,16 @@ import { CHARACTERS_2000 } from './characters2000';
 import { CHARACTERS_3500 } from './characters3500';
 import { COMMON_IDIOMS } from './idioms';
 import { PERIODIC_TABLE } from './periodicTable';
+import { MATH_CHEATSHEETS } from './math';
+import { PHYSICS_CHEATSHEETS } from './physics';
+import { CHEMISTRY_CHEATSHEETS } from './chemistry';
+import { CHINESE_CHEATSHEETS } from './chinese';
+import { ENGLISH_CHEATSHEETS } from './english';
+import { BIOLOGY_CHEATSHEETS } from './biology';
+import { HISTORY_CHEATSHEETS } from './history';
+import { GEOGRAPHY_CHEATSHEETS } from './geography';
+import { POLITICS_CHEATSHEETS } from './politics';
+import { PRIMARY_COMPREHENSIVE } from './primary-comprehensive';
 import type { GradeLevel } from './types';
 
 export interface CheatSheetTable {
@@ -18,7 +28,18 @@ export interface CheatSheet {
   table: CheatSheetTable;
 }
 
-export const CHEATSHEET_DATA: CheatSheet[] = [
+export const ALL_CHEATSHEETS: CheatSheet[] = [
+  ...MATH_CHEATSHEETS,
+  ...PHYSICS_CHEATSHEETS,
+  ...CHEMISTRY_CHEATSHEETS,
+  ...CHINESE_CHEATSHEETS,
+  ...ENGLISH_CHEATSHEETS,
+  ...BIOLOGY_CHEATSHEETS,
+  ...HISTORY_CHEATSHEETS,
+  ...GEOGRAPHY_CHEATSHEETS,
+  ...POLITICS_CHEATSHEETS,
+  ...PRIMARY_COMPREHENSIVE,
+
   // Primary School
   {
     id: 'primary-multiplication',
@@ -326,6 +347,9 @@ export const CHEATSHEET_DATA: CheatSheet[] = [
   },
 ];
 
+// 兼容旧导出名
+export const CHEATSHEET_DATA: CheatSheet[] = ALL_CHEATSHEETS;
+
 export function getCheatSheetsByGrade(grade: GradeLevel): CheatSheet[] {
-  return CHEATSHEET_DATA.filter(sheet => sheet.grade === grade);
+  return ALL_CHEATSHEETS.filter(sheet => sheet.grade === grade);
 }
