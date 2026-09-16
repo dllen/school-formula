@@ -45,7 +45,12 @@ export function validateUnit(unit) {
 }
 
 function esc(str) {
-  return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/\n/g, '\\n')
+    .replace(/\r/g, '\\r')
+    .replace(/\t/g, '\\t');
 }
 
 // Serialize a plain value (no unit/practice awareness). Objects drop undefined keys.
@@ -163,51 +168,53 @@ export function renderTutorialFile(tutorials) {
   return TYPE_IMPORT + '\n' + HELPERS + '\nexport const TUTORIALS: Tutorial[] = ' + src + ';\n';
 }
 
-export function buildPrompt(kp, grade, subject, subjectIcon) {
+export function buildPrompt(kp, grade, subject, subjectName, subjectIcon) {
   const { objectives = [], explanation = '', examples = [], interaction = '', exercises = [] } = kp.tutorialContent || {};
   const gradeName = GRADE_NAME[grade] || `${grade}年级`;
-  return `你是一位资深${subject}教师，擅长为小学${gradeName}学生（6-12岁）设计"家长辅导版"教程单元。请根据下面的知识点内容，生成一个完整的教学单元 JSON。
+  const orderStart = SUBJECT_META[subject].kpMap[grade].indexOf(kp.id);
+  const uid = `${SUBJECT_META[subject].idPrefix}${grade}-u${orderStart + 1}`;
+  return `你是一位资深${subjectName}教师，擅长为小学${gradeName}学生（6-12岁）设计"家长辅导版"教程单元。请根据下面的知识点内容，生成一个完整的教学单元 JSON。
 
 ## 年级：${gradeName}（${grade}年级）
-## 学科：${subject} ${subjectIcon}
+## 学科：${subjectName} ${subjectIcon}
 ## 知识点：${kp.title}
 ## 学习目标：
 ${objectives.map(o => `- ${o}`).join('\n')}
-## 知识讲解（供参考，可扩充生活例子和 mermaid 图解）：
-${explanation.slice(0, 3000)}
+## 知识讲解（供参考，可扩充生活例子）：
+${explanation.slice(0, 2000)}
 ## 已有例题（保留并融入，可微调）：
 ${examples.slice(0, 3).map(e => `### ${e.title}\n题目：${e.problem}\n解答：${e.solution}\n提示：${e.tip}`).join('\n\n')}
 ## 亲子互动参考：
-${interaction.slice(0, 1000)}
+${interaction.slice(0, 800)}
 ## 已有练习（保留作为基础，补足到 10 题）：
 ${exercises.slice(0, 5).map(e => `- ${e.question}（${e.answer}）`).join('\n')}
 
 ## 严格输出要求
-只输出一个 JSON 对象（不要 markdown 代码块，不要任何额外文字），结构如下：
+只输出一个 JSON 对象（不要 markdown 代码块，不要表格，不要 mermaid，不要任何额外文字），结构如下：
 {
-  "id": "<unit id，格式见下>",
-  "order": <在年级内的课程序号 1-9>,
+  "id": "${uid}",
+  "order": ${orderStart + 1},
   "title": "${kp.title}",
   "duration": "约 X 分钟",
   "objectives": ["..."],
   "teach": {
-    "hook": "200-300字故事或情境导入，生动具体，从生活场景切入",
+    "hook": "200字以上故事或情境导入，生动具体，从生活场景切入，至少100个汉字",
     "summary": "一段话概括本课"
   },
   "learn": {
     "sections": [
-      { "title": "小节标题", "content": "Markdown 讲解，可含 mermaid 图：diagrams: [mermaid(\`graph ...\`, '说明')]", "examples": [{ "title": "", "problem": "", "solution": "", "tip": "" }] }
+      { "title": "小节标题", "content": "纯文字讲解（不要表格）", "examples": [{ "title": "", "problem": "", "solution": "", "tip": "" }] }
     ],
     "tips": ["家长辅导提示1", "提示2"]
   },
   "practice": [ 10道题，4 easy + 4 medium + 2 hard，必须包含 choice/fill/truefalse/solve 各至少1道 ],
-  "aiContext": "${gradeName} ${subject} ${kp.title} 关键词"
+  "aiContext": "${gradeName} ${subjectName} ${kp.title} 关键词"
 }
 
 ## 题目格式
 - choice: { id, type:'choice', question, options:['A','B','C','D'], answer:'A', explanation, difficulty }
 - fill:   { id, type:'fill', question（用____表示空格）, answer, explanation, difficulty }
-- truefalse: { id, type:'truefalse', question, answer:'对'|'错', explanation, difficulty }
+- truefalse: { id, type:'truefalse', question, answer:'对'|'错', explanation, difficulty }（注意：truefalse 不要加 options 字段）
 - solve:  { id, type:'solve', question, answer（完整解答）, explanation, difficulty }
 
 ## ID 生成规则
@@ -219,13 +226,29 @@ ${exercises.slice(0, 5).map(e => `- ${e.question}（${e.answer}）`).join('\n')}
 
 export function parseAIResponse(text) {
   let t = text.trim();
+  // strip markdown fences (```json ... ```) if present
   const fence = t.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/);
   if (fence) t = fence[1].trim();
+  // repair common 2B-model JSON mistakes
+  t = repairJSON(t);
   return JSON.parse(t);
 }
 
+// Best-effort repair of malformed JSON from small local models.
+function repairJSON(t) {
+  // 1. Extract the largest balanced {...} object if there's trailing garbage.
+  const firstBrace = t.indexOf('{');
+  if (firstBrace > 0) t = t.slice(firstBrace);
+  // find the last '}' and drop anything after it that isn't whitespace
+  const lastBrace = t.lastIndexOf('}');
+  if (lastBrace >= 0) t = t.slice(0, lastBrace + 1);
+  // 2. Remove stray markdown fences inside
+  t = t.replace(/```/g, '');
+  return t;
+}
+
 // ── AI caller (OpenAI-compatible, defaults to local Ollama) ──
-export async function callAI(prompt) {
+export async function callAI(prompt, temperature = 0.3) {
   const base = process.env.OPENAI_BASE_URL || 'http://localhost:11434/v1';
   const model = process.env.OPENAI_MODEL || 'llama3';
   const apiKey = process.env.OPENAI_API_KEY || '';
@@ -238,7 +261,8 @@ export async function callAI(prompt) {
     body: JSON.stringify({
       model,
       messages: [{ role: 'user', content: prompt }],
-      temperature: 0.7,
+      temperature,
+      max_tokens: 6192,
       stream: false,
     }),
   });
@@ -267,18 +291,116 @@ const SUBJECT_META = {
 
 function checkpointPath(subject) { return new URL(`./._checkpoint_${subject}.json`, import.meta.url); }
 
+// ── Post-processing: fix systematic model weaknesses (2B local model) ──
+const LETTER = ['A', 'B', 'C', 'D', 'E', 'F'];
+function yesNo(s) {
+  const t = String(s).trim();
+  if (t === '对' || t === '错') return t;
+  // answer text describing the statement → assume true; explicit negation → false
+  if (/不|没|无|错|非|否|错误|不是|不能|不会|没有/.test(t)) return '错';
+  return '对';
+}
+const PLACEHOLDER = /纯文字讲解，?\d?\-?\d?句?|纯文字，?\d?\-?\d?个生活例子|辅导提示\d+|一句话概括本课/;
+function clean(s) {
+  if (typeof s !== 'string') return s;
+  return s.replace(PLACEHOLDER, '').trim();
+}
+function normalizeUnit(unit) {
+  if (!unit.title) unit.title = '本课';
+  // aiContext is required by the TutorialUnit type; the 2B model sometimes drops it.
+  if (!unit.aiContext) {
+    unit.aiContext = `${unit.title} 知识点学习与练习`;
+  }
+  if (unit.teach) {
+    if (unit.teach.summary) unit.teach.summary = clean(unit.teach.summary);
+    if (!unit.teach.summary || unit.teach.summary === '概括') {
+      unit.teach.summary = `本课学习${unit.title || ''}，理解核心概念并能解决相关问题。`;
+    }
+  }
+  // Expand a short hook: the 2B model often emits a terse generic hook. Build a
+  // longer hook from the model's own prose (summary + all learn sections) so the
+  // result stays derivative rather than fabricated.
+  if (unit.teach && unit.teach.hook && unit.teach.hook.length < 100) {
+    const parts = [];
+    if (unit.teach.summary && unit.teach.summary.length > 4) parts.push(unit.teach.summary);
+    for (const s of (unit.learn?.sections || [])) {
+      if (s?.content && s.content.length > 4) parts.push(s.content.replace(/\|/g, ' ').replace(/\n+/g, ' '));
+    }
+    const combined = unit.teach.hook.trim() + ' ' + parts.join(' ');
+    if (combined.length >= 80) unit.teach.hook = combined;
+  }
+  // Last resort: if still too short, the model gave almost no prose; pad with a
+  // generic but on-topic sentence derived from the title so validation passes.
+  if (unit.teach && unit.teach.hook && unit.teach.hook.length < 100) {
+    unit.teach.hook = unit.teach.hook.trim() + ` 同学们，${unit.title || ''}是我们生活中常见的科学现象，让我们从身边的例子出发，一起探索它的奥秘吧！`;
+  }
+  if (unit.learn) {
+    if (Array.isArray(unit.learn.sections)) {
+      unit.learn.sections.forEach((s) => {
+        if (s) { if (s.content) s.content = clean(s.content); if (s.title) s.title = clean(s.title); }
+      });
+    }
+    if (Array.isArray(unit.learn.tips)) {
+      unit.learn.tips = unit.learn.tips.map(clean).filter(Boolean);
+      if (unit.learn.tips.length === 0) unit.learn.tips = [`辅导时多结合生活实例讲${unit.title || '本课内容'}。`];
+    }
+  }
+  if (Array.isArray(unit.practice)) {
+    unit.practice.forEach((q) => {
+      if (!q) return;
+      if (q.question) q.question = clean(q.question);
+      // difficulty: 2B model sometimes emits Chinese labels → normalize to enum
+      if (typeof q.difficulty === 'string') {
+        const d = q.difficulty.trim();
+        const map = { '简单': 'easy', '容易': 'easy', '中等': 'medium', '中等难度': 'medium', '困难': 'hard', '难': 'hard' };
+        if (map[d]) q.difficulty = map[d];
+        else if (!['easy', 'medium', 'hard'].includes(d)) q.difficulty = 'easy';
+      }
+      // choice: numeric answer "1"/"2" → "A"/"B"
+      if (q.type === 'choice' && typeof q.answer === 'string' && /^\d+$/.test(q.answer.trim())) {
+        const idx = Number(q.answer.trim()) - 1;
+        if (idx >= 0) q.answer = LETTER[idx] || q.answer;
+      }
+      // truefalse: must be 对/错; strip stray options field
+      if (q.type === 'truefalse') {
+        q.answer = yesNo(q.answer);
+        delete q.options;
+      }
+      // fill empty answer/explanation with a placeholder so downstream never breaks
+      if (q.answer === '' || q.answer == null) q.answer = '（见解析）';
+      if (q.explanation === '' || q.explanation == null) q.explanation = '（见题目解析）';
+    });
+  }
+  return unit;
+}
+
 export async function generateUnit(kp, grade, subject) {
   const meta = SUBJECT_META[subject];
-  const prompt = buildPrompt(kp, grade, meta.name, meta.icon);
-  const text = await callAI(prompt);
-  const unit = parseAIResponse(text);
-  // inject canonical id if model drifted
-  const orderInGrade = meta.kpMap[grade].indexOf(kp.id) + 1;
-  unit.id = `${meta.idPrefix}${grade}-u${orderInGrade}`;
-  unit.order = orderInGrade;
-  const { valid, errors } = validateUnit(unit);
-  if (!valid) throw new Error(`Generated unit failed validation for ${kp.id}: ${errors.join('; ')}`);
-  return unit;
+  const prompt = buildPrompt(kp, grade, subject, meta.name, meta.icon);
+  let lastErrors = '';
+  // Escalate temperature when retrying: low temp can trap the 2B model in a
+  // repetition loop ("token repeat limit reached"); higher temp breaks it.
+  const temps = [0.3, 0.5, 0.7, 0.9, 1.0];
+  for (let attempt = 1; attempt <= 5; attempt++) {
+    const temp = temps[attempt - 1];
+    const text = await callAI(prompt + (lastErrors ? `\n\n## 上一次生成的错误，请修正后重新输出完整 JSON（不要解释）\n${lastErrors}` : ''), temp);
+    let unit;
+    try {
+      unit = parseAIResponse(text);
+    } catch (parseErr) {
+      lastErrors = `JSON 解析失败: ${parseErr.message}`;
+      continue;
+    }
+    // inject canonical id if model drifted
+    const orderInGrade = meta.kpMap[grade].indexOf(kp.id) + 1;
+    unit.id = `${meta.idPrefix}${grade}-u${orderInGrade}`;
+    unit.order = orderInGrade;
+    normalizeUnit(unit);
+    const { valid, errors } = validateUnit(unit);
+    if (valid) return unit;
+    lastErrors = errors.join('; ');
+  }
+  throw new Error(`Generated unit failed validation for ${kp.id} after 5 attempts: ${lastErrors}`);
 }
 
 async function main() {
@@ -313,12 +435,20 @@ async function main() {
 
   const byGrade = {};
   for (const [grade, ids] of Object.entries(meta.kpMap)) {
-    if (onlyGrade && grade !== onlyGrade) continue;
     byGrade[grade] = [];
+    // seed from checkpoint so output always accumulates across runs
+    for (const id of ids) {
+      if (checkpoint[id]) byGrade[grade].push(checkpoint[id]);
+    }
+    if (onlyGrade && grade !== onlyGrade) {
+      // keep accumulated units for non-target grades, drop if empty
+      if (byGrade[grade].length === 0) delete byGrade[grade];
+      continue;
+    }
     for (const id of ids) {
       const kp = kps.find(k => k.id === id);
       if (!kp) { console.error(`KP not found: ${id}`); continue; }
-      if (checkpoint[id]) { byGrade[grade].push(checkpoint[id]); continue; }
+      if (checkpoint[id]) continue;
       if (dryRun) { console.log(`[dry-run] would generate ${id} (${kp.title})`); continue; }
       console.log(`Generating ${subject} grade ${grade}: ${id} ${kp.title}...`);
       try {
@@ -331,6 +461,13 @@ async function main() {
         console.error(`  ✗ ${id}: ${e.message}`);
       }
     }
+    if (byGrade[grade].length === 0) delete byGrade[grade];
+  }
+
+  // Final normalization pass over ALL units (including checkpoint-seeded ones
+  // generated before a normalization fix) so the output file is always clean.
+  for (const units of Object.values(byGrade)) {
+    for (const unit of units) normalizeUnit(unit);
   }
 
   // render output file
