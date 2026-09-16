@@ -48,6 +48,7 @@ function esc(str) {
   return String(str).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 }
 
+// Serialize a plain value (no unit/practice awareness). Objects drop undefined keys.
 function serializeValue(val, indent) {
   if (val === null || val === undefined) return 'undefined';
   if (typeof val === 'string') return `'${esc(val)}'`;
@@ -73,16 +74,93 @@ function serializeValue(val, indent) {
   return String(val);
 }
 
-export function serializeUnit(unit) {
-  return serializeValue(unit, 2);
+function qstr(s) {
+  return "'" + String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
 }
 
-const TYPE_IMPORT = `import type { Tutorial, TutorialUnit } from './types';\n`;
-const HELPERS = `const choice = (id, question, options, answer, explanation, difficulty) => ({ id, type: 'choice' as const, question, options, answer, explanation, difficulty });\nconst fill = (id, question, answer, explanation, difficulty) => ({ id, type: 'fill' as const, question, answer, explanation, difficulty });\nconst truefalse = (id, question, answer, explanation, difficulty) => ({ id, type: 'truefalse' as const, question, answer: answer as '对' | '错', explanation, difficulty });\nconst solve = (id, question, answer, explanation, difficulty) => ({ id, type: 'solve' as const, question, answer, explanation, difficulty });\n`;
+// Serialize a single practice question as a helper call (choice/fill/truefalse/solve).
+// `indent` is the indent level of the practice array; the call is placed at indent+1.
+function serializeQuestion(q, indent) {
+  const pad = '  '.repeat(indent + 1);
+  const body = qstr(q.answer) + ', ' + qstr(q.explanation) + ', ' + qstr(q.difficulty);
+  const idArg = qstr(q.id);
+  const qArg = qstr(q.question);
+  switch (q.type) {
+    case 'choice': {
+      const opts = '[' + q.options.map(qstr).join(', ') + ']';
+      return pad + 'choice(' + idArg + ', ' + qArg + ', ' + opts + ', ' + body + ')';
+    }
+    case 'fill':
+    case 'truefalse':
+    case 'solve':
+      return pad + q.type + '(' + idArg + ', ' + qArg + ', ' + body + ')';
+    default:
+      return pad + serializeValue(q, indent + 1);
+  }
+}
+
+// Serialize a unit object, emitting practice questions as helper calls.
+// `indent` is the indent level of the unit object itself.
+export function serializeUnit(unit, indent = 2) {
+  const { practice, ...rest } = unit;
+  const restSrc = serializeValue(rest, indent);
+  const padPractice = '  '.repeat(indent + 1);
+  const padClose = '  '.repeat(indent);
+  const practiceSrc = practice.map(q => serializeQuestion(q, indent + 1)).join(',\n');
+  const injected = ',\n' + padPractice + 'practice: [\n' + practiceSrc + '\n' + padPractice + ']\n' + padClose + '}';
+  return restSrc.replace(/\}$/, injected);
+}
+
+// Serialize a tutorial object ({ grade, subject, units }), routing units through serializeUnit.
+function serializeTutorial(t, indent) {
+  const { units, ...rest } = t;
+  const restSrc = serializeValue(rest, indent);
+  const padUnits = '  '.repeat(indent + 1);
+  const padClose = '  '.repeat(indent);
+  const unitsSrc = units.map(u => serializeUnit(u, indent + 2)).join(',\n');
+  const injected = ',\n' + padUnits + 'units: [\n' + unitsSrc + '\n' + padUnits + ']\n' + padClose + '}';
+  return restSrc.replace(/\}$/, injected);
+}
+
+const TYPE_IMPORT = "import type { Question, Tutorial } from './types';\n";
+const HELPERS = `const choice = (
+  id: string,
+  question: string,
+  options: string[],
+  answer: string,
+  explanation: string,
+  difficulty: Question['difficulty'] = 'easy'
+): Question => ({ id, type: 'choice', question, options, answer, explanation, difficulty });
+
+const fill = (
+  id: string,
+  question: string,
+  answer: string | string[],
+  explanation: string,
+  difficulty: Question['difficulty'] = 'easy'
+): Question => ({ id, type: 'fill', question, answer, explanation, difficulty });
+
+const truefalse = (
+  id: string,
+  question: string,
+  answer: '对' | '错',
+  explanation: string,
+  difficulty: Question['difficulty'] = 'easy'
+): Question => ({ id, type: 'truefalse', question, answer, explanation, difficulty });
+
+const solve = (
+  id: string,
+  question: string,
+  answer: string,
+  explanation: string,
+  difficulty: Question['difficulty'] = 'medium'
+): Question => ({ id, type: 'solve', question, answer, explanation, difficulty });
+`;
 
 export function renderTutorialFile(tutorials) {
-  const src = serializeValue(tutorials, 0);
-  return `${TYPE_IMPORT}\n${HELPERS}\nexport const TUTORIALS: Tutorial[] = ${src};\n`;
+  const items = tutorials.map(t => serializeTutorial(t, 1)).join(',\n');
+  const src = '[\n' + items + '\n]';
+  return TYPE_IMPORT + '\n' + HELPERS + '\nexport const TUTORIALS: Tutorial[] = ' + src + ';\n';
 }
 
 export function buildPrompt(kp, grade, subject, subjectIcon) {
