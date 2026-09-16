@@ -30,7 +30,7 @@
 | 样式 | Tailwind CSS 4.1.17（通过 `@tailwindcss/vite` 插件） |
 | Markdown 渲染 | `react-markdown` 10.1.0 |
 | AI 调用 | `openai` SDK 6.15.0（在浏览器中直接调用第三方兼容 OpenAI 的 API） |
-| 包管理器 | npm（`package-lock.json` 已纳入版本控制，请使用 `npm ci` 安装） |
+| 包管理器 | npm（`package-lock.json` **不**纳入版本控制，CI 使用 `npm install`；请勿在 `actions/setup-node` 中启用 `cache: 'npm'`，否则会因找不到锁文件而报错） |
 
 > 注意：项目未配置测试框架，仓库中不存在 `*.test.*`、`*.spec.*`、`vitest`、`jest`、`playwright`、`cypress` 等测试相关文件。
 
@@ -177,10 +177,10 @@ npm run lint
 1. 触发条件：
    - `main` 分支收到 `push`
    - 或手动通过 GitHub Actions UI 触发 `workflow_dispatch`
-2. 工作流（`.github/workflows/deploy.yml`）使用 Node.js 20：
-   - `npm ci`（依赖 `package-lock.json` 锁定版本，避免 `edgesOut` 错误）
+2. 两个工作流（`.github/workflows/deploy.yml` 与 `.github/workflows/deploy-cloudflare.yml`）均使用 Node.js 20：
+   - `npm install`（`package-lock.json` 不在版本控制中，因此两个 workflow 都**不**配置 `cache: 'npm'`，避免 `actions/setup-node` 因找不到锁文件而报错）
    - `npm run build`
-   - 将 `dist/` 推送到 `gh-pages` 分支
+   - `deploy.yml` 将 `dist/` 推送到 `gh-pages` 分支；`deploy-cloudflare.yml` 将前端部署到 Cloudflare Workers
 3. GitHub Pages 源应配置为 `gh-pages` 分支的根目录。
 
 > **重要不一致点**：`DEPLOYMENT.md` 声称 `vite.config.ts` 已配置 `base: '/school-formula/'`，但**当前实际代码中 `vite.config.ts` 的 `base` 为 `'/'`**。若仓库以项目页形式部署到 `https://dllen.github.io/school-formula/`，当前配置可能导致静态资源 404。修改部署配置时，请确认 `base` 与 GitHub Pages 实际路径一致。
