@@ -223,3 +223,120 @@ export function parseAIResponse(text) {
   if (fence) t = fence[1].trim();
   return JSON.parse(t);
 }
+
+// ── AI caller (OpenAI-compatible, defaults to local Ollama) ──
+export async function callAI(prompt) {
+  const base = process.env.OPENAI_BASE_URL || 'http://localhost:11434/v1';
+  const model = process.env.OPENAI_MODEL || 'llama3';
+  const apiKey = process.env.OPENAI_API_KEY || '';
+  const res = await fetch(`${base}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
+    },
+    body: JSON.stringify({
+      model,
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.7,
+      stream: false,
+    }),
+  });
+  if (!res.ok) throw new Error(`AI call failed: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content ?? '';
+}
+
+// ── Knowledge data loader ──
+async function loadKnowledge(subject) {
+  if (subject === 'science') {
+    const m = await import('../src/data/knowledge/primary/science.ts');
+    return m.science;
+  }
+  if (subject === 'moral') {
+    const m = await import('../src/data/knowledge/primary/moral.ts');
+    return m.moral;
+  }
+  throw new Error(`unknown subject: ${subject}`);
+}
+
+const SUBJECT_META = {
+  science: { name: '科学', icon: '🔬', idPrefix: 'ps', kpMap: SCIENCE_GRADE_MAP },
+  moral:   { name: '道德与法治', icon: '⚖️', idPrefix: 'pm', kpMap: MORAL_GRADE_MAP },
+};
+
+function checkpointPath(subject) { return new URL(`./._checkpoint_${subject}.json`, import.meta.url); }
+
+export async function generateUnit(kp, grade, subject) {
+  const meta = SUBJECT_META[subject];
+  const prompt = buildPrompt(kp, grade, meta.name, meta.icon);
+  const text = await callAI(prompt);
+  const unit = parseAIResponse(text);
+  // inject canonical id if model drifted
+  const orderInGrade = meta.kpMap[grade].indexOf(kp.id) + 1;
+  unit.id = `${meta.idPrefix}${grade}-u${orderInGrade}`;
+  unit.order = orderInGrade;
+  const { valid, errors } = validateUnit(unit);
+  if (!valid) throw new Error(`Generated unit failed validation for ${kp.id}: ${errors.join('; ')}`);
+  return unit;
+}
+
+async function main() {
+  const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
+  const subject = args.subject;
+  const onlyGrade = args.grade || null;
+  const resume = args.resume === 'true' || args.resume === undefined; // default resume on
+  const dryRun = args.dryRun === 'true';
+  if (!SUBJECT_META[subject]) { console.error('usage: --subject science|moral [--grade N] [--resume true|false] [--dryRun true]'); process.exit(1); }
+
+  const meta = SUBJECT_META[subject];
+  const kps = await loadKnowledge(subject);
+
+  // load checkpoint
+  let checkpoint = {};
+  const cpPath = checkpointPath(subject);
+  if (resume) { try { checkpoint = JSON.parse(readFileSync(cpPath, 'utf8')); } catch { checkpoint = {}; } }
+
+  const byGrade = {};
+  for (const [grade, ids] of Object.entries(meta.kpMap)) {
+    if (onlyGrade && grade !== onlyGrade) continue;
+    byGrade[grade] = [];
+    for (const id of ids) {
+      const kp = kps.find(k => k.id === id);
+      if (!kp) { console.error(`KP not found: ${id}`); continue; }
+      if (checkpoint[id]) { byGrade[grade].push(checkpoint[id]); continue; }
+      if (dryRun) { console.log(`[dry-run] would generate ${id} (${kp.title})`); continue; }
+      console.log(`Generating ${subject} grade ${grade}: ${id} ${kp.title}...`);
+      try {
+        const unit = await generateUnit(kp, grade, subject);
+        checkpoint[id] = unit;
+        byGrade[grade].push(unit);
+        writeFileSync(cpPath, JSON.stringify(checkpoint, null, 2));
+        console.log(`  ✓ ${unit.id} (${unit.practice.length} questions)`);
+      } catch (e) {
+        console.error(`  ✗ ${id}: ${e.message}`);
+      }
+    }
+  }
+
+  // render output file
+  const tutorials = Object.entries(byGrade).map(([grade, units]) => ({
+    id: `primary-${subject}-${grade}`,
+    grade,
+    gradeName: GRADE_NAME[grade],
+    subject: meta.name,
+    subjectIcon: meta.icon,
+    title: `${GRADE_NAME[grade]}${meta.name}`,
+    description: `${GRADE_NAME[grade]}${meta.name}系统教程。`,
+    units,
+  }));
+  const file = renderTutorialFile(tutorials);
+  const outPath = new URL(`../src/data/tutorials/primary-${subject}.ts`, import.meta.url);
+  writeFileSync(outPath, file);
+  console.log(`\nWrote ${outPath.pathname} (${Object.values(byGrade).flat().length} units)`);
+}
+
+// run only when invoked directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}
