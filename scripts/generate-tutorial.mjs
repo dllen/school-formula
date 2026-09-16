@@ -282,7 +282,21 @@ export async function generateUnit(kp, grade, subject) {
 }
 
 async function main() {
-  const args = Object.fromEntries(process.argv.slice(2).map(a => a.replace(/^--/, '').split('=')));
+  // Parse CLI args, supporting both `--flag value` and `--flag=value` forms.
+  const raw = process.argv.slice(2);
+  const args = {};
+  for (let i = 0; i < raw.length; i++) {
+    const a = raw[i].replace(/^--/, '');
+    if (a.includes('=')) {
+      const [k, v] = a.split('=');
+      args[k] = v;
+    } else if (i + 1 < raw.length && !raw[i + 1].startsWith('--')) {
+      args[a] = raw[i + 1];
+      i++;
+    } else {
+      args[a] = 'true';
+    }
+  }
   const subject = args.subject;
   const onlyGrade = args.grade || null;
   const resume = args.resume === 'true' || args.resume === undefined; // default resume on
@@ -331,9 +345,13 @@ async function main() {
     units,
   }));
   const file = renderTutorialFile(tutorials);
-  const outPath = new URL(`../src/data/tutorials/primary-${subject}.ts`, import.meta.url);
-  writeFileSync(outPath, file);
-  console.log(`\nWrote ${outPath.pathname} (${Object.values(byGrade).flat().length} units)`);
+  if (dryRun) {
+    console.log(`[dry-run] would write ${Object.values(byGrade).flat().length} units (no file written)`);
+  } else {
+    const outPath = new URL(`../src/data/tutorials/primary-${subject}.ts`, import.meta.url);
+    writeFileSync(outPath, file);
+    console.log(`\nWrote ${outPath.pathname} (${Object.values(byGrade).flat().length} units)`);
+  }
 }
 
 // run only when invoked directly
