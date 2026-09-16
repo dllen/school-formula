@@ -54,6 +54,17 @@ test('serializeUnit produces TypeScript that round-trips', () => {
   assert.ok(!src.includes('undefined'));
 });
 
+test('serializeUnit emits practice as helper calls (not inline objects)', () => {
+  const unit = makeSampleUnit();
+  const src = serializeUnit(unit);
+  // Controller fix: practice must use the choice/fill/truefalse/solve helpers
+  // so they aren't unused under noUnusedLocals. Guard against regression.
+  assert.ok(src.includes('choice('), 'expected choice() helper call');
+  assert.ok(src.includes('fill('), 'expected fill() helper call');
+  assert.ok(src.includes('truefalse('), 'expected truefalse() helper call');
+  assert.ok(src.includes('solve('), 'expected solve() helper call');
+});
+
 test('buildPrompt embeds title, grade, objectives', () => {
   const kp = { title: '植物', tutorialContent: { objectives: ['认识根'] } };
   const prompt = buildPrompt(kp, '1', '科学', '🔬');
