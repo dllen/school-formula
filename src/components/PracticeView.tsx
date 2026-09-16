@@ -78,6 +78,7 @@ export const PracticeView: React.FC = () => {
   const [searchParams] = useSearchParams();
   const [selectedGrade, setSelectedGrade] = useState<GradeLevel>('primary');
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+  const startPanelRef = useRef<HTMLDivElement>(null);
 
   const session = usePracticeSession();
   const errorBook = useErrorBook();
@@ -115,6 +116,13 @@ export const PracticeView: React.FC = () => {
     window.addEventListener('beforeunload', handleBeforeUnload);
     return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, [session.phase]);
+
+  // Scroll the StartPanel into view once it appears (grid can be very long)
+  useEffect(() => {
+    if (selectedTopicId && startPanelRef.current) {
+      startPanelRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [selectedTopicId]);
 
   const handlePickTopic = useCallback((kpId: string) => {
     setSelectedTopicId(kpId);
@@ -202,7 +210,7 @@ export const PracticeView: React.FC = () => {
           onPickTopic={handlePickTopic}
         />
         {selectedTopicId && (
-          <div className="max-w-3xl mx-auto space-y-6">
+          <div ref={startPanelRef} className="max-w-3xl mx-auto space-y-6">
             <StartPanel
               topicId={selectedTopicId}
               onStart={handleStart}
