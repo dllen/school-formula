@@ -47,6 +47,7 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
 
   const handleSelectTemplate = useCallback((template: PromptTemplate) => {
     setSelectedTemplate(template);
+    setCopied(false);
     setState('detail');
   }, []);
 
@@ -98,11 +99,6 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
       if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
     };
   }, []);
-
-  // 切换模板时重置 copied 状态
-  useEffect(() => {
-    setCopied(false);
-  }, [selectedTemplate]);
 
   const handleBack = useCallback(() => {
     if (state === 'result') setState('detail');

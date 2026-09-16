@@ -177,7 +177,7 @@ npm run lint
 1. 触发条件：
    - `main` 分支收到 `push`
    - 或手动通过 GitHub Actions UI 触发 `workflow_dispatch`
-2. 两个工作流（`.github/workflows/deploy.yml` 与 `.github/workflows/deploy-cloudflare.yml`）均使用 Node.js 20：
+2. 两个工作流（`.github/workflows/deploy.yml` 与 `.github/workflows/deploy-cloudflare.yml`）均使用 Node.js 22（LTS）：
    - `npm install`（`package-lock.json` 不在版本控制中，因此两个 workflow 都**不**配置 `cache: 'npm'`，避免 `actions/setup-node` 因找不到锁文件而报错）
    - `npm run build`
    - `deploy.yml` 将 `dist/` 推送到 `gh-pages` 分支；`deploy-cloudflare.yml` 将前端部署到 Cloudflare Workers

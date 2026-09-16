@@ -11,7 +11,7 @@ Created [.github/workflows/deploy.yml](file:///Users/shichaopeng/Work/self-dir/s
 
 **What it does:**
 1. Checks out code
-2. Sets up Node.js 20
+2. Sets up Node.js 22
 3. Installs dependencies
 4. Builds the project
 5. Pushes build output to `gh-pages` branch

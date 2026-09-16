@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           # 注意：项目刻意不跟踪 package-lock.json（见 .gitignore），
           # 因此不能开启 cache: 'npm'，否则 setup-node 会因找不到锁文件而报错。
 

@@ -9,7 +9,9 @@ interface Props {
 }
 
 export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<Question[]>(() =>
+    technique ? generateQuestions(technique.id, 6) : []
+  );
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -37,19 +39,6 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
       clearInterval(timerRef.current);
     }
   }, [finished]);
-
-  useEffect(() => {
-    if (technique) {
-      setQuestions(generateQuestions(technique.id, 6));
-      setCurrentIdx(0);
-      setSelected(null);
-      setCorrectCount(0);
-      setShowExplanation(false);
-      setFinished(false);
-      setElapsed(0);
-      setTimedMode(false);
-    }
-  }, [technique]);
 
   const handleSelect = useCallback((idx: number) => {
     if (selected !== null || !questions[currentIdx]) return;
