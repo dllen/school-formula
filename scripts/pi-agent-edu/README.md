@@ -20,12 +20,12 @@ pi --version
 ### 运行
 
 ```bash
-# 使用快捷命令
-pnpm gen:dsl          # 启动引导模式
-pnpm gen:new          # 强制新建会话
-pnpm gen:continue     # 继续上次会话
-pnpm gen:sessions     # 列出会话
-pnpm gen:help         # 查看帮助
+# 使用快捷命令（推荐）
+npm run gen:dsl          # 启动引导模式
+npm run gen:new          # 强制新建会话
+npm run gen:continue     # 继续上次会话
+npm run gen:sessions     # 列出会话
+npm run gen:help         # 查看帮助
 
 # 或直接使用脚本
 ./pi-agent-edu.sh
@@ -45,6 +45,9 @@ npx tsx index.ts
 # 查看帮助
 ./pi-agent-edu.sh --help
 ```
+
+> **注意**：使用 `npm run` 而非 `pnpm`。`pnpm` 会在执行脚本前运行 `pnpm install` 检查，
+> 可能遇到 `Ignored build scripts` 错误。
 
 ---
 

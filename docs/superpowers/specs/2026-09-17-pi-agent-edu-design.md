@@ -71,12 +71,15 @@
 
 ## 快捷命令
 
+> **注意**：使用 `npm run` 而非 `pnpm`，因为 `pnpm` 在执行脚本前会运行 `pnpm install` 检查，
+> 可能遇到 `Ignored build scripts` 错误。如果需要 `pnpm`，先运行 `pnpm approve-builds`。
+
 ```bash
-pnpm gen:dsl          # 启动引导模式
-pnpm gen:new          # 强制新建会话
-pnpm gen:continue     # 继续上次会话
-pnpm gen:sessions     # 列出会话
-pnpm gen:help         # 查看帮助
+npm run gen:dsl          # 启动引导模式
+npm run gen:new          # 强制新建会话
+npm run gen:continue     # 继续上次会话
+npm run gen:sessions     # 列出会话
+npm run gen:help         # 查看帮助
 ```
 
 ## 工具确认策略
