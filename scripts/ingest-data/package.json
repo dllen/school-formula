@@ -1,0 +1,18 @@
+{
+  "name": "ingest-data",
+  "version": "1.0.0",
+  "description": "确定性数据入库脚本：读取 staging JSON，校验并合并进 src/data",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test *.test.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "@types/node": "^24.10.1"
+  }
+}

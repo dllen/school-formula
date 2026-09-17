@@ -34,3 +34,7 @@ scripts/._checkpoint_*.json
 
 # pi-agent-edu 生成内容暂存目录
 scripts/pi-agent-edu/output/
+
+# pi-agent-edu 数据入库
+staging/
+scripts/ingest-data/.tmp/
