@@ -2,6 +2,8 @@ export * from './types';
 export { PRIMARY_MATH_TUTORIALS } from './primary-math';
 export { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 export { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
+export { PRIMARY_SCIENCE_TUTORIALS } from './primary-science';
+export { PRIMARY_MORAL_TUTORIALS } from './primary-moral';
 export { MIDDLE_MATH_TUTORIALS } from './middle-math';
 export { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
 export { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
@@ -16,6 +18,8 @@ export { HIGH_POLITICS_TUTORIALS } from './high-politics';
 import { PRIMARY_MATH_TUTORIALS } from './primary-math';
 import { PRIMARY_CHINESE_TUTORIALS } from './primary-chinese';
 import { PRIMARY_ENGLISH_TUTORIALS } from './primary-english';
+import { PRIMARY_SCIENCE_TUTORIALS } from './primary-science';
+import { PRIMARY_MORAL_TUTORIALS } from './primary-moral';
 import { MIDDLE_MATH_TUTORIALS } from './middle-math';
 import { MIDDLE_PHYSICS_TUTORIALS } from './middle-physics';
 import { MIDDLE_CHEMISTRY_TUTORIALS } from './middle-chemistry';
@@ -38,6 +42,8 @@ export const ALL_TUTORIALS: Tutorial[] = [
   ...PRIMARY_MATH_TUTORIALS,
   ...PRIMARY_CHINESE_TUTORIALS,
   ...PRIMARY_ENGLISH_TUTORIALS,
+  ...PRIMARY_SCIENCE_TUTORIALS,
+  ...PRIMARY_MORAL_TUTORIALS,
   ...MIDDLE_MATH_TUTORIALS,
   ...MIDDLE_PHYSICS_TUTORIALS,
   ...MIDDLE_CHEMISTRY_TUTORIALS,

@@ -33,7 +33,7 @@ const solve = (
   difficulty: Question['difficulty'] = 'medium'
 ): Question => ({ id, type: 'solve', question, answer, explanation, difficulty });
 
-export const TUTORIALS: Tutorial[] = [
+export const PRIMARY_SCIENCE_TUTORIALS: Tutorial[] = [
 {
     id: 'primary-science-1',
     grade: '1',
