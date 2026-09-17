@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pi-kit/sdk": "^1.0.0"
+    "typebox": "^1.3.33"
   },
   "devDependencies": {
     "tsx": "^4.19.0",
