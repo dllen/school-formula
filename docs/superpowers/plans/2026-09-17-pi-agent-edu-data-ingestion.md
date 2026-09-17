@@ -1234,18 +1234,31 @@ Expected: FAIL。
 
 ```typescript
 // adapters/prompt.ts
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Adapter, IngestContext } from '../types';
 import { getRoot } from '../paths';
 import { appendToConstArray, extractIds } from '../tsedit';
-import { duplicateIds, collidingIds } from '../validate';
+import { duplicateIds } from '../validate';
 
 interface PromptLike { id: string; scenario: string }
 
 /** 原始 scenario（如 `error-analysis`）→ 数组名（如 `ERROR_ANALYSIS_PROMPTS`）。 */
 function scenarioArray(scenario: string): string {
   return `${scenario.toUpperCase().replace(/-/g, '_')}_PROMPTS`;
+}
+
+/** 读取某个 scenario 目录下所有 .ts 文件的 id（供碰撞检测）。 */
+function existingIdsForScenario(scenario: string, ctx: IngestContext): Set<string> {
+  const dir = join(ctx.root, 'src', 'data', 'prompts', scenario);
+  if (!existsSync(dir)) return new Set();
+  const ids = new Set<string>();
+  for (const f of readdirSync(dir)) {
+    if (f.endsWith('.ts')) {
+      for (const id of extractIds(readFileSync(join(dir, f), 'utf-8'))) ids.add(id);
+    }
+  }
+  return ids;
 }
 
 export const promptAdapter: Adapter = {
@@ -1260,10 +1273,12 @@ export const promptAdapter: Adapter = {
     const items = value as PromptLike[];
     const errs: string[] = [];
     for (const id of duplicateIds(items)) errs.push(`重复 id: ${id}`);
+    const scenarioIds = new Map<string, Set<string>>();
     for (const it of items) {
-      const abs = join(ctx.root, 'src', 'data', 'prompts', `${it.scenario}.ts`);
-      const existing = existsSync(abs) ? extractIds(readFileSync(abs, 'utf-8')) : new Set<string>();
-      for (const id of collidingIds([it], existing)) errs.push(`id 已存在: ${id}`);
+      if (!scenarioIds.has(it.scenario)) {
+        scenarioIds.set(it.scenario, existingIdsForScenario(it.scenario, ctx));
+      }
+      if (scenarioIds.get(it.scenario)!.has(it.id)) errs.push(`id 已存在: ${it.id}`);
     }
     return errs;
   },
@@ -1271,16 +1286,16 @@ export const promptAdapter: Adapter = {
     const items = value as PromptLike[];
     const groups = new Map<string, any[]>();
     for (const it of items as any[]) {
-      const scenario = it.scenario; // 原始 scenario（如 'explain'），作文件名 + 分组键
+      const scenario = it.scenario; // 原始 scenario（如 'explain'），作目录名 + 分组键
       if (!groups.has(scenario)) groups.set(scenario, []);
       groups.get(scenario)!.push(it);
     }
     const files: string[] = [];
     for (const [scenario, group] of groups) {
-      const abs = join(ctx.root, 'src', 'data', 'prompts', `${scenario}.ts`);
+      const abs = join(ctx.root, 'src', 'data', 'prompts', scenario, 'index.ts');
       const arrayName = scenarioArray(scenario);
       if (!existsSync(abs)) {
-        writeFileSync(abs, `import type { PromptTemplate } from './types';\n\nexport const ${arrayName}: PromptTemplate[] = [\n];\n`, 'utf-8');
+        writeFileSync(abs, `import type { PromptTemplate } from '../types';\n\nexport const ${arrayName}: PromptTemplate[] = [\n];\n`, 'utf-8');
       }
       writeFileSync(abs, appendToConstArray(readFileSync(abs, 'utf-8'), arrayName, group), 'utf-8');
       files.push(abs);

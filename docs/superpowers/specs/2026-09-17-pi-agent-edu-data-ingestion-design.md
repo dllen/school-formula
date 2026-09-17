@@ -114,7 +114,7 @@ scripts/ingest-data/
 | `formula` | `{ formulas: Formula[] }` | `formulas.ts` | 无 | id 唯一；`grade/subject` 枚举 |
 | `mental-math` | `{ mnemonics: MentalMathMnemonic[] }` | `mentalMath.ts` | 无 | id 唯一 |
 | `technique` | `{ techniques: Technique[] }` | `mastery/techniques.ts` `TECHNIQUES[]` | 无 | id 唯一；`stage ∈ 小学/中学/高中`；`prereq` 引用已存在技巧（可 null） |
-| `prompt` | `{ prompts: PromptTemplate[] }` | `prompts/<scenario>.ts` | `prompts/index.ts` import + `ALL_PROMPTS` | id 唯一；`scenario` 枚举；`usageCount/rating` 归零 |
+| `prompt` | `{ prompts: PromptTemplate[] }` | `prompts/<scenario>/index.ts`（追加内联字面量） | 无（8 个 scenario 已在 `prompts/index.ts`） | id 唯一；`scenario` 枚举；`usageCount/rating` 归零 |
 
 要点：速查表/公式/口算/掌握度 4 类「追加到单文件自包含数组、无需接线」，adapter 很薄。
 真正要接线的只有 `tutorial`、`knowledge`（仅新学科）、`prompt`。
