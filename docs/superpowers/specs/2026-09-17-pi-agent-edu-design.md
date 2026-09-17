@@ -6,6 +6,26 @@
 
 **核心特性**：pi agent 全程工具调用需人工确认，保证生成内容严格符合模板规范。
 
+## ⚠️ SDK 状态
+
+**`@pi-kit/sdk` 不在 npm 上**。SDK 在本地 monorepo：
+```
+/Users/shichaopeng/Work/llm/pi/
+```
+
+当前实现为内联占位符（`InlineAgentSession`），设计为 SDK 就绪后可零改动替换。
+
+SDK 实际工具 API（来自 monorepo 源码）：
+```
+createReadToolDefinition(cwd, options?)   → read file
+createBashToolDefinition(cwd, options?)   → shell command
+createEditToolDefinition(cwd, options?)    → edit file
+createWriteToolDefinition(cwd, options?)   → write file
+createGrepToolDefinition(cwd, options?)    → search
+createFindToolDefinition(cwd, options?)    → find files
+createLsToolDefinition(cwd, options?)      → list directory
+```
+
 ## 用户交互流程
 
 ```
@@ -17,9 +37,9 @@ pi agent 分析 → 打印思考过程
     ↓
 遇到工具调用 → 暂停，打印确认提示
     ↓
-用户输入 y/n/q
+用户输入 y/n/q/a/b
     ↓
-y=执行，n=跳过，q=中止任务
+y=执行，n=跳过，q=中止，a=yes all，b=no all
     ↓
 生成结果 → 打印预览 → 询问保存
     ↓
@@ -35,11 +55,12 @@ y=执行，n=跳过，q=中止任务
 | `read` | 自动放行 | 只读，无风险 |
 | `grep` | 自动放行 | 只读，无风险 |
 | `find` | 自动放行 | 只读，无风险 |
+| `ls` | 自动放行 | 只读，无风险 |
 | `bash` | 需确认 | 可能执行危险命令 |
 | `write` | 需确认 | 写入文件 |
 | `edit` | 需确认 | 修改文件 |
 
-用户可对单个工具切换默认行为（`y all` / `n all`）。
+用户可对单个工具切换默认行为（`a` = yes all / `b` = no all）。
 
 ## 模块设计
 
@@ -65,44 +86,66 @@ y=执行，n=跳过，q=中止任务
 
 ### `tools.ts`
 
-自定义工具集，封装 pi SDK 的 `defineTool`：
+自定义工具集，使用 typebox schema 匹配 pi SDK API：
 
 ```typescript
-// 核心工具
-read(path: string, encoding?: string)
-bash(command: string, cwd?: string)
-write(path: string, content: string, encoding?: string)
-edit(path: string, find: string, replace: string, occurrence?: number)
+export function createTools(cwd?: string): ToolInfo[]
 
-// 扩展工具
-grep(path: string, pattern: string, options?: GrepOptions)
-find(path: string, pattern: string, options?: FindOptions)
+// ToolInfo 包含:
+interface ToolInfo {
+  name: string;
+  label: string;
+  description: string;
+  schema: TObject;      // typebox schema
+  execute: (args) => Promise<string>;
+}
 ```
+
+**实现的工具（7 个）：**
+- `read` — 读取文件内容（path, offset?, limit?）
+- `bash` — 执行 shell 命令（command, cwd?, timeout?）
+- `write` — 写入文件（path, content, encoding?）
+- `edit` — 编辑文件中的文本（path, find, replace, occurrence?）
+- `grep` — 搜索文件内容（pattern, path?, literal?）
+- `find` — 查找文件（pattern, path?, limit?）
+- `ls` — 列出目录（path?）
 
 ### `session.ts`
 
-- 封装 `createAgentSession()`
-- 实现 `ToolCallInterceptor`：监听工具调用事件，暂停执行，提交用户确认
+- `InteractiveSession` 类 — 公共 API
+- `InlineAgentSession` — 内联占位符实现（SDK 就绪后替换）
 - 核心方法：
-  - `prompt(message: string)`: 发送消息
-  - `confirmToolCall(tool, args)`: 工具确认回调
-  - `getHistory()`: 获取对话历史
+  - `prompt(message: string): Promise<string>` — 发送消息
+  - `getSessionId(): string` — 获取会话 ID
+  - `abort(): void` — 中止会话
+  - `subscribe(listener: SessionEventListener): () => void` — 订阅事件
+
+**事件类型（SessionEvent discriminated union）：**
+```typescript
+| { type: "tool_call"; call: SessionToolCall }
+| { type: "tool_result"; toolCallId: string; result: string }
+| { type: "agent_thinking"; text: string }
+| { type: "agent_speaking"; text: string }
+| { type: "error"; error: string }
+```
 
 ### `io.ts`
 
-终端 I/O 封装：
+终端 I/O 封装（使用 ANSI 转义码）：
 
-- 彩色输出（chalk 或 picocolors）
-- 确认提示：`[y/n/q/a/b]?` （y=是，n=否，q=退出，a=yes all，b=no all）
-- 分页显示（长输出自动分页）
-- 进度动画
+- `print(msg, type?)` — 彩色打印（info/success/warn/error/thinking）
+- `prompt(message): Promise<string>` — 等待用户输入
+- `confirm(message): Promise<boolean>` — Yes/No 确认
+- `toolConfirm(tool, args): Promise<'y'|'n'|'q'|'a'|'b'>` — 工具确认
+- `pager(lines, limit?)` — 分页显示
+- `clearLine()` — 清除当前行
 
 ### `prompts.ts`
 
 System prompt 模板，包含：
 
 - 角色定义（中学教师专家）
-- 输出格式规范（TutorialUnit 接口）
+- 输出格式规范（TutorialUnit、Question 接口）
 - 教育内容质量要求（准确、适龄、分层）
 - 工具使用指导
 
@@ -111,13 +154,17 @@ System prompt 模板，包含：
 CLI 入口：
 
 ```bash
-pi-agent-edu                    # 新会话
-pi-agent-edu --continue         # 恢复最近会话
-pi-agent-edu --continue <id>     # 恢复指定会话
-pi-agent-edu --sessions          # 列出会话
-pi-agent-edu --new               # 强制新会话
-pi-agent-edu --help              # 帮助
+npx tsx index.ts                    # 新会话
+npx tsx index.ts --continue         # 恢复最近会话
+npx tsx index.ts --continue <id>   # 恢复指定会话
+npx tsx index.ts --sessions        # 列出会话
+npx tsx index.ts --new            # 强制新会话
 ```
+
+交互命令：
+- `help` — 显示帮助
+- `q` / `quit` — 退出
+- `save` — 保存当前会话
 
 ## 输出格式
 
@@ -132,27 +179,14 @@ pi-agent-edu --help              # 帮助
 
 ### 保存确认
 
-生成完成后：
-
-```
-─────────────────────────────────────
-📄 生成内容预览（50 行）
-
-[内容预览...]
-
-─────────────────────────────────────
-💾 保存到：src/data/tutorials/primary-math.ts
-   [追加] 现有内容 / [覆盖] 全部替换 / [放弃]
-
-选择：1
-```
+生成完成后交互询问是否保存。
 
 ## 技术栈
 
 - **Runtime**: Node.js + TypeScript
-- **SDK**: `pi-sdk`（@pi-kit/sdk）
 - **执行**: `tsx`（直接运行 TS）
 - **配置**: JSON（无外部依赖）
+- **Schema**: typebox（匹配 pi SDK）
 
 ## 依赖项
 
@@ -160,14 +194,15 @@ pi-agent-edu --help              # 帮助
 {
   "type": "module",
   "scripts": {
-    "pi-agent-edu": "tsx scripts/pi-agent-edu/index.ts"
+    "dev": "tsx index.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@pi-kit/sdk": "^1.0.0"
+    "typebox": "^0.97.0"
   },
   "devDependencies": {
-    "tsx": "^4.0.0",
-    "typescript": "^5.0.0"
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
   }
 }
 ```
@@ -177,7 +212,7 @@ pi-agent-edu --help              # 帮助
 | 场景 | 处理方式 |
 |------|---------|
 | API Key 无效 | 提示重新输入，更新配置 |
-| 网络错误 | 重试 3 次，提示用户 |
+| 网络错误 | 提示用户 |
 | pi SDK 错误 | 打印错误信息，提供诊断建议 |
 | 文件写入失败 | 提示权限问题，建议手动复制 |
 | 用户中断（Ctrl+C） | 保存当前会话，优雅退出 |
@@ -190,10 +225,18 @@ pi-agent-edu --help              # 帮助
 {
   "apiKey": "pk-xxxxx",
   "model": "pi-agent",
-  "autoApproveTools": ["read", "grep", "find"],
+  "autoApproveTools": ["read", "grep", "find", "ls"],
   "sessionsDir": "~/.pi-edu/sessions/"
 }
 ```
+
+## SDK 集成步骤
+
+当 pi monorepo 构建完成后：
+
+1. 在 `scripts/pi-agent-edu/` 添加 workspace 引用
+2. 修改 `session.ts` 中的 `InlineAgentSession` 为真实 SDK 会话
+3. 修改 `tools.ts` 使用 `createXxxToolDefinition()` 函数
 
 ## 后续扩展（不纳入 MVP）
 
