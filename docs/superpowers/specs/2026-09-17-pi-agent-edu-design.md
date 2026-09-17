@@ -2,50 +2,81 @@
 
 ## 概述
 
-交互式 CLI 工具，通过 pi agent SDK 生成中小学教育资源（教程、练习题等）。
+交互式 CLI 工具，通过本地 `pi` CLI agent 生成中小学教育资源（教程、练习题等）。
 
-**核心特性**：pi agent 全程工具调用需人工确认，保证生成内容严格符合模板规范。
+**核心特性**：
+- 直接调用本地 `pi` CLI（无需单独配置，使用 pi 的认证体系）
+- 引导模式让用户选择学段/科目/年级/任务类型/题目数量
+- 实时流式输出 pi agent 的思考过程和响应
 
-## ⚠️ SDK 状态
+## 架构变更（2026-09-17）
 
-**`@pi-kit/sdk` 不在 npm 上**。SDK 在本地 monorepo：
-```
-/Users/shichaopeng/Work/llm/pi/
-```
+**原设计**：使用 `@pi-kit/sdk` SDK 调用 AI
+**实际实现**：直接调用本地 `pi` CLI（`pi --print --continue`）
 
-当前实现为内联占位符（`InlineAgentSession`），设计为 SDK 就绪后可零改动替换。
+`pi` CLI 负责：
+- AI 模型调用（OpenAI/DeepSeek/Qwen 等）
+- 工具调用（read/bash/edit/write/grep/find/ls）
+- 会话持久化
 
-SDK 实际工具 API（来自 monorepo 源码）：
-```
-createReadToolDefinition(cwd, options?)   → read file
-createBashToolDefinition(cwd, options?)   → shell command
-createEditToolDefinition(cwd, options?)    → edit file
-createWriteToolDefinition(cwd, options?)   → write file
-createGrepToolDefinition(cwd, options?)    → search
-createFindToolDefinition(cwd, options?)    → find files
-createLsToolDefinition(cwd, options?)      → list directory
-```
+`pi-agent-edu` 负责：
+- 用户交互（引导模式、命令解析）
+- 会话元数据管理
+- 流式输出展示
 
 ## 用户交互流程
 
 ```
-启动 → 检查/引导配置 API Key → 加载会话历史（可选恢复）
+启动 → 检查 pi 是否安装 → 检测 Provider
     ↓
-用户输入目标
+引导模式（可跳过）：
+  - 选择 Provider
+  - 选择学段（小学/初中/高中）
+  - 选择科目（动态显示）
+  - 选择年级
+  - 选择任务类型
+  - 选择题目数量（仅练习题）
     ↓
-pi agent 分析 → 打印思考过程
+构造 prompt → 调用 pi --print
     ↓
-遇到工具调用 → 暂停，打印确认提示
+流式输出思考过程和响应
     ↓
-用户输入 y/n/q/a/b
-    ↓
-y=执行，n=跳过，q=中止，a=yes all，b=no all
-    ↓
-生成结果 → 打印预览 → 询问保存
-    ↓
-用户确认 → 写入文件
-    ↓
-继续对话 / 新对话 / 退出
+交互模式：
+  - 普通输入 → 发送给 agent
+  - `provider` → 切换 Provider
+  - `save` → 保存会话
+  - `q` → 退出
+```
+
+## Provider 选择
+
+启动时检测 `~/.pi/agent/models.json` 中的可用 Provider：
+
+```json
+{
+  "providers": {
+    "qwen-no-plan": {
+      "name": "千问官方",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "models": [...]
+    },
+    "openai": {...}
+  }
+}
+```
+
+- 仅一个 Provider：自动选择
+- 多个 Provider：用户选择
+- 运行时切换：交互模式输入 `provider` 命令
+
+## 快捷命令
+
+```bash
+pnpm gen:dsl          # 启动引导模式
+pnpm gen:new          # 强制新建会话
+pnpm gen:continue     # 继续上次会话
+pnpm gen:sessions     # 列出会话
+pnpm gen:help         # 查看帮助
 ```
 
 ## 工具确认策略
