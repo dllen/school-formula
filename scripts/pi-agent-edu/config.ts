@@ -1,32 +1,32 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { print } from './io.js';
+import { print, selectOption } from './io.js';
 
 export interface Config {
   piPath: string;
+  provider: string;
+  model?: string;
   projectRoot: string;
   autoApproveTools: string[];
   sessionsDir: string;
 }
 
-const DEFAULT_CONFIG: Omit<Config, 'piPath'> = {
+const DEFAULT_CONFIG: Omit<Config, 'piPath' | 'provider'> = {
   projectRoot: '/Users/shichaopeng/Work/self-dir/projects/school-formula',
   autoApproveTools: ['read', 'grep', 'find', 'ls'],
   sessionsDir: '~/.pi-edu/sessions/',
 };
 
 function findPiBinary(): string | null {
-  // Try PATH first
   try {
     const result = execSync('which pi', { encoding: 'utf-8', timeout: 5000 }).trim();
     if (result && existsSync(result)) return result;
   } catch {
-    // not found in PATH
+    // not found
   }
 
-  // Try common locations
   const candidates = [
     join(homedir(), '.local', 'bin', 'pi'),
     '/usr/local/bin/pi',
@@ -40,8 +40,24 @@ function findPiBinary(): string | null {
   return null;
 }
 
-function getConfigPath(): string {
-  return join(homedir(), '.pi-edu', 'config.json');
+function getAvailableProviders(): { id: string; name: string }[] {
+  try {
+    const modelsPath = join(homedir(), '.pi', 'agent', 'models.json');
+    if (!existsSync(modelsPath)) return [];
+
+    const content = readFileSync(modelsPath, 'utf-8');
+    const data = JSON.parse(content);
+    const providers = data.providers as Record<string, { name?: string; models?: unknown[] }>;
+
+    return Object.entries(providers)
+      .filter(([, p]) => p.models && (p.models as unknown[]).length > 0)
+      .map(([id, p]) => ({
+        id,
+        name: p.name || id,
+      }));
+  } catch {
+    return [];
+  }
 }
 
 export async function loadConfig(): Promise<Config> {
@@ -58,8 +74,27 @@ export async function loadConfig(): Promise<Config> {
 
   print(`使用 pi: ${piPath}`, 'success');
 
+  // Detect available providers
+  const providers = getAvailableProviders();
+  let provider = 'openai'; // default fallback
+
+  if (providers.length > 0) {
+    if (providers.length === 1) {
+      provider = providers[0].id;
+      print(`使用 Provider: ${providers[0].name || provider}`, 'success');
+    } else {
+      // Let user choose
+      print(`\n检测到 ${providers.length} 个 Provider：`, 'info');
+      const selected = await selectOption('请选择 Provider：', providers, (p) => p.name || p.id);
+      provider = selected.id;
+    }
+  } else {
+    print('警告：未检测到配置 Provider，使用默认 openai', 'warn');
+  }
+
   return {
     ...DEFAULT_CONFIG,
     piPath,
+    provider,
   };
 }

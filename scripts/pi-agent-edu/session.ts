@@ -62,7 +62,7 @@ class PiSession {
 	 */
 	async prompt(message: string): Promise<string> {
 		const escapedMsg = message.replace(/"/g, '\\"');
-		const cmd = `${this.config.piPath} -ne --print --continue "${this.sessionId}" -- "${escapedMsg}"`;
+		const cmd = `${this.config.piPath} --provider ${this.config.provider} -ne --print --continue "${this.sessionId}" -- "${escapedMsg}"`;
 
 		const opts: ExecSyncOptions = {
 			cwd: this.config.projectRoot,
