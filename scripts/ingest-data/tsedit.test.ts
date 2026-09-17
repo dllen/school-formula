@@ -12,6 +12,13 @@ test('appendToConstArray 在数组尾部插入', () => {
   assert.ok(out.indexOf('a') < out.indexOf('b'));
 });
 
+test('appendToConstArray 匹配非导出 const 数组', () => {
+  const src = `const X: T[] = [\n  { id: 'a' },\n];\n`;
+  const out = appendToConstArray(src, 'X', [{ id: 'b' }]);
+  assert.ok(out.includes(`"id": "b"`));
+  assert.ok(out.indexOf('a') < out.indexOf('b'));
+});
+
 test('insertLineAfter 在锚点后插入一行', () => {
   const out = insertLineAfter("line1\nline2\n", 'line1', 'INSERTED');
   assert.equal(out, "line1\nINSERTED\nline2\n");

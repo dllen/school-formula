@@ -6,9 +6,9 @@ export function renderArrayItem(value: unknown): string {
   return json.split('\n').map((l) => '  ' + l).join('\n') + ',';
 }
 
-/** 在 `export const <name> = [...]` 的数组末尾插入若干条目，返回新内容。 */
+/** 在 `const <name> = [...]`（含 `export const <name>`）的数组末尾插入若干条目，返回新内容。 */
 export function appendToConstArray(content: string, name: string, items: unknown[]): string {
-  const decl = `export const ${name}`;
+  const decl = `const ${name}`;
   const declIdx = content.indexOf(decl);
   if (declIdx === -1) throw new Error(`未找到声明: ${name}`);
   const eq = content.indexOf('=', declIdx);
