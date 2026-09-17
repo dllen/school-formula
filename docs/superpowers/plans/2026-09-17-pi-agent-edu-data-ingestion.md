@@ -639,7 +639,7 @@ import { simpleArrayAdapter } from './simple-array';
 import { getRoot } from '../paths';
 
 export const cheatsheetAdapter = simpleArrayAdapter({
-  kind: 'cheatsheet',
+  kind: 'cheatsheets',
   envelopeKey: 'cheatsheets',
   typeRef: { path: `${getRoot()}/src/data/cheatsheets.ts`, name: 'CheatSheet', expr: 'CheatSheet[]' },
   file: 'src/data/cheatsheets.ts',
@@ -657,7 +657,7 @@ const ARRAYS: Record<string, string> = {
 };
 
 export const formulaAdapter = simpleArrayAdapter({
-  kind: 'formula',
+  kind: 'formulas',
   envelopeKey: 'formulas',
   typeRef: { path: `${getRoot()}/src/data/formulas.ts`, name: 'Formula', expr: 'Formula[]' },
   file: 'src/data/formulas.ts',
@@ -689,7 +689,7 @@ import { simpleArrayAdapter } from './simple-array';
 import { getRoot } from '../paths';
 
 export const techniqueAdapter = simpleArrayAdapter({
-  kind: 'technique',
+  kind: 'techniques',
   envelopeKey: 'techniques',
   typeRef: { path: `${getRoot()}/src/data/mastery/types.ts`, name: 'Technique', expr: 'Technique[]' },
   file: 'src/data/mastery/techniques.ts',
@@ -817,7 +817,7 @@ function existingIdsFor(t: TutorialLike, ctx: IngestContext): Set<string> {
 }
 
 export const tutorialAdapter: Adapter = {
-  kind: 'tutorial',
+  kind: 'tutorials',
   typeRef: { path: join(getRoot(), 'src/data/tutorials/types.ts'), name: 'Tutorial', expr: 'Tutorial' },
   extract(raw) {
     return (raw as { tutorial: unknown }).tutorial;
@@ -963,7 +963,7 @@ function targetArray(stage: string, key: string): string {
 }
 
 export const questionBankAdapter: Adapter = {
-  kind: 'question-bank',
+  kind: 'questions',
   typeRef: { path: join(getRoot(), 'src/data/questions/types.ts'), name: 'Question', expr: 'Question[]' },
   extract(raw) {
     return (raw as { questions: unknown }).questions;
@@ -1231,7 +1231,7 @@ function scenarioArray(scenario: string): string {
 }
 
 export const promptAdapter: Adapter = {
-  kind: 'prompt',
+  kind: 'prompts',
   typeRef: { path: join(getRoot(), 'src/data/prompts/types.ts'), name: 'PromptTemplate', expr: 'PromptTemplate[]' },
   extract(raw) {
     const prompts = (raw as { prompts: any[] }).prompts;

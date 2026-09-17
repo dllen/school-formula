@@ -44,7 +44,7 @@ staging/                          # 仓库根，.gitignore
   tutorials/<id>.json             # { "tutorial": {…Tutorial} }
   questions/<id>.json             # { "questions": […Question] }
   knowledge/<id>.json             # { "grade": …, "subject": …, "knowledgePoints": […] }
-  cheatsheets/<id>.json           # { "cheatsheet": {…CheatSheet} }
+  cheatsheets/<id>.json           # { "cheatsheets": […CheatSheet] }
   formulas/<id>.json              # { "formulas": […Formula] }
   mental-math/<id>.json           # { "mnemonics": […MentalMathMnemonic] }
   techniques/<id>.json            # { "techniques": […Technique] }
@@ -110,7 +110,7 @@ scripts/ingest-data/
 | `tutorial` | `{ tutorial: Tutorial }` | `<stage>-<subject>.ts` 的 `XXX_TUTORIALS[]` | `index.ts` import + `ALL_TUTORIALS` | unit id 唯一；每单元 10 题；id 格式 `{l}-{s}-{g}-u{n}` |
 | `question-bank` | `{ questions: Question[] }` | `<stage>-<subject>-questions.ts` | 无（`ALL_QUESTIONS` 已自动 spread） | id 唯一；`knowledgePointIds ⊆ KNOWLEDGE_DATA`；`subject/grade` 枚举 |
 | `knowledge` | `{ grade, subject, knowledgePoints[] }` | `knowledge/<stage>/<subject>.ts` 的 `KnowledgePoint[]` | 新学科时改 `knowledge/<stage>.ts` import + subjects | kp id 唯一；`tutorialContent` 形状 |
-| `cheatsheet` | `{ cheatsheet: CheatSheet }` | `cheatsheets.ts` `ALL_CHEATSHEETS[]` | 无（单文件） | id 唯一 |
+| `cheatsheet` | `{ cheatsheets: CheatSheet[] }` | `cheatsheets.ts` `ALL_CHEATSHEETS[]` | 无（单文件） | id 唯一 |
 | `formula` | `{ formulas: Formula[] }` | `formulas.ts` | 无 | id 唯一；`grade/subject` 枚举 |
 | `mental-math` | `{ mnemonics: MentalMathMnemonic[] }` | `mentalMath.ts` | 无 | id 唯一 |
 | `technique` | `{ techniques: Technique[] }` | `mastery/techniques.ts` `TECHNIQUES[]` | 无 | id 唯一；`stage ∈ 小学/中学/高中`；`prereq` 引用已存在技巧（可 null） |
