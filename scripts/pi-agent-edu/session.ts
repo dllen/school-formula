@@ -77,17 +77,15 @@ class PiSession {
 			return text.trim();
 		} catch (err: unknown) {
 			const error = err as Error & { status?: number; stdout?: string; stderr?: string };
-			if (error.status !== 0) {
-				// Non-zero exit: pi may have printed partial output
-				const stdout = error.stdout != null ? String(error.stdout) : '';
+			// Non-zero exit: return partial output if available
+			const stdout = error.stdout != null ? String(error.stdout) : '';
 			const stderr = error.stderr != null ? String(error.stderr) : '';
-			const partial = stdout.trim() || stderr.trim() || error.message;
-				if (partial) {
-					this.emit({ type: "agent_speaking", text: partial });
-				}
-				throw new Error(`pi exited with code ${error.status}`);
+			const partial = stdout.trim() || stderr.trim();
+			if (partial) {
+				return partial;
 			}
-			throw error;
+			// No output: throw original error
+			throw new Error(error.message || `pi exited with code ${error.status}`);
 		}
 	}
 
