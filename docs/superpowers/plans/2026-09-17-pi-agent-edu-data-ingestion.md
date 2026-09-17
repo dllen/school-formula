@@ -84,20 +84,19 @@ scripts/ingest-data/
 }
 ```
 
-- [ ] **Step 2: 创建 tsconfig.json**（镜像 `scripts/pi-agent-edu/tsconfig.json`）
+- [ ] **Step 2: 创建 tsconfig.json**（`moduleResolution: bundler`，与本包 extensionless 相对导入及 app 的 Vite/bundler 风格一致；不用 NodeNext，避免 TS2835）
 
 ```json
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "outDir": "./dist"
+    "noEmit": true
   },
   "include": ["."],
   "exclude": [".tmp", "node_modules", "dist"]

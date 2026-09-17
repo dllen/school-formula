@@ -1,7 +1,7 @@
 // mapping.test.ts
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { SUBJECT_KEYS, gradeToStage } from './mapping.js';
+import { SUBJECT_KEYS, gradeToStage } from './mapping';
 
 test('SUBJECT_KEYS 覆盖全部学科', () => {
   assert.equal(SUBJECT_KEYS['数学'], 'math');
