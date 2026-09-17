@@ -1,0 +1,20 @@
+{
+  "name": "pi-agent-edu",
+  "version": "1.0.0",
+  "description": "交互式 CLI 工具，通过 pi agent 生成中小学教育资源",
+  "type": "module",
+  "bin": {
+    "pi-agent-edu": "./index.ts"
+  },
+  "scripts": {
+    "dev": "tsx index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pi-kit/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
