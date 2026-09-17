@@ -72,7 +72,7 @@ scripts/ingest-data/
   "scripts": {
     "dev": "tsx index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test *.test.ts"
+    "test": "node --import tsx --test"
   },
   "dependencies": {
     "typescript": "^5.9.3"
