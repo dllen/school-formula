@@ -1,61 +1,65 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import { print, prompt } from './io.js';
+import { execSync } from 'node:child_process';
+import { print } from './io.js';
 
 export interface Config {
-  apiKey: string;
-  model: string;
+  piPath: string;
+  projectRoot: string;
   autoApproveTools: string[];
   sessionsDir: string;
 }
 
-const DEFAULT_CONFIG: Omit<Config, 'apiKey'> = {
-  model: 'pi-agent',
-  autoApproveTools: ['read', 'grep', 'find'],
+const DEFAULT_CONFIG: Omit<Config, 'piPath'> = {
+  projectRoot: '/Users/shichaopeng/Work/self-dir/projects/school-formula',
+  autoApproveTools: ['read', 'grep', 'find', 'ls'],
   sessionsDir: '~/.pi-edu/sessions/',
 };
+
+function findPiBinary(): string | null {
+  // Try PATH first
+  try {
+    const result = execSync('which pi', { encoding: 'utf-8', timeout: 5000 }).trim();
+    if (result && existsSync(result)) return result;
+  } catch {
+    // not found in PATH
+  }
+
+  // Try common locations
+  const candidates = [
+    join(homedir(), '.local', 'bin', 'pi'),
+    '/usr/local/bin/pi',
+    '/opt/homebrew/bin/pi',
+  ];
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) return candidate;
+  }
+
+  return null;
+}
 
 function getConfigPath(): string {
   return join(homedir(), '.pi-edu', 'config.json');
 }
 
 export async function loadConfig(): Promise<Config> {
-  const configPath = getConfigPath();
-  const configDir = join(homedir(), '.pi-edu');
+  const piPath = findPiBinary();
 
-  // 尝试加载现有配置
-  if (existsSync(configPath)) {
-    try {
-      const content = readFileSync(configPath, 'utf-8');
-      const config = JSON.parse(content) as Config;
-      if (config.apiKey) return config;
-    } catch {
-      // 读取失败，引导创建
-    }
-  }
-
-  // 引导用户创建配置
-  print('首次使用，需要配置 pi API Key', 'warn');
-  print('请访问 https://pi.dev 获取 API Key', 'info');
-
-  const apiKey = await prompt('请输入 PI_API_KEY: ');
-  if (!apiKey.trim()) {
-    print('API Key 不能为空', 'error');
+  if (!piPath) {
+    print('pi agent 未安装或不在 PATH 中', 'error');
+    print('', 'info');
+    print('请先安装 pi agent:', 'info');
+    print('  npm install -g @pi-kit/pi', 'info');
+    print('  或访问 https://pi.dev 获取安装说明', 'info');
     process.exit(1);
   }
 
-  const model = await prompt(`模型名称 (默认: ${DEFAULT_CONFIG.model}): `);
+  print(`使用 pi: ${piPath}`, 'success');
 
-  const config: Config = {
+  return {
     ...DEFAULT_CONFIG,
-    apiKey: apiKey.trim(),
-    model: model.trim() || DEFAULT_CONFIG.model,
+    piPath,
   };
-
-  mkdirSync(configDir, { recursive: true });
-  writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf-8');
-  print('配置已保存到 ' + configPath, 'success');
-
-  return config;
 }
