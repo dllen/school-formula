@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
-import { print, selectOption } from './io.js';
+import { print } from './io.js';
 
 export interface Config {
   piPath: string;
@@ -60,6 +60,8 @@ function getAvailableProviders(): { id: string; name: string }[] {
   }
 }
 
+export { getAvailableProviders };
+
 export async function loadConfig(): Promise<Config> {
   const piPath = findPiBinary();
 
@@ -74,27 +76,10 @@ export async function loadConfig(): Promise<Config> {
 
   print(`使用 pi: ${piPath}`, 'success');
 
-  // Detect available providers
-  const providers = getAvailableProviders();
-  let provider = 'openai'; // default fallback
-
-  if (providers.length > 0) {
-    if (providers.length === 1) {
-      provider = providers[0].id;
-      print(`使用 Provider: ${providers[0].name || provider}`, 'success');
-    } else {
-      // Let user choose
-      print(`\n检测到 ${providers.length} 个 Provider：`, 'info');
-      const selected = await selectOption('请选择 Provider：', providers, (p) => p.name || p.id);
-      provider = selected.id;
-    }
-  } else {
-    print('警告：未检测到配置 Provider，使用默认 openai', 'warn');
-  }
-
+  // Provider is set by wizard or defaults to 'openai'
   return {
     ...DEFAULT_CONFIG,
     piPath,
-    provider,
+    provider: 'openai',
   };
 }

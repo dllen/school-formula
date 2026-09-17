@@ -13,7 +13,7 @@
 
 import { parseArgs } from 'node:util';
 import { print, prompt, confirm, selectOption } from './io.js';
-import { loadConfig } from './config.js';
+import { loadConfig, getAvailableProviders } from './config.js';
 import { listSessions, newSessionId, loadSessionMessages } from './storage.js';
 import { InteractiveSession } from './session.js';
 
@@ -90,6 +90,7 @@ type Task = typeof TASKS[number];
 const DIFFICULTIES = ['easy（容易）', 'medium（中等）', 'hard（困难）'] as const;
 
 interface WizardResult {
+  provider: string;
   stage: Stage;
   subject: string;
   grade: string;
@@ -100,6 +101,15 @@ interface WizardResult {
 export async function runWizard(): Promise<WizardResult> {
   print('\n📚 欢迎使用 pi-agent-edu 教育智能体！\n', 'success');
   print('让我来引导你完成内容生成...\n', 'dim');
+
+  // 0. Select provider
+  const providers = getAvailableProviders();
+  let providerId = 'openai';
+  if (providers.length > 0) {
+    const selected = await selectOption('请选择 AI Provider：', providers, (p) => `${p.name} (${p.id})`);
+    providerId = selected.id;
+    print(`已选择：${selected.name}\n`, 'info');
+  }
 
   // 1. Select stage
   const stage = await selectOption('请选择学段：', STAGES);
@@ -127,7 +137,7 @@ export async function runWizard(): Promise<WizardResult> {
     difficulty = diff.split('（')[0]; // Extract "easy", "medium", "hard"
   }
 
-  return { stage, subject, grade, task, difficulty };
+  return { provider: providerId, stage, subject, grade, task, difficulty };
 }
 
 export function buildPromptFromWizard(result: WizardResult): string {
@@ -228,6 +238,9 @@ async function main() {
     print(`\n🎯 正在生成内容...\n`, 'thinking');
     print(`提示词：${wizardPrompt}\n`, 'dim');
     messages.push({ role: 'user', content: wizardPrompt });
+
+    // Update config with provider from wizard
+    config.provider = wizardResult.provider;
   }
 
   // Create session instance (real session stores messages internally)

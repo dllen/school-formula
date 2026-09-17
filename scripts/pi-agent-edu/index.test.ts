@@ -9,16 +9,17 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { buildPromptFromWizard } from './index.js';
 
+const mockWizardResult = {
+  provider: 'qwen-no-plan',
+  stage: '初中' as const,
+  subject: '数学',
+  grade: '初二',
+  task: 'TutorialUnit（教程单元）' as const,
+};
+
 describe('index.ts - buildPromptFromWizard', () => {
   it('should build prompt for TutorialUnit', () => {
-    const result = {
-      stage: '初中' as const,
-      subject: '数学',
-      grade: '初二',
-      task: 'TutorialUnit（教程单元）' as const,
-    };
-
-    const prompt = buildPromptFromWizard(result);
+    const prompt = buildPromptFromWizard({ ...mockWizardResult });
     assert.ok(prompt.includes('初中数学'));
     assert.ok(prompt.includes('初二'));
     assert.ok(prompt.includes('TutorialUnit'));
@@ -27,6 +28,7 @@ describe('index.ts - buildPromptFromWizard', () => {
 
   it('should build prompt for practice questions with difficulty', () => {
     const result = {
+      ...mockWizardResult,
       stage: '高中' as const,
       subject: '物理',
       grade: '高一',
@@ -43,6 +45,7 @@ describe('index.ts - buildPromptFromWizard', () => {
 
   it('should build prompt for error analysis', () => {
     const result = {
+      ...mockWizardResult,
       stage: '初中' as const,
       subject: '化学',
       grade: '初三',
@@ -58,6 +61,7 @@ describe('index.ts - buildPromptFromWizard', () => {
 
   it('should build prompt for study plan', () => {
     const result = {
+      ...mockWizardResult,
       stage: '小学' as const,
       subject: '数学',
       grade: '四年级',
@@ -74,6 +78,7 @@ describe('index.ts - buildPromptFromWizard', () => {
     const stages = ['小学', '初中', '高中'] as const;
     for (const stage of stages) {
       const result = {
+        ...mockWizardResult,
         stage,
         subject: '数学',
         grade: '一年级',
