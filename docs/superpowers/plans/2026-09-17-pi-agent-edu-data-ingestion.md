@@ -319,9 +319,11 @@ export function renderArrayItem(value: unknown): string {
   return json.split('\n').map((l) => '  ' + l).join('\n') + ',';
 }
 
-/** 在 `export const <name> = [...]` 的数组末尾插入若干条目，返回新内容。 */
+/** 在 `const <name> = [...]`（含 `export const <name>`）的数组末尾插入若干条目，返回新内容。 */
 export function appendToConstArray(content: string, name: string, items: unknown[]): string {
-  const decl = `export const ${name}`;
+  // 用 `const ${name}` 匹配（同时命中 `export const ${name}` 与模块私有 `const ${name}`，
+  // 如 formulas.ts 的 `const PRIMARY_FORMULAS`）。
+  const decl = `const ${name}`;
   const declIdx = content.indexOf(decl);
   if (declIdx === -1) throw new Error(`未找到声明: ${name}`);
   // 先定位赋值 `=`，再找 `=` 之后的 `[`——避免命中类型注解里的 `[]`（如 `T[]`）。
