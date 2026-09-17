@@ -97,7 +97,7 @@ interface WizardResult {
   difficulty?: string;
 }
 
-async function runWizard(): Promise<WizardResult> {
+export async function runWizard(): Promise<WizardResult> {
   print('\n📚 欢迎使用 pi-agent-edu 教育智能体！\n', 'success');
   print('让我来引导你完成内容生成...\n', 'dim');
 
@@ -130,7 +130,7 @@ async function runWizard(): Promise<WizardResult> {
   return { stage, subject, grade, task, difficulty };
 }
 
-function buildPromptFromWizard(result: WizardResult): string {
+export function buildPromptFromWizard(result: WizardResult): string {
   const { stage, subject, grade, task, difficulty } = result;
 
   switch (task) {
@@ -143,11 +143,10 @@ function buildPromptFromWizard(result: WizardResult): string {
     }
 
     case '错题分析':
-      return `分析${grade}${subject}学习中的常见错误，提供典型例题和讲解`;
+      return `${stage}${subject}${grade}错题分析：分析学习中的常见错误，提供典型例题和讲解`;
 
     case '学习规划': {
-      const gradeNum = parseInt(grade.replace(/\D/g, ''), 10);
-      return `为${grade}${subject}生成学习计划（期中/期末复习规划）`;
+      return `为${stage}${subject}${grade}生成学习计划（期中/期末复习规划）`;
     }
 
     default:
@@ -303,7 +302,10 @@ async function main() {
   print('再见！', 'success');
 }
 
-main().catch((err) => {
-  print(`Fatal: ${err instanceof Error ? err.message : String(err)}`, 'error');
-  process.exit(1);
-});
+// Only run main when executed directly (not imported for testing)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((err) => {
+    print(`Fatal: ${err instanceof Error ? err.message : String(err)}`, 'error');
+    process.exit(1);
+  });
+}
