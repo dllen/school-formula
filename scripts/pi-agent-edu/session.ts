@@ -76,6 +76,13 @@ class PiSession {
 				const text = data.toString();
 				chunks.push(text);
 
+				// Check for API errors in response
+				if (text.includes('permission_error') || text.includes('quota') || text.includes('403') || text.includes('402')) {
+					this.emit({ type: 'error', error: 'API 配额不足，请充值或更换 Provider' });
+					proc.kill();
+					return;
+				}
+
 				// Parse and emit events based on content
 				const lines = text.split('\n');
 				for (const line of lines) {
@@ -96,11 +103,12 @@ class PiSession {
 			proc.stderr?.on('data', (data: Buffer) => {
 				const text = data.toString().trim();
 				if (text) {
-					// Check for thinking indicator
-					if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
-						this.emit({ type: 'thinking', text });
-					} else if (!text.startsWith('warn') && !text.startsWith('Error')) {
-						// Show as thinking progress
+					// Check for API errors
+					if (text.includes('permission_error') || text.includes('quota') || text.includes('403')) {
+						this.emit({ type: 'error', error: 'API 配额不足，请充值或更换 Provider' });
+					} else if (text.includes('401') || text.includes('unauthorized')) {
+						this.emit({ type: 'error', error: 'API 认证失败，请检查 API Key' });
+					} else if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
 						this.emit({ type: 'thinking', text });
 					}
 				}
