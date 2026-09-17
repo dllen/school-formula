@@ -62,6 +62,7 @@ function showHelp(): void {
   help, ?         显示帮助
   q, quit, exit   退出（会询问是否保存）
   save            保存当前会话
+  provider        切换 AI Provider
 `, 'info');
 }
 
@@ -254,6 +255,7 @@ async function main() {
 
   // Create session instance (real session stores messages internally)
   const session = new InteractiveSession(config, sessionId);
+  const sessionRef: { value: InteractiveSession } = { value: session };
 
   // -------------------------------------------------------------------------
   // Interactive loop
@@ -267,7 +269,7 @@ async function main() {
   if (pendingWizardPrompt) {
     print('', 'dim');
     try {
-      const response = await session.prompt(pendingWizardPrompt);
+      const response = await sessionRef.value.prompt(pendingWizardPrompt);
       print(`\n${response}`, 'info');
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
@@ -310,10 +312,26 @@ async function main() {
       continue;
     }
 
+    if (cmd === 'provider' || cmd === '/provider') {
+      const providers = getAvailableProviders();
+      if (providers.length === 0) {
+        print('未检测到可用 Provider，请检查 ~/.pi/agent/models.json', 'error');
+        continue;
+      }
+      const selected = await selectOption('请选择新的 Provider：', providers, (p) => `${p.name} (${p.id})`);
+      config.provider = selected.id;
+      // Recreate session with new provider
+      const newSession = new InteractiveSession(config, sessionId);
+      // Replace the session reference - need to use a wrapper
+      sessionRef.value = newSession;
+      print(`已切换 Provider: ${selected.name}`, 'success');
+      continue;
+    }
+
     // Regular user message → send to agent
     print('', 'dim');
     try {
-      const response = await session.prompt(input);
+      const response = await sessionRef.value.prompt(input);
       print(`\n${response}`, 'info');
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
