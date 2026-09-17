@@ -9,7 +9,12 @@
   "scripts": {
     "dev": "tsx index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test *.test.ts"
+    "test": "node --import tsx --test *.test.ts",
+    "gen:dsl": "./pi-agent-edu.sh",
+    "gen:new": "./pi-agent-edu.sh --new",
+    "gen:continue": "./pi-agent-edu.sh --continue",
+    "gen:sessions": "./pi-agent-edu.sh --sessions",
+    "gen:help": "./pi-agent-edu.sh --help"
   },
   "dependencies": {
     "typebox": "^1.3.33"

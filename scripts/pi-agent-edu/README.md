@@ -20,7 +20,14 @@ pi --version
 ### 运行
 
 ```bash
-# 新会话（启动引导模式）
+# 使用快捷命令
+pnpm gen:dsl          # 启动引导模式
+pnpm gen:new          # 强制新建会话
+pnpm gen:continue     # 继续上次会话
+pnpm gen:sessions     # 列出会话
+pnpm gen:help         # 查看帮助
+
+# 或直接使用脚本
 ./pi-agent-edu.sh
 
 # 或直接运行
