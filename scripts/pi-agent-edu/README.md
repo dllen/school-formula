@@ -1,51 +1,86 @@
 # pi-agent-edu
 
-交互式 CLI 工具，通过 pi agent SDK 生成中小学教育资源。
+交互式 CLI 工具，通过本地 `pi` agent 生成中小学教育资源。
 
 ## 安装
 
+### 前置要求
+
+- **Node.js 18+**
+- **pi CLI** 已安装（https://pi.dev）
+
 ```bash
-cd scripts/pi-agent-edu
-npm install
+# 安装 pi CLI
+npm install -g @pi-kit/pi
+
+# 验证安装
+pi --version
 ```
 
-## 运行
+### 运行
 
 ```bash
-# 新会话
+# 新会话（启动引导模式）
+./pi-agent-edu.sh
+
+# 或直接运行
 npx tsx index.ts
 
 # 恢复最近会话
-npx tsx index.ts --continue
+./pi-agent-edu.sh --continue
 
 # 恢复指定会话
-npx tsx index.ts --continue <session-id>
+./pi-agent-edu.sh --continue <session-id>
 
 # 列出会话
-npx tsx index.ts --sessions
+./pi-agent-edu.sh --sessions
+
+# 查看帮助
+./pi-agent-edu.sh --help
 ```
 
-## 配置
+---
 
-首次运行会自动引导配置 `~/.pi-edu/config.json`。
+## 引导模式
 
-## 工具确认
+新会话会自动启动引导模式，帮助你快速生成内容：
 
-| 工具 | 默认行为 |
-|------|---------|
-| `read` | 自动放行 |
-| `grep` | 自动放行 |
-| `find` | 自动放行 |
-| `bash` | 需确认 |
-| `write` | 需确认 |
-| `edit` | 需确认 |
+```
+📚 欢迎使用 pi-agent-edu 教育智能体！
 
-确认时可输入：
-- `y` — 执行
-- `n` — 跳过
-- `q` — 退出
-- `a` — 全部确认（yes all）
-- `b` — 全部拒绝（no all）
+让我来引导你完成内容生成...
+
+请选择学段：
+  [1] 小学
+  [2] 初中
+  [3] 高中
+> 2
+
+请选择科目：
+  [1] 数学
+  [2] 物理
+  [3] 化学
+  ...
+```
+
+**引导流程：**
+1. 选择学段（小学 / 初中 / 高中）
+2. 选择科目（根据学段动态显示）
+3. 选择年级
+4. 选择任务类型
+5. 如选择"练习题"，额外选择难度
+
+---
+
+## 交互命令
+
+在交互模式中可用：
+
+| 命令 | 说明 |
+|------|------|
+| `help`, `?` | 显示帮助 |
+| `q`, `quit`, `exit` | 退出 |
+| `save` | 保存当前会话 |
 
 ---
 
@@ -200,7 +235,7 @@ A: 明确指定 easy/medium/hard 各多少道，不要让 AI 自己决定。
 src/data/
 ├── tutorials/          # 教程单元数据
 │   ├── primary-*.ts   # 小学教程
-│   ├── middle-*.ts     # 初教程
+│   ├── middle-*.ts     # 初中教程
 │   ├── high-*.ts       # 高中教程
 │   └── types.ts        # 类型定义
 ├── knowledge/          # 知识点结构
