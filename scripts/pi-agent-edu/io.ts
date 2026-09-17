@@ -11,13 +11,14 @@ const colors = {
   magenta: (t: string) => `\x1b[35m${t}\x1b[0m`,
 };
 
-export function print(msg: string, type: 'info' | 'success' | 'warn' | 'error' | 'thinking' = 'info') {
+export function print(msg: string, type: 'info' | 'success' | 'warn' | 'error' | 'thinking' | 'dim' = 'info') {
   const prefix: Record<string, string> = {
     info: '  ',
     success: '✅',
     warn: '⚠️',
     error: '❌',
     thinking: '🤔',
+    dim: '  ',
   };
   const colorFn: Record<string, Color> = {
     info: colors.reset,
@@ -25,8 +26,9 @@ export function print(msg: string, type: 'info' | 'success' | 'warn' | 'error' |
     warn: colors.yellow,
     error: colors.red,
     thinking: colors.magenta,
+    dim: colors.dim,
   };
-  console.log(`${prefix[type]} ${colorFn[type](msg)}`);
+  console.log(`${prefix[type] ?? '  '} ${(colorFn[type] ?? colors.reset)(msg)}`);
 }
 
 export async function prompt(message: string): Promise<string> {
