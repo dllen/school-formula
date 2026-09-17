@@ -20,10 +20,6 @@ function getConfigPath(): string {
   return join(homedir(), '.pi-edu', 'config.json');
 }
 
-function getSessionsDir(): string {
-  return join(homedir(), '.pi-edu', 'sessions');
-}
-
 export async function loadConfig(): Promise<Config> {
   const configPath = getConfigPath();
   const configDir = join(homedir(), '.pi-edu');

@@ -25,11 +25,10 @@
  *   renderResult?(result, options, theme, context): Text
  */
 
-import { readFile, writeFile, access, readdir, stat, chmod } from "node:fs/promises";
-import { exec, spawn } from "node:child_process";
+import { readFile, writeFile, access, readdir, stat } from "node:fs/promises";
+import { exec } from "node:child_process";
 import { join, resolve, relative, isAbsolute } from "node:path";
 import { constants } from "node:fs";
-import { promisify } from "node:util";
 import { Type, type Static } from "typebox";
 
 // ---------------------------------------------------------------------------
@@ -127,15 +126,6 @@ export type FindToolInput = Static<typeof findSchema>;
 function resolvePath(filePath: string, cwd: string): string {
 	if (isAbsolute(filePath)) return filePath;
 	return resolve(cwd, filePath);
-}
-
-async function fileExists(path: string): Promise<boolean> {
-	try {
-		await access(path, constants.R_OK);
-		return true;
-	} catch {
-		return false;
-	}
 }
 
 // ---------------------------------------------------------------------------
@@ -341,10 +331,9 @@ function createGrepToolDefinition(cwd: string): ToolDefinition {
 		promptGuidelines: ["Use grep to find code or text across the project."],
 		parameters: grepSchema,
 		async execute(_toolCallId, args: Record<string, unknown>): Promise<ToolResult> {
-			const { pattern, path: searchPath, glob, ignoreCase, literal } = args as {
+			const { pattern, path: searchPath, ignoreCase, literal } = args as {
 				pattern: string; path?: string; glob?: string; ignoreCase?: boolean; literal?: boolean;
 			};
-			const searchDir = searchPath ? resolvePath(searchPath, cwd) : cwd;
 
 			const grepArgs = [
 				...(ignoreCase ? ["-i"] : []),

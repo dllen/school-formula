@@ -14,7 +14,7 @@
 import { parseArgs } from 'node:util';
 import { print, prompt, confirm } from './io.js';
 import { loadConfig } from './config.js';
-import { listSessions, newSessionId, loadSessionMessages, saveSessionMessages } from './storage.js';
+import { listSessions, newSessionId, loadSessionMessages } from './storage.js';
 import { InteractiveSession } from './session.js';
 
 // ---------------------------------------------------------------------------
@@ -63,28 +63,6 @@ function showHelp(): void {
   q, quit, exit   退出（会询问是否保存）
   save            保存当前会话
 `, 'info');
-}
-
-async function pickSession(sessions: { id: string; summary: string; createdAt: string }[]): Promise<string | null> {
-  if (sessions.length === 0) {
-    print('没有已保存的会话', 'warn');
-    return null;
-  }
-
-  print(`\n找到 ${sessions.length} 个会话：`, 'info');
-  sessions.slice(0, 10).forEach((s, i) => {
-    const date = new Date(s.createdAt).toLocaleString('zh-CN');
-    print(`  ${i + 1}. [${s.id}] ${date}`, 'info');
-    if (s.summary) print(`     ${s.summary}`, 'dim');
-  });
-
-  const ans = await prompt('\n选择会话编号 (直接回车取消): ');
-  const idx = parseInt(ans, 10) - 1;
-  if (isNaN(idx) || idx < 0 || idx >= sessions.length) {
-    print('已取消', 'warn');
-    return null;
-  }
-  return sessions[idx].id;
 }
 
 // ---------------------------------------------------------------------------
