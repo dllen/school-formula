@@ -778,6 +778,7 @@ test('arrayNameFor 推导正确数组名', () => {
   const tutorial = { id: 'middle-math-9', grade: '7', subject: '数学' } as any;
   assert.equal(arrayNameFor(tutorial), 'MIDDLE_MATH_TUTORIALS');
 });
+```
 
 - [ ] **Step 2: 运行确认失败**
 
