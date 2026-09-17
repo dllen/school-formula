@@ -92,4 +92,11 @@ fi
 
 # Run the interactive CLI
 cd "$SCRIPT_DIR"
+
+# Suppress the `node:sqlite` ExperimentalWarning emitted by the pi SDK
+# (Node 22.5+ only — the flag and the warning source both require Node >= 22).
+if [ "$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 18)" -ge 22 ] 2>/dev/null; then
+    export NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }--disable-warning=ExperimentalWarning"
+fi
+
 exec "$TSX_BIN" index.ts "$@"

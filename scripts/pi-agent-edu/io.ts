@@ -4,7 +4,6 @@ type Color = (text: string) => string;
 const colors = {
   reset: (t: string) => `\x1b[0m${t}\x1b[0m`,
   dim: (t: string) => `\x1b[2m${t}\x1b[0m`,
-  cyan: (t: string) => `\x1b[36m${t}\x1b[0m`,
   green: (t: string) => `\x1b[32m${t}\x1b[0m`,
   yellow: (t: string) => `\x1b[33m${t}\x1b[0m`,
   red: (t: string) => `\x1b[31m${t}\x1b[0m`,
@@ -41,25 +40,6 @@ export async function prompt(message: string): Promise<string> {
   });
 }
 
-export async function confirm(message: string): Promise<boolean> {
-  const answer = await prompt(`${message} (y/n) `);
-  return answer.toLowerCase() === 'y';
-}
-
-export async function pager(lines: string[], limit = 30): Promise<void> {
-  if (lines.length <= limit) {
-    console.log(lines.join('\n'));
-    return;
-  }
-  for (let i = 0; i < lines.length; i += limit) {
-    console.log(lines.slice(i, i + limit).join('\n'));
-    if (i + limit < lines.length) {
-      const ans = await prompt(colors.dim('-- More -- (q to quit) '));
-      if (ans.toLowerCase() === 'q') break;
-    }
-  }
-}
-
 export async function selectOption<T>(
   message: string,
   options: readonly T[],
@@ -78,6 +58,3 @@ export async function selectOption<T>(
   }
 }
 
-export function clearLine(): void {
-  process.stdout.write('\x1b[2K\r');
-}

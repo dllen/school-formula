@@ -98,6 +98,13 @@ npx tsx index.ts
 
 ---
 
+## 运行行为说明
+
+- **系统提示词**：内置教育系统提示词（`prompts.ts` 的 `getSystemPrompt()`，定义「中学教师」角色、`TutorialUnit`/`Question` 输出格式与内容质量标准），通过 SDK 的 `DefaultResourceLoader` 注入。同时禁用了 skills / themes / prompt-templates（与内容生成无关，会污染上下文）；保留 `CLAUDE.md` / `AGENTS.md` 让 agent 了解仓库结构。
+- **工具自动执行**：`read` / `grep` / `find` / `ls` / `bash` / `edit` / `write` 由 SDK **自动执行、无逐条确认**。请仅在信任的项目目录下运行——agent 能够修改文件、执行 shell 命令。
+
+---
+
 ## 最佳实践
 
 ### 有效 Prompt 范例

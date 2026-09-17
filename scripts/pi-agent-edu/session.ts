@@ -7,14 +7,17 @@
  */
 
 import {
+  DefaultResourceLoader,
   ModelRuntime,
   SessionManager,
+  SettingsManager,
   createAgentSession,
   type AgentSession,
   type AgentSessionEvent,
 } from '@earendil-works/pi-coding-agent';
 import { print } from './io.js';
 import { getAgentDir, type Config, type ThinkingLevel } from './config.js';
+import { getSystemPrompt } from './prompts.js';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -70,6 +73,7 @@ export class InteractiveSession {
   private config: Config;
   private listeners = new Set<SessionEventListener>();
   private textBuffer: string[] = [];
+  private inThinking = false;
 
   private constructor(session: AgentSession, runtime: ModelRuntime, config: Config) {
     this.session = session;
@@ -100,6 +104,23 @@ export class InteractiveSession {
       throw new Error(`模型不存在或未配置鉴权: ${config.provider}/${config.model}`);
     }
 
+    // Inject the education system prompt (中学教师 role + output format).
+    // Disable extensions/skills/themes/prompt-templates — irrelevant to content
+    // generation and would bloat every turn's context. Keep context files
+    // (CLAUDE.md/AGENTS.md) so the agent understands the repo layout.
+    const settingsManager = SettingsManager.create(config.projectRoot, agentDir);
+    const resourceLoader = new DefaultResourceLoader({
+      cwd: config.projectRoot,
+      agentDir,
+      settingsManager,
+      systemPrompt: getSystemPrompt(),
+      noExtensions: true,
+      noSkills: true,
+      noThemes: true,
+      noPromptTemplates: true,
+    });
+    await resourceLoader.reload();
+
     const { session } = await createAgentSession({
       cwd: config.projectRoot,
       agentDir,
@@ -108,6 +129,8 @@ export class InteractiveSession {
       thinkingLevel: config.thinkingLevel,
       tools: config.tools,
       sessionManager,
+      settingsManager,
+      resourceLoader,
     });
 
     return new InteractiveSession(session, runtime, config);
@@ -187,8 +210,11 @@ export class InteractiveSession {
 
       case 'message_end': {
         const msg = event.message;
-        if (msg.role === 'assistant' && msg.stopReason === 'error' && msg.errorMessage) {
+        if (msg.role !== 'assistant') break;
+        if (msg.stopReason === 'error' && msg.errorMessage) {
           this.emit({ type: 'error', error: msg.errorMessage });
+        } else if (msg.stopReason === 'length') {
+          print('⚠️ 回答达到最大长度，可能被截断（可回复「继续」补全）', 'warn');
         }
         break;
       }
@@ -217,16 +243,23 @@ export class InteractiveSession {
   private handleAssistantEvent(e: { type: string; delta?: string }): void {
     switch (e.type) {
       case 'thinking_start':
+        this.inThinking = true;
         this.emit({ type: 'thinking_start' });
         break;
       case 'thinking_delta':
         if (e.delta) this.emit({ type: 'thinking', text: e.delta });
         break;
       case 'thinking_end':
+        this.inThinking = false;
         this.emit({ type: 'thinking_end' });
         break;
       case 'text_delta':
         if (e.delta) {
+          // Close any open thinking block so text doesn't interleave with it
+          if (this.inThinking) {
+            this.inThinking = false;
+            this.emit({ type: 'thinking_end' });
+          }
           this.textBuffer.push(e.delta);
           this.emit({ type: 'speaking', text: e.delta });
         }

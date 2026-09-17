@@ -224,17 +224,26 @@ async function main() {
   }
 
   // Resolve session continuation
+  const existingSessions = await SessionManager.list(getProjectRoot());
   let sessionOptions: SessionCreateOptions = {};
   let continuing = false;
+
   if (args.continue) {
     const id = args.continue;
     if (id) {
-      const sessions = await SessionManager.list(getProjectRoot());
-      const match = sessions.find((s) => s.id.startsWith(id));
-      if (match) {
-        sessionOptions = { sessionPath: match.path };
+      const exact = existingSessions.find((s) => s.id === id);
+      const matches = existingSessions.filter((s) => s.id.startsWith(id));
+      if (exact) {
+        sessionOptions = { sessionPath: exact.path };
         continuing = true;
-        print(`继续会话 ${match.id}`, 'success');
+        print(`继续会话 ${exact.id}`, 'success');
+      } else if (matches.length === 1) {
+        sessionOptions = { sessionPath: matches[0].path };
+        continuing = true;
+        print(`继续会话 ${matches[0].id}`, 'success');
+      } else if (matches.length > 1) {
+        print(`会话 id "${id}" 匹配到 ${matches.length} 个，请提供更完整的 id`, 'error');
+        return;
       } else {
         print(`未找到会话 ${id}，将新建会话`, 'warn');
       }
@@ -243,7 +252,19 @@ async function main() {
       continuing = true;
       print('继续上次会话', 'success');
     }
+  } else if (!args.new && existingSessions.length > 0) {
+    // Default: ask whether to continue or start new
+    print(`\n发现 ${existingSessions.length} 个历史会话`, 'info');
+    print('  [1] 继续上次会话', 'info');
+    print('  [2] 引导模式（新会话）', 'info');
+    const choice = await prompt('请选择 [1/2]: ');
+    if (choice === '1') {
+      sessionOptions = { continue: true };
+      continuing = true;
+      print('继续上次会话', 'success');
+    }
   }
+  // else: new session (--new forced, or no history)
 
   // New sessions: wizard picks model + content. Continued sessions: restore from session.
   let config: Config;
@@ -257,6 +278,21 @@ async function main() {
   }
 
   const session = await InteractiveSession.create(config, runtime, sessionOptions);
+
+  // Graceful Ctrl+C: abort the agent and exit cleanly.
+  let interrupted = false;
+  process.on('SIGINT', () => {
+    if (interrupted) process.exit(130);
+    interrupted = true;
+    print('\n⏹ 正在停止…（再按一次 Ctrl+C 强制退出）', 'warn');
+    session
+      .abort()
+      .catch(() => {})
+      .finally(() => {
+        print('已退出', 'success');
+        process.exit(130);
+      });
+  });
 
   // Send the wizard prompt (new sessions only)
   if (wizardPrompt) {
@@ -302,8 +338,12 @@ async function main() {
         available,
         (m) => `${m.name} (${m.provider}/${m.model})${m.reasoning ? ' 🧠' : ''}`,
       );
-      await session.setModel(selected.provider, selected.model);
-      print(`已切换模型: ${selected.name}`, 'success');
+      try {
+        await session.setModel(selected.provider, selected.model);
+        print(`已切换模型: ${selected.name}`, 'success');
+      } catch (err) {
+        print(`切换失败: ${errMsg(err)}`, 'error');
+      }
       continue;
     }
 
@@ -332,7 +372,10 @@ async function main() {
 // Only run main when executed directly (not imported for testing)
 if (import.meta.url === `file://${process.argv[1]}`) {
   main()
-    .then(() => process.exit(0))
+    .then(() => {
+      // Flush streamed stdout before force-exiting (SDK keeps undici/telemetry handles alive).
+      process.stdout.write('', () => process.exit(0));
+    })
     .catch((err) => {
       print(`Fatal: ${errMsg(err)}`, 'error');
       process.exit(1);
