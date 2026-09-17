@@ -12,16 +12,18 @@
 ## 架构变更（2026-09-17）
 
 **原设计**：使用 `@pi-kit/sdk` SDK 调用 AI
-**实际实现**：直接调用本地 `pi` CLI（`pi --print --continue`）
+**初版实现**：直接调用本地 `pi` CLI（`pi --print --continue`），靠字符串匹配解析 stdout/stderr
+**最终实现（已迁移）**：进程内引入 `@earendil-works/pi-coding-agent@0.85.1` SDK
 
-`pi` CLI 负责：
-- AI 模型调用（OpenAI/DeepSeek/Qwen 等）
-- 工具调用（read/bash/edit/write/grep/find/ls）
-- 会话持久化
+SDK（`createAgentSession` + `session.subscribe()`）负责：
+- AI 模型调用（ModelRuntime 直读 `~/.pi/agent/auth.json` + `models.json`）
+- 结构化事件流（`thinking_delta` / `text_delta` / `tool_execution_end.isError` / `message_end.stopReason`）
+- 工具调用（read/bash/edit/write/grep/find/ls，SDK 内自动执行）
+- 会话持久化（pi 原生 SessionManager，弃用自造 `~/.pi-edu/sessions/`）
 
 `pi-agent-edu` 负责：
-- 用户交互（引导模式、命令解析）
-- 会话元数据管理
+- 用户交互（引导模式、命令解析、`model`/`thinking` 命令）
+- 事件映射与终端渲染（思考/回答/工具/错误着色）
 - 流式输出展示
 
 ## 用户交互流程
@@ -264,13 +266,14 @@ npx tsx index.ts --new            # 强制新会话
 }
 ```
 
-## SDK 集成步骤
+## SDK 集成（已完成）
 
-当 pi monorepo 构建完成后：
+已从 `pi` CLI 子进程迁移到 `@earendil-works/pi-coding-agent` SDK：
 
-1. 在 `scripts/pi-agent-edu/` 添加 workspace 引用
-2. 修改 `session.ts` 中的 `InlineAgentSession` 为真实 SDK 会话
-3. 修改 `tools.ts` 使用 `createXxxToolDefinition()` 函数
+1. `config.ts` — 用 `ModelRuntime.create()` + `getAvailable()`/`checkAuth()` 做 provider/模型发现
+2. `session.ts` — `createAgentSession` + `session.subscribe()`，映射 SDK 事件到 `SessionEvent`
+3. `index.ts` — `--sessions`/`--continue` 走 pi 原生 `SessionManager`，`model`/`thinking` 命令切换
+4. 弃用 `storage.ts`（自造会话存储）与 `io.ts` 的 `toolConfirm`（死代码）
 
 ## 后续扩展（不纳入 MVP）
 

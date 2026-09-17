@@ -11,20 +11,9 @@
 #
 # Requirements:
 #   - Node.js 18+
-#   - pi CLI installed (https://pi.dev)
 #   - tsx installed (npm i -g tsx)
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-
-# Check pi is available
-if ! command -v pi > /dev/null 2>&1; then
-    echo "Error: pi CLI not found in PATH"
-    echo ""
-    echo "Please install pi agent first:"
-    echo "  npm install -g @pi-kit/pi"
-    echo "  or visit https://pi.dev"
-    exit 1
-fi
 
 # Find tsx: prefer local install, fallback to global
 TSX_BIN=""
@@ -57,8 +46,8 @@ pi-agent-edu - 教育智能体交互工具
 交互命令:
   help, ?         显示帮助
   q, quit, exit   退出
-  save            保存当前会话
-  provider        切换 AI Provider
+  model, provider 切换 AI 模型
+  thinking        切换思考级别
 
 工作流示例:
 

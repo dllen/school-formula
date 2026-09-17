@@ -4,30 +4,51 @@
 
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
-import { execSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
+import { baseConfig, withModel, getProjectRoot, getAgentDir, THINKING_LEVELS } from './config.js';
 
 describe('config.ts', () => {
-  describe('pi binary detection', () => {
-    it('should find pi in PATH', () => {
-      try {
-        const result = execSync('which pi', { encoding: 'utf-8', timeout: 5000 }).trim();
-        assert.ok(result.length > 0, 'pi path should not be empty');
-        assert.ok(existsSync(result), `pi should exist at ${result}`);
-      } catch {
-        // pi not installed - skip this test
-        console.log('pi not installed, test skipped');
-      }
+  describe('baseConfig', () => {
+    it('should return defaults with empty provider/model', () => {
+      const c = baseConfig();
+      assert.strictEqual(c.provider, '');
+      assert.strictEqual(c.model, '');
+      assert.strictEqual(c.thinkingLevel, 'medium');
+      assert.ok(c.tools.includes('read'));
+      assert.ok(c.tools.includes('bash'));
+      assert.ok(c.tools.includes('edit'));
     });
+  });
 
-    it('should handle command not found gracefully', () => {
-      // This verifies the error handling logic
-      try {
-        execSync('which nonexistent-command-xyz', { encoding: 'utf-8', timeout: 1000 });
-        assert.fail('should have thrown');
-      } catch (e) {
-        assert.ok(e instanceof Error);
-      }
+  describe('withModel', () => {
+    it('should attach provider and model without mutating the base', () => {
+      const base = baseConfig();
+      const c = withModel(base, 'deepseek', 'deepseek-v4-pro');
+      assert.strictEqual(c.provider, 'deepseek');
+      assert.strictEqual(c.model, 'deepseek-v4-pro');
+      assert.strictEqual(base.provider, '');
+    });
+  });
+
+  describe('getProjectRoot', () => {
+    it('should resolve to the repo root (contains package.json)', () => {
+      const root = getProjectRoot();
+      assert.ok(existsSync(`${root}/package.json`), `expected package.json at ${root}`);
+    });
+  });
+
+  describe('getAgentDir', () => {
+    it('should end with .pi/agent', () => {
+      assert.ok(getAgentDir().endsWith('/.pi/agent'));
+    });
+  });
+
+  describe('THINKING_LEVELS', () => {
+    it('should list all 7 thinking levels', () => {
+      assert.deepStrictEqual(
+        [...THINKING_LEVELS],
+        ['off', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'],
+      );
     });
   });
 });

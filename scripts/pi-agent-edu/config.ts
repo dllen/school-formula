@@ -1,85 +1,108 @@
-import { existsSync, readFileSync } from 'node:fs';
-import { homedir } from 'node:os';
 import { join } from 'node:path';
-import { execSync } from 'node:child_process';
-import { print } from './io.js';
+import { homedir } from 'node:os';
+import { fileURLToPath } from 'node:url';
+import { ModelRuntime } from '@earendil-works/pi-coding-agent';
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+/** A selectable model with valid auth, resolved via ModelRuntime.getAvailable(). */
+export interface ModelChoice {
+  provider: string;
+  model: string;
+  name: string;
+  /** Whether the model supports thinking/reasoning. */
+  reasoning: boolean;
+  contextWindow: number;
+  maxTokens: number;
+}
+
+export type ThinkingLevel = 'off' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh' | 'max';
+
+export const THINKING_LEVELS: readonly ThinkingLevel[] = [
+  'off', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max',
+] as const;
 
 export interface Config {
-  piPath: string;
-  provider: string;
-  model?: string;
+  /** Working directory for the agent (repo root, where read/bash/edit operate). */
   projectRoot: string;
-  autoApproveTools: string[];
-  sessionsDir: string;
+  provider: string;
+  model: string;
+  thinkingLevel: ThinkingLevel;
+  /** Built-in tool names enabled for the agent. */
+  tools: string[];
 }
 
-const DEFAULT_CONFIG: Omit<Config, 'piPath' | 'provider'> = {
-  projectRoot: '/Users/shichaopeng/Work/self-dir/projects/school-formula',
-  autoApproveTools: ['read', 'grep', 'find', 'ls'],
-  sessionsDir: '~/.pi-edu/sessions/',
-};
+const DEFAULT_TOOLS = ['read', 'grep', 'find', 'ls', 'bash', 'edit', 'write'];
 
-function findPiBinary(): string | null {
-  try {
-    const result = execSync('which pi', { encoding: 'utf-8', timeout: 5000 }).trim();
-    if (result && existsSync(result)) return result;
-  } catch {
-    // not found
-  }
+// ---------------------------------------------------------------------------
+// Paths
+// ---------------------------------------------------------------------------
 
-  const candidates = [
-    join(homedir(), '.local', 'bin', 'pi'),
-    '/usr/local/bin/pi',
-    '/opt/homebrew/bin/pi',
-  ];
-
-  for (const candidate of candidates) {
-    if (existsSync(candidate)) return candidate;
-  }
-
-  return null;
+/** Repo root: this file lives at <root>/scripts/pi-agent-edu/config.ts. */
+export function getProjectRoot(): string {
+  return fileURLToPath(new URL('../..', import.meta.url));
 }
 
-function getAvailableProviders(): { id: string; name: string }[] {
-  try {
-    const modelsPath = join(homedir(), '.pi', 'agent', 'models.json');
-    if (!existsSync(modelsPath)) return [];
-
-    const content = readFileSync(modelsPath, 'utf-8');
-    const data = JSON.parse(content);
-    const providers = data.providers as Record<string, { name?: string; models?: unknown[] }>;
-
-    return Object.entries(providers)
-      .filter(([, p]) => p.models && (p.models as unknown[]).length > 0)
-      .map(([id, p]) => ({
-        id,
-        name: p.name || id,
-      }));
-  } catch {
-    return [];
-  }
+/** pi agent config dir (~/.pi/agent), source of auth.json + models.json. */
+export function getAgentDir(): string {
+  return join(homedir(), '.pi', 'agent');
 }
 
-export { getAvailableProviders };
+// ---------------------------------------------------------------------------
+// Runtime
+// ---------------------------------------------------------------------------
 
-export async function loadConfig(): Promise<Config> {
-  const piPath = findPiBinary();
+/**
+ * Create a ModelRuntime backed by the local pi agent config (~/.pi/agent).
+ * No network model refresh: reads auth.json + models.json from disk.
+ */
+export function createModelRuntime(): Promise<ModelRuntime> {
+  const agentDir = getAgentDir();
+  return ModelRuntime.create({
+    authPath: join(agentDir, 'auth.json'),
+    modelsPath: join(agentDir, 'models.json'),
+  });
+}
 
-  if (!piPath) {
-    print('pi agent 未安装或不在 PATH 中', 'error');
-    print('', 'info');
-    print('请先安装 pi agent:', 'info');
-    print('  npm install -g @pi-kit/pi', 'info');
-    print('  或访问 https://pi.dev 获取安装说明', 'info');
-    process.exit(1);
+/** Models that currently have valid auth configured, ready for selection. */
+export async function getAvailableModels(runtime: ModelRuntime): Promise<ModelChoice[]> {
+  const models = await runtime.getAvailable();
+  return models.map((m) => ({
+    provider: m.provider,
+    model: m.id,
+    name: m.name,
+    reasoning: m.reasoning,
+    contextWindow: m.contextWindow,
+    maxTokens: m.maxTokens,
+  }));
+}
+
+/** Resolve a model object by provider + model id, throwing if not found/auth'd. */
+export function resolveModel(
+  runtime: ModelRuntime,
+  provider: string,
+  model: string,
+) {
+  const resolved = runtime.getModel(provider, model);
+  if (!resolved) {
+    throw new Error(`模型不存在或未配置鉴权: ${provider}/${model}`);
   }
+  return resolved;
+}
 
-  print(`使用 pi: ${piPath}`, 'success');
-
-  // Provider is set by wizard or defaults to 'openai'
+export function baseConfig(): Config {
   return {
-    ...DEFAULT_CONFIG,
-    piPath,
-    provider: 'openai',
+    projectRoot: getProjectRoot(),
+    provider: '',
+    model: '',
+    thinkingLevel: 'medium',
+    tools: [...DEFAULT_TOOLS],
   };
+}
+
+/** Attach an explicit provider/model to a config (for new sessions). */
+export function withModel(config: Config, provider: string, model: string): Config {
+  return { ...config, provider, model };
 }

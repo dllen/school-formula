@@ -1,13 +1,20 @@
 /**
  * Interactive session wrapper for pi-agent-edu.
  *
- * Uses the local `pi` CLI subprocess for agent interactions.
- * The `pi` CLI must be installed and available in PATH.
+ * Uses the `@earendil-works/pi-coding-agent` SDK in-process instead of shelling
+ * out to the `pi` CLI. The SDK provides structured events for thinking, text,
+ * tool calls and errors — no string parsing.
  */
 
-import { exec, type ChildProcess } from "node:child_process";
-import { print } from "./io.js";
-import type { Config } from "./config.js";
+import {
+  ModelRuntime,
+  SessionManager,
+  createAgentSession,
+  type AgentSession,
+  type AgentSessionEvent,
+} from '@earendil-works/pi-coding-agent';
+import { print } from './io.js';
+import { getAgentDir, type Config, type ThinkingLevel } from './config.js';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -15,182 +22,36 @@ import type { Config } from "./config.js";
 
 /** Event emitted during a session prompt */
 export type SessionEvent =
-	| { type: "thinking"; text: string }
-	| { type: "speaking"; text: string }
-	| { type: "tool_call"; tool: string; args: Record<string, unknown> }
-	| { type: "tool_result"; tool: string; result: string }
-	| { type: "error"; error: string };
+  | { type: 'thinking_start' }
+  | { type: 'thinking'; text: string }
+  | { type: 'thinking_end' }
+  | { type: 'speaking'; text: string }
+  | { type: 'tool_call'; tool: string; args: Record<string, unknown> }
+  | { type: 'tool_result'; tool: string; result: string; isError: boolean }
+  | { type: 'error'; error: string };
 
 /** Listener for session events */
 export type SessionEventListener = (event: SessionEvent) => void;
 
+/** Options controlling how an InteractiveSession is created. */
+export interface SessionCreateOptions {
+  /** Continue the most recent session for the project (else start new). */
+  continue?: boolean;
+  /** Open a specific session file path. Overrides `continue`. */
+  sessionPath?: string;
+}
+
 // ---------------------------------------------------------------------------
-// PiSession - wraps `pi --print --continue` subprocess
+// Helpers
 // ---------------------------------------------------------------------------
 
-class PiSession {
-	private config: Config;
-	private sessionId: string;
-	private eventListeners = new Set<SessionEventListener>();
-	private currentProcess: ChildProcess | null = null;
+const DIM = (t: string) => `\x1b[2m${t}\x1b[0m`;
 
-	constructor(config: Config, sessionId: string) {
-		this.config = config;
-		this.sessionId = sessionId;
-	}
-
-	subscribe(listener: SessionEventListener): () => void {
-		this.eventListeners.add(listener);
-		return () => this.eventListeners.delete(listener);
-	}
-
-	abort(): void {
-		if (this.currentProcess) {
-			this.currentProcess.kill();
-			this.currentProcess = null;
-		}
-	}
-
-	/**
-	 * Send a message to the pi agent.
-	 * Uses streaming output to show thinking and speaking in real-time.
-	 */
-	async prompt(message: string): Promise<string> {
-		const escapedMsg = message.replace(/"/g, '\\"');
-		const cmd = `${this.config.piPath} --provider ${this.config.provider} -ne --print --continue "${this.sessionId}" -- "${escapedMsg}"`;
-
-		print('\n🤔 思考中...\n', 'thinking');
-		print(`[exec] ${cmd.substring(0, 100)}${cmd.length > 100 ? '...' : ''}`, 'dim');
-		print(`[cwd] ${this.config.projectRoot}`, 'dim');
-		print(`[provider] ${this.config.provider}\n`, 'dim');
-
-		return new Promise((resolve, reject) => {
-			const chunks: string[] = [];
-
-			this.currentProcess = exec(cmd, {
-				cwd: this.config.projectRoot,
-				timeout: 300_000,
-			});
-
-			const proc = this.currentProcess;
-
-			// Process stdout - contains thinking and response
-			proc.stdout?.on('data', (data: Buffer) => {
-				const text = data.toString();
-				chunks.push(text);
-
-				// Check for API errors in response
-				if (text.includes('permission_error') || text.includes('403')) {
-					this.emit({ type: 'error', error: 'API 配额不足 - 403 permission_error' });
-					print('\n💡 提示：访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新 Provider', 'dim');
-					print(`[stdout] ${text.trim()}`, 'dim');
-					proc.kill();
-					return;
-				}
-				if (text.includes('quota') || text.includes('usage limit')) {
-					this.emit({ type: 'error', error: 'API 配额用完' });
-					proc.kill();
-					return;
-				}
-
-				// Parse and emit events based on content
-				const lines = text.split('\n');
-				for (const line of lines) {
-					if (line.includes('[TOOL_CALL]') || line.includes('Calling tool:')) {
-						// Extract tool info
-						const match = line.match(/(?:Calling tool:|Tool:)\s*(\w+)/i);
-						if (match) {
-							this.emit({ type: 'tool_call', tool: match[1], args: {} });
-						}
-					} else if (line.trim()) {
-						// Regular output
-						this.emit({ type: 'speaking', text: line });
-					}
-				}
-			});
-
-			// Process stderr - errors and debug info
-			proc.stderr?.on('data', (data: Buffer) => {
-				const text = data.toString().trim();
-				if (!text) return;
-
-				// Check for API errors
-				if (text.includes('permission_error') || text.includes('403')) {
-					this.emit({ type: 'error', error: 'API 配额不足 - 403 permission_error' });
-					print('\n💡 提示：访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新 Provider', 'dim');
-				} else if (text.includes('quota') || text.includes('usage limit')) {
-					this.emit({ type: 'error', error: 'API 配额用完 - monthly usage limit reached' });
-					print('\n💡 提示：等待下个计费周期或充值', 'dim');
-				} else if (text.includes('401') || text.includes('unauthorized')) {
-					this.emit({ type: 'error', error: 'API Key 无效 - 401 unauthorized' });
-				} else if (text.includes('timeout') || text.includes('ETIMEDOUT')) {
-					this.emit({ type: 'error', error: '网络超时' });
-				} else if (text.includes('ECONNREFUSED')) {
-					this.emit({ type: 'error', error: '连接被拒绝 - 检查网络' });
-				} else if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
-					this.emit({ type: 'thinking', text });
-				} else {
-					// Show debug info
-					print(`[debug] ${text}`, 'dim');
-				}
-			});
-
-			proc.on('close', (code, signal) => {
-				this.currentProcess = null;
-				const fullOutput = chunks.join('');
-
-				// Detect specific error patterns in full output
-				if (fullOutput.includes('permission_error') || fullOutput.includes('quota') || fullOutput.includes('403')) {
-					print('\n❌ 错误：API 配额不足', 'error');
-					print('   请访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新的 Provider', 'dim');
-					reject(new Error('API 配额不足 (403 permission_error)'));
-					return;
-				}
-
-				if (signal === 'SIGTERM' && fullOutput.includes('permission_error')) {
-					reject(new Error('API 配额不足'));
-					return;
-				}
-
-				if (code === 0 || chunks.length > 0) {
-					resolve(fullOutput.trim());
-				} else if (signal === 'SIGTERM') {
-					reject(new Error('进程被终止（可能是配额错误）'));
-				} else {
-					reject(new Error(`pi exited with code ${code}, signal ${signal}`));
-				}
-			});
-
-			proc.on('error', (err) => {
-				this.currentProcess = null;
-				this.emit({ type: 'error', error: err.message });
-				reject(err);
-			});
-		});
-	}
-
-	private emit(event: SessionEvent): void {
-		// Also print to console for visibility
-		switch (event.type) {
-			case 'thinking':
-				if (event.text) print(event.text, 'dim');
-				break;
-			case 'speaking':
-				if (event.text) process.stdout.write(event.text + '\n');
-				break;
-			case 'tool_call':
-				print(`\n🔧 使用工具: ${event.tool}`, 'info');
-				break;
-			case 'tool_result':
-				print(`  → ${event.result.slice(0, 100)}${event.result.length > 100 ? '...' : ''}`, 'dim');
-				break;
-			case 'error':
-				print(`❌ 错误: ${event.error}`, 'error');
-				break;
-		}
-
-		this.eventListeners.forEach((fn) => fn(event));
-	}
+/** Stringify + truncate a tool result for compact display. */
+function summarize(result: unknown, max = 200): string {
+  const s = typeof result === 'string' ? result : JSON.stringify(result);
+  if (s.length <= max) return s;
+  return `${s.slice(0, max)}...`;
 }
 
 // ---------------------------------------------------------------------------
@@ -198,35 +59,213 @@ class PiSession {
 // ---------------------------------------------------------------------------
 
 /**
- * Interactive session wrapper for pi agent.
- *
- * Wraps the `pi` CLI subprocess with:
- * - Session persistence via `pi --continue`
- * - Streaming output for real-time feedback
- * - Event subscription for session events
+ * Wraps the pi SDK AgentSession with:
+ * - Provider/model selection via ModelRuntime
+ * - Session persistence via pi's native SessionManager
+ * - Structured thinking/text/tool/error event streaming
  */
 export class InteractiveSession {
-	private _pi: PiSession;
-	private _sessionId: string;
+  private session: AgentSession;
+  private runtime: ModelRuntime;
+  private config: Config;
+  private listeners = new Set<SessionEventListener>();
+  private textBuffer: string[] = [];
 
-	constructor(config: Config, sessionId: string) {
-		this._pi = new PiSession(config, sessionId);
-		this._sessionId = sessionId;
-	}
+  private constructor(session: AgentSession, runtime: ModelRuntime, config: Config) {
+    this.session = session;
+    this.runtime = runtime;
+    this.config = config;
+    session.subscribe(this.handleEvent);
+  }
 
-	async prompt(message: string): Promise<string> {
-		return this._pi.prompt(message);
-	}
+  static async create(
+    config: Config,
+    runtime: ModelRuntime,
+    options: SessionCreateOptions = {},
+  ): Promise<InteractiveSession> {
+    const agentDir = getAgentDir();
 
-	getSessionId(): string {
-		return this._sessionId;
-	}
+    let sessionManager: SessionManager;
+    if (options.sessionPath) {
+      sessionManager = SessionManager.open(options.sessionPath, undefined, config.projectRoot);
+    } else if (options.continue) {
+      sessionManager = SessionManager.continueRecent(config.projectRoot);
+    } else {
+      sessionManager = SessionManager.create(config.projectRoot);
+    }
 
-	abort(): void {
-		this._pi.abort();
-	}
+    const hasModel = config.provider !== '' && config.model !== '';
+    const model = hasModel ? runtime.getModel(config.provider, config.model) : undefined;
+    if (hasModel && !model) {
+      throw new Error(`模型不存在或未配置鉴权: ${config.provider}/${config.model}`);
+    }
 
-	subscribe(listener: SessionEventListener): () => void {
-		return this._pi.subscribe(listener);
-	}
+    const { session } = await createAgentSession({
+      cwd: config.projectRoot,
+      agentDir,
+      modelRuntime: runtime,
+      model,
+      thinkingLevel: config.thinkingLevel,
+      tools: config.tools,
+      sessionManager,
+    });
+
+    return new InteractiveSession(session, runtime, config);
+  }
+
+  /** Send a message to the agent. Streams thinking/text/tools live, returns full text. */
+  async prompt(message: string): Promise<string> {
+    this.textBuffer = [];
+    await this.session.prompt(message);
+    return this.textBuffer.join('');
+  }
+
+  getSessionId(): string {
+    return this.session.sessionId;
+  }
+
+  getSessionFile(): string | undefined {
+    return this.session.sessionFile;
+  }
+
+  async abort(): Promise<void> {
+    await this.session.abort();
+  }
+
+  /** Switch the active model (persists to the session transcript). */
+  async setModel(provider: string, modelId: string): Promise<void> {
+    const model = this.runtime.getModel(provider, modelId);
+    if (!model) throw new Error(`模型不存在或未配置鉴权: ${provider}/${modelId}`);
+    await this.session.setModel(model);
+    this.config.provider = provider;
+    this.config.model = modelId;
+  }
+
+  getThinkingLevel(): ThinkingLevel {
+    return this.session.thinkingLevel;
+  }
+
+  setThinkingLevel(level: ThinkingLevel): void {
+    this.session.setThinkingLevel(level);
+    this.config.thinkingLevel = level;
+  }
+
+  cycleThinkingLevel(): ThinkingLevel | undefined {
+    return this.session.cycleThinkingLevel();
+  }
+
+  subscribe(listener: SessionEventListener): () => void {
+    this.listeners.add(listener);
+    return () => this.listeners.delete(listener);
+  }
+
+  // -------------------------------------------------------------------------
+  // SDK event mapping
+  // -------------------------------------------------------------------------
+
+  private handleEvent = (event: AgentSessionEvent): void => {
+    switch (event.type) {
+      case 'message_update':
+        this.handleAssistantEvent(event.assistantMessageEvent);
+        break;
+
+      case 'tool_execution_start':
+        this.emit({ type: 'tool_call', tool: event.toolName, args: event.args ?? {} });
+        break;
+
+      case 'tool_execution_end':
+        this.emit({
+          type: 'tool_result',
+          tool: event.toolName,
+          result: summarize(event.result),
+          isError: event.isError,
+        });
+        if (event.isError) {
+          this.emit({ type: 'error', error: `工具 ${event.toolName} 执行失败` });
+        }
+        break;
+
+      case 'message_end': {
+        const msg = event.message;
+        if (msg.role === 'assistant' && msg.stopReason === 'error' && msg.errorMessage) {
+          this.emit({ type: 'error', error: msg.errorMessage });
+        }
+        break;
+      }
+
+      case 'auto_retry_start':
+        print(`⚠️ 请求失败，自动重试 (第 ${event.attempt}/${event.maxAttempts} 次)`, 'warn');
+        break;
+
+      case 'auto_retry_end':
+        if (!event.success && event.finalError) {
+          this.emit({ type: 'error', error: event.finalError });
+        }
+        break;
+
+      case 'compaction_end':
+        if (event.errorMessage) {
+          this.emit({ type: 'error', error: event.errorMessage });
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  private handleAssistantEvent(e: { type: string; delta?: string }): void {
+    switch (e.type) {
+      case 'thinking_start':
+        this.emit({ type: 'thinking_start' });
+        break;
+      case 'thinking_delta':
+        if (e.delta) this.emit({ type: 'thinking', text: e.delta });
+        break;
+      case 'thinking_end':
+        this.emit({ type: 'thinking_end' });
+        break;
+      case 'text_delta':
+        if (e.delta) {
+          this.textBuffer.push(e.delta);
+          this.emit({ type: 'speaking', text: e.delta });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  private emit(event: SessionEvent): void {
+    // Render to console for visibility
+    switch (event.type) {
+      case 'thinking_start':
+        print('\n🤔 思考中…', 'thinking');
+        break;
+      case 'thinking':
+        process.stdout.write(DIM(event.text));
+        break;
+      case 'thinking_end':
+        process.stdout.write('\n');
+        break;
+      case 'speaking':
+        process.stdout.write(event.text);
+        break;
+      case 'tool_call':
+        print(`\n🔧 使用工具: ${event.tool}`, 'info');
+        break;
+      case 'tool_result':
+        if (event.isError) {
+          print(`  ❌ ${event.result}`, 'error');
+        } else {
+          print(`  → ${event.result}`, 'dim');
+        }
+        break;
+      case 'error':
+        print(`❌ 错误: ${event.error}`, 'error');
+        break;
+    }
+
+    this.listeners.forEach((fn) => fn(event));
+  }
 }

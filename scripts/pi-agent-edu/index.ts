@@ -4,18 +4,26 @@
  * pi-agent-edu CLI entry point.
  *
  * Usage:
- *   node index.ts              Start new session
- *   node index.ts --sessions   List saved sessions
- *   node index.ts --continue   Resume last session
- *   node index.ts --continue <id>   Resume specific session
- *   node index.ts --new        Force new session
+ *   node index.ts               Start new session (wizard)
+ *   node index.ts --sessions    List saved sessions
+ *   node index.ts --continue    Resume last session
+ *   node index.ts --continue <id>  Resume specific session
+ *   node index.ts --new         Force new session
  */
 
 import { parseArgs } from 'node:util';
-import { print, prompt, confirm, selectOption } from './io.js';
-import { loadConfig, getAvailableProviders } from './config.js';
-import { listSessions, newSessionId, loadSessionMessages } from './storage.js';
-import { InteractiveSession } from './session.js';
+import { SessionManager } from '@earendil-works/pi-coding-agent';
+import { print, prompt, selectOption } from './io.js';
+import {
+  createModelRuntime,
+  getAvailableModels,
+  baseConfig,
+  withModel,
+  getProjectRoot,
+  type Config,
+  type ModelChoice,
+} from './config.js';
+import { InteractiveSession, type SessionCreateOptions } from './session.js';
 
 // ---------------------------------------------------------------------------
 // CLI argument parsing
@@ -43,6 +51,10 @@ function parseCliArgs(): CliArgs {
   };
 }
 
+function errMsg(err: unknown): string {
+  return err instanceof Error ? err.message : String(err);
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -51,18 +63,18 @@ function showHelp(): void {
   print(`pi-agent-edu CLI — 教育智能体交互工具
 
 用法:
-  node index.ts              启动新会话
+  node index.ts              启动新会话（引导模式）
   node index.ts --sessions   列出所有会话
-  node index.ts --continue  继续上次会话
+  node index.ts --continue   继续上次会话
   node index.ts --continue <id>  继续指定会话
-  node index.ts --new       强制新建会话
-  node index.ts --help      显示本帮助
+  node index.ts --new        强制新建会话
+  node index.ts --help       显示本帮助
 
 交互命令:
   help, ?         显示帮助
-  q, quit, exit   退出（会询问是否保存）
-  save            保存当前会话
-  provider        切换 AI Provider
+  q, quit, exit   退出
+  model, provider 切换 AI 模型
+  thinking        切换思考级别
 `, 'info');
 }
 
@@ -94,6 +106,7 @@ const QUESTION_COUNTS = ['5', '10', '15', '20'] as const;
 
 interface WizardResult {
   provider: string;
+  model: string;
   stage: Stage;
   subject: string;
   grade: string;
@@ -102,18 +115,17 @@ interface WizardResult {
   questionCount?: string;
 }
 
-export async function runWizard(): Promise<WizardResult> {
+export async function runWizard(models: ModelChoice[]): Promise<WizardResult> {
   print('\n📚 欢迎使用 pi-agent-edu 教育智能体！\n', 'success');
   print('让我来引导你完成内容生成...\n', 'dim');
 
-  // 0. Select provider
-  const providers = getAvailableProviders();
-  let providerId = 'openai';
-  if (providers.length > 0) {
-    const selected = await selectOption('请选择 AI Provider：', providers, (p) => `${p.name} (${p.id})`);
-    providerId = selected.id;
-    print(`已选择：${selected.name}\n`, 'info');
-  }
+  // 0. Select model
+  const selected = await selectOption(
+    '请选择 AI 模型：',
+    models,
+    (m) => `${m.name} (${m.provider}/${m.model})${m.reasoning ? ' 🧠' : ''}`,
+  );
+  print(`已选择：${selected.name}\n`, 'info');
 
   // 1. Select stage
   const stage = await selectOption('请选择学段：', STAGES);
@@ -146,7 +158,7 @@ export async function runWizard(): Promise<WizardResult> {
     questionCount = count;
   }
 
-  return { provider: providerId, stage, subject, grade, task, difficulty, questionCount };
+  return { provider: selected.provider, model: selected.model, stage, subject, grade, task, difficulty, questionCount };
 }
 
 export function buildPromptFromWizard(result: WizardResult): string {
@@ -165,9 +177,8 @@ export function buildPromptFromWizard(result: WizardResult): string {
     case '错题分析':
       return `${stage}${subject}${grade}错题分析：分析学习中的常见错误，提供典型例题和讲解`;
 
-    case '学习规划': {
+    case '学习规划':
       return `为${stage}${subject}${grade}生成学习计划（期中/期末复习规划）`;
-    }
 
     default:
       return `生成${stage}${subject}${grade}学习内容`;
@@ -180,100 +191,82 @@ export function buildPromptFromWizard(result: WizardResult): string {
 
 async function main() {
   const args = parseCliArgs();
+  const runtime = await createModelRuntime();
 
+  // --sessions: list native pi sessions for this project
   if (args.sessions) {
-    const sessions = listSessions();
+    const sessions = await SessionManager.list(getProjectRoot());
     if (sessions.length === 0) {
       print('没有已保存的会话', 'warn');
     } else {
       print(`\n会话列表 (共 ${sessions.length}):\n`, 'info');
       sessions.forEach((s) => {
-        const date = new Date(s.createdAt).toLocaleString('zh-CN');
-        print(`  [${s.id}] ${date}`, 'info');
-        if (s.summary) print(`    ${s.summary}`, 'dim');
+        const date = s.modified.toLocaleString('zh-CN');
+        print(`  [${s.id}] ${date}  (${s.messageCount} 条消息)`, 'info');
+        if (s.firstMessage) {
+          const first = s.firstMessage.length > 60 ? `${s.firstMessage.slice(0, 60)}...` : s.firstMessage;
+          print(`    ${first}`, 'dim');
+        }
       });
     }
     return;
   }
 
-  // Load config (first-time:引导设置API Key)
-  const config = await loadConfig();
+  // Discover available models (valid auth only)
+  const models = await getAvailableModels(runtime);
+  if (models.length === 0) {
+    print('未检测到可用模型', 'error');
+    print('', 'info');
+    print('请先配置 pi 鉴权：', 'info');
+    print('  pi auth login          # 登录某个 Provider', 'info');
+    print('  或编辑 ~/.pi/agent/models.json 与 auth.json', 'info');
+    return;
+  }
 
-  // Determine session ID
-  let sessionId: string;
-  let messages: unknown[] = [];
-
+  // Resolve session continuation
+  let sessionOptions: SessionCreateOptions = {};
+  let continuing = false;
   if (args.continue) {
-    sessionId = args.continue;
-    messages = loadSessionMessages(sessionId) ?? [];
-    if (messages.length === 0) {
-      print(`会话 ${sessionId} 无消息记录，将作为新会话开始`, 'warn');
-    } else {
-      print(`继续会话 ${sessionId} (${messages.length} 条消息)`, 'success');
-    }
-  } else if (args.new) {
-    // Force new session with wizard
-    sessionId = newSessionId();
-    messages = [];
-    print(`创建新会话 ${sessionId}`, 'info');
-  } else {
-    // Default: ask user
-    const sessions = listSessions();
-    if (sessions.length > 0) {
-      print(`\n发现 ${sessions.length} 个已保存的会话`, 'info');
-      print('  [1] 继续上次会话', 'info');
-      print('  [2] 引导模式（新会话）', 'info');
-      const choice = await prompt('请选择 [1/2]: ');
-      if (choice === '1') {
-        sessionId = sessions[0].id;
-        messages = loadSessionMessages(sessionId) ?? [];
-        print(`继续会话 ${sessionId} (${messages.length} 条消息)`, 'success');
+    const id = args.continue;
+    if (id) {
+      const sessions = await SessionManager.list(getProjectRoot());
+      const match = sessions.find((s) => s.id.startsWith(id));
+      if (match) {
+        sessionOptions = { sessionPath: match.path };
+        continuing = true;
+        print(`继续会话 ${match.id}`, 'success');
       } else {
-        sessionId = newSessionId();
-        messages = [];
-        print(`创建新会话 ${sessionId}`, 'info');
+        print(`未找到会话 ${id}，将新建会话`, 'warn');
       }
     } else {
-      // No sessions: run wizard by default
-      sessionId = newSessionId();
-      messages = [];
-      print(`创建新会话 ${sessionId}`, 'info');
+      sessionOptions = { continue: true };
+      continuing = true;
+      print('继续上次会话', 'success');
     }
   }
 
-  // Run wizard for new sessions (when no messages loaded from resume)
-  if (messages.length === 0) {
-    const wizardResult = await runWizard();
-    const wizardPrompt = buildPromptFromWizard(wizardResult);
-    print(`\n🎯 正在生成内容...\n`, 'thinking');
-    print(`提示词：${wizardPrompt}\n`, 'dim');
-    messages.push({ role: 'user', content: wizardPrompt });
-
-    // Update config with provider from wizard
-    config.provider = wizardResult.provider;
+  // New sessions: wizard picks model + content. Continued sessions: restore from session.
+  let config: Config;
+  let wizardPrompt: string | null = null;
+  if (continuing) {
+    config = baseConfig();
+  } else {
+    const wizard = await runWizard(models);
+    config = withModel(baseConfig(), wizard.provider, wizard.model);
+    wizardPrompt = buildPromptFromWizard(wizard);
   }
 
-  // Create session instance (real session stores messages internally)
-  const session = new InteractiveSession(config, sessionId);
-  const sessionRef: { value: InteractiveSession } = { value: session };
+  const session = await InteractiveSession.create(config, runtime, sessionOptions);
 
-  // -------------------------------------------------------------------------
-  // Interactive loop
-  // -------------------------------------------------------------------------
-
-  // If we have a wizard prompt, send it first
-  const pendingWizardPrompt = messages.find((m) => typeof (m as {role?: string; content?: string}).content === 'string')
-    ? (messages.shift() as {role: string; content: string}).content
-    : null;
-
-  if (pendingWizardPrompt) {
-    print('', 'dim');
+  // Send the wizard prompt (new sessions only)
+  if (wizardPrompt) {
+    print(`\n🎯 正在生成内容...\n`, 'thinking');
+    print(`提示词：${wizardPrompt}\n`, 'dim');
     try {
-      const response = await sessionRef.value.prompt(pendingWizardPrompt);
-      print(`\n${response}`, 'info');
+      await session.prompt(wizardPrompt);
+      process.stdout.write('\n');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      print(`错误: ${msg}`, 'error');
+      print(`错误: ${errMsg(err)}`, 'error');
     }
   }
 
@@ -289,13 +282,6 @@ async function main() {
     const cmd = input.trim().toLowerCase();
 
     if (cmd === 'q' || cmd === 'quit' || cmd === 'exit') {
-      const shouldSave = await confirm('是否保存当前会话？');
-      if (shouldSave) {
-        // Session stores messages internally; save minimal meta
-        const { saveSession } = await import('./storage.js');
-        saveSession(sessionId, `Session ${sessionId}`);
-        print(`会话已保存: ${sessionId}`, 'success');
-      }
       running = false;
       continue;
     }
@@ -305,47 +291,50 @@ async function main() {
       continue;
     }
 
-    if (cmd === 'save') {
-      const { saveSession } = await import('./storage.js');
-      saveSession(sessionId, `Session ${sessionId}`);
-      print('会话已保存', 'success');
+    if (cmd === 'model' || cmd === 'provider') {
+      const available = await getAvailableModels(runtime);
+      if (available.length === 0) {
+        print('未检测到可用模型，请先配置 pi 鉴权', 'error');
+        continue;
+      }
+      const selected = await selectOption(
+        '请选择新的模型：',
+        available,
+        (m) => `${m.name} (${m.provider}/${m.model})${m.reasoning ? ' 🧠' : ''}`,
+      );
+      await session.setModel(selected.provider, selected.model);
+      print(`已切换模型: ${selected.name}`, 'success');
       continue;
     }
 
-    if (cmd === 'provider' || cmd === '/provider') {
-      const providers = getAvailableProviders();
-      if (providers.length === 0) {
-        print('未检测到可用 Provider，请检查 ~/.pi/agent/models.json', 'error');
-        continue;
-      }
-      const selected = await selectOption('请选择新的 Provider：', providers, (p) => `${p.name} (${p.id})`);
-      config.provider = selected.id;
-      // Recreate session with new provider
-      const newSession = new InteractiveSession(config, sessionId);
-      // Replace the session reference - need to use a wrapper
-      sessionRef.value = newSession;
-      print(`已切换 Provider: ${selected.name}`, 'success');
+    if (cmd === 'thinking') {
+      const level = session.cycleThinkingLevel();
+      if (level) print(`思考级别: ${level}`, 'success');
+      else print('当前模型不支持思考', 'warn');
       continue;
     }
 
     // Regular user message → send to agent
     print('', 'dim');
     try {
-      const response = await sessionRef.value.prompt(input);
-      print(`\n${response}`, 'info');
+      await session.prompt(input);
+      process.stdout.write('\n');
     } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      print(`错误: ${msg}`, 'error');
+      print(`错误: ${errMsg(err)}`, 'error');
     }
   }
 
+  const file = session.getSessionFile();
+  if (file) print(`会话已保存到: ${file}`, 'dim');
   print('再见！', 'success');
 }
 
 // Only run main when executed directly (not imported for testing)
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((err) => {
-    print(`Fatal: ${err instanceof Error ? err.message : String(err)}`, 'error');
-    process.exit(1);
-  });
+  main()
+    .then(() => process.exit(0))
+    .catch((err) => {
+      print(`Fatal: ${errMsg(err)}`, 'error');
+      process.exit(1);
+    });
 }

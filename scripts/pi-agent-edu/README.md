@@ -1,21 +1,24 @@
 # pi-agent-edu
 
-交互式 CLI 工具，通过本地 `pi` agent 生成中小学教育资源。
+交互式 CLI 工具，通过 `@earendil-works/pi-coding-agent` SDK 生成中小学教育资源。
 
 ## 安装
 
 ### 前置要求
 
 - **Node.js 18+**
-- **pi CLI** 已安装（https://pi.dev）
+- **pi agent 鉴权已配置**（`~/.pi/agent/auth.json` + `~/.pi/agent/models.json`）
 
 ```bash
-# 安装 pi CLI
-npm install -g @pi-kit/pi
+# 安装依赖（含 @earendil-works/pi-coding-agent SDK）
+npm install
 
-# 验证安装
-pi --version
+# 配置鉴权（用 pi CLI 登录某个 Provider，或手动编辑 ~/.pi/agent/*）
+pi auth login
 ```
+
+> 本工具运行时通过 SDK 直读 `~/.pi/agent/` 配置，**不再 shell 调用 `pi` 二进制**；
+> 但配置鉴权通常仍需借助 `pi auth login`。
 
 ### 运行
 
@@ -90,7 +93,8 @@ npx tsx index.ts
 |------|------|
 | `help`, `?` | 显示帮助 |
 | `q`, `quit`, `exit` | 退出 |
-| `save` | 保存当前会话 |
+| `model`, `provider` | 切换 AI 模型 |
+| `thinking` | 切换思考级别 |
 
 ---
 

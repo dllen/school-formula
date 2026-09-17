@@ -11,6 +11,7 @@ import { buildPromptFromWizard } from './index.js';
 
 const mockWizardResult = {
   provider: 'qwen-no-plan',
+  model: 'deepseek-v4-flash',
   stage: '初中' as const,
   subject: '数学',
   grade: '初二',

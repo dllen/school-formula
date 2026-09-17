@@ -46,14 +46,6 @@ export async function confirm(message: string): Promise<boolean> {
   return answer.toLowerCase() === 'y';
 }
 
-export async function toolConfirm(tool: string, args: object): Promise<'y' | 'n' | 'q' | 'a' | 'b'> {
-  const argsStr = JSON.stringify(args, null, 2).slice(0, 200);
-  const answer = await prompt(
-    `\n${colors.cyan('🔧')} ${colors.reset('工具调用:')} ${colors.yellow(tool)}\n${colors.dim(argsStr)}\n${colors.reset('[y/n/q/a(yes all)/b(no all)]? ')}`
-  );
-  return answer.toLowerCase() as 'y' | 'n' | 'q' | 'a' | 'b';
-}
-
 export async function pager(lines: string[], limit = 30): Promise<void> {
   if (lines.length <= limit) {
     console.log(lines.join('\n'));
