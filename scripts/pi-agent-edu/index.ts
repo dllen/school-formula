@@ -192,29 +192,38 @@ async function main() {
     } else {
       print(`继续会话 ${sessionId} (${messages.length} 条消息)`, 'success');
     }
-  } else if (!args.new) {
-    // Default: try to resume most recent session
+  } else if (args.new) {
+    // Force new session with wizard
+    sessionId = newSessionId();
+    messages = [];
+    print(`创建新会话 ${sessionId}`, 'info');
+  } else {
+    // Default: ask user
     const sessions = listSessions();
     if (sessions.length > 0) {
-      const useLast = await confirm(`发现上一个会话 [${sessions[0].id}]，是否继续？`);
-      if (useLast) {
+      print(`\n发现 ${sessions.length} 个已保存的会话`, 'info');
+      print('  [1] 继续上次会话', 'info');
+      print('  [2] 引导模式（新会话）', 'info');
+      const choice = await prompt('请选择 [1/2]: ');
+      if (choice === '1') {
         sessionId = sessions[0].id;
         messages = loadSessionMessages(sessionId) ?? [];
+        print(`继续会话 ${sessionId} (${messages.length} 条消息)`, 'success');
       } else {
         sessionId = newSessionId();
         messages = [];
         print(`创建新会话 ${sessionId}`, 'info');
       }
     } else {
+      // No sessions: run wizard by default
       sessionId = newSessionId();
+      messages = [];
       print(`创建新会话 ${sessionId}`, 'info');
     }
-  } else {
-    sessionId = newSessionId();
-    messages = [];
-    print(`创建新会话 ${sessionId}`, 'info');
+  }
 
-    // Run wizard for new sessions
+  // Run wizard for new sessions (when no messages loaded from resume)
+  if (messages.length === 0) {
     const wizardResult = await runWizard();
     const wizardPrompt = buildPromptFromWizard(wizardResult);
     print(`\n🎯 正在生成内容...\n`, 'thinking');
