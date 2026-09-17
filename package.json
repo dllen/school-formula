@@ -10,7 +10,12 @@
     "test:watch": "vitest",
     "coverage": "vitest run --coverage",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gen:dsl": "bash scripts/pi-agent-edu/pi-agent-edu.sh",
+    "gen:new": "bash scripts/pi-agent-edu/pi-agent-edu.sh --new",
+    "gen:continue": "bash scripts/pi-agent-edu/pi-agent-edu.sh --continue",
+    "gen:sessions": "bash scripts/pi-agent-edu/pi-agent-edu.sh --sessions",
+    "gen:help": "bash scripts/pi-agent-edu/pi-agent-edu.sh --help"
   },
   "dependencies": {
     "mermaid": "^11.16.0",
