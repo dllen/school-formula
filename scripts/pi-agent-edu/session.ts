@@ -5,28 +5,20 @@
  * The `pi` CLI must be installed and available in PATH.
  */
 
-import { execSync, exec, type ExecSyncOptions } from "node:child_process";
+import { exec, type ChildProcess } from "node:child_process";
 import { print } from "./io.js";
 import type { Config } from "./config.js";
-import { toolConfirm } from "./io.js";
 
 // ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
-/** A tool call as emitted by the session */
-export interface SessionToolCall {
-	toolCallId: string;
-	tool: string;
-	args: Record<string, unknown>;
-}
-
 /** Event emitted during a session prompt */
 export type SessionEvent =
-	| { type: "tool_call"; call: SessionToolCall }
-	| { type: "tool_result"; toolCallId: string; result: string }
-	| { type: "agent_thinking"; text: string }
-	| { type: "agent_speaking"; text: string }
+	| { type: "thinking"; text: string }
+	| { type: "speaking"; text: string }
+	| { type: "tool_call"; tool: string; args: Record<string, unknown> }
+	| { type: "tool_result"; tool: string; result: string }
 	| { type: "error"; error: string };
 
 /** Listener for session events */
@@ -40,6 +32,7 @@ class PiSession {
 	private config: Config;
 	private sessionId: string;
 	private eventListeners = new Set<SessionEventListener>();
+	private currentProcess: ChildProcess | null = null;
 
 	constructor(config: Config, sessionId: string) {
 		this.config = config;
@@ -52,44 +45,105 @@ class PiSession {
 	}
 
 	abort(): void {
-		// pi doesn't support abort via CLI, just exit
-		process.exit(1);
+		if (this.currentProcess) {
+			this.currentProcess.kill();
+			this.currentProcess = null;
+		}
 	}
 
 	/**
 	 * Send a message to the pi agent.
-	 * Uses `pi --print` for non-interactive output mode.
+	 * Uses streaming output to show thinking and speaking in real-time.
 	 */
 	async prompt(message: string): Promise<string> {
 		const escapedMsg = message.replace(/"/g, '\\"');
 		const cmd = `${this.config.piPath} --provider ${this.config.provider} -ne --print --continue "${this.sessionId}" -- "${escapedMsg}"`;
 
-		const opts: ExecSyncOptions = {
-			cwd: this.config.projectRoot,
-			encoding: "utf-8",
-			stdio: ["pipe", "pipe", "pipe"],
-			timeout: 300_000, // 5 min timeout
-		};
+		print('\n🤔 思考中...\n', 'thinking');
 
-		try {
-			const output = execSync(cmd, opts);
-			const text = typeof output === 'string' ? output : output.toString('utf-8');
-			return text.trim();
-		} catch (err: unknown) {
-			const error = err as Error & { status?: number; stdout?: string; stderr?: string };
-			// Non-zero exit: return partial output if available
-			const stdout = error.stdout != null ? String(error.stdout) : '';
-			const stderr = error.stderr != null ? String(error.stderr) : '';
-			const partial = stdout.trim() || stderr.trim();
-			if (partial) {
-				return partial;
-			}
-			// No output: throw original error
-			throw new Error(error.message || `pi exited with code ${error.status}`);
-		}
+		return new Promise((resolve, reject) => {
+			const chunks: string[] = [];
+
+			this.currentProcess = exec(cmd, {
+				cwd: this.config.projectRoot,
+				timeout: 300_000,
+			});
+
+			const proc = this.currentProcess;
+
+			// Process stdout - contains thinking and response
+			proc.stdout?.on('data', (data: Buffer) => {
+				const text = data.toString();
+				chunks.push(text);
+
+				// Parse and emit events based on content
+				const lines = text.split('\n');
+				for (const line of lines) {
+					if (line.includes('[TOOL_CALL]') || line.includes('Calling tool:')) {
+						// Extract tool info
+						const match = line.match(/(?:Calling tool:|Tool:)\s*(\w+)/i);
+						if (match) {
+							this.emit({ type: 'tool_call', tool: match[1], args: {} });
+						}
+					} else if (line.trim()) {
+						// Regular output
+						this.emit({ type: 'speaking', text: line });
+					}
+				}
+			});
+
+			// Process stderr - errors and debug info
+			proc.stderr?.on('data', (data: Buffer) => {
+				const text = data.toString().trim();
+				if (text) {
+					// Check for thinking indicator
+					if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
+						this.emit({ type: 'thinking', text });
+					} else if (!text.startsWith('warn') && !text.startsWith('Error')) {
+						// Show as thinking progress
+						this.emit({ type: 'thinking', text });
+					}
+				}
+			});
+
+			proc.on('close', (code) => {
+				this.currentProcess = null;
+				const fullOutput = chunks.join('');
+				if (code === 0 || chunks.length > 0) {
+					resolve(fullOutput.trim());
+				} else {
+					reject(new Error(`pi exited with code ${code}`));
+				}
+			});
+
+			proc.on('error', (err) => {
+				this.currentProcess = null;
+				this.emit({ type: 'error', error: err.message });
+				reject(err);
+			});
+		});
 	}
 
 	private emit(event: SessionEvent): void {
+		// Also print to console for visibility
+		switch (event.type) {
+			case 'thinking':
+				if (event.text) print(event.text, 'dim');
+				break;
+			case 'speaking':
+				if (event.text) process.stdout.write(event.text + '\n');
+				break;
+			case 'tool_call':
+				print(`\n🔧 使用工具: ${event.tool}`, 'info');
+				break;
+			case 'tool_result':
+				print(`  → ${event.result.slice(0, 100)}${event.result.length > 100 ? '...' : ''}`, 'dim');
+				break;
+			case 'error':
+				print(`❌ 错误: ${event.error}`, 'error');
+				break;
+		}
+
 		this.eventListeners.forEach((fn) => fn(event));
 	}
 }
@@ -103,12 +157,8 @@ class PiSession {
  *
  * Wraps the `pi` CLI subprocess with:
  * - Session persistence via `pi --continue`
- * - Event subscription for streaming output
- *
- * Usage:
- *   const session = new InteractiveSession(config, sessionId);
- *   session.subscribe((event) => { ... });
- *   const response = await session.prompt("生成初中数学教程");
+ * - Streaming output for real-time feedback
+ * - Event subscription for session events
  */
 export class InteractiveSession {
 	private _pi: PiSession;
@@ -119,38 +169,18 @@ export class InteractiveSession {
 		this._sessionId = sessionId;
 	}
 
-	/**
-	 * Send a message to the agent and wait for a response.
-	 *
-	 * @param message  The user message to send
-	 * @returns The agent's response text
-	 */
 	async prompt(message: string): Promise<string> {
 		return this._pi.prompt(message);
 	}
 
-	/** Unique identifier for this session */
 	getSessionId(): string {
 		return this._sessionId;
 	}
 
-	/** Abort the currently running prompt (if any) */
 	abort(): void {
 		this._pi.abort();
 	}
 
-	/**
-	 * Subscribe to session events.
-	 *
-	 * Events:
-	 *   tool_call        → tool call from agent
-	 *   tool_result      → raw result text from tool
-	 *   agent_thinking  → model is thinking
-	 *   agent_speaking  → model output
-	 *   error           → something went wrong
-	 *
-	 * @returns Unsubscribe function
-	 */
 	subscribe(listener: SessionEventListener): () => void {
 		return this._pi.subscribe(listener);
 	}
