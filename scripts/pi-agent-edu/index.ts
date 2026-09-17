@@ -89,6 +89,8 @@ type Task = typeof TASKS[number];
 
 const DIFFICULTIES = ['easy（容易）', 'medium（中等）', 'hard（困难）'] as const;
 
+const QUESTION_COUNTS = ['5', '10', '15', '20'] as const;
+
 interface WizardResult {
   provider: string;
   stage: Stage;
@@ -96,6 +98,7 @@ interface WizardResult {
   grade: string;
   task: Task;
   difficulty?: string;
+  questionCount?: string;
 }
 
 export async function runWizard(): Promise<WizardResult> {
@@ -129,27 +132,33 @@ export async function runWizard(): Promise<WizardResult> {
   const task = await selectOption('请选择任务类型：', TASKS);
   print(`已选择：${task}\n`, 'info');
 
-  // 5. Select difficulty (only for practice questions)
+  // 5. Select difficulty and count (only for practice questions)
   let difficulty: string | undefined;
+  let questionCount: string | undefined;
   if (task === '练习题') {
     const diff = await selectOption('请选择题型难度：', DIFFICULTIES);
     print(`已选择：${diff}\n`, 'info');
-    difficulty = diff.split('（')[0]; // Extract "easy", "medium", "hard"
+    difficulty = diff.split('（')[0];
+
+    const count = await selectOption('请选择题型数量：', QUESTION_COUNTS);
+    print(`已选择：${count} 道题\n`, 'info');
+    questionCount = count;
   }
 
-  return { provider: providerId, stage, subject, grade, task, difficulty };
+  return { provider: providerId, stage, subject, grade, task, difficulty, questionCount };
 }
 
 export function buildPromptFromWizard(result: WizardResult): string {
-  const { stage, subject, grade, task, difficulty } = result;
+  const { stage, subject, grade, task, difficulty, questionCount } = result;
 
   switch (task) {
     case 'TutorialUnit（教程单元）':
       return `生成【${stage}${subject} - ${grade}】TutorialUnit，包含10道练习题（easy:medium:hard = 4:4:2）`;
 
     case '练习题': {
+      const count = questionCount || '10';
       const diff = difficulty ? `（${difficulty}）` : '（easy:medium:hard = 4:4:2）';
-      return `生成10道${stage}${subject}${grade}练习题${diff}`;
+      return `生成${count}道${stage}${subject}${grade}练习题${diff}`;
     }
 
     case '错题分析':
