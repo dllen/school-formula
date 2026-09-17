@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
-type Subject = 'math' | 'chinese' | 'english';
+type Subject = 'math' | 'chinese' | 'english' | 'science' | 'moral';
 
 const SUBJECTS: { id: Subject; name: string; icon: string }[] = [
   { id: 'math', name: '数学', icon: '🔢' },
   { id: 'chinese', name: '语文', icon: '📝' },
   { id: 'english', name: '英语', icon: '🔤' },
+  { id: 'science', name: '科学', icon: '🔬' },
+  { id: 'moral', name: '道德与法治', icon: '⚖️' },
 ];
 import { ALL_TUTORIALS, type Tutorial, type TutorialUnit } from '../data/tutorials';
 import { TutorialUnitDetail } from './tutorials/TutorialUnitDetail';
@@ -25,7 +27,15 @@ export const TutorialView: React.FC = () => {
   const [selectedUnit, setSelectedUnit] = useState<TutorialUnit | null>(null);
   const [selectedTutorial, setSelectedTutorial] = useState<Tutorial | null>(null);
 
-  const tutorial = ALL_TUTORIALS.find(t => t.grade === selectedGrade && t.subject === (selectedSubject === 'math' ? '数学' : selectedSubject === 'chinese' ? '语文' : '英语')) || null;
+  const subjectNameMap: Record<Subject, string> = {
+    math: '数学',
+    chinese: '语文',
+    english: '英语',
+    science: '科学',
+    moral: '道德与法治',
+  };
+
+  const tutorial = ALL_TUTORIALS.find(t => t.grade === selectedGrade && t.subject === subjectNameMap[selectedSubject]) || null;
 
   const handleSubjectChange = (subject: Subject) => {
     setSelectedSubject(subject);
