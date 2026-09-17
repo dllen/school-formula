@@ -4,6 +4,7 @@ import { cheatsheetAdapter } from './adapters/cheatsheet';
 import { formulaAdapter } from './adapters/formula';
 import { mentalMathAdapter } from './adapters/mental-math';
 import { techniqueAdapter } from './adapters/technique';
+import { tutorialAdapter } from './adapters/tutorial';
 
 // 后续 task 会把其余 adapter 加进来。
 const adapters: Adapter[] = [
@@ -11,6 +12,7 @@ const adapters: Adapter[] = [
   formulaAdapter,
   mentalMathAdapter,
   techniqueAdapter,
+  tutorialAdapter,
 ];
 
 export const registry: Map<string, Adapter> = new Map(adapters.map((a) => [a.kind, a]));
