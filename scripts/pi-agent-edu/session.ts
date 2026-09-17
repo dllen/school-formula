@@ -60,6 +60,9 @@ class PiSession {
 		const cmd = `${this.config.piPath} --provider ${this.config.provider} -ne --print --continue "${this.sessionId}" -- "${escapedMsg}"`;
 
 		print('\n🤔 思考中...\n', 'thinking');
+		print(`[exec] ${cmd.substring(0, 100)}${cmd.length > 100 ? '...' : ''}`, 'dim');
+		print(`[cwd] ${this.config.projectRoot}`, 'dim');
+		print(`[provider] ${this.config.provider}\n`, 'dim');
 
 		return new Promise((resolve, reject) => {
 			const chunks: string[] = [];
@@ -77,8 +80,15 @@ class PiSession {
 				chunks.push(text);
 
 				// Check for API errors in response
-				if (text.includes('permission_error') || text.includes('quota') || text.includes('403') || text.includes('402')) {
-					this.emit({ type: 'error', error: 'API 配额不足，请充值或更换 Provider' });
+				if (text.includes('permission_error') || text.includes('403')) {
+					this.emit({ type: 'error', error: 'API 配额不足 - 403 permission_error' });
+					print('\n💡 提示：访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新 Provider', 'dim');
+					print(`[stdout] ${text.trim()}`, 'dim');
+					proc.kill();
+					return;
+				}
+				if (text.includes('quota') || text.includes('usage limit')) {
+					this.emit({ type: 'error', error: 'API 配额用完' });
 					proc.kill();
 					return;
 				}
@@ -102,25 +112,52 @@ class PiSession {
 			// Process stderr - errors and debug info
 			proc.stderr?.on('data', (data: Buffer) => {
 				const text = data.toString().trim();
-				if (text) {
-					// Check for API errors
-					if (text.includes('permission_error') || text.includes('quota') || text.includes('403')) {
-						this.emit({ type: 'error', error: 'API 配额不足，请充值或更换 Provider' });
-					} else if (text.includes('401') || text.includes('unauthorized')) {
-						this.emit({ type: 'error', error: 'API 认证失败，请检查 API Key' });
-					} else if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
-						this.emit({ type: 'thinking', text });
-					}
+				if (!text) return;
+
+				// Check for API errors
+				if (text.includes('permission_error') || text.includes('403')) {
+					this.emit({ type: 'error', error: 'API 配额不足 - 403 permission_error' });
+					print('\n💡 提示：访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新 Provider', 'dim');
+				} else if (text.includes('quota') || text.includes('usage limit')) {
+					this.emit({ type: 'error', error: 'API 配额用完 - monthly usage limit reached' });
+					print('\n💡 提示：等待下个计费周期或充值', 'dim');
+				} else if (text.includes('401') || text.includes('unauthorized')) {
+					this.emit({ type: 'error', error: 'API Key 无效 - 401 unauthorized' });
+				} else if (text.includes('timeout') || text.includes('ETIMEDOUT')) {
+					this.emit({ type: 'error', error: '网络超时' });
+				} else if (text.includes('ECONNREFUSED')) {
+					this.emit({ type: 'error', error: '连接被拒绝 - 检查网络' });
+				} else if (text.includes('thinking') || text.includes('analyzing') || text.includes('planning')) {
+					this.emit({ type: 'thinking', text });
+				} else {
+					// Show debug info
+					print(`[debug] ${text}`, 'dim');
 				}
 			});
 
-			proc.on('close', (code) => {
+			proc.on('close', (code, signal) => {
 				this.currentProcess = null;
 				const fullOutput = chunks.join('');
+
+				// Detect specific error patterns in full output
+				if (fullOutput.includes('permission_error') || fullOutput.includes('quota') || fullOutput.includes('403')) {
+					print('\n❌ 错误：API 配额不足', 'error');
+					print('   请访问 https://kimi.com 充值，或在 ~/.pi/agent/models.json 添加新的 Provider', 'dim');
+					reject(new Error('API 配额不足 (403 permission_error)'));
+					return;
+				}
+
+				if (signal === 'SIGTERM' && fullOutput.includes('permission_error')) {
+					reject(new Error('API 配额不足'));
+					return;
+				}
+
 				if (code === 0 || chunks.length > 0) {
 					resolve(fullOutput.trim());
+				} else if (signal === 'SIGTERM') {
+					reject(new Error('进程被终止（可能是配额错误）'));
 				} else {
-					reject(new Error(`pi exited with code ${code}`));
+					reject(new Error(`pi exited with code ${code}, signal ${signal}`));
 				}
 			});
 
