@@ -324,7 +324,10 @@ export function appendToConstArray(content: string, name: string, items: unknown
   const decl = `export const ${name}`;
   const declIdx = content.indexOf(decl);
   if (declIdx === -1) throw new Error(`未找到声明: ${name}`);
-  const open = content.indexOf('[', declIdx);
+  // 先定位赋值 `=`，再找 `=` 之后的 `[`——避免命中类型注解里的 `[]`（如 `T[]`）。
+  const eq = content.indexOf('=', declIdx);
+  if (eq === -1) throw new Error(`未找到赋值符号: ${name}`);
+  const open = content.indexOf('[', eq);
   if (open === -1) throw new Error(`未找到数组起始: ${name}`);
   let depth = 0;
   let close = open;
@@ -353,7 +356,8 @@ export function insertLineAfter(content: string, afterText: string, line: string
 /** 提取源文件内所有 `id: '…'` 与 `"id": "…"`。 */
 export function extractIds(content: string): Set<string> {
   const ids = new Set<string>();
-  const re = /\bid\s*:\s*['"]([^'"]+)['"]/g;
+  // `(?:\bid|"id")`：`\bid` 匹配 `id:`（裸键），`"id"` 匹配 `"id":`（带引号键，引号在 id 与 : 之间）。
+  const re = /(?:\bid|"id")\s*:\s*['"]([^'"]+)['"]/g;
   let m: RegExpExecArray | null;
   while ((m = re.exec(content))) ids.add(m[1]);
   return ids;
