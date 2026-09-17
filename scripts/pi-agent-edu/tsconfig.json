@@ -10,5 +10,6 @@
     "allowImportingTsExtensions": true,
     "outDir": "./dist"
   },
-  "include": ["."]
+  "include": ["."],
+  "exclude": ["output", "node_modules", "dist"]
 }

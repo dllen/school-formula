@@ -31,3 +31,6 @@ package-lock.json
 # 生成脚本配置（含 apiKey，勿提交脚本内网配置）
 scripts/generate-config.json
 scripts/._checkpoint_*.json
+
+# pi-agent-edu 生成内容暂存目录
+scripts/pi-agent-edu/output/

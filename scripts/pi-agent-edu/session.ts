@@ -74,6 +74,8 @@ export class InteractiveSession {
   private listeners = new Set<SessionEventListener>();
   private textBuffer: string[] = [];
   private inThinking = false;
+  private lastResponse = '';
+  private pendingNote: string | null = null;
 
   private constructor(session: AgentSession, runtime: ModelRuntime, config: Config) {
     this.session = session;
@@ -138,9 +140,26 @@ export class InteractiveSession {
 
   /** Send a message to the agent. Streams thinking/text/tools live, returns full text. */
   async prompt(message: string): Promise<string> {
+    // Inject any pending one-time aside (btw), then clear it — next turn only.
+    let fullMessage = message;
+    if (this.pendingNote) {
+      fullMessage = `[旁注] ${this.pendingNote}\n\n${message}`;
+      this.pendingNote = null;
+    }
     this.textBuffer = [];
-    await this.session.prompt(message);
-    return this.textBuffer.join('');
+    await this.session.prompt(fullMessage);
+    this.lastResponse = this.textBuffer.join('');
+    return this.lastResponse;
+  }
+
+  /** The full text of the most recent assistant response (for save / 退出). */
+  getLastResponse(): string {
+    return this.lastResponse;
+  }
+
+  /** Queue a one-time aside note, injected into the next prompt only. */
+  sendNote(text: string): void {
+    this.pendingNote = text;
   }
 
   getSessionId(): string {

@@ -12,6 +12,8 @@
  */
 
 import { parseArgs } from 'node:util';
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { join, dirname } from 'node:path';
 import { SessionManager } from '@earendil-works/pi-coding-agent';
 import { print, prompt, selectOption } from './io.js';
 import {
@@ -55,6 +57,26 @@ function errMsg(err: unknown): string {
   return err instanceof Error ? err.message : String(err);
 }
 
+/** Timestamp string for default output filenames (YYYY-MM-DD-HH-mm-ss). */
+function timestampName(): string {
+  return new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+}
+
+/**
+ * Write generated content to a file inside the repo.
+ * `path` is relative to the repo root unless absolute; defaults to
+ * `scripts/pi-agent-edu/output/generated-<timestamp>.ts`.
+ */
+function saveContent(text: string, path?: string): string {
+  const root = getProjectRoot();
+  const target = path
+    ? (path.startsWith('/') ? path : join(root, path))
+    : join(root, 'scripts', 'pi-agent-edu', 'output', `generated-${timestampName()}.ts`);
+  mkdirSync(dirname(target), { recursive: true });
+  writeFileSync(target, text, 'utf-8');
+  return target;
+}
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -73,6 +95,9 @@ function showHelp(): void {
 交互命令:
   help, ?         显示帮助
   q, quit, exit   退出
+  退出            保存最近生成内容并退出
+  save, 保存      保存最近生成内容到仓库（save <路径> 指定位置）
+  btw <文字>      旁注：只对下一轮生效
   model, provider 切换 AI 模型
   thinking        切换思考级别
 `, 'info');
@@ -312,22 +337,57 @@ async function main() {
   let running = true;
   while (running) {
     const input = await prompt('> ');
+    const raw = input.trim();
+    if (!raw) continue;
 
-    if (!input.trim()) continue;
+    const lower = raw.toLowerCase();
 
-    const cmd = input.trim().toLowerCase();
-
-    if (cmd === 'q' || cmd === 'quit' || cmd === 'exit') {
+    if (lower === 'q' || lower === 'quit' || lower === 'exit') {
       running = false;
       continue;
     }
 
-    if (cmd === 'help' || cmd === '?') {
+    if (raw === '退出') {
+      const text = session.getLastResponse();
+      if (text) {
+        const target = saveContent(text);
+        print(`已保存生成内容到: ${target}`, 'success');
+      }
+      running = false;
+      continue;
+    }
+
+    if (lower === 'help' || raw === '?') {
       showHelp();
       continue;
     }
 
-    if (cmd === 'model' || cmd === 'provider') {
+    if (lower === 'save' || raw === '保存' || lower.startsWith('save ') || raw.startsWith('保存 ')) {
+      const text = session.getLastResponse();
+      if (!text) {
+        print('还没有可保存的生成内容', 'warn');
+        continue;
+      }
+      let pathArg: string | undefined;
+      if (lower.startsWith('save ')) pathArg = raw.slice(5).trim();
+      else if (raw.startsWith('保存 ')) pathArg = raw.slice(3).trim();
+      const target = saveContent(text, pathArg || undefined);
+      print(`已保存到: ${target}`, 'success');
+      continue;
+    }
+
+    if (lower === 'btw' || lower.startsWith('btw ')) {
+      const note = lower.startsWith('btw ') ? raw.slice(4).trim() : '';
+      if (!note) {
+        print('用法: btw <旁注文字>（只对下一轮生效）', 'warn');
+      } else {
+        session.sendNote(note);
+        print(`已记录旁注（下一轮生效）: ${note}`, 'success');
+      }
+      continue;
+    }
+
+    if (lower === 'model' || lower === 'provider') {
       const available = await getAvailableModels(runtime);
       if (available.length === 0) {
         print('未检测到可用模型，请先配置 pi 鉴权', 'error');
@@ -347,7 +407,7 @@ async function main() {
       continue;
     }
 
-    if (cmd === 'thinking') {
+    if (lower === 'thinking') {
       const level = session.cycleThinkingLevel();
       if (level) print(`思考级别: ${level}`, 'success');
       else print('当前模型不支持思考', 'warn');
@@ -357,7 +417,7 @@ async function main() {
     // Regular user message → send to agent
     print('', 'dim');
     try {
-      await session.prompt(input);
+      await session.prompt(raw);
       process.stdout.write('\n');
     } catch (err) {
       print(`错误: ${errMsg(err)}`, 'error');
