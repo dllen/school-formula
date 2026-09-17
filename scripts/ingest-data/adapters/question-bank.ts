@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import type { Adapter, IngestContext } from '../types';
 import { getRoot } from '../paths';
 import { gradeToStage, SUBJECT_KEYS } from '../mapping';
-import { appendToConstArray, extractIds } from '../tsedit';
+import { appendToConstArray, insertLineAfter, extractIds } from '../tsedit';
 import { duplicateIds, collidingIds } from '../validate';
 
 interface QuestionLike {
@@ -62,7 +62,25 @@ export const questionBankAdapter: Adapter = {
     writeFileSync(abs, appendToConstArray(readFileSync(abs, 'utf-8'), name, items), 'utf-8');
     return { files: [abs], inserted: items.length };
   },
-  wire() {
-    return { files: [] }; // ALL_QUESTIONS 已自动 spread 各 import
+  wire(value, _raw, ctx) {
+    const items = value as QuestionLike[];
+    if (items.length === 0) return { files: [] };
+    const stage = gradeToStage(items[0].grade);
+    const key = SUBJECT_KEYS[items[0].subject];
+    const name = targetArray(stage, key);
+    const indexPath = join(ctx.root, 'src', 'data', 'questions', 'index.ts');
+    let content = readFileSync(indexPath, 'utf-8');
+    if (content.includes(`import { ${name} } from './${stage}-${key}-questions'`)) return { files: [] };
+    content = insertLineAfter(
+      content,
+      `import type { Question, QuestionFilter, Difficulty, QuestionType } from './types';`,
+      `import { ${name} } from './${stage}-${key}-questions';`,
+    );
+    content = content.replace(
+      'export const ALL_QUESTIONS: Question[] = [',
+      `export const ALL_QUESTIONS: Question[] = [\n  ...${name},`,
+    );
+    writeFileSync(indexPath, content, 'utf-8');
+    return { files: [indexPath] };
   },
 };

@@ -108,7 +108,7 @@ scripts/ingest-data/
 | kind | payload | 合并目标 | 接线 | 交叉校验 |
 |------|---------|----------|------|----------|
 | `tutorial` | `{ tutorial: Tutorial }` | `<stage>-<subject>.ts` 的 `XXX_TUTORIALS[]` | `index.ts` import + `ALL_TUTORIALS` | unit id 唯一；每单元 10 题；id 格式 `{l}-{s}-{g}-u{n}` |
-| `question-bank` | `{ questions: Question[] }` | `<stage>-<subject>-questions.ts` | 无（`ALL_QUESTIONS` 已自动 spread） | id 唯一；`knowledgePointIds ⊆ KNOWLEDGE_DATA`；`subject/grade` 枚举 |
+| `question-bank` | `{ questions: Question[] }` | `<stage>-<subject>-questions.ts` | `index.ts` import + `ALL_QUESTIONS`（新学科时） | id 唯一；`knowledgePointIds ⊆ KNOWLEDGE_DATA`；`subject/grade` 枚举 |
 | `knowledge` | `{ grade, subject, knowledgePoints[] }` | `knowledge/<stage>/<subject>.ts` 的 `KnowledgePoint[]` | 新学科时改 `knowledge/<stage>.ts` import + subjects | kp id 唯一；`tutorialContent` 形状 |
 | `cheatsheet` | `{ cheatsheets: CheatSheet[] }` | `cheatsheets.ts` `ALL_CHEATSHEETS[]` | 无（单文件） | id 唯一 |
 | `formula` | `{ formulas: Formula[] }` | `formulas.ts` | 无 | id 唯一；`grade/subject` 枚举 |
