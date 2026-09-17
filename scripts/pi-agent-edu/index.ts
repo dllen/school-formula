@@ -12,7 +12,7 @@
  */
 
 import { parseArgs } from 'node:util';
-import { print, prompt, confirm } from './io.js';
+import { print, prompt, confirm, selectOption } from './io.js';
 import { loadConfig } from './config.js';
 import { listSessions, newSessionId, loadSessionMessages } from './storage.js';
 import { InteractiveSession } from './session.js';
@@ -63,6 +63,96 @@ function showHelp(): void {
   q, quit, exit   退出（会询问是否保存）
   save            保存当前会话
 `, 'info');
+}
+
+// ---------------------------------------------------------------------------
+// Wizard mode - guide user through content generation
+// ---------------------------------------------------------------------------
+
+const STAGES = ['小学', '初中', '高中'] as const;
+type Stage = typeof STAGES[number];
+
+const SUBJECTS_BY_STAGE: Record<Stage, readonly string[]> = {
+  '小学': ['数学', '语文', '英语', '科学', '道德与法治'],
+  '初中': ['数学', '物理', '化学', '语文', '英语', '历史', '地理', '道德与法治'],
+  '高中': ['数学', '物理', '化学', '生物', '语文', '英语', '历史', '地理', '政治'],
+};
+
+const GRADES_BY_STAGE: Record<Stage, readonly string[]> = {
+  '小学': ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
+  '初中': ['初一', '初二', '初三'],
+  '高中': ['高一', '高二', '高三'],
+};
+
+const TASKS = ['TutorialUnit（教程单元）', '练习题', '错题分析', '学习规划'] as const;
+type Task = typeof TASKS[number];
+
+const DIFFICULTIES = ['easy（容易）', 'medium（中等）', 'hard（困难）'] as const;
+
+interface WizardResult {
+  stage: Stage;
+  subject: string;
+  grade: string;
+  task: Task;
+  difficulty?: string;
+}
+
+async function runWizard(): Promise<WizardResult> {
+  print('\n📚 欢迎使用 pi-agent-edu 教育智能体！\n', 'success');
+  print('让我来引导你完成内容生成...\n', 'dim');
+
+  // 1. Select stage
+  const stage = await selectOption('请选择学段：', STAGES);
+  print(`已选择：${stage}\n`, 'info');
+
+  // 2. Select subject
+  const subjects = SUBJECTS_BY_STAGE[stage];
+  const subject = await selectOption('请选择科目：', subjects);
+  print(`已选择：${subject}\n`, 'info');
+
+  // 3. Select grade
+  const grades = GRADES_BY_STAGE[stage];
+  const grade = await selectOption('请选择年级：', grades);
+  print(`已选择：${grade}\n`, 'info');
+
+  // 4. Select task
+  const task = await selectOption('请选择任务类型：', TASKS);
+  print(`已选择：${task}\n`, 'info');
+
+  // 5. Select difficulty (only for practice questions)
+  let difficulty: string | undefined;
+  if (task === '练习题') {
+    const diff = await selectOption('请选择题型难度：', DIFFICULTIES);
+    print(`已选择：${diff}\n`, 'info');
+    difficulty = diff.split('（')[0]; // Extract "easy", "medium", "hard"
+  }
+
+  return { stage, subject, grade, task, difficulty };
+}
+
+function buildPromptFromWizard(result: WizardResult): string {
+  const { stage, subject, grade, task, difficulty } = result;
+
+  switch (task) {
+    case 'TutorialUnit（教程单元）':
+      return `生成【${stage}${subject} - ${grade}】TutorialUnit，包含10道练习题（easy:medium:hard = 4:4:2）`;
+
+    case '练习题': {
+      const diff = difficulty ? `（${difficulty}）` : '（easy:medium:hard = 4:4:2）';
+      return `生成10道${stage}${subject}${grade}练习题${diff}`;
+    }
+
+    case '错题分析':
+      return `分析${grade}${subject}学习中的常见错误，提供典型例题和讲解`;
+
+    case '学习规划': {
+      const gradeNum = parseInt(grade.replace(/\D/g, ''), 10);
+      return `为${grade}${subject}生成学习计划（期中/期末复习规划）`;
+    }
+
+    default:
+      return `生成${stage}${subject}${grade}学习内容`;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -123,6 +213,13 @@ async function main() {
     sessionId = newSessionId();
     messages = [];
     print(`创建新会话 ${sessionId}`, 'info');
+
+    // Run wizard for new sessions
+    const wizardResult = await runWizard();
+    const wizardPrompt = buildPromptFromWizard(wizardResult);
+    print(`\n🎯 正在生成内容...\n`, 'thinking');
+    print(`提示词：${wizardPrompt}\n`, 'dim');
+    messages.push({ role: 'user', content: wizardPrompt });
   }
 
   // Create session instance (real session stores messages internally)
@@ -131,6 +228,22 @@ async function main() {
   // -------------------------------------------------------------------------
   // Interactive loop
   // -------------------------------------------------------------------------
+
+  // If we have a wizard prompt, send it first
+  const pendingWizardPrompt = messages.find((m) => typeof (m as {role?: string; content?: string}).content === 'string')
+    ? (messages.shift() as {role: string; content: string}).content
+    : null;
+
+  if (pendingWizardPrompt) {
+    print('', 'dim');
+    try {
+      const response = await session.prompt(pendingWizardPrompt);
+      print(`\n${response}`, 'info');
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      print(`错误: ${msg}`, 'error');
+    }
+  }
 
   print('\n--- pi-agent-edu 交互模式 ---', 'info');
   print('输入 help 查看可用命令，输入 q 退出\n', 'dim');

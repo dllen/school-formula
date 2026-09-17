@@ -68,6 +68,24 @@ export async function pager(lines: string[], limit = 30): Promise<void> {
   }
 }
 
+export async function selectOption<T>(
+  message: string,
+  options: readonly T[],
+  format: (opt: T) => string = String,
+): Promise<T> {
+  const lines = options.map((opt, i) => `  [${i + 1}] ${format(opt)}`);
+  const promptMsg = `${message}\n${lines.join('\n')}\n> `;
+
+  while (true) {
+    const answer = await prompt(promptMsg);
+    const idx = parseInt(answer, 10) - 1;
+    if (idx >= 0 && idx < options.length) {
+      return options[idx];
+    }
+    print(`请输入 1-${options.length} 之间的数字`, 'warn');
+  }
+}
+
 export function clearLine(): void {
   process.stdout.write('\x1b[2K\r');
 }
