@@ -138,12 +138,11 @@ export function kindFromTask(task: Task): string {
 
 - [ ] **Step 2: 更新 `buildPromptFromWizard`**
 
-`buildPromptFromWizard` 改为按 8 类构造（难度/数量选择仅保留给题库；口算/知识点等用固定 grade/学科参数）：
+同时把 `runWizard` 里「仅题库选择难度/数量」的分支条件从 `if (task === '练习题')` 改为 `if (task === '题库')`（否则改类后难度/数量永远不触发）。`buildPromptFromWizard` 改为按 8 类构造（难度/数量仅用于题库）：
 
 ```typescript
 export function buildPromptFromWizard(result: WizardResult): string {
   const { stage, subject, grade, task, difficulty, questionCount } = result;
-  const kind = kindFromTask(task);
   switch (task) {
     case '教程单元':
       return `生成【${stage}${subject} - ${grade}】的 TutorialUnit，输出 JSON 信封 { "tutorial": {…} }，含 10 道练习题（easy:medium:hard = 4:4:2）`;
