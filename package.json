@@ -15,7 +15,10 @@
     "gen:new": "bash scripts/pi-agent-edu/pi-agent-edu.sh --new",
     "gen:continue": "bash scripts/pi-agent-edu/pi-agent-edu.sh --continue",
     "gen:sessions": "bash scripts/pi-agent-edu/pi-agent-edu.sh --sessions",
-    "gen:help": "bash scripts/pi-agent-edu/pi-agent-edu.sh --help"
+    "gen:help": "bash scripts/pi-agent-edu/pi-agent-edu.sh --help",
+    "ingest": "bash scripts/ingest-data/ingest.sh --all",
+    "ingest:list": "bash scripts/ingest-data/ingest.sh --list",
+    "ingest:dry": "bash scripts/ingest-data/ingest.sh --dry-run"
   },
   "dependencies": {
     "mermaid": "^11.16.0",
