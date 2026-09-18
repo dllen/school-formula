@@ -94,7 +94,7 @@ npx tsx index.ts
 | `help`, `?` | 显示帮助 |
 | `q`, `quit`, `exit` | 退出 |
 | `退出` | 保存最近生成内容并退出 |
-| `save`, `保存` | 保存最近生成内容到仓库（`save <路径>` 指定位置） |
+| `save`, `保存` | 保存最近生成内容到仓库（`save <kind>` 或 `save <路径>` 指定位置） |
 | `btw <文字>` | 旁注：只对下一轮生效 |
 | `model`, `provider` | 切换 AI 模型 |
 | `thinking` | 切换思考级别 |

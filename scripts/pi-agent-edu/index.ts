@@ -97,7 +97,7 @@ function showHelp(): void {
   help, ?         显示帮助
   q, quit, exit   退出
   退出            保存最近生成内容并退出
-  save, 保存      保存最近生成内容到仓库（save <路径> 指定位置）
+  save, 保存      保存最近生成内容到仓库（save <kind> 或 save <路径> 指定位置）
   btw <文字>      旁注：只对下一轮生效
   model, provider 切换 AI 模型
   thinking        切换思考级别
@@ -149,7 +149,10 @@ export function kindFromTask(task: Task): string {
   }
 }
 
-const DIFFICULTIES = ['easy（容易）', 'medium（中等）', 'hard（困难）'] as const;
+const DIFFICULTIES = ['basic（基础）', 'intermediate（中等）', 'advanced（进阶）'] as const;
+
+/** 入库 kind 白名单（staging 目录名），由任务类型推导。 */
+const KNOWN_KINDS = new Set(TASKS.map(kindFromTask));
 
 const QUESTION_COUNTS = ['5', '10', '15', '20'] as const;
 
@@ -217,7 +220,7 @@ export function buildPromptFromWizard(result: WizardResult): string {
       return `生成【${stage}${subject} - ${grade}】的 TutorialUnit，输出 JSON 信封 { "tutorial": {…} }，含 10 道练习题（easy:medium:hard = 4:4:2）`;
     case '题库': {
       const count = questionCount || '10';
-      const diff = difficulty ? `（${difficulty}）` : '（easy:medium:hard = 4:4:2）';
+      const diff = difficulty ? `（${difficulty}）` : '（basic:intermediate:advanced = 4:4:2）';
       return `生成 ${count} 道${stage}${subject}${grade}练习题，输出 JSON 信封 { "questions": [ …Question ] }，难度${diff}`;
     }
     case '知识点':
@@ -379,8 +382,12 @@ async function main() {
     if (raw === '退出') {
       const text = session.getLastResponse();
       if (text) {
-        const target = saveToStaging(text, currentKind ?? undefined);
-        print(`已保存生成内容到: ${target}`, 'success');
+        try {
+          const target = saveToStaging(text, currentKind ?? undefined);
+          print(`已保存生成内容到: ${target}`, 'success');
+        } catch (err) {
+          print(`无法保存：${errMsg(err)}（请确认最近一次回复是 JSON 信封）`, 'warn');
+        }
       }
       running = false;
       continue;
@@ -401,13 +408,27 @@ async function main() {
       if (lower.startsWith('save ')) pathArg = raw.slice(5).trim();
       else if (raw.startsWith('保存 ')) pathArg = raw.slice(3).trim();
 
-      // 无参 → 当前 kind；纯字母数字/连字符 → 指定 kind；含 / 或 . → 旧行为写任意路径。
+      // 无参 → 当前 kind；白名单内纯字母数字/连字符 → 指定 kind；含 / 或 . → 旧行为写任意路径。
       const KIND_RE = /^[A-Za-z0-9-]+$/;
       let target: string;
       if (!pathArg) {
-        target = saveToStaging(text, currentKind ?? undefined);
+        try {
+          target = saveToStaging(text, currentKind ?? undefined);
+        } catch (err) {
+          print(`无法保存：${errMsg(err)}（请确认最近一次回复是 JSON 信封）`, 'warn');
+          continue;
+        }
       } else if (KIND_RE.test(pathArg)) {
-        target = saveToStaging(text, pathArg);
+        if (!KNOWN_KINDS.has(pathArg)) {
+          print(`未知 kind: ${pathArg}`, 'warn');
+          continue;
+        }
+        try {
+          target = saveToStaging(text, pathArg);
+        } catch (err) {
+          print(`无法保存：${errMsg(err)}（请确认最近一次回复是 JSON 信封）`, 'warn');
+          continue;
+        }
       } else {
         target = saveContent(text, pathArg);
       }
