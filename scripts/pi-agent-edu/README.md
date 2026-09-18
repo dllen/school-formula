@@ -103,7 +103,7 @@ npx tsx index.ts
 
 ## 运行行为说明
 
-- **系统提示词**：内置教育系统提示词（`prompts.ts` 的 `getSystemPrompt()`，定义「中学教师」角色、`TutorialUnit`/`Question` 输出格式与内容质量标准），通过 SDK 的 `DefaultResourceLoader` 注入。同时禁用了 skills / themes / prompt-templates（与内容生成无关，会污染上下文）；保留 `CLAUDE.md` / `AGENTS.md` 让 agent 了解仓库结构。
+- **系统提示词**：内置教育系统提示词（`prompts.ts` 的 `getSystemPrompt()`，定义「中学教师」角色、JSON 信封输出格式（8 种）与内容质量标准），通过 SDK 的 `DefaultResourceLoader` 注入。同时禁用了 skills / themes / prompt-templates（与内容生成无关，会污染上下文）；保留 `CLAUDE.md` / `AGENTS.md` 让 agent 了解仓库结构。
 - **工具自动执行**：`read` / `grep` / `find` / `ls` / `bash` / `edit` / `write` 由 SDK **自动执行、无逐条确认**。请仅在信任的项目目录下运行——agent 能够修改文件、执行 shell 命令。
 
 ---
@@ -213,47 +213,40 @@ A: 明确指定 easy/medium/hard 各多少道，不要让 AI 自己决定。
 
 ## 输出格式
 
-系统提示词已内置接口定义，AI 输出格式如下：
+系统提示词要求 AI 输出严格合法的 JSON「信封」对象（无 markdown 围栏、无解释文字）。信封只包含下列 8 种键之一，`save`/`退出` 按信封键映射到对应 staging 目录：
 
-### TutorialUnit
+| 信封键 | 说明 | staging 目录 |
+|--------|------|--------------|
+| `tutorial` | 教程单元 | `tutorials` |
+| `questions` | 题库 | `questions` |
+| `knowledgePoints` | 知识点 | `knowledge` |
+| `cheatsheets` | 速查表 | `cheatsheets` |
+| `formulas` | 公式 | `formulas` |
+| `mnemonics` | 口算口诀 | `mental-math` |
+| `techniques` | 掌握度技巧 | `techniques` |
+| `prompts` | 提示词模板 | `prompts` |
 
-```typescript
-{
-  id: "m-math-7-1-1",        // 唯一标识：{学段}-{学科}-{年级}-{章节}-{单元}
-  title: "有理数的认识",      // 标题
-  order: 1,                   // 单元序号
-  duration: "20分钟",         // 建议时长
-  objectives: ["理解正负数的意义", ...],
-  teach: {
-    hook: "用温度计引入正负数概念",
-    summary: "本单元我们将认识正负数，理解其在实际生活中的意义"
-  },
-  learn: {
-    sections: [...],          // 知识点分节
-    tips: ["正数大于0，负数小于0"]  // 学习技巧
-  },
-  practice: [...],            // 10道练习题
-  aiContext: "为家庭辅导设计，适合家长指导孩子学习"
-}
-```
-
-### Question
-
-```typescript
-{
-  id: "q-m-math-7-1-1-1",
-  type: "choice",             // choice | fill | truefalse | solve
-  question: "下列各数中，哪些是正数？",
-  options: ["+3", "-2", "0", "1/2"],
-  answer: "+3, 1/2",
-  explanation: "正数是大于0的数，+3和1/2都大于0",
-  difficulty: "easy"          // easy | medium | hard
-}
-```
+字段形状以 `src/data/` 下对应的 `types.ts` 为准（如 `src/data/tutorials/types.ts`）。
 
 ---
 
 ## 数据文件位置
+
+`save`/`退出` 会把最近生成内容写入 `staging/<kind>/generated-<timestamp>.json`（`<kind>` 由信封键映射，见上文）。写入后，在仓库根目录运行 `npm run ingest` 将其合并进 `src/data/`：
+
+```
+staging/
+├── tutorials/          # 教程单元（tutorial）
+├── questions/          # 题库（questions）
+├── knowledge/          # 知识点（knowledgePoints）
+├── cheatsheets/        # 速查表（cheatsheets）
+├── formulas/           # 公式（formulas）
+├── mental-math/        # 口算口诀（mnemonics）
+├── techniques/         # 掌握度技巧（techniques）
+└── prompts/            # 提示词模板（prompts）
+```
+
+最终数据落在 `src/data/`：
 
 ```
 src/data/
