@@ -1,7 +1,7 @@
 // adapters/question-bank.ts
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import type { Adapter, IngestContext } from '../types';
+import type { Adapter } from '../types';
 import { getRoot } from '../paths';
 import { gradeToStage, SUBJECT_KEYS } from '../mapping';
 import { appendToConstArray, insertLineAfter, extractIds } from '../tsedit';

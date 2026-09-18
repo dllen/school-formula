@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { parseArgs } from 'node:util';
-import { getAdapter, registry } from './registry';
+import { getAdapter } from './registry';
 import { typeCheck } from './validate';
 import { getRoot } from './paths';
 import type { IngestContext } from './types';

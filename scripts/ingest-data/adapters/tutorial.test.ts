@@ -3,8 +3,6 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { tutorialAdapter, arrayNameFor } from './tutorial';
 import { getRoot } from '../paths';
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 
 test('validate 拒绝 id 冲突与题量非 10', () => {
   const ctx = { root: getRoot(), dryRun: true, knowledgePointIds: new Set<string>() };
@@ -16,6 +14,6 @@ test('validate 拒绝 id 冲突与题量非 10', () => {
 });
 
 test('arrayNameFor 推导正确数组名', () => {
-  const tutorial = { id: 'middle-math-9', grade: '7', subject: '数学' } as any;
+  const tutorial = { id: 'middle-math-9', grade: '7', subject: '数学', units: [] };
   assert.equal(arrayNameFor(tutorial), 'MIDDLE_MATH_TUTORIALS');
 });

@@ -29,7 +29,7 @@ export const promptAdapter: Adapter = {
   kind: 'prompts',
   typeRef: { path: join(getRoot(), 'src/data/prompts/types.ts'), name: 'PromptTemplate', expr: 'PromptTemplate[]' },
   extract(raw) {
-    const prompts = (raw as { prompts: any[] }).prompts;
+    const prompts = (raw as { prompts: Record<string, unknown>[] }).prompts;
     return prompts.map((p) => ({ ...p, usageCount: 0, rating: 0, author: 'pi-agent-edu' }));
   },
   validate(value, ctx) {
@@ -48,8 +48,8 @@ export const promptAdapter: Adapter = {
   },
   merge(value, _raw, ctx) {
     const items = value as PromptLike[];
-    const groups = new Map<string, any[]>();
-    for (const it of items as any[]) {
+    const groups = new Map<string, PromptLike[]>();
+    for (const it of items) {
       const scenario = it.scenario; // 原始 scenario（如 'explain'），作文件名 + 分组键
       if (!groups.has(scenario)) groups.set(scenario, []);
       groups.get(scenario)!.push(it);
