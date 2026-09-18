@@ -32,6 +32,12 @@ npm run lint
 npm test
 npm run test:watch
 npm run coverage
+
+# 数据生产（pi-agent-edu 生成 → staging/ → ingest-data 入库）
+npm run gen:dsl          # 启动引导模式（8 种任务类型，生成 JSON 到 staging/）
+npm run ingest           # 把 staging/ 合并进 src/data/（校验 + 合并 + 接线）
+npm run ingest:list      # 列出 staging 文件
+npm run ingest:dry       # 校验但不写盘
 ```
 
 ### Worker 本地开发
@@ -175,6 +181,28 @@ URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知�
 ### 数据库（Cloudflare D1）
 
 表结构定义在 `db/schema.sql`：`users`、`email_verifications`、`sessions`、`subscriptions`、`login_logs`、`ai_quota`
+
+### 数据生产管线（生成/入库分离）
+
+教程、题库、知识点、速查表、公式、口算、掌握度、提示词等数据由两条独立脚本链路生产，**生成与入库分离**：
+
+1. **生成侧** `scripts/pi-agent-edu/`：交互式 CLI，通过 pi agent（`@earendil-works/pi-coding-agent` SDK）生成内容。系统提示词要求输出「JSON 信封」（8 种，键名固定），`save`/`退出` 写入 `staging/<kind>/generated-<timestamp>.json`。
+2. **入库侧** `scripts/ingest-data/`：确定性 CLI（`npm run ingest`），读取 `staging/<kind>/*.json`，用 `satisfies` + TypeScript 编译器 API 对 `src/data/*/types.ts` 真实类型做校验，再合并进 `src/data/` 并接线 `index.ts`/`ALL_*`。零代码执行、只追加不覆盖。
+
+`staging/`（已 .gitignore）按 kind 分目录：
+
+| kind（目录） | 信封键 | 数据类型 |
+|--------------|--------|----------|
+| `tutorials` | `tutorial` | `Tutorial`（单元含 10 道 practice 题，难度 easy/medium/hard） |
+| `questions` | `questions` | `Question[]`（独立题库，难度 basic/intermediate/advanced，含 stem/tags/knowledgePointIds） |
+| `knowledge` | `knowledgePoints`（+`grade`+`subject`） | `KnowledgePoint[]` |
+| `cheatsheets` | `cheatsheets` | `CheatSheet[]` |
+| `formulas` | `formulas` | `Formula[]` |
+| `mental-math` | `mnemonics`（+`grade`） | `MentalMathMnemonic[]` |
+| `techniques` | `techniques` | `Technique[]` |
+| `prompts` | `prompts` | `PromptTemplate[]` |
+
+> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本各有一套测试（`node --import tsx --test`），独立于主应用。
 
 ## 部署
 

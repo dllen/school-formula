@@ -6,7 +6,7 @@
 
 ## 1. 项目概述
 
-`school-formula` 是一个面向家长与学生的**中小学核心知识点学习平台**，品牌名为 **拾艺院 · 核心知识点库**。它是一个纯前端单页应用（SPA），无后端服务，所有学科数据、速查表、古籍阅读内容均以静态 TypeScript 模块形式内置在仓库中。
+`school-formula` 是一个面向家长与学生的**中小学核心知识点学习平台**，品牌名为 **拾艺院 · 核心知识点库**。前端为 React SPA，后端为 Cloudflare Workers（认证/会员/AI 网关），学习数据（知识点、速查表、教程、题库等）以静态 TypeScript 模块形式内置在仓库中。
 
 主要功能模块：
 
@@ -32,28 +32,31 @@
 | AI 调用 | `openai` SDK 6.15.0（在浏览器中直接调用第三方兼容 OpenAI 的 API） |
 | 包管理器 | npm（`package-lock.json` **不**纳入版本控制，CI 使用 `npm install`；请勿在 `actions/setup-node` 中启用 `cache: 'npm'`，否则会因找不到锁文件而报错） |
 
-> 注意：项目未配置测试框架，仓库中不存在 `*.test.*`、`*.spec.*`、`vitest`、`jest`、`playwright`、`cypress` 等测试相关文件。
+> 测试：主应用用 Vitest（`npm test`）；`scripts/ingest-data` 与 `scripts/pi-agent-edu` 各自用 Node 内置 test runner（`node --import tsx --test`）。
 
 ### 当前构建/检查状态
 
-- `npm run tsc -b --noEmit`（TypeScript 类型检查）：✅ 通过
-- `npm run lint`（ESLint flat config）：✅ 零错误（2026-09-06 更新；历史曾存在 `react-hooks/set-state-in-effect` 与 `react-refresh` 两处 lint 错误，均已修复：`useEffect` 同步 `setState` 改为条件挂载、`useAuth` 从组件文件移至 `auth-context.ts`）
-- `npm run build`（Vite 生产构建）：✅ 通过（2026-09-06 更新）> 以下问题在当前 `main` 分支已存在，并非本次 AGENTS.md 编写引入。
-
-- `npm run lint` 会报错：`src/components/SettingsModal.tsx:21` 中在 `useEffect` 内直接调用 `setState`，触发 `react-hooks/set-state-in-effect` 规则。
-- `npm run build` 会报错：`src/components/Home.tsx` 使用了 `<ShijiView />` 但未导入该组件，导致 TypeScript 编译失败（`TS2304: Cannot find name 'ShijiView'`）。
-
-在继续功能开发前，建议先修复上述两个问题，使 `npm run lint` 与 `npm run build` 均通过。
+- `npm run build`（TypeScript 项目引用编译 + Vite 构建）：✅ 通过
+- `npm run lint`（ESLint flat config）：✅ 零错误（含 `scripts/` 下两个子包）
+- `npm test`（Vitest）：主应用 126 个测试通过；Vitest 会把 `scripts/**/*.test.ts`（用 Node 内置 `node:test` 的文件）计入 "No test suite found" 的 failed files——这是收集层面的已知噪声，这两个子包用各自 runner（`node --import tsx --test`）单独通过。
 
 ---
 
 ## 3. 项目结构
 
+> 此树为精简版；完整结构见 `CLAUDE.md`（含 `src/components/`、`src/data/` 的子目录与 `scripts/ingest-data` 的 adapter 列表）。
+
 ```
 .
-├── .github/workflows/deploy.yml   # GitHub Pages 自动部署工作流
+├── .github/workflows/             # CI/CD（deploy.yml 与 deploy-cloudflare.yml）
+├── db/schema.sql                  # D1 表结构
+├── docs/superpowers/              # 设计 specs 与实现 plans
 ├── extra-data/                    # 原始数据文件（常用汉字库 2000/3500）
 ├── public/                        # 静态资源（vite.svg 等）
+├── scripts/
+│   ├── ingest-data/               # 数据入库侧（确定性 CLI，读 staging 合并进 src/data）
+│   └── pi-agent-edu/              # 数据生成侧（pi agent 交互式 CLI，写 staging JSON）
+├── worker/                        # Cloudflare Workers 后端（auth/user/ai 路由）
 ├── src/
 │   ├── assets/                    # 图片/图标资源
 │   ├── components/                # React 组件
@@ -116,9 +119,27 @@ npm run preview
 
 # 代码检查
 npm run lint
+
+# 运行测试
+npm test
+
+# 数据生产（生成/入库分离）
+npm run gen:dsl          # pi-agent-edu 引导模式：生成 JSON 到 staging/
+npm run ingest           # ingest-data 把 staging/ 合并进 src/data/
+npm run ingest:list      # 列出 staging 文件
+npm run ingest:dry       # 校验但不写盘
 ```
 
 构建产物输出到 `dist/` 目录。`build` 脚本会先执行 `tsc -b` 进行 TypeScript 项目引用编译，再由 Vite 打包。
+
+### 数据生产管线
+
+内容数据（教程/题库/知识点/速查表/公式/口算/掌握度/提示词）由两条脚本链路生产：
+
+- **生成侧** `scripts/pi-agent-edu/`：pi agent 交互式 CLI，系统提示词要求输出 8 种「JSON 信封」，`save`/`退出` 写 `staging/<kind>/generated-<ts>.json`。
+- **入库侧** `scripts/ingest-data/`：确定性 CLI，读 `staging/<kind>/*.json` → `satisfies` + TypeScript 编译器 API 对 `src/data/*/types.ts` 校验 → 合并 + 接线 `index.ts`/`ALL_*`。零代码执行、只追加不覆盖。
+
+详见 `CLAUDE.md` 的「数据生产管线」小节（含 kind→信封键→数据类型映射表）。
 
 ---
 
@@ -198,9 +219,8 @@ npm run lint
 
 ## 9. 已知限制与可改进点
 
-- **构建与 lint 当前存在已知错误**（见第 2 节），需先修复再合并新功能。
-- 没有单元测试、集成测试或 E2E 测试。
-- `README.md` 仍是 Vite 模板的默认说明，未针对本项目重写。
+- 没有端到端测试覆盖「生成 → staging → 入库」的完整链路（需真实 pi 模型/鉴权，当前仅各侧单测）。
+- `scripts/**/*.test.ts` 用 Node 内置 `node:test`，`npm test`（Vitest）会将其误报为 "No test suite found"（收集层面噪声，不影响各侧独立跑通，见第 2 节）。
 - `App.css` 是模板遗留文件，当前未被引用，可考虑删除或合并到 `index.css`。
 - GitHub Pages 的 `base` 路径与部署文档不一致（见第 7 节）。
 - 古籍阅读模块目前只包含少量示例章节，可继续扩展 `src/data/zizhi.ts` 与 `src/data/shiji.ts`。
