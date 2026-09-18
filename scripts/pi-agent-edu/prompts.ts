@@ -22,34 +22,34 @@ export function getSystemPrompt(): string {
 - 风格：准确平实（初中）、精确严谨（高中），始终保持探究感
 
 【输出格式】
-你的输出必须是严格合法的 TypeScript 对象字面量，符合以下接口之一：
+你的输出必须是严格合法的 JSON，不要 markdown 代码围栏（不要 \`\`\`json）、不要任何解释文字。
+输出一个「信封」对象，信封只有下面列出的键之一。字段形状以仓库真实类型为准：
+生成前用 read 工具读取 src/data/ 下对应的 types.ts 确认字段（如 src/data/tutorials/types.ts）。
 
-// 教程单元
-interface TutorialUnit {
-  id: string;
-  title: string;
-  order: number;
-  duration: string;
-  objectives: string[];
-  teach: { hook: string; summary: string; };
-  learn: {
-    sections: { title: string; content: string; diagrams?: {type:'mermaid'|'svg';content:string;caption?:string}[]; examples?: {title:string;problem:string;solution:string;tip:string}[] }[];
-    tips: string[];
-  };
-  practice: { id: string; type: 'choice'|'fill'|'truefalse'|'solve'; question: string; options?: string[]; answer: string|string[]; explanation: string; difficulty: 'easy'|'medium'|'hard' }[];
-  aiContext: string;
-}
+8 种信封（键名固定，kind = 入库目录）：
 
-// 练习题组
-interface Question {
-  id: string;
-  type: 'choice'|'fill'|'truefalse'|'solve';
-  question: string;
-  options?: string[];
-  answer: string | string[];
-  explanation: string;
-  difficulty: 'easy'|'medium'|'hard';
-}
+1. 教程单元：{ "tutorial": { id, title, order, duration, objectives, teach:{hook,summary}, learn:{sections,tips}, practice:[10 题], aiContext } }
+   → kind "tutorials"
+2. 题库：{ "questions": [ { id, type:'choice'|'fill-blank'|'true-false', difficulty:'basic'|'intermediate'|'advanced', stem, options?, answer, explanation, tags, knowledgePointIds, subject, grade } ] }
+   → kind "questions"（注意：这是独立题库的 Question，字段含 stem/tags/knowledgePointIds/subject/grade，与教程内的 practice 题不同）
+3. 知识点：{ "grade": 'primary'|'middle'|'high', "subject": '数学', "knowledgePoints": [ { id, title, description, tags?, detailedExplanation?, studyTips?, practiceQuestions?, funEmoji?, funFact?, funStory?, funQuestion?, funQuestionAnswer?, tutorialContent? } ] }
+   → kind "knowledge"
+4. 速查表：{ "cheatsheets": [ { id, title, grade, ... } ] }
+   → kind "cheatsheets"
+5. 公式：{ "formulas": [ { id, name, expression, grade, subject, condition, hint? } ] }
+   → kind "formulas"
+6. 口算：{ "grade": 'primary'|'middle'|'high', "mnemonics": [ { id, title, rhyme, scene, example, explanation?, tags } ] }
+   → kind "mental-math"
+7. 掌握度技巧：{ "techniques": [ { id, grade, stage:'小学'|'中学'|'高中', name, summary, kou, steps, prereq, fig?, examples?, mistakes?, realWorld? } ] }
+   → kind "techniques"
+8. 提示词模板：{ "prompts": [ { id, title, scenario:'explain'|'generate'|'assess'|'plan'|'error-analysis'|'derivation'|'explore'|'interaction', icon, description, tags, template, variables, grades, subjects, knowledgePointIds?, gradeLevel? } ] }
+   → kind "prompts"（usageCount/rating/author 由入库侧注入，无需输出）
+
+【规则】
+1. 只输出 JSON 信封对象本身，不要围栏、不要解释。
+2. 字符串用双引号。
+3. 计算题必须验算答案；概念与课程标准一致。
+4. id 全局唯一，遵循既有 id 约定（先 read 现有数据文件确认）。
 
 【内容质量标准】
 
