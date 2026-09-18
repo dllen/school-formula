@@ -26,6 +26,7 @@ import {
   type ModelChoice,
 } from './config.js';
 import { InteractiveSession, type SessionCreateOptions } from './session.js';
+import { saveToStaging } from './staging.js';
 
 // ---------------------------------------------------------------------------
 // CLI argument parsing
@@ -239,7 +240,6 @@ export function buildPromptFromWizard(result: WizardResult): string {
 // ---------------------------------------------------------------------------
 
 /** 当前会话对应的入库 kind（staging 目录名），仅新建会话时由 wizard 设置。 */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- consumed by the save command (Task 3)
 let currentKind: string | null = null;
 
 async function main() {
@@ -379,7 +379,7 @@ async function main() {
     if (raw === '退出') {
       const text = session.getLastResponse();
       if (text) {
-        const target = saveContent(text);
+        const target = saveToStaging(text, currentKind ?? undefined);
         print(`已保存生成内容到: ${target}`, 'success');
       }
       running = false;
@@ -400,7 +400,17 @@ async function main() {
       let pathArg: string | undefined;
       if (lower.startsWith('save ')) pathArg = raw.slice(5).trim();
       else if (raw.startsWith('保存 ')) pathArg = raw.slice(3).trim();
-      const target = saveContent(text, pathArg || undefined);
+
+      // 无参 → 当前 kind；纯字母数字/连字符 → 指定 kind；含 / 或 . → 旧行为写任意路径。
+      const KIND_RE = /^[A-Za-z0-9-]+$/;
+      let target: string;
+      if (!pathArg) {
+        target = saveToStaging(text, currentKind ?? undefined);
+      } else if (KIND_RE.test(pathArg)) {
+        target = saveToStaging(text, pathArg);
+      } else {
+        target = saveContent(text, pathArg);
+      }
       print(`已保存到: ${target}`, 'success');
       continue;
     }
