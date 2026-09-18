@@ -19,6 +19,16 @@ test('appendToConstArray 匹配非导出 const 数组', () => {
   assert.ok(out.indexOf('a') < out.indexOf('b'));
 });
 
+test('appendToConstArray 跳过字符串字面量内的 [ 与 ]', () => {
+  const src = `const X: T[] = [\n  { text: 'a]b', range: '[0,1)' },\n];\n`;
+  const out = appendToConstArray(src, 'X', [{ text: 'c' }]);
+  // 既有元素保持完整（字符串内的 ] 与 [ 未被当作数组边界）
+  assert.ok(out.includes(`{ text: 'a]b', range: '[0,1)' }`));
+  // 新条目插入在既有元素之后、数组闭合之前
+  assert.ok(out.includes(`"text": "c"`));
+  assert.ok(out.indexOf(`'[0,1)'`) < out.indexOf(`"text": "c"`));
+});
+
 test('insertLineAfter 在锚点后插入一行', () => {
   const out = insertLineAfter("line1\nline2\n", 'line1', 'INSERTED');
   assert.equal(out, "line1\nINSERTED\nline2\n");

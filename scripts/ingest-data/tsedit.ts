@@ -17,13 +17,17 @@ export function appendToConstArray(content: string, name: string, items: unknown
   if (open === -1) throw new Error(`未找到数组起始: ${name}`);
   let depth = 0;
   let close = open;
+  let quote: '"' | "'" | '`' | null = null;
   for (let i = open; i < content.length; i++) {
     const c = content[i];
-    if (c === '[') depth++;
-    else if (c === ']') {
-      depth--;
-      if (depth === 0) { close = i; break; }
+    if (quote) {
+      if (c === '\\') { i++; continue; }
+      if (c === quote) quote = null;
+      continue;
     }
+    if (c === '"' || c === "'" || c === '`') { quote = c; continue; }
+    if (c === '[') depth++;
+    else if (c === ']') { depth--; if (depth === 0) { close = i; break; } }
   }
   if (depth !== 0) throw new Error(`数组括号不匹配: ${name}`);
   const rendered = items.map(renderArrayItem).join('\n');
