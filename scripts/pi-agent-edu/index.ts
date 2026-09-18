@@ -122,8 +122,31 @@ const GRADES_BY_STAGE: Record<Stage, readonly string[]> = {
   '高中': ['高一', '高二', '高三'],
 };
 
-const TASKS = ['TutorialUnit（教程单元）', '练习题', '错题分析', '学习规划'] as const;
+const TASKS = [
+  '教程单元',
+  '题库',
+  '知识点',
+  '速查表',
+  '公式',
+  '口算',
+  '掌握度技巧',
+  '提示词模板',
+] as const;
 type Task = typeof TASKS[number];
+
+/** 任务类型 → 入库 kind（staging 目录名）。 */
+export function kindFromTask(task: Task): string {
+  switch (task) {
+    case '教程单元': return 'tutorials';
+    case '题库': return 'questions';
+    case '知识点': return 'knowledge';
+    case '速查表': return 'cheatsheets';
+    case '公式': return 'formulas';
+    case '口算': return 'mental-math';
+    case '掌握度技巧': return 'techniques';
+    case '提示词模板': return 'prompts';
+  }
+}
 
 const DIFFICULTIES = ['easy（容易）', 'medium（中等）', 'hard（困难）'] as const;
 
@@ -173,7 +196,7 @@ export async function runWizard(models: ModelChoice[]): Promise<WizardResult> {
   // 5. Select difficulty and count (only for practice questions)
   let difficulty: string | undefined;
   let questionCount: string | undefined;
-  if (task === '练习题') {
+  if (task === '题库') {
     const diff = await selectOption('请选择题型难度：', DIFFICULTIES);
     print(`已选择：${diff}\n`, 'info');
     difficulty = diff.split('（')[0];
@@ -188,31 +211,36 @@ export async function runWizard(models: ModelChoice[]): Promise<WizardResult> {
 
 export function buildPromptFromWizard(result: WizardResult): string {
   const { stage, subject, grade, task, difficulty, questionCount } = result;
-
   switch (task) {
-    case 'TutorialUnit（教程单元）':
-      return `生成【${stage}${subject} - ${grade}】TutorialUnit，包含10道练习题（easy:medium:hard = 4:4:2）`;
-
-    case '练习题': {
+    case '教程单元':
+      return `生成【${stage}${subject} - ${grade}】的 TutorialUnit，输出 JSON 信封 { "tutorial": {…} }，含 10 道练习题（easy:medium:hard = 4:4:2）`;
+    case '题库': {
       const count = questionCount || '10';
       const diff = difficulty ? `（${difficulty}）` : '（easy:medium:hard = 4:4:2）';
-      return `生成${count}道${stage}${subject}${grade}练习题${diff}`;
+      return `生成 ${count} 道${stage}${subject}${grade}练习题，输出 JSON 信封 { "questions": [ …Question ] }，难度${diff}`;
     }
-
-    case '错题分析':
-      return `${stage}${subject}${grade}错题分析：分析学习中的常见错误，提供典型例题和讲解`;
-
-    case '学习规划':
-      return `为${stage}${subject}${grade}生成学习计划（期中/期末复习规划）`;
-
-    default:
-      return `生成${stage}${subject}${grade}学习内容`;
+    case '知识点':
+      return `生成【${stage}${subject} - ${grade}】知识点，输出 JSON 信封 { "grade", "subject", "knowledgePoints": [ … ] }`;
+    case '速查表':
+      return `生成【${stage}${subject}】速查表，输出 JSON 信封 { "cheatsheets": [ … ] }`;
+    case '公式':
+      return `生成【${stage}${subject}】公式，输出 JSON 信封 { "formulas": [ … ] }`;
+    case '口算':
+      return `生成【${stage}${subject}】口算口诀，输出 JSON 信封 { "grade", "mnemonics": [ … ] }`;
+    case '掌握度技巧':
+      return `生成【${stage}${subject}】掌握度技巧，输出 JSON 信封 { "techniques": [ … ] }`;
+    case '提示词模板':
+      return `生成【${stage}${subject}】提示词模板，输出 JSON 信封 { "prompts": [ … ] }`;
   }
 }
 
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
+
+/** 当前会话对应的入库 kind（staging 目录名），仅新建会话时由 wizard 设置。 */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars -- consumed by the save command (Task 3)
+let currentKind: string | null = null;
 
 async function main() {
   const args = parseCliArgs();
@@ -298,6 +326,7 @@ async function main() {
     config = baseConfig();
   } else {
     const wizard = await runWizard(models);
+    currentKind = kindFromTask(wizard.task);
     config = withModel(baseConfig(), wizard.provider, wizard.model);
     wizardPrompt = buildPromptFromWizard(wizard);
   }
