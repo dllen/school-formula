@@ -34,23 +34,27 @@ export async function runIngest(root: string, paths: string[], dryRun: boolean):
   const ctx: IngestContext = { root, dryRun, knowledgePointIds: await loadKnowledgePointIds(root) };
   const reports: string[] = [];
   for (const p of paths) {
-    const kind = kindFromPath(p);
-    const adapter = getAdapter(kind);
-    const raw = JSON.parse(readFileSync(p, 'utf-8'));
-    const value = adapter.extract(raw);
-    const typeErrs = typeCheck(value, adapter.typeRef, root);
-    const bizErrs = adapter.validate(value, ctx);
-    if (typeErrs.length || bizErrs.length) {
-      reports.push(`✗ ${p}\n  ${[...typeErrs, ...bizErrs].join('\n  ')}`);
-      continue;
+    try {
+      const kind = kindFromPath(p);
+      const adapter = getAdapter(kind);
+      const raw = JSON.parse(readFileSync(p, 'utf-8'));
+      const value = adapter.extract(raw);
+      const typeErrs = typeCheck(value, adapter.typeRef, root);
+      const bizErrs = adapter.validate(value, ctx);
+      if (typeErrs.length || bizErrs.length) {
+        reports.push(`✗ ${p}\n  ${[...typeErrs, ...bizErrs].join('\n  ')}`);
+        continue;
+      }
+      if (dryRun) {
+        reports.push(`✓ ${p}（dry-run，未写盘）`);
+        continue;
+      }
+      const merged = adapter.merge(value, raw, ctx);
+      const wired = adapter.wire(value, raw, ctx);
+      reports.push(`✓ ${p} → 合并 ${merged.files.join(', ')}${wired.files.length ? ' / 接线 ' + wired.files.join(', ') : ''}`);
+    } catch (err) {
+      reports.push(`✗ ${p}\n  ${err instanceof Error ? err.message : String(err)}`);
     }
-    if (dryRun) {
-      reports.push(`✓ ${p}（dry-run，未写盘）`);
-      continue;
-    }
-    const merged = adapter.merge(value, raw, ctx);
-    const wired = adapter.wire(value, raw, ctx);
-    reports.push(`✓ ${p} → 合并 ${merged.files.join(', ')}${wired.files.length ? ' / 接线 ' + wired.files.join(', ') : ''}`);
   }
   return reports;
 }
