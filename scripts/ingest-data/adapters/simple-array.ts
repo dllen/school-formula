@@ -11,10 +11,10 @@ export interface SimpleArrayConfig {
   typeRef: TypeRef;
   /** 目标文件（相对仓库根）。 */
   file: string;
-  /** 由单个 item 推导目标 const 数组名（用于按 grade 分数组）。 */
-  arrayName: (item: any) => string;
+  /** 由单个 item 推导目标 const 数组名（用于按 grade 分数组）。`raw` 为完整 JSON 信封。 */
+  arrayName: (item: unknown, raw: unknown) => string;
   /** 额外业务校验（id 唯一之外）。 */
-  checks?: (items: any[], ctx: IngestContext) => string[];
+  checks?: (items: { id: string }[], ctx: IngestContext) => string[];
 }
 
 export function simpleArrayAdapter(cfg: SimpleArrayConfig): Adapter {
@@ -34,13 +34,13 @@ export function simpleArrayAdapter(cfg: SimpleArrayConfig): Adapter {
       if (cfg.checks) errs.push(...cfg.checks(items, ctx));
       return errs;
     },
-    merge(value, _raw, ctx) {
+    merge(value, raw, ctx) {
       const abs = join(ctx.root, cfg.file);
       const content = readFileSync(abs, 'utf-8');
-      const items = value as any[];
-      const groups = new Map<string, any[]>();
+      const items = value as Record<string, unknown>[];
+      const groups = new Map<string, Record<string, unknown>[]>();
       for (const it of items) {
-        const name = cfg.arrayName(it);
+        const name = cfg.arrayName(it, raw);
         if (!groups.has(name)) groups.set(name, []);
         groups.get(name)!.push(it);
       }

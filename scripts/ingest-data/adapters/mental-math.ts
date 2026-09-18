@@ -11,5 +11,5 @@ export const mentalMathAdapter = simpleArrayAdapter({
   envelopeKey: 'mnemonics',
   typeRef: { path: `${getRoot()}/src/data/mentalMath.ts`, name: 'MentalMathMnemonic', expr: 'MentalMathMnemonic[]' },
   file: 'src/data/mentalMath.ts',
-  arrayName: (it) => ARRAYS[(it as { grade: string }).grade] ?? 'PRIMARY_MNEMONICS',
+  arrayName: (_item, raw) => ARRAYS[(raw as { grade: string }).grade] ?? 'PRIMARY_MNEMONICS',
 });

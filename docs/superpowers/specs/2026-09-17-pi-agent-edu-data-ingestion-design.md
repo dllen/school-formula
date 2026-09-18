@@ -46,7 +46,7 @@ staging/                          # 仓库根，.gitignore
   knowledge/<id>.json             # { "grade": …, "subject": …, "knowledgePoints": […] }
   cheatsheets/<id>.json           # { "cheatsheets": […CheatSheet] }
   formulas/<id>.json              # { "formulas": […Formula] }
-  mental-math/<id>.json           # { "mnemonics": […MentalMathMnemonic] }
+  mental-math/<id>.json           # { "grade": …, "mnemonics": […MentalMathMnemonic] }
   techniques/<id>.json            # { "techniques": […Technique] }
   prompts/<id>.json               # { "prompts": […PromptTemplate] }
 ```
@@ -112,7 +112,7 @@ scripts/ingest-data/
 | `knowledge` | `{ grade, subject, knowledgePoints[] }` | `knowledge/<stage>/<subject>.ts` 的 `KnowledgePoint[]` | 新学科时改 `knowledge/<stage>.ts` import + subjects | kp id 唯一；`tutorialContent` 形状 |
 | `cheatsheet` | `{ cheatsheets: CheatSheet[] }` | `cheatsheets.ts` `ALL_CHEATSHEETS[]` | 无（单文件） | id 唯一 |
 | `formula` | `{ formulas: Formula[] }` | `formulas.ts` | 无 | id 唯一；`grade/subject` 枚举 |
-| `mental-math` | `{ mnemonics: MentalMathMnemonic[] }` | `mentalMath.ts` | 无 | id 唯一 |
+| `mental-math` | `{ grade, mnemonics: MentalMathMnemonic[] }` | `mentalMath.ts` | 无 | id 唯一 |
 | `technique` | `{ techniques: Technique[] }` | `mastery/techniques.ts` `TECHNIQUES[]` | 无 | id 唯一；`stage ∈ 小学/中学/高中`；`prereq` 引用已存在技巧（可 null） |
 | `prompt` | `{ prompts: PromptTemplate[] }` | `prompts/<scenario>/index.ts`（追加内联字面量） | 无（8 个 scenario 已在 `prompts/index.ts`） | id 唯一；`scenario` 枚举；`usageCount/rating` 归零 |
 
