@@ -19,32 +19,39 @@ function targetFile(env: KnowledgeEnvelope, ctx: IngestContext): string {
   return join(ctx.root, 'src', 'data', 'knowledge', stage, `${key}.ts`);
 }
 
+function existingIds(env: KnowledgeEnvelope, ctx: IngestContext): Set<string> {
+  const abs = targetFile(env, ctx);
+  return existsSync(abs) ? extractIds(readFileSync(abs, 'utf-8')) : new Set<string>();
+}
+
 export const knowledgeAdapter: Adapter = {
   kind: 'knowledge',
-  typeRef: { path: join(getRoot(), 'src/data/types.ts'), name: 'KnowledgePoint', expr: 'KnowledgePoint[]' },
+  typeRef: { path: join(getRoot(), 'src/data/types.ts'), name: 'KnowledgePoint', expr: '{ grade: unknown; subject: unknown; knowledgePoints: KnowledgePoint[] }' },
   extract(raw) {
-    return (raw as KnowledgeEnvelope).knowledgePoints;
+    return raw as KnowledgeEnvelope;
   },
   validate(value, ctx) {
-    if (!Array.isArray(value)) return ['payload 必须是数组'];
-    const items = value as { id: string }[];
+    const env = value as KnowledgeEnvelope;
+    if (!Array.isArray(env.knowledgePoints)) return ['payload 必须是数组'];
+    const items = env.knowledgePoints;
     const errs: string[] = [];
     for (const id of duplicateIds(items)) errs.push(`重复 id: ${id}`);
+    for (const id of collidingIds(items, existingIds(env, ctx))) errs.push(`id 已存在: ${id}`);
     return errs;
   },
-  merge(value, raw, ctx) {
-    const env = raw as KnowledgeEnvelope;
+  merge(value, _raw, ctx) {
+    const env = value as KnowledgeEnvelope;
     const abs = targetFile(env, ctx);
     const key = SUBJECT_KEYS[env.subject];
-    const items = value as { id: string }[];
+    const items = env.knowledgePoints;
     if (!existsSync(abs)) {
       writeFileSync(abs, `import type { KnowledgePoint } from '../../types';\n\nexport const ${key}: KnowledgePoint[] = [\n];\n`, 'utf-8');
     }
     writeFileSync(abs, appendToConstArray(readFileSync(abs, 'utf-8'), key, items), 'utf-8');
     return { files: [abs], inserted: items.length };
   },
-  wire(value, raw, ctx) {
-    const env = raw as KnowledgeEnvelope;
+  wire(value, _raw, ctx) {
+    const env = value as KnowledgeEnvelope;
     const stage = gradeToStage(env.grade);
     const key = SUBJECT_KEYS[env.subject];
     const agg = join(ctx.root, 'src', 'data', 'knowledge', `${stage}.ts`);
