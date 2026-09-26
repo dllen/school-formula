@@ -1,6 +1,6 @@
 import { getToken } from '../utils/jwt';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8787';
+import { API_BASE } from './api-base';
 
 async function apiFetch(path: string, options: RequestInit = {}): Promise<Response> {
   const token = getToken();
