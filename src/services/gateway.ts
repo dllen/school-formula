@@ -99,3 +99,64 @@ export async function callGateway(
 
     return parseSSEStream(upstream.body, onStream);
 }
+
+
+export interface ChatMessage {
+    role: 'system' | 'user' | 'assistant';
+    content: string;
+}
+
+export interface ChatGatewayRequest {
+    messages: ChatMessage[];
+    model?: string;
+    stream?: boolean;
+}
+
+/**
+ * 调用 worker /api/ai/gateway 端点进行多轮对话（需 JWT）。
+ * 与 callGateway 不同，此函数发送完整 messages 数组以支持上下文记忆。
+ */
+export async function chatGateway(
+    request: ChatGatewayRequest,
+    onStream: (chunk: string) => void,
+): Promise<string> {
+    const token = getToken();
+    if (!token) {
+        throw new Error('未登录，请先登录后使用 AI 功能');
+    }
+
+    let upstream: Response;
+    try {
+        upstream = await fetch(`${API_BASE}/api/ai/gateway`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'text/event-stream',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                messages: request.messages,
+                model: request.model ?? '',
+                stream: request.stream ?? true,
+            }),
+        });
+    } catch {
+        throw new Error('AI 服务网络请求失败，请检查网络后重试');
+    }
+
+    if (!upstream.ok) {
+        let detail = `status=${upstream.status}`;
+        try {
+            const errBody = (await upstream.json()) as { error?: string; code?: string };
+            detail = errBody.error ?? detail;
+            if (errBody.code) detail += ` (${errBody.code})`;
+        } catch { /* ignore */ }
+        throw new Error(detail);
+    }
+
+    if (!upstream.body) {
+        throw new Error('AI 服务返回空响应');
+    }
+
+    return parseSSEStream(upstream.body, onStream);
+}
