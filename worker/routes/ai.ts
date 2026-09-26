@@ -64,7 +64,7 @@ function estimateTokens(text: string): number {
  */
 async function proxyToGateway(
   env: Env,
-  body: { prompt?: string; model?: string; stream?: boolean },
+  body: { prompt?: string; messages?: Array<{ role: string; content: string }>; model?: string; stream?: boolean },
   userId: string,
 ): Promise<Response> {
   const model = body.model?.trim() || env.AI_GATEWAY_MODEL || 'deepseek-chat';
@@ -81,13 +81,16 @@ async function proxyToGateway(
   const url = `${base}/chat/completions`;
   const stream = body.stream !== false;
 
+  // 多-turn chat：如果客户端提供了 messages 则直接使用，否则退化为单 prompt 模式
+  const messages = body.messages ?? [
+    { role: 'system', content: '你是一个有帮助的 AI 助手，请用中文回答。' },
+    { role: 'user', content: body.prompt || '' },
+  ];
+
   const upstreamBody = JSON.stringify({
     model,
     stream,
-    messages: [
-      { role: 'system', content: '你是一个有帮助的 AI 助手，请用中文回答。' },
-      { role: 'user', content: body.prompt || '' },
-    ],
+    messages,
   });
 
   let upstream: Response;
@@ -207,8 +210,8 @@ export async function handleAI(
     );
   }
 
-  const body = await request.json().catch(() => null) as { prompt?: string; model?: string; stream?: boolean } | null;
-  if (!body?.prompt) return errorResponse('缺少 prompt');
+  const body = await request.json().catch(() => null) as { prompt?: string; messages?: Array<{ role: string; content: string }>; model?: string; stream?: boolean } | null;
+  if (!body?.prompt && !body?.messages) return errorResponse('缺少 prompt 或 messages');
 
   const text = await proxyToGateway(env, body, payload.sub);
   return text;

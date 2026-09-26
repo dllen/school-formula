@@ -6,6 +6,7 @@ import { MentalMathView } from './MentalMathView';
 import { NotesView } from './NotesView';
 import { PracticeView } from './PracticeView';
 import { ShijiView } from './ShijiView';
+import { AIChatView } from './AIChatView';
 import { TutorialView } from './TutorialView';
 import { ZizhiView } from './ZizhiView';
 import { MasteryView } from './MasteryView';
@@ -15,7 +16,7 @@ import { KnowledgeList } from './KnowledgeList';
 import { SubjectGrid } from './SubjectGrid';
 import { type GradeLevel, KNOWLEDGE_DATA, type Subject } from '../data/knowledge';
 
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'mastery' | 'practice' | 'notes' | 'zizhi' | 'shiji';
+type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'mastery' | 'practice' | 'notes' | 'zizhi' | 'shiji' | 'ai-chat';
 
 export function Home() {
     const [searchParams] = useSearchParams();
@@ -25,7 +26,7 @@ export function Home() {
     // Initialize view from URL query params (e.g. ?view=practice&kp=p-math-1)
     const [activeView, setActiveView] = useState<ViewType>(() => {
         const viewParam = searchParams.get('view');
-        if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery', 'practice', 'notes', 'zizhi', 'shiji'].includes(viewParam)) {
+        if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery', 'practice', 'notes', 'zizhi', 'shiji', 'ai-chat'].includes(viewParam)) {
             return viewParam as ViewType;
         }
         return 'knowledge';
@@ -99,6 +100,8 @@ export function Home() {
                     <NotesView />
                 ) : activeView === 'zizhi' ? (
                     <ZizhiView />
+                ) : activeView === 'ai-chat' ? (
+                    <AIChatView />
                 ) : (
                     <ShijiView />
                 )}

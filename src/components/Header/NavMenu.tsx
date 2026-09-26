@@ -32,6 +32,12 @@ const NAV_GROUPS: NavGroup[] = [
       { value: 'shiji', label: '史记' },
     ],
   },
+  {
+    label: 'AI 助手',
+    views: [
+      { value: 'ai-chat', label: 'AI 助教' },
+    ],
+  },
 ];
 
 interface NavMenuProps {
