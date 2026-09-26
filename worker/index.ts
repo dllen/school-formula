@@ -86,7 +86,11 @@ export default {
       }
 
       const newHeaders = new Headers(response.headers);
-      Object.entries(corsHeaders).forEach(([k, v]) => newHeaders.set(k, v));
+      // 只补 CORS 头；Content-Type 由各路由自己设置（如 SSE 流是 text/event-stream），不覆盖
+      newHeaders.set('Access-Control-Allow-Origin', corsOrigin);
+      if (!newHeaders.has('Content-Type')) {
+        newHeaders.set('Content-Type', 'application/json');
+      }
       return new Response(response.body, { status: response.status, headers: newHeaders });
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Internal server error';
