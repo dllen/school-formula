@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ViewType } from './types';
 
 interface NavGroup {
@@ -47,6 +47,24 @@ interface NavMenuProps {
 
 export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const closeTimer = useRef<number | null>(null);
+
+  // hover intent：移出后延迟关闭，给用户斜向移动留出时间；移入则取消关闭
+  const open = (label: string) => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    setOpenGroup(label);
+  };
+  const scheduleClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = window.setTimeout(() => setOpenGroup(null), 200);
+  };
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
 
   return (
     <nav aria-label="主导航" className="hidden md:flex gap-1 bg-[#F5F6F7] p-1 rounded-lg">
@@ -58,14 +76,14 @@ export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
           <div
             key={group.label}
             className="relative"
-            onMouseEnter={() => setOpenGroup(group.label)}
-            onMouseLeave={() => setOpenGroup(null)}
+            onMouseEnter={() => open(group.label)}
+            onMouseLeave={scheduleClose}
           >
             <button
               type="button"
               aria-expanded={isOpen}
               aria-haspopup="menu"
-              onClick={() => setOpenGroup(isOpen ? null : group.label)}
+              onClick={() => (isOpen ? setOpenGroup(null) : open(group.label))}
               className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
                 isActive ? 'bg-white text-[#3370FF] shadow-sm' : 'text-[#646A73] hover:text-[#1F2329]'
               }`}
@@ -83,8 +101,9 @@ export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
               <div
                 role="menu"
                 aria-label={group.label}
-                className="absolute left-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-[#F0F1F2] py-1 z-50"
+                className="absolute left-0 top-full pt-1 w-40 z-50"
               >
+                <div className="bg-white rounded-lg shadow-lg border border-[#F0F1F2] py-1">
                 {group.views.map((view) => (
                   <button
                     key={view.value}
@@ -103,6 +122,7 @@ export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
                     {view.label}
                   </button>
                 ))}
+                </div>
               </div>
             )}
           </div>
