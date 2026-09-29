@@ -357,7 +357,7 @@ export default defineConfig({
 |------|---|---------|
 | AC-1 | `npm run lint` | 零 error、零 warning |
 | AC-2 | `npm run build` | tsc -b 通过、vite build 0 错 |
-| AC-3 | `npm test`（vitest） | 126（src 原测试）+ 1（chat-history）+ 5（mastery）+ **8 新 generator** = 140 个全过；无 "No test suite found" |
+| AC-3 | `npm test`（vitest） | 全部通过；无 "No test suite found"。（回填修正：原预估 126+1+5+8=140 系误算，实际落地为 105+8=**113** 个；B 子项目接管 scripts/ 测试后增至 164） |
 | AC-4 | `cd scripts/pi-agent-edu && npm test` | 仍全过（未触动） |
 | AC-5 | `cd scripts/ingest-data && npm test` | 仍全过（未触动） |
 | AC-6 | `src/services/ai/{config,storage,client,knowledge,tutorial,practice,classical,template,chat,index}.ts` | 10 个文件全部存在 |
@@ -456,6 +456,6 @@ git revert <commit-sha>
 | `src/App.css` | 存在但未引用 | 不存在 |
 | `scripts/` 根 .mjs | 16 个未引用旧脚本 | 0 |
 | `scripts/` 根中间产物 | 247M（git 跟踪） | git 忽略，本地保留 |
-| vitest 测试数 | 126 + 1 + 5 = 132 | 132 + 8 = 140 |
+| vitest 测试数 | 126 + 1 + 5 = 132（预估值，实际 105） | 140（预估值，实际 **113**；B 后为 164） |
 | vitest 噪声 "No test suite found" | 有 | 无 |
 

@@ -211,7 +211,7 @@ npm run ingest:dry       # 校验但不写盘
    - `deploy.yml` 将 `dist/` 推送到 `gh-pages` 分支；`deploy-cloudflare.yml` 将前端部署到 Cloudflare Workers
 3. GitHub Pages 源应配置为 `gh-pages` 分支的根目录。
 
-> **重要不一致点**：`DEPLOYMENT.md` 声称 `vite.config.ts` 已配置 `base: '/school-formula/'`，但**当前实际代码中 `vite.config.ts` 的 `base` 为 `'/'`**。若仓库以项目页形式部署到 `https://dllen.github.io/school-formula/`，当前配置可能导致静态资源 404。修改部署配置时，请确认 `base` 与 GitHub Pages 实际路径一致。
+> **`base` 路径注意**：`vite.config.ts` 的 `base` 为 `'/'`（适配 Cloudflare Workers + 自有域名的主部署）。GitHub Pages 备用链路若以项目页形式访问（`https://dllen.github.io/school-formula/`）会静态资源 404，需改 `base` 或配自定义域名，详见 `DEPLOYMENT.md` 第 2 节。
 
 ---
 
@@ -228,7 +228,7 @@ npm run ingest:dry       # 校验但不写盘
 
 - 没有端到端测试覆盖「生成 → staging → 入库」的完整链路（需真实 pi 模型/鉴权，当前仅各侧单测）。
 - `App.css` 是模板遗留文件，当前未被引用，可考虑删除或合并到 `index.css`。
-- GitHub Pages 的 `base` 路径与部署文档不一致（见第 7 节）。
+- GitHub Pages 备用链路的 `base` 路径仅适配自定义域名/根路径部署（见第 7 节）。
 - 古籍阅读模块目前只包含少量示例章节，可继续扩展 `src/data/zizhi.ts` 与 `src/data/shiji.ts`。
 
 ---

@@ -222,7 +222,7 @@ URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知�
 - **工作流**：`.github/workflows/deploy.yml`
 - **步骤**：npm ci → npm run build → 推送到 `gh-pages` 分支
 
-> **注意**：`vite.config.ts` 的 `base` 为 `'/'`，`DEPLOYMENT.md` 声称已配置 `base: '/school-formula/'`，实际未配置。若以项目页形式部署需修改。
+> **注意**：`vite.config.ts` 的 `base` 为 `'/'`（适配自有域名主部署）。GitHub Pages 备用链路若以项目页形式访问会静态资源 404，需改 `base` 或配自定义域名，详见 `DEPLOYMENT.md`。
 
 ## 开发约定
 

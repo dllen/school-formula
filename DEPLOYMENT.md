@@ -1,61 +1,80 @@
-# GitHub Pages Deployment Setup
+# 部署指南
 
-## What Was Added
+本项目有两条部署链路，均由 GitHub Actions 在 `main` 分支 push（或手动 `workflow_dispatch`）时触发：
 
-### 1. GitHub Actions Workflow
-Created [.github/workflows/deploy.yml](file:///Users/shichaopeng/Work/self-dir/school-formula/.github/workflows/deploy.yml)
+| 链路 | 工作流 | 定位 |
+|------|--------|------|
+| **Cloudflare Workers**（主） | `.github/workflows/deploy-cloudflare.yml` | 生产环境：静态前端 + `/api/*` 后端 + D1/KV |
+| **GitHub Pages**（备用/遗留） | `.github/workflows/deploy.yml` | 纯静态前端备份，无后端能力 |
 
-**Triggers:**
-- Automatic deployment on push to `main` branch
-- Manual deployment via GitHub Actions UI
+> 两个工作流都使用 Node.js 22 + `npm install`。项目刻意不跟踪 `package-lock.json`（见 `.gitignore`），因此 **`actions/setup-node` 不能开 `cache: 'npm'`**，否则会因找不到锁文件报错。
 
-**What it does:**
-1. Checks out code
-2. Sets up Node.js 22
-3. Installs dependencies
-4. Builds the project
-5. Pushes build output to `gh-pages` branch
+---
 
-### 2. Vite Configuration Update
-Updated [vite.config.ts](file:///Users/shichaopeng/Work/self-dir/school-formula/vite.config.ts) with:
-```typescript
-base: '/school-formula/',
-```
+## 1. Cloudflare Workers（主部署）
 
-This ensures assets load correctly when deployed to `https://username.github.io/school-formula/`
+### 工作流步骤
 
-## Setup Instructions
+`deploy-cloudflare.yml` 依次执行：
 
-### Step 1: Push to GitHub
+1. `npm install` → `npm run build`（`tsc -b && vite build`，产物在 `dist/`）
+2. `wrangler d1 migrations apply school-formula-db --remote`（D1 迁移）
+3. `wrangler deploy`（部署 Worker；`wrangler.toml` 的 `[site] bucket = "./dist"` 把前端静态资源一并发布）
+
+### 所需 GitHub Secrets
+
+| Secret | 用途 |
+|--------|------|
+| `CLOUDFLARE_API_TOKEN` | wrangler-action 鉴权（需 Workers/D1/KV 编辑权限） |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 账户 ID |
+
+### `wrangler.toml` 要点
+
+- **Worker 名称**：`school-formula-api`，入口 `worker/index.ts`，`compatibility_flags = ["nodejs_compat"]`
+- **路由**：`api.syy.global/*`、`api.syy.mobi/*`、`api.syy.one/*`（API 子域；站点本体 `syy.global` / `syy.mobi` / `syy.one` 的静态资源由 `[site]` 静态托管能力提供）
+- **绑定**：D1 `DB`（`school-formula-db`）、KV `SESSIONS`
+- **变量**（`[vars]`）：`FRONTEND_URL`、`ALLOWED_ORIGINS`（CORS 白名单，逗号分隔三个站点域名）、`FROM_EMAIL`、`AI_GATEWAY_BASE` / `AI_GATEWAY_TOKEN` / `AI_GATEWAY_MODEL`、`ENVIRONMENT`
+- **Secrets**（`wrangler secret put`）：`JWT_SECRET`（≥32 字符随机串，`openssl rand -hex 32`）
+
+### 首次初始化
+
 ```bash
-git add .
-git commit -m "Add GitHub Pages deployment"
-git push origin main
+# 1. 创建 D1 / KV（把返回的 id 填入 wrangler.toml）
+npx wrangler d1 create school-formula-db
+npx wrangler kv:namespace create SESSIONS
+
+# 2. 初始化表结构
+npx wrangler d1 execute school-formula-db --remote --file=db/schema.sql
+
+# 3. 设置 secrets
+npx wrangler secret put JWT_SECRET
+
+# 4. 部署
+npx wrangler deploy
 ```
 
-### Step 2: Enable GitHub Pages
-1. Go to your GitHub repository
-2. Navigate to **Settings** → **Pages**
-3. Under **Source**, select **Deploy from a branch**
-4. Select **gh-pages** branch and **/ (root)** folder
-5. Click **Save**
+用户体系（邮件验证码、AI 网关等）的详细配置见 [DEPLOY_AUTH.md](DEPLOY_AUTH.md)。
 
-### Step 3: Wait for Deployment
-The workflow will automatically run on push to main branch and create/update the `gh-pages` branch with the built site.
+---
 
-### Step 4: Access Your Site
-After deployment completes, your site will be available at:
+## 2. GitHub Pages（备用/遗留）
+
+`deploy.yml` 把 `dist/` 推送到 `gh-pages` 分支。仓库 Settings → Pages → Source 选 `gh-pages` 分支根目录即可。
+
+> **注意 `base` 路径**：`vite.config.ts` 当前 `base: '/'`。若以项目页形式访问（`https://dllen.github.io/school-formula/`），静态资源路径会 404 —— 需要把 `base` 改为 `'/school-formula/'` 重新构建，或为 gh-pages 配置自定义域名。主部署（Cloudflare Workers + 自有域名）不受此影响。
+
+GitHub Pages 链路**只含静态前端**：认证 / 会员 / AI 网关等 `/api/*` 能力不可用（前端会按 `src/services/api-base.ts` 的域名推导规则去找 API 域名）。
+
+---
+
+## 3. 前端 API 地址解析
+
+前端不硬编码 API 地址，由 `src/services/api-base.ts` 统一解析：
+
 ```
-https://[your-username].github.io/school-formula/
+VITE_API_BASE（显式覆盖）> VITE_API_URL（旧/开发）> 按域名推导
 ```
 
-## Build Verification
-✅ Build successful with base path configured  
-✅ All assets will load correctly on GitHub Pages
-
-## Notes
-- The `base` path in `vite.config.ts` assumes repository name is `school-formula`
-- If your repository has a different name, update the base path accordingly
-- The `gh-pages` branch is auto-created by the workflow
-- First deployment may take a few minutes
-
+- 开发：`.env.development` 设 `VITE_API_URL=http://localhost:8787`（`wrangler dev` 默认端口；`vite.config.ts` 同时配了 `/api` proxy）
+- 生产：`.env.production` 为空，按站点域名推导（`syy.global` → `api.syy.global`，以此类推）
+- localhost 兜底：`http://localhost:8787`

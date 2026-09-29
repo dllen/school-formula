@@ -32,8 +32,10 @@ npm install          # 安装依赖
 npm run dev          # 开发服务器（http://localhost:5173）
 npm run build        # 类型检查 + 生产构建（输出 dist/）
 npm run preview      # 预览生产构建
-npm run lint         # ESLint 代码检查
-npm test             # 运行测试（Vitest）
+npm run lint         # ESLint 代码检查（含 scripts/ 两个子包）
+npm test             # 运行测试（Vitest workspace：app + scripts 双 project，164 个用例）
+npm run test:watch   # watch 模式
+npm run coverage     # 覆盖率报告
 ```
 
 Worker 本地开发（前端通过 `vite.config.ts` 的 proxy 把 `/api` 代理到 8787）：
@@ -60,11 +62,15 @@ npm run ingest:dry     # 校验但不写盘
 
 ## 部署
 
-- **Cloudflare Workers**：push 到 `main` 或手动触发 `.github/workflows/deploy-cloudflare.yml`，把 `dist/` 作为静态资源 + Worker 提供 `/api/*`。
-- **GitHub Pages**（备用）：`.github/workflows/deploy.yml` 推送到 `gh-pages` 分支。
+- **Cloudflare Workers**（主）：push 到 `main` 或手动触发 `.github/workflows/deploy-cloudflare.yml`，把 `dist/` 作为静态资源 + Worker 提供 `/api/*`（D1 迁移 → wrangler deploy）。
+- **GitHub Pages**（备用/遗留）：`.github/workflows/deploy.yml` 推送到 `gh-pages` 分支，纯静态、无后端能力。
+
+详细步骤与首次初始化见 [DEPLOYMENT.md](DEPLOYMENT.md)；用户体系（D1/KV/MailChannels/AI 网关）配置见 [DEPLOY_AUTH.md](DEPLOY_AUTH.md)。
 
 ## 更多文档
 
 - `CLAUDE.md` — 面向 Claude Code 的项目指引（架构、数据层、开发约定、环境变量）。
 - `AGENTS.md` — 面向 AI 编程助手的项目说明。
+- `DEPLOYMENT.md` / `DEPLOY_AUTH.md` — 部署与用户体系配置。
+- `scripts/pi-agent-edu/README.md` / `scripts/ingest-data/README.md` — 数据生产管线两侧子包说明。
 - `docs/superpowers/specs/` — 设计文档；`docs/superpowers/plans/` — 实现计划。
