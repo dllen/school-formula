@@ -3,6 +3,7 @@ import type { Adapter } from './types';
 import { cheatsheetAdapter } from './adapters/cheatsheet';
 import { formulaAdapter } from './adapters/formula';
 import { mentalMathAdapter } from './adapters/mental-math';
+import { shijiAdapter } from './adapters/shiji';
 import { techniqueAdapter } from './adapters/technique';
 import { tutorialAdapter } from './adapters/tutorial';
 import { questionBankAdapter } from './adapters/question-bank';
@@ -14,6 +15,7 @@ const adapters: Adapter[] = [
   cheatsheetAdapter,
   formulaAdapter,
   mentalMathAdapter,
+  shijiAdapter,
   techniqueAdapter,
   tutorialAdapter,
   questionBankAdapter,
