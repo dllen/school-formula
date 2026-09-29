@@ -28,10 +28,13 @@ npm run preview
 # 代码检查（ESLint 9 flat config）
 npm run lint
 
-# 运行测试（Vitest）
+# 运行测试（统一 Vitest）：workspace projects 同时跑 src/ + scripts/
 npm test
 npm run test:watch
 npm run coverage
+# 子包独立跑（vitest run）
+cd scripts/ingest-data && npm test
+cd scripts/pi-agent-edu && npm test
 
 # 数据生产（pi-agent-edu 生成 → staging/ → ingest-data 入库）
 npm run gen:dsl          # 启动引导模式（8 种任务类型，生成 JSON 到 staging/）
@@ -186,7 +189,7 @@ URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知�
 
 教程、题库、知识点、速查表、公式、口算、掌握度、提示词等数据由两条独立脚本链路生产，**生成与入库分离**：
 
-1. **生成侧** `scripts/pi-agent-edu/`：交互式 CLI，通过 pi agent（`@earendil-works/pi-coding-agent` SDK）生成内容。系统提示词要求输出「JSON 信封」（8 种，键名固定），`save`/`退出` 写入 `staging/<kind>/generated-<timestamp>.json`。
+1. **生成侧** `scripts/pi-agent-edu/`：交互式 CLI，通过 pi agent（`@earendil-works/pi-coding-agent` SDK）生成内容。入口 `index.ts`（约 296 行）只挂 `main()` 交互 REPL；命令解析在 `cli/args.ts`、输出与写盘在 `cli/output.ts`、帮助文本在 `cli/help.ts`；引导常量（学段/科目/年级/任务/难度/题数）在 `wizard/data.ts`，任务→入库 kind 映射（`kindFromTask`）在 `wizard/mapping.ts`，引导执行与 prompt 拼装在 `wizard/index.ts`；会话实现拆为 `session/{types,helpers,class,index}.ts`。系统提示词要求输出「JSON 信封」（8 种，键名固定），`save`/`退出` 写入 `staging/<kind>/generated-<timestamp>.json`。
 2. **入库侧** `scripts/ingest-data/`：确定性 CLI（`npm run ingest`），读取 `staging/<kind>/*.json`，用 `satisfies` + TypeScript 编译器 API 对 `src/data/*/types.ts` 真实类型做校验，再合并进 `src/data/` 并接线 `index.ts`/`ALL_*`。零代码执行、只追加不覆盖。
 
 `staging/`（已 .gitignore）按 kind 分目录：
@@ -202,7 +205,7 @@ URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知�
 | `techniques` | `techniques` | `Technique[]` |
 | `prompts` | `prompts` | `PromptTemplate[]` |
 
-> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本各有一套测试（`node --import tsx --test`），独立于主应用。
+> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本的测试已统一到 Vitest：根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 一并跑通 `src/**` 与 `scripts/**`（164 个测试，26 个 test files）；两个子包各自 `cd scripts/<sub> && npm test`（`vitest run`）也可独立运行。
 
 ## 部署
 
@@ -233,9 +236,13 @@ URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知�
 
 ### ESLint
 
-- ESLint 9 flat config（`eslint.config.js`）
+- 顶层单一 ESLint 9 flat config（`eslint.config.js`）；`scripts/` 下不再有子包各自的配置入口
 - 扩展：`@eslint/js` recommended + `typescript-eslint` recommended + `react-hooks` + `react-refresh`
-- 仅检查 `**/*.{ts,tsx}`，`dist/` 被忽略
+- 路径覆盖：
+  - `src/**/*.{ts,tsx}`：browser globals + `react-hooks` / `react-refresh`
+  - `scripts/**/*.ts`：Node globals；关闭 `react-hooks/rules-of-hooks`、`react-hooks/exhaustive-deps`、`react-refresh/only-export-components`；`@typescript-eslint/no-explicit-any` 降为 warn
+  - `scripts/**/*.test.ts`：`@typescript-eslint/no-explicit-any` 关闭
+- 仅检查 `**/*.{ts,tsx}`，`dist/` 与 `scripts/*/node_modules/**` 被忽略
 
 ### 组件约定
 
