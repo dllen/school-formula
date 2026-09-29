@@ -38,3 +38,11 @@ scripts/pi-agent-edu/output/
 # pi-agent-edu 数据入库
 staging/
 scripts/ingest-data/.tmp/
+
+# Legacy generator artifacts (kept locally, not tracked)
+scripts/._checkpoint_*.json
+scripts/output-*.json
+scripts/output-*/
+scripts/knowledge-*.json
+scripts/id-mapping.json
+scripts/generate-config.json*
