@@ -21,7 +21,7 @@ import {
   getProjectRoot,
   type Config,
 } from './config.js';
-import { InteractiveSession, type SessionCreateOptions } from './session.js';
+import { InteractiveSession, type SessionCreateOptions } from './session/index.js';
 import { saveToStaging } from './staging.js';
 import { parseCliArgs } from './cli/args.js';
 import { errMsg, saveContent } from './cli/output.js';

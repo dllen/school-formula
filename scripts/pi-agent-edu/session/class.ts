@@ -1,5 +1,10 @@
 /**
- * Interactive session wrapper for pi-agent-edu.
+ * InteractiveSession — public API.
+ *
+ * Wraps the pi SDK AgentSession with:
+ * - Provider/model selection via ModelRuntime
+ * - Session persistence via pi's native SessionManager
+ * - Structured thinking/text/tool/error event streaming
  *
  * Uses the `@earendil-works/pi-coding-agent` SDK in-process instead of shelling
  * out to the `pi` CLI. The SDK provides structured events for thinking, text,
@@ -15,58 +20,12 @@ import {
   type AgentSession,
   type AgentSessionEvent,
 } from '@earendil-works/pi-coding-agent';
-import { print } from './io.js';
-import { getAgentDir, type Config, type ThinkingLevel } from './config.js';
-import { getSystemPrompt } from './prompts.js';
+import { print } from '../io.js';
+import { getAgentDir, type Config, type ThinkingLevel } from '../config.js';
+import { getSystemPrompt } from '../prompts.js';
+import type { SessionCreateOptions, SessionEvent, SessionEventListener } from './types.js';
+import { DIM, summarize } from './helpers.js';
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-/** Event emitted during a session prompt */
-export type SessionEvent =
-  | { type: 'thinking_start' }
-  | { type: 'thinking'; text: string }
-  | { type: 'thinking_end' }
-  | { type: 'speaking'; text: string }
-  | { type: 'tool_call'; tool: string; args: Record<string, unknown> }
-  | { type: 'tool_result'; tool: string; result: string; isError: boolean }
-  | { type: 'error'; error: string };
-
-/** Listener for session events */
-export type SessionEventListener = (event: SessionEvent) => void;
-
-/** Options controlling how an InteractiveSession is created. */
-export interface SessionCreateOptions {
-  /** Continue the most recent session for the project (else start new). */
-  continue?: boolean;
-  /** Open a specific session file path. Overrides `continue`. */
-  sessionPath?: string;
-}
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-const DIM = (t: string) => `\x1b[2m${t}\x1b[0m`;
-
-/** Stringify + truncate a tool result for compact display. */
-function summarize(result: unknown, max = 200): string {
-  const s = typeof result === 'string' ? result : JSON.stringify(result);
-  if (s.length <= max) return s;
-  return `${s.slice(0, max)}...`;
-}
-
-// ---------------------------------------------------------------------------
-// InteractiveSession — public API
-// ---------------------------------------------------------------------------
-
-/**
- * Wraps the pi SDK AgentSession with:
- * - Provider/model selection via ModelRuntime
- * - Session persistence via pi's native SessionManager
- * - Structured thinking/text/tool/error event streaming
- */
 export class InteractiveSession {
   private session: AgentSession;
   private runtime: ModelRuntime;
