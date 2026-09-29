@@ -19,10 +19,9 @@ describe('fetchWithRetry', () => {
     expect(f).toHaveBeenCalledTimes(1);
   });
 
-  it('returns 4xx without retry', async () => {
+  it('does not retry on 4xx', async () => {
     const f = mockFetch([{ status: 404 }]);
-    const res = await fetchWithRetry('http://x', { fetchImpl: f, maxRetries: 3 });
-    expect(res.status).toBe(404);
+    await expect(fetchWithRetry('http://x', { fetchImpl: f, maxRetries: 3 })).rejects.toThrow(/404/);
     expect(f).toHaveBeenCalledTimes(1);
   });
 

@@ -23,7 +23,7 @@ function shouldRetry(status: number | null, err: unknown): boolean {
   return false;
 }
 
-/** 带重试的 fetch。4xx 不重试；5xx 与网络错误指数退避 1s/2s/4s。 */
+/** 带重试的 fetch。4xx 不重试，直接报错；5xx 与网络错误指数退避 1s/2s/4s。 */
 export async function fetchWithRetry(url: string, opts: FetchOptions = {}): Promise<Response> {
   const maxRetries = opts.maxRetries ?? DEFAULT_MAX_RETRIES;
   const timeoutMs = opts.timeoutMs ?? DEFAULT_TIMEOUT_MS;
@@ -43,9 +43,19 @@ export async function fetchWithRetry(url: string, opts: FetchOptions = {}): Prom
         headers: { 'User-Agent': userAgent },
       });
       lastStatus = res.status;
-      if (!shouldRetry(res.status, null)) return res;
+      // 2xx: 成功返回
+      if (res.status >= 200 && res.status < 300) return res;
+      // 4xx: 客户端错误不重试，直接报错
+      if (res.status >= 400 && res.status < 500) {
+        throw new Error(`fetch ${url} failed: HTTP ${res.status}`);
+      }
+      // 5xx: 继续重试
       lastErr = undefined;
     } catch (err) {
+      // 如果是 4xx 抛出的错误，直接抛出
+      if (err instanceof Error && err.message.includes('failed: HTTP 4')) {
+        throw err;
+      }
       lastErr = err;
       lastStatus = null;
     }
