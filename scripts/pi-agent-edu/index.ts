@@ -11,9 +11,6 @@
  *   node index.ts --new         Force new session
  */
 
-import { parseArgs } from 'node:util';
-import { writeFileSync, mkdirSync } from 'node:fs';
-import { join, dirname } from 'node:path';
 import { SessionManager } from '@earendil-works/pi-coding-agent';
 import { print, prompt, selectOption } from './io.js';
 import {
@@ -23,224 +20,20 @@ import {
   withModel,
   getProjectRoot,
   type Config,
-  type ModelChoice,
 } from './config.js';
 import { InteractiveSession, type SessionCreateOptions } from './session.js';
 import { saveToStaging } from './staging.js';
+import { parseCliArgs } from './cli/args.js';
+import { errMsg, saveContent } from './cli/output.js';
+import { showHelp } from './cli/help.js';
+import { runWizard, buildPromptFromWizard } from './wizard/index.js';
+import { kindFromTask, KNOWN_KINDS } from './wizard/mapping.js';
 
-// ---------------------------------------------------------------------------
-// CLI argument parsing
-// ---------------------------------------------------------------------------
-
-interface CliArgs {
-  sessions: boolean;
-  continue: string | null;
-  new: boolean;
-}
-
-function parseCliArgs(): CliArgs {
-  const { values } = parseArgs({
-    options: {
-      sessions: { type: 'boolean', short: 'l' },
-      continue: { type: 'string', short: 'c' },
-      new: { type: 'boolean', short: 'n' },
-    },
-  });
-
-  return {
-    sessions: values.sessions === true,
-    continue: values.continue ?? null,
-    new: values.new === true,
-  };
-}
-
-function errMsg(err: unknown): string {
-  return err instanceof Error ? err.message : String(err);
-}
-
-/** Timestamp string for default output filenames (YYYY-MM-DD-HH-mm-ss). */
-function timestampName(): string {
-  return new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
-}
-
-/**
- * Write generated content to a file inside the repo.
- * `path` is relative to the repo root unless absolute; defaults to
- * `scripts/pi-agent-edu/output/generated-<timestamp>.ts`.
- */
-function saveContent(text: string, path?: string): string {
-  const root = getProjectRoot();
-  const target = path
-    ? (path.startsWith('/') ? path : join(root, path))
-    : join(root, 'scripts', 'pi-agent-edu', 'output', `generated-${timestampName()}.ts`);
-  mkdirSync(dirname(target), { recursive: true });
-  writeFileSync(target, text, 'utf-8');
-  return target;
-}
-
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function showHelp(): void {
-  print(`pi-agent-edu CLI — 教育智能体交互工具
-
-用法:
-  node index.ts              启动新会话（引导模式）
-  node index.ts --sessions   列出所有会话
-  node index.ts --continue   继续上次会话
-  node index.ts --continue <id>  继续指定会话
-  node index.ts --new        强制新建会话
-  node index.ts --help       显示本帮助
-
-交互命令:
-  help, ?         显示帮助
-  q, quit, exit   退出
-  退出            保存最近生成内容并退出
-  save, 保存      保存最近生成内容到仓库（save <kind> 或 save <路径> 指定位置）
-  btw <文字>      旁注：只对下一轮生效
-  model, provider 切换 AI 模型
-  thinking        切换思考级别
-`, 'info');
-}
-
-// ---------------------------------------------------------------------------
-// Wizard mode - guide user through content generation
-// ---------------------------------------------------------------------------
-
-const STAGES = ['小学', '初中', '高中'] as const;
-type Stage = typeof STAGES[number];
-
-const SUBJECTS_BY_STAGE: Record<Stage, readonly string[]> = {
-  '小学': ['数学', '语文', '英语', '科学', '道德与法治'],
-  '初中': ['数学', '物理', '化学', '语文', '英语', '历史', '地理', '道德与法治'],
-  '高中': ['数学', '物理', '化学', '生物', '语文', '英语', '历史', '地理', '政治'],
-};
-
-const GRADES_BY_STAGE: Record<Stage, readonly string[]> = {
-  '小学': ['一年级', '二年级', '三年级', '四年级', '五年级', '六年级'],
-  '初中': ['初一', '初二', '初三'],
-  '高中': ['高一', '高二', '高三'],
-};
-
-const TASKS = [
-  '教程单元',
-  '题库',
-  '知识点',
-  '速查表',
-  '公式',
-  '口算',
-  '掌握度技巧',
-  '提示词模板',
-] as const;
-type Task = typeof TASKS[number];
-
-/** 任务类型 → 入库 kind（staging 目录名）。 */
-export function kindFromTask(task: Task): string {
-  switch (task) {
-    case '教程单元': return 'tutorials';
-    case '题库': return 'questions';
-    case '知识点': return 'knowledge';
-    case '速查表': return 'cheatsheets';
-    case '公式': return 'formulas';
-    case '口算': return 'mental-math';
-    case '掌握度技巧': return 'techniques';
-    case '提示词模板': return 'prompts';
-  }
-}
-
-const DIFFICULTIES = ['basic（基础）', 'intermediate（中等）', 'advanced（进阶）'] as const;
-
-/** 入库 kind 白名单（staging 目录名），由任务类型推导。 */
-const KNOWN_KINDS = new Set(TASKS.map(kindFromTask));
-
-const QUESTION_COUNTS = ['5', '10', '15', '20'] as const;
-
-interface WizardResult {
-  provider: string;
-  model: string;
-  stage: Stage;
-  subject: string;
-  grade: string;
-  task: Task;
-  difficulty?: string;
-  questionCount?: string;
-}
-
-export async function runWizard(models: ModelChoice[]): Promise<WizardResult> {
-  print('\n📚 欢迎使用 pi-agent-edu 教育智能体！\n', 'success');
-  print('让我来引导你完成内容生成...\n', 'dim');
-
-  // 0. Select model
-  const selected = await selectOption(
-    '请选择 AI 模型：',
-    models,
-    (m) => `${m.name} (${m.provider}/${m.model})${m.reasoning ? ' 🧠' : ''}`,
-  );
-  print(`已选择：${selected.name}\n`, 'info');
-
-  // 1. Select stage
-  const stage = await selectOption('请选择学段：', STAGES);
-  print(`已选择：${stage}\n`, 'info');
-
-  // 2. Select subject
-  const subjects = SUBJECTS_BY_STAGE[stage];
-  const subject = await selectOption('请选择科目：', subjects);
-  print(`已选择：${subject}\n`, 'info');
-
-  // 3. Select grade
-  const grades = GRADES_BY_STAGE[stage];
-  const grade = await selectOption('请选择年级：', grades);
-  print(`已选择：${grade}\n`, 'info');
-
-  // 4. Select task
-  const task = await selectOption('请选择任务类型：', TASKS);
-  print(`已选择：${task}\n`, 'info');
-
-  // 5. Select difficulty and count (only for practice questions)
-  let difficulty: string | undefined;
-  let questionCount: string | undefined;
-  if (task === '题库') {
-    const diff = await selectOption('请选择题型难度：', DIFFICULTIES);
-    print(`已选择：${diff}\n`, 'info');
-    difficulty = diff.split('（')[0];
-
-    const count = await selectOption('请选择题型数量：', QUESTION_COUNTS);
-    print(`已选择：${count} 道题\n`, 'info');
-    questionCount = count;
-  }
-
-  return { provider: selected.provider, model: selected.model, stage, subject, grade, task, difficulty, questionCount };
-}
-
-export function buildPromptFromWizard(result: WizardResult): string {
-  const { stage, subject, grade, task, difficulty, questionCount } = result;
-  switch (task) {
-    case '教程单元':
-      return `生成【${stage}${subject} - ${grade}】的 TutorialUnit，输出 JSON 信封 { "tutorial": {…} }，含 10 道练习题（easy:medium:hard = 4:4:2）`;
-    case '题库': {
-      const count = questionCount || '10';
-      const diff = difficulty ? `（${difficulty}）` : '（basic:intermediate:advanced = 4:4:2）';
-      return `生成 ${count} 道${stage}${subject}${grade}练习题，输出 JSON 信封 { "questions": [ …Question ] }，难度${diff}`;
-    }
-    case '知识点':
-      return `生成【${stage}${subject} - ${grade}】知识点，输出 JSON 信封 { "grade", "subject", "knowledgePoints": [ … ] }`;
-    case '速查表':
-      return `生成【${stage}${subject}】速查表，输出 JSON 信封 { "cheatsheets": [ … ] }`;
-    case '公式':
-      return `生成【${stage}${subject}】公式，输出 JSON 信封 { "formulas": [ … ] }`;
-    case '口算':
-      return `生成【${stage}${subject}】口算口诀，输出 JSON 信封 { "grade", "mnemonics": [ … ] }`;
-    case '掌握度技巧':
-      return `生成【${stage}${subject}】掌握度技巧，输出 JSON 信封 { "techniques": [ … ] }`;
-    case '提示词模板':
-      return `生成【${stage}${subject}】提示词模板，输出 JSON 信封 { "prompts": [ … ] }`;
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
+// Re-exports for external callers (tests in index.test.ts import these from './index.js').
+export { buildPromptFromWizard } from './wizard/index.js';
+export { kindFromTask } from './wizard/mapping.js';
+export type { WizardResult } from './wizard/mapping.js';
+export type { Task } from './wizard/data.js';
 
 /** 当前会话对应的入库 kind（staging 目录名），仅新建会话时由 wizard 设置。 */
 let currentKind: string | null = null;
