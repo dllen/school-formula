@@ -5,7 +5,7 @@
  * Only test pure functions that don't require I/O.
  */
 
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert';
 import { buildPromptFromWizard, kindFromTask } from './index.js';
 

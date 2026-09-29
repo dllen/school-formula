@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsx index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test *.test.ts",
+    "test": "vitest run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "gen:dsl": "./pi-agent-edu.sh",

@@ -2,7 +2,7 @@
  * Tests for io.ts utilities
  */
 
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert';
 
 import { print } from './io.js';

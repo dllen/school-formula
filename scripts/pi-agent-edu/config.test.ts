@@ -2,7 +2,7 @@
  * Tests for config.ts
  */
 
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert';
 import { existsSync } from 'node:fs';
 import { baseConfig, withModel, getProjectRoot, getAgentDir, THINKING_LEVELS } from './config.js';
