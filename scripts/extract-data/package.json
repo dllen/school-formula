@@ -1,0 +1,22 @@
+{
+  "name": "extract-data",
+  "version": "0.1.0",
+  "description": "外部数据源抽取工具（adapter 模式）",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "tsx index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}
