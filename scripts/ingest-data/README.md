@@ -99,8 +99,12 @@ npm run ingest:dry   # = --dry-run
 ```bash
 cd scripts/ingest-data
 npm run typecheck   # tsc --noEmit
-npm test            # 19 个测试
+npm test            # vitest run（22 个测试，10 个 test files）
 
 cd ../..            # 仓库根
+npm test            # vitest workspace projects 一并跑通 src/** + scripts/**
 npm run build       # 整库 tsc -b + vite build，确认合并后仍编译通过
 ```
+
+> 测试已统一到 Vitest（与根 `npm test` 共用同一 runner），子包 `test` 命令即 `vitest run`。
+
