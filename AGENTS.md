@@ -32,13 +32,13 @@
 | AI 调用 | `openai` SDK 6.15.0（在浏览器中直接调用第三方兼容 OpenAI 的 API） |
 | 包管理器 | npm（`package-lock.json` **不**纳入版本控制，CI 使用 `npm install`；请勿在 `actions/setup-node` 中启用 `cache: 'npm'`，否则会因找不到锁文件而报错） |
 
-> 测试：主应用用 Vitest（`npm test`）；`scripts/ingest-data` 与 `scripts/pi-agent-edu` 各自用 Node 内置 test runner（`node --import tsx --test`）。
+> 测试：统一使用 Vitest。根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 跑两份：`app`（happy-dom，src/**） + `scripts`（node，scripts/**）；`scripts/ingest-data` 与 `scripts/pi-agent-edu` 子包各自 `cd scripts/<sub> && npm test`（`vitest run`）独立可用。
 
 ### 当前构建/检查状态
 
 - `npm run build`（TypeScript 项目引用编译 + Vite 构建）：✅ 通过
 - `npm run lint`（ESLint flat config）：✅ 零错误（含 `scripts/` 下两个子包）
-- `npm test`（Vitest）：主应用 126 个测试通过；Vitest 会把 `scripts/**/*.test.ts`（用 Node 内置 `node:test` 的文件）计入 "No test suite found" 的 failed files——这是收集层面的已知噪声，这两个子包用各自 runner（`node --import tsx --test`）单独通过。
+- `npm test`（Vitest）：164 个测试通过（26 个 test files，跨 `app` + `scripts` 两份 workspace project），零 "No test suite found"。
 
 ---
 
@@ -56,6 +56,9 @@
 ├── scripts/
 │   ├── ingest-data/               # 数据入库侧（确定性 CLI，读 staging 合并进 src/data）
 │   └── pi-agent-edu/              # 数据生成侧（pi agent 交互式 CLI，写 staging JSON）
+│       ├── cli/{args,output,help}.ts     # 命令行参数解析、输出与帮助
+│       ├── wizard/{data,mapping,index}.ts # 引导常量、kindFromTask 映射、runWizard
+│       └── session/{types,helpers,class,index}.ts # 会话实现
 ├── worker/                        # Cloudflare Workers 后端（auth/user/ai 路由）
 ├── src/
 │   ├── assets/                    # 图片/图标资源
@@ -136,7 +139,7 @@ npm run ingest:dry       # 校验但不写盘
 
 内容数据（教程/题库/知识点/速查表/公式/口算/掌握度/提示词）由两条脚本链路生产：
 
-- **生成侧** `scripts/pi-agent-edu/`：pi agent 交互式 CLI，系统提示词要求输出 8 种「JSON 信封」，`save`/`退出` 写 `staging/<kind>/generated-<ts>.json`。
+- **生成侧** `scripts/pi-agent-edu/`：pi agent 交互式 CLI，入口 `index.ts`（约 296 行）只挂 `main()` 交互 REPL；命令解析落在 `cli/args.ts`、提示与写盘落在 `cli/output.ts`、帮助文本落在 `cli/help.ts`；引导常量（学段/科目/年级/任务/难度/题数）在 `wizard/data.ts`，任务→入库 kind 映射在 `wizard/mapping.ts`（`kindFromTask`），引导执行与 prompt 拼装在 `wizard/index.ts`；会话实现拆为 `session/{types,helpers,class,index}.ts`。系统提示词要求输出 8 种「JSON 信封」，`save`/`退出` 写 `staging/<kind>/generated-<ts>.json`。
 - **入库侧** `scripts/ingest-data/`：确定性 CLI，读 `staging/<kind>/*.json` → `satisfies` + TypeScript 编译器 API 对 `src/data/*/types.ts` 校验 → 合并 + 接线 `index.ts`/`ALL_*`。零代码执行、只追加不覆盖。
 
 详见 `CLAUDE.md` 的「数据生产管线」小节（含 kind→信封键→数据类型映射表）。
@@ -167,14 +170,18 @@ npm run ingest:dry       # 校验但不写盘
 
 ### 6.2 ESLint
 
-- 使用 ESLint 9 flat config（`eslint.config.js`）。
+- 顶层单一 ESLint 9 flat config（`eslint.config.js`）；`scripts/` 下不再有子包各自的配置文件。
 - 配置扩展：
   - `@eslint/js` recommended
   - `typescript-eslint` recommended
   - `eslint-plugin-react-hooks` recommended
   - `eslint-plugin-react-refresh` vite preset
-- 仅检查 `**/*.{ts,tsx}`，`dist/` 被忽略。
-- 运行命令：`npm run lint`。
+- 路径覆盖：
+  - `src/**/*.{ts,tsx}`：browser globals + `react-hooks` / `react-refresh`。
+  - `scripts/**/*.ts`：Node globals；关闭 `react-hooks/rules-of-hooks`、`react-hooks/exhaustive-deps`、`react-refresh/only-export-components`；`@typescript-eslint/no-explicit-any` 降为 warn。
+  - `scripts/**/*.test.ts`：`@typescript-eslint/no-explicit-any` 关闭。
+- 仅检查 `**/*.{ts,tsx}`，`dist/` 与 `scripts/*/node_modules/**` 被忽略。
+- 运行命令：`npm run lint`（一次跑通主应用与两个子包）。
 
 ### 6.3 样式
 
@@ -220,7 +227,6 @@ npm run ingest:dry       # 校验但不写盘
 ## 9. 已知限制与可改进点
 
 - 没有端到端测试覆盖「生成 → staging → 入库」的完整链路（需真实 pi 模型/鉴权，当前仅各侧单测）。
-- `scripts/**/*.test.ts` 用 Node 内置 `node:test`，`npm test`（Vitest）会将其误报为 "No test suite found"（收集层面噪声，不影响各侧独立跑通，见第 2 节）。
 - `App.css` 是模板遗留文件，当前未被引用，可考虑删除或合并到 `index.css`。
 - GitHub Pages 的 `base` 路径与部署文档不一致（见第 7 节）。
 - 古籍阅读模块目前只包含少量示例章节，可继续扩展 `src/data/zizhi.ts` 与 `src/data/shiji.ts`。
