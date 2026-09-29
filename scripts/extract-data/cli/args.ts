@@ -57,6 +57,7 @@ export function parseCliArgs(argv: string[]): ParsedArgs {
         if (!flags.url) errors.push('--url 需要值');
         break;
       case '--cache-ttl': {
+        const v = argv[++i];
         const n = Number(v);
         if (!Number.isFinite(n) || n < 0) errors.push(`--cache-ttl 需要非负数字（传入: ${v}）`);
         else flags.cacheTtlDays = n;
