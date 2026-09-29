@@ -13,4 +13,4 @@ if [ "$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 18)" -
     export NODE_OPTIONS="${NODE_OPTIONS:+$NODE_OPTIONS }--disable-warning=ExperimentalWarning"
 fi
 
-exec node --disable-warning=ExperimentalWarning node_modules/.bin/tsx index.ts "$@"
+exec node --import tsx index.ts "$@"
