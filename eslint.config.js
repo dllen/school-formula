@@ -12,6 +12,7 @@ export default tseslint.config(
       'scripts/*/node_modules/**',
       '.wrangler/**',
       'scripts/**/*.mjs',
+      'scripts/extract-data/dist/**',
     ],
   },
   js.configs.recommended,

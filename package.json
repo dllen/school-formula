@@ -18,7 +18,9 @@
     "gen:help": "bash scripts/pi-agent-edu/pi-agent-edu.sh --help",
     "ingest": "bash scripts/ingest-data/ingest.sh --all",
     "ingest:list": "bash scripts/ingest-data/ingest.sh --list",
-    "ingest:dry": "bash scripts/ingest-data/ingest.sh --dry-run"
+    "ingest:dry": "bash scripts/ingest-data/ingest.sh --dry-run",
+    "extract": "bash scripts/extract-data/extract.sh",
+    "extract:list": "bash scripts/extract-data/extract.sh --list"
   },
   "dependencies": {
     "mermaid": "^11.16.0",
