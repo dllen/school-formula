@@ -15,8 +15,27 @@ export default defineConfig({
         },
     },
     test: {
-        environment: 'happy-dom',
-        include: ['src/**/*.{test,spec}.{ts,tsx}'],
-        exclude: ['node_modules', 'dist', 'scripts/**', 'worker/**'],
+        // Two workspaces because src/** tests need a DOM (localStorage/window),
+        // while scripts/** tests are Node CLIs that read import.meta.url.
+        projects: [
+            {
+                extends: true,
+                test: {
+                    name: 'app',
+                    environment: 'happy-dom',
+                    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+                    exclude: ['node_modules', 'dist'],
+                },
+            },
+            {
+                extends: true,
+                test: {
+                    name: 'scripts',
+                    environment: 'node',
+                    include: ['scripts/**/*.{test,spec}.ts'],
+                    exclude: ['node_modules', 'dist', 'scripts/*/node_modules/**'],
+                },
+            },
+        ],
     },
 });
