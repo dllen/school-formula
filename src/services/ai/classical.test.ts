@@ -10,7 +10,7 @@ import OpenAI from 'openai';
 import { generateClassicalInterpretation } from './classical';
 
 describe('generateClassicalInterpretation', () => {
-    let onStream: ReturnType<typeof vi.fn>;
+    let onStream: (chunk: string) => void;
 
     beforeEach(() => {
         window.localStorage.setItem(

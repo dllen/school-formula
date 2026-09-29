@@ -8,7 +8,7 @@ import OpenAI from 'openai';
 import { generateTutorialContent } from './tutorial';
 
 describe('generateTutorialContent', () => {
-    let onStream: ReturnType<typeof vi.fn>;
+    let onStream: (chunk: string) => void;
 
     beforeEach(() => {
         window.localStorage.setItem(

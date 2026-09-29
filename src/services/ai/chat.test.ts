@@ -17,7 +17,7 @@ const MESSAGES: ChatMessage[] = [
 ];
 
 describe('generateChat', () => {
-    let onStream: ReturnType<typeof vi.fn>;
+    let onStream: (chunk: string) => void;
 
     beforeEach(() => {
         window.localStorage.setItem(
@@ -71,7 +71,7 @@ describe('generateChat', () => {
                 model: '',
             }),
         );
-        vi.mocked(chatGateway).mockResolvedValue(undefined);
+        vi.mocked(chatGateway).mockResolvedValue('');
 
         await generateChat(MESSAGES, onStream);
 

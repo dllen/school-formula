@@ -30,7 +30,7 @@ const MOCK_TEMPLATE = {
 } as PromptTemplate;
 
 describe('generateFromTemplate', () => {
-    let onStream: ReturnType<typeof vi.fn>;
+    let onStream: (chunk: string) => void;
 
     beforeEach(() => {
         window.localStorage.setItem(

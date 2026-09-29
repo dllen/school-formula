@@ -13,7 +13,7 @@ import { callGateway } from '../gateway';
 import { generateKnowledgeContent } from './knowledge';
 
 describe('generateKnowledgeContent', () => {
-    let onStream: ReturnType<typeof vi.fn>;
+    let onStream: (chunk: string) => void;
 
     beforeEach(() => {
         window.localStorage.setItem(
@@ -75,7 +75,7 @@ describe('generateKnowledgeContent', () => {
                 model: '',
             }),
         );
-        vi.mocked(callGateway).mockResolvedValue(undefined);
+        vi.mocked(callGateway).mockResolvedValue('');
 
         await generateKnowledgeContent('加法', 'context', onStream);
 
