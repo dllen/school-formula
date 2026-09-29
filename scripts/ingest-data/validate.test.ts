@@ -1,5 +1,5 @@
 // validate.test.ts
-import { test } from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { typeCheck, duplicateIds, collidingIds } from './validate';
 import { getRoot } from './paths';

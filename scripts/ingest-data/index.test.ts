@@ -1,5 +1,5 @@
 // index.test.ts
-import { test } from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { kindFromPath, listStaged } from './index';
 import { mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';

@@ -1,5 +1,5 @@
 // question-bank.test.ts
-import { test } from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { questionBankAdapter } from './question-bank';
 import { getRoot } from '../paths';

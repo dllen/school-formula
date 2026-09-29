@@ -1,5 +1,5 @@
 // simple-array.test.ts
-import { test } from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert/strict';
 import { simpleArrayAdapter } from './simple-array';
 import { mkdtempSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
