@@ -156,3 +156,27 @@ npm run ingest -- --list
 - [ ] Step 5: npm run build 零错误
 - [ ] Step 6: 幂等性验证通过
 - [ ] Step 7: 提交成功
+
+---
+
+## D. 抽取读通鉴（资治通鉴）
+
+```bash
+npm run extract -- dutongjian --dry-run
+npm run extract -- dutongjian
+npm run ingest -- --kind zizhi
+```
+
+期望：`src/data/zizhi.ts` 末尾追加新条目（id `v18+`），现有 v1-v17 不变。
+
+## E. 抽取 Hunterhug 史记
+
+```bash
+npm run extract -- hunterhug --dry-run
+npm run extract -- hunterhug
+npm run ingest -- --kind shiji
+```
+
+期望：`src/data/shiji.ts` 末尾追加新条目（id `v100+`），现有 v1-v4 + 之前 shiji-kb 抽取的 v5+ 不变。
+
+注：hunterhug 抽到的 shiji 数据与 shiji-kb 数据并存（不同 ID 区间），不会覆盖。可手动挑选保留哪一份。
