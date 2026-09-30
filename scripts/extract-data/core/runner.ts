@@ -7,11 +7,12 @@ import { readCache, writeCache } from './cache.js';
 import { writeEnvelope } from '../cli/output.js';
 import { shijiKbAdapter } from '../adapters/shiji-kb.js';
 import { dutongjianAdapter } from '../adapters/dutongjian.js';
+import { hunterhugAdapter } from '../adapters/hunterhug.js';
 
 const DEFAULT_MIN_INTERVAL_MS = Number(process.env.EXTRACT_MIN_INTERVAL_MS ?? 500);
 const DEFAULT_CACHE_DIR = '.cache';
 
-const REGISTRY: Adapter[] = [shijiKbAdapter, dutongjianAdapter];
+const REGISTRY: Adapter[] = [shijiKbAdapter, dutongjianAdapter, hunterhugAdapter];
 
 export function listAdapters(): Adapter[] {
   return REGISTRY.slice();
