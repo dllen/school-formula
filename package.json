@@ -20,7 +20,12 @@
     "ingest:list": "bash scripts/ingest-data/ingest.sh --list",
     "ingest:dry": "bash scripts/ingest-data/ingest.sh --dry-run",
     "extract": "bash scripts/extract-data/extract.sh",
-    "extract:list": "bash scripts/extract-data/extract.sh --list"
+    "extract:list": "bash scripts/extract-data/extract.sh --list",
+    "crawl": "bash scripts/crawl.sh",
+    "crawl:extract": "bash scripts/crawl.sh --no-ingest",
+    "crawl:ingest": "bash scripts/crawl.sh --no-extract",
+    "crawl:dry": "bash scripts/crawl.sh --dry-run",
+    "crawl:report": "ls -t staging/crawl-report-*.json 2>/dev/null | head -1 | xargs cat"
   },
   "dependencies": {
     "mermaid": "^11.16.0",
