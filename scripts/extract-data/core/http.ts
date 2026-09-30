@@ -15,14 +15,6 @@ export interface FetchOptions {
 
 const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms));
 
-/** 判定是否值得重试：5xx 或网络错误（fetch reject）。 */
-function shouldRetry(status: number | null, err: unknown): boolean {
-  if (err) return true;
-  if (status === null) return true;
-  if (status >= 500 && status < 600) return true;
-  return false;
-}
-
 /** 带重试的 fetch。4xx 不重试，直接报错；5xx 与网络错误指数退避 1s/2s/4s。 */
 export async function fetchWithRetry(url: string, opts: FetchOptions = {}): Promise<Response> {
   const maxRetries = opts.maxRetries ?? DEFAULT_MAX_RETRIES;
