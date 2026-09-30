@@ -6,11 +6,12 @@ import { fetchWithRetry } from './http.js';
 import { readCache, writeCache } from './cache.js';
 import { writeEnvelope } from '../cli/output.js';
 import { shijiKbAdapter } from '../adapters/shiji-kb.js';
+import { dutongjianAdapter } from '../adapters/dutongjian.js';
 
 const DEFAULT_MIN_INTERVAL_MS = Number(process.env.EXTRACT_MIN_INTERVAL_MS ?? 500);
 const DEFAULT_CACHE_DIR = '.cache';
 
-const REGISTRY: Adapter[] = [shijiKbAdapter];
+const REGISTRY: Adapter[] = [shijiKbAdapter, dutongjianAdapter];
 
 export function listAdapters(): Adapter[] {
   return REGISTRY.slice();
