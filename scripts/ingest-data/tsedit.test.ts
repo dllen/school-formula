@@ -1,9 +1,12 @@
 // tsedit.test.ts
 import { test } from 'vitest';
 import assert from 'node:assert/strict';
-import { appendToConstArray, insertLineAfter, extractIds } from './tsedit';
+import { appendToConstArray, insertLineAfter, extractIds, extractItemFields } from './tsedit';
 
-const SRC = `export const X: T[] = [\n  { id: 'a' },\n];\n`;
+const SRC = `export const X: T[] = [
+  { id: 'a' },
+];
+`;
 
 test('appendToConstArray 在数组尾部插入', () => {
   const out = appendToConstArray(SRC, 'X', [{ id: 'b' }]);
@@ -13,14 +16,20 @@ test('appendToConstArray 在数组尾部插入', () => {
 });
 
 test('appendToConstArray 匹配非导出 const 数组', () => {
-  const src = `const X: T[] = [\n  { id: 'a' },\n];\n`;
+  const src = `const X: T[] = [
+  { id: 'a' },
+];
+`;
   const out = appendToConstArray(src, 'X', [{ id: 'b' }]);
   assert.ok(out.includes(`"id": "b"`));
   assert.ok(out.indexOf('a') < out.indexOf('b'));
 });
 
 test('appendToConstArray 跳过字符串字面量内的 [ 与 ]', () => {
-  const src = `const X: T[] = [\n  { text: 'a]b', range: '[0,1)' },\n];\n`;
+  const src = `const X: T[] = [
+  { text: 'a]b', range: '[0,1)' },
+];
+`;
   const out = appendToConstArray(src, 'X', [{ text: 'c' }]);
   // 既有元素保持完整（字符串内的 ] 与 [ 未被当作数组边界）
   assert.ok(out.includes(`{ text: 'a]b', range: '[0,1)' }`));
@@ -37,4 +46,30 @@ test('insertLineAfter 在锚点后插入一行', () => {
 test('extractIds 提取单双引号 id', () => {
   const ids = extractIds(`{ id: 'a' }, { "id": "b" }, { id: "a" }`);
   assert.deepEqual([...ids].sort(), ['a', 'b']);
+});
+
+test('extractItemFields extracts title+chapter pairs from item blocks', () => {
+  const content = `
+    const DATA = [
+      { id: 'v1', title: '周本纪', chapter: '卷一', content: [] },
+      { id: 'v2', title: '夏本纪', chapter: '卷二', content: [] },
+      { id: 'v3', title: '周本纪', chapter: '卷一', content: [] },
+    ];
+  `;
+  const items = extractItemFields(content, 'title', 'chapter');
+  assert.deepEqual(items, [
+    { title: '周本纪', chapter: '卷一' },
+    { title: '夏本纪', chapter: '卷二' },
+    { title: '周本纪', chapter: '卷一' },
+  ]);
+});
+
+test('extractItemFields skips item blocks missing requested fields', () => {
+  const content = `const X = [{ id: 'v1' }, { title: 'a', chapter: 'b' }];`;
+  const items = extractItemFields(content, 'title', 'chapter');
+  assert.deepEqual(items, [{ title: 'a', chapter: 'b' }]);
+});
+
+test('extractItemFields returns empty array when no item blocks match', () => {
+  assert.deepEqual(extractItemFields('', 'title'), []);
 });

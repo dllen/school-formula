@@ -51,3 +51,26 @@ export function extractIds(content: string): Set<string> {
   while ((m = re.exec(content))) ids.add(m[1]);
   return ids;
 }
+
+/** 从源文件提取每个 item 块的字段映射。
+ *  item 块按最外层 {...} 切分（不适用于嵌套对象，但本项目所有 array item 都是 flat 的）。
+ *  返回并行数组：[{ field1: 'v1', field2: 'v2' }, ...]。 */
+export function extractItemFields(
+  content: string,
+  ...fieldNames: string[]
+): Array<Record<string, string>> {
+  const items: Array<Record<string, string>> = [];
+  const itemRegex = /\{[^{}]*\}/g;
+  let m: RegExpExecArray | null;
+  while ((m = itemRegex.exec(content))) {
+    const block = m[0];
+    const entry: Record<string, string> = {};
+    for (const f of fieldNames) {
+      const re = new RegExp(`\\b${f}:\\s*['"]([^'"]+)['"]`);
+      const fm = re.exec(block);
+      if (fm) entry[f] = fm[1];
+    }
+    if (Object.keys(entry).length > 0) items.push(entry);
+  }
+  return items;
+}
