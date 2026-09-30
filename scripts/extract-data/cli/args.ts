@@ -10,6 +10,12 @@ export interface CliFlags {
   url?: string;
   cacheTtlDays?: number;
   adapterName?: string;
+  /** New: URL to inspect (dev tool, mutually exclusive with adapterName) */
+  inspect?: string;
+  /** New: save fixture when --inspect (default true) */
+  save: boolean;
+  /** New: heading print limit (default 20) */
+  maxHeadings?: number;
 }
 
 export interface ParsedArgs {
@@ -25,6 +31,7 @@ export function parseCliArgs(argv: string[]): ParsedArgs {
     dryRun: false,
     noCache: false,
     partialOk: false,
+    save: true,
   };
   const errors: string[] = [];
 
@@ -62,6 +69,19 @@ export function parseCliArgs(argv: string[]): ParsedArgs {
         if (!Number.isFinite(n) || n < 0) errors.push(`--cache-ttl 需要非负数字（传入: ${v}）`);
         else flags.cacheTtlDays = n;
         }
+        break;
+      case '--inspect':
+        flags.inspect = argv[++i];
+        if (!flags.inspect) errors.push('--inspect 需要值');
+        break;
+      case '--no-slot':
+        flags.save = false;
+        break;
+      case '--max-headings':
+        const v2 = argv[++i];
+        const n2 = Number(v2);
+        if (!Number.isFinite(n2) || n2 < 1) errors.push(`--max-headings 需要正整数（传入: ${v2}）`);
+        else flags.maxHeadings = n2;
         break;
       default:
         if (a.startsWith('-')) {

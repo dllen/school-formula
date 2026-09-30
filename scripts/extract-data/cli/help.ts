@@ -15,6 +15,9 @@ Flags:
   --partial-ok        接受部分页面失败
   --url <single>      只抓单个 URL（调试）
   --cache-ttl <days>  覆盖默认 7 天缓存 TTL
+  --inspect <url>     探测 HTML 结构（开发工具，保存到 .fixtures/）
+  --no-slot           --inspect 时跳过保存 fixture
+  --max-headings <n>  heading 打印上限（默认 20）
   --help, -h          显示本帮助
   --version, -V       显示版本
 
@@ -29,6 +32,7 @@ Flags:
   extract --list
   extract shiji-kb --dry-run
   extract shiji-kb --partial-ok
+  extract --inspect https://example.com
 
 下一步:
   npm run ingest -- --kind shiji   把抽取结果合并进 src/data/

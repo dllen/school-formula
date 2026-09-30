@@ -1,7 +1,7 @@
 // scripts/extract-data/index.ts
 import { parseCliArgs } from './cli/args.js';
 import { showHelp } from './cli/help.js';
-import { listAdapters, getAdapter, runAdapter } from './core/runner.js';
+import { listAdapters, getAdapter, runAdapter, runInspect } from './core/runner.js';
 
 async function main(): Promise<void> {
   const args = parseCliArgs(process.argv.slice(2));
@@ -18,6 +18,18 @@ async function main(): Promise<void> {
     for (const e of args.errors) console.error(`Error: ${e}`);
     process.exit(2);
   }
+
+  // New: --inspect takes precedence over adapter positional
+  if (args.flags.inspect) {
+    try {
+      await runInspect(args.flags.inspect, args.flags, { root: process.cwd() });
+      process.exit(0);
+    } catch (err) {
+      console.error(`[extract-data] inspect fatal: ${(err as Error).message}`);
+      process.exit(1);
+    }
+  }
+
   if (args.flags.list) {
     for (const a of listAdapters()) {
       console.log(`${a.kind.padEnd(10)}  ${a.name}  — ${a.description}`);

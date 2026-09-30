@@ -8,6 +8,7 @@ import { writeEnvelope } from '../cli/output.js';
 import { shijiKbAdapter } from '../adapters/shiji-kb.js';
 import { dutongjianAdapter } from '../adapters/dutongjian.js';
 import { hunterhugAdapter } from '../adapters/hunterhug.js';
+import { inspectHtml, formatReport } from './inspect.js';
 
 const DEFAULT_MIN_INTERVAL_MS = Number(process.env.EXTRACT_MIN_INTERVAL_MS ?? 500);
 const DEFAULT_CACHE_DIR = '.cache';
@@ -104,4 +105,21 @@ export async function runAdapter(
     envelopePath: out.dryRun ? undefined : out.path,
     dryRun: out.dryRun,
   };
+}
+
+export async function runInspect(
+  url: string,
+  flags: CliFlags,
+  ctx: { root: string }
+): Promise<void> {
+  const report = await inspectHtml(
+    {
+      url,
+      adapterKind: flags.adapterName,
+      save: flags.save,
+      maxHeadings: flags.maxHeadings ?? 20,
+    },
+    ctx
+  );
+  console.log(formatReport(report));
 }
