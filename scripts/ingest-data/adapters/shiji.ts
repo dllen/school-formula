@@ -24,4 +24,6 @@ export const shijiAdapter = simpleArrayAdapter({
     }
     return errs;
   },
+  dedupBy: (it) => `${it.title ?? ''}|${it.chapter ?? ''}`,
+  dedupFields: ['title', 'chapter'],
 });
