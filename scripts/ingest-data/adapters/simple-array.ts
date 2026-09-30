@@ -2,7 +2,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Adapter, IngestContext, TypeRef } from '../types';
-import { appendToConstArray, extractIds } from '../tsedit';
+import { appendToConstArray, extractIds, extractItemFields } from '../tsedit';
 import { duplicateIds, collidingIds } from '../validate';
 
 export interface SimpleArrayConfig {
@@ -15,6 +15,10 @@ export interface SimpleArrayConfig {
   arrayName: (item: unknown, raw: unknown) => string;
   /** 额外业务校验（id 唯一之外）。 */
   checks?: (items: { id: string }[], ctx: IngestContext) => string[];
+  /** dedup key 函数。返回相同 key 的 incoming item 会被跳过。返回空字符串 → 不参与 dedup。 */
+  dedupBy?: (item: Record<string, unknown>) => string;
+  /** 与 dedupBy 配套，用于从现有数据文件抽取字段以重建 dedup key。 */
+  dedupFields?: string[];
 }
 
 export function simpleArrayAdapter(cfg: SimpleArrayConfig): Adapter {
@@ -37,7 +41,28 @@ export function simpleArrayAdapter(cfg: SimpleArrayConfig): Adapter {
     merge(value, raw, ctx) {
       const abs = join(ctx.root, cfg.file);
       const content = readFileSync(abs, 'utf-8');
-      const items = value as Record<string, unknown>[];
+      let items = value as Record<string, unknown>[];
+
+      // Dedup against existing data
+      if (cfg.dedupBy && cfg.dedupFields) {
+        const existingItems = extractItemFields(content, ...cfg.dedupFields);
+        const existingKeys = new Set(
+          existingItems
+            .map(e => cfg.dedupBy!(e as Record<string, unknown>))
+            .filter(k => k.length > 0)
+        );
+        const filtered: typeof items = [];
+        for (const it of items) {
+          const key = cfg.dedupBy(it);
+          if (key && existingKeys.has(key)) {
+            console.error(`[ingest-data] ${cfg.kind}: skip "${key}" — 已有`);
+          } else {
+            filtered.push(it);
+          }
+        }
+        items = filtered;
+      }
+
       const groups = new Map<string, Record<string, unknown>[]>();
       for (const it of items) {
         const name = cfg.arrayName(it, raw);
