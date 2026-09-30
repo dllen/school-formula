@@ -68,8 +68,8 @@ export function parseCliArgs(argv: string[]): ParsedArgs {
         const n = Number(v);
         if (!Number.isFinite(n) || n < 0) errors.push(`--cache-ttl 需要非负数字（传入: ${v}）`);
         else flags.cacheTtlDays = n;
-        }
         break;
+      }
       case '--inspect':
         flags.inspect = argv[++i];
         if (!flags.inspect) errors.push('--inspect 需要值');
@@ -77,12 +77,13 @@ export function parseCliArgs(argv: string[]): ParsedArgs {
       case '--no-slot':
         flags.save = false;
         break;
-      case '--max-headings':
+      case '--max-headings': {
         const v2 = argv[++i];
         const n2 = Number(v2);
         if (!Number.isFinite(n2) || n2 < 1) errors.push(`--max-headings 需要正整数（传入: ${v2}）`);
         else flags.maxHeadings = n2;
         break;
+      }
       default:
         if (a.startsWith('-')) {
           errors.push(`未知 flag: ${a}`);
