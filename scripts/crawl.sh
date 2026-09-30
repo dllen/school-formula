@@ -9,7 +9,7 @@
 #   scripts/crawl.sh --no-extract # 只跑 ingest
 #   scripts/crawl.sh --adapter shiji  # 只跑指定 kind
 
-set -uo pipefail
+set -o pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$(cd "$ROOT/.." && pwd)"
@@ -71,7 +71,7 @@ for adapter in "${ADAPTERS[@]}"; do
   if ! $EXTRACT; then break; fi
   EXTRA=()
   $DRY_RUN && EXTRA+=("--dry-run")
-  [[ ${#EXTRACT_EXTRA[@]} -gt 0 ]] && EXTRA+=("${EXTRACT_EXTRA[@]}")
+  if [[ ${#EXTRACT_EXTRA[@]} -gt 0 ]]; then EXTRA+=("${EXTRACT_EXTRA[@]}"); fi
   if bash scripts/extract-data/extract.sh "$adapter" "${EXTRA[@]}" >/dev/null 2>&1; then
     EXTRACT_RESULTS+=("{\"adapter\":\"$adapter\",\"status\":\"ok\"}")
   else
