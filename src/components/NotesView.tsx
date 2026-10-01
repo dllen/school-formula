@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { storageGet, storageSet } from '../utils/storage';
 
 const STORAGE_KEY = 'school_formula_notes';
 
@@ -12,7 +13,7 @@ interface Note {
 
 function loadNotes(): Note[] {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = storageGet(STORAGE_KEY);
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
@@ -44,7 +45,7 @@ export const NotesView: React.FC = () => {
   const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+    storageSet(STORAGE_KEY, JSON.stringify(notes));
   }, [notes]);
 
   const sortedNotes = useMemo(

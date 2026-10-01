@@ -1,4 +1,5 @@
 import type { MasteryProgress, PracticeRecord } from './types';
+import { storageGet, storageSet } from '../../utils/storage';
 
 const STORAGE_KEY = 'math_mastery_progress';
 
@@ -9,7 +10,7 @@ function dateKey(ts: number): string {
 
 export function loadProgress(): MasteryProgress {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = storageGet(STORAGE_KEY);
     if (stored) return JSON.parse(stored);
   } catch {
     /* ignore */
@@ -18,7 +19,7 @@ export function loadProgress(): MasteryProgress {
 }
 
 export function saveProgress(progress: MasteryProgress): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  storageSet(STORAGE_KEY, JSON.stringify(progress));
 }
 
 export function recordAttempt(

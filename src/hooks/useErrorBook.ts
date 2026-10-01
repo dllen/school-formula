@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { storageGet, storageSet } from '../utils/storage';
 
 const STORAGE_KEY = 'school_formula_error_book';
 
@@ -12,7 +13,7 @@ export interface ErrorEntry {
 export function useErrorBook() {
   const [errors, setErrors] = useState<ErrorEntry[]>(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = storageGet(STORAGE_KEY);
       return stored ? JSON.parse(stored) : [];
     } catch {
       return [];
@@ -20,7 +21,7 @@ export function useErrorBook() {
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(errors));
+    storageSet(STORAGE_KEY, JSON.stringify(errors));
   }, [errors]);
 
   const addError = useCallback((questionId: string, userAnswer: string) => {

@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { storageGet, storageSet } from '../utils/storage';
 
 const STORAGE_KEY = 'school_formula_progress';
 
@@ -39,7 +40,7 @@ function getDefaultProgress(): LearningProgress {
 export function useLearningProgress() {
   const [progress, setProgress] = useState<LearningProgress>(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = storageGet(STORAGE_KEY);
       return stored ? JSON.parse(stored) : getDefaultProgress();
     } catch {
       return getDefaultProgress();
@@ -47,7 +48,7 @@ export function useLearningProgress() {
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    storageSet(STORAGE_KEY, JSON.stringify(progress));
   }, [progress]);
 
   const recordPractice = useCallback((answered: number, correct: number, timeSpent: number) => {

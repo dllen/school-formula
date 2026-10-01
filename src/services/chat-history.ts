@@ -1,3 +1,5 @@
+import { storageGet, storageSet } from '../utils/storage';
+
 const STORAGE_KEY = 'sf_chat_sessions';
 const MAX_SESSIONS = 50;
 
@@ -18,7 +20,7 @@ export interface ChatSession {
 
 export function loadSessions(): ChatSession[] {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = storageGet(STORAGE_KEY);
     if (!raw) return [];
     return JSON.parse(raw) as ChatSession[];
   } catch {
@@ -29,7 +31,7 @@ export function loadSessions(): ChatSession[] {
 export function saveSessions(sessions: ChatSession[]): void {
   try {
     const trimmed = sessions.slice(-MAX_SESSIONS);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(trimmed));
+    storageSet(STORAGE_KEY, JSON.stringify(trimmed));
   } catch (err) {
     console.warn('Failed to save chat sessions:', err);
   }

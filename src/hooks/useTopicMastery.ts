@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { storageGet, storageSet } from '../utils/storage';
 
 const STORAGE_KEY = 'school_formula_topic_mastery';
 
@@ -19,7 +20,7 @@ function getDefault(): TopicMastery {
 export function useTopicMastery() {
   const [masteryById, setMasteryById] = useState<Record<string, TopicMastery>>(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = storageGet(STORAGE_KEY);
       return stored ? JSON.parse(stored) : {};
     } catch {
       return {};
@@ -27,7 +28,7 @@ export function useTopicMastery() {
   });
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(masteryById));
+    storageSet(STORAGE_KEY, JSON.stringify(masteryById));
   }, [masteryById]);
 
   const recordTopicAttempt = useCallback(
