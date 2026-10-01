@@ -2,7 +2,7 @@ import { handleAuth } from './routes/auth';
 import { handleUser } from './routes/user';
 import { handleAI } from './routes/ai';
 import { hostRedirect, legacyViewRedirect } from './lib/redirect';
-import { assetCandidates } from './lib/static-paths';
+import { assetCandidates, isSeoFile } from './lib/static-paths';
 import type { Env } from './types';
 
 function normalizeOrigin(value: string): string {
@@ -36,7 +36,13 @@ async function serveStatic(request: Request, env: Env): Promise<Response> {
   for (const candidate of assetCandidates(url.pathname)) {
     try {
       const response = await env.ASSETS.fetch(new Request(url.origin + candidate, request));
-      if (response.status !== 404) return response;
+      if (response.status === 404) continue;
+      // robots.txt / sitemap.xml must be the real files: a missing file must 404 rather
+      // than let the assets SPA fallback return the app shell (which crawlers can't read).
+      if (isSeoFile(candidate) && (response.headers.get('Content-Type') ?? '').includes('text/html')) {
+        continue;
+      }
+      return response;
     } catch {
       // 尝试下一个候选
     }

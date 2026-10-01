@@ -158,6 +158,41 @@ npm run ingest:dry       # 校验但不写盘
 
 ---
 
+## 5.1 SEO 与预渲染（文档 head 的唯一所有者）
+
+预渲染把每条路由渲染成静态 HTML。页面 `<head>` 的**唯一来源**是 `src/seo/`，按「数据 / 逻辑 / 呈现」分层：
+
+```
+src/seo/
+├── site.ts     # 站点常量：规范域名 origin、品牌文案、默认语言与 LANGUAGES 列表
+├── content.ts  # 路由 → 页面内容策略：视图标题/描述、首页文案、知识点索引与面包屑
+├── meta.ts     # buildSeoMeta(path): SeoMeta（唯一派生逻辑：canonical、hreflang、OG/Twitter、JSON-LD）
+├── head.ts     # renderHead(meta): string（仅呈现：把 SeoMeta 转成 head HTML，含转义）
+└── files.ts    # buildRobotsTxt() / buildSitemap(paths)（站点级文件）
+```
+
+- `src/prerender/inject.ts` 的 `injectPage(template, appHtml, headHtml)` 负责最终的文档拼装：用 `renderHead(...)` 的输出替换模板里的 `<title>`，再把 SSR 出的 app HTML 注入 `#root`。
+- `src/entry-prerender.ts` 遍历 `PRERENDER_PATHS`，为每条路由生成 head + HTML，并写出 `dist/robots.txt` 与 `dist/sitemap.xml`（287 个 URL）。
+- canonical 采用「目录式」URL（非根路径带尾斜杠），与 Worker 的 `/tutorial` → 308 → `/tutorial/` 行为一致。
+- 视图标题/描述新增或修改时改 `src/seo/content.ts`；站点域名/品牌改 `src/seo/site.ts`。客户端路由切换不会更新 head（静态页面由预渲染产出，爬虫可见）。
+- Worker 侧 `worker/lib/static-paths.ts` 的 `isSeoFile()` 保证 `/robots.txt`、`/sitemap.xml` 缺失时返回 404，而不是被 SPA fallback 换成 app HTML。
+
+## 5.2 多语言与英文站点（/en）
+
+语言由 URL 前缀决定，唯一事实来源是 `src/i18n/languages.ts` 的 `LANGUAGES`：
+
+- `languageForPath(path)`：判断路径属于哪种语言（`/en`、`/en/...` → en；其余 → zh-CN）。
+- `appPathFor(path)`：剥离语言前缀，得到应用内路径（`/en/reference/x` → `/reference/x`）。
+- 站点文案（品牌名、description、`og:locale`）按语言存放在 `src/seo/site.ts` 的 `BRAND`，通过 `brandFor(language)` 取用。
+
+**英文站点**是刻意收窄的一个面（`/en/` 与 `/en/reference/:slug`），只承载语言中立的可打印速查表（`src/data/reference.ts`），不是整站翻译：
+
+- 组件在 `src/components/reference/`：`ReferenceLayout`（英文页头/页脚）、`ReferenceIndex`（`/en/` 列表）、`ReferencePage`（单表 + 打印）、`PrintButton`。
+- 路由在 `src/App.tsx`；预渲染路径由 `src/seo/content.ts` 的 `ENGLISH_REFERENCE_PATHS` 提供，并自动进入 `sitemap.xml`。
+- 每个英文页输出 `<html lang="en">` 与 `hreflang="en"` + `x-default`；中文页保持 `zh-CN`，且交替链接不含 `/en`（`src/seo/meta.ts`）。
+
+新增一门语言：在 `LANGUAGES` 加一项、在 `BRAND` 加对应文案，并在 `resolvePageContent` 增加该语言的内容分支。
+
 ## 6. 代码风格与开发约定
 
 ### 6.1 TypeScript

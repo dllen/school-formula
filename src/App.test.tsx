@@ -40,4 +40,14 @@ describe('App routes', () => {
     renderApp('/?view=bogus');
     expect(screen.getByTestId('location').textContent).toBe('/?view=bogus');
   });
+
+  it('serves the English reference index at /en', () => {
+    renderApp('/en');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Printable Study Reference');
+  });
+
+  it('serves an English reference chart at /en/reference/:slug', () => {
+    renderApp('/en/reference/multiplication-chart');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Multiplication Chart');
+  });
 });

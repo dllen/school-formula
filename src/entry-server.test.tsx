@@ -18,4 +18,9 @@ describe('entry-server render', () => {
     expect(() => render('/practice')).not.toThrow();
     expect(render('/practice').length).toBeGreaterThan(0);
   });
+
+  it('renders the English surface with real English content', () => {
+    expect(render('/en')).toContain('Printable Study Reference');
+    expect(render('/en/reference/multiplication-chart')).toContain('Multiplication Chart');
+  });
 });
