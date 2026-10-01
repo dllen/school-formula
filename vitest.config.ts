@@ -33,7 +33,7 @@ export default defineConfig({
                 test: {
                     name: 'scripts',
                     environment: 'node',
-                    include: ['scripts/**/*.{test,spec}.ts'],
+                    include: ['scripts/**/*.{test,spec}.ts', 'worker/**/*.test.ts'],
                     exclude: ['node_modules', 'dist', 'scripts/*/node_modules/**'],
                 },
             },

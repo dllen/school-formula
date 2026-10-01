@@ -1,6 +1,8 @@
 import { handleAuth } from './routes/auth';
 import { handleUser } from './routes/user';
 import { handleAI } from './routes/ai';
+import { hostRedirect, legacyViewRedirect } from './lib/redirect';
+import { assetCandidates } from './lib/static-paths';
 import type { Env } from './types';
 
 function normalizeOrigin(value: string): string {
@@ -30,20 +32,16 @@ function getAllowedOrigin(request: Request, env: Env): string {
 
 async function serveStatic(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
-  const path = url.pathname;
 
-  try {
-    if (!path.includes('.')) {
-      return await env.ASSETS.fetch(url.origin + '/index.html');
-    }
-    return await env.ASSETS.fetch(request);
-  } catch {
+  for (const candidate of assetCandidates(url.pathname)) {
     try {
-      return await env.ASSETS.fetch(url.origin + '/index.html');
+      const response = await env.ASSETS.fetch(new Request(url.origin + candidate, request));
+      if (response.status !== 404) return response;
     } catch {
-      return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain' } });
+      // 尝试下一个候选
     }
   }
+  return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain' } });
 }
 
 export default {
@@ -51,6 +49,11 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
     const corsOrigin = getAllowedOrigin(request, env);
+
+    const redirect = hostRedirect(url) ?? (request.method === 'GET' ? legacyViewRedirect(url) : null);
+    if (redirect) {
+      return Response.redirect(redirect, 301);
+    }
 
     if (request.method === 'OPTIONS') {
       return new Response(null, {
