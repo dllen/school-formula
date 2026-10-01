@@ -23,7 +23,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           </div>
         )}
         <div className={`mt-1 text-[10px] ${isUser ? 'text-white/60' : 'text-[#8F959E]'}`}>
-          {new Date(message.timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
+          {message.timestamp > 0 ? new Date(message.timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) : null}
         </div>
       </div>
     </div>

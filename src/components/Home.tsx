@@ -24,6 +24,12 @@ export function Home() {
     const [searchParams] = useSearchParams();
     const [selectedGradeId, setSelectedGradeId] = useState<GradeLevel>('primary');
     const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
+    const [year, setYear] = useState<number | null>(null);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR-safe: render null on server, fill year after mount
+        setYear(new Date().getFullYear());
+    }, []);
 
     const activeView: ViewType = viewFromPath(location.pathname) ?? 'knowledge';
 
@@ -116,7 +122,7 @@ export function Home() {
             </main>
 
             <footer className="mt-12 py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2]">
-                <p>&copy; {new Date().getFullYear()} 拾艺院 (Shi Yi Yuan). All rights reserved.</p>
+                <p>&copy; {year} 拾艺院 (Shi Yi Yuan). All rights reserved.</p>
             </footer>
         </div>
     );

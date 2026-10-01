@@ -31,7 +31,7 @@ const WELCOME_MESSAGE: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
   content: '你好！我是 **拾艺院助教** 👋\n\n我可以帮助你解答学科疑问、讲解知识点、设计练习题，或者分享学习方法。\n\n请问有什么可以帮你的？',
-  timestamp: Date.now(),
+  timestamp: 0,
 };
 
 function generateMessageId(): string {

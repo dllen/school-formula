@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type RelatedPracticeProps = {
     pointId: string;
@@ -9,11 +10,12 @@ export const RelatedPractice: React.FC<RelatedPracticeProps> = ({
     pointId,
     relatedCount,
 }) => {
+    const navigate = useNavigate();
+
     if (relatedCount === 0) return null;
 
     const handleStartPractice = () => {
-        const params = new URLSearchParams({ view: 'practice', kp: pointId });
-        window.location.href = `/?${params.toString()}`;
+        navigate(`/practice?kp=${pointId}`);
     };
 
     return (

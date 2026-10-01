@@ -1,7 +1,7 @@
+import { storageGet, storageSet, storageRemove } from './storage';
+
 export const ACCESS_TOKEN_KEY = 'sf_access_token';
 export const REFRESH_TOKEN_KEY = 'sf_refresh_token';
-
-import { storageGet, storageSet, storageRemove } from './storage';
 
 // access token 内存缓存：token 双写（内存 + localStorage），每次读取走内存，
 // 避免高频请求的 localStorage 同步 IO；clearToken 同步置空

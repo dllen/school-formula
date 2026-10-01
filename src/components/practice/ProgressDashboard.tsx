@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { LearningProgress } from '../../hooks/useLearningProgress';
 import { formatTime } from '../../utils/questionUtils';
 
@@ -12,12 +12,13 @@ export const ProgressDashboard: React.FC<ProgressDashboardProps> = ({ progress, 
     ? Math.round((progress.totalCorrect / progress.totalAnswered) * 100)
     : 0;
 
-  const last7Days = useMemo(() => {
-    return Array.from({ length: 7 }, (_, i) => {
-      // eslint-disable-next-line react-hooks/purity
+  const [last7Days, setLast7Days] = useState<string[]>([]);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR-safe: render empty on server, populate after mount
+    setLast7Days(Array.from({ length: 7 }, (_, i) => {
       const d = new Date(Date.now() - (6 - i) * 86400000);
       return d.toISOString().split('T')[0];
-    });
+    }));
   }, []);
 
   return (
