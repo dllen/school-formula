@@ -14,6 +14,7 @@ const API_DOMAIN_MAP: Record<string, string> = {
 };
 
 export function resolveApiBase(): string {
+    if (typeof location === 'undefined') return 'http://localhost:8787';
     const hostname = location.hostname;
     for (const [suffix, apiDomain] of Object.entries(API_DOMAIN_MAP)) {
         if (hostname === suffix || hostname.endsWith(`.${suffix}`)) {
