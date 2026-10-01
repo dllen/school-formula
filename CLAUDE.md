@@ -19,7 +19,7 @@ npm install
 # 前端开发服务器（Vite，默认 http://localhost:5173）
 npm run dev
 
-# TypeScript 类型检查 + 生产构建（输出到 dist/）
+# TypeScript 类型检查 + 生产构建 + SSG 预渲染（输出到 dist/）
 npm run build
 
 # 预览生产构建
@@ -153,12 +153,24 @@ worker/
 
 | 路径 | 组件 | 说明 |
 |------|------|------|
-| `/` | `Home` | 主页面，通过 `activeView` 状态切换 10 个视图 |
+| `/` | `Home` | 主页（knowledge 视图） |
+| `/tutorial` | `Home` | 教程 |
+| `/cheatsheet` | `Home` | 速查表 |
+| `/mental-math` | `Home` | 口算 |
+| `/formula` | `Home` | 公式 |
+| `/mastery` | `Home` | 掌握度 |
+| `/practice` | `Home` | 练习 |
+| `/notes` | `Home` | 笔记 |
+| `/zizhi` | `Home` | 自知 |
+| `/shiji` | `Home` | 实践 |
+| `/ai-chat` | `Home` | AI 对话 |
 | `/knowledge/:id` | `KnowledgeDetail` | 知识点详情 + AI 生成 |
 
-`Home` 组件的 `ViewType`：`knowledge` | `tutorial` | `cheatsheet` | `mental-math` | `formula` | `mastery` | `practice` | `notes` | `zizhi` | `shiji`
+`Home` 组件的 `ViewType`：`knowledge` | `tutorial` | `cheatsheet` | `mental-math` | `formula` | `mastery` | `practice` | `notes` | `zizhi` | `shiji` | `ai-chat`
 
-URL 参数：`?view=practice&kp=p-math-1` 可直接定位到特定视图和知识点。
+视图路径由 `src/view-routes.ts` 的 `VIEW_PATHS` 定义（`pathForView` / `viewFromPath` / `isViewName`）；Worker 端 `KNOWN_VIEWS`（`worker/index.ts`）是同步副本——新增视图时两处都要改。
+
+旧的 `?view=` 查询参数已废弃，客户端与 Worker 双重 301 跳转到新路径（例：`?view=practice&kp=p-math-1` → `/practice?kp=p-math-1`）。其他 URL 参数（如 `kp`、`subject`）保持原语义。
 
 ## 数据层
 
