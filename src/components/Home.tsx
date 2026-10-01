@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { CheatSheetView } from './CheatSheetView';
 import { FormulaView } from './FormulaView';
 import { MentalMathView } from './MentalMathView';
@@ -15,22 +15,29 @@ import { Header } from './Header';
 import { KnowledgeList } from './KnowledgeList';
 import { SubjectGrid } from './SubjectGrid';
 import { type GradeLevel, KNOWLEDGE_DATA, type Subject } from '../data/knowledge';
-
-type ViewType = 'knowledge' | 'tutorial' | 'cheatsheet' | 'mental-math' | 'formula' | 'mastery' | 'practice' | 'notes' | 'zizhi' | 'shiji' | 'ai-chat';
+import type { ViewType } from './Header/types';
+import { isViewName, pathForView, viewFromPath } from '../view-routes';
 
 export function Home() {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const [selectedGradeId, setSelectedGradeId] = useState<GradeLevel>('primary');
     const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
 
-    // Initialize view from URL query params (e.g. ?view=practice&kp=p-math-1)
-    const [activeView, setActiveView] = useState<ViewType>(() => {
-        const viewParam = searchParams.get('view');
-        if (viewParam && ['knowledge', 'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery', 'practice', 'notes', 'zizhi', 'shiji', 'ai-chat'].includes(viewParam)) {
-            return viewParam as ViewType;
+    const activeView: ViewType = viewFromPath(location.pathname) ?? 'knowledge';
+
+    // 旧链接 ?view=xxx 兼容：重定向到 /<view>，保留其余 query（如 kp）
+    useEffect(() => {
+        if (location.pathname !== '/') return;
+        const view = searchParams.get('view');
+        if (view && isViewName(view) && view !== 'knowledge') {
+            const rest = new URLSearchParams(searchParams);
+            rest.delete('view');
+            const search = rest.toString();
+            navigate({ pathname: pathForView(view), search: search ? `?${search}` : '' }, { replace: true });
         }
-        return 'knowledge';
-    });
+    }, [location.pathname, searchParams, navigate]);
 
     const currentGradeData = KNOWLEDGE_DATA.find(g => g.id === selectedGradeId)!;
 
@@ -41,7 +48,7 @@ export function Home() {
 
     return (
         <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800 flex flex-col">
-            <Header activeView={activeView} onViewChange={setActiveView} />
+            <Header activeView={activeView} onViewChange={(view) => navigate(pathForView(view))} />
 
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow w-full">
 

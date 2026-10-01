@@ -23,6 +23,7 @@ export default defineConfig({
                 test: {
                     name: 'app',
                     environment: 'happy-dom',
+                    setupFiles: ['./src/test-setup.ts'],
                     include: ['src/**/*.{test,spec}.{ts,tsx}'],
                     exclude: ['node_modules', 'dist'],
                 },
