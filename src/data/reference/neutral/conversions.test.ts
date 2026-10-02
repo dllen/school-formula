@@ -1,25 +1,33 @@
 import { describe, expect, it } from 'vitest';
-import { metricConversionRows } from './conversions';
+import { metricConversionGroups } from './conversions';
 
-describe('metricConversionRows', () => {
+describe('metricConversionGroups', () => {
   it('covers length, mass and time in that order', () => {
-    const groups = metricConversionRows()
-      .map((row) => row[0])
-      .filter(Boolean);
-    expect(groups).toEqual(['Length', 'Mass', 'Time']);
+    expect(metricConversionGroups().map((group) => group.key)).toEqual(['length', 'mass', 'time']);
   });
 
-  it('keeps every row a two-cell pair with a non-empty conversion', () => {
-    for (const row of metricConversionRows()) {
-      expect(row).toHaveLength(2);
-      expect(row[1].length).toBeGreaterThan(0);
+  it('carries no display copy — entries are digits, operators and unit symbols only', () => {
+    for (const group of metricConversionGroups()) {
+      for (const entry of group.entries) {
+        expect(entry).toContain('=');
+        // 单位符号最长三个字母（km / min / day）。更长的字母串就意味着混进了文案。
+        for (const token of entry.split(/[^A-Za-z]+/).filter(Boolean)) {
+          expect(token.length).toBeLessThanOrEqual(3);
+        }
+      }
     }
   });
 
   it('states the metric powers-of-ten relations exactly', () => {
-    const rows = metricConversionRows();
-    expect(rows).toContainEqual(['Length', '1 km = 1000 m']);
-    expect(rows).toContainEqual(['Mass', '1 t = 1000 kg']);
-    expect(rows).toContainEqual(['Time', '1 h = 60 min = 3600 s']);
+    const entries = metricConversionGroups().flatMap((group) => group.entries);
+    expect(entries).toContain('1 km = 1000 m');
+    expect(entries).toContain('1 kg = 1000 g');
+    expect(entries).toContain('1 h = 60 min = 3600 s');
+  });
+
+  it('keeps every group non-empty', () => {
+    for (const group of metricConversionGroups()) {
+      expect(group.entries.length).toBeGreaterThan(0);
+    }
   });
 });

@@ -1,17 +1,19 @@
 /**
- * 公制换算表的数据行。分组标签（Length / Mass / Time）是英文，会随语言文件走——
- * `es/` 落地时把这份行数据包进自己的分组标签即可。
+ * 公制换算的数据。分组只带一个稳定的键，显示名（Length / Mass / Time）由语言文件提供——
+ * neutral 层不含任何文案。等式本身只由数字与国际单位符号组成，语言无关。
  */
-export function metricConversionRows(): string[][] {
+export type ConversionGroupKey = 'length' | 'mass' | 'time';
+
+export interface ConversionGroup {
+  key: ConversionGroupKey;
+  /** 每条是一个换算等式，例如 `1 km = 1000 m`。 */
+  entries: string[];
+}
+
+export function metricConversionGroups(): ConversionGroup[] {
   return [
-    ['Length', '1 km = 1000 m'],
-    ['', '1 m = 100 cm = 1000 mm'],
-    ['', '1 cm = 10 mm'],
-    ['Mass', '1 t = 1000 kg'],
-    ['', '1 kg = 1000 g'],
-    ['', '1 g = 1000 mg'],
-    ['Time', '1 h = 60 min = 3600 s'],
-    ['', '1 min = 60 s'],
-    ['', '1 day = 24 h'],
+    { key: 'length', entries: ['1 km = 1000 m', '1 m = 100 cm = 1000 mm', '1 cm = 10 mm'] },
+    { key: 'mass', entries: ['1 t = 1000 kg', '1 kg = 1000 g', '1 g = 1000 mg'] },
+    { key: 'time', entries: ['1 h = 60 min = 3600 s', '1 min = 60 s', '1 day = 24 h'] },
   ];
 }
