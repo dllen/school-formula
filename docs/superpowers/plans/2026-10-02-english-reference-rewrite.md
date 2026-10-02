@@ -176,28 +176,30 @@ import { describe, expect, it } from 'vitest';
 import { multiplicationRows, squaresCubesRootsRows } from './tables';
 
 describe('multiplicationRows', () => {
-  it('returns a square grid of products with no header row', () => {
+  it('returns labelled rows one wider than the grid, with no header row', () => {
     const rows = multiplicationRows(12);
     expect(rows).toHaveLength(12);
-    expect(rows[0]).toHaveLength(12);
+    expect(rows[0]).toHaveLength(13);
     expect(rows[0][0]).toBe('1');
-    expect(rows[11][11]).toBe('144');
+    expect(rows[11][0]).toBe('12');
+    expect(rows[11][12]).toBe('144');
   });
 
-  it('satisfies the product invariant at every cell', () => {
+  it('carries the row label in cell 0 and the product at col + 1', () => {
     const rows = multiplicationRows(12);
     for (let row = 0; row < 12; row++) {
+      expect(rows[row][0]).toBe(String(row + 1));
       for (let col = 0; col < 12; col++) {
-        expect(Number(rows[row][col])).toBe((row + 1) * (col + 1));
+        expect(Number(rows[row][col + 1])).toBe((row + 1) * (col + 1));
       }
     }
   });
 
   it('honours a custom maximum', () => {
     expect(multiplicationRows(3)).toEqual([
-      ['1', '2', '3'],
-      ['2', '4', '6'],
-      ['3', '6', '9'],
+      ['1', '1', '2', '3'],
+      ['2', '2', '4', '6'],
+      ['3', '3', '6', '9'],
     ]);
   });
 });
@@ -244,10 +246,18 @@ Expected: FAIL — `Failed to resolve import "./tables"`
 ```ts
 import { range, squareRoot } from './numeric';
 
-/** 乘法表数据行（1..max × 1..max 的乘积），不含表头行。表头由语言文件拼。 */
+/**
+ * 乘法表数据行：每行是 `[行号, ...该行与 1..max 的乘积]`，共 1 + max 格。
+ * 行号就是数字本身，语言中立，所以归生成器；表头行由语言文件拼。
+ *
+ * 注意这个 1 + max 的宽度：表头是 `['×', '1'..'12']` 也就是 1 + max 格，
+ * 两边必须对齐，否则表格列会错位。曾经这里漏掉行号列（只有 max 格），
+ * 表头 13 格对表体 12 格，乘法表整列错开——`en/pages.test.ts` 的
+ * 「表格行宽等于表头宽」不变量就是为这类错误设的。
+ */
 export function multiplicationRows(max = 12): string[][] {
   const numbers = range(1, max);
-  return numbers.map((row) => numbers.map((col) => String(row * col)));
+  return numbers.map((row) => [String(row), ...numbers.map((col) => String(row * col))]);
 }
 
 /** n / n² / n³ / √n 四列，n 从 1 到 max。 */
@@ -923,6 +933,27 @@ describe('English reference pages', () => {
       expect(page.blocks.length).toBeGreaterThanOrEqual(1);
     }
   });
+
+  it('gives every page a non-empty title', () => {
+    for (const page of REFERENCE_PAGES_EN) {
+      expect(page.title.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  // 表格行必须非空，且行宽必须等于表头宽。删掉旧 src/data/reference.test.ts 时
+  // 这条不变量一度丢失，结果乘法表漏掉行号列（表头 13 格、表体 12 格）整列错位，
+  // 一路绿灯跑到 review 才被抓到。它必须逐页逐块地跑，不能只盯着一张表。
+  it('keeps every table row non-empty and the same width as its headers', () => {
+    for (const page of REFERENCE_PAGES_EN) {
+      for (const block of page.blocks) {
+        if (block.kind !== 'table' || !block.headers) continue;
+        expect(block.rows.length).toBeGreaterThan(0);
+        for (const row of block.rows) {
+          expect(row).toHaveLength(block.headers.length);
+        }
+      }
+    }
+  });
 });
 ```
 
@@ -1246,6 +1277,7 @@ EOF
 - Test: `src/data/reference/index.test.ts`
 - Test: `src/components/reference/ReferencePage.test.tsx`
 - Delete: `src/data/reference.ts`
+- Delete: `src/data/reference.test.ts`（它测的是被删掉的 `ReferenceTable` 模块，模块没了文件也留不住）。**但它有一条不变量不能跟着丢**：`keeps every row the same width as its headers`。它已被迁到 Task 2 的 `en/pages.test.ts`，且改成逐页逐块地跑——这一步漏掉的话，乘法表会整列错位而全测试仍绿。
 
 **Interfaces:**
 - Consumes: `REFERENCE_PAGES_EN`（Task 2）、`ReferencePage` / `ReferenceCategory`（Task 1）、`BlockRenderer`（Task 3）
@@ -1728,7 +1760,9 @@ export function ReferencePage(): ReactElement {
         </div>
       </article>
 
-      <AdUnit placement="referenceBottom" />
+      <div className="print:hidden">
+        <AdUnit placement="referenceBottom" />
+      </div>
 
       <FaqSection faq={page.faq} />
 
