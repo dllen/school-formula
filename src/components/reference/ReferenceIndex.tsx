@@ -1,5 +1,5 @@
 import { REFERENCE_TABLES } from '../../data/reference';
-import { EN, localizedPath } from '../../i18n/languages';
+import { referencePath } from '../../reference-routes';
 import { ReferenceLayout } from './ReferenceLayout';
 
 /** `/en/` — the English landing page listing every printable reference chart. */
@@ -19,7 +19,7 @@ export function ReferenceIndex() {
         {REFERENCE_TABLES.map((table) => (
           <li key={table.slug}>
             <a
-              href={localizedPath(EN, `/reference/${table.slug}`)}
+              href={referencePath(table.slug)}
               className="flex h-full flex-col bg-white rounded-2xl border border-[#F0F1F2] shadow-sm hover:shadow-md transition-shadow p-6"
             >
               <span className="inline-block self-start px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full mb-3">

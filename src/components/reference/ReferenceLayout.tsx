@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react';
-import { EN, localizedPath } from '../../i18n/languages';
-
-const ENGLISH_HOME = localizedPath(EN);
+import { ENGLISH_HOME } from '../../reference-routes';
 
 /** Shared chrome for the English reference surface (header, footer, language link). */
 export function ReferenceLayout({ children }: { children: ReactNode }) {

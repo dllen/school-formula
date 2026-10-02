@@ -1,9 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { AdUnit } from '../../ads/AdUnit';
 import { getReferenceTable } from '../../data/reference';
-import { EN, localizedPath } from '../../i18n/languages';
-
-const ENGLISH_HOME = localizedPath(EN);
+import { ENGLISH_HOME } from '../../reference-routes';
 import { PrintButton } from './PrintButton';
 import { ReferenceLayout } from './ReferenceLayout';
 

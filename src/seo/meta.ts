@@ -1,5 +1,6 @@
 import { languageForPath, type Language } from '../i18n/languages';
-import { resolvePageContent, type PageContent } from './content';
+import { resolvePageContent } from './content';
+import type { PageContent } from './types';
 import { brandFor, SITE, type BrandCopy } from './site';
 
 export interface AlternateLink {

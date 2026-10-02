@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { appPathFor, DEFAULT_LANGUAGE, EN, languageForPath, localizedPath, ZH } from './languages';
+import { appPathFor, DEFAULT_LANGUAGE, EN, homePath, languageForPath, ZH } from './languages';
 
 describe('languageForPath', () => {
   it('detects the prefix language', () => {
@@ -19,17 +19,10 @@ describe('languageForPath', () => {
   });
 });
 
-describe('localizedPath', () => {
-  it('uses the canonical trailing-slash form', () => {
-    expect(localizedPath(EN)).toBe('/en/');
-    expect(localizedPath(ZH)).toBe('/');
-    expect(localizedPath(EN, '/reference/multiplication-chart')).toBe('/en/reference/multiplication-chart/');
-  });
-
-  it('round-trips with appPathFor', () => {
-    const path = localizedPath(EN, '/reference/irregular-verbs');
-    expect(appPathFor(path, EN)).toBe('/reference/irregular-verbs');
-    expect(languageForPath(path)).toBe(EN);
+describe('homePath', () => {
+  it('is the canonical trailing-slash form', () => {
+    expect(homePath(EN)).toBe('/en/');
+    expect(homePath(ZH)).toBe('/');
   });
 });
 

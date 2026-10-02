@@ -1,10 +1,10 @@
-import { EN, localizedPath } from '../../i18n/languages';
+import { ENGLISH_HOME } from '../../reference-routes';
 
 /** Entry point to the English surface. The English pages link back to `/` with 中文. */
 export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <a
-      href={localizedPath(EN)}
+      href={ENGLISH_HOME}
       lang="en"
       aria-label="Switch to the English version"
       className={

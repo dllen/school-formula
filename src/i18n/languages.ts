@@ -25,10 +25,9 @@ export function languageForPath(path: string): Language {
   return match ?? DEFAULT_LANGUAGE;
 }
 
-/** Absolute path for a route in a given language: `localizedPath(EN)` → `/en/`. */
-export function localizedPath(language: Language, appPath = '/'): string {
-  const suffix = appPath === '/' || appPath === '' ? '/' : `${appPath.replace(/\/+$/, '')}/`;
-  return `${language.prefix}${suffix}` || '/';
+/** Canonical home path of a language: `homePath(EN)` → `/en/`, `homePath(ZH)` → `/`. */
+export function homePath(language: Language): string {
+  return `${language.prefix}/`;
 }
 
 /** Strip the language prefix and trailing slash: `/en/reference/x/` → `/reference/x`. */

@@ -1,5 +1,5 @@
 import { KNOWLEDGE_DATA } from '../data/knowledge';
-import { ENGLISH_REFERENCE_PATHS } from '../seo/content';
+import { ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { VIEW_PATHS } from '../view-routes';
 
 export const PRERENDER_PATHS: string[] = [
@@ -10,5 +10,5 @@ export const PRERENDER_PATHS: string[] = [
       subject.knowledgePoints.map((kp) => `/knowledge/${kp.id}`),
     ),
   ),
-  ...ENGLISH_REFERENCE_PATHS,
+  ...ENGLISH_ROUTE_PATHS,
 ];
