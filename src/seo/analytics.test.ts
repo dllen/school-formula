@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { buildAnalyticsTags, EEA_UK_CH_REGIONS } from './analytics';
 
 describe('buildAnalyticsTags', () => {
@@ -34,5 +34,30 @@ describe('EEA_UK_CH_REGIONS', () => {
       ].sort(),
     );
     expect(EEA_UK_CH_REGIONS).toHaveLength(32);
+  });
+});
+
+describe('GA4_MEASUREMENT_ID', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    vi.resetModules();
+  });
+
+  // head.ts 把 id 收成了受控入参，于是「环境变量到底有没有被读到」这件事不再有任何
+  // 测试覆盖——补在这里，用 stubEnv + resetModules + 动态 import 真跑一次模块加载。
+  // 少了它，`.env` 里写上 VITE_GA4_ID 而线上不出标签，没有任何测试会红。
+  it('reads VITE_GA4_ID at module load', async () => {
+    vi.resetModules();
+    vi.stubEnv('VITE_GA4_ID', 'G-ENVTEST123');
+    const { GA4_MEASUREMENT_ID } = await import('./analytics');
+    expect(GA4_MEASUREMENT_ID).toBe('G-ENVTEST123');
+  });
+
+  it('is empty when the build-time variable is not provided', async () => {
+    vi.resetModules();
+    vi.stubEnv('VITE_GA4_ID', '');
+    const { GA4_MEASUREMENT_ID } = await import('./analytics');
+    // renderHead 那边按 falsy 判断，空串与 undefined 都不注入标签。
+    expect(buildAnalyticsTags(GA4_MEASUREMENT_ID)).toEqual([]);
   });
 });

@@ -27,6 +27,9 @@
 |--------|------|
 | `CLOUDFLARE_API_TOKEN` | wrangler-action 鉴权（需 Workers/D1/KV 编辑权限） |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 账户 ID |
+| `VITE_GA4_ID` | GA4 测量 id（`G-XXXXXXXX`）。**构建期**变量，由 `deploy-cloudflare.yml` 的 Build 步骤注入；不配就不注入分析标签，构建照常成功 |
+
+> `VITE_GA4_ID` 必须在**构建时**给：`VITE_*` 是 Vite 在打包阶段做字面替换的，运行时再设没有任何作用。本地想让构建带上 GA4，就在 `.env.production` 里填 `VITE_GA4_ID=G-XXXXXXXX`（仓库里留的是注释占位）。
 
 ### `wrangler.toml` 要点
 

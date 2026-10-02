@@ -29,6 +29,11 @@ jobs:
         run: npm install
 
       - name: Build frontend
+        # VITE_* 是**构建期**替换的，不是运行时读的，所以变量必须在这里给。
+        # 少这一句，VITE_GA4_ID 永远不会出现在生产构建里，GA4 等于没接。
+        # secret 没配时 GitHub 传空串，构建仍然正常（只是不注入分析标签）。
+        env:
+          VITE_GA4_ID: ${{ secrets.VITE_GA4_ID }}
         run: npm run build
 
       - name: Apply D1 migrations

@@ -7,6 +7,7 @@ import { injectPage, outputFileFor } from './prerender/inject';
 import { writeOgImages } from './prerender/og';
 import { PRERENDER_PATHS } from './prerender/routes';
 import { buildRobotsTxt, buildSitemap } from './seo/files';
+import { GA4_MEASUREMENT_ID } from './seo/analytics';
 import { renderHead } from './seo/head';
 import { buildSeoMeta } from './seo/meta';
 import { writtenRouteSet } from './seo/og';
@@ -27,7 +28,7 @@ for (const route of PRERENDER_PATHS) {
   const meta = buildSeoMeta(route, ogRoutes);
   const html = injectPage(template, {
     appHtml: render(route),
-    headHtml: renderHead(meta),
+    headHtml: renderHead(meta, GA4_MEASUREMENT_ID),
     htmlLang: meta.htmlLang,
   });
   const outFile = join(distDir, outputFileFor(route));

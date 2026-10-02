@@ -280,6 +280,7 @@ worker/
 |------|------|
 | `VITE_API_URL` | API 地址（开发环境 `http://localhost:8787`） |
 | `VITE_API_BASE` | API 基础地址（生产环境按域名推导） |
+| `VITE_GA4_ID` | GA4 测量 id（`G-XXXXXXXX`）。**构建期**替换，不设就不注入分析标签；生产要在部署 workflow 的 Build 步骤给（GitHub secret `VITE_GA4_ID`），`.env.production` 里只有注释占位 |
 
 ### Worker（`wrangler.toml` `[vars]`）
 

@@ -1,7 +1,14 @@
 // src/seo/analytics.ts
 const env = import.meta.env as Record<string, string | undefined>;
 
-/** GA4 measurement id（`G-XXXXXXX`）。未设置时整个分析标签不注入。 */
+/**
+ * GA4 measurement id（`G-XXXXXXX`），在**模块加载时**从构建期变量取一次。
+ *
+ * 由 `entry-prerender.ts` 显式递给 `renderHead`——那样 head 的测试就不用依赖跑测试
+ * 的人家目录里有没有 `.env`（读环境变量的话，「未设 id 时不注入」在没设变量时恒真、
+ * 在设了变量时必红，而设上它正是启用 GA4 要做的动作）。
+ * 这条变量在 `.env.production` 与部署 workflow 里都有落地处，否则线上永远拿不到它。
+ */
 export const GA4_MEASUREMENT_ID: string | undefined = env.VITE_GA4_ID;
 
 /**

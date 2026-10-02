@@ -1,5 +1,5 @@
 import type { SeoMeta } from './meta';
-import { buildAnalyticsTags, GA4_MEASUREMENT_ID } from './analytics';
+import { buildAnalyticsTags } from './analytics';
 
 function escapeHtml(value: string): string {
   return value
@@ -17,8 +17,13 @@ function serializeJsonLd(block: Record<string, unknown>): string {
 /**
  * Render the per-page head content (title + meta/link/script tags) that replaces the
  * template's `<title>` element. Presentation only; all derivation lives in `meta.ts`.
+ *
+ * `analyticsId` 是**受控入参**，不是模块级读的环境变量：读环境变量的话，测试的
+ * 结果就取决于跑测试的人家目录里有没有 `.env`——没设时那条「不注入」的用例恒真，
+ * 设了就必红，而「设上它」恰恰是启用 GA4 所必需的动作。由调用方
+ * （`entry-prerender.ts`）把 `GA4_MEASUREMENT_ID` 递进来，测试就能完全掌握这个值。
  */
-export function renderHead(meta: SeoMeta): string {
+export function renderHead(meta: SeoMeta, analyticsId?: string): string {
   const tags: string[] = [
     `<title>${escapeHtml(meta.title)}</title>`,
     `<meta name="description" content="${escapeHtml(meta.description)}" />`,
@@ -54,7 +59,7 @@ export function renderHead(meta: SeoMeta): string {
     `<meta name="twitter:description" content="${escapeHtml(meta.twitter.description)}" />`,
   );
 
-  tags.push(...buildAnalyticsTags(GA4_MEASUREMENT_ID));
+  tags.push(...buildAnalyticsTags(analyticsId));
 
   for (const block of meta.jsonLd) {
     tags.push(`<script type="application/ld+json">${serializeJsonLd(block)}</script>`);
