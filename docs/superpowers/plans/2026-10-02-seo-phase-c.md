@@ -910,6 +910,11 @@ EOF
 - Consumes: `buildOgCard` / `buildOgCardFrom`（`./og-card`）；`pagesInCategory`、`ReferencePage`、`ReferenceCategory`（`../data/reference`）；`CATEGORY_COPY`；`brandFor`（`../seo/site`）；`REFERENCE_CATEGORIES`、`ENGLISH_HOME`、`categoryPath`、`referencePath`（`../reference-routes`）
 - Produces: `OG_ROUTES: { route: string; path: string }[]`（10 项，`path` 形如 `og/math/multiplication-chart.png`）；`writeOgImages(distDir: string): Promise<number>`
 
+> **后续变更（Task 6 Step 0）**：`OgRoute` 与 `OG_ROUTES` 会从本文件搬到 `src/seo/og-routes.ts`，
+> 并由本文件再导出。原因是 `src/seo/` 属于 `tsconfig.app.json` 的 program，而那份配置没有 node 类型，
+> 一旦 `src/seo/` 下有文件 import 本文件，`tsc -b` 就会因 `node:fs` 报错（`exclude` 挡不住 import 图）。
+> 本任务按上面写即可——搬动由 Task 6 负责，因为需求是 Task 6 引入的。
+
 - [ ] **Step 1: 装依赖并下载字体**
 
 ```bash
@@ -1200,7 +1205,9 @@ EOF
 ## Task 6: 把 og:image 接进 head
 
 **Files:**
+- Create: `src/seo/og-routes.ts`
 - Create: `src/seo/og.ts`
+- Modify: `src/prerender/og.ts`
 - Modify: `src/seo/meta.ts`
 - Modify: `src/seo/head.ts`
 - Test: `src/seo/og.test.ts`
@@ -1208,14 +1215,89 @@ EOF
 - Test: `src/seo/head.test.ts`
 
 **Interfaces:**
-- Consumes: `OG_ROUTES`（`src/prerender/og`）；`SITE`、`ENGLISH_HOME`
+- Consumes: `OG_ROUTES`（`src/seo/og-routes`）；`SITE`、`ENGLISH_HOME`
 - Produces: `ogImagePath(path: string): string | undefined`；`ogImageUrl(path: string): string | undefined`；`SeoMeta.ogImage?: { url: string; width: number; height: number }`
+
+- [ ] **Step 0: 把纯数据的 OG 路由表抽到 `src/seo/og-routes.ts`**
+
+**为什么必须先做这一步**：`src/seo/` 下的文件属于 `tsconfig.app.json` 的 program（`include: ["src"]`），而那份配置的 `types` 只有 `["vite/client"]`、没有 `node`。
+Task 5 把用了 `node:fs` 的 `src/prerender/og.ts` 排除在外，但 **`exclude` 只过滤 `include` 的匹配结果，挡不住 import 图**——只要 `src/seo/` 下有文件 import 它，它照样进 program，`tsc -b` 就会报 4 个错：
+
+```
+src/prerender/og.ts(2,56): error TS2307: Cannot find module 'node:fs' ...
+src/prerender/og.ts(3,31): error TS2307: Cannot find module 'node:module' ...
+src/prerender/og.ts(4,31): error TS2307: Cannot find module 'node:path' ...
+src/prerender/og.ts(21,23): error TS2591: Cannot find name 'process'. ...
+```
+
+（以上是控制者用一个临时探针文件实测出来的，不是推断。）
+
+所以：把 `OgRoute` 类型与 `OG_ROUTES` 常量 —— 它们只依赖 `../data/reference`、`../data/reference/types`、`../reference-routes`，全是纯模块 —— 搬到新的 `src/seo/og-routes.ts`。渲染器（wasm、satori、node:fs）留在 `src/prerender/og.ts`。
+
+新建 `src/seo/og-routes.ts`：
+
+```ts
+// src/seo/og-routes.ts
+//
+// OG 图的路由表。刻意与渲染器（src/prerender/og.ts）分开：这一半是纯数据，
+// 只依赖 data/ 与 reference-routes，所以能被 src/seo/ 下的模块安全 import；
+// 渲染器那一半用 node:fs 与 wasm，不属于 tsconfig.app.json 的 program。
+import { pagesInCategory } from '../data/reference';
+import type { ReferenceCategory, ReferencePage } from '../data/reference/types';
+import {
+  categoryPath,
+  ENGLISH_HOME,
+  REFERENCE_CATEGORIES,
+  referencePath,
+} from '../reference-routes';
+
+/**
+ * 一个待生成 OG 图的目标。刻意带上 kind，而不是从路径字符串反推是 hub 还是图表页——
+ * 字符串反推很脆，判别联合也让 cardFor 成为一个干净的 switch。
+ */
+export type OgRoute =
+  | { kind: 'home'; route: string; path: string }
+  | { kind: 'hub'; route: string; path: string; category: ReferenceCategory }
+  | { kind: 'chart'; route: string; path: string; page: ReferencePage };
+
+/** `/en/`、三个学科 hub、六张图表页——只覆盖英文面 10 页。 */
+export const OG_ROUTES: OgRoute[] = [
+  { kind: 'home', route: ENGLISH_HOME, path: 'og/en.png' },
+  ...REFERENCE_CATEGORIES.flatMap((category) => [
+    { kind: 'hub' as const, route: categoryPath(category), path: `og/${category}.png`, category },
+    ...pagesInCategory(category).map((page) => ({
+      kind: 'chart' as const,
+      route: referencePath(page.category, page.slug),
+      path: `og/${page.category}/${page.slug}.png`,
+      page,
+    })),
+  ]),
+];
+```
+
+然后改 `src/prerender/og.ts`：删掉上面搬走的 `OgRoute` 与 `OG_ROUTES` 两段（原第 23–44 行），改成从新模块 import 并**原样再导出**——`src/prerender/og.test.ts` 是从 `'./og'` 取 `OG_ROUTES` 的，再导出让它一字不改：
+
+```ts
+import { OG_ROUTES, type OgRoute } from '../seo/og-routes';
+
+export { OG_ROUTES, type OgRoute };
+```
+
+同时删掉 `src/prerender/og.ts` 里因为搬走而不再使用的 import：`pagesInCategory`、`ReferenceCategory`/`ReferencePage` 类型、`categoryPath`/`ENGLISH_HOME`/`REFERENCE_CATEGORIES`/`referencePath`。**`CATEGORY_COPY`、`EN`、`brandFor`、`buildOgCard*` 都还在用，别删。**（`noUnusedLocals` 开着，漏删会直接报错，不会静默。）
+
+- [ ] **Step 0b: 跑测试与类型检查确认这次搬动是纯搬运**
+
+Run: `./node_modules/.bin/vitest run src/prerender/og.test.ts`
+Expected: PASS（4 个用例，与搬动前一致）
+
+Run: `./node_modules/.bin/tsc -b`
+Expected: 无输出
 
 - [ ] **Step 1: 写失败测试 `src/seo/og.test.ts`**
 
 ```ts
 import { describe, expect, it } from 'vitest';
-import { OG_ROUTES } from '../prerender/og';
+import { OG_ROUTES } from './og-routes';
 import { ogImagePath, ogImageUrl } from './og';
 
 describe('ogImagePath', () => {
@@ -1262,7 +1344,7 @@ Expected: FAIL —— `Failed to resolve import "./og"`
 
 ```ts
 // src/seo/og.ts
-import { OG_ROUTES } from '../prerender/og';
+import { OG_ROUTES } from './og-routes';
 import { SITE } from './site';
 
 /** 去掉尾斜杠，并把 `/en` 归一成 `/en/`。 */
@@ -1408,7 +1490,7 @@ Run: `grep -c 'og:image' dist/index.html` → **0**（中文首页无图，符�
 - [ ] **Step 10: 提交**
 
 ```bash
-git add src/seo/og.ts src/seo/og.test.ts src/seo/meta.ts src/seo/meta.test.ts src/seo/head.ts src/seo/head.test.ts
+git add src/seo/og-routes.ts src/seo/og.ts src/seo/og.test.ts src/prerender/og.ts src/seo/meta.ts src/seo/meta.test.ts src/seo/head.ts src/seo/head.test.ts
 git commit -m "$(cat <<'EOF'
 feat(seo): 英文面页面输出 og:image
 
