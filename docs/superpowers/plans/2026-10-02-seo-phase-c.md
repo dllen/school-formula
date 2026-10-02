@@ -925,6 +925,15 @@ ls -l assets/fonts/
 Expected: 两个文件，分别约 30,696 与 31,320 字节（合计约 62KB）。
 `assets/fonts/` **刻意不在 `public/` 下**——那份字体只服务构建期，不该被浏览器下载。
 
+**同一提交里还要带上授权文本。** Inter 是 SIL OFL 1.1（`@fontsource/inter` 的 `license` 字段即 `OFL-1.1`，上游 `inter-ui` 同）。这个仓库是公开的，提交字体二进制即构成再分发，而 OFL 要求授权文本随字体一起走。执行：
+
+```bash
+ls node_modules/@fontsource/inter/ | grep -i licen   # 看它实际随附的授权文件名
+cp node_modules/@fontsource/inter/LICENSE assets/fonts/LICENSE   # 文件名按上一步的实际输出调整
+```
+
+若该包没有随附授权文件，就从 https://openfontlicense.org/ 取 OFL 1.1 全文写入 `assets/fonts/LICENSE`。另外这次分发的是**未修改**的原文件，OFL 的保留字体名（RFN）条款因此不适用——不要重命名或改造这些 woff。
+
 - [ ] **Step 2: 确认 resvg 的 wasm 文件名**
 
 Run: `ls node_modules/@resvg/resvg-wasm/`
