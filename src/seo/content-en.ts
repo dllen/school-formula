@@ -61,7 +61,7 @@ export function resolveEnglishContent(
     const copy = CATEGORY_COPY[hub[1]];
     return {
       kind: 'hub',
-      title: englishTitleFor(`${copy.name} Charts`, brand),
+      title: englishTitleFor(englishChartSubject(copy.name), brand),
       description: copy.intro,
       breadcrumbs: [home, { name: copy.name, path }],
       category: copy.name,
@@ -78,6 +78,14 @@ export function resolveEnglishContent(
 /** 品牌短名，缺省退回全名。 */
 function titleBrand(brand: BrandCopy): string {
   return brand.titleBrand ?? brand.name;
+}
+
+/**
+ * 学科 hub 的主题名（例如 "Math Charts"）。卡片标题与 SERP 标题都从这里取，
+ * 不再各拼一遍——否则 "Charts" 这个后缀会在两处漂移。
+ */
+export function englishChartSubject(categoryName: string): string {
+  return `${categoryName} Charts`;
 }
 
 /**

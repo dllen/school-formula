@@ -7,8 +7,10 @@ import satori from 'satori';
 import { CATEGORY_COPY } from '../data/reference/en/categories';
 import { EN } from '../i18n/languages';
 import { OG_ROUTES, type OgRoute } from '../seo/og-routes';
+import { englishChartSubject } from '../seo/content-en';
 import { brandFor } from '../seo/site';
-import { buildOgCard, buildOgCardFrom } from './og-card';
+import { CARD, buildOgCardFrom, chartCardInput } from './og-card';
+import type { OgCardInput, SatoriElement } from './og-card';
 
 export { OG_ROUTES, type OgRoute };
 
@@ -25,34 +27,67 @@ async function ensureWasm(): Promise<void> {
   initialised = true;
 }
 
+/**
+ * 构建期字体。
+ *
+ * Inter 只覆盖 latin 子集（230 个码点），而英文面数据的正文里有 √、θ、α、β、∓、
+ * 上标 ⁴⁷⁸⁹⁻ 与下标 ₐₑₚ——satori 会把它们画成 .notdef 豆腐块（实测：Inter 单独渲染
+ * 这七个字符给出逐字节相同的路径）。所以配一个伴随字体。
+ *
+ * DejaVu Sans 是唯一一个被验证同时覆盖希腊字母、数学符号与上下标块的可用字体
+ * （@fontsource 的 Noto Sans Math / Noto Sans / Charis SIL / Gentium Plus 都不含
+ * U+2090-209A，STIX Two Math 也不含）。satori **确实跨字体回退**，且是逐字形的：
+ * 有 Inter 的字形仍走 Inter，缺的才落到伴随字体上——这两点都是实测出来的，见
+ * src/prerender/og.test.ts 的字形覆盖断言。
+ */
 function loadFonts() {
-  return [
+  const inter = [
     { name: 'Inter', weight: 400 as const, style: 'normal' as const },
     { name: 'Inter', weight: 700 as const, style: 'normal' as const },
   ].map((font) => ({
     ...font,
     data: readFileSync(join(FONT_DIR, `inter-latin-${font.weight}-normal.woff`)),
   }));
+
+  const companion = readFileSync(join(FONT_DIR, 'dejavu-sans-latin-400-normal.woff'));
+  return [
+    ...inter,
+    // 400 与 700 都注册同一份数据：卡片上现在只有品牌行是粗体（纯 ASCII），但让
+    // 「粗体 + 伴随字形」变成未知数没有意义——多一份引用而已，不额外读盘。
+    { name: 'DejaVu Sans', weight: 400 as const, style: 'normal' as const, data: companion },
+    { name: 'DejaVu Sans', weight: 700 as const, style: 'normal' as const, data: companion },
+  ];
 }
 
-/** 每个目标对应的卡片元素树。 */
-function cardFor(entry: OgRoute) {
+export type OgFonts = ReturnType<typeof loadFonts>;
+
+/**
+ * 每个目标对应的卡片入参。导出是为了让字形覆盖与几何对齐测试用**同一份**构造逻辑——
+ * 测试自己再拼一遍的话，改了一处另一处不会跟着变，测的就不是真正渲染的那张卡。
+ */
+export function cardInputFor(entry: OgRoute): OgCardInput {
   const brand = brandFor(EN);
 
   switch (entry.kind) {
     case 'home':
-      return buildOgCardFrom({ title: brand.name, subtitle: brand.tagline }, brand);
+      return { title: brand.name, subtitle: brand.tagline };
     case 'chart':
-      return buildOgCard(entry.page, brand);
+      return chartCardInput(entry.page);
     case 'hub': {
       const copy = CATEGORY_COPY[entry.category];
-      return buildOgCardFrom(
-        { title: `Printable ${copy.name} Charts`, subtitle: copy.summary },
-        brand,
-      );
+      // 学科名与 "Charts" 后缀取自 content-en.ts 的同一个函数，SERP 标题用的是
+      // 它的完整模板——两处不再各拼一遍，改一处不会让卡片与标题分叉。
+      return { title: englishChartSubject(copy.name), subtitle: copy.summary };
     }
   }
 }
+
+/** 每个目标对应的卡片元素树。 */
+export function cardFor(entry: OgRoute): SatoriElement {
+  return buildOgCardFrom(cardInputFor(entry), brandFor(EN));
+}
+
+export { loadFonts };
 
 /** 准备渲染器：wasm 初始化 + 字体载入。两者都是进程级前置条件，不随单页变化。 */
 async function prepareRenderer(): Promise<ReturnType<typeof loadFonts>> {
@@ -91,8 +126,8 @@ export async function writeOgImages(
   for (const entry of OG_ROUTES) {
     try {
       const svg = await satori(cardFor(entry) as never, {
-        width: 1200,
-        height: 630,
+        width: CARD.width,
+        height: CARD.height,
         fonts,
       });
       const resvg = new Resvg(svg);
