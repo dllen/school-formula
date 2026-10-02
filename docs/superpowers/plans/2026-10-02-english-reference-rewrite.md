@@ -2837,6 +2837,7 @@ EOF
 - Consumes: 无（worker 是独立编译边界，不 import `src/`）
 - Produces:
   - `legacyReferenceRedirect(url: URL): string | null`
+  - `isRedirectableMethod(method: string): boolean`（GET 与 HEAD 为 true，其余 false）
   - `assetCandidates(pathname: string): string[]`（行为变更：`/en/` 前缀下不再回退 `/index.html`）
 
 - [ ] **Step 1: 写失败测试（redirect）**
@@ -2844,7 +2845,7 @@ EOF
 把 `worker/lib/redirect.test.ts` 的 import 行改成：
 
 ```ts
-import { hostRedirect, legacyReferenceRedirect, legacyViewRedirect } from './redirect';
+import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './redirect';
 ```
 
 在文件末尾追加：
@@ -2860,18 +2861,21 @@ describe('legacyReferenceRedirect', () => {
     ).toBe('https://syy.global/en/science/physics-constants/');
   });
 
-  it('covers every chart that existed before the move', () => {
-    const slugs = [
-      'multiplication-chart',
-      'squares-cubes-roots',
-      'trigonometric-identities',
-      'metric-conversions',
-      'physics-constants',
-      'irregular-verbs',
-    ];
-    for (const slug of slugs) {
-      const target = legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`));
-      expect(target).toMatch(/^https:\/\/syy\.global\/en\/(math|science|english)\//);
+  it('maps every legacy slug to its exact category', () => {
+    // 必须逐个钉死 slug→学科。只断言「落在 /en/(math|science|english)/ 里」是分辨不出来的：
+    // irregular-verbs 映射成 math 也能过，而那正是要防的错。
+    const expected: Record<string, string> = {
+      'multiplication-chart': 'math',
+      'squares-cubes-roots': 'math',
+      'trigonometric-identities': 'math',
+      'metric-conversions': 'math',
+      'physics-constants': 'science',
+      'irregular-verbs': 'english',
+    };
+    for (const [slug, category] of Object.entries(expected)) {
+      expect(legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`))).toBe(
+        `https://syy.global/en/${category}/${slug}/`,
+      );
     }
   });
 
@@ -2882,6 +2886,19 @@ describe('legacyReferenceRedirect', () => {
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/nope/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/tutorial'))).toBeNull();
+  });
+});
+
+describe('isRedirectableMethod', () => {
+  it('redirects both GET and HEAD so HEAD matches GET (RFC 9110 §9.3.2)', () => {
+    expect(isRedirectableMethod('GET')).toBe(true);
+    expect(isRedirectableMethod('HEAD')).toBe(true);
+  });
+
+  it('leaves other methods alone', () => {
+    expect(isRedirectableMethod('OPTIONS')).toBe(false);
+    expect(isRedirectableMethod('POST')).toBe(false);
+    expect(isRedirectableMethod('')).toBe(false);
   });
 });
 ```
@@ -2920,12 +2937,21 @@ export function legacyReferenceRedirect(url: URL): string | null {
   if (!category) return null;
   return `${url.origin}/en/${category}/${match[1]}/`;
 }
+
+/**
+ * 可被重定向的请求方法。GET 与 HEAD 都要跳转——RFC 9110 §9.3.2 要求 HEAD
+ * 返回与 GET 相同的状态码，否则链接检查器与预取器会把旧地址当成 404。
+ * 其余方法（OPTIONS / POST 等）保持不跳转。
+ */
+export function isRedirectableMethod(method: string): boolean {
+  return method === 'GET' || method === 'HEAD';
+}
 ```
 
 - [ ] **Step 4: 跑测试确认通过**
 
 Run: `npx vitest run worker/lib/redirect.test.ts`
-Expected: PASS（**8 个用例**：原有 5 个 + 新增 3 个）
+Expected: PASS（**10 个用例**：原有 5 个 + legacyReferenceRedirect 3 个 + isRedirectableMethod 2 个）
 
 - [ ] **Step 5: 写失败测试（static-paths）**
 
@@ -2991,10 +3017,10 @@ Expected: PASS
 import 行改为：
 
 ```ts
-import { hostRedirect, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
+import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
 ```
 
-fetch 里的重定向两行：
+把 fetch 里的重定向两行：
 
 ```ts
     const redirect = hostRedirect(url) ?? (request.method === 'GET' ? legacyViewRedirect(url) : null);
@@ -3003,8 +3029,9 @@ fetch 里的重定向两行：
 改为：
 
 ```ts
-    const legacyRedirect =
-      request.method === 'GET' ? (legacyReferenceRedirect(url) ?? legacyViewRedirect(url)) : null;
+    const legacyRedirect = isRedirectableMethod(request.method)
+      ? (legacyReferenceRedirect(url) ?? legacyViewRedirect(url))
+      : null;
     const redirect = hostRedirect(url) ?? legacyRedirect;
 ```
 
@@ -3051,13 +3078,14 @@ Expected: PASS
 Run: `npm run build && npx wrangler dev worker/index.ts`（另开一个终端）
 
 ```bash
-# 注意：必须用 GET 检查，不能用 curl -sI（HEAD）。跳转的判据是
-# `request.method === 'GET'`，这是沿用既有 legacyViewRedirect 的写法，
-# 所以 HEAD 请求不会跳转。搜索引擎与浏览器都用 GET，因此行为是对的；
-# 但 HEAD 版链接检查器会把这六个旧 URL 看成 404，属已知取舍。
+# GET 与 HEAD 都要跳转——RFC 9110 §9.3.2 要求 HEAD 返回与 GET 相同的状态码。
+# 两条都测，因为「只测 GET」正是上一版漏掉 HEAD 行为的原因。
 
 curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' http://localhost:8787/en/reference/multiplication-chart/
 # 期望：301 http://localhost:8787/en/math/multiplication-chart/
+
+curl -sI -o /dev/null -w '%{http_code} %{redirect_url}\n' http://localhost:8787/en/reference/multiplication-chart/
+# 期望：301 http://localhost:8787/en/math/multiplication-chart/（HEAD 与 GET 一致）
 
 curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8787/en/math/multiplication-chart/
 # 期望：200
@@ -3114,7 +3142,6 @@ EOF
 
 - **客户端未找到态仍是 200。** Worker 层已经把 `/en/` 下的缺产物变成真 404，但如果用户从已加载的页面里做客户端跳转到 `/en/typo/`，React Router 会渲染未找到组件而不改 HTTP 状态。这不会产生可索引的 URL（该 URL 直连时返回 404），但严格来说仍是软 404。彻底修需要客户端路由拦截。
 - **`ReferenceNotFound` 没有 `noindex`。** 该组件所在页面直连时已经是 404，无需额外标记；若将来出现 200 态的未找到页面再补。
-- **HEAD 请求不会触发旧 URL 跳转，返回 404。** 跳转判据是 `request.method === 'GET'`（沿用既有 `legacyViewRedirect` 的写法），所以 `curl -sI` 这六个旧地址会看到 404 而 GET 看到 301。搜索引擎与浏览器都用 GET，功能上无影响；但 HEAD 版链接检查器会误报。要改的话是把判据放宽到 GET 与 HEAD 两法。
 - **`src/i18n/languages.test.ts` 与 `src/prerender/inject.test.ts` 仍以 `/en/reference/...` 作为样例字符串。** 两者测的都是路径的通用变换（语言前缀剥离 / 路径转文件名），对新结构同样成立，所以刻意不改——改了只是噪声。
 
 ## 本计划之外发现的问题（不计入本计划，但需要单独处理）
