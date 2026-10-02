@@ -30,7 +30,9 @@ export function AdUnit({ placement }: { placement: AdPlacement }) {
     pushAd(ins);
   }, [adFree, configured]);
 
-  if (!configured) return null;
+  // 用这个判断形式而不是先存成布尔量，是为了让 TS 把 slot 收窄成 string——
+  // AD_SLOTS 未配置时是 null，下面的 data-ad-slot 需要字符串。
+  if (!isAdConfigured(ADSENSE_CLIENT_ID, slot)) return null;
 
   return (
     <div className="my-6" data-ad-placement={placement}>

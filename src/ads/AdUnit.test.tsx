@@ -12,6 +12,21 @@ vi.mock('./adsense', async (importOriginal) => {
   return { ...actual, ensureAdSenseScript: vi.fn() };
 });
 
+// 本文件测的是「广告位已配置」的渲染路径，而 AD_SLOTS 在未配置时的真实默认是 null。
+// 所以注入一组可变的 slot id；「未配置则什么都不渲染」由本文件最后一条用例覆盖。
+const { slots } = vi.hoisted(() => ({
+  slots: {
+    knowledgeMid: '1234567890',
+    knowledgeBottom: '2345678901',
+    referenceBottom: '3456789012',
+  } as Record<string, string | null>,
+}));
+
+vi.mock('./config', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('./config')>();
+  return { ...actual, AD_SLOTS: slots };
+});
+
 type AuthValue = NonNullable<ContextType<typeof AuthContext>>;
 
 function makeAuth(user: User | null): AuthValue {
@@ -50,6 +65,8 @@ const adWindow = () => window as Window & { adsbygoogle?: unknown[] };
 beforeEach(() => {
   vi.mocked(ensureAdSenseScript).mockClear();
   adWindow().adsbygoogle = undefined;
+  // 有一条用例会把 slot 置空，这里恢复回去，免得污染后面的用例。
+  slots.knowledgeMid = '1234567890';
 });
 
 describe('AdUnit', () => {
@@ -82,5 +99,17 @@ describe('AdUnit', () => {
   it('serves ads to free and anonymous visitors', () => {
     renderUnit(member('free'));
     expect(adWindow().adsbygoogle).toHaveLength(1);
+  });
+
+  // 这条守的是「拿不到真实 slot id 时不要留一块空白」。slot 的默认值曾经是占位串
+  // '0000000000'，它是真值，于是每一页都渲染出一个 slot 非法的 <ins>，占着 90px
+  // 且永远不会被填充。
+  it('renders nothing at all when the placement has no slot id', () => {
+    slots.knowledgeMid = null;
+    const { container } = renderUnit(null);
+
+    expect(container.querySelector('ins.adsbygoogle')).toBeNull();
+    expect(container.textContent).toBe('');
+    expect(vi.mocked(ensureAdSenseScript)).not.toHaveBeenCalled();
   });
 });

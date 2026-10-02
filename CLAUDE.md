@@ -13,7 +13,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## 常用命令
 
 ```bash
-# 安装依赖（使用 package-lock.json 锁定版本）
+# 安装依赖。包管理器是 npm；package-lock.json 刻意不入库（理由与随之而来的 CI 约束见
+# AGENTS.md 的「包管理器」一节），所以不要用 npm ci，CI 也不要开 cache: 'npm'。
+#
+# 仓库根目录的 pnpm-lock.yaml 与 pnpm-workspace.yaml 是历史误提交的产物：后者只有一段
+# 没填写的 allowBuilds 占位文本、连 packages 段都没有，文档与 CI 都不用 pnpm。别把它们
+# 当成锁文件的事实来源——照着它推断「本项目用 pnpm」会把依赖装错。
 npm install
 
 # 前端开发服务器（Vite，默认 http://localhost:5173）
@@ -232,7 +237,7 @@ worker/
 ### GitHub Pages（备用/遗留）
 
 - **工作流**：`.github/workflows/deploy.yml`
-- **步骤**：npm ci → npm run build → 推送到 `gh-pages` 分支
+- **步骤**：npm install → npm run build → 推送到 `gh-pages` 分支
 
 > **注意**：`vite.config.ts` 的 `base` 为 `'/'`（适配自有域名主部署）。GitHub Pages 备用链路若以项目页形式访问会静态资源 404，需改 `base` 或配自定义域名，详见 `DEPLOYMENT.md`。
 

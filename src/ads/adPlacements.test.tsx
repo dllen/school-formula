@@ -8,6 +8,20 @@ vi.mock('./adsense', async (importOriginal) => {
   const actual = await importOriginal<typeof import('./adsense')>();
   return { ...actual, ensureAdSenseScript: vi.fn() };
 });
+
+// AD_SLOTS 未配置时的真实默认是 null（那正是「不放广告」的含义），
+// 所以这里注入一组 slot id，让每条用例都在「广告位已配置」的前提下数广告。
+vi.mock('./config', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('./config')>();
+  return {
+    ...actual,
+    AD_SLOTS: {
+      knowledgeMid: '1234567890',
+      knowledgeBottom: '2345678901',
+      referenceBottom: '3456789012',
+    },
+  };
+});
 import { Home } from '../components/Home';
 import { KnowledgeDetail } from '../components/KnowledgeDetail';
 import { ReferenceIndex } from '../components/reference/ReferenceIndex';
