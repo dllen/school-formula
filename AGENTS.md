@@ -193,6 +193,18 @@ src/seo/
 
 新增一门语言：在 `LANGUAGES` 加一项、在 `BRAND` 加对应文案，并在 `resolvePageContent` 增加该语言的内容分支。
 
+## 5.3 语言入口与广告（AdSense）
+
+**语言入口**：`src/components/Header/LanguageSwitcher.tsx` 在顶栏与移动端菜单提供进入英文站点的链接（`/en`）；英文站点的 `ReferenceLayout` 提供反回 `/` 的 `中文` 链接。中文页面的 head（SEO 输出）不因此改变。
+
+**广告**由 `src/ads/` 单一负责：
+
+- `config.ts`：发布商 id `ADSENSE_CLIENT_ID`（默认真实 `ca-pub-3563451416072185`，可用 `VITE_ADSENSE_CLIENT_ID` 覆盖）与三处广告位 `AD_SLOTS`（可用 `VITE_ADSENSE_SLOT_*` 覆盖；默认值为占位 id，上线前需替换为 AdSense 后台的真实广告单元 id）。
+- `adsense.ts`：`ensureAdSenseScript()` 按需注入 AdSense 脚本，每文档仅一次；`pushAd()` 每个 `<ins>` 仅推送一次（StrictMode 重挂载安全）。
+- `AdUnit.tsx`：`<AdUnit placement="..." />`。仅在配置齐全时渲染；预留最小高度避免布局偏移；plus/pro 会员不展示（隐藏并跳过推送）。
+
+广告**只出现在内容页**：知识点详情页两处（`knowledgeMid` / `knowledgeBottom`）、英文速查表页一处（`referenceBottom`）。首页、各视图列表页、`/en/` 索引页均无广告。新增广告位：在 `AD_SLOTS` 加一项，并在目标内容组件放置 `<AdUnit>`。
+
 ## 6. 代码风格与开发约定
 
 ### 6.1 TypeScript

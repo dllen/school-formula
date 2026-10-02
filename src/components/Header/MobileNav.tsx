@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import type { ViewType } from './types';
 
 const NAV_GROUPS = [
@@ -110,6 +111,10 @@ export function MobileNav({ isOpen, onClose, activeView, onViewChange }: MobileN
             );
           })}
         </nav>
+
+        <div className="border-t border-[#F0F1F2] px-4 py-3">
+          <LanguageSwitcher className="text-[14px] font-medium text-[#3370FF] hover:underline" />
+        </div>
       </div>
     </div>
   );

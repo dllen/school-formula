@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { AdUnit } from '../../ads/AdUnit';
 import { getReferenceTable } from '../../data/reference';
 import { PrintButton } from './PrintButton';
 import { ReferenceLayout } from './ReferenceLayout';
@@ -72,6 +73,8 @@ export function ReferencePage() {
           </div>
         </div>
       </div>
+
+      <AdUnit placement="referenceBottom" />
     </ReferenceLayout>
   );
 }

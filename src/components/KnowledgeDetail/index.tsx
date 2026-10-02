@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AdUnit } from '../../ads/AdUnit';
 import { KNOWLEDGE_DATA } from '../../data/knowledge';
 import { getQuestionsByKnowledgePoint } from '../../data/questions';
 import { PromptModal } from '../prompts/PromptModal';
@@ -75,6 +76,7 @@ export const KnowledgeDetail: React.FC = () => {
                         {point.practiceQuestions && point.practiceQuestions.length > 0 && (
                             <PracticeQuestions questions={point.practiceQuestions} />
                         )}
+                        <AdUnit placement="knowledgeMid" />
                         {relatedQuestions.length > 0 && (
                             <RelatedPractice
                                 pointId={point.id}
@@ -94,6 +96,7 @@ export const KnowledgeDetail: React.FC = () => {
                             knowledgePointGrade={grade.name}
                             onPromptModalOpen={() => setIsPromptModalOpen(true)}
                         />
+                        <AdUnit placement="knowledgeBottom" />
                     </div>
                 </div>
             </div>

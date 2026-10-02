@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Logo } from './Logo';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { NavMenu } from './NavMenu';
 import { UserMenu } from './UserMenu';
 import { SettingsButton } from './SettingsButton';
@@ -32,6 +33,7 @@ export function Header({ activeView, onViewChange }: HeaderProps) {
 
           <div className="flex items-center gap-3">
             <NavMenu activeView={activeView} onViewChange={onViewChange} />
+            <LanguageSwitcher />
             <UserMenu />
             <SettingsButton onClick={() => setIsSettingsOpen(true)} />
           </div>
