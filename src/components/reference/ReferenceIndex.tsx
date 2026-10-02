@@ -1,9 +1,10 @@
-import { REFERENCE_TABLES } from '../../data/reference';
+import type { ReactElement } from 'react';
+import { REFERENCE_PAGES } from '../../data/reference';
 import { referencePath } from '../../reference-routes';
 import { ReferenceLayout } from './ReferenceLayout';
 
-/** `/en/` — the English landing page listing every printable reference chart. */
-export function ReferenceIndex() {
+/** `/en/` —— 英文面的落地页，列出全部打印参考图表。 */
+export function ReferenceIndex(): ReactElement {
   return (
     <ReferenceLayout>
       <section className="mb-8">
@@ -16,17 +17,17 @@ export function ReferenceIndex() {
       </section>
 
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {REFERENCE_TABLES.map((table) => (
-          <li key={table.slug}>
+        {REFERENCE_PAGES.map((page) => (
+          <li key={page.slug}>
             <a
-              href={referencePath(table.slug)}
+              href={referencePath(page.slug)}
               className="flex h-full flex-col bg-white rounded-2xl border border-[#F0F1F2] shadow-sm hover:shadow-md transition-shadow p-6"
             >
-              <span className="inline-block self-start px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full mb-3">
-                {table.category}
+              <span className="inline-block self-start px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full mb-3 capitalize">
+                {page.category}
               </span>
-              <h2 className="text-lg font-bold text-[#1F2329]">{table.title}</h2>
-              <p className="mt-2 text-sm text-[#646A73]">{table.summary}</p>
+              <h2 className="text-lg font-bold text-[#1F2329]">{page.title}</h2>
+              <p className="mt-2 text-sm text-[#646A73]">{page.summary}</p>
             </a>
           </li>
         ))}

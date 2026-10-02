@@ -1,4 +1,4 @@
-import { REFERENCE_SLUGS } from './data/reference';
+import { REFERENCE_PAGES } from './data/reference';
 import { EN, homePath } from './i18n/languages';
 
 /**
@@ -24,4 +24,7 @@ export function referenceSlugForAppPath(appPath: string): string | null {
 }
 
 /** Every English route path, in the shape the prerender list and sitemap use. */
-export const ENGLISH_ROUTE_PATHS: string[] = [ENGLISH_HOME, ...REFERENCE_SLUGS.map(referencePath)];
+export const ENGLISH_ROUTE_PATHS: string[] = [
+  ENGLISH_HOME,
+  ...REFERENCE_PAGES.map((page) => referencePath(page.slug)),
+];

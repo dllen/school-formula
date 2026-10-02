@@ -1,11 +1,15 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { REFERENCE_PAGES } from './data/reference';
+import { validateReferencePages } from './data/reference/validate';
 import { render } from './entry-server';
 import { injectPage, outputFileFor } from './prerender/inject';
 import { PRERENDER_PATHS } from './prerender/routes';
 import { buildRobotsTxt, buildSitemap } from './seo/files';
 import { renderHead } from './seo/head';
 import { buildSeoMeta } from './seo/meta';
+
+validateReferencePages(REFERENCE_PAGES);
 
 const distDir = join(process.cwd(), 'dist');
 const template = readFileSync(join(distDir, 'index.html'), 'utf8');

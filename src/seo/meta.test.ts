@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
-import { REFERENCE_TABLES } from '../data/reference';
+import { REFERENCE_PAGES } from '../data/reference';
 import { PRERENDER_PATHS } from '../prerender/routes';
 import { buildSeoMeta, canonicalUrl } from './meta';
 import { brandFor } from './site';
@@ -81,15 +81,16 @@ describe('buildSeoMeta', () => {
   });
 
   it('gives every English reference chart its own English metadata', () => {
-    for (const table of REFERENCE_TABLES) {
-      const meta = buildSeoMeta(`/en/reference/${table.slug}`);
-      expect(meta.title).toBe(`${table.title} - ${EN.name}`);
-      expect(meta.description).toBe(table.description);
-      expect(meta.canonical).toBe(`https://syy.global/en/reference/${table.slug}/`);
+    for (const page of REFERENCE_PAGES) {
+      const path = `/en/reference/${page.slug}`;
+      const meta = buildSeoMeta(path);
+      expect(meta.title).toBe(`${page.title} - ${EN.name}`);
+      expect(meta.description).toBe(page.description);
+      expect(meta.canonical).toBe(`https://syy.global/en/reference/${page.slug}/`);
       expect(meta.htmlLang).toBe('en');
       expect(meta.alternates[0]).toEqual({
         hreflang: 'en',
-        href: `https://syy.global/en/reference/${table.slug}/`,
+        href: `https://syy.global/en/reference/${page.slug}/`,
       });
     }
   });

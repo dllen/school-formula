@@ -5,7 +5,7 @@ import { ENGLISH_HOME } from '../../reference-routes';
 export function ReferenceLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800 flex flex-col">
-      <header className="bg-white border-b border-[#E5E6EB] sticky top-0 z-40">
+      <header className="bg-white border-b border-[#E5E6EB] sticky top-0 z-40 print:hidden">
         <div className="max-w-5xl mx-auto px-6 h-[60px] flex items-center justify-between">
           <a href={ENGLISH_HOME} className="flex items-center gap-2">
             <span
@@ -29,7 +29,7 @@ export function ReferenceLayout({ children }: { children: ReactNode }) {
 
       <main className="max-w-5xl mx-auto px-6 py-8 flex-grow w-full">{children}</main>
 
-      <footer className="py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2]">
+      <footer className="py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2] print:hidden">
         <p>Free printable reference charts for students, parents and teachers.</p>
       </footer>
     </div>
