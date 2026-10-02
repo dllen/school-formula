@@ -14,4 +14,22 @@ export type PageContent =
       description: string;
       breadcrumbs: Breadcrumb[];
       resource: { name: string; description: string; subject: string; grade: string };
+    }
+  | {
+      /** 英文面的图表页。带 faq 是为了产出 FAQPage 标记，不是文案来源。 */
+      kind: 'reference';
+      title: string;
+      description: string;
+      breadcrumbs: Breadcrumb[];
+      resource: { name: string; description: string; category: string };
+      faq: { q: string; a: string }[];
+    }
+  | {
+      /** 英文面的学科 hub。charts 构成 ItemList。 */
+      kind: 'hub';
+      title: string;
+      description: string;
+      breadcrumbs: Breadcrumb[];
+      category: string;
+      charts: { name: string; path: string }[];
     };

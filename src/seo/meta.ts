@@ -72,6 +72,57 @@ function buildJsonLd(
     ];
   }
 
+  if (content.kind === 'reference') {
+    return [
+      {
+        '@context': context,
+        '@type': 'LearningResource',
+        name: content.resource.name,
+        description: content.resource.description,
+        url: canonical,
+        inLanguage,
+        learningResourceType: 'reference chart',
+        about: content.resource.category,
+      },
+      {
+        '@context': context,
+        '@type': 'FAQPage',
+        mainEntity: content.faq.map((entry) => ({
+          '@type': 'Question',
+          name: entry.q,
+          acceptedAnswer: { '@type': 'Answer', text: entry.a },
+        })),
+      },
+      breadcrumbJsonLd(content, context),
+    ];
+  }
+
+  if (content.kind === 'hub') {
+    return [
+      {
+        '@context': context,
+        '@type': 'CollectionPage',
+        name: content.title,
+        description: content.description,
+        url: canonical,
+        inLanguage,
+        about: content.category,
+      },
+      {
+        '@context': context,
+        '@type': 'ItemList',
+        numberOfItems: content.charts.length,
+        itemListElement: content.charts.map((chart, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: chart.name,
+          url: canonicalUrl(chart.path),
+        })),
+      },
+      breadcrumbJsonLd(content, context),
+    ];
+  }
+
   return [
     {
       '@context': context,

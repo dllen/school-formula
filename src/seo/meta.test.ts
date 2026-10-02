@@ -107,3 +107,41 @@ describe('buildSeoMeta', () => {
     expect(meta.description).toBe(ZH.description);
   });
 });
+
+describe('JSON-LD for the English surface', () => {
+  it('marks a chart page as a LearningResource with its FAQ', () => {
+    const meta = buildSeoMeta('/en/math/multiplication-chart');
+    const types = meta.jsonLd.map((block) => block['@type']);
+
+    expect(types).toEqual(['LearningResource', 'FAQPage', 'BreadcrumbList']);
+
+    const faq = meta.jsonLd[1] as { mainEntity: { name: string; acceptedAnswer: { text: string } }[] };
+    expect(faq.mainEntity.length).toBeGreaterThanOrEqual(3);
+    expect(faq.mainEntity[0].name).toBe('What is a multiplication chart?');
+    expect(faq.mainEntity[0].acceptedAnswer.text).toContain('every pair of numbers');
+  });
+
+  it('marks a hub page as a CollectionPage whose ItemList covers that category', () => {
+    const meta = buildSeoMeta('/en/math');
+    const types = meta.jsonLd.map((block) => block['@type']);
+
+    expect(types).toEqual(['CollectionPage', 'ItemList', 'BreadcrumbList']);
+
+    const list = meta.jsonLd[1] as { numberOfItems: number; itemListElement: { name: string; url: string }[] };
+    expect(list.numberOfItems).toBe(4);
+    expect(list.itemListElement[0].name).toBe('Multiplication Chart (1–12)');
+    expect(list.itemListElement[0].url).toBe('https://syy.global/en/math/multiplication-chart/');
+  });
+
+  it('leaves the Chinese pages on their existing markup', () => {
+    const point = KNOWLEDGE_DATA[0].subjects[0].knowledgePoints[0];
+    expect(buildSeoMeta(`/knowledge/${point.id}`).jsonLd.map((b) => b['@type'])).toEqual([
+      'LearningResource',
+      'BreadcrumbList',
+    ]);
+    expect(buildSeoMeta('/tutorial').jsonLd.map((b) => b['@type'])).toEqual([
+      'WebPage',
+      'BreadcrumbList',
+    ]);
+  });
+});
