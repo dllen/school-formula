@@ -46,6 +46,11 @@ describe('App routes', () => {
     expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Printable Study Reference');
   });
 
+  it('serves an English category hub at /en/:category', () => {
+    renderApp('/en/math');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Math');
+  });
+
   it('serves an English reference chart at /en/:category/:slug', () => {
     renderApp('/en/math/multiplication-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Multiplication Chart (1–12)');
