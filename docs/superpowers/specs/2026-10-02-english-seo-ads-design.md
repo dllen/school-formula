@@ -12,6 +12,9 @@
 
 ### 现状盘点
 
+> 本节是**阶段 A+B 开工前**的状态快照。其中「图表页之间零内链」一项已由阶段 B 交付；
+> 其余各项以对应 Section 为准。
+
 **已完成**
 
 | 项 | 载体 |
@@ -45,8 +48,8 @@
 | 内容生产 | **计算优先**：能推导的用生成器函数算，算不出来的手写结构化常量。不引入新脚本链 |
 | 页面深度 | 数据块 + intro（80–120 词）+ How to use it（2–4 条）+ FAQ（3–5 条）+ related 内链，约 400–600 词/页 |
 | 语言维度 | **先做英文，模型预留语言**：中立模块放生成器/常量，语言模块负责组装 + 文案 + 本地化 slug |
-| 改动范围 | 英文面为重心；中文站只补两项真·全站通用项（GA4、og:image），内容/路由/组件不动 |
-| og:image | 构建时用 satori + `@resvg/resvg-wasm` 生成每页真图，失败回退学科兜底图 |
+| 改动范围 | 英文面为重心；中文站只补 GA4 一项全站通用项（og:image 经修订只做英文面），内容/路由/组件不动 |
+| og:image | 构建时用 satori + `@resvg/resvg-wasm` 生成真图，失败则省略该页的 og:image；**只覆盖英文面 10 页**（见 Section 3） |
 | AdSense 时序 | 内容铺到 40 页再提交申请；审核期并行铺到 100 页 |
 | 联系邮箱 | `support@syy.global` |
 
@@ -183,79 +186,95 @@ src/components/reference/
 
 `@media print` 隐藏：站点导航、广告位、FAQ、相关图表、页脚。**只留 H1 + 数据块**。打印体验是这个垂类的核心卖点——一张乘法表印出来带 FAQ 就是失败的。
 
-## Section 3：SEO 基础设施补完
+## Section 3：SEO 基础设施补完（阶段 C）
+
+> 本节在阶段 A+B 落地后修订过一次；修订点列在节末。
+
+### 范围
+
+只做技术 SEO，**不扩内容**（阶段 E 单独做）。因此本轮交付后站上仍是 10 个英文页，流量不会因此变化——它做的是把地基修对，让后续内容落在正确的地基上。
+
+已核对：初版列的「内链三方向」在阶段 B 已全部交付（`ReferenceIndex` → 学科 hub、`ReferenceCategory` → 该科图表、`RelatedCharts` + 面包屑），本轮**零内链工作**。
 
 ### og:image 管线
+
+只覆盖英文面 10 页：`/en/`、三个学科 hub、六张图表页。
 
 ```
 src/prerender/og.ts        # writeOgImages(pages, distDir)
        ↓ 被 src/entry-prerender.ts 调用（不新增构建步骤）
-   satori（纯 JS，页面数据 → 1200×630 SVG）
+   satori（页面数据 → 1200×630 SVG）
        ↓ @resvg/resvg-wasm（SVG → PNG）
-dist/og/reference/{category}/{slug}.png
-dist/og/knowledge/{id}.png
-dist/og/{category}/default.png          # 学科兜底图
+dist/og/en.png
+dist/og/{category}.png                  # 学科 hub
+dist/og/{category}/{slug}.png           # 图表页
 ```
 
-放进已有 prerender 入口而非新开 `scripts/*.mjs`：与 `src/prerender/{inject,routes}.ts` 组织方式一致，且能直接 import `src/data/reference`（`.mjs` 脚本 import TS 源码要另配 loader）。
+产物路径不含 `reference/` 段——URL 结构已在阶段 B 改成 `/en/{category}/{slug}/`。
 
 实现要点：
 
-- **satori 需要字体数据**。往仓库提交一份拉丁字符字体子集（约 100–200KB），否则渲染报错。用 **Inter**——SIL Open Font License，允许自由再分发，避免把字体二进制提交进仓库时的授权问题。一次性成本。
-- **`@resvg/resvg-wasm` 需要显式 `initWasm()`**。Node 下读 wasm 字节喂进去。选 wasm 而非 `@resvg/resvg-js`（原生）是为了彻底避开「原生二进制在某个 Node ABI / 平台上缺失」这类 CI 崩溃。
-- **渲染失败回退学科兜底图，不 throw**。一张 OG 图失败不该让部署挂掉。
-- **并发池（上限 4–8）+ 内容哈希缓存**。中英合计约 390 张（100 英文面 + 12 视图 + 276 知识点），satori 每张约 50–150ms，单线程会让构建多花 1 分钟以上。本地重复构建命中缓存秒过，CI 首次全量生成。
+- **字体**：提交 `@fontsource/inter` 的 `inter-latin-400-normal.woff` 与 `inter-latin-700-normal.woff`，各约 30KB、合计约 60KB，放 `assets/fonts/`。**不放 `public/`**——那是浏览器会下载的地方，这份字体只服务构建期。satori 接受 `.woff`，因此**不需要自建子集**；完整 Inter 发行包 33MB，不提交。授权为 SIL OFL，允许再分发。
+- **`@resvg/resvg-wasm` 需要显式 `initWasm()`**，Node 下读 wasm 字节喂进去。选 wasm 而非 `@resvg/resvg-js`（原生）是为避开「原生二进制在某个平台 / Node ABI 上缺失」这类 CI 崩溃。
+- **卡片内容 = 品牌 + 标题 + 该页第一张表的缩影**（取前 8×8 格；公式块页面取前 3 行）。这是「生成真图」相对「一张通用模板图」的全部意义。**预判这里是本轮最需要迭代的地方**，因为 satori 的 CSS 支持是子集（flex 好、grid 一般）。
+- **渲染失败回退，不 throw**：单张失败则省略该页的 `og:image`，而不是挂掉构建。
+- **不做并发池、不做内容哈希缓存**——那是为初版估的 390 张设计的，10 张不需要。
 
 OG 图必须栅格化：SVG 不被 Facebook / Twitter / LinkedIn 支持。
 
+`buildSeoMeta` 增加 `ogImage`（仅英文面），补 `og:image:width` / `og:image:height`，`twitter:card` 由 `summary` 改为 `summary_large_image`。
+
 ### JSON-LD 补完
 
-| 页面 | 现状 | 补完 |
+| 页面 | `kind` | JSON-LD |
 |---|---|---|
-| 首页 | `WebSite` + `Organization` | 不变 |
-| 知识点页 | `LearningResource` + `BreadcrumbList` | 不变 |
-| 图表页 | `WebPage` + `BreadcrumbList` | `LearningResource` + **`FAQPage`**（来自 `faq` 字段）+ `BreadcrumbList` |
-| hub 页 | 无 | `CollectionPage` + `ItemList` |
-| 合规页 | 无 | `WebPage` |
+| 首页 | `home` | `WebSite` + `Organization`（不变） |
+| 知识点页 | `knowledge` | `LearningResource` + `BreadcrumbList`（不变） |
+| 图表页 | **`reference`** | `LearningResource` + `FAQPage` + `BreadcrumbList` |
+| 学科 hub | **`hub`** | `CollectionPage` + `ItemList` + `BreadcrumbList` |
+| 未匹配路由 | `view` | `WebPage` + `BreadcrumbList`（兜底，不变） |
 
-`PageContent.kind` 从 `'home' | 'knowledge' | 'view'` 扩为加上 `'reference' | 'hub'`——现在的 `'view'` 是兜底桶，图表页和 hub 页需要各自的 JSON-LD 分支。
+`PageContent.kind` 从 `'home' | 'knowledge' | 'view'` 扩为加上 `'reference' | 'hub'`：现状是图表页与 hub 页都返回兜底的 `'view'`，共用同一套标记。`hub` 分支需携带该科图表清单（来自 `pagesInCategory()`）以构成 `ItemList`。
+
+**FAQPage 的诚实说明**：Google 自 2023-08 起把 FAQ 富摘要收窄到政府 / 医疗类站点（Google Search Central 2023-08 公告），**本站拿不到富摘要**。收益退化为「帮助 Google 理解页面内容」。`faq` 数据本来就有、标记约 10 行，所以照做，但不把它当流量入口。
 
 ### 标题模板
 
-现状 `` `${table.title} - ${brand.name}` `` 没有意图修饰词。改为 title 带修饰、H1 保持干净：
-
 ```
-<title>  Printable Multiplication Chart (1–12) – Free & No Signup | Shiyiyuan
+<title>  Printable Multiplication Chart (1–12) – Free | Shiyiyuan
 <h1>     Multiplication Chart (1–12)
 ```
 
-确定性规则（写死在 `seo/content-en.ts`）：title = `Printable {title} – Free{意图后缀} | {brand}`，意图后缀按品种取 `& No Signup` / `for Students` / `Reference Sheet`。
+规则写死在 `seo/content-en.ts`：`Printable {page.title} – Free | {titleBrand}`。
 
-**标题只写 "Printable"，不写 "PDF"。** 我们提供的是浏览器打印，不发 PDF 文件——宣称 PDF 是虚假的，且用户落地后找不到下载按钮就是跳出。
+**修一个初版没算到的长度问题**：品牌全名 `Shiyiyuan Study Reference` 有 26 字符，拼进去总长 ~84 字符，而 Google 在约 60 字符处截断——品牌与修饰词会互相挤掉。因此 `BrandCopy` 增加可选的 `titleBrand`（英文 `'Shiyiyuan'`，9 字符），只用于 `<title>`；`og:site_name` 与 JSON-LD 仍用全名 `name`。最长的一张图表标题这时是 59 字符。`titleBrand` 不设时退回 `name`，中文标题因此完全不受影响。
 
-### 内链
-
-三个方向，全部是真实链接（非 JS 路由跳转）：
-
-1. `/en/` hub → 三个学科 hub
-2. 学科 hub → 该科全部图表页（这页本身是 `ItemList` 的载体）
-3. 图表页 → `related` 里那 3–5 个 slug + 面包屑回 hub
+**标题只写 "Printable"，不写 "PDF"。** 我们提供浏览器打印，不发 PDF 文件——宣称 PDF 是虚假的，且用户落地后找不到下载按钮就是跳出。
 
 ### GA4 + 同意模式 + Search Console
 
-- `VITE_GA4_ID` 注入 prerender 的 `<head>`，与 AdSense 同一处，**全站生效（中英都有）**。
-- **同意模式默认值按区域给**：EEA/UK/瑞士 → `analytics_storage: 'denied'`，其他区域 → `granted`。这样 GA4 现在就能合规上线，不必等 CMP——CMP 获批后接管 ads 同意，analytics 那部分已经是对的。
+- `VITE_GA4_ID` 注入 prerender 的 `<head>`，**未设置时整段不注入**（与 `AD_SLOTS` 改成 `null` 后的处理方式一致，不留空壳）。全站生效，中英都有。
+- **同意模式默认值按区域**：EEA / UK / 瑞士 → `analytics_storage: 'denied'`，其他区域 → `granted`。GA4 因此现在就能合规上线，不必等 CMP——CMP 获批后接管 ads 同意，analytics 那部分已经是对的。
 - **Search Console 验证走 DNS TXT** 而非 meta 标签：覆盖所有子域名、重新部署不失效。**这是用户手动步骤。**
 
 ### 明确不做的三项
 
-这三项都在 2026-10-01 spec 里，推演后判定**现在做是猜**：
+这三项判定**现在做是猜**：
 
-**hreflang 推导** —— 现状是「自指 + x-default 自指」，退化但**合法**（自指 hreflang 不违规）。要产生真正的 en↔es 互链，需要每页记录各语言的本地化 slug 映射——而正确的映射长什么样，只有真的有第二门语言时才知道。**等 `es/` 落地时再加**，届时 `ReferencePage` 加 `alternates?: Record<langCode, string>`。
+**hreflang 推导** —— 现状是「自指 + x-default 自指」，退化但**合法**（自指 hreflang 不违规）。要产生真正的 en↔es 互链，需要每页记录各语言的本地化 slug 映射——而正确的映射长什么样，只有真的有第二门语言时才知道。**等 `es/` 落地时再加**。
 
-**sitemap 按语言拆分** —— 总量约 400 URL，单文件上限是 50,000 URL / 50MB。拆分的唯一收益是 GSC 里按语言看诊断，不值这个复杂度。
+**sitemap 按语言拆分** —— 总量约 300 URL，单文件上限 50,000 URL / 50MB。拆分唯一收益是 GSC 里按语言看诊断，不值这个复杂度。
 
-**`<lastmod>`** —— 需要 URL→声明该页的源文件的映射，耦合进构建。而 Google 明确说除非 lastmod 一贯准确否则基本忽略。半准不准的 lastmod 比如实省略更糟。
+**`<lastmod>`** —— 需要 URL→声明该页的源文件的映射，耦合进构建。Google 明确说除非 lastmod 一贯准确否则基本忽略；半准不准比省略更糟。
+
+### 相对初版的修订
+
+1. **og:image 从「中英约 390 张」缩到「英文面 10 张」。** 初版按「100 英文页」估算，而阶段 E 未做，英文面实际只有 10 页；同时判定给 276 个中文知识点页生成图是「276 张图的成本换接近零的社交回报」。顺带删掉并发池与内容哈希缓存。
+2. **内链标为已完成**，阶段 B 已交付，初版写在阶段 B 之前。
+3. **标题后缀从三种简化成一种**（`– Free`），并新增 `titleBrand` 解决品牌全名挤占标题长度的问题。
+4. **字体改为直接提交 fontsource 的 30KB latin woff**，不再需要自建子集。
+5. **产物路径去掉 `reference/` 段**，跟随阶段 B 的 URL 变更。
+6. **补充 FAQPage 拿不到富摘要的说明**，不夸大为流量入口。
 
 ## Section 4：变现与合规
 
@@ -335,7 +354,7 @@ hub 页不投放是刻意判断：那些页面的价值是内链枢纽，用 40 
 `reference-routes.ts` 新 URL 结构 → `BlockRenderer` + 三个 block 组件 → `ReferencePage` 重写 → `ReferenceCategory` 学科 hub + `ReferenceIndex` 重写 → `App.tsx` 路由 + worker 301 映射表 → 打印样式
 
 **阶段 C — SEO 补完**
-`PageContent.kind` 扩展 + `LearningResource` + `FAQPage` JSON-LD → 标题模板 → **og:image 管线单独一个 commit** → GA4 + 同意模式 → 内链
+`PageContent.kind` 扩展 + `LearningResource` + `FAQPage` + `CollectionPage` JSON-LD → 标题模板 → **og:image 管线单独一个 commit** → GA4 + 同意模式（内链已由阶段 B 交付，无需再做）
 
 **阶段 D — 合规与变现**
 `src/data/legal/` + `LegalPage` 组件 + 八页接线 → `AD_SLOTS` 占位改 `null` → 图表页第二个广告位
@@ -394,6 +413,6 @@ parts of speech、verb tenses、punctuation rules、capitalization、homophones�
 - **中文课程内容翻译** —— 已放弃的路线。
 - **对齐海外课标（Common Core / UK KS / SAT）** —— 需重做数据模型，不属本批次。
 - **PDF 文件下载** —— 只有浏览器打印。因此标题不宣称 PDF。
-- **中文站的内容/路由/组件改动** —— 只补 GA4 与 og:image 两项全站通用项。
+- **中文站的内容/路由/组件改动** —— 只补 GA4 一项全站通用项；og:image 经修订只做英文面。
 - **hreflang 推导 / sitemap 拆分 / lastmod** —— 见 Section 3「明确不做的三项」。
 - **hub 页广告** —— 见 Section 4 广告位表。
