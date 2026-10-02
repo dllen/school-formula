@@ -36,3 +36,10 @@ describe('renderHead', () => {
     expect(html).toContain('content="x &lt; y"');
   });
 });
+
+describe('renderHead analytics', () => {
+  it('omits the analytics tags when no measurement id is set', () => {
+    const html = renderHead(buildSeoMeta('/en/math'));
+    expect(html).not.toContain('googletagmanager');
+  });
+});

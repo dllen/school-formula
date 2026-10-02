@@ -1,4 +1,5 @@
 import type { SeoMeta } from './meta';
+import { buildAnalyticsTags, GA4_MEASUREMENT_ID } from './analytics';
 
 function escapeHtml(value: string): string {
   return value
@@ -41,6 +42,8 @@ export function renderHead(meta: SeoMeta): string {
     `<meta name="twitter:title" content="${escapeHtml(meta.twitter.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(meta.twitter.description)}" />`,
   );
+
+  tags.push(...buildAnalyticsTags(GA4_MEASUREMENT_ID));
 
   for (const block of meta.jsonLd) {
     tags.push(`<script type="application/ld+json">${serializeJsonLd(block)}</script>`);
