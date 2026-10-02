@@ -25,6 +25,16 @@ describe('assetCandidates', () => {
     expect(assetCandidates('/en')).toEqual(['/en/index.html']);
   });
 
+  it('keeps the app-shell fallback for paths that merely share the /en prefix', () => {
+    // /energy 与 /env 不是 /en 语言面——前缀必须在 '/' 处断开。
+    expect(assetCandidates('/energy')).toEqual(['/energy/index.html', '/index.html']);
+    expect(assetCandidates('/env')).toEqual(['/env/index.html', '/index.html']);
+  });
+
+  it('serves a dotted asset under /en/ as a single file path', () => {
+    expect(assetCandidates('/en/assets/x.js')).toEqual(['/en/assets/x.js']);
+  });
+
   it('keeps the app-shell fallback for the Chinese app', () => {
     expect(assetCandidates('/tutorial')).toEqual(['/tutorial/index.html', '/index.html']);
     expect(assetCandidates('/unknown')).toEqual(['/unknown/index.html', '/index.html']);

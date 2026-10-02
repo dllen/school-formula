@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { physicalConstants } from './constants';
 
+// value 与 alternate 里允许出现的 SI 符号 / 单位。显式白名单而非长度启发式：
+// alternate 正是作者最想写成文案的字段（"10 m/s² for school work"），任何白名单外
+// 的单词都意味着语言泄漏。
+const CONSTANT_UNIT_TOKENS = new Set(['m', 's', 'J', 'C', 'kg', 'mol', 'N']);
+
 describe('physicalConstants', () => {
   it('returns symbol / value pairs', () => {
     const constants = physicalConstants();
@@ -19,9 +24,14 @@ describe('physicalConstants', () => {
   it('carries no display names — only standard symbols and SI units', () => {
     for (const constant of physicalConstants()) {
       expect(constant.symbol.length).toBeLessThanOrEqual(3);
-      // 单位符号最长三个字母（kg / mol）。更长的字母串就意味着混进了文案。
-      for (const token of constant.value.split(/[^A-Za-z]+/).filter(Boolean)) {
-        expect(token.length).toBeLessThanOrEqual(3);
+      // alternate 也要查——它是作者最容易填进文案的字段。
+      const fields = [constant.value, ...(constant.alternate ? [constant.alternate] : [])];
+      for (const field of fields) {
+        for (const token of field.split(/[^A-Za-z]+/).filter(Boolean)) {
+          expect(CONSTANT_UNIT_TOKENS.has(token), `unexpected token "${token}" in "${field}"`).toBe(
+            true,
+          );
+        }
       }
     }
   });

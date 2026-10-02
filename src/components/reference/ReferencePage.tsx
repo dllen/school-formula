@@ -52,7 +52,7 @@ export function ReferencePage(): ReactElement {
         <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white flex items-start justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-[#1F2329]">{page.title}</h1>
-            <p className="mt-1 text-sm text-[#646A73]">{page.description}</p>
+            <p className="mt-1 text-sm text-[#646A73] print:hidden">{page.description}</p>
           </div>
           <span className="shrink-0 px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full print:hidden">
             {CATEGORY_COPY[page.category].name}
@@ -60,7 +60,7 @@ export function ReferencePage(): ReactElement {
         </div>
 
         <div className="p-6">
-          <p className="text-[#1F2329] leading-relaxed">{page.intro}</p>
+          <p className="text-[#1F2329] leading-relaxed print:hidden">{page.intro}</p>
 
           <BlockRenderer blocks={page.blocks} />
 

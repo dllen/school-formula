@@ -14,6 +14,6 @@ export function metricConversionGroups(): ConversionGroup[] {
   return [
     { key: 'length', entries: ['1 km = 1000 m', '1 m = 100 cm = 1000 mm', '1 cm = 10 mm'] },
     { key: 'mass', entries: ['1 t = 1000 kg', '1 kg = 1000 g', '1 g = 1000 mg'] },
-    { key: 'time', entries: ['1 h = 60 min = 3600 s', '1 min = 60 s', '1 day = 24 h'] },
+    { key: 'time', entries: ['1 h = 60 min = 3600 s', '1 min = 60 s', '1 d = 24 h'] },
   ];
 }

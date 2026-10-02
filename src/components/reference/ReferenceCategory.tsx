@@ -23,7 +23,7 @@ export function ReferenceCategory(): ReactElement {
 
   return (
     <ReferenceLayout>
-      <nav aria-label="Breadcrumb" className="text-sm text-[#646A73]">
+      <nav aria-label="Breadcrumb" className="text-sm text-[#646A73] print:hidden">
         <a href={ENGLISH_HOME} className="hover:text-[#1F2329] transition-colors">
           All charts
         </a>

@@ -41,6 +41,14 @@ describe('English route table', () => {
     }
   });
 
+  // REFERENCE_CATEGORIES 是手写数组，ReferenceCategory 是联合类型；加第四个学科
+  // 却忘了改数组，isReferenceCategory 会否掉它，而 referencePath/sitemap/prerender
+  // 照旧产出——一个 200 的「Page not found」软 404。这条断言把两者焊在一起。
+  it('lists every category the data actually uses', () => {
+    const used = new Set(REFERENCE_PAGES.map((page) => page.category));
+    expect([...used].sort()).toEqual([...REFERENCE_CATEGORIES].sort());
+  });
+
   it('splits an app path into category and slug', () => {
     expect(referencePartsForAppPath('/math/multiplication-chart')).toEqual({
       category: 'math',

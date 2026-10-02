@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { REFERENCE_PAGES } from '../../src/data/reference';
 import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './redirect';
 
 describe('hostRedirect', () => {
@@ -62,6 +63,42 @@ describe('legacyReferenceRedirect', () => {
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/nope/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/tutorial'))).toBeNull();
+  });
+
+  // 这些 slug 只是 Object.prototype 的继承属性，从不是真实图表。
+  // 普通对象查找会把它们当成命中，发出指向垃圾目标的 301——应当是 404。
+  it('does not treat inherited object members as legacy slugs', () => {
+    for (const slug of ['toString', 'constructor', '__proto__']) {
+      expect(legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`))).toBeNull();
+    }
+  });
+});
+
+// LEGACY_REFERENCE_CATEGORY 是数据集里 slug→学科事实的第二份副本，没有编译期连线。
+// 数据集里改名某个 slug，legacy 301 会静默退化成 301→404 链，而 worker 自己的测试
+// 仍会绿——所以这里真的把数据集导进来对账。
+describe('legacy slug map stays in sync with the dataset', () => {
+  const LEGACY_SLUGS = [
+    'multiplication-chart',
+    'squares-cubes-roots',
+    'trigonometric-identities',
+    'metric-conversions',
+    'physics-constants',
+    'irregular-verbs',
+  ];
+
+  it('resolves every legacy slug to a shipped page carrying the claimed category', () => {
+    for (const slug of LEGACY_SLUGS) {
+      const target = legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`));
+      expect(target, `${slug} dropped out of the legacy map`).not.toBeNull();
+      if (!target) continue;
+      // /en/<category>/<slug>/ → ['', 'en', category, slug, '']
+      const [, , category, redirectedSlug] = new URL(target).pathname.split('/');
+      expect(redirectedSlug).toBe(slug);
+      const page = REFERENCE_PAGES.find((candidate) => candidate.slug === redirectedSlug);
+      expect(page, `${slug} exists in the legacy map but not in the dataset`).toBeDefined();
+      expect(page?.category).toBe(category);
+    }
   });
 });
 

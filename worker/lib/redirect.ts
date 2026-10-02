@@ -40,20 +40,23 @@ export function legacyViewRedirect(url: URL): string | null {
  * 增长。所以它是字面量，且刻意不从 `src/data/reference` 导入——worker 不在任何
  * tsconfig 的 include 里（`tsconfig.app.json` 只含 `src`），为六个常量把它绑到 src
  * 的整个模块图上不划算。
+ *
+ * 用 Map 而非普通对象：对象查找会命中 `toString` / `constructor` / `__proto__` 这类
+ * 继承属性（返回真值），让这些从未存在过的 URL 拿到 301 而不是 404。
  */
-const LEGACY_REFERENCE_CATEGORY: Record<string, string> = {
-  'multiplication-chart': 'math',
-  'squares-cubes-roots': 'math',
-  'trigonometric-identities': 'math',
-  'metric-conversions': 'math',
-  'physics-constants': 'science',
-  'irregular-verbs': 'english',
-};
+const LEGACY_REFERENCE_CATEGORY = new Map<string, string>([
+  ['multiplication-chart', 'math'],
+  ['squares-cubes-roots', 'math'],
+  ['trigonometric-identities', 'math'],
+  ['metric-conversions', 'math'],
+  ['physics-constants', 'science'],
+  ['irregular-verbs', 'english'],
+]);
 
 export function legacyReferenceRedirect(url: URL): string | null {
   const match = /^\/en\/reference\/([^/]+)\/?$/.exec(url.pathname);
   if (!match) return null;
-  const category = LEGACY_REFERENCE_CATEGORY[match[1]];
+  const category = LEGACY_REFERENCE_CATEGORY.get(match[1]);
   if (!category) return null;
   return `${url.origin}/en/${category}/${match[1]}/`;
 }

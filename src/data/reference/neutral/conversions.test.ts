@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { metricConversionGroups } from './conversions';
 
+// 允许出现的单位符号白名单。刻意做成显式列表而非「字母数不超过 N」这类启发式——
+// 后者是照着数据里的常量校准的（day 恰好三个字母就蒙混过关）。任何白名单外的
+// 单词都意味着混进了文案，未来加 es/ 时就得改写。
+const UNIT_TOKENS = new Set(['km', 'm', 'cm', 'mm', 't', 'kg', 'g', 'mg', 'h', 'min', 's', 'd']);
+
 describe('metricConversionGroups', () => {
   it('covers length, mass and time in that order', () => {
     expect(metricConversionGroups().map((group) => group.key)).toEqual(['length', 'mass', 'time']);
@@ -10,9 +15,8 @@ describe('metricConversionGroups', () => {
     for (const group of metricConversionGroups()) {
       for (const entry of group.entries) {
         expect(entry).toContain('=');
-        // 单位符号最长三个字母（km / min / day）。更长的字母串就意味着混进了文案。
         for (const token of entry.split(/[^A-Za-z]+/).filter(Boolean)) {
-          expect(token.length).toBeLessThanOrEqual(3);
+          expect(UNIT_TOKENS.has(token), `unexpected token "${token}" in "${entry}"`).toBe(true);
         }
       }
     }

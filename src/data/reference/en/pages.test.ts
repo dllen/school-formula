@@ -65,10 +65,18 @@ describe('English reference pages', () => {
     }
   });
 
+  it('gives every page a non-empty title', () => {
+    for (const page of REFERENCE_PAGES_EN) {
+      expect(page.title.trim().length).toBeGreaterThan(0);
+    }
+  });
+
   it('keeps every table row the same width as its headers', () => {
     for (const page of REFERENCE_PAGES_EN) {
       for (const block of page.blocks) {
         if (block.kind !== 'table' || !block.headers) continue;
+        // 没有这一句，rows: [] 的空表会绕过下面整个循环，安静地过测。
+        expect(block.rows.length).toBeGreaterThan(0);
         for (const row of block.rows) {
           expect(row).toHaveLength(block.headers.length);
         }
