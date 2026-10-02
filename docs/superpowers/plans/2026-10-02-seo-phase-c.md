@@ -1006,7 +1006,11 @@ describe('writeOgImages', () => {
     const distDir = mkdtempSync(join(tmpdir(), 'og-test-'));
     try {
       const written = await writeOgImages(distDir);
-      expect(written).toBe(10);
+      // 返回的是**写成功的路由**（而不是计数）：上层用它决定哪些页面才输出 og:image。
+      expect(written).toHaveLength(10);
+      expect(written.map((entry) => entry.path).sort()).toEqual(
+        OG_ROUTES.map((entry) => entry.path).sort(),
+      );
 
       // 逐张核对：文件真在盘上、是真 PNG、尺寸对。只读回一张的话，
       // 「渲染一张然后复制十份」这种 bug 能整个溜过去。
@@ -1041,7 +1045,7 @@ describe('writeOgImages', () => {
     try {
       await expect(
         writeOgImages(distDir, () => Promise.reject(new Error('ENOENT: missing font'))),
-      ).resolves.toBe(0);
+      ).resolves.toHaveLength(0);
     } finally {
       rmSync(distDir, { recursive: true, force: true });
     }
@@ -1148,8 +1152,12 @@ async function prepareRenderer(): Promise<ReturnType<typeof loadFonts>> {
 }
 
 /**
- * 渲染并写入 OG 图。**逐张回退，绝不 throw**——一张图失败不该让整个部署挂掉；
- * 失败的那页在任务 6 之后会因为没有图而自然省略 og:image 标签。
+ * 渲染并写入 OG 图。**逐张回退，绝不 throw**——一张图失败不该让整个部署挂掉。
+ *
+ * 返回**真正写成功的路由**，而不是计数。这是 spec:220 的落点：页面上的 og:image
+ * 标签必须以这个返回值为准，而不是以静态的 OG_ROUTES 表为准——渲染失败的那页要
+ * 省略标签（"单张失败则省略该页的 og:image"），否则社交卡片会指向一个不存在的
+ * 文件。计数器回答不了「哪几页成功了」。
  *
  * `prepare` 默认就是真实实现。留这个形参是为了让「前置条件失败」那条路径**可测**：
  * 字体缺失时 loadFonts 会 throw，而 FONT_DIR 在模块加载时就固定成
@@ -1159,7 +1167,7 @@ async function prepareRenderer(): Promise<ReturnType<typeof loadFonts>> {
 export async function writeOgImages(
   distDir: string,
   prepare: () => Promise<ReturnType<typeof loadFonts>> = prepareRenderer,
-): Promise<number> {
+): Promise<OgRoute[]> {
   // wasm 初始化与字体载入要在逐张 try 之外（它们不是单页的事），但**同样必须被兜住**：
   // writeOgImages 是被 entry-prerender.ts 顶层 await 的，从这里抛出去就是一个
   // unhandled rejection，整个 `npm run build` 直接死——spec:220 明文禁止
@@ -1171,10 +1179,10 @@ export async function writeOgImages(
     fonts = await prepare();
   } catch (error) {
     console.warn(`og: skipped all ${OG_ROUTES.length} cards — ${(error as Error).message}`);
-    return 0;
+    return [];
   }
 
-  let written = 0;
+  const written: OgRoute[] = [];
   for (const entry of OG_ROUTES) {
     try {
       const svg = await satori(cardFor(entry) as never, {
@@ -1190,8 +1198,8 @@ export async function writeOgImages(
       mkdirSync(dirname(outFile), { recursive: true });
       writeFileSync(outFile, png);
 
-      // 文件确实落盘了才计数——free 失败不该让计数少报一张已经在磁盘上的图。
-      written++;
+      // 文件确实落盘了才记下来——free 失败不该让一张已经在磁盘上的图被漏掉。
+      written.push(entry);
 
       // wasm 版要求手动释放（该包的 README 原文：Wasm-based instances require manual
       // memory management via .free()）。10 张图的泄漏量可忽略，但图数一旦增长
@@ -1231,10 +1239,16 @@ import { writeOgImages } from './prerender/og';
 把结尾两行日志改成（`writeOgImages` 是异步的，模块顶层 await 在本仓库的 ESNext 目标下可用）：
 
 ```ts
-const ogCount = await writeOgImages(distDir);
+const ogWritten = await writeOgImages(distDir);
 
-console.log(`prerendered ${written} pages (+ robots.txt, sitemap.xml, ${ogCount} og images)`);
+console.log(
+  `prerendered ${written} pages (+ robots.txt, sitemap.xml, ${ogWritten.length} og images)`,
+);
 ```
+
+> **本任务把这一句放在页面循环之后，但 Task 6 会把它挪到循环之前**（并把它当参数传进
+> `buildSeoMeta`），因为页面上的 `og:image` 标签必须以「哪些图真的写出来了」为准。
+> 这里按上面写即可；挪动由 Task 6 负责，理由见 Task 6 Step 6b。
 
 - [ ] **Step 9: 构建冒烟**
 
@@ -1278,13 +1292,15 @@ EOF
 - Modify: `src/prerender/og.ts`
 - Modify: `src/seo/meta.ts`
 - Modify: `src/seo/head.ts`
+- Modify: `src/entry-prerender.ts`
 - Test: `src/seo/og.test.ts`
 - Test: `src/seo/meta.test.ts`
 - Test: `src/seo/head.test.ts`
+- Test: `src/prerender/og.test.ts`
 
 **Interfaces:**
 - Consumes: `OG_ROUTES`（`src/seo/og-routes`）；`SITE`、`ENGLISH_HOME`
-- Produces: `ogImagePath(path: string): string | undefined`；`ogImageUrl(path: string): string | undefined`；`SeoMeta.ogImage?: { url: string; width: number; height: number }`
+- Produces: `normalizeOgRoute(path: string): string`；`ogImagePath(path: string): string | undefined`；`writtenRouteSet(routes: readonly OgRoute[]): Set<string>`；`ogImageUrl(path: string, writtenRoutes?: ReadonlySet<string>): string | undefined`；`buildSeoMeta(path: string, writtenOgRoutes?: ReadonlySet<string>): SeoMeta`；`writeOgImages(distDir, prepare?): Promise<OgRoute[]>`（返回值由任务 5 的计数改为路由数组）
 
 - [ ] **Step 0: 把纯数据的 OG 路由表抽到 `src/seo/og-routes.ts`**
 
@@ -1369,7 +1385,14 @@ Expected: 无输出
 ```ts
 import { describe, expect, it } from 'vitest';
 import { OG_ROUTES } from './og-routes';
-import { ogImagePath, ogImageUrl } from './og';
+import { ogImagePath, ogImageUrl, writtenRouteSet } from './og';
+
+/**
+ * 「十张图都写成功了」——正常构建下的集合，也是 ogImageUrl 的受控输入。
+ * 必须走 writtenRouteSet 而不是 OG_ROUTES.map(r => r.route)：后者是**原始** route
+ * （带尾斜杠），而 ogImageUrl 查的是归一化后的键，直接用会永远查不中。
+ */
+const ALL_WRITTEN = writtenRouteSet(OG_ROUTES);
 
 describe('ogImagePath', () => {
   it('resolves every English page that has a generated image', () => {
@@ -1395,13 +1418,37 @@ describe('ogImagePath', () => {
 
 describe('ogImageUrl', () => {
   it('is absolute against the canonical origin', () => {
-    expect(ogImageUrl('/en/math/multiplication-chart')).toBe(
+    expect(ogImageUrl('/en/math/multiplication-chart', ALL_WRITTEN)).toBe(
       'https://syy.global/og/math/multiplication-chart.png',
     );
   });
 
+  it('normalizes the route before testing membership', () => {
+    // 归一化必须发生在查集合之前：OG_ROUTES 里的 route 带尾斜杠，这里传的是不带的。
+    // 少了这一步，这条会 undefined——而正常构建走的就是这个形状。
+    expect(ogImageUrl('/en/math/', ALL_WRITTEN)).toBe('https://syy.global/og/math.png');
+    expect(ogImageUrl('/en', ALL_WRITTEN)).toBe('https://syy.global/og/en.png');
+  });
+
   it('is undefined when there is no image', () => {
     expect(ogImageUrl('/')).toBeUndefined();
+  });
+
+  it('is undefined when this page has a card but its render failed', () => {
+    // spec:220 —— 单张失败则省略该页的 og:image，而不是输出一个指向不存在文件的 URL。
+    // 按 path 挑掉 hub 那张，而不是按 route 字符串：route 的具体形状（尾斜杠）会变，
+    // path 不会。
+    const partial = writtenRouteSet(OG_ROUTES.filter((entry) => entry.path !== 'og/math.png'));
+    expect(ogImageUrl('/en/math', partial)).toBeUndefined();
+    // 同一集合里别的页不受影响。
+    expect(ogImageUrl('/en/science', partial)).toBe('https://syy.global/og/science.png');
+  });
+
+  it('is undefined when nothing was written at all', () => {
+    // 前置条件失败（字体缺失 / wasm 起不来）时 writeOgImages 返回空数组，
+    // 此时**每一页**都必须省略标签——这正是 Task 5 那次修复把路径暴露出来的地方。
+    expect(ogImageUrl('/en/math', new Set())).toBeUndefined();
+    expect(ogImageUrl('/en/math')).toBeUndefined();
   });
 });
 ```
@@ -1415,11 +1462,11 @@ Expected: FAIL —— `Failed to resolve import "./og"`
 
 ```ts
 // src/seo/og.ts
-import { OG_ROUTES } from './og-routes';
+import { OG_ROUTES, type OgRoute } from './og-routes';
 import { SITE } from './site';
 
-/** 去掉尾斜杠，并把 `/en` 归一成 `/en/`。 */
-function normalize(path: string): string {
+/** 去掉尾斜杠、查询串与片段，并把 `/en` 归一成 `/en/`。 */
+export function normalizeOgRoute(path: string): string {
   const withoutQuery = path.split('#')[0].split('?')[0];
   if (withoutQuery === '/' || withoutQuery === '') return '/';
   const trimmed = withoutQuery.replace(/\/+$/, '');
@@ -1434,17 +1481,35 @@ function normalize(path: string): string {
  * 不归一化的话永远查不中。
  */
 const BY_ROUTE = new Map<string, string>(
-  OG_ROUTES.map((entry) => [normalize(entry.route), entry.path]),
+  OG_ROUTES.map((entry) => [normalizeOgRoute(entry.route), entry.path]),
 );
 
+/**
+ * 静态映射：这张表说「哪一页**应该**有图」，不代表图真的写出来了。
+ * 要输出到页面上的 URL 用 ogImageUrl，它还会要求路由在「确实写成功」的集合里。
+ */
 export function ogImagePath(path: string): string | undefined {
-  return BY_ROUTE.get(normalize(path));
+  return BY_ROUTE.get(normalizeOgRoute(path));
 }
 
-/** 绝对的 og:image URL；没有图时 undefined。 */
-export function ogImageUrl(path: string): string | undefined {
+/** 把 writeOgImages 的返回值转成 ogImageUrl 要的集合。 */
+export function writtenRouteSet(routes: readonly OgRoute[]): Set<string> {
+  return new Set(routes.map((entry) => normalizeOgRoute(entry.route)));
+}
+
+/**
+ * 绝对的 og:image URL；没有图、**或那张图没写成功**时 undefined。
+ *
+ * `writtenRoutes` 默认空集，方向是刻意选的：忘了传只会少一个标签（spec:220 要的
+ * 「省略该页的 og:image」），不会指向一个不存在的文件。反向的默认值会重现那个 bug。
+ */
+export function ogImageUrl(
+  path: string,
+  writtenRoutes: ReadonlySet<string> = new Set<string>(),
+): string | undefined {
   const relative = ogImagePath(path);
-  return relative ? `${SITE.origin}/${relative}` : undefined;
+  if (!relative || !writtenRoutes.has(normalizeOgRoute(path))) return undefined;
+  return `${SITE.origin}/${relative}`;
 }
 ```
 
@@ -1458,9 +1523,13 @@ Expected: PASS（5 个用例）
 `meta.test.ts`：
 
 ```ts
+// 十张图都写成功——正常构建下 buildSeoMeta 收到的集合。
+// writtenRouteSet 会归一化，所以不能拿 OG_ROUTES.map(r => r.route) 顶替。
+const ALL_WRITTEN = writtenRouteSet(OG_ROUTES);
+
 describe('og:image', () => {
   it('points at the generated card for an English page', () => {
-    expect(buildSeoMeta('/en/math/multiplication-chart').ogImage).toEqual({
+    expect(buildSeoMeta('/en/math/multiplication-chart', ALL_WRITTEN).ogImage).toEqual({
       url: 'https://syy.global/og/math/multiplication-chart.png',
       width: 1200,
       height: 630,
@@ -1468,23 +1537,38 @@ describe('og:image', () => {
   });
 
   it('is absent for pages with no generated image', () => {
-    expect(buildSeoMeta('/').ogImage).toBeUndefined();
-    expect(buildSeoMeta('/tutorial').ogImage).toBeUndefined();
+    expect(buildSeoMeta('/', ALL_WRITTEN).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/tutorial', ALL_WRITTEN).ogImage).toBeUndefined();
+  });
+
+  it('is absent when the card was not written, even though the page has one', () => {
+    // spec:220 —— 单张渲染失败的那页要省略标签，而不是指向一个不存在的文件。
+    const partial = writtenRouteSet(OG_ROUTES.filter((entry) => entry.path !== 'og/math.png'));
+    expect(buildSeoMeta('/en/math', partial).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/en/math', partial).twitter.card).toBe('summary');
+  });
+
+  it('is absent when nothing was written at all', () => {
+    // 字体缺失 / wasm 起不来时 writeOgImages 返回空数组，构建照常成功。
+    expect(buildSeoMeta('/en/math', new Set()).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/en/math').ogImage).toBeUndefined();
   });
 
   it('uses a large twitter card only when there is an image', () => {
-    expect(buildSeoMeta('/en/math').twitter.card).toBe('summary_large_image');
-    expect(buildSeoMeta('/').twitter.card).toBe('summary');
+    expect(buildSeoMeta('/en/math', ALL_WRITTEN).twitter.card).toBe('summary_large_image');
+    expect(buildSeoMeta('/', ALL_WRITTEN).twitter.card).toBe('summary');
   });
 });
 ```
+
+（`writtenRouteSet` 从 `./og` import，`OG_ROUTES` 从 `./og-routes` import；若该文件已有同名常量沿用即可。）
 
 `head.test.ts`：
 
 ```ts
 describe('renderHead og:image', () => {
   it('emits the image and its dimensions when present', () => {
-    const html = renderHead(buildSeoMeta('/en/math'));
+    const html = renderHead(buildSeoMeta('/en/math', ALL_WRITTEN));
     expect(html).toContain('<meta property="og:image" content="https://syy.global/og/math.png" />');
     expect(html).toContain('<meta property="og:image:width" content="1200" />');
     expect(html).toContain('<meta property="og:image:height" content="630" />');
@@ -1493,6 +1577,12 @@ describe('renderHead og:image', () => {
   it('emits nothing when the page has no image', () => {
     const html = renderHead(buildSeoMeta('/'));
     expect(html).not.toContain('og:image');
+  });
+
+  it('emits nothing when the card exists but its render failed', () => {
+    // 这条是 Step 7b 那半边的守门人：标签的有无以「真的写出来了」为准。
+    const partial = writtenRouteSet(OG_ROUTES.filter((entry) => entry.path !== 'og/math.png'));
+    expect(renderHead(buildSeoMeta('/en/math', partial))).not.toContain('og:image');
   });
 });
 ```
@@ -1505,14 +1595,23 @@ Expected: FAIL —— `ogImage` 还不存在，`twitter.card` 仍是 `summary`�
 `src/seo/meta.ts`：import 区加 `import { ogImageUrl } from './og';`；`SeoMeta` 接口加：
 
 ```ts
-  /** 绝对 og:image URL 与尺寸。没有为该页生成图时为 undefined。 */
+  /** 绝对 og:image URL 与尺寸。没有为该页生成图、或那张图没写成功时为 undefined。 */
   ogImage?: { url: string; width: number; height: number };
+```
+
+**`buildSeoMeta` 的签名要加第二个形参**（默认空集，方向是刻意的——见 Step 6b）：
+
+```ts
+export function buildSeoMeta(
+  path: string,
+  writtenOgRoutes: ReadonlySet<string> = new Set<string>(),
+): SeoMeta {
 ```
 
 `buildSeoMeta` 里，在 `const canonical = canonicalUrl(path);` 之后加：
 
 ```ts
-  const imageUrl = ogImageUrl(path);
+  const imageUrl = ogImageUrl(path, writtenOgRoutes);
 ```
 
 并在返回对象里，`twitter` 与 `jsonLd` 之间插入：
@@ -1545,6 +1644,72 @@ Expected: FAIL —— `ogImage` 还不存在，`twitter.card` 仍是 `summary`�
   }
 ```
 
+- [ ] **Step 7b: 让 og:image 标签以「真的写出来的图」为准（spec:220 的落点）**
+
+**为什么非做这一步不可。** 上面几步把 `og:image` 变成了**静态**推导：`buildSeoMeta(route)`
+照着 `OG_ROUTES` 表算出 URL，跟图有没有真的写出来毫无关系。而 `writeOgImages` 原先是在页面
+循环**之后**才跑的。于是只要单张卡片渲染失败（Task 5 的逐页 catch 会跳过它并继续），那一页
+仍然输出 `og:image`，指向一个不存在的文件——正是 spec:220 明令要避免的：
+「**单张失败则省略该页的 og:image**，而不是挂掉构建」（spec:52 同义）。
+
+Task 5 那次修复让这条路径更容易被走到：前置条件失败时它现在**返回空**而不是抛出去，构建成功，
+10 个页面就带着 10 个悬空标签上线。
+
+**改法**：把 `writeOgImages` 提到页面循环之前，把它的返回值（真正写成功的路由）归一化成集合，
+一路传进 `buildSeoMeta`。
+
+`src/entry-prerender.ts`：
+
+```ts
+import { writeOgImages } from './prerender/og';
+import { writtenRouteSet } from './seo/og';
+```
+
+把原来的「页面循环 → robots/sitemap → writeOgImages → 日志」改成：
+
+```ts
+// og 图必须先渲染：页面上的 og:image 标签要以「哪些图真的写出来了」为准，而不是以
+// 静态路由表为准。渲染失败的那页必须省略标签（spec:220），否则社交卡片会指向一个
+// 不存在的文件。反过来先写页面的话，就拿不到这个信息了。
+const ogWritten = await writeOgImages(distDir);
+const ogRoutes = writtenRouteSet(ogWritten);
+
+let written = 0;
+for (const route of PRERENDER_PATHS) {
+  const meta = buildSeoMeta(route, ogRoutes);
+  const html = injectPage(template, {
+    appHtml: render(route),
+    headHtml: renderHead(meta),
+    htmlLang: meta.htmlLang,
+  });
+  const outFile = join(distDir, outputFileFor(route));
+  mkdirSync(dirname(outFile), { recursive: true });
+  writeFileSync(outFile, html);
+  written++;
+}
+
+writeFileSync(join(distDir, 'robots.txt'), buildRobotsTxt());
+writeFileSync(join(distDir, 'sitemap.xml'), buildSitemap(PRERENDER_PATHS));
+
+console.log(
+  `prerendered ${written} pages (+ robots.txt, sitemap.xml, ${ogWritten.length} og images)`,
+);
+```
+
+注意 `normalizeOgRoute` 在这里没用上——`writtenRouteSet` 已经内部归一化了，别为了「用掉 import」
+硬塞一个调用。只 import 你要用的那个。
+
+- [ ] **Step 7c: 跑测试与构建，确认没把正常路径改坏**
+
+Run: `./node_modules/.bin/vitest run src/seo/ src/prerender/`
+Expected: PASS
+
+Run: `npm run build`
+Expected: 末尾仍是 `prerendered 297 pages (+ robots.txt, sitemap.xml, 10 og images)`
+
+Run: `grep -c 'og:image' dist/en/math/index.html`
+Expected: `3` —— 正常路径下十张图都成功，标签一个不少。
+
 - [ ] **Step 8: 跑测试确认通过**
 
 Run: `./node_modules/.bin/vitest run src/seo/`
@@ -1561,7 +1726,7 @@ Run: `grep -c 'og:image' dist/index.html` → **0**（中文首页无图，符�
 - [ ] **Step 10: 提交**
 
 ```bash
-git add src/seo/og-routes.ts src/seo/og.ts src/seo/og.test.ts src/prerender/og.ts src/seo/meta.ts src/seo/meta.test.ts src/seo/head.ts src/seo/head.test.ts
+git add src/seo/og-routes.ts src/seo/og.ts src/seo/og.test.ts src/prerender/og.ts src/prerender/og.test.ts src/seo/meta.ts src/seo/meta.test.ts src/seo/head.ts src/seo/head.test.ts src/entry-prerender.ts
 git commit -m "$(cat <<'EOF'
 feat(seo): 英文面页面输出 og:image
 
