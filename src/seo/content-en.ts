@@ -1,17 +1,28 @@
 import { getReferencePage } from '../data/reference';
+import { CATEGORY_COPY } from '../data/reference/en/categories';
 import type { Language } from '../i18n/languages';
-import { ENGLISH_HOME, referenceSlugForAppPath } from '../reference-routes';
+import {
+  categoryPath,
+  ENGLISH_HOME,
+  isReferenceCategory,
+  referencePartsForAppPath,
+} from '../reference-routes';
 import { brandFor } from './site';
 import type { Breadcrumb, PageContent } from './types';
 
 /**
- * The English surface's page copy: a small set of printable reference charts
- * (`/en/` and `/en/reference/:slug`). Deliberately scoped — not a translation of the app.
+ * 英文面的页面文案：`/en/`、三个学科 hub 与各张图表页。
+ * 有意保持狭窄——这不是中文 app 的翻译。
  *
- * 注意：本阶段仍是 `kind: 'view'` 与 `{title} - {brand}` 标题格式。换成
- * `LearningResource` / `FAQPage` 与 "Printable …" 标题模板属于 SEO 阶段。
+ * 注意：本阶段图表页与 hub 页都仍是 `kind: 'view'`，`<title>` 也仍是
+ * `{title} - {brand}` 旧格式。换成 `LearningResource` / `FAQPage` 与
+ * "Printable …" 标题模板属于 SEO 阶段。
  */
-export function resolveEnglishContent(appPath: string, path: string, language: Language): PageContent {
+export function resolveEnglishContent(
+  appPath: string,
+  path: string,
+  language: Language,
+): PageContent {
   const brand = brandFor(language);
   const home: Breadcrumb = { name: 'Home', path: ENGLISH_HOME };
 
@@ -24,14 +35,31 @@ export function resolveEnglishContent(appPath: string, path: string, language: L
     };
   }
 
-  const slug = referenceSlugForAppPath(appPath);
-  const page = slug ? getReferencePage(slug) : undefined;
-  if (page) {
+  const parts = referencePartsForAppPath(appPath);
+  if (parts && isReferenceCategory(parts.category)) {
+    const page = getReferencePage(parts.slug);
+    if (page && page.category === parts.category) {
+      return {
+        kind: 'view',
+        title: `${page.title} - ${brand.name}`,
+        description: page.description,
+        breadcrumbs: [
+          home,
+          { name: CATEGORY_COPY[page.category].name, path: categoryPath(page.category) },
+          { name: page.title, path },
+        ],
+      };
+    }
+  }
+
+  const hub = /^\/([^/]+)\/?$/.exec(appPath);
+  if (hub && isReferenceCategory(hub[1])) {
+    const copy = CATEGORY_COPY[hub[1]];
     return {
       kind: 'view',
-      title: `${page.title} - ${brand.name}`,
-      description: page.description,
-      breadcrumbs: [home, { name: page.title, path }],
+      title: `${copy.name} Reference Charts - ${brand.name}`,
+      description: copy.intro,
+      breadcrumbs: [home, { name: copy.name, path }],
     };
   }
 

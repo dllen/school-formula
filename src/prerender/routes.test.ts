@@ -13,7 +13,10 @@ describe('PRERENDER_PATHS', () => {
     expect(PRERENDER_PATHS).toContain('/tutorial');
     expect(PRERENDER_PATHS).toContain('/ai-chat');
     expect(PRERENDER_PATHS).toContain('/en/');
-    expect(PRERENDER_PATHS).toContain('/en/reference/multiplication-chart/');
+    expect(PRERENDER_PATHS).toContain('/en/math/');
+    expect(PRERENDER_PATHS).toContain('/en/science/');
+    expect(PRERENDER_PATHS).toContain('/en/english/');
+    expect(PRERENDER_PATHS).toContain('/en/math/multiplication-chart/');
     expect(PRERENDER_PATHS.filter((p) => p.startsWith('/knowledge/'))).toHaveLength(kpCount);
     expect(PRERENDER_PATHS).toHaveLength(1 + 10 + kpCount + ENGLISH_ROUTE_PATHS.length);
   });

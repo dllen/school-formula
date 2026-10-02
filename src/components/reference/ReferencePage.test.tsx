@@ -28,7 +28,7 @@ function renderChart(url: string) {
     <AuthContext.Provider value={auth}>
       <MemoryRouter initialEntries={[url]}>
         <Routes>
-          <Route path="/en/reference/:slug" element={<ReferencePage />} />
+          <Route path="/en/:category/:slug" element={<ReferencePage />} />
         </Routes>
       </MemoryRouter>
     </AuthContext.Provider>,
@@ -37,7 +37,7 @@ function renderChart(url: string) {
 
 describe('ReferencePage', () => {
   it('renders the chart title, intro and table', () => {
-    renderChart('/en/reference/multiplication-chart');
+    renderChart('/en/math/multiplication-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(
       'Multiplication Chart (1–12)',
     );
@@ -46,32 +46,42 @@ describe('ReferencePage', () => {
   });
 
   it('renders the how-to-use steps and the FAQ', () => {
-    renderChart('/en/reference/multiplication-chart');
+    renderChart('/en/math/multiplication-chart');
     expect(screen.getByText(/Put one finger on the row/)).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Frequently asked questions' })).toBeTruthy();
     expect(screen.getByText('What is a multiplication chart?')).toBeTruthy();
   });
 
   it('links to the related charts', () => {
-    renderChart('/en/reference/multiplication-chart');
+    renderChart('/en/math/multiplication-chart');
     const heading = screen.getByRole('heading', { name: 'Related charts' });
     const section = heading.closest('section');
-    expect(section?.querySelector('a[href="/en/reference/squares-cubes-roots/"]')).toBeTruthy();
+    expect(section?.querySelector('a[href="/en/math/squares-cubes-roots/"]')).toBeTruthy();
   });
 
   it('renders formula groups for the identities chart', () => {
-    renderChart('/en/reference/trigonometric-identities');
+    renderChart('/en/math/trigonometric-identities');
     expect(screen.getByText('Pythagorean')).toBeTruthy();
     expect(screen.getByText('sin²θ + cos²θ = 1')).toBeTruthy();
   });
 
   it('omits the related section when a chart has no siblings', () => {
-    renderChart('/en/reference/irregular-verbs');
+    renderChart('/en/english/irregular-verbs');
     expect(screen.queryByRole('heading', { name: 'Related charts' })).toBeNull();
   });
 
   it('404s on an unknown slug', () => {
-    renderChart('/en/reference/no-such-chart');
+    renderChart('/en/math/no-such-chart');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
+  });
+
+  it('404s when the slug belongs to a different category', () => {
+    renderChart('/en/math/irregular-verbs');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
+  });
+
+  it('404s on an unknown category', () => {
+    renderChart('/en/legacy/multiplication-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
   });
 });

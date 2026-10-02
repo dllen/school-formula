@@ -55,7 +55,11 @@ describe('ad placements', () => {
   });
 
   it('shows one ad on an English reference chart', () => {
-    const { container } = renderAt('/en/reference/multiplication-chart', '/en/reference/:slug', <ReferencePage />);
+    const { container } = renderAt(
+      '/en/math/multiplication-chart',
+      '/en/:category/:slug',
+      <ReferencePage />,
+    );
     expect(adCount(container)).toBe(1);
   });
 

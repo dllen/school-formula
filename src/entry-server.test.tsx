@@ -21,6 +21,6 @@ describe('entry-server render', () => {
 
   it('renders the English surface with real English content', () => {
     expect(render('/en')).toContain('Printable Study Reference');
-    expect(render('/en/reference/multiplication-chart')).toContain('Multiplication Chart');
+    expect(render('/en/math/multiplication-chart')).toContain('Multiplication Chart');
   });
 });

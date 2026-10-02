@@ -14,8 +14,8 @@ describe('canonicalUrl', () => {
     expect(canonicalUrl('/tutorial')).toBe('https://syy.global/tutorial/');
     expect(canonicalUrl('/knowledge/p-math-1/')).toBe('https://syy.global/knowledge/p-math-1/');
     expect(canonicalUrl('/en')).toBe('https://syy.global/en/');
-    expect(canonicalUrl('/en/reference/multiplication-chart')).toBe(
-      'https://syy.global/en/reference/multiplication-chart/',
+    expect(canonicalUrl('/en/math/multiplication-chart')).toBe(
+      'https://syy.global/en/math/multiplication-chart/',
     );
   });
 
@@ -82,15 +82,15 @@ describe('buildSeoMeta', () => {
 
   it('gives every English reference chart its own English metadata', () => {
     for (const page of REFERENCE_PAGES) {
-      const path = `/en/reference/${page.slug}`;
+      const path = `/en/${page.category}/${page.slug}`;
       const meta = buildSeoMeta(path);
       expect(meta.title).toBe(`${page.title} - ${EN.name}`);
       expect(meta.description).toBe(page.description);
-      expect(meta.canonical).toBe(`https://syy.global/en/reference/${page.slug}/`);
+      expect(meta.canonical).toBe(`https://syy.global/en/${page.category}/${page.slug}/`);
       expect(meta.htmlLang).toBe('en');
       expect(meta.alternates[0]).toEqual({
         hreflang: 'en',
-        href: `https://syy.global/en/reference/${page.slug}/`,
+        href: `https://syy.global/en/${page.category}/${page.slug}/`,
       });
     }
   });

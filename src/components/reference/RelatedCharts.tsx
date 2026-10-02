@@ -14,7 +14,7 @@ export function RelatedCharts({ pages }: { pages: readonly ReferencePage[] }): R
         {pages.map((page) => (
           <li key={page.slug}>
             <a
-              href={referencePath(page.slug)}
+              href={referencePath(page.category, page.slug)}
               className="block h-full bg-white rounded-xl border border-[#F0F1F2] p-5 hover:shadow-md transition-shadow"
             >
               <span className="block font-semibold text-[#1F2329]">{page.title}</span>

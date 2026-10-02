@@ -46,8 +46,8 @@ describe('App routes', () => {
     expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Printable Study Reference');
   });
 
-  it('serves an English reference chart at /en/reference/:slug', () => {
-    renderApp('/en/reference/multiplication-chart');
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toContain('Multiplication Chart');
+  it('serves an English reference chart at /en/:category/:slug', () => {
+    renderApp('/en/math/multiplication-chart');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Multiplication Chart (1–12)');
   });
 });
