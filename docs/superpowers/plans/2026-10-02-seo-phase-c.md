@@ -340,6 +340,8 @@ describe('English title template', () => {
 
   it('keeps every English title inside the ~60 character SERP budget', () => {
     for (const path of ENGLISH_ROUTE_PATHS) {
+      // 首页走的是「品牌 + tagline」，刻意不走这个模板，因此不在预算内。
+      if (path === ENGLISH_HOME) continue;
       const title = buildSeoMeta(path).title;
       expect(title.length, `${path} → ${title}`).toBeLessThanOrEqual(60);
     }
@@ -352,7 +354,7 @@ describe('English title template', () => {
 });
 ```
 
-`ENGLISH_ROUTE_PATHS` 需要从 `../reference-routes` import（该测试文件若尚未 import，就在顶部加上）。
+`ENGLISH_ROUTE_PATHS` 与 `ENGLISH_HOME` 需要从 `../reference-routes` import（该测试文件若尚未 import，就在顶部加上）。
 
 - [ ] **Step 2: 跑测试确认失败**
 
@@ -477,8 +479,8 @@ describe('buildAnalyticsTags', () => {
 
   it('denies analytics storage by default in EEA/UK/Switzerland and grants it elsewhere', () => {
     const [consent] = buildAnalyticsTags('G-TEST123');
-    expect(consent).toContain("gtag('consent', 'default'");
-    expect(consent).toContain("analytics_storage: 'denied'");
+    expect(consent).toContain("gtag('consent','default'");
+    expect(consent).toContain("analytics_storage:'denied'");
     expect(consent).toContain('region:');
     for (const code of ['DE', 'FR', 'GB', 'CH', 'NO']) {
       expect(EEA_UK_CH_REGIONS).toContain(code);
@@ -1224,11 +1226,6 @@ Expected: FAIL —— `Failed to resolve import "./og"`
 import { OG_ROUTES } from '../prerender/og';
 import { SITE } from './site';
 
-/** 路由 → 相对 dist/ 的 OG 图路径。没有图的页面返回 undefined。 */
-const BY_ROUTE = new Map<string, string>(
-  OG_ROUTES.map((entry) => [entry.route, entry.path]),
-);
-
 /** 去掉尾斜杠，并把 `/en` 归一成 `/en/`。 */
 function normalize(path: string): string {
   const withoutQuery = path.split('#')[0].split('?')[0];
@@ -1236,6 +1233,17 @@ function normalize(path: string): string {
   const trimmed = withoutQuery.replace(/\/+$/, '');
   return trimmed === '/en' ? '/en/' : trimmed;
 }
+
+/**
+ * 路由 → 相对 dist/ 的 OG 图路径。没有图的页面返回 undefined。
+ *
+ * **两侧都归一化后再建表**：OG_ROUTES 的 route 来自 categoryPath / referencePath，
+ * 是带尾斜杠的（`/en/math/`），而查表传进来的是不带尾斜杠的形式（`/en/math`）。
+ * 不归一化的话永远查不中。
+ */
+const BY_ROUTE = new Map<string, string>(
+  OG_ROUTES.map((entry) => [normalize(entry.route), entry.path]),
+);
 
 export function ogImagePath(path: string): string | undefined {
   return BY_ROUTE.get(normalize(path));
