@@ -680,10 +680,30 @@ describe('buildOgCard', () => {
   });
 
   it('omits the grid entirely when there is neither a table nor a formulas block', () => {
-    const text = collectText(
-      buildOgCardFrom({ title: 'Only a title', subtitle: 'and a subtitle' }, brand),
-    );
-    expect(text).toContain('Only a title');
+    const card = buildOgCardFrom({ title: 'Only a title', subtitle: 'and a subtitle' }, brand);
+
+    // 断言的是「没有网格容器」，而不是「标题在」——标题在任何路径上都在，
+    // 那样的断言在网格容器照常产出时也会通过，等于在它声称守护的 bug 上无法失败。
+    const children = card.props.children as unknown[];
+    expect(children).toHaveLength(3); // 品牌 + 标题 + 副标题，没有第四个网格节点
+    for (const child of children) {
+      const style = (child as { props?: { style?: { flexDirection?: string } } }).props?.style;
+      expect(style?.flexDirection).not.toBe('column');
+    }
+  });
+
+  it('previews a table page by extracting that table', () => {
+    // 钉住 buildOgCard 的表格分支：删掉它就取不到表格最后一格。
+    const text = collectText(buildOgCard(getReferencePage('multiplication-chart')!, brand));
+    expect(text).toContain('144');
+  });
+
+  it('falls back cleanly for a page with neither a table nor a formulas block', () => {
+    // 钉住 buildOgCard 的兜底分支：blocks 为空时不该产出网格容器。
+    const page = { ...getReferencePage('multiplication-chart')!, blocks: [] };
+    const card = buildOgCard(page, brand);
+    expect(collectText(card)).toContain(page.title);
+    expect(card.props.children as unknown[]).toHaveLength(3);
   });
 });
 
@@ -1086,11 +1106,21 @@ export async function writeOgImages(distDir: string): Promise<number> {
         height: 630,
         fonts,
       });
-      const png = new Resvg(svg).render().asPng();
+      const resvg = new Resvg(svg);
+      const rendered = resvg.render();
+      const png = rendered.asPng();
 
       const outFile = join(distDir, entry.path);
       mkdirSync(dirname(outFile), { recursive: true });
       writeFileSync(outFile, png);
+
+      // wasm 版要求手动释放（该包的 README 原文：Wasm-based instances require manual
+      // memory management via .free()）。10 张图的泄漏量可忽略，但图数一旦增长
+      // （阶段 E 铺到 100 页）就是线性的。**先写盘再 free**——asPng() 的返回值
+      // 若是 wasm 内存的视图，free 之后就读不到了。
+      rendered.free();
+      resvg.free();
+
       written++;
     } catch (error) {
       console.warn(`og: skipped ${entry.route} — ${(error as Error).message}`);
