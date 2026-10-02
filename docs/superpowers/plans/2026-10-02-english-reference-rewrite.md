@@ -524,9 +524,9 @@ export const IRREGULAR_VERB_ROWS: string[][] = [
 
 - [ ] **Step 3: 写 `en/math.ts`**
 
-`summary` 与 `description` 以**旧文案为种子**，但必须**扩写到长度目标**（`summary` 60–90 字符、`description` 150–160 字符）：旧文案是 47–56 / 117–142，普遍填不满搜索结果摘要。扩写只准补充真实存在的价值点（可自由打印、无需注册、可单页打印等），不得夸大或承诺不提供的功能（例如不得写 PDF 下载）。`intro` / `howToUse` / `faq` / `related` 为新增，不受此影响。
+`summary` 与 `description` 以**旧文案为种子**，但必须**落在长度目标内**（`summary` 60–90 字符、`description` 150–160 字符）：旧文案是 47–56 / 117–142，普遍填不满搜索结果摘要。扩写只准补充真实存在的价值点（可自由打印、无需注册、可单页打印等），不得夸大或承诺不提供的功能（例如不得写 PDF 下载）。`intro` / `howToUse` / `faq` / `related` 为新增，不受此影响。
 
-**长度由测试强制**（Step 7 的边界就卡在目标下限上），所以别靠目测数数——跑测试。
+**下面代码块里的字符串是种子，不是最终稿。** 长度以 Step 7 的测试为准——边界就是目标本身、不留余量。跑测试，把报错的那几条改到区间内，直到全绿。**别靠目测数数**：这份计划在长度上已经错过两次，测试才是裁判。
 
 ```ts
 import { metricConversionGroups, type ConversionGroupKey } from '../neutral/conversions';
@@ -896,23 +896,23 @@ describe('English reference pages', () => {
     }
   });
 
-  // 边界刻意卡在目标（summary 60–90、description 150–160）附近，只留几个字符的余量，
-  // 免得作者跟计数器较劲。上一版把下限放到 40 / 100，结果扩写前的 47–56 / 117–142
-  // 一路绿灯——下限才是真正起作用的那一端。
-  it('holds summary and description at the SEO length targets', () => {
+  // 边界就是目标本身（summary 60–90、description 150–160），一点余量都不留。
+  // 前两版都死在「留点余量」上：40/100 盖住了 47–56 / 117–142 的缺口，
+  // 148/165 又放过了 161 的超长值。有余量就等于没有约束。
+  it('holds summary and description inside the SEO length targets', () => {
     for (const page of REFERENCE_PAGES_EN) {
-      expect(page.summary.length).toBeGreaterThanOrEqual(58);
-      expect(page.summary.length).toBeLessThanOrEqual(95);
-      expect(page.description.length).toBeGreaterThanOrEqual(148);
-      expect(page.description.length).toBeLessThanOrEqual(165);
+      expect(page.summary.length).toBeGreaterThanOrEqual(60);
+      expect(page.summary.length).toBeLessThanOrEqual(90);
+      expect(page.description.length).toBeGreaterThanOrEqual(150);
+      expect(page.description.length).toBeLessThanOrEqual(160);
     }
   });
 
-  it('holds intro at the target length', () => {
+  it('holds intro inside the target length', () => {
     for (const page of REFERENCE_PAGES_EN) {
       const words = page.intro.trim().split(/\s+/).length;
-      expect(words).toBeGreaterThanOrEqual(75);
-      expect(words).toBeLessThanOrEqual(135);
+      expect(words).toBeGreaterThanOrEqual(80);
+      expect(words).toBeLessThanOrEqual(120);
     }
   });
 
