@@ -18,69 +18,68 @@
 - **渲染顺序固定**：面包屑 → H1 → intro → blocks → howToUse → 广告 → FAQ → related。`blocks` 只放数据块，散文部分不进 `blocks`。
 - **文案长度目标**：`summary` 60–90 字符；`description` 150–160 字符（校验断言放宽到 100–200，见 Task 2）；`intro` 80–120 词（校验断言放宽到 60–150）；`howToUse` 2–4 条；`faq` 3–5 条；`related` 可空但列出的 slug 必须存在。
 - **Block 联合类型只有三种**：`table` | `formulas` | `diagram`。没有 `notes`（散文走 `howToUse` / `table.caption`）。
-- **本计划图表页保持恰好 1 个 AdUnit**（`placement="referenceBottom"`）。广告位调整属后续计划的 Section 4。
+- **图表页保持恰好 1 个 AdUnit**（`placement="referenceBottom"`）。广告位调整属后续计划的 Section 4。
 - **中文站（`src/data/knowledge`、`src/components/Home.tsx` 等）本计划完全不动。**
 - **提交信息**：Conventional Commits，结尾空一行加 `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`。
 - **测试命令**：`npx vitest run <path>`（vitest.config.ts 的 `app` project 覆盖 `src/**`，`scripts` project 覆盖 `worker/**`）。
+
+## 任务切分的关键约束（写这份计划时踩过的坑）
+
+`src/data/reference.ts` 是一个**文件**，新的 `src/data/reference/` 是一个**目录**。两者在磁盘上可以共存，但 `import … from '../data/reference'` 的模块解析会优先命中 `reference.ts`，新目录永远加载不到。因此：
+
+1. **删除 `src/data/reference.ts` 是一个原子事件**，必须与 `src/data/reference/index.ts` 的创建同时发生。
+2. 该文件的全部消费者必须在**同一个提交**里改完，否则 `tsc -b` 直接失败。消费者共 6 处：`src/reference-routes.ts`、`src/seo/content-en.ts`、`src/components/reference/ReferenceIndex.tsx`、`src/components/reference/ReferencePage.tsx`、`src/seo/meta.test.ts`、`src/reference-routes.test.ts`。
+3. **URL 分层（`/en/reference/:slug` → `/en/:category/:slug`）刻意不放在这个原子提交里。** 因为改 URL 会连带 `App.test.tsx`、`entry-server.test.tsx`、`adPlacements.test.tsx`、`src/prerender/routes.test.ts`、`src/seo/meta.test.ts` 一起动，原子提交会膨胀到不可 review。拆开之后，Task 4 保持扁平 URL（只换数据源），Task 5 专做 URL 分层。
+
+代价是 `src/reference-routes.ts` 被改两次（Task 4 换 import 源、Task 5 换 URL 形状）。这是刻意的：换来的是每一提交都可通过 `tsc -b` 与 `npm test`。
 
 ## 文件结构
 
 **新建**
 
-| 文件 | 职责 |
-|---|---|
-| `src/data/reference/types.ts` | `ReferenceCategory` / `Block` / `ReferencePage` |
-| `src/data/reference/neutral/numeric.ts` | `range()` / `squareRoot()` 数值助手 |
-| `src/data/reference/neutral/tables.ts` | `multiplicationRows()` / `squaresCubesRootsRows()` |
-| `src/data/reference/neutral/conversions.ts` | `metricConversionRows()` |
-| `src/data/reference/neutral/constants.ts` | `physicsConstantRows()` |
-| `src/data/reference/en/data/trigIdentities.ts` | 三角恒等式分组（英文专属数据） |
-| `src/data/reference/en/data/irregularVerbs.ts` | 不规则动词三态（英文专属数据） |
-| `src/data/reference/en/categories.ts` | 三个学科的 hub 文案 |
-| `src/data/reference/en/math.ts` | 英文数学页（4 页） |
-| `src/data/reference/en/science.ts` | 英文科学页（1 页） |
-| `src/data/reference/en/english.ts` | 英文英语页（1 页） |
-| `src/data/reference/en/index.ts` | 三科合并为 `REFERENCE_PAGES_EN` |
-| `src/data/reference/validate.ts` | `validateReferencePages()` 构建期校验 |
-| `src/data/reference/index.ts` | 聚合、按 slug 查、按学科过滤 |
-| `src/components/reference/blocks/TableBlock.tsx` | 表格 block |
-| `src/components/reference/blocks/FormulasBlock.tsx` | 公式分组 block |
-| `src/components/reference/blocks/DiagramBlock.tsx` | SVG 图 block |
-| `src/components/reference/blocks/BlockRenderer.tsx` | 穷尽 switch 分发 |
-| `src/components/reference/FaqSection.tsx` | FAQ 列表 |
-| `src/components/reference/RelatedCharts.tsx` | 相关图表内链 |
-| `src/components/reference/ReferenceCategory.tsx` | 学科 hub 页 |
-| `src/components/reference/ReferenceNotFound.tsx` | 未找到态（图表页、hub 页、Worker 404 页共用） |
+| 文件 | 职责 | 任务 |
+|---|---|---|
+| `src/data/reference/types.ts` | `ReferenceCategory` / `Block` / `ReferencePage` | T1 |
+| `src/data/reference/neutral/numeric.ts` | `range()` / `squareRoot()` | T1 |
+| `src/data/reference/neutral/tables.ts` | `multiplicationRows()` / `squaresCubesRootsRows()` | T1 |
+| `src/data/reference/neutral/conversions.ts` | `metricConversionRows()` | T1 |
+| `src/data/reference/neutral/constants.ts` | `physicsConstantRows()` | T1 |
+| `src/data/reference/en/data/trigIdentities.ts` | 三角恒等式分组（英文专属数据） | T2 |
+| `src/data/reference/en/data/irregularVerbs.ts` | 不规则动词三态（英文专属数据） | T2 |
+| `src/data/reference/en/{math,science,english,index}.ts` | 英文页面数据与合并 | T2 |
+| `src/components/reference/blocks/{TableBlock,FormulasBlock,DiagramBlock,BlockRenderer}.tsx` | 三种 block 与穷尽分发 | T3 |
+| `src/data/reference/validate.ts` | `validateReferencePages()` 构建期校验 | T4 |
+| `src/data/reference/index.ts` | 聚合、按 slug 查、按学科过滤 | T4 |
+| `src/components/reference/{ReferenceNotFound,FaqSection,RelatedCharts}.tsx` | 未找到态 / FAQ / 内链 | T4 |
+| `src/data/reference/en/categories.ts` | 三个学科的 hub 文案 | T5 |
+| `src/components/reference/ReferenceCategory.tsx` | 学科 hub 页 | T5 |
 
 **修改**
 
-| 文件 | 改动 |
-|---|---|
-| `src/reference-routes.ts` | 换成学科分层 URL，导出 `REFERENCE_CATEGORIES` 等 |
-| `src/reference-routes.test.ts` | 跟随重写 |
-| `src/seo/content-en.ts` | 从 `getReferenceTable` 换成 `getReferencePage`，加 hub 分支 |
-| `src/entry-prerender.ts` | 调一次 `validateReferencePages()`；额外产出 `dist/404.html` |
-| `src/components/reference/ReferenceIndex.tsx` | 改成三个学科入口 |
-| `src/components/reference/ReferencePage.tsx` | 重写为分节式渲染 |
-| `src/components/reference/ReferenceLayout.tsx` | header/footer 加 `print:hidden` |
-| `src/App.tsx` | 三条英文路由 |
-| `src/App.test.tsx` | 三条英文路由断言 |
-| `src/ads/adPlacements.test.tsx` | 图表页路由路径 |
-| `worker/lib/redirect.ts` | 加 `legacyReferenceRedirect()` |
-| `worker/lib/redirect.test.ts` | 加对应测试 |
-| `worker/lib/static-paths.ts` | `/en/` 前缀关闭 SPA 兜底 |
-| `worker/lib/static-paths.test.ts` | 加对应测试 |
-| `worker/index.ts` | 接线两个新函数，未找到时回 404 |
+| 文件 | 改动 | 任务 |
+|---|---|---|
+| `src/reference-routes.ts` | 换 import 源（仍扁平） → 再换 URL 形状 | T4, T5 |
+| `src/reference-routes.test.ts` | 跟随两次改动 | T4, T5 |
+| `src/seo/content-en.ts` | 换 `getReferencePage` → 再加 hub 分支 | T4, T5 |
+| `src/components/reference/ReferenceIndex.tsx` | 字段改名 → 再改成学科卡 | T4, T5 |
+| `src/components/reference/ReferencePage.tsx` | 重写为新模型（仍扁平） → 加学科面包屑 | T4, T5 |
+| `src/components/reference/RelatedCharts.tsx` | 链接改双参 | T5 |
+| `src/components/reference/ReferenceLayout.tsx` | header/footer 加 `print:hidden` | T4 |
+| `src/entry-prerender.ts` | 调一次 `validateReferencePages()` | T4 |
+| `src/seo/meta.test.ts` | 换 `REFERENCE_PAGES` 与路径 | T4, T5 |
+| `src/prerender/routes.test.ts` | 新路径断言 | T5 |
+| `src/App.test.tsx` | 三条英文路由断言 | T5, T6 |
+| `src/entry-server.test.tsx` | 图表页路径 | T5 |
+| `src/ads/adPlacements.test.tsx` | 图表页路由路径 | T5 |
+| `src/App.tsx` | 加学科 hub 路由 | T6 |
+| `worker/lib/{redirect,static-paths}.ts` + 测试 | 301 映射、`/en/` 关闭兜底 | T7 |
+| `worker/index.ts` | 接线 | T7 |
 
 **删除**
 
-| 文件 | 原因 |
+| 文件 | 任务 |
 |---|---|
-| `src/data/reference.ts` | 被 `src/data/reference/` 目录取代（必须与建目录同一提交） |
-
-### 为什么「建新目录」和「删旧文件」不能拆成两个提交
-
-`src/data/reference.ts` 与 `src/data/reference/index.ts` 不能共存：模块解析下 `import … from './data/reference'` 会优先命中 `reference.ts`，新目录永远不会被加载。所以创建新目录、删除旧文件、以及更新两个消费者（`src/reference-routes.ts`、`src/seo/content-en.ts`）必须是**一个**原子提交。Task 3 因此比其它任务大。
+| `src/data/reference.ts` | T4 |
 
 ---
 
@@ -109,7 +108,9 @@
   - `metricConversionRows(): string[][]`
   - `physicsConstantRows(): string[][]`
 
-**设计要点：生成器只产出 rows，不产出 headers。** 乘法表的表头 `['×','1',…,'12']` 里 `×` 是符号、数字是中立；但物理常数的表头 `['Quantity','Symbol','Value']` 和三角恒等式分组标签 `'Double angle'` 是**英文**。让生成器统一只拥有「算术」，让语言文件拥有「标签」，`es/` 落地时才不必改写生成器。
+**设计要点：生成器只产出 rows，不产出 headers。** 乘法表的表头里 `×` 是符号、数字是中立；但物理常数的表头 `['Quantity','Symbol','Value']` 和三角恒等式分组标签 `'Double angle'` 是**英文**。让生成器统一只拥有「算术」，让语言文件拥有「标签」，`es/` 落地时才不必改写生成器。
+
+**本任务不碰 `src/data/reference.ts`，也不创建 `src/data/reference/index.ts`。** 只写 `types.ts` 和 `neutral/*`，这两个路径都不与旧文件冲突。
 
 - [ ] **Step 1: 写 types.ts**
 
@@ -382,7 +383,12 @@ export function physicsConstantRows(): string[][] {
 Run: `npx vitest run src/data/reference/neutral/`
 Expected: PASS（13 个用例）
 
-- [ ] **Step 15: 提交**
+- [ ] **Step 15: 类型检查**
+
+Run: `npx tsc -b`
+Expected: 无输出（成功）—— 本任务只新增文件，不触碰既有消费者。
+
+- [ ] **Step 16: 提交**
 
 ```bash
 git add src/data/reference/types.ts src/data/reference/neutral/
@@ -419,6 +425,8 @@ EOF
   - `SCIENCE_PAGES: ReferencePage[]`
   - `ENGLISH_PAGES: ReferencePage[]`
   - `REFERENCE_PAGES_EN: readonly ReferencePage[]`
+
+**本任务仍不碰 `src/data/reference.ts`。** `en/index.ts` 只被同目录的测试导入，没有跨目录的裸路径引用。
 
 - [ ] **Step 1: 写 `en/data/trigIdentities.ts`**
 
@@ -486,7 +494,7 @@ export const IRREGULAR_VERB_ROWS: string[][] = [
 
 - [ ] **Step 3: 写 `en/math.ts`**
 
-`summary` 与 `description` 沿用旧文案（索引卡与 meta 各守旧值），`intro` / `howToUse` / `faq` / `related` 为新增。
+`summary` 与 `description` 沿用旧文案，`intro` / `howToUse` / `faq` / `related` 为新增。
 
 ```ts
 import { metricConversionRows } from '../neutral/conversions';
@@ -870,532 +878,7 @@ EOF
 
 ---
 
-## Task 3: 数据层切换（校验器 + 聚合索引 + 路由表 + SEO 接线 + 删除旧模块）
-
-本任务是本计划里最大的一个，因为**它必须是原子的**：`src/data/reference.ts` 与 `src/data/reference/index.ts` 不能共存（`import './data/reference'` 会优先命中 `.ts` 文件），所以建目录、删旧文件、更新两个消费者必须在同一次提交里完成。
-
-**Files:**
-- Create: `src/data/reference/validate.ts`
-- Create: `src/data/reference/index.ts`
-- Create: `src/data/reference/en/categories.ts`
-- Test: `src/data/reference/validate.test.ts`
-- Test: `src/data/reference/index.test.ts`
-- Modify: `src/reference-routes.ts`
-- Modify: `src/reference-routes.test.ts`
-- Modify: `src/seo/content-en.ts`
-- Modify: `src/entry-prerender.ts`
-- Delete: `src/data/reference.ts`
-
-**Interfaces:**
-- Consumes: `REFERENCE_PAGES_EN`（Task 2）、`ReferencePage` / `ReferenceCategory`（Task 1）
-- Produces:
-  - `validateReferencePages(pages: readonly ReferencePage[]): void`（不合法则 throw）
-  - `REFERENCE_PAGES: readonly ReferencePage[]`
-  - `getReferencePage(slug: string): ReferencePage | undefined`
-  - `pagesInCategory(category: ReferenceCategory): ReferencePage[]`
-  - `CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy>`，`CategoryCopy = { name: string; summary: string; intro: string }`
-  - `ENGLISH_HOME = '/en/'`
-  - `ENGLISH_CATEGORY_ROUTE = '/en/:category'`
-  - `ENGLISH_REFERENCE_ROUTE = '/en/:category/:slug'`
-  - `REFERENCE_CATEGORIES: readonly ReferenceCategory[]`（`['math','science','english']`，顺序即 hub 展示顺序）
-  - `isReferenceCategory(value: string): value is ReferenceCategory`
-  - `categoryPath(category: ReferenceCategory): string`
-  - `referencePath(category: ReferenceCategory, slug: string): string`
-  - `referencePartsForAppPath(appPath: string): { category: string; slug: string } | null`
-  - `ENGLISH_ROUTE_PATHS: string[]`
-
-- [ ] **Step 1: 写失败测试 `validate.test.ts`**
-
-```ts
-import { describe, expect, it } from 'vitest';
-import type { ReferencePage } from './types';
-import { validateReferencePages } from './validate';
-
-function page(overrides: Partial<ReferencePage> = {}): ReferencePage {
-  return {
-    slug: 'a-page',
-    category: 'math',
-    title: 'A Page',
-    summary: 'A summary.',
-    description: 'A description.',
-    intro: 'An intro.',
-    blocks: [{ kind: 'table', rows: [['1']] }],
-    howToUse: ['Do this.', 'Then that.'],
-    faq: [
-      { q: 'Q1', a: 'A1' },
-      { q: 'Q2', a: 'A2' },
-      { q: 'Q3', a: 'A3' },
-    ],
-    related: [],
-    ...overrides,
-  };
-}
-
-describe('validateReferencePages', () => {
-  it('accepts a well-formed page set', () => {
-    expect(() => validateReferencePages([page()])).not.toThrow();
-  });
-
-  it('rejects duplicate slugs', () => {
-    expect(() => validateReferencePages([page(), page()])).toThrow(/duplicate slug: a-page/);
-  });
-
-  it('rejects empty required copy', () => {
-    expect(() => validateReferencePages([page({ intro: '   ' })])).toThrow(/empty intro/);
-    expect(() => validateReferencePages([page({ title: '' })])).toThrow(/empty title/);
-    expect(() => validateReferencePages([page({ summary: '' })])).toThrow(/empty summary/);
-    expect(() => validateReferencePages([page({ description: ' ' })])).toThrow(/empty description/);
-  });
-
-  it('rejects a page with too few FAQ entries or how-to-use steps', () => {
-    expect(() => validateReferencePages([page({ faq: [{ q: 'Q', a: 'A' }] })])).toThrow(
-      /at least 3 FAQ/,
-    );
-    expect(() => validateReferencePages([page({ howToUse: ['one'] })])).toThrow(
-      /at least 2 howToUse/,
-    );
-  });
-
-  it('rejects a page with no blocks', () => {
-    expect(() => validateReferencePages([page({ blocks: [] })])).toThrow(/at least one block/);
-  });
-
-  it('rejects an empty FAQ question or answer', () => {
-    const faq = [
-      { q: '', a: 'A' },
-      { q: 'Q', a: 'A' },
-      { q: 'Q', a: 'A' },
-    ];
-    expect(() => validateReferencePages([page({ faq })])).toThrow(/empty FAQ/);
-  });
-
-  it('rejects a related slug that no page declares', () => {
-    expect(() => validateReferencePages([page({ related: ['ghost'] })])).toThrow(
-      /related slug not found: ghost/,
-    );
-  });
-
-  it('accepts a related slug that a sibling page declares', () => {
-    const other = page({ slug: 'other-page' });
-    expect(() => validateReferencePages([page({ related: ['other-page'] }), other])).not.toThrow();
-  });
-
-  it('allows an empty related list', () => {
-    expect(() => validateReferencePages([page({ related: [] })])).not.toThrow();
-  });
-
-  it('reports every problem at once rather than the first', () => {
-    const broken = page({ slug: 'broken', title: '', intro: '', blocks: [] });
-    expect(() => validateReferencePages([broken])).toThrow(/empty title[\s\S]*empty intro[\s\S]*at least one block/);
-  });
-});
-```
-
-- [ ] **Step 2: 跑测试确认失败**
-
-Run: `npx vitest run src/data/reference/validate.test.ts`
-Expected: FAIL — `Failed to resolve import "./validate"`
-
-- [ ] **Step 3: 写 validate.ts**
-
-```ts
-import type { ReferencePage } from './types';
-
-/**
- * 构建期防呆：半成品页面必须在构建时炸掉，而不是带着空 intro 或断掉的内链
- * 混进 dist/ 被爬虫抓走。由 entry-prerender 在写盘前调用一次。
- *
- * 一次收集全部问题再抛，避免「修一个跑一次」的循环。
- */
-export function validateReferencePages(pages: readonly ReferencePage[]): void {
-  const slugs = new Set<string>();
-  const problems: string[] = [];
-
-  for (const page of pages) {
-    if (slugs.has(page.slug)) problems.push(`duplicate slug: ${page.slug}`);
-    slugs.add(page.slug);
-  }
-
-  for (const page of pages) {
-    for (const field of ['title', 'summary', 'description', 'intro'] as const) {
-      if (!page[field].trim()) problems.push(`${page.slug}: empty ${field}`);
-    }
-    if (page.blocks.length < 1) problems.push(`${page.slug}: needs at least one block`);
-    if (page.howToUse.length < 2) problems.push(`${page.slug}: needs at least 2 howToUse steps`);
-    if (page.faq.length < 3) problems.push(`${page.slug}: needs at least 3 FAQ entries`);
-    for (const entry of page.faq) {
-      if (!entry.q.trim() || !entry.a.trim()) {
-        problems.push(`${page.slug}: empty FAQ question or answer`);
-      }
-    }
-    for (const related of page.related) {
-      if (!slugs.has(related)) problems.push(`${page.slug}: related slug not found: ${related}`);
-    }
-  }
-
-  if (problems.length > 0) {
-    throw new Error(`invalid reference pages:\n  ${problems.join('\n  ')}`);
-  }
-}
-```
-
-- [ ] **Step 4: 跑测试确认通过**
-
-Run: `npx vitest run src/data/reference/validate.test.ts`
-Expected: PASS（10 个用例）
-
-- [ ] **Step 5: 写 `index.ts`**
-
-```ts
-import { REFERENCE_PAGES_EN } from './en';
-import type { ReferenceCategory, ReferencePage } from './types';
-
-/**
- * 当前已撰写的全部图表页。加一门语言时在数组里补一个展开项即可——
- * 语言维度靠目录划分，不靠参数。
- */
-export const REFERENCE_PAGES: readonly ReferencePage[] = [...REFERENCE_PAGES_EN];
-
-const BY_SLUG = new Map(REFERENCE_PAGES.map((page) => [page.slug, page]));
-
-/** slug 目前全局唯一（只有一门语言）。加第二门语言时改成 (lang, slug) 复合键。 */
-export function getReferencePage(slug: string): ReferencePage | undefined {
-  return BY_SLUG.get(slug);
-}
-
-export function pagesInCategory(category: ReferenceCategory): ReferencePage[] {
-  return REFERENCE_PAGES.filter((page) => page.category === category);
-}
-
-export type { Block, ReferenceCategory, ReferencePage } from './types';
-```
-
-- [ ] **Step 6: 写 `index.test.ts`**
-
-```ts
-import { describe, expect, it } from 'vitest';
-import { getReferencePage, pagesInCategory, REFERENCE_PAGES } from './index';
-
-describe('reference page index', () => {
-  it('exposes every authored page', () => {
-    expect(REFERENCE_PAGES).toHaveLength(6);
-  });
-
-  it('looks a page up by slug', () => {
-    expect(getReferencePage('multiplication-chart')?.title).toBe('Multiplication Chart (1–12)');
-    expect(getReferencePage('no-such-chart')).toBeUndefined();
-  });
-
-  it('filters by category, preserving authoring order', () => {
-    expect(pagesInCategory('math').map((page) => page.slug)).toEqual([
-      'multiplication-chart',
-      'squares-cubes-roots',
-      'trigonometric-identities',
-      'metric-conversions',
-    ]);
-    expect(pagesInCategory('science').map((page) => page.slug)).toEqual(['physics-constants']);
-    expect(pagesInCategory('english').map((page) => page.slug)).toEqual(['irregular-verbs']);
-  });
-});
-```
-
-- [ ] **Step 7: 写 `en/categories.ts`**
-
-```ts
-import type { ReferenceCategory } from '../types';
-
-export interface CategoryCopy {
-  /** hub H1 与 `/en/` 索引卡上的学科名。 */
-  name: string;
-  /** `/en/` 索引卡上的一句话，约 50–80 字符。 */
-  summary: string;
-  /** hub 页导语，同时用作该 hub 的 meta description。 */
-  intro: string;
-}
-
-/** 英文面的学科文案。修改学科措辞的唯一位置。 */
-export const CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy> = {
-  math: {
-    name: 'Math',
-    summary: 'Times tables, roots, conversions and formula sheets.',
-    intro:
-      'Printable maths reference charts for arithmetic, algebra and geometry — times tables, squares and roots, unit conversions and formula sheets. Every chart is laid out to be printed at full size and kept on a desk or in a homework folder.',
-  },
-  science: {
-    name: 'Science',
-    summary: 'Constants, units and reference data for physics and chemistry.',
-    intro:
-      'Printable science reference charts: the constants and reference tables that come up in physics and chemistry homework. Each row gives the quantity, the symbol it is written with, and its value in SI units.',
-  },
-  english: {
-    name: 'English',
-    summary: 'Grammar, spelling and vocabulary reference lists.',
-    intro:
-      'Printable English reference charts covering grammar, spelling and vocabulary — word forms and the lists that are quicker to check than to recall. Each chart is laid out to be read at a glance and printed on a single page.',
-  },
-};
-```
-
-- [ ] **Step 8: 重写 `src/reference-routes.test.ts`**
-
-```ts
-import { describe, expect, it } from 'vitest';
-import { REFERENCE_PAGES } from './data/reference';
-import {
-  categoryPath,
-  ENGLISH_CATEGORY_ROUTE,
-  ENGLISH_HOME,
-  ENGLISH_REFERENCE_ROUTE,
-  ENGLISH_ROUTE_PATHS,
-  isReferenceCategory,
-  REFERENCE_CATEGORIES,
-  referencePartsForAppPath,
-  referencePath,
-} from './reference-routes';
-
-describe('English route table', () => {
-  it('has a home, three category hubs and one path per chart', () => {
-    expect(ENGLISH_HOME).toBe('/en/');
-    expect(REFERENCE_CATEGORIES).toEqual(['math', 'science', 'english']);
-    expect(ENGLISH_ROUTE_PATHS).toHaveLength(1 + REFERENCE_CATEGORIES.length + REFERENCE_PAGES.length);
-    expect(ENGLISH_ROUTE_PATHS[0]).toBe(ENGLISH_HOME);
-    expect(ENGLISH_ROUTE_PATHS).toContain('/en/math/');
-    expect(ENGLISH_ROUTE_PATHS).toContain('/en/math/multiplication-chart/');
-  });
-
-  it('exposes React Router patterns with a :category segment', () => {
-    expect(ENGLISH_CATEGORY_ROUTE).toBe('/en/:category');
-    expect(ENGLISH_REFERENCE_ROUTE).toBe('/en/:category/:slug');
-  });
-
-  it('builds category and chart paths', () => {
-    expect(categoryPath('math')).toBe('/en/math/');
-    expect(referencePath('math', 'multiplication-chart')).toBe('/en/math/multiplication-chart/');
-    expect(referencePath('english', 'irregular-verbs')).toBe('/en/english/irregular-verbs/');
-  });
-
-  it('routes every authored page to a path under its own category', () => {
-    for (const page of REFERENCE_PAGES) {
-      expect(ENGLISH_ROUTE_PATHS).toContain(referencePath(page.category, page.slug));
-    }
-  });
-
-  it('splits an app path into category and slug', () => {
-    expect(referencePartsForAppPath('/math/multiplication-chart')).toEqual({
-      category: 'math',
-      slug: 'multiplication-chart',
-    });
-    expect(referencePartsForAppPath('/math/multiplication-chart/')).toEqual({
-      category: 'math',
-      slug: 'multiplication-chart',
-    });
-    expect(referencePartsForAppPath('/math')).toBeNull();
-    expect(referencePartsForAppPath('/math/a/b')).toBeNull();
-    expect(referencePartsForAppPath('/tutorial')).toBeNull();
-  });
-
-  it('recognises only the three known categories', () => {
-    expect(isReferenceCategory('science')).toBe(true);
-    expect(isReferenceCategory('reference')).toBe(false);
-    expect(isReferenceCategory('')).toBe(false);
-  });
-});
-```
-
-- [ ] **Step 9: 跑测试确认失败**
-
-Run: `npx vitest run src/reference-routes.test.ts`
-Expected: FAIL — `categoryPath is not a function`
-
-- [ ] **Step 10: 重写 `src/reference-routes.ts`**
-
-```ts
-import { REFERENCE_PAGES } from './data/reference';
-import type { ReferenceCategory } from './data/reference/types';
-import { EN, homePath } from './i18n/languages';
-
-/**
- * 英文面的路由表——路由、prerender 清单、sitemap 与链接助手都从这里读。
- * 与中文 app 的 `src/view-routes.ts` 对应。
- */
-
-/** 英文面的规范首页；也是语言入口的跳转目标。 */
-export const ENGLISH_HOME = homePath(EN);
-
-/** 学科 hub 的展示顺序，同时也是 `/en/` 索引页上卡片的顺序。 */
-export const REFERENCE_CATEGORIES: readonly ReferenceCategory[] = ['math', 'science', 'english'];
-
-/** React Router 模式：单个学科 hub。 */
-export const ENGLISH_CATEGORY_ROUTE = `${ENGLISH_HOME}:category`;
-
-/** React Router 模式：单张图表页。 */
-export const ENGLISH_REFERENCE_ROUTE = `${ENGLISH_HOME}:category/:slug`;
-
-export function isReferenceCategory(value: string): value is ReferenceCategory {
-  return (REFERENCE_CATEGORIES as readonly string[]).includes(value);
-}
-
-/** 学科 hub 的规范路径：`categoryPath('math')` → `/en/math/`。 */
-export function categoryPath(category: ReferenceCategory): string {
-  return `${ENGLISH_HOME}${category}/`;
-}
-
-/** 图表页的规范路径：`referencePath('math', 'x')` → `/en/math/x/`。 */
-export function referencePath(category: ReferenceCategory, slug: string): string {
-  return `${ENGLISH_HOME}${category}/${slug}/`;
-}
-
-/** 把去掉语言前缀的 app 路径（`/math/x`）拆成学科与 slug；层级不对返回 null。 */
-export function referencePartsForAppPath(
-  appPath: string,
-): { category: string; slug: string } | null {
-  const match = /^\/([^/]+)\/([^/]+)\/?$/.exec(appPath);
-  return match ? { category: match[1], slug: match[2] } : null;
-}
-
-/** 英文面的全部路由路径，供 prerender 清单与 sitemap 使用。 */
-export const ENGLISH_ROUTE_PATHS: string[] = [
-  ENGLISH_HOME,
-  ...REFERENCE_CATEGORIES.map(categoryPath),
-  ...REFERENCE_PAGES.map((page) => referencePath(page.category, page.slug)),
-];
-```
-
-- [ ] **Step 11: 跑测试确认通过**
-
-Run: `npx vitest run src/reference-routes.test.ts`
-Expected: PASS（6 个用例）
-
-- [ ] **Step 12: 重写 `src/seo/content-en.ts`**
-
-```ts
-import { getReferencePage } from '../data/reference';
-import { CATEGORY_COPY } from '../data/reference/en/categories';
-import type { Language } from '../i18n/languages';
-import {
-  categoryPath,
-  ENGLISH_HOME,
-  isReferenceCategory,
-  referencePartsForAppPath,
-} from '../reference-routes';
-import { brandFor } from './site';
-import type { Breadcrumb, PageContent } from './types';
-
-/**
- * 英文面的页面文案：`/en/`、三个学科 hub 与各张图表页。
- * 有意保持狭窄——这不是中文 app 的翻译。
- *
- * 注意：本阶段图表页与 hub 页都仍是 `kind: 'view'`，`<title>` 也仍是
- * `{title} - {brand}` 旧格式。换成 `LearningResource` / `FAQPage` 与
- * "Printable …" 标题模板属于 SEO 阶段。
- */
-export function resolveEnglishContent(
-  appPath: string,
-  path: string,
-  language: Language,
-): PageContent {
-  const brand = brandFor(language);
-  const home: Breadcrumb = { name: 'Home', path: ENGLISH_HOME };
-
-  if (appPath === '/') {
-    return {
-      kind: 'home',
-      title: `${brand.name} - ${brand.tagline}`,
-      description: brand.description,
-      breadcrumbs: [home],
-    };
-  }
-
-  const parts = referencePartsForAppPath(appPath);
-  if (parts && isReferenceCategory(parts.category)) {
-    const page = getReferencePage(parts.slug);
-    if (page && page.category === parts.category) {
-      return {
-        kind: 'view',
-        title: `${page.title} - ${brand.name}`,
-        description: page.description,
-        breadcrumbs: [
-          home,
-          { name: CATEGORY_COPY[page.category].name, path: categoryPath(page.category) },
-          { name: page.title, path },
-        ],
-      };
-    }
-  }
-
-  const hub = /^\/([^/]+)\/?$/.exec(appPath);
-  if (hub && isReferenceCategory(hub[1])) {
-    const copy = CATEGORY_COPY[hub[1]];
-    return {
-      kind: 'view',
-      title: `${copy.name} Reference Charts - ${brand.name}`,
-      description: copy.intro,
-      breadcrumbs: [home, { name: copy.name, path }],
-    };
-  }
-
-  return { kind: 'view', title: brand.name, description: brand.description, breadcrumbs: [home] };
-}
-```
-
-- [ ] **Step 13: 删除旧模块并在构建期接线校验**
-
-`src/entry-prerender.ts` 里加两行 import：
-
-```ts
-import { REFERENCE_PAGES } from './data/reference';
-import { validateReferencePages } from './data/reference/validate';
-```
-
-在 `const distDir = …` 之前插入：
-
-```ts
-validateReferencePages(REFERENCE_PAGES);
-```
-
-然后：
-
-```bash
-git rm src/data/reference.ts
-```
-
-- [ ] **Step 14: 确认没有旧符号残留**
-
-Run: `grep -rn "getReferenceTable\|REFERENCE_TABLES\|REFERENCE_SLUGS\|data/reference\.ts" src/ worker/`
-Expected: 无输出。
-
-Run: `grep -rn "from '\.\./data/reference'\|from './data/reference'\|from '\.\./\.\./data/reference'" src/ | sort -u`
-Expected: 只命中指向新目录的 import。
-
-- [ ] **Step 15: 类型检查与全量测试**
-
-Run: `npx tsc -b`
-Expected: 无输出（成功）
-
-Run: `npm test`
-Expected: 全绿
-
-- [ ] **Step 16: 提交**
-
-```bash
-git add -A src/data/reference.ts src/data/reference/ src/reference-routes.ts src/reference-routes.test.ts src/seo/content-en.ts src/entry-prerender.ts
-git commit -m "$(cat <<'EOF'
-feat(reference): 数据层切换——学科分层 URL、构建期校验、删除旧单一文件模块
-
-一次原子提交完成建目录 / 删旧文件 / 更新两个消费者：
-src/data/reference.ts 与 src/data/reference/index.ts 不能共存，
-import './data/reference' 会优先命中 .ts 文件，拆开提交中间态是坏的。
-
-校验在 entry-prerender 里调用并直接 throw；一次收集全部问题再抛。
-
-Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
-EOF
-)"
-```
-
----
-
-## Task 4: Block 渲染组件
+## Task 3: Block 渲染组件
 
 **Files:**
 - Create: `src/components/reference/blocks/TableBlock.tsx`
@@ -1405,12 +888,14 @@ EOF
 - Test: `src/components/reference/blocks/BlockRenderer.test.tsx`
 
 **Interfaces:**
-- Consumes: `Block`（Task 1）
+- Consumes: `Block`（Task 1，通过显式路径 `'../../../data/reference/types'` 导入——该路径不与旧文件冲突）
 - Produces:
   - `TableBlock({ block }: { block: Extract<Block, { kind: 'table' }> }): ReactElement`
   - `FormulasBlock({ block }: { block: Extract<Block, { kind: 'formulas' }> }): ReactElement`
   - `DiagramBlock({ block }: { block: Extract<Block, { kind: 'diagram' }> }): ReactElement`
   - `BlockRenderer({ blocks }: { blocks: readonly Block[] }): ReactElement`
+
+**本任务刻意排在数据替换之前**，因为 `BlockRenderer` 只依赖 `Block` 类型（显式路径导入），而 Task 4 重写图表页时需要它。放在这里让 Task 4 不必再临时拼一个表格渲染。
 
 - [ ] **Step 1: 写失败测试 `BlockRenderer.test.tsx`**
 
@@ -1603,9 +1088,7 @@ export function DiagramBlock({
         dangerouslySetInnerHTML={{ __html: block.svg }}
       />
       {block.caption && (
-        <figcaption className="mt-2 text-center text-xs text-[#8F959E]">
-          {block.caption}
-        </figcaption>
+        <figcaption className="mt-2 text-center text-xs text-[#8F959E]">{block.caption}</figcaption>
       )}
     </figure>
   );
@@ -1652,7 +1135,7 @@ Run: `npx tsc -b`
 Expected: 无输出（成功）
 
 Run: `npx eslint src/components/reference/blocks/`
-Expected: 无错误（`dangerouslySetInnerHTML` 在本仓库没有启用对应规则，若 eslint 报错则补 `eslint-disable-next-line` 注释并说明原因）
+Expected: 无错误。本仓库的 ESLint 配置是 `@eslint/js` + typescript-eslint + react-hooks + react-refresh，**没有装 `eslint-plugin-react`**，所以 `dangerouslySetInnerHTML` 不会触发规则。若确实报错，补一行 `// eslint-disable-next-line <rule>` 并注明原因。
 
 - [ ] **Step 9: 提交**
 
@@ -1671,34 +1154,251 @@ EOF
 
 ---
 
-## Task 5: 图表页组件重写（含 FAQ、内链、打印样式）
+## Task 4: 数据模块原子替换 + 图表页重写（URL 保持扁平）
+
+本任务是本计划里最大的一个，因为**它必须是原子的**：删掉 `src/data/reference.ts` 会让 6 个消费者同时编译失败，必须在同一个提交里全部改完。为了让这个提交可以 review，**URL 形状刻意保持不变**（仍是 `/en/reference/:slug`）——URL 分层推到 Task 5。
 
 **Files:**
+- Create: `src/data/reference/validate.ts`
+- Create: `src/data/reference/index.ts`
 - Create: `src/components/reference/ReferenceNotFound.tsx`
 - Create: `src/components/reference/FaqSection.tsx`
 - Create: `src/components/reference/RelatedCharts.tsx`
+- Modify: `src/reference-routes.ts`
+- Modify: `src/reference-routes.test.ts`
+- Modify: `src/seo/content-en.ts`
+- Modify: `src/seo/meta.test.ts`
+- Modify: `src/components/reference/ReferenceIndex.tsx`
 - Modify: `src/components/reference/ReferencePage.tsx`
 - Modify: `src/components/reference/ReferenceLayout.tsx`
-- Modify: `src/ads/adPlacements.test.tsx`
+- Modify: `src/entry-prerender.ts`
+- Test: `src/data/reference/validate.test.ts`
+- Test: `src/data/reference/index.test.ts`
 - Test: `src/components/reference/ReferencePage.test.tsx`
+- Delete: `src/data/reference.ts`
 
 **Interfaces:**
-- Consumes: `getReferencePage`（Task 3）；`CATEGORY_COPY`（Task 3）；`isReferenceCategory`、`categoryPath`、`ENGLISH_HOME`（Task 3）；`BlockRenderer`（Task 4）
+- Consumes: `REFERENCE_PAGES_EN`（Task 2）、`ReferencePage` / `ReferenceCategory`（Task 1）、`BlockRenderer`（Task 3）
 - Produces:
+  - `validateReferencePages(pages: readonly ReferencePage[]): void`（不合法则 throw）
+  - `REFERENCE_PAGES: readonly ReferencePage[]`
+  - `getReferencePage(slug: string): ReferencePage | undefined`
+  - `pagesInCategory(category: ReferenceCategory): ReferencePage[]`
   - `ReferenceNotFound(): ReactElement`
   - `FaqSection({ faq }: { faq: readonly { q: string; a: string }[] }): ReactElement | null`
   - `RelatedCharts({ pages }: { pages: readonly ReferencePage[] }): ReactElement | null`
   - `ReferencePage(): ReactElement`
+  - `ReferenceIndex(): ReactElement`
+  - `referencePath(slug: string): string`（**仍是一参**）
+  - `referenceSlugForAppPath(appPath: string): string | null`（不变）
+  - `ENGLISH_REFERENCE_ROUTE = '/en/reference/:slug'`（不变）
 
-- [ ] **Step 1: 写 `ReferenceNotFound.tsx`**
+- [ ] **Step 1: 写失败测试 `validate.test.ts`**
 
-标题用中性的 "Page not found" 而不是 "Chart not found"——它同时服务图表页、学科 hub 与 Worker 404 三个场景。
+```ts
+import { describe, expect, it } from 'vitest';
+import type { ReferencePage } from './types';
+import { validateReferencePages } from './validate';
+
+function page(overrides: Partial<ReferencePage> = {}): ReferencePage {
+  return {
+    slug: 'a-page',
+    category: 'math',
+    title: 'A Page',
+    summary: 'A summary.',
+    description: 'A description.',
+    intro: 'An intro.',
+    blocks: [{ kind: 'table', rows: [['1']] }],
+    howToUse: ['Do this.', 'Then that.'],
+    faq: [
+      { q: 'Q1', a: 'A1' },
+      { q: 'Q2', a: 'A2' },
+      { q: 'Q3', a: 'A3' },
+    ],
+    related: [],
+    ...overrides,
+  };
+}
+
+describe('validateReferencePages', () => {
+  it('accepts a well-formed page set', () => {
+    expect(() => validateReferencePages([page()])).not.toThrow();
+  });
+
+  it('rejects duplicate slugs', () => {
+    expect(() => validateReferencePages([page(), page()])).toThrow(/duplicate slug: a-page/);
+  });
+
+  it('rejects empty required copy', () => {
+    expect(() => validateReferencePages([page({ intro: '   ' })])).toThrow(/empty intro/);
+    expect(() => validateReferencePages([page({ title: '' })])).toThrow(/empty title/);
+    expect(() => validateReferencePages([page({ summary: '' })])).toThrow(/empty summary/);
+    expect(() => validateReferencePages([page({ description: ' ' })])).toThrow(/empty description/);
+  });
+
+  it('rejects a page with too few FAQ entries or how-to-use steps', () => {
+    expect(() => validateReferencePages([page({ faq: [{ q: 'Q', a: 'A' }] })])).toThrow(
+      /at least 3 FAQ/,
+    );
+    expect(() => validateReferencePages([page({ howToUse: ['one'] })])).toThrow(
+      /at least 2 howToUse/,
+    );
+  });
+
+  it('rejects a page with no blocks', () => {
+    expect(() => validateReferencePages([page({ blocks: [] })])).toThrow(/at least one block/);
+  });
+
+  it('rejects an empty FAQ question or answer', () => {
+    const faq = [
+      { q: '', a: 'A' },
+      { q: 'Q', a: 'A' },
+      { q: 'Q', a: 'A' },
+    ];
+    expect(() => validateReferencePages([page({ faq })])).toThrow(/empty FAQ/);
+  });
+
+  it('rejects a related slug that no page declares', () => {
+    expect(() => validateReferencePages([page({ related: ['ghost'] })])).toThrow(
+      /related slug not found: ghost/,
+    );
+  });
+
+  it('accepts a related slug that a sibling page declares', () => {
+    const other = page({ slug: 'other-page' });
+    expect(() => validateReferencePages([page({ related: ['other-page'] }), other])).not.toThrow();
+  });
+
+  it('allows an empty related list', () => {
+    expect(() => validateReferencePages([page({ related: [] })])).not.toThrow();
+  });
+
+  it('reports every problem at once rather than the first', () => {
+    const broken = page({ slug: 'broken', title: '', intro: '', blocks: [] });
+    expect(() => validateReferencePages([broken])).toThrow(
+      /empty title[\s\S]*empty intro[\s\S]*at least one block/,
+    );
+  });
+});
+```
+
+- [ ] **Step 2: 跑测试确认失败**
+
+Run: `npx vitest run src/data/reference/validate.test.ts`
+Expected: FAIL — `Failed to resolve import "./validate"`
+
+- [ ] **Step 3: 写 validate.ts**
+
+```ts
+import type { ReferencePage } from './types';
+
+/**
+ * 构建期防呆：半成品页面必须在构建时炸掉，而不是带着空 intro 或断掉的内链
+ * 混进 dist/ 被爬虫抓走。由 entry-prerender 在写盘前调用一次。
+ *
+ * 一次收集全部问题再抛，避免「修一个跑一次」的循环。
+ */
+export function validateReferencePages(pages: readonly ReferencePage[]): void {
+  const slugs = new Set<string>();
+  const problems: string[] = [];
+
+  for (const page of pages) {
+    if (slugs.has(page.slug)) problems.push(`duplicate slug: ${page.slug}`);
+    slugs.add(page.slug);
+  }
+
+  for (const page of pages) {
+    for (const field of ['title', 'summary', 'description', 'intro'] as const) {
+      if (!page[field].trim()) problems.push(`${page.slug}: empty ${field}`);
+    }
+    if (page.blocks.length < 1) problems.push(`${page.slug}: needs at least one block`);
+    if (page.howToUse.length < 2) problems.push(`${page.slug}: needs at least 2 howToUse steps`);
+    if (page.faq.length < 3) problems.push(`${page.slug}: needs at least 3 FAQ entries`);
+    for (const entry of page.faq) {
+      if (!entry.q.trim() || !entry.a.trim()) {
+        problems.push(`${page.slug}: empty FAQ question or answer`);
+      }
+    }
+    for (const related of page.related) {
+      if (!slugs.has(related)) problems.push(`${page.slug}: related slug not found: ${related}`);
+    }
+  }
+
+  if (problems.length > 0) {
+    throw new Error(`invalid reference pages:\n  ${problems.join('\n  ')}`);
+  }
+}
+```
+
+- [ ] **Step 4: 跑测试确认通过**
+
+Run: `npx vitest run src/data/reference/validate.test.ts`
+Expected: PASS（10 个用例）
+
+- [ ] **Step 5: 写 `index.ts`**
+
+```ts
+import { REFERENCE_PAGES_EN } from './en';
+import type { ReferenceCategory, ReferencePage } from './types';
+
+/**
+ * 当前已撰写的全部图表页。加一门语言时在数组里补一个展开项即可——
+ * 语言维度靠目录划分，不靠参数。
+ */
+export const REFERENCE_PAGES: readonly ReferencePage[] = [...REFERENCE_PAGES_EN];
+
+const BY_SLUG = new Map(REFERENCE_PAGES.map((page) => [page.slug, page]));
+
+/** slug 目前全局唯一（只有一门语言）。加第二门语言时改成 (lang, slug) 复合键。 */
+export function getReferencePage(slug: string): ReferencePage | undefined {
+  return BY_SLUG.get(slug);
+}
+
+export function pagesInCategory(category: ReferenceCategory): ReferencePage[] {
+  return REFERENCE_PAGES.filter((page) => page.category === category);
+}
+
+export type { Block, ReferenceCategory, ReferencePage } from './types';
+```
+
+- [ ] **Step 6: 写 `index.test.ts`**
+
+```ts
+import { describe, expect, it } from 'vitest';
+import { getReferencePage, pagesInCategory, REFERENCE_PAGES } from './index';
+
+describe('reference page index', () => {
+  it('exposes every authored page', () => {
+    expect(REFERENCE_PAGES).toHaveLength(6);
+  });
+
+  it('looks a page up by slug', () => {
+    expect(getReferencePage('multiplication-chart')?.title).toBe('Multiplication Chart (1–12)');
+    expect(getReferencePage('no-such-chart')).toBeUndefined();
+  });
+
+  it('filters by category, preserving authoring order', () => {
+    expect(pagesInCategory('math').map((page) => page.slug)).toEqual([
+      'multiplication-chart',
+      'squares-cubes-roots',
+      'trigonometric-identities',
+      'metric-conversions',
+    ]);
+    expect(pagesInCategory('science').map((page) => page.slug)).toEqual(['physics-constants']);
+    expect(pagesInCategory('english').map((page) => page.slug)).toEqual(['irregular-verbs']);
+  });
+});
+```
+
+- [ ] **Step 7: 写 `ReferenceNotFound.tsx`**
+
+标题用中性的 "Page not found"——它同时服务图表页与（Task 5 之后的）学科 hub 两个场景。
 
 ```tsx
 import type { ReactElement } from 'react';
 import { ENGLISH_HOME } from '../../reference-routes';
 
-/** 未知学科 / 未知 slug / Worker 404 的兜底页。 */
+/** 未知 slug / 未知学科的兜底页。 */
 export function ReferenceNotFound(): ReactElement {
   return (
     <>
@@ -1714,7 +1414,7 @@ export function ReferenceNotFound(): ReactElement {
 }
 ```
 
-- [ ] **Step 2: 写 `FaqSection.tsx`**
+- [ ] **Step 8: 写 `FaqSection.tsx`**
 
 ```tsx
 import type { ReactElement } from 'react';
@@ -1744,7 +1444,9 @@ export function FaqSection({
 }
 ```
 
-- [ ] **Step 3: 写 `RelatedCharts.tsx`**
+- [ ] **Step 9: 写 `RelatedCharts.tsx`**
+
+Task 4 里 `referencePath` 仍是一参（扁平 URL）。
 
 ```tsx
 import type { ReactElement } from 'react';
@@ -1763,7 +1465,7 @@ export function RelatedCharts({ pages }: { pages: readonly ReferencePage[] }): R
         {pages.map((page) => (
           <li key={page.slug}>
             <a
-              href={referencePath(page.category, page.slug)}
+              href={referencePath(page.slug)}
               className="block h-full bg-white rounded-xl border border-[#F0F1F2] p-5 hover:shadow-md transition-shadow"
             >
               <span className="block font-semibold text-[#1F2329]">{page.title}</span>
@@ -1777,7 +1479,7 @@ export function RelatedCharts({ pages }: { pages: readonly ReferencePage[] }): R
 }
 ```
 
-- [ ] **Step 4: 改 `ReferenceLayout.tsx` 的打印行为**
+- [ ] **Step 10: 改 `ReferenceLayout.tsx` 的打印行为**
 
 在 `<header>` 的 className 末尾加 ` print:hidden`，在 `<footer>` 的 className 末尾加 ` print:hidden`。改后两行分别是：
 
@@ -1789,7 +1491,9 @@ export function RelatedCharts({ pages }: { pages: readonly ReferencePage[] }): R
       <footer className="py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2] print:hidden">
 ```
 
-- [ ] **Step 5: 写失败测试 `ReferencePage.test.tsx`**
+- [ ] **Step 11: 写失败测试 `ReferencePage.test.tsx`**
+
+Task 4 里路由仍是 `/en/reference/:slug`。
 
 ```tsx
 import { render, screen } from '@testing-library/react';
@@ -1822,7 +1526,7 @@ function renderChart(url: string) {
     <AuthContext.Provider value={auth}>
       <MemoryRouter initialEntries={[url]}>
         <Routes>
-          <Route path="/en/:category/:slug" element={<ReferencePage />} />
+          <Route path="/en/reference/:slug" element={<ReferencePage />} />
         </Routes>
       </MemoryRouter>
     </AuthContext.Provider>,
@@ -1831,7 +1535,7 @@ function renderChart(url: string) {
 
 describe('ReferencePage', () => {
   it('renders the chart title, intro and table', () => {
-    renderChart('/en/math/multiplication-chart');
+    renderChart('/en/reference/multiplication-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(
       'Multiplication Chart (1–12)',
     );
@@ -1840,61 +1544,50 @@ describe('ReferencePage', () => {
   });
 
   it('renders the how-to-use steps and the FAQ', () => {
-    renderChart('/en/math/multiplication-chart');
+    renderChart('/en/reference/multiplication-chart');
     expect(screen.getByText(/Put one finger on the row/)).toBeTruthy();
     expect(screen.getByRole('heading', { name: 'Frequently asked questions' })).toBeTruthy();
     expect(screen.getByText('What is a multiplication chart?')).toBeTruthy();
   });
 
   it('links to the related charts', () => {
-    renderChart('/en/math/multiplication-chart');
+    renderChart('/en/reference/multiplication-chart');
     const heading = screen.getByRole('heading', { name: 'Related charts' });
     const section = heading.closest('section');
-    expect(section?.querySelector('a[href="/en/math/squares-cubes-roots/"]')).toBeTruthy();
+    expect(section?.querySelector('a[href="/en/reference/squares-cubes-roots/"]')).toBeTruthy();
   });
 
   it('renders formula groups for the identities chart', () => {
-    renderChart('/en/math/trigonometric-identities');
+    renderChart('/en/reference/trigonometric-identities');
     expect(screen.getByText('Pythagorean')).toBeTruthy();
     expect(screen.getByText('sin²θ + cos²θ = 1')).toBeTruthy();
   });
 
   it('omits the related section when a chart has no siblings', () => {
-    renderChart('/en/english/irregular-verbs');
+    renderChart('/en/reference/irregular-verbs');
     expect(screen.queryByRole('heading', { name: 'Related charts' })).toBeNull();
   });
 
-  it('404s when the slug belongs to a different category', () => {
-    renderChart('/en/math/irregular-verbs');
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
-  });
-
-  it('404s on an unknown category', () => {
-    renderChart('/en/legacy/multiplication-chart');
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
-  });
-
   it('404s on an unknown slug', () => {
-    renderChart('/en/math/no-such-chart');
+    renderChart('/en/reference/no-such-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
   });
 });
 ```
 
-- [ ] **Step 6: 跑测试确认失败**
+- [ ] **Step 12: 跑测试确认失败**
 
 Run: `npx vitest run src/components/reference/ReferencePage.test.tsx`
-Expected: FAIL — 缺少 FaqSection / 参数名不匹配
+Expected: FAIL — 缺少 FaqSection
 
-- [ ] **Step 7: 重写 `ReferencePage.tsx`**
+- [ ] **Step 13: 重写 `ReferencePage.tsx`**
 
 ```tsx
 import type { ReactElement } from 'react';
 import { useParams } from 'react-router-dom';
 import { AdUnit } from '../../ads/AdUnit';
 import { getReferencePage } from '../../data/reference';
-import { CATEGORY_COPY } from '../../data/reference/en/categories';
-import { categoryPath, ENGLISH_HOME, isReferenceCategory } from '../../reference-routes';
+import { ENGLISH_HOME } from '../../reference-routes';
 import { BlockRenderer } from './blocks/BlockRenderer';
 import { FaqSection } from './FaqSection';
 import { PrintButton } from './PrintButton';
@@ -1903,17 +1596,14 @@ import { ReferenceNotFound } from './ReferenceNotFound';
 import { RelatedCharts } from './RelatedCharts';
 
 /**
- * `/en/:category/:slug` —— 一张可打印的参考图表。
+ * 一张可打印的参考图表。
  *
  * 渲染顺序固定：面包屑 → H1 → intro → blocks → howToUse → 广告 → FAQ → related。
  * 广告落在数据块之后、FAQ 之前，是为了让打印输出与正文阅读都不被广告打断。
  */
 export function ReferencePage(): ReactElement {
-  const { category, slug } = useParams<{ category: string; slug: string }>();
-  const candidate =
-    category && slug && isReferenceCategory(category) ? getReferencePage(slug) : undefined;
-  // 学科必须与 URL 一致，否则 /en/math/irregular-verbs/ 会产出同一份内容的第二个 URL。
-  const page = candidate && candidate.category === category ? candidate : undefined;
+  const { slug } = useParams<{ slug: string }>();
+  const page = slug ? getReferencePage(slug) : undefined;
 
   if (!page) {
     return (
@@ -1933,10 +1623,6 @@ export function ReferencePage(): ReactElement {
         <a href={ENGLISH_HOME} className="hover:text-[#1F2329] transition-colors">
           All charts
         </a>
-        <span className="mx-2">/</span>
-        <a href={categoryPath(page.category)} className="hover:text-[#1F2329] transition-colors">
-          {CATEGORY_COPY[page.category].name}
-        </a>
       </nav>
 
       <article className="mt-4 bg-white rounded-2xl border border-[#F0F1F2] shadow-sm overflow-hidden">
@@ -1945,8 +1631,8 @@ export function ReferencePage(): ReactElement {
             <h1 className="text-2xl font-bold text-[#1F2329]">{page.title}</h1>
             <p className="mt-1 text-sm text-[#646A73]">{page.description}</p>
           </div>
-          <span className="shrink-0 px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full print:hidden">
-            {CATEGORY_COPY[page.category].name}
+          <span className="shrink-0 px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full capitalize print:hidden">
+            {page.category}
           </span>
         </div>
 
@@ -1982,43 +1668,260 @@ export function ReferencePage(): ReactElement {
 }
 ```
 
-- [ ] **Step 8: 跑测试确认通过**
+- [ ] **Step 14: 改 `ReferenceIndex.tsx` 到新 API（字段改名，仍扁平链接）**
 
-Run: `npx vitest run src/components/reference/ReferencePage.test.tsx`
-Expected: PASS（8 个用例）
-
-- [ ] **Step 9: 更新 `src/ads/adPlacements.test.tsx` 的图表页用例**
-
-把那个用例的路由与路径换成新结构（断言值仍是 1 个广告，不变）：
+Task 5 会把它改成三张学科卡；这里只做让编译通过、链接仍指向扁平 URL 的最小改动。`category` 值现在是小写，用 `capitalize` 类保持显示效果。
 
 ```tsx
-  it('shows one ad on an English reference chart', () => {
-    const { container } = renderAt(
-      '/en/math/multiplication-chart',
-      '/en/:category/:slug',
-      <ReferencePage />,
+import type { ReactElement } from 'react';
+import { REFERENCE_PAGES } from '../../data/reference';
+import { referencePath } from '../../reference-routes';
+import { ReferenceLayout } from './ReferenceLayout';
+
+/** `/en/` —— 英文面的落地页，列出全部打印参考图表。 */
+export function ReferenceIndex(): ReactElement {
+  return (
+    <ReferenceLayout>
+      <section className="mb-8">
+        <h1 className="text-3xl font-bold text-[#1F2329]">Printable Study Reference</h1>
+        <p className="mt-2 max-w-2xl text-[#646A73]">
+          Free, printable reference charts for students, parents and teachers — multiplication
+          tables, roots, trigonometric identities, physics constants, metric conversions and
+          irregular verbs. Open a chart and print it in one click.
+        </p>
+      </section>
+
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {REFERENCE_PAGES.map((page) => (
+          <li key={page.slug}>
+            <a
+              href={referencePath(page.slug)}
+              className="flex h-full flex-col bg-white rounded-2xl border border-[#F0F1F2] shadow-sm hover:shadow-md transition-shadow p-6"
+            >
+              <span className="inline-block self-start px-2.5 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full mb-3 capitalize">
+                {page.category}
+              </span>
+              <h2 className="text-lg font-bold text-[#1F2329]">{page.title}</h2>
+              <p className="mt-2 text-sm text-[#646A73]">{page.summary}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </ReferenceLayout>
+  );
+}
+```
+
+- [ ] **Step 15: 改 `src/reference-routes.ts` 只换 import 源**
+
+URL 形状不变。只改 import 与 `ENGLISH_ROUTE_PATHS` 的数据来源。
+
+```ts
+import { REFERENCE_PAGES } from './data/reference';
+import { EN, homePath } from './i18n/languages';
+
+/**
+ * The English surface's route table — the single place the router, the prerender/sitemap
+ * route list and the link helpers all read. Mirrors `src/view-routes.ts` for the Chinese app.
+ */
+
+/** Canonical home of the English surface; also the language entry point's target. */
+export const ENGLISH_HOME = homePath(EN);
+
+/** React Router pattern for a single reference chart. */
+export const ENGLISH_REFERENCE_ROUTE = `${ENGLISH_HOME}reference/:slug`;
+
+/** Canonical path of a reference chart. */
+export function referencePath(slug: string): string {
+  return `${ENGLISH_HOME}reference/${slug}/`;
+}
+
+/** Slug of a chart from its language-stripped path (`/reference/x`), or null. */
+export function referenceSlugForAppPath(appPath: string): string | null {
+  const match = /^\/reference\/([^/]+)\/?$/.exec(appPath);
+  return match ? match[1] : null;
+}
+
+/** Every English route path, in the shape the prerender list and sitemap use. */
+export const ENGLISH_ROUTE_PATHS: string[] = [
+  ENGLISH_HOME,
+  ...REFERENCE_PAGES.map((page) => referencePath(page.slug)),
+];
+```
+
+- [ ] **Step 16: 改 `src/seo/content-en.ts` 到新 API**
+
+只把 `getReferenceTable` 换成 `getReferencePage`，字段名从 `table.*` 换成 `page.*`。其余不变。
+
+```ts
+import { getReferencePage } from '../data/reference';
+import type { Language } from '../i18n/languages';
+import { ENGLISH_HOME, referenceSlugForAppPath } from '../reference-routes';
+import { brandFor } from './site';
+import type { Breadcrumb, PageContent } from './types';
+
+/**
+ * The English surface's page copy: a small set of printable reference charts
+ * (`/en/` and `/en/reference/:slug`). Deliberately scoped — not a translation of the app.
+ *
+ * 注意：本阶段仍是 `kind: 'view'` 与 `{title} - {brand}` 标题格式。换成
+ * `LearningResource` / `FAQPage` 与 "Printable …" 标题模板属于 SEO 阶段。
+ */
+export function resolveEnglishContent(appPath: string, path: string, language: Language): PageContent {
+  const brand = brandFor(language);
+  const home: Breadcrumb = { name: 'Home', path: ENGLISH_HOME };
+
+  if (appPath === '/') {
+    return {
+      kind: 'home',
+      title: `${brand.name} - ${brand.tagline}`,
+      description: brand.description,
+      breadcrumbs: [home],
+    };
+  }
+
+  const slug = referenceSlugForAppPath(appPath);
+  const page = slug ? getReferencePage(slug) : undefined;
+  if (page) {
+    return {
+      kind: 'view',
+      title: `${page.title} - ${brand.name}`,
+      description: page.description,
+      breadcrumbs: [home, { name: page.title, path }],
+    };
+  }
+
+  return { kind: 'view', title: brand.name, description: brand.description, breadcrumbs: [home] };
+}
+```
+
+- [ ] **Step 17: 改 `src/reference-routes.test.ts`**
+
+只把 `REFERENCE_SLUGS` 换成 `REFERENCE_PAGES`，断言值不变。
+
+```ts
+import { describe, expect, it } from 'vitest';
+import { REFERENCE_PAGES } from './data/reference';
+import {
+  ENGLISH_HOME,
+  ENGLISH_REFERENCE_ROUTE,
+  ENGLISH_ROUTE_PATHS,
+  referencePath,
+  referenceSlugForAppPath,
+} from './reference-routes';
+
+describe('English route table', () => {
+  it('has a canonical home plus one path per chart', () => {
+    expect(ENGLISH_HOME).toBe('/en/');
+    expect(ENGLISH_REFERENCE_ROUTE).toBe('/en/reference/:slug');
+    expect(ENGLISH_ROUTE_PATHS).toHaveLength(1 + REFERENCE_PAGES.length);
+    expect(ENGLISH_ROUTE_PATHS[0]).toBe(ENGLISH_HOME);
+    expect(ENGLISH_ROUTE_PATHS).toContain(referencePath('multiplication-chart'));
+  });
+
+  it('builds chart paths and resolves them back to a slug', () => {
+    expect(referencePath('irregular-verbs')).toBe('/en/reference/irregular-verbs/');
+    expect(referenceSlugForAppPath('/reference/irregular-verbs')).toBe('irregular-verbs');
+    expect(referenceSlugForAppPath('/reference/irregular-verbs/')).toBe('irregular-verbs');
+    expect(referenceSlugForAppPath('/tutorial')).toBeNull();
+  });
+});
+```
+
+- [ ] **Step 18: 改 `src/seo/meta.test.ts` 的英文图表用例**
+
+两处改动：import 换成 `REFERENCE_PAGES`；`canonicalUrl` 的样例路径与图表循环改用 `page.*`。**其余断言不变。**
+
+把文件顶部的
+
+```ts
+import { REFERENCE_TABLES } from '../data/reference';
+```
+
+换成
+
+```ts
+import { REFERENCE_PAGES } from '../data/reference';
+```
+
+把 `canonicalUrl` 用例里的
+
+```ts
+    expect(canonicalUrl('/en/reference/multiplication-chart')).toBe(
+      'https://syy.global/en/reference/multiplication-chart/',
     );
-    expect(adCount(container)).toBe(1);
+```
+
+**保持不变**（Task 4 仍是扁平 URL）。
+
+把图表循环用例整体换成：
+
+```ts
+  it('gives every English reference chart its own English metadata', () => {
+    for (const page of REFERENCE_PAGES) {
+      const path = `/en/reference/${page.slug}`;
+      const meta = buildSeoMeta(path);
+      expect(meta.title).toBe(`${page.title} - ${EN.name}`);
+      expect(meta.description).toBe(page.description);
+      expect(meta.canonical).toBe(`https://syy.global/en/reference/${page.slug}/`);
+      expect(meta.htmlLang).toBe('en');
+      expect(meta.alternates[0]).toEqual({
+        hreflang: 'en',
+        href: `https://syy.global/en/reference/${page.slug}/`,
+      });
+    }
   });
 ```
 
-- [ ] **Step 10: 跑广告位与 reference 组件测试**
+- [ ] **Step 19: 删除旧模块并在构建期接线校验**
 
-Run: `npx vitest run src/ads/ src/components/reference/`
-Expected: PASS
+`src/entry-prerender.ts` 里加两行 import：
 
-- [ ] **Step 11: 提交**
+```ts
+import { REFERENCE_PAGES } from './data/reference';
+import { validateReferencePages } from './data/reference/validate';
+```
+
+在 `const distDir = …` 之前插入：
+
+```ts
+validateReferencePages(REFERENCE_PAGES);
+```
+
+然后：
 
 ```bash
-git add src/components/reference/ src/ads/adPlacements.test.tsx
+git rm src/data/reference.ts
+```
+
+- [ ] **Step 20: 确认没有旧符号残留**
+
+Run: `grep -rn "getReferenceTable\|REFERENCE_TABLES\|REFERENCE_SLUGS" src/ worker/`
+Expected: 无输出。
+
+- [ ] **Step 21: 类型检查与全量测试**
+
+Run: `npx tsc -b`
+Expected: 无输出（成功）
+
+Run: `npm test`
+Expected: 全绿。本任务刻意保持扁平 URL，所以 `App.test.tsx`、`entry-server.test.tsx`、`adPlacements.test.tsx`、`src/prerender/routes.test.ts`、`src/i18n/languages.test.ts`、`src/prerender/inject.test.ts` **都不需要改**——如果其中任何一个失败了，说明改动超出了本任务范围，先修改动而不是改断言。
+
+- [ ] **Step 22: 提交**
+
+```bash
+git add -A src/data/reference src/reference-routes.ts src/reference-routes.test.ts src/seo/content-en.ts src/seo/meta.test.ts src/components/reference src/entry-prerender.ts
 git commit -m "$(cat <<'EOF'
-feat(reference): 图表页改成分节式渲染，补 FAQ 与内链
+feat(reference): 数据模块原子替换，图表页改为分节式渲染
 
-渲染顺序固定为 面包屑 → H1 → intro → blocks → howToUse → 广告 → FAQ → related；
-打印时隐藏导航、广告、FAQ、相关图表与按钮，只留标题与数据块。
+删 src/data/reference.ts 会让 6 个消费者同时编译失败，所以建目录、
+删旧文件、改完所有消费者必须一个提交。URL 形状刻意保持不变，把
+分层 URL 的连带影响推到下一个提交。
 
-学科与 URL 不一致时（如 /en/math/irregular-verbs/）返回未找到态，
-避免同一页在多个路径下产出重复内容。
+图表页渲染顺序固定为 面包屑 → H1 → intro → blocks → howToUse →
+广告 → FAQ → related；打印时隐藏导航、广告、FAQ、相关图表与按钮。
+
+校验在 entry-prerender 里调用并直接 throw，一次收集全部问题再抛。
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 EOF
@@ -2027,21 +1930,421 @@ EOF
 
 ---
 
-## Task 6: hub 页（`/en/` 索引 + 三个学科 hub）
+## Task 5: URL 分层与 hub 页
 
 **Files:**
+- Create: `src/data/reference/en/categories.ts`
 - Create: `src/components/reference/ReferenceCategory.tsx`
+- Modify: `src/reference-routes.ts`
+- Modify: `src/reference-routes.test.ts`
+- Modify: `src/seo/content-en.ts`
+- Modify: `src/seo/meta.test.ts`
+- Modify: `src/prerender/routes.test.ts`
+- Modify: `src/components/reference/ReferencePage.tsx`
 - Modify: `src/components/reference/ReferenceIndex.tsx`
+- Modify: `src/components/reference/RelatedCharts.tsx`
+- Modify: `src/entry-server.test.tsx`
+- Modify: `src/App.test.tsx`
+- Modify: `src/ads/adPlacements.test.tsx`
 - Test: `src/components/reference/ReferenceCategory.test.tsx`
 - Test: `src/components/reference/ReferenceIndex.test.tsx`
 
 **Interfaces:**
-- Consumes: `pagesInCategory`（Task 3）；`CATEGORY_COPY`（Task 3）；`REFERENCE_CATEGORIES`、`isReferenceCategory`、`categoryPath`、`referencePath`（Task 3）；`ReferenceNotFound`（Task 5）
+- Consumes: `REFERENCE_PAGES`、`getReferencePage`、`pagesInCategory`（Task 4）；`ReferencePage` / `ReferenceCategory`（Task 1）；`ReferenceNotFound`（Task 4）
 - Produces:
+  - `CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy>`，`CategoryCopy = { name: string; summary: string; intro: string }`
+  - `ENGLISH_CATEGORY_ROUTE = '/en/:category'`
+  - `ENGLISH_REFERENCE_ROUTE = '/en/:category/:slug'`
+  - `REFERENCE_CATEGORIES: readonly ReferenceCategory[]`（`['math','science','english']`）
+  - `isReferenceCategory(value: string): value is ReferenceCategory`
+  - `categoryPath(category: ReferenceCategory): string`
+  - `referencePath(category: ReferenceCategory, slug: string): string`（**签名由一参变为两参**）
+  - `referencePartsForAppPath(appPath: string): { category: string; slug: string } | null`
   - `ReferenceCategory(): ReactElement`
-  - `ReferenceIndex(): ReactElement`
 
-- [ ] **Step 1: 写失败测试 `ReferenceCategory.test.tsx`**
+- [ ] **Step 1: 写 `src/data/reference/en/categories.ts`**
+
+```ts
+import type { ReferenceCategory } from '../types';
+
+export interface CategoryCopy {
+  /** hub H1 与 `/en/` 索引卡上的学科名。 */
+  name: string;
+  /** `/en/` 索引卡上的一句话，约 50–80 字符。 */
+  summary: string;
+  /** hub 页导语，同时用作该 hub 的 meta description。 */
+  intro: string;
+}
+
+/** 英文面的学科文案。修改学科措辞的唯一位置。 */
+export const CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy> = {
+  math: {
+    name: 'Math',
+    summary: 'Times tables, roots, conversions and formula sheets.',
+    intro:
+      'Printable maths reference charts for arithmetic, algebra and geometry — times tables, squares and roots, unit conversions and formula sheets. Every chart is laid out to be printed at full size and kept on a desk or in a homework folder.',
+  },
+  science: {
+    name: 'Science',
+    summary: 'Constants, units and reference data for physics and chemistry.',
+    intro:
+      'Printable science reference charts: the constants and reference tables that come up in physics and chemistry homework. Each row gives the quantity, the symbol it is written with, and its value in SI units.',
+  },
+  english: {
+    name: 'English',
+    summary: 'Grammar, spelling and vocabulary reference lists.',
+    intro:
+      'Printable English reference charts covering grammar, spelling and vocabulary — word forms and the lists that are quicker to check than to recall. Each chart is laid out to be read at a glance and printed on a single page.',
+  },
+};
+```
+
+- [ ] **Step 2: 重写 `src/reference-routes.test.ts`**
+
+```ts
+import { describe, expect, it } from 'vitest';
+import { REFERENCE_PAGES } from './data/reference';
+import {
+  categoryPath,
+  ENGLISH_CATEGORY_ROUTE,
+  ENGLISH_HOME,
+  ENGLISH_REFERENCE_ROUTE,
+  ENGLISH_ROUTE_PATHS,
+  isReferenceCategory,
+  REFERENCE_CATEGORIES,
+  referencePartsForAppPath,
+  referencePath,
+} from './reference-routes';
+
+describe('English route table', () => {
+  it('has a home, three category hubs and one path per chart', () => {
+    expect(ENGLISH_HOME).toBe('/en/');
+    expect(REFERENCE_CATEGORIES).toEqual(['math', 'science', 'english']);
+    expect(ENGLISH_ROUTE_PATHS).toHaveLength(
+      1 + REFERENCE_CATEGORIES.length + REFERENCE_PAGES.length,
+    );
+    expect(ENGLISH_ROUTE_PATHS[0]).toBe(ENGLISH_HOME);
+    expect(ENGLISH_ROUTE_PATHS).toContain('/en/math/');
+    expect(ENGLISH_ROUTE_PATHS).toContain('/en/math/multiplication-chart/');
+  });
+
+  it('exposes React Router patterns with a :category segment', () => {
+    expect(ENGLISH_CATEGORY_ROUTE).toBe('/en/:category');
+    expect(ENGLISH_REFERENCE_ROUTE).toBe('/en/:category/:slug');
+  });
+
+  it('builds category and chart paths', () => {
+    expect(categoryPath('math')).toBe('/en/math/');
+    expect(referencePath('math', 'multiplication-chart')).toBe('/en/math/multiplication-chart/');
+    expect(referencePath('english', 'irregular-verbs')).toBe('/en/english/irregular-verbs/');
+  });
+
+  it('routes every authored page to a path under its own category', () => {
+    for (const page of REFERENCE_PAGES) {
+      expect(ENGLISH_ROUTE_PATHS).toContain(referencePath(page.category, page.slug));
+    }
+  });
+
+  it('splits an app path into category and slug', () => {
+    expect(referencePartsForAppPath('/math/multiplication-chart')).toEqual({
+      category: 'math',
+      slug: 'multiplication-chart',
+    });
+    expect(referencePartsForAppPath('/math/multiplication-chart/')).toEqual({
+      category: 'math',
+      slug: 'multiplication-chart',
+    });
+    expect(referencePartsForAppPath('/math')).toBeNull();
+    expect(referencePartsForAppPath('/math/a/b')).toBeNull();
+    expect(referencePartsForAppPath('/tutorial')).toBeNull();
+  });
+
+  it('recognises only the three known categories', () => {
+    expect(isReferenceCategory('science')).toBe(true);
+    expect(isReferenceCategory('reference')).toBe(false);
+    expect(isReferenceCategory('')).toBe(false);
+  });
+});
+```
+
+- [ ] **Step 3: 跑测试确认失败**
+
+Run: `npx vitest run src/reference-routes.test.ts`
+Expected: FAIL — `categoryPath is not a function`
+
+- [ ] **Step 4: 重写 `src/reference-routes.ts`**
+
+```ts
+import { REFERENCE_PAGES } from './data/reference';
+import type { ReferenceCategory } from './data/reference/types';
+import { EN, homePath } from './i18n/languages';
+
+/**
+ * 英文面的路由表——路由、prerender 清单、sitemap 与链接助手都从这里读。
+ * 与中文 app 的 `src/view-routes.ts` 对应。
+ */
+
+/** 英文面的规范首页；也是语言入口的跳转目标。 */
+export const ENGLISH_HOME = homePath(EN);
+
+/** 学科 hub 的展示顺序，同时也是 `/en/` 索引页上卡片的顺序。 */
+export const REFERENCE_CATEGORIES: readonly ReferenceCategory[] = ['math', 'science', 'english'];
+
+/** React Router 模式：单个学科 hub。 */
+export const ENGLISH_CATEGORY_ROUTE = `${ENGLISH_HOME}:category`;
+
+/** React Router 模式：单张图表页。 */
+export const ENGLISH_REFERENCE_ROUTE = `${ENGLISH_HOME}:category/:slug`;
+
+export function isReferenceCategory(value: string): value is ReferenceCategory {
+  return (REFERENCE_CATEGORIES as readonly string[]).includes(value);
+}
+
+/** 学科 hub 的规范路径：`categoryPath('math')` → `/en/math/`。 */
+export function categoryPath(category: ReferenceCategory): string {
+  return `${ENGLISH_HOME}${category}/`;
+}
+
+/** 图表页的规范路径：`referencePath('math', 'x')` → `/en/math/x/`。 */
+export function referencePath(category: ReferenceCategory, slug: string): string {
+  return `${ENGLISH_HOME}${category}/${slug}/`;
+}
+
+/** 把去掉语言前缀的 app 路径（`/math/x`）拆成学科与 slug；层级不对返回 null。 */
+export function referencePartsForAppPath(
+  appPath: string,
+): { category: string; slug: string } | null {
+  const match = /^\/([^/]+)\/([^/]+)\/?$/.exec(appPath);
+  return match ? { category: match[1], slug: match[2] } : null;
+}
+
+/** 英文面的全部路由路径，供 prerender 清单与 sitemap 使用。 */
+export const ENGLISH_ROUTE_PATHS: string[] = [
+  ENGLISH_HOME,
+  ...REFERENCE_CATEGORIES.map(categoryPath),
+  ...REFERENCE_PAGES.map((page) => referencePath(page.category, page.slug)),
+];
+```
+
+- [ ] **Step 5: 跑测试确认通过**
+
+Run: `npx vitest run src/reference-routes.test.ts`
+Expected: PASS（6 个用例）
+
+- [ ] **Step 6: 重写 `src/seo/content-en.ts`**
+
+```ts
+import { getReferencePage } from '../data/reference';
+import { CATEGORY_COPY } from '../data/reference/en/categories';
+import type { Language } from '../i18n/languages';
+import {
+  categoryPath,
+  ENGLISH_HOME,
+  isReferenceCategory,
+  referencePartsForAppPath,
+} from '../reference-routes';
+import { brandFor } from './site';
+import type { Breadcrumb, PageContent } from './types';
+
+/**
+ * 英文面的页面文案：`/en/`、三个学科 hub 与各张图表页。
+ * 有意保持狭窄——这不是中文 app 的翻译。
+ *
+ * 注意：本阶段图表页与 hub 页都仍是 `kind: 'view'`，`<title>` 也仍是
+ * `{title} - {brand}` 旧格式。换成 `LearningResource` / `FAQPage` 与
+ * "Printable …" 标题模板属于 SEO 阶段。
+ */
+export function resolveEnglishContent(
+  appPath: string,
+  path: string,
+  language: Language,
+): PageContent {
+  const brand = brandFor(language);
+  const home: Breadcrumb = { name: 'Home', path: ENGLISH_HOME };
+
+  if (appPath === '/') {
+    return {
+      kind: 'home',
+      title: `${brand.name} - ${brand.tagline}`,
+      description: brand.description,
+      breadcrumbs: [home],
+    };
+  }
+
+  const parts = referencePartsForAppPath(appPath);
+  if (parts && isReferenceCategory(parts.category)) {
+    const page = getReferencePage(parts.slug);
+    if (page && page.category === parts.category) {
+      return {
+        kind: 'view',
+        title: `${page.title} - ${brand.name}`,
+        description: page.description,
+        breadcrumbs: [
+          home,
+          { name: CATEGORY_COPY[page.category].name, path: categoryPath(page.category) },
+          { name: page.title, path },
+        ],
+      };
+    }
+  }
+
+  const hub = /^\/([^/]+)\/?$/.exec(appPath);
+  if (hub && isReferenceCategory(hub[1])) {
+    const copy = CATEGORY_COPY[hub[1]];
+    return {
+      kind: 'view',
+      title: `${copy.name} Reference Charts - ${brand.name}`,
+      description: copy.intro,
+      breadcrumbs: [home, { name: copy.name, path }],
+    };
+  }
+
+  return { kind: 'view', title: brand.name, description: brand.description, breadcrumbs: [home] };
+}
+```
+
+- [ ] **Step 7: 更新 `src/seo/meta.test.ts` 的两处路径**
+
+`canonicalUrl` 用例里的样例路径换成新结构：
+
+```ts
+    expect(canonicalUrl('/en/math/multiplication-chart')).toBe(
+      'https://syy.global/en/math/multiplication-chart/',
+    );
+```
+
+图表循环用例改成用学科分层路径：
+
+```ts
+  it('gives every English reference chart its own English metadata', () => {
+    for (const page of REFERENCE_PAGES) {
+      const path = `/en/${page.category}/${page.slug}`;
+      const meta = buildSeoMeta(path);
+      expect(meta.title).toBe(`${page.title} - ${EN.name}`);
+      expect(meta.description).toBe(page.description);
+      expect(meta.canonical).toBe(`https://syy.global/en/${page.category}/${page.slug}/`);
+      expect(meta.htmlLang).toBe('en');
+      expect(meta.alternates[0]).toEqual({
+        hreflang: 'en',
+        href: `https://syy.global/en/${page.category}/${page.slug}/`,
+      });
+    }
+  });
+```
+
+其它用例（含「每条 prerendered 路由的 title/description/canonical 互不相同」那条）**保持不变**——新增的三个 hub 路径各有不同的标题与导语，该断言仍成立。
+
+- [ ] **Step 8: 更新 `src/prerender/routes.test.ts`**
+
+把 `expect(PRERENDER_PATHS).toContain('/en/reference/multiplication-chart/');` 换成一串新路径断言：
+
+```ts
+    expect(PRERENDER_PATHS).toContain('/en/');
+    expect(PRERENDER_PATHS).toContain('/en/math/');
+    expect(PRERENDER_PATHS).toContain('/en/science/');
+    expect(PRERENDER_PATHS).toContain('/en/english/');
+    expect(PRERENDER_PATHS).toContain('/en/math/multiplication-chart/');
+```
+
+（原文件已有一行 `expect(PRERENDER_PATHS).toContain('/en/');`，替换时不要重复。）长度断言 `expect(PRERENDER_PATHS).toHaveLength(1 + 10 + kpCount + ENGLISH_ROUTE_PATHS.length)` 与新「无重复」断言**保持不变**。
+
+- [ ] **Step 9: 改 `src/components/reference/RelatedCharts.tsx` 的链接**
+
+把 `href={referencePath(page.slug)}` 改成：
+
+```tsx
+              href={referencePath(page.category, page.slug)}
+```
+
+- [ ] **Step 10: 改 `ReferencePage.tsx` 的面包屑与 404 判据**
+
+把 `const { slug } = useParams<{ slug: string }>();` 与紧随的两行换成：
+
+```tsx
+  const { category, slug } = useParams<{ category: string; slug: string }>();
+  const candidate =
+    category && slug && isReferenceCategory(category) ? getReferencePage(slug) : undefined;
+  // 学科必须与 URL 一致，否则 /en/math/irregular-verbs/ 会产出同一份内容的第二个 URL。
+  const page = candidate && candidate.category === category ? candidate : undefined;
+```
+
+把 import 行 `import { ENGLISH_HOME } from '../../reference-routes';` 换成：
+
+```tsx
+import { categoryPath, ENGLISH_HOME, isReferenceCategory } from '../../reference-routes';
+```
+
+把面包屑里 `<a …>{ENGLISH_HOME}</a>` 之后补上学科层（插在 `</nav>` 之前）：
+
+```tsx
+        <span className="mx-2">/</span>
+        <a href={categoryPath(page.category)} className="hover:text-[#1F2329] transition-colors">
+          {CATEGORY_COPY[page.category].name}
+        </a>
+```
+
+并在 import 区加上：
+
+```tsx
+import { CATEGORY_COPY } from '../../data/reference/en/categories';
+```
+
+把右上角那个 `<span … capitalize print:hidden>{page.category}</span>` 的内容换成 `{CATEGORY_COPY[page.category].name}`，并去掉 `capitalize` 类（不再需要）。
+
+文档注释里的「一张可打印的参考图表」之上补一行路径说明：
+
+```tsx
+/**
+ * `/en/:category/:slug` —— 一张可打印的参考图表。
+```
+
+- [ ] **Step 11: 写失败测试 `ReferencePage.test.tsx`（改成新路由与 404 判据）**
+
+把 `renderChart` 里的路由与用例路径换成新结构，并补三个 404 用例：
+
+```tsx
+function renderChart(url: string) {
+  return render(
+    <AuthContext.Provider value={auth}>
+      <MemoryRouter initialEntries={[url]}>
+        <Routes>
+          <Route path="/en/:category/:slug" element={<ReferencePage />} />
+        </Routes>
+      </MemoryRouter>
+    </AuthContext.Provider>,
+  );
+}
+```
+
+用例路径全部由 `/en/reference/<slug>` 改为 `/en/<category>/<slug>`：
+`/en/math/multiplication-chart`、`/en/math/trigonometric-identities`、`/en/english/irregular-verbs`。
+
+「links to the related charts」用例的选择器改为：
+
+```tsx
+    expect(section?.querySelector('a[href="/en/math/squares-cubes-roots/"]')).toBeTruthy();
+```
+
+「404s on an unknown slug」用例路径改为 `/en/math/no-such-chart`，并追加两条：
+
+```tsx
+  it('404s when the slug belongs to a different category', () => {
+    renderChart('/en/math/irregular-verbs');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
+  });
+
+  it('404s on an unknown category', () => {
+    renderChart('/en/legacy/multiplication-chart');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Page not found');
+  });
+```
+
+- [ ] **Step 12: 跑测试确认通过**
+
+Run: `npx vitest run src/components/reference/ReferencePage.test.tsx`
+Expected: PASS（8 个用例）
+
+- [ ] **Step 13: 写失败测试 `ReferenceCategory.test.tsx`**
 
 ```tsx
 import { render, screen } from '@testing-library/react';
@@ -2087,12 +2390,12 @@ describe('ReferenceCategory hub', () => {
 });
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [ ] **Step 14: 跑测试确认失败**
 
 Run: `npx vitest run src/components/reference/ReferenceCategory.test.tsx`
 Expected: FAIL — `Failed to resolve import "./ReferenceCategory"`
 
-- [ ] **Step 3: 写 `ReferenceCategory.tsx`**
+- [ ] **Step 15: 写 `ReferenceCategory.tsx`**
 
 ```tsx
 import type { ReactElement } from 'react';
@@ -2149,12 +2452,12 @@ export function ReferenceCategory(): ReactElement {
 }
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [ ] **Step 16: 跑测试确认通过**
 
 Run: `npx vitest run src/components/reference/ReferenceCategory.test.tsx`
 Expected: PASS（4 个用例）
 
-- [ ] **Step 5: 写失败测试 `ReferenceIndex.test.tsx`**
+- [ ] **Step 17: 写失败测试 `ReferenceIndex.test.tsx`**
 
 ```tsx
 import { render, screen } from '@testing-library/react';
@@ -2193,12 +2496,12 @@ describe('ReferenceIndex', () => {
 });
 ```
 
-- [ ] **Step 6: 跑测试确认失败**
+- [ ] **Step 18: 跑测试确认失败**
 
 Run: `npx vitest run src/components/reference/ReferenceIndex.test.tsx`
 Expected: FAIL — 仍在链接单张图表，且没有 `/en/science/`
 
-- [ ] **Step 7: 重写 `ReferenceIndex.tsx`**
+- [ ] **Step 19: 重写 `ReferenceIndex.tsx`**
 
 ```tsx
 import type { ReactElement } from 'react';
@@ -2239,20 +2542,65 @@ export function ReferenceIndex(): ReactElement {
 }
 ```
 
-- [ ] **Step 8: 跑测试确认通过**
+- [ ] **Step 20: 跑测试确认通过**
 
 Run: `npx vitest run src/components/reference/ReferenceIndex.test.tsx`
 Expected: PASS（3 个用例）
 
-- [ ] **Step 9: 提交**
+- [ ] **Step 21: 更新三处受 URL 变更影响的既有测试**
+
+`src/entry-server.test.tsx` 的最后一条用例：
+
+```tsx
+  it('renders the English surface with real English content', () => {
+    expect(render('/en')).toContain('Printable Study Reference');
+    expect(render('/en/math/multiplication-chart')).toContain('Multiplication Chart');
+  });
+```
+
+`src/App.test.tsx` 里那条旧路径用例：
+
+```tsx
+  it('serves an English reference chart at /en/:category/:slug', () => {
+    renderApp('/en/math/multiplication-chart');
+    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Multiplication Chart (1–12)');
+  });
+```
+
+`src/ads/adPlacements.test.tsx` 的图表页用例：
+
+```tsx
+  it('shows one ad on an English reference chart', () => {
+    const { container } = renderAt(
+      '/en/math/multiplication-chart',
+      '/en/:category/:slug',
+      <ReferencePage />,
+    );
+    expect(adCount(container)).toBe(1);
+  });
+```
+
+- [ ] **Step 22: 类型检查与全量测试**
+
+Run: `npx tsc -b`
+Expected: 无输出（成功）
+
+Run: `npm test`
+Expected: 全绿。`src/i18n/languages.test.ts` 与 `src/prerender/inject.test.ts` 用 `/en/reference/...` 只是**字面量样例**（前者测语言前缀剥离、后者测路径转文件名），对新结构同样成立，**不需要改**。
+
+- [ ] **Step 23: 提交**
 
 ```bash
-git add src/components/reference/
+git add -A src/data/reference/en/categories.ts src/reference-routes.ts src/reference-routes.test.ts src/seo/content-en.ts src/seo/meta.test.ts src/prerender/routes.test.ts src/components/reference src/entry-server.test.tsx src/App.test.tsx src/ads/adPlacements.test.tsx
 git commit -m "$(cat <<'EOF'
-feat(reference): /en/ 收敛为学科入口，新增学科 hub 页
+feat(reference): URL 分层到学科，新增学科 hub 页
 
-100 页铺开后索引页列全量图表会变成噪声墙，改为三张学科卡；
-每个学科 hub 承担该科图表的内链枢纽职责。
+/en/math/multiplication-chart/ 取代 /en/reference/multiplication-chart/，
+新增 /en/{math,science,english}/ 三个学科 hub 作为该科图表的内链枢纽。
+/en/ 从「列全量图表」收敛为「三张学科卡」——100 页铺开后前者会变成噪声墙。
+
+学科与 URL 不一致时（如 /en/math/irregular-verbs/）返回未找到态，
+避免同一页在多个路径下产出重复内容。
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 EOF
@@ -2261,41 +2609,33 @@ EOF
 
 ---
 
-## Task 7: 路由接线
+## Task 6: 路由接线
 
 **Files:**
 - Modify: `src/App.tsx`
 - Modify: `src/App.test.tsx`
 
 **Interfaces:**
-- Consumes: `ENGLISH_HOME`、`ENGLISH_CATEGORY_ROUTE`、`ENGLISH_REFERENCE_ROUTE`（Task 3）；`ReferenceIndex`（Task 6）；`ReferenceCategory`（Task 6）；`ReferencePage`（Task 5）
+- Consumes: `ENGLISH_HOME`（Task 4）、`ENGLISH_CATEGORY_ROUTE`（Task 5）、`ENGLISH_REFERENCE_ROUTE`（Task 5）；`ReferenceIndex`（Task 5）、`ReferenceCategory`（Task 5）、`ReferencePage`（Task 5）
 - Produces: 无（应用级接线）
 
-- [ ] **Step 1: 改 `App.test.tsx` 的英文用例**
+`App.tsx` 里 `ENGLISH_REFERENCE_ROUTE` 是直接从路由表读的，所以 Task 5 已经把图表页路由切到新形状并生效。本任务只补学科 hub 那一条。
 
-删掉旧的 `/en/reference/:slug` 用例，换成三条：
+- [ ] **Step 1: 加 `App.test.tsx` 的 hub 用例**
+
+在已有的英文用例之间插入：
 
 ```tsx
-  it('serves the English index at /en', () => {
-    renderApp('/en');
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Printable Study Reference');
-  });
-
   it('serves an English category hub at /en/:category', () => {
     renderApp('/en/math');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Math');
-  });
-
-  it('serves an English chart at /en/:category/:slug', () => {
-    renderApp('/en/math/multiplication-chart');
-    expect(screen.getByRole('heading', { level: 1 }).textContent).toBe('Multiplication Chart (1–12)');
   });
 ```
 
 - [ ] **Step 2: 跑测试确认失败**
 
 Run: `npx vitest run src/App.test.tsx`
-Expected: FAIL — `/en/math` 落到中文 Home 或无渲染
+Expected: FAIL — `/en/math` 无匹配路由
 
 - [ ] **Step 3: 改 `App.tsx`**
 
@@ -2336,10 +2676,10 @@ export default App;
 Run: `npx vitest run src/App.test.tsx`
 Expected: PASS（7 个用例）
 
-- [ ] **Step 5: 全量测试与构建**
+- [ ] **Step 5: 全量测试、lint 与构建**
 
 Run: `npm test`
-Expected: 全绿。若 `src/seo/*` 或 `src/prerender/*` 有基于旧路径的断言而失败，按新 URL 结构更新断言值——**不要放宽断言**。
+Expected: 全绿
 
 Run: `npm run lint`
 Expected: 无错误
@@ -2347,23 +2687,26 @@ Expected: 无错误
 Run: `npm run build`
 Expected: 结束于 `prerendered N pages (+ robots.txt, sitemap.xml)`
 
-Run: `ls dist/en/math/`
-Expected: 列出 `index.html` 与 `multiplication-chart/`
+Run: `ls dist/en/ && ls dist/en/math/`
+Expected: 第一行有 `index.html`、`math/`、`science/`、`english/`；第二行有 `index.html` 与 `multiplication-chart/`
 
 Run: `grep -c "en/math/multiplication-chart" dist/sitemap.xml`
 Expected: ≥ 1
 
+Run: `grep -c "en/reference" dist/sitemap.xml`
+Expected: 0
+
 - [ ] **Step 6: 确认构建产物不进 git**
 
 Run: `git status --short`
-Expected: 只有源码改动（`dist/`、`dist-ssr/` 已在 .gitignore）
+Expected: 只有源码改动与 `.gitignore`（`dist/`、`dist-ssr/`、`.superpowers/` 均已忽略）
 
 - [ ] **Step 7: 提交**
 
 ```bash
 git add src/App.tsx src/App.test.tsx
 git commit -m "$(cat <<'EOF'
-feat(reference): 三条英文路由接线到 App
+feat(reference): 学科 hub 路由接线到 App
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 EOF
@@ -2372,7 +2715,7 @@ EOF
 
 ---
 
-## Task 8: Worker 旧 URL 301 与 `/en/` 真 404
+## Task 7: Worker 旧 URL 301 与 `/en/` 真 404
 
 本任务做两件事，都属 Section 2「迁移」与「`:category` 校验收敛成真 404」的落地：
 
@@ -2423,9 +2766,7 @@ describe('legacyReferenceRedirect', () => {
       'irregular-verbs',
     ];
     for (const slug of slugs) {
-      const target = legacyReferenceRedirect(
-        new URL(`https://syy.global/en/reference/${slug}/`),
-      );
+      const target = legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`));
       expect(target).toMatch(/^https:\/\/syy\.global\/en\/(math|science|english)\//);
     }
   });
@@ -2480,11 +2821,11 @@ export function legacyReferenceRedirect(url: URL): string | null {
 - [ ] **Step 4: 跑测试确认通过**
 
 Run: `npx vitest run worker/lib/redirect.test.ts`
-Expected: PASS（6 个用例）
+Expected: PASS（**8 个用例**：原有 5 个 + 新增 3 个）
 
 - [ ] **Step 5: 写失败测试（static-paths）**
 
-在 `worker/lib/static-paths.test.ts` 里加：
+在 `worker/lib/static-paths.test.ts` 的 `describe('assetCandidates')` 里追加两条：
 
 ```ts
   it('does not fall back to the app shell under the prerendered /en/ surface', () => {
@@ -2563,18 +2904,9 @@ fetch 里的重定向两行：
     const redirect = hostRedirect(url) ?? legacyRedirect;
 ```
 
-- [ ] **Step 10: 改 `serveStatic` 的兜底文案为 404**
+- [ ] **Step 10: 把 `serveStatic` 的兜底响应换成可看的 404 页**
 
-`serveStatic` 现在返回纯文本 `'Not found'`。既然 `/en/` 下的缺产物是真实 404，给它一个能看的页面：把最后一行改成
-
-```ts
-  return new Response(notFoundBody(), {
-    status: 404,
-    headers: { 'Content-Type': 'text/html; charset=utf-8' },
-  });
-```
-
-并在文件顶部（`normalizeOrigin` 之前）加：
+在文件里 `normalizeOrigin` 之前加：
 
 ```ts
 /** 404 响应体。刻意不用应用外壳——软 404 会被爬虫当作可索引的薄页面。 */
@@ -2590,6 +2922,21 @@ function notFoundBody(): string {
 }
 ```
 
+把 `serveStatic` 最后一行
+
+```ts
+  return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain' } });
+```
+
+换成
+
+```ts
+  return new Response(notFoundBody(), {
+    status: 404,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  });
+```
+
 - [ ] **Step 11: 跑 worker 测试**
 
 Run: `npx vitest run worker/`
@@ -2598,8 +2945,6 @@ Expected: PASS
 - [ ] **Step 12: 端到端验证**
 
 Run: `npm run build && npx wrangler dev worker/index.ts`（另开一个终端）
-
-以下每条都用 `curl -sI <url> | head -1` 检查状态，用 `-L` 跟随重定向确认落点：
 
 ```bash
 curl -sI  http://localhost:8787/en/reference/multiplication-chart/ | head -2
@@ -2624,7 +2969,7 @@ curl -sI  http://localhost:8787/tutorial/ | head -1
 - [ ] **Step 13: 提交**
 
 ```bash
-git add worker/
+git add worker/ .gitignore
 git commit -m "$(cat <<'EOF'
 feat(worker): 旧 /en/reference/* 301 到学科分层路径，/en/ 下关闭 SPA 兜底
 
@@ -2633,6 +2978,9 @@ feat(worker): 旧 /en/reference/* 301 到学科分层路径，/en/ 下关闭 SPA
 
 六个历史 slug→学科是冻结的字面量，刻意不从 src 导入——worker 是
 独立编译边界。
+
+顺手把 .superpowers/ 加进 .gitignore：SDD 工作区是 git-ignored scratch，
+本仓库先前没忽略它。
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 EOF
@@ -2648,18 +2996,19 @@ EOF
 - `npm test` 全绿
 - `npm run lint` 无错误
 - `npm run build` 成功，输出包含 `/en/`、`/en/{math,science,english}/`、六张图表页
-- `dist/sitemap.xml` 含全部英文面 URL
+- `dist/sitemap.xml` 含全部英文面 URL，且**不含**任何 `en/reference`
 - `curl` 验证：旧 `/en/reference/*` → 301，新路径 → 200 且 HTML 内含 H1，`/en/typo/` → 404，中文站路径行为不变
 - `src/data/reference.ts` 已删除，全仓库无 `getReferenceTable` / `REFERENCE_TABLES` / `REFERENCE_SLUGS` 残留
 - 图表页渲染顺序为 面包屑 → H1 → intro → blocks → howToUse → 广告 → FAQ → related，且恰好 1 个 AdUnit
 
 ## 已知限制（本计划不处理，需在后续计划中收口）
 
-- **客户端未找到态仍是 200。** Worker 层已经把 `/en/` 下的缺产物变成真 404，但如果用户从已加载的页面里做客户端跳转到 `/en/typo/`，React Router 会渲染未找到组件而不改 HTTP 状态。这不会产生可索引的 URL（该 URL 直连时返回 404），但严格来说仍是软 404。彻底修需要客户端路由拦截，不在本计划范围。
+- **客户端未找到态仍是 200。** Worker 层已经把 `/en/` 下的缺产物变成真 404，但如果用户从已加载的页面里做客户端跳转到 `/en/typo/`，React Router 会渲染未找到组件而不改 HTTP 状态。这不会产生可索引的 URL（该 URL 直连时返回 404），但严格来说仍是软 404。彻底修需要客户端路由拦截。
 - **`ReferenceNotFound` 没有 `noindex`。** 该组件所在页面直连时已经是 404，无需额外标记；若将来出现 200 态的未找到页面再补。
+- **`src/i18n/languages.test.ts` 与 `src/prerender/inject.test.ts` 仍以 `/en/reference/...` 作为样例字符串。** 两者测的都是路径的通用变换（语言前缀剥离 / 路径转文件名），对新结构同样成立，所以刻意不改——改了只是噪声。
 
 ## 不在本计划范围内
 
 - **阶段 C（SEO 补完）**：`PageContent.kind` 扩展、`LearningResource` / `FAQPage` / `CollectionPage` JSON-LD、标题模板加 "Printable"、og:image 管线、GA4 与同意模式。本计划里 hub 页与图表页仍然走 `kind: 'view'`，`<title>` 仍是 `{title} - {brand}` 旧格式——这是刻意的中间状态。
 - **阶段 D（合规与变现）**：合规八页、`AD_SLOTS` 占位槽位改 `null`、图表页第二个广告位。
-- **阶段 E（内容扩充）**：6 页 → 100 页。注意 `en/english.ts` 的 `related: []` 与各 hub 页的稀疏清单（science 1 页、english 1 页）都只是当前内容量的反映，靠扩充内容自然解决。
+- **阶段 E（内容扩充）**：6 页 → 100 页。`en/english.ts` 的 `related: []` 与 science/english 两个 hub 各只有 1 张卡，都是当前内容量的反映，靠扩充内容自然解决。

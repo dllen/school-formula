@@ -46,3 +46,6 @@ scripts/output-*/
 scripts/knowledge-*.json
 scripts/id-mapping.json
 scripts/generate-config.json*
+
+# SDD 工作区（skill 说明为 git-ignored scratch，仓库原先未忽略）
+.superpowers/
