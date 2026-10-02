@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    // entry-prerender.ts 是 Node 侧的构建脚本（用 node:fs 与 process），却又 import
+    // 了 src 下的 React 组件，所以它既需要 node 类型、也需要 DOM + JSX。
+    // 它原先只被 tsconfig.app.json 的 exclude 排除在外——没有任何配置检查它。
+    "types": ["vite/client", "node"],
+    "noEmit": true,
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.prerender.tsbuildinfo"
+  },
+  // composite 项目必须列出它引用到的每个文件；entry-prerender 又传递地 import 了
+  // 整个 src，所以这里 include 整个 src。它 extends 了 tsconfig.app.json，比后者
+  // 只多不少（多了 node 类型），因此不会误报 app 能接受的文件。
+  "include": ["src"],
+  "exclude": ["src/data/tutorials/_template.ts"]
+}

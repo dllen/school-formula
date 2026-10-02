@@ -125,4 +125,17 @@ describe('generateNumOptions', () => {
     const { opts, ans } = generateNumOptions(0);
     expect(opts[ans]).toBe('0');
   });
+
+  // 回归护栏：曾经干扰项的接受条件是 `d >= 0`，而 offset 只在 1..3 之间，
+  // 于是答案 <= -4 时一个干扰项也凑不出来，generateNumOptions 会**静默**只返回
+  // 1 个选项。qFunc1（y = kx + b，b 可取负）是唯一能产出负答案的生成器，
+  // 表现为 generators.test.ts 偶发断言失败（约 1/30 轮）。
+  it('returns a full set of options even when the answer is negative', () => {
+    for (const answer of [-1, -2, -3, -4, -5, -50, -1000]) {
+      const { opts, ans } = generateNumOptions(answer);
+      expect(opts, `answer=${answer}`).toHaveLength(4);
+      expect(new Set(opts).size, `answer=${answer} 选项出现重复`).toBe(4);
+      expect(opts[ans]).toBe(String(answer));
+    }
+  });
 });

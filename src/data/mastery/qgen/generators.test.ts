@@ -185,6 +185,30 @@ describe('高中 generators', () => {
     });
   });
 
+  // func 曾经只有一个随机位（rand(0, 1)），全文只有 2 种题目——是 31 个生成器里最薄的
+  // 一个。后果不只是内容单薄：'every generator produces varied questions' 那条断言
+  // 抽 10 次要求出现 2 种，而 2 种变体抽到 10 次全同的概率是 1/512，
+  // 于是它成了 generators.test.ts 残余 flake 的唯一来源。
+  // 同文件其它生成器都随机化算子，只有它把 2x + 1 和 f(3) 写死了。
+  it('func generator varies its operands instead of hardcoding one example', () => {
+    const stems = new Set<string>();
+    for (let i = 0; i < 200; i++) stems.add(GENERATORS.func().q);
+    expect(stems.size).toBeGreaterThan(2);
+  });
+
+  it('func generator evaluates f(x) = ax + b correctly', () => {
+    let checked = 0;
+    for (let i = 0; i < 60; i++) {
+      const q = GENERATORS.func();
+      const m = q.q.match(/f\(x\) = (\d+)x \+ (\d+)，f\((\d+)\)/);
+      if (!m) continue; // 命中的是「下列是函数的是」那一支
+      const [a, b, x] = m.slice(1).map(Number);
+      expect(q.opts[q.ans]).toBe(String(a * x + b));
+      checked++;
+    }
+    expect(checked).toBeGreaterThan(0);
+  });
+
   it('sequence generator: arithmetic progression a_n = a1 + (n-1)d', () => {
     for (let i = 0; i < 20; i++) {
       const q = GENERATORS.sequence();

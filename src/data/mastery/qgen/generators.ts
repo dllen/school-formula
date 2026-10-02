@@ -226,7 +226,16 @@ function qFuncConcept(): Question {
   if (type === 0) {
     return Q(`下列是函数的是？`, [`y = x²`, `x² + y² = 1`, `y = ±x`, `|y| = x`], 0, 1, `函数要求每个 x 对应唯一 y，y=x² 满足`, '函数概念');
   }
-  return Q(`函数 f(x) = 2x + 1，f(3) = ？`, ['7', '5', '6', '4'], 0, 1, `f(3) = 2×3 + 1 = 7`, '函数求值');
+  // 算子要随机化。原先这里的 2x + 1 与 f(3) 是写死的，导致这个生成器总共只有
+  // 2 种题目——31 个生成器里最薄的一个，而且连带让 generators.test.ts 的
+  // 'every generator produces varied questions' 有约 1/512 的几率偶发失败。
+  // 同文件其它生成器都是随机化算子的，这里跟上。
+  const a = rand(2, 5);
+  const b = rand(1, 6);
+  const x = rand(2, 5);
+  const y = a * x + b;
+  const { opts, ans } = generateNumOptions(y);
+  return Q(`函数 f(x) = ${a}x + ${b}，f(${x}) = ？`, opts, ans, 1, `f(${x}) = ${a}×${x} + ${b} = ${y}`, '函数求值');
 }
 
 function qExpLog(): Question {
