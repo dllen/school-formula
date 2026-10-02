@@ -1,7 +1,7 @@
 import { handleAuth } from './routes/auth';
 import { handleUser } from './routes/user';
 import { handleAI } from './routes/ai';
-import { hostRedirect, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
+import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
 import { assetCandidates, isSeoFile } from './lib/static-paths';
 import type { Env } from './types';
 
@@ -71,8 +71,9 @@ export default {
     const path = url.pathname;
     const corsOrigin = getAllowedOrigin(request, env);
 
-    const legacyRedirect =
-      request.method === 'GET' ? (legacyReferenceRedirect(url) ?? legacyViewRedirect(url)) : null;
+    const legacyRedirect = isRedirectableMethod(request.method)
+      ? (legacyReferenceRedirect(url) ?? legacyViewRedirect(url))
+      : null;
     const redirect = hostRedirect(url) ?? legacyRedirect;
     if (redirect) {
       return Response.redirect(redirect, 301);

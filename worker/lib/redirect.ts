@@ -14,6 +14,15 @@ export function hostRedirect(url: URL): string | null {
   return target.toString();
 }
 
+/**
+ * 可被重定向的请求方法。GET 与 HEAD 都要跳转——RFC 9110 §9.3.2 要求 HEAD
+ * 返回与 GET 相同的状态码，否则链接检查器与预取器会把旧地址当成 404。
+ * 其余方法（OPTIONS / POST 等）保持不跳转。
+ */
+export function isRedirectableMethod(method: string): boolean {
+  return method === 'GET' || method === 'HEAD';
+}
+
 export function legacyViewRedirect(url: URL): string | null {
   if (url.pathname !== '/') return null;
   const view = url.searchParams.get('view');

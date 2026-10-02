@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { hostRedirect, legacyReferenceRedirect, legacyViewRedirect } from './redirect';
+import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './redirect';
 
 describe('hostRedirect', () => {
   it('redirects mobi/one apex and www to syy.global preserving path and query', () => {
@@ -39,18 +39,19 @@ describe('legacyReferenceRedirect', () => {
     ).toBe('https://syy.global/en/science/physics-constants/');
   });
 
-  it('covers every chart that existed before the move', () => {
-    const slugs = [
-      'multiplication-chart',
-      'squares-cubes-roots',
-      'trigonometric-identities',
-      'metric-conversions',
-      'physics-constants',
-      'irregular-verbs',
-    ];
-    for (const slug of slugs) {
-      const target = legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`));
-      expect(target).toMatch(/^https:\/\/syy\.global\/en\/(math|science|english)\//);
+  it('maps every legacy slug to its exact category', () => {
+    const expected: Record<string, string> = {
+      'multiplication-chart': 'math',
+      'squares-cubes-roots': 'math',
+      'trigonometric-identities': 'math',
+      'metric-conversions': 'math',
+      'physics-constants': 'science',
+      'irregular-verbs': 'english',
+    };
+    for (const [slug, category] of Object.entries(expected)) {
+      expect(legacyReferenceRedirect(new URL(`https://syy.global/en/reference/${slug}/`))).toBe(
+        `https://syy.global/en/${category}/${slug}/`,
+      );
     }
   });
 
@@ -61,5 +62,18 @@ describe('legacyReferenceRedirect', () => {
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/en/reference/nope/'))).toBeNull();
     expect(legacyReferenceRedirect(new URL('https://syy.global/tutorial'))).toBeNull();
+  });
+});
+
+describe('isRedirectableMethod', () => {
+  it('redirects both GET and HEAD so HEAD matches GET (RFC 9110 §9.3.2)', () => {
+    expect(isRedirectableMethod('GET')).toBe(true);
+    expect(isRedirectableMethod('HEAD')).toBe(true);
+  });
+
+  it('leaves other methods alone', () => {
+    expect(isRedirectableMethod('OPTIONS')).toBe(false);
+    expect(isRedirectableMethod('POST')).toBe(false);
+    expect(isRedirectableMethod('')).toBe(false);
   });
 });
