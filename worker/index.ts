@@ -1,9 +1,21 @@
 import { handleAuth } from './routes/auth';
 import { handleUser } from './routes/user';
 import { handleAI } from './routes/ai';
-import { hostRedirect, legacyViewRedirect } from './lib/redirect';
+import { hostRedirect, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
 import { assetCandidates, isSeoFile } from './lib/static-paths';
 import type { Env } from './types';
+
+/** 404 响应体。刻意不用应用外壳——软 404 会被爬虫当作可索引的薄页面。 */
+function notFoundBody(): string {
+  return [
+    '<!doctype html><html lang="en"><head><meta charset="utf-8">',
+    '<meta name="viewport" content="width=device-width,initial-scale=1">',
+    '<title>Page not found</title>',
+    '</head><body><h1>Page not found</h1>',
+    '<p>This page does not exist. <a href="/en/">Browse the reference charts</a>.</p>',
+    '</body></html>',
+  ].join('');
+}
 
 function normalizeOrigin(value: string): string {
   return value.trim().replace(/\/+$/, '');
@@ -47,7 +59,10 @@ async function serveStatic(request: Request, env: Env): Promise<Response> {
       // 尝试下一个候选
     }
   }
-  return new Response('Not found', { status: 404, headers: { 'Content-Type': 'text/plain' } });
+  return new Response(notFoundBody(), {
+    status: 404,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  });
 }
 
 export default {
@@ -56,7 +71,9 @@ export default {
     const path = url.pathname;
     const corsOrigin = getAllowedOrigin(request, env);
 
-    const redirect = hostRedirect(url) ?? (request.method === 'GET' ? legacyViewRedirect(url) : null);
+    const legacyRedirect =
+      request.method === 'GET' ? (legacyReferenceRedirect(url) ?? legacyViewRedirect(url)) : null;
+    const redirect = hostRedirect(url) ?? legacyRedirect;
     if (redirect) {
       return Response.redirect(redirect, 301);
     }

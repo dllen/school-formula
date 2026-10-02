@@ -16,6 +16,19 @@ describe('assetCandidates', () => {
     expect(assetCandidates('/robots.txt')).toEqual(['/robots.txt']);
     expect(assetCandidates('/sitemap.xml')).toEqual(['/sitemap.xml']);
   });
+
+  it('does not fall back to the app shell under the prerendered /en/ surface', () => {
+    expect(assetCandidates('/en/math/multiplication-chart')).toEqual([
+      '/en/math/multiplication-chart/index.html',
+    ]);
+    expect(assetCandidates('/en/typo')).toEqual(['/en/typo/index.html']);
+    expect(assetCandidates('/en')).toEqual(['/en/index.html']);
+  });
+
+  it('keeps the app-shell fallback for the Chinese app', () => {
+    expect(assetCandidates('/tutorial')).toEqual(['/tutorial/index.html', '/index.html']);
+    expect(assetCandidates('/unknown')).toEqual(['/unknown/index.html', '/index.html']);
+  });
 });
 
 describe('isSeoFile', () => {
