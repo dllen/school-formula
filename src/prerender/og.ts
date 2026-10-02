@@ -72,7 +72,7 @@ async function prepareRenderer(): Promise<ReturnType<typeof loadFonts>> {
 export async function writeOgImages(
   distDir: string,
   prepare: () => Promise<ReturnType<typeof loadFonts>> = prepareRenderer,
-): Promise<number> {
+): Promise<OgRoute[]> {
   // wasm 初始化与字体载入要在逐张 try 之外（它们不是单页的事），但**同样必须被兜住**：
   // writeOgImages 是被 entry-prerender.ts 顶层 await 的，从这里抛出去就是一个
   // unhandled rejection，整个 `npm run build` 直接死——spec:220 明文禁止
@@ -84,10 +84,10 @@ export async function writeOgImages(
     fonts = await prepare();
   } catch (error) {
     console.warn(`og: skipped all ${OG_ROUTES.length} cards — ${(error as Error).message}`);
-    return 0;
+    return [];
   }
 
-  let written = 0;
+  const written: OgRoute[] = [];
   for (const entry of OG_ROUTES) {
     try {
       const svg = await satori(cardFor(entry) as never, {
@@ -103,8 +103,8 @@ export async function writeOgImages(
       mkdirSync(dirname(outFile), { recursive: true });
       writeFileSync(outFile, png);
 
-      // 文件确实落盘了才计数——free 失败不该让计数少报一张已经在磁盘上的图。
-      written++;
+      // 文件确实落盘了才计入——free 失败不该让一张已经在磁盘上的图漏报。
+      written.push(entry);
 
       // wasm 版要求手动释放（该包的 README 原文：Wasm-based instances require manual
       // memory management via .free()）。10 张图的泄漏量可忽略，但图数一旦增长

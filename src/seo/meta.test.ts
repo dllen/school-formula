@@ -4,6 +4,8 @@ import { REFERENCE_PAGES } from '../data/reference';
 import { PRERENDER_PATHS } from '../prerender/routes';
 import { ENGLISH_HOME, ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { buildSeoMeta, canonicalUrl } from './meta';
+import { writtenRouteSet } from './og';
+import { OG_ROUTES } from './og-routes';
 import { brandFor } from './site';
 
 const ZH = brandFor({ code: 'zh-CN', prefix: '' });
@@ -170,9 +172,13 @@ describe('English title template', () => {
   });
 });
 
+// 十张图都写成功——正常构建下 buildSeoMeta 收到的集合。
+// writtenRouteSet 会归一化，所以不能拿 OG_ROUTES.map(r => r.route) 顶替。
+const ALL_WRITTEN = writtenRouteSet(OG_ROUTES);
+
 describe('og:image', () => {
   it('points at the generated card for an English page', () => {
-    expect(buildSeoMeta('/en/math/multiplication-chart').ogImage).toEqual({
+    expect(buildSeoMeta('/en/math/multiplication-chart', ALL_WRITTEN).ogImage).toEqual({
       url: 'https://syy.global/og/math/multiplication-chart.png',
       width: 1200,
       height: 630,
@@ -180,12 +186,25 @@ describe('og:image', () => {
   });
 
   it('is absent for pages with no generated image', () => {
-    expect(buildSeoMeta('/').ogImage).toBeUndefined();
-    expect(buildSeoMeta('/tutorial').ogImage).toBeUndefined();
+    expect(buildSeoMeta('/', ALL_WRITTEN).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/tutorial', ALL_WRITTEN).ogImage).toBeUndefined();
+  });
+
+  it('is absent when the card was not written, even though the page has one', () => {
+    // spec:220 —— 单张渲染失败的那页要省略标签，而不是指向一个不存在的文件。
+    const partial = writtenRouteSet(OG_ROUTES.filter((entry) => entry.path !== 'og/math.png'));
+    expect(buildSeoMeta('/en/math', partial).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/en/math', partial).twitter.card).toBe('summary');
+  });
+
+  it('is absent when nothing was written at all', () => {
+    // 字体缺失 / wasm 起不来时 writeOgImages 返回空数组，构建照常成功。
+    expect(buildSeoMeta('/en/math', new Set()).ogImage).toBeUndefined();
+    expect(buildSeoMeta('/en/math').ogImage).toBeUndefined();
   });
 
   it('uses a large twitter card only when there is an image', () => {
-    expect(buildSeoMeta('/en/math').twitter.card).toBe('summary_large_image');
-    expect(buildSeoMeta('/').twitter.card).toBe('summary');
+    expect(buildSeoMeta('/en/math', ALL_WRITTEN).twitter.card).toBe('summary_large_image');
+    expect(buildSeoMeta('/', ALL_WRITTEN).twitter.card).toBe('summary');
   });
 });

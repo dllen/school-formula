@@ -19,7 +19,7 @@ export interface SeoMeta {
   alternates: AlternateLink[];
   og: { type: string; siteName: string; title: string; description: string; url: string; locale: string };
   twitter: { card: string; title: string; description: string };
-  /** 绝对 og:image URL 与尺寸。没有为该页生成图时为 undefined。 */
+  /** 绝对 og:image URL 与尺寸。没有为该页生成图、或那张图没写成功时为 undefined。 */
   ogImage?: { url: string; width: number; height: number };
   jsonLd: Record<string, unknown>[];
 }
@@ -153,12 +153,15 @@ function breadcrumbJsonLd(content: PageContent, context: string): Record<string,
 }
 
 /** Derive the complete head metadata for a route. Pure and total. */
-export function buildSeoMeta(path: string): SeoMeta {
+export function buildSeoMeta(
+  path: string,
+  writtenOgRoutes: ReadonlySet<string> = new Set<string>(),
+): SeoMeta {
   const language = languageForPath(path);
   const brand = brandFor(language);
   const content = resolvePageContent(path);
   const canonical = canonicalUrl(path);
-  const imageUrl = ogImageUrl(path);
+  const imageUrl = ogImageUrl(path, writtenOgRoutes);
   const alternates: AlternateLink[] = [
     { hreflang: language.code, href: canonical },
     { hreflang: 'x-default', href: canonical },

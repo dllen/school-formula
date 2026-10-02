@@ -39,7 +39,11 @@ describe('writeOgImages', () => {
     const distDir = mkdtempSync(join(tmpdir(), 'og-test-'));
     try {
       const written = await writeOgImages(distDir);
-      expect(written).toBe(10);
+      expect(written).toHaveLength(10);
+      // 返回值是「真的写成功的路由」——标签的有无以它为准，所以它必须与 OG_ROUTES 一一对应。
+      expect(new Set(written.map((entry) => entry.path))).toEqual(
+        new Set(OG_ROUTES.map((entry) => entry.path)),
+      );
 
       // 逐张核对：文件真在盘上、是真 PNG、尺寸对。只读回一张的话，
       // 「渲染一张然后复制十份」这种 bug 能整个溜过去。
@@ -74,7 +78,7 @@ describe('writeOgImages', () => {
     try {
       await expect(
         writeOgImages(distDir, () => Promise.reject(new Error('ENOENT: missing font'))),
-      ).resolves.toBe(0);
+      ).resolves.toHaveLength(0);
     } finally {
       rmSync(distDir, { recursive: true, force: true });
     }
