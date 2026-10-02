@@ -81,4 +81,62 @@ describe('generateChat', () => {
             onStream,
         );
     });
+
+    it('streams through Ollama with an empty API key instead of being blocked by the key guard', async () => {
+        window.localStorage.setItem(
+            'school_formula_ai_config',
+            JSON.stringify({
+                provider: 'ollama',
+                apiKey: '',
+                baseUrl: 'http://localhost:11434/v1',
+                model: 'qwen2.5',
+            }),
+        );
+        const mockCreate = vi.fn().mockResolvedValue({
+            [Symbol.asyncIterator]: async function* () {
+                yield { choices: [{ delta: { content: '本地模型' } }] };
+            },
+        });
+        vi.mocked(OpenAI).mockImplementation(function (this: unknown) {
+            return {
+                chat: { completions: { create: mockCreate } },
+            };
+        } as never);
+
+        await generateChat(MESSAGES, onStream);
+
+        expect(OpenAI).toHaveBeenCalledWith(
+            expect.objectContaining({
+                baseURL: 'http://localhost:11434/v1',
+                apiKey: 'ollama',
+            }),
+        );
+        expect(mockCreate).toHaveBeenCalledWith(
+            expect.objectContaining({ model: 'qwen2.5', stream: true }),
+        );
+        expect(onStream).toHaveBeenCalledWith('本地模型');
+    });
+
+    it('surfaces an actionable message when Ollama is unreachable', async () => {
+        window.localStorage.setItem(
+            'school_formula_ai_config',
+            JSON.stringify({
+                provider: 'ollama',
+                apiKey: '',
+                baseUrl: 'http://localhost:11434/v1',
+                model: 'qwen2.5',
+            }),
+        );
+        vi.mocked(OpenAI).mockImplementation(function (this: unknown) {
+            return {
+                chat: {
+                    completions: {
+                        create: vi.fn().mockRejectedValue(new TypeError('Failed to fetch')),
+                    },
+                },
+            };
+        } as never);
+
+        await expect(generateChat(MESSAGES, onStream)).rejects.toThrow(/OLLAMA_ORIGINS/);
+    });
 });

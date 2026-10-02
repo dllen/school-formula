@@ -1,6 +1,8 @@
 // src/services/ai/practice.ts
 import { callGateway } from '../gateway';
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 // 原 PRACTICE_PROMPT 从 ai.ts L228-323 完整复制；行为不变约束
@@ -46,7 +48,7 @@ export const generatePracticeQuestions = async (
         return;
     }
 
-    if (!config.apiKey) {
+    if (requiresApiKey(config) && !config.apiKey) {
         throw new Error('API Key not configured');
     }
 
@@ -66,6 +68,6 @@ export const generatePracticeQuestions = async (
         }
     } catch (error) {
         console.error('AI Practice Generation Error:', error);
-        throw error;
+        throw friendlyAIError(error, config);
     }
 };

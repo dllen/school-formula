@@ -1,6 +1,8 @@
 // src/services/ai/tutorial.ts
 import { callGateway } from '../gateway';
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 // 原 prompt 模板从 ai.ts L137-228 完整复制；行为不变约束
@@ -44,7 +46,7 @@ export const generateTutorialContent = async (
         return;
     }
 
-    if (!config.apiKey) {
+    if (requiresApiKey(config) && !config.apiKey) {
         throw new Error('API Key not configured');
     }
 
@@ -64,6 +66,6 @@ export const generateTutorialContent = async (
         }
     } catch (error) {
         console.error('AI Tutorial Generation Error:', error);
-        throw error;
+        throw friendlyAIError(error, config);
     }
 };

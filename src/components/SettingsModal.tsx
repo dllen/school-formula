@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getAIConfig, saveAIConfig, PROVIDER_DEFAULTS } from '../services/ai';
 import { useAuth } from '../context/auth-context';
 import type { AIConfig } from '../services/ai';
+import { OllamaGuide } from './ai/OllamaGuide';
 
 interface SettingsModalProps {
     isOpen: boolean;
@@ -39,6 +40,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
     if (!isOpen) return null;
 
+    // Ollama 跑在本机、不校验密钥，所以不显示 API Key 输入框；引导里的模型名跟随用户当前填写。
+    const showApiKeyField = config.provider !== 'gateway' && config.provider !== 'ollama';
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
             <div className="bg-white rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.16)] w-full max-w-md overflow-hidden">
@@ -49,7 +53,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     </button>
                 </div>
 
-                <div className="p-6 space-y-6">
+                <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
                     {isVip && config.provider !== 'gateway' && (
                         <div className="rounded-lg bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-700">
                             您已是 VIP 会员，推荐切换到「Cloudflare 网关（VIP）」模式，无需配置 API Key。
@@ -59,7 +63,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     <div>
                         <label className="block text-[14px] font-medium text-[#1F2329] mb-2">服务提供商</label>
                         <div className="grid grid-cols-2 gap-3">
-                            {(['openai', 'deepseek', 'zhipu', 'custom', 'gateway'] as const).map(p => (
+                            {(['openai', 'deepseek', 'zhipu', 'ollama', 'custom', 'gateway'] as const).map(p => (
                                 <button
                                     key={p}
                                     onClick={() => handleProviderChange(p)}
@@ -71,6 +75,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                                     {p === 'openai' && 'OpenAI'}
                                     {p === 'deepseek' && 'DeepSeek'}
                                     {p === 'zhipu' && '智谱 AI'}
+                                    {p === 'ollama' && 'Ollama（本地）'}
                                     {p === 'custom' && '自定义'}
                                     {p === 'gateway' && 'Cloudflare 网关（VIP）'}
                                 </button>
@@ -78,8 +83,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                         </div>
                     </div>
 
-                    {config.provider !== 'gateway' && (
-                    <div className="space-y-4">
+                    {showApiKeyField && (
                         <div>
                             <label className="block text-[14px] font-medium text-[#1F2329] mb-1">API Key</label>
                             <input
@@ -105,7 +109,31 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                                 </p>
                             )}
                         </div>
+                    )}
 
+                    {config.provider === 'ollama' && (
+                        <>
+                            <OllamaGuide model={config.model || PROVIDER_DEFAULTS.ollama.model || ''} />
+                            <div className="space-y-4">
+                                <div>
+                                    <label className="block text-[14px] font-medium text-[#1F2329] mb-1">模型名称</label>
+                                    <input
+                                        type="text"
+                                        value={config.model}
+                                        onChange={e => setConfig({ ...config, model: e.target.value })}
+                                        className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-[14px]"
+                                        placeholder="qwen2.5"
+                                    />
+                                    <p className="mt-1 text-xs text-gray-400">
+                                        要填已下载到本地的模型；在终端执行 ollama list 可以看到现有的。
+                                    </p>
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    {config.provider !== 'gateway' && config.provider !== 'ollama' && (
+                    <div className="space-y-4">
                         <div>
                             <label className="block text-[14px] font-medium text-[#1F2329] mb-1">Base URL</label>
                             <input

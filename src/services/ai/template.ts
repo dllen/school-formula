@@ -2,6 +2,8 @@
 import type { PromptTemplate } from '../../data/prompts/types';
 import { callGateway } from '../gateway';
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 /**
@@ -36,7 +38,7 @@ export const generateFromTemplate = async (
         throw new Error('AI 配置未找到');
     }
 
-    if (!config.apiKey && config.provider !== 'gateway') {
+    if (requiresApiKey(config) && !config.apiKey) {
         throw new Error('API Key not configured');
     }
 
@@ -63,6 +65,6 @@ export const generateFromTemplate = async (
         }
     } catch (error) {
         console.error('AI Template Generation Error:', error);
-        throw error;
+        throw friendlyAIError(error, config);
     }
 };

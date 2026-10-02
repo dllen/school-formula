@@ -1,6 +1,8 @@
 // src/services/ai/chat.ts
 import { chatGateway, type ChatMessage } from '../gateway';
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 export const generateChat = async (
@@ -17,7 +19,7 @@ export const generateChat = async (
         return;
     }
 
-    if (!config.apiKey) {
+    if (requiresApiKey(config) && !config.apiKey) {
         throw new Error('API Key not configured');
     }
 
@@ -37,6 +39,8 @@ export const generateChat = async (
         }
     } catch (error) {
         console.error('AI Chat Error:', error);
-        throw error;
+        const friendly = friendlyAIError(error, config);
+        if (friendly !== error) console.error('AI Chat Error (friendly):', friendly.message);
+        throw friendly;
     }
 };

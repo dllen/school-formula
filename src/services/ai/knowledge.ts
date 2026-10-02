@@ -1,6 +1,8 @@
 // src/services/ai/knowledge.ts
 import { callGateway } from '../gateway';
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 const KNOWLEDGE_PROMPT = (topic: string, context: string) => `
@@ -42,7 +44,7 @@ export const generateKnowledgeContent = async (
         return;
     }
 
-    if (!config.apiKey) {
+    if (requiresApiKey(config) && !config.apiKey) {
         throw new Error('API Key not configured');
     }
 
@@ -62,6 +64,6 @@ export const generateKnowledgeContent = async (
         }
     } catch (error) {
         console.error('AI Generation Error:', error);
-        throw error;
+        throw friendlyAIError(error, config);
     }
 };

@@ -1,5 +1,7 @@
 // src/services/ai/classical.ts
 import { createOpenAIClient } from './client';
+import { requiresApiKey } from './config';
+import { friendlyAIError } from './errors';
 import { getAIConfig } from './storage';
 
 // 原 CLASSICAL_PROMPT 从 ai.ts L323-383 完整复制；行为不变约束。
@@ -34,7 +36,7 @@ export const generateClassicalInterpretation = async (
     onStream: (chunk: string) => void
 ): Promise<void> => {
     const config = getAIConfig();
-    if (!config || !config.apiKey) {
+    if (!config || (requiresApiKey(config) && !config.apiKey)) {
         throw new Error('API Key not configured');
     }
 
@@ -58,6 +60,6 @@ export const generateClassicalInterpretation = async (
         }
     } catch (error) {
         console.error('AI Classical Interpretation Error:', error);
-        throw error;
+        throw friendlyAIError(error, config);
     }
 };
