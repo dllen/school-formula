@@ -3051,23 +3051,28 @@ Expected: PASS
 Run: `npm run build && npx wrangler dev worker/index.ts`（另开一个终端）
 
 ```bash
-curl -sI  http://localhost:8787/en/reference/multiplication-chart/ | head -2
-# 期望：HTTP/1.1 301 + location: http://localhost:8787/en/math/multiplication-chart/
+# 注意：必须用 GET 检查，不能用 curl -sI（HEAD）。跳转的判据是
+# `request.method === 'GET'`，这是沿用既有 legacyViewRedirect 的写法，
+# 所以 HEAD 请求不会跳转。搜索引擎与浏览器都用 GET，因此行为是对的；
+# 但 HEAD 版链接检查器会把这六个旧 URL 看成 404，属已知取舍。
 
-curl -sI  http://localhost:8787/en/math/multiplication-chart/ | head -1
-# 期望：HTTP/1.1 200
+curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' http://localhost:8787/en/reference/multiplication-chart/
+# 期望：301 http://localhost:8787/en/math/multiplication-chart/
 
-curl -s   http://localhost:8787/en/math/multiplication-chart/ | grep -c "Multiplication Chart (1–12)"
+curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8787/en/math/multiplication-chart/
+# 期望：200
+
+curl -s http://localhost:8787/en/math/multiplication-chart/ | grep -c "Multiplication Chart (1–12)"
 # 期望：≥ 1
 
-curl -sI  http://localhost:8787/en/typo/ | head -1
-# 期望：HTTP/1.1 404
+curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8787/en/typo/
+# 期望：404
 
-curl -sI  http://localhost:8787/en/ | head -1
-# 期望：HTTP/1.1 200
+curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8787/en/
+# 期望：200
 
-curl -sI  http://localhost:8787/tutorial/ | head -1
-# 期望：HTTP/1.1 200（中文站兜底行为不变）
+curl -s -o /dev/null -w '%{http_code}\n' http://localhost:8787/tutorial/
+# 期望：200（中文站兜底行为不变）
 ```
 
 - [ ] **Step 13: 提交**
@@ -3109,7 +3114,12 @@ EOF
 
 - **客户端未找到态仍是 200。** Worker 层已经把 `/en/` 下的缺产物变成真 404，但如果用户从已加载的页面里做客户端跳转到 `/en/typo/`，React Router 会渲染未找到组件而不改 HTTP 状态。这不会产生可索引的 URL（该 URL 直连时返回 404），但严格来说仍是软 404。彻底修需要客户端路由拦截。
 - **`ReferenceNotFound` 没有 `noindex`。** 该组件所在页面直连时已经是 404，无需额外标记；若将来出现 200 态的未找到页面再补。
+- **HEAD 请求不会触发旧 URL 跳转，返回 404。** 跳转判据是 `request.method === 'GET'`（沿用既有 `legacyViewRedirect` 的写法），所以 `curl -sI` 这六个旧地址会看到 404 而 GET 看到 301。搜索引擎与浏览器都用 GET，功能上无影响；但 HEAD 版链接检查器会误报。要改的话是把判据放宽到 GET 与 HEAD 两法。
 - **`src/i18n/languages.test.ts` 与 `src/prerender/inject.test.ts` 仍以 `/en/reference/...` 作为样例字符串。** 两者测的都是路径的通用变换（语言前缀剥离 / 路径转文件名），对新结构同样成立，所以刻意不改——改了只是噪声。
+
+## 本计划之外发现的问题（不计入本计划，但需要单独处理）
+
+- **`wrangler.toml` 与外层静态资源的绑定不匹配。** `worker/index.ts` 从 `e9c3316` 起使用 `env.ASSETS`，但 `wrangler.toml` 里只有 `[site] bucket = "./dist"`（Workers Sites），全仓库没有任何 `[assets]` 段。部署链路是 `npm run build` + `wrangler deploy`，读的就是这份配置，因此部署出去的 Worker 拿不到 `ASSETS` 绑定。Task 7 的实机验证显示：在 `wrangler dev` 下用提交里的配置，**连真实存在的静态资源也一律 404**；改用临时配置补上 `[assets] … binding = "ASSETS"` 后一切正常（临时配置已删除，仓库配置未被改动）。这看起来意味着线上静态服务自 `e9c3316` 起就是坏的，但本计划无权改部署配置，需单独确认与修复——尤其要先确认 `syy.global` 到底由哪个 Worker 服务（本配置的 `routes` 只覆盖 `api.*`）。
 
 ## 不在本计划范围内
 
