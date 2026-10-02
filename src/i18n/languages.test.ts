@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { appPathFor, DEFAULT_LANGUAGE, languageForPath } from './languages';
+import { appPathFor, DEFAULT_LANGUAGE, EN, languageForPath, localizedPath, ZH } from './languages';
 
 describe('languageForPath', () => {
   it('detects the prefix language', () => {
@@ -16,6 +16,20 @@ describe('languageForPath', () => {
   it('does not treat lookalike paths as English', () => {
     expect(languageForPath('/entertainment').code).toBe('zh-CN');
     expect(languageForPath('/energize').code).toBe('zh-CN');
+  });
+});
+
+describe('localizedPath', () => {
+  it('uses the canonical trailing-slash form', () => {
+    expect(localizedPath(EN)).toBe('/en/');
+    expect(localizedPath(ZH)).toBe('/');
+    expect(localizedPath(EN, '/reference/multiplication-chart')).toBe('/en/reference/multiplication-chart/');
+  });
+
+  it('round-trips with appPathFor', () => {
+    const path = localizedPath(EN, '/reference/irregular-verbs');
+    expect(appPathFor(path, EN)).toBe('/reference/irregular-verbs');
+    expect(languageForPath(path)).toBe(EN);
   });
 });
 

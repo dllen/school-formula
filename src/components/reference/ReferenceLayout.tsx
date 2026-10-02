@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react';
+import { EN, localizedPath } from '../../i18n/languages';
+
+const ENGLISH_HOME = localizedPath(EN);
 
 /** Shared chrome for the English reference surface (header, footer, language link). */
 export function ReferenceLayout({ children }: { children: ReactNode }) {
@@ -6,7 +9,7 @@ export function ReferenceLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800 flex flex-col">
       <header className="bg-white border-b border-[#E5E6EB] sticky top-0 z-40">
         <div className="max-w-5xl mx-auto px-6 h-[60px] flex items-center justify-between">
-          <a href="/en" className="flex items-center gap-2">
+          <a href={ENGLISH_HOME} className="flex items-center gap-2">
             <span
               className="bg-[#3370FF] text-white w-[32px] h-[32px] rounded-[8px] flex items-center justify-center text-[18px] font-semibold"
               aria-hidden="true"
@@ -16,7 +19,7 @@ export function ReferenceLayout({ children }: { children: ReactNode }) {
             <span className="text-[18px] font-semibold text-[#1F2329]">Shiyiyuan Study Reference</span>
           </a>
           <nav aria-label="Site" className="flex items-center gap-4 text-sm">
-            <a href="/en" className="text-[#646A73] hover:text-[#1F2329] transition-colors">
+            <a href={ENGLISH_HOME} className="text-[#646A73] hover:text-[#1F2329] transition-colors">
               All charts
             </a>
             <a href="/" className="text-[#3370FF] hover:underline" lang="zh-CN">

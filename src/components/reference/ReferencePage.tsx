@@ -1,6 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { AdUnit } from '../../ads/AdUnit';
 import { getReferenceTable } from '../../data/reference';
+import { EN, localizedPath } from '../../i18n/languages';
+
+const ENGLISH_HOME = localizedPath(EN);
 import { PrintButton } from './PrintButton';
 import { ReferenceLayout } from './ReferenceLayout';
 
@@ -13,7 +16,7 @@ export function ReferencePage() {
     return (
       <ReferenceLayout>
         <h1 className="text-2xl font-bold text-[#1F2329]">Chart not found</h1>
-        <a href="/en" className="mt-4 inline-block text-[#3370FF] hover:underline">
+        <a href={ENGLISH_HOME} className="mt-4 inline-block text-[#3370FF] hover:underline">
           ← All reference charts
         </a>
       </ReferenceLayout>
@@ -22,7 +25,7 @@ export function ReferencePage() {
 
   return (
     <ReferenceLayout>
-      <a href="/en" className="text-sm text-[#646A73] hover:text-[#1F2329] transition-colors">
+      <a href={ENGLISH_HOME} className="text-sm text-[#646A73] hover:text-[#1F2329] transition-colors">
         ← All reference charts
       </a>
 
