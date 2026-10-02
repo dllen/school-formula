@@ -1731,7 +1731,7 @@ export function ReferencePage(): ReactElement {
         <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white flex items-start justify-between gap-4">
           <div>
             <h1 className="text-2xl font-bold text-[#1F2329]">{page.title}</h1>
-            <p className="mt-1 text-sm text-[#646A73]">{page.description}</p>
+            <p className="mt-1 text-sm text-[#646A73] print:hidden">{page.description}</p>
           </div>
           <span className="shrink-0 px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full capitalize print:hidden">
             {page.category}
@@ -1739,7 +1739,7 @@ export function ReferencePage(): ReactElement {
         </div>
 
         <div className="p-6">
-          <p className="text-[#1F2329] leading-relaxed">{page.intro}</p>
+          <p className="text-[#1F2329] leading-relaxed print:hidden">{page.intro}</p>
 
           <BlockRenderer blocks={page.blocks} />
 
@@ -2023,7 +2023,7 @@ feat(reference): 数据模块原子替换，图表页改为分节式渲染
 分层 URL 的连带影响推到下一个提交。
 
 图表页渲染顺序固定为 面包屑 → H1 → intro → blocks → howToUse →
-广告 → FAQ → related；打印时隐藏导航、广告、FAQ、相关图表与按钮。
+广告 → FAQ → related；打印时**只留 H1 与数据块**——导航、meta 描述、intro、广告、FAQ、相关图表、打印按钮与页脚全部 `print:hidden`。
 
 校验在 entry-prerender 里调用并直接 throw，一次收集全部问题再抛。
 
