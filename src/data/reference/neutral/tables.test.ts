@@ -2,28 +2,29 @@ import { describe, expect, it } from 'vitest';
 import { multiplicationRows, squaresCubesRootsRows } from './tables';
 
 describe('multiplicationRows', () => {
-  it('returns a square grid of products with no header row', () => {
+  it('returns a labelled grid of products with no header row', () => {
     const rows = multiplicationRows(12);
     expect(rows).toHaveLength(12);
-    expect(rows[0]).toHaveLength(12);
+    expect(rows[0]).toHaveLength(13);
     expect(rows[0][0]).toBe('1');
-    expect(rows[11][11]).toBe('144');
+    expect(rows[11][12]).toBe('144');
   });
 
   it('satisfies the product invariant at every cell', () => {
     const rows = multiplicationRows(12);
     for (let row = 0; row < 12; row++) {
+      expect(rows[row][0]).toBe(String(row + 1));
       for (let col = 0; col < 12; col++) {
-        expect(Number(rows[row][col])).toBe((row + 1) * (col + 1));
+        expect(Number(rows[row][col + 1])).toBe((row + 1) * (col + 1));
       }
     }
   });
 
   it('honours a custom maximum', () => {
     expect(multiplicationRows(3)).toEqual([
-      ['1', '2', '3'],
-      ['2', '4', '6'],
-      ['3', '6', '9'],
+      ['1', '1', '2', '3'],
+      ['2', '2', '4', '6'],
+      ['3', '3', '6', '9'],
     ]);
   });
 });

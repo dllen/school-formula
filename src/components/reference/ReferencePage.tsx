@@ -73,7 +73,9 @@ export function ReferencePage(): ReactElement {
         </div>
       </article>
 
-      <AdUnit placement="referenceBottom" />
+      <div className="print:hidden">
+        <AdUnit placement="referenceBottom" />
+      </div>
 
       <FaqSection faq={page.faq} />
 

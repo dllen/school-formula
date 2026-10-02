@@ -64,4 +64,15 @@ describe('English reference pages', () => {
       expect(page.blocks.length).toBeGreaterThanOrEqual(1);
     }
   });
+
+  it('keeps every table row the same width as its headers', () => {
+    for (const page of REFERENCE_PAGES_EN) {
+      for (const block of page.blocks) {
+        if (block.kind !== 'table' || !block.headers) continue;
+        for (const row of block.rows) {
+          expect(row).toHaveLength(block.headers.length);
+        }
+      }
+    }
+  });
 });
