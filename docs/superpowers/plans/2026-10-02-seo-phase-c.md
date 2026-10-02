@@ -908,7 +908,7 @@ EOF
 
 **Interfaces:**
 - Consumes: `buildOgCard` / `buildOgCardFrom`（`./og-card`）；`pagesInCategory`、`ReferencePage`、`ReferenceCategory`（`../data/reference`）；`CATEGORY_COPY`；`brandFor`（`../seo/site`）；`REFERENCE_CATEGORIES`、`ENGLISH_HOME`、`categoryPath`、`referencePath`（`../reference-routes`）
-- Produces: `OG_ROUTES: { route: string; path: string }[]`（10 项，`path` 形如 `og/math/multiplication-chart.png`）；`writeOgImages(distDir: string): Promise<number>`
+- Produces: `OG_ROUTES: { route: string; path: string }[]`（10 项，`path` 形如 `og/math/multiplication-chart.png`）；`writeOgImages(distDir: string, prepare?: () => Promise<Fonts>): Promise<number>`（第二个形参有默认值，`entry-prerender.ts` 只传 `distDir`）
 
 > **后续变更（Task 6 Step 0）**：`OgRoute` 与 `OG_ROUTES` 会从本文件搬到 `src/seo/og-routes.ts`，
 > 并由本文件再导出。原因是 `src/seo/` 属于 `tsconfig.app.json` 的 program，而那份配置没有 node 类型，
@@ -976,6 +976,11 @@ import { OG_ROUTES, writeOgImages } from './og';
 describe('OG_ROUTES', () => {
   it('covers the English surface only: home, three hubs, six charts', () => {
     expect(OG_ROUTES).toHaveLength(10);
+    // 名字里的 1/3/6 必须真被断言。只写 toHaveLength(10) 的话，把一张图表页换成
+    // 第二个 hub 照样能过——真正有鉴别力的是这条拆分。
+    expect(OG_ROUTES.filter((entry) => entry.kind === 'home')).toHaveLength(1);
+    expect(OG_ROUTES.filter((entry) => entry.kind === 'hub')).toHaveLength(3);
+    expect(OG_ROUTES.filter((entry) => entry.kind === 'chart')).toHaveLength(6);
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/en.png');
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/math.png');
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/math/multiplication-chart.png');
@@ -989,26 +994,58 @@ describe('OG_ROUTES', () => {
   });
 
   it('does not touch the Chinese pages', () => {
-    expect(OG_ROUTES.every((entry) => entry.route.startsWith('/en'))).toBe(true);
+    // 不能只写 startsWith('/en')：'/english/…' 也满足它，而那不是英文面。
+    for (const entry of OG_ROUTES) {
+      expect(entry.route === '/en/' || entry.route.startsWith('/en/'), entry.route).toBe(true);
+    }
   });
 });
 
 describe('writeOgImages', () => {
-  it('writes one real PNG per route', async () => {
+  it('writes one distinct 1200×630 PNG per route', async () => {
     const distDir = mkdtempSync(join(tmpdir(), 'og-test-'));
     try {
       const written = await writeOgImages(distDir);
       expect(written).toBe(10);
 
-      const png = readFileSync(join(distDir, 'og/math/multiplication-chart.png'));
-      // PNG 魔术字节
-      expect(png.subarray(0, 8)).toEqual(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
-      expect(png.byteLength).toBeGreaterThan(2000);
+      // 逐张核对：文件真在盘上、是真 PNG、尺寸对。只读回一张的话，
+      // 「渲染一张然后复制十份」这种 bug 能整个溜过去。
+      const pngs = OG_ROUTES.map((entry) => {
+        const png = readFileSync(join(distDir, entry.path));
+        // PNG 魔术字节
+        expect(png.subarray(0, 8), entry.path).toEqual(
+          Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+        );
+        expect(png.byteLength, entry.path).toBeGreaterThan(2000);
+        // PNG 的 IHDR：宽在 16..19 字节、高在 20..23，都是大端。
+        expect(png.readUInt32BE(16), entry.path).toBe(1200);
+        expect(png.readUInt32BE(20), entry.path).toBe(630);
+        return png;
+      });
+
+      // 十张内容互不相同——同一张图复制十份同样是坏的。
+      expect(new Set(pngs.map((png) => png.toString('base64'))).size).toBe(10);
+
       expect(readdirSync(join(distDir, 'og/math'))).toContain('metric-conversions.png');
     } finally {
       rmSync(distDir, { recursive: true, force: true });
     }
   }, 120_000);
+
+  it('degrades to zero cards instead of rejecting when the renderer cannot be prepared', async () => {
+    // spec:220 —— 渲染失败回退，不 throw。字体缺失（spec:381 恰好点名的场景
+    // "不提交字体文件它直接报错"）与 wasm 初始化失败都发生在这里，而 writeOgImages
+    // 是被 entry-prerender.ts 顶层 await 的：从这里抛出去就是 unhandled rejection，
+    // 整个 `npm run build` 死。这条用例就是钉住那个「不 throw」。
+    const distDir = mkdtempSync(join(tmpdir(), 'og-fallback-'));
+    try {
+      await expect(
+        writeOgImages(distDir, () => Promise.reject(new Error('ENOENT: missing font'))),
+      ).resolves.toBe(0);
+    } finally {
+      rmSync(distDir, { recursive: true, force: true });
+    }
+  });
 });
 ```
 
@@ -1104,13 +1141,38 @@ function cardFor(entry: OgRoute) {
   }
 }
 
+/** 准备渲染器：wasm 初始化 + 字体载入。两者都是进程级前置条件，不随单页变化。 */
+async function prepareRenderer(): Promise<ReturnType<typeof loadFonts>> {
+  await ensureWasm();
+  return loadFonts();
+}
+
 /**
  * 渲染并写入 OG 图。**逐张回退，绝不 throw**——一张图失败不该让整个部署挂掉；
  * 失败的那页在任务 6 之后会因为没有图而自然省略 og:image 标签。
+ *
+ * `prepare` 默认就是真实实现。留这个形参是为了让「前置条件失败」那条路径**可测**：
+ * 字体缺失时 loadFonts 会 throw，而 FONT_DIR 在模块加载时就固定成
+ * `join(process.cwd(), 'assets', 'fonts')` 了，测试没有别的办法让它失败
+ * （除非真去删仓库里的字体文件）。
  */
-export async function writeOgImages(distDir: string): Promise<number> {
-  await ensureWasm();
-  const fonts = loadFonts();
+export async function writeOgImages(
+  distDir: string,
+  prepare: () => Promise<ReturnType<typeof loadFonts>> = prepareRenderer,
+): Promise<number> {
+  // wasm 初始化与字体载入要在逐张 try 之外（它们不是单页的事），但**同样必须被兜住**：
+  // writeOgImages 是被 entry-prerender.ts 顶层 await 的，从这里抛出去就是一个
+  // unhandled rejection，整个 `npm run build` 直接死——spec:220 明文禁止
+  // （"渲染失败回退，不 throw……而不是挂掉构建"），而 spec:381 恰好点名了这个场景
+  // （"不提交字体文件它直接报错"）。前置条件失败 = 一张图也做不出来，所以整批跳过，
+  // 留一条醒目的警告；构建日志里的 `0 og images` 会同时把它暴露出来。
+  let fonts: ReturnType<typeof loadFonts>;
+  try {
+    fonts = await prepare();
+  } catch (error) {
+    console.warn(`og: skipped all ${OG_ROUTES.length} cards — ${(error as Error).message}`);
+    return 0;
+  }
 
   let written = 0;
   for (const entry of OG_ROUTES) {
@@ -1128,14 +1190,20 @@ export async function writeOgImages(distDir: string): Promise<number> {
       mkdirSync(dirname(outFile), { recursive: true });
       writeFileSync(outFile, png);
 
+      // 文件确实落盘了才计数——free 失败不该让计数少报一张已经在磁盘上的图。
+      written++;
+
       // wasm 版要求手动释放（该包的 README 原文：Wasm-based instances require manual
       // memory management via .free()）。10 张图的泄漏量可忽略，但图数一旦增长
       // （阶段 E 铺到 100 页）就是线性的。**先写盘再 free**——asPng() 的返回值
       // 若是 wasm 内存的视图，free 之后就读不到了。
-      rendered.free();
-      resvg.free();
-
-      written++;
+      // 单独兜一层：释放失败只警告，不能把一张已经写好的图报成 "skipped"。
+      try {
+        rendered.free();
+        resvg.free();
+      } catch (error) {
+        console.warn(`og: leak on ${entry.route} — ${(error as Error).message}`);
+      }
     } catch (error) {
       console.warn(`og: skipped ${entry.route} — ${(error as Error).message}`);
     }
