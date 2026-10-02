@@ -42,8 +42,8 @@
 | `src/data/reference/types.ts` | `ReferenceCategory` / `Block` / `ReferencePage` | T1 |
 | `src/data/reference/neutral/numeric.ts` | `range()` / `squareRoot()` | T1 |
 | `src/data/reference/neutral/tables.ts` | `multiplicationRows()` / `squaresCubesRootsRows()` | T1 |
-| `src/data/reference/neutral/conversions.ts` | `metricConversionRows()` | T1 |
-| `src/data/reference/neutral/constants.ts` | `physicsConstantRows()` | T1 |
+| `src/data/reference/neutral/conversions.ts` | `metricConversionGroups()` | T1 |
+| `src/data/reference/neutral/constants.ts` | `physicalConstants()` | T1 |
 | `src/data/reference/en/data/trigIdentities.ts` | 三角恒等式分组（英文专属数据） | T2 |
 | `src/data/reference/en/data/irregularVerbs.ts` | 不规则动词三态（英文专属数据） | T2 |
 | `src/data/reference/en/{math,science,english,index}.ts` | 英文页面数据与合并 | T2 |
@@ -105,8 +105,8 @@
   - `squareRoot(n: number): string`
   - `multiplicationRows(max?: number): string[][]`
   - `squaresCubesRootsRows(max?: number): string[][]`
-  - `metricConversionRows(): string[][]`
-  - `physicsConstantRows(): string[][]`
+  - `metricConversionGroups(): ConversionGroup[]`，其中 `ConversionGroupKey = 'length' | 'mass' | 'time'`、`ConversionGroup = { key: ConversionGroupKey; entries: string[] }`
+  - `physicalConstants(): PhysicalConstant[]`，其中 `PhysicalConstant = { symbol: string; value: string; alternate?: string }`
 
 **设计要点：生成器只产出 rows，不产出 headers。** 乘法表的表头里 `×` 是符号、数字是中立；但物理常数的表头 `['Quantity','Symbol','Value']` 和三角恒等式分组标签 `'Double angle'` 是**英文**。让生成器统一只拥有「算术」，让语言文件拥有「标签」，`es/` 落地时才不必改写生成器。
 
@@ -447,7 +447,7 @@ EOF
 - Test: `src/data/reference/en/pages.test.ts`
 
 **Interfaces:**
-- Consumes: `Block`、`ReferencePage`（Task 1）；`multiplicationRows`、`squaresCubesRootsRows`（Task 1）；`metricConversionRows`、`physicsConstantRows`（Task 1）；`range`（Task 1）
+- Consumes: `Block`、`ReferencePage`（Task 1）；`multiplicationRows`、`squaresCubesRootsRows`（Task 1）；`metricConversionGroups`、`ConversionGroupKey`、`physicalConstants`（Task 1）；`range`（Task 1）
 - Produces:
   - `TRIG_IDENTITY_GROUPS: { label?: string; items: string[] }[]`
   - `IRREGULAR_VERB_ROWS: string[][]`
