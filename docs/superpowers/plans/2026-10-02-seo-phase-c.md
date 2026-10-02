@@ -1356,7 +1356,10 @@ export { OG_ROUTES, type OgRoute };
 - [ ] **Step 0b: 跑测试与类型检查确认这次搬动是纯搬运**
 
 Run: `./node_modules/.bin/vitest run src/prerender/og.test.ts`
-Expected: PASS（4 个用例，与搬动前一致）
+Expected: PASS（5 个用例，与搬动前一致）
+
+> 这里写 5 而不是 4：本步骤初稿写下时该文件是 4 条，Task 5 的 review 修复轮又加了
+> 一条「前置条件失败时降级而非抛出」，变成 5 条。搬动的判据是**数字不变**，不是某个具体值。
 
 Run: `./node_modules/.bin/tsc -b`
 Expected: 无输出
