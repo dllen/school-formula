@@ -227,7 +227,8 @@ describe('squaresCubesRootsRows', () => {
   it('squares back to n for every perfect square in range', () => {
     for (const row of squaresCubesRootsRows(20)) {
       const root = Number(row[3]);
-      if (Number.isInteger(root)) expect(root * root).toBe(Number(row[1]));
+      // row 形状是 [n, n², n³, √n]，所以「平方回 n」要拿 row[0] 比，不是 row[1]。
+      if (Number.isInteger(root)) expect(root * root).toBe(Number(row[0]));
     }
   });
 });
