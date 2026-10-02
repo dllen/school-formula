@@ -3,7 +3,17 @@ main = "worker/index.ts"
 compatibility_date = "2026-09-06"
 compatibility_flags = ["nodejs_compat"]
 
+# apex 站点的路由也要写在这里。
+#
+# 之前这里只有 api.*，而 `[site] bucket = "./dist"` 被 wrangler 3.x 静默忽略
+# （`wrangler deploy --dry-run` 的绑定列表里既没有 ASSETS 也没有 __STATIC_CONTENT）——
+# 于是 worker/index.ts 里所有静态服务逻辑（目录索引、/en/ 下真 404、规范域名 301、
+# 6 条旧 URL 301）在线上从来没有执行过，worker 里那段是死代码。
+# 实测：api.syy.global 上未匹配路径返回纯文本 404 而不是 SPA 外壳，即 env.ASSETS 为 undefined。
 routes = [
+  { pattern = "syy.global/*", zone_name = "syy.global" },
+  { pattern = "syy.mobi/*", zone_name = "syy.mobi" },
+  { pattern = "syy.one/*", zone_name = "syy.one" },
   { pattern = "api.syy.global/*", zone_name = "syy.global" },
   { pattern = "api.syy.mobi/*", zone_name = "syy.mobi" },
   { pattern = "api.syy.one/*", zone_name = "syy.one" }
@@ -18,8 +28,17 @@ database_id = "21a53ef9-a1ea-434d-9c18-f3619421f011"
 binding = "SESSIONS"
 id = "e7c94f92016f4458863363fb666b5b33"
 
-[site]
-bucket = "./dist"
+# Workers Static Assets，取代已废弃的 [site]（Workers Sites）。
+# binding 必须叫 ASSETS——worker/index.ts 读的就是 env.ASSETS。
+#
+# 两个旋钮刻意留默认值，因为它们正好匹配现网行为：
+#   html_handling 默认 auto-trailing-slash → /en/math 会 308 到 /en/math/（现网实测就是这个）
+#   not_found_handling 默认 none → 未匹配路径交给 Worker 自己处理。**不要**在这里开
+#     single-page-application：中文站的 SPA 兜底写在 worker/index.ts 里，而且 /en/ 下
+#     需要真 404 而不是 200 空壳，那是本分支要的语义。
+[assets]
+directory = "./dist"
+binding = "ASSETS"
 
 [vars]
 FRONTEND_URL = "https://syy.global"
