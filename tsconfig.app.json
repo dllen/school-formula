@@ -25,5 +25,10 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
-  "exclude": ["src/data/tutorials/_template.ts", "src/entry-prerender.ts"]
+  "exclude": [
+    "src/data/tutorials/_template.ts",
+    "src/entry-prerender.ts",
+    "src/prerender/og.ts",
+    "src/prerender/og.test.ts"
+  ]
 }

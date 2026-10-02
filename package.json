@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@resvg/resvg-wasm": "^2.6.2",
     "@tailwindcss/vite": "^4.1.17",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/react": "^16.3.3",
@@ -51,6 +52,7 @@
     "globals": "^16.5.0",
     "happy-dom": "^20.14.5",
     "postcss": "^8.5.6",
+    "satori": "^0.34.1",
     "tailwindcss": "^4.1.17",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
