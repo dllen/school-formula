@@ -264,28 +264,36 @@ Expected: PASS（7 个用例）
 
 ```ts
 import { describe, expect, it } from 'vitest';
-import { metricConversionRows } from './conversions';
+import { metricConversionGroups } from './conversions';
 
-describe('metricConversionRows', () => {
+describe('metricConversionGroups', () => {
   it('covers length, mass and time in that order', () => {
-    const groups = metricConversionRows()
-      .map((row) => row[0])
-      .filter(Boolean);
-    expect(groups).toEqual(['Length', 'Mass', 'Time']);
+    expect(metricConversionGroups().map((group) => group.key)).toEqual(['length', 'mass', 'time']);
   });
 
-  it('keeps every row a two-cell pair with a non-empty conversion', () => {
-    for (const row of metricConversionRows()) {
-      expect(row).toHaveLength(2);
-      expect(row[1].length).toBeGreaterThan(0);
+  it('carries no display copy — entries are digits, operators and unit symbols only', () => {
+    for (const group of metricConversionGroups()) {
+      for (const entry of group.entries) {
+        expect(entry).toContain('=');
+        // 单位符号最长三个字母（km / min / day）。更长的字母串就意味着混进了文案。
+        for (const token of entry.split(/[^A-Za-z]+/).filter(Boolean)) {
+          expect(token.length).toBeLessThanOrEqual(3);
+        }
+      }
     }
   });
 
   it('states the metric powers-of-ten relations exactly', () => {
-    const rows = metricConversionRows();
-    expect(rows).toContainEqual(['Length', '1 km = 1000 m']);
-    expect(rows).toContainEqual(['Mass', '1 kg = 1000 g']);
-    expect(rows).toContainEqual(['Time', '1 h = 60 min = 3600 s']);
+    const entries = metricConversionGroups().flatMap((group) => group.entries);
+    expect(entries).toContain('1 km = 1000 m');
+    expect(entries).toContain('1 kg = 1000 g');
+    expect(entries).toContain('1 h = 60 min = 3600 s');
+  });
+
+  it('keeps every group non-empty', () => {
+    for (const group of metricConversionGroups()) {
+      expect(group.entries.length).toBeGreaterThan(0);
+    }
   });
 });
 ```
@@ -299,20 +307,22 @@ Expected: FAIL — `Failed to resolve import "./conversions"`
 
 ```ts
 /**
- * 公制换算表的数据行。分组标签（Length / Mass / Time）是英文，会随语言文件走——
- * `es/` 落地时把这份行数据包进自己的分组标签即可。
+ * 公制换算的数据。分组只带一个稳定的键，显示名（Length / Mass / Time）由语言文件提供——
+ * neutral 层不含任何文案。等式本身只由数字与国际单位符号组成，语言无关。
  */
-export function metricConversionRows(): string[][] {
+export type ConversionGroupKey = 'length' | 'mass' | 'time';
+
+export interface ConversionGroup {
+  key: ConversionGroupKey;
+  /** 每条是一个换算等式，例如 `1 km = 1000 m`。 */
+  entries: string[];
+}
+
+export function metricConversionGroups(): ConversionGroup[] {
   return [
-    ['Length', '1 km = 1000 m'],
-    ['', '1 m = 100 cm = 1000 mm'],
-    ['', '1 cm = 10 mm'],
-    ['Mass', '1 t = 1000 kg'],
-    ['', '1 kg = 1000 g'],
-    ['', '1 g = 1000 mg'],
-    ['Time', '1 h = 60 min = 3600 s'],
-    ['', '1 min = 60 s'],
-    ['', '1 day = 24 h'],
+    { key: 'length', entries: ['1 km = 1000 m', '1 m = 100 cm = 1000 mm', '1 cm = 10 mm'] },
+    { key: 'mass', entries: ['1 t = 1000 kg', '1 kg = 1000 g', '1 g = 1000 mg'] },
+    { key: 'time', entries: ['1 h = 60 min = 3600 s', '1 min = 60 s', '1 day = 24 h'] },
   ];
 }
 ```
@@ -320,34 +330,43 @@ export function metricConversionRows(): string[][] {
 - [ ] **Step 10: 跑测试确认通过**
 
 Run: `npx vitest run src/data/reference/neutral/conversions.test.ts`
-Expected: PASS（3 个用例）
+Expected: PASS（4 个用例）
 
 - [ ] **Step 11: 写失败测试 `neutral/constants.test.ts`**
 
 ```ts
 import { describe, expect, it } from 'vitest';
-import { physicsConstantRows } from './constants';
+import { physicalConstants } from './constants';
 
-describe('physicsConstantRows', () => {
-  it('returns quantity / symbol / value triples', () => {
-    const rows = physicsConstantRows();
-    expect(rows).toHaveLength(8);
-    for (const row of rows) {
-      expect(row).toHaveLength(3);
-      expect(row[0].length).toBeGreaterThan(0);
-      expect(row[1].length).toBeGreaterThan(0);
-      expect(row[2].length).toBeGreaterThan(0);
+describe('physicalConstants', () => {
+  it('returns symbol / value pairs', () => {
+    const constants = physicalConstants();
+    expect(constants).toHaveLength(8);
+    for (const constant of constants) {
+      expect(constant.symbol.length).toBeGreaterThan(0);
+      expect(constant.value.length).toBeGreaterThan(0);
     }
   });
 
-  it('gives every row a distinct symbol', () => {
-    const symbols = physicsConstantRows().map((row) => row[1]);
+  it('gives every constant a distinct symbol', () => {
+    const symbols = physicalConstants().map((constant) => constant.symbol);
     expect(new Set(symbols).size).toBe(symbols.length);
   });
 
-  it('states the two accepted values of gravitational acceleration', () => {
-    const gravity = physicsConstantRows().find((row) => row[1] === 'g');
-    expect(gravity?.[2]).toBe('9.8 m/s² (or 10 m/s²)');
+  it('carries no display names — only standard symbols and SI units', () => {
+    for (const constant of physicalConstants()) {
+      expect(constant.symbol.length).toBeLessThanOrEqual(3);
+      // 单位符号最长三个字母（kg / mol）。更长的字母串就意味着混进了文案。
+      for (const token of constant.value.split(/[^A-Za-z]+/).filter(Boolean)) {
+        expect(token.length).toBeLessThanOrEqual(3);
+      }
+    }
+  });
+
+  it('keeps the two accepted values of gravitational acceleration', () => {
+    const gravity = physicalConstants().find((constant) => constant.symbol === 'g');
+    expect(gravity?.value).toBe('9.8 m/s²');
+    expect(gravity?.alternate).toBe('10 m/s²');
   });
 });
 ```
@@ -361,19 +380,29 @@ Expected: FAIL — `Failed to resolve import "./constants"`
 
 ```ts
 /**
- * 常用物理常数的数值行。这里的标签（Gravitational acceleration 等）是英文，
- * 属于语言文件的责任；生成器一侧保持稳定，只保证数值与单位写法一致。
+ * 常用物理常数。neutral 层只保留国际通用符号与数值、单位——数量名
+ * （"Gravitational acceleration"）与连接词 "or" 是文案，属于语言文件。
+ * `alternate` 用于同一个常数的第二常用取值（例如 g 的 9.8 与 10）。
  */
-export function physicsConstantRows(): string[][] {
+export interface PhysicalConstant {
+  /** 国际通用符号，语言中立。 */
+  symbol: string;
+  /** 数值与国际单位符号，例如 `9.8 m/s²`。 */
+  value: string;
+  /** 第二常用取值，语言无关。 */
+  alternate?: string;
+}
+
+export function physicalConstants(): PhysicalConstant[] {
   return [
-    ['Gravitational acceleration', 'g', '9.8 m/s² (or 10 m/s²)'],
-    ['Speed of light in vacuum', 'c', '3.00 × 10⁸ m/s'],
-    ['Planck constant', 'h', '6.63 × 10⁻³⁴ J·s'],
-    ['Elementary charge', 'e', '1.60 × 10⁻¹⁹ C'],
-    ['Electron mass', 'mₑ', '9.11 × 10⁻³¹ kg'],
-    ['Proton mass', 'mₚ', '1.67 × 10⁻²⁷ kg'],
-    ['Avogadro constant', 'Nₐ', '6.02 × 10²³ mol⁻¹'],
-    ['Coulomb constant', 'k', '9.0 × 10⁹ N·m²/C²'],
+    { symbol: 'g', value: '9.8 m/s²', alternate: '10 m/s²' },
+    { symbol: 'c', value: '3.00 × 10⁸ m/s' },
+    { symbol: 'h', value: '6.63 × 10⁻³⁴ J·s' },
+    { symbol: 'e', value: '1.60 × 10⁻¹⁹ C' },
+    { symbol: 'mₑ', value: '9.11 × 10⁻³¹ kg' },
+    { symbol: 'mₚ', value: '1.67 × 10⁻²⁷ kg' },
+    { symbol: 'Nₐ', value: '6.02 × 10²³ mol⁻¹' },
+    { symbol: 'k', value: '9.0 × 10⁹ N·m²/C²' },
   ];
 }
 ```
@@ -381,7 +410,7 @@ export function physicsConstantRows(): string[][] {
 - [ ] **Step 14: 跑全部生成器测试**
 
 Run: `npx vitest run src/data/reference/neutral/`
-Expected: PASS（13 个用例）
+Expected: PASS（15 个用例：tables 7 + conversions 4 + constants 4）
 
 - [ ] **Step 15: 类型检查**
 
@@ -497,11 +526,25 @@ export const IRREGULAR_VERB_ROWS: string[][] = [
 `summary` 与 `description` 沿用旧文案，`intro` / `howToUse` / `faq` / `related` 为新增。
 
 ```ts
-import { metricConversionRows } from '../neutral/conversions';
+import { metricConversionGroups, type ConversionGroupKey } from '../neutral/conversions';
 import { range } from '../neutral/numeric';
 import { multiplicationRows, squaresCubesRootsRows } from '../neutral/tables';
 import type { ReferencePage } from '../types';
 import { TRIG_IDENTITY_GROUPS } from './data/trigIdentities';
+
+/** 分组显示名。英文文案就住在这里——neutral 层只给 key。 */
+const METRIC_GROUP_LABELS: Record<ConversionGroupKey, string> = {
+  length: 'Length',
+  mass: 'Mass',
+  time: 'Time',
+};
+
+/** 把 neutral 的分组键渲染成表格行：每组首行带分组名，其余留空表示延续上一组。 */
+function metricConversionRows(): string[][] {
+  return metricConversionGroups().flatMap((group) =>
+    group.entries.map((entry, index) => [index === 0 ? METRIC_GROUP_LABELS[group.key] : '', entry]),
+  );
+}
 
 export const MATH_PAGES: ReferencePage[] = [
   {
@@ -668,8 +711,29 @@ export const MATH_PAGES: ReferencePage[] = [
 - [ ] **Step 4: 写 `en/science.ts`**
 
 ```ts
-import { physicsConstantRows } from '../neutral/constants';
+import { physicalConstants } from '../neutral/constants';
 import type { ReferencePage } from '../types';
+
+/** 数量名。英文文案就住在这里——neutral 层只给符号与数值。 */
+const CONSTANT_NAMES: Record<string, string> = {
+  g: 'Gravitational acceleration',
+  c: 'Speed of light in vacuum',
+  h: 'Planck constant',
+  e: 'Elementary charge',
+  mₑ: 'Electron mass',
+  mₚ: 'Proton mass',
+  Nₐ: 'Avogadro constant',
+  k: 'Coulomb constant',
+};
+
+/** 渲染成表格行：数量名 + 符号 + 取值；有第二取值时按英文习惯用 "or" 连接。 */
+function physicsConstantRows(): string[][] {
+  return physicalConstants().map((constant) => [
+    CONSTANT_NAMES[constant.symbol],
+    constant.symbol,
+    constant.alternate ? `${constant.value} (or ${constant.alternate})` : constant.value,
+  ]);
+}
 
 export const SCIENCE_PAGES: ReferencePage[] = [
   {
