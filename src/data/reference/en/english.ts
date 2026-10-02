@@ -8,7 +8,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
     title: 'Irregular Verbs',
     summary: 'Base form, past simple and past participle for common verbs.',
     description:
-      'Printable list of common English irregular verbs with their past simple and past participle forms, for grammar practice and revision.',
+      'Printable list of common English irregular verbs with their past simple and past participle forms, for grammar practice and revision. Free to print on one page.',
     intro:
       'This list gives the base form, the past simple and the past participle of 24 common English irregular verbs. Irregular verbs do not take -ed, so their past forms have to be learned rather than worked out. The three columns line up with the three places these forms are needed: the base form after "to", the past simple for finished actions, and the past participle after "have" or "has". Printing it keeps the three forms side by side, which makes the pattern behind each verb easier to see than a dictionary entry does.',
     blocks: [

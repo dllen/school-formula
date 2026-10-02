@@ -23,9 +23,9 @@ export const MATH_PAGES: ReferencePage[] = [
     slug: 'multiplication-chart',
     category: 'math',
     title: 'Multiplication Chart (1–12)',
-    summary: 'Every times table from 1 to 12 on one printable grid.',
+    summary: 'Every times table from 1 to 12 on one printable grid — free, and no signup needed.',
     description:
-      'A printable 1–12 multiplication chart showing every times table, handy for homework, home practice and classroom use.',
+      'A printable 1–12 multiplication chart showing every times table, handy for homework, home practice and classroom use. It is free to print and needs no signup.',
     intro:
       'This 1–12 multiplication chart puts every times table on a single grid. Find the row for one number and the column for the other, and the cell where they meet is the product — so 7 × 8 is the number where row 7 meets column 8. Printing it and keeping it on a desk or in a homework folder gives children a fast way to check their own work instead of reaching for a calculator. It is also a compact way to notice the patterns that make times tables easier to remember: the diagonal of square numbers, the symmetry either side of it, and the easy 10s column.',
     blocks: [
@@ -64,9 +64,9 @@ export const MATH_PAGES: ReferencePage[] = [
     slug: 'squares-cubes-roots',
     category: 'math',
     title: 'Squares, Cubes & Square Roots',
-    summary: 'n², n³ and √n for n from 1 to 20, rounded to 3 decimals.',
+    summary: 'n², n³ and √n for n from 1 to 20, rounded to 3 decimals — free to print.',
     description:
-      'Printable table of squares, cubes and square roots for numbers 1 to 20, with irrational square roots rounded to three decimals.',
+      'Printable table of squares, cubes and square roots for numbers 1 to 20, with irrational square roots rounded to three decimals. Free to print on a single page.',
     intro:
       'This table gives the square, the cube and the square root of every whole number from 1 to 20. Squares and cubes appear constantly in algebra, area and volume problems, and square roots come up whenever a question asks for a side length or a standard deviation. Keeping the first twenty values in view turns them from something to work out into something to recognise, which is most of what makes these questions quick when they appear in a test.',
     blocks: [
@@ -107,7 +107,7 @@ export const MATH_PAGES: ReferencePage[] = [
     title: 'Trigonometric Identities',
     summary: 'Pythagorean, sum/difference, double-angle and half-angle identities.',
     description:
-      'A printable summary of the trigonometric identities students need most: Pythagorean, sum and difference, double-angle and half-angle formulas.',
+      'A printable summary of the trigonometric identities students need most: Pythagorean, sum and difference, double-angle and half-angle formulas. Free to print.',
     intro:
       'This sheet collects the trigonometric identities that come up most often in algebra, geometry and physics, grouped by the kind of problem they solve rather than by difficulty. Angles are written as α, β and θ, and every line holds for any angle. Use it as a lookup while working: start from the group that matches the shape of the problem in front of you, then work back towards the Pythagorean identities if you need something simpler to substitute in.',
     blocks: [{ kind: 'formulas', groups: TRIG_IDENTITY_GROUPS }],
@@ -140,9 +140,9 @@ export const MATH_PAGES: ReferencePage[] = [
     slug: 'metric-conversions',
     category: 'math',
     title: 'Metric Unit Conversions',
-    summary: 'Length, mass and time conversions in one table.',
+    summary: 'Length, mass and time conversions in one printable table, free to use.',
     description:
-      'Printable metric conversion table covering length, mass and time: kilometres to metres, kilograms to grams, hours to minutes and seconds.',
+      'Printable metric conversion table covering length, mass and time: kilometres to metres, kilograms to grams, hours to minutes and seconds. Free to print and use.',
     intro:
       'This table covers the metric conversions that come up in science and maths homework: length from kilometres down to millimetres, mass from tonnes down to milligrams, and time from days down to seconds. Each row is a single equality you can read in either direction. The metric system is built on powers of ten, so most of these conversions are a matter of moving a decimal point rather than remembering an unrelated number, and a printed copy next to a homework book removes the need to look anything up.',
     blocks: [

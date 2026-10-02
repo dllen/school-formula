@@ -27,9 +27,9 @@ export const SCIENCE_PAGES: ReferencePage[] = [
     slug: 'physics-constants',
     category: 'science',
     title: 'Physical Constants',
-    summary: 'Common physical constants with symbols and values.',
+    summary: 'Common physical constants with symbols and values, free to print.',
     description:
-      'Printable table of common physical constants — gravitational acceleration, speed of light, Planck constant, Avogadro constant and more.',
+      'Printable table of common physical constants — gravitational acceleration, speed of light, Planck constant, Avogadro constant and more. Free to print, no signup.',
     intro:
       'This table lists the physical constants that appear in school and first-year physics: gravitational acceleration, the speed of light, the Planck constant, the elementary charge, the masses of the electron and proton, the Avogadro constant and the Coulomb constant. Each row gives the quantity, the symbol it is normally written with, and its value in SI units, to three significant figures — the precision most school problems expect. Printing it gives a single sheet to check a formula against while working.',
     blocks: [
