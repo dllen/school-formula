@@ -9,6 +9,7 @@ import {
   referencePath,
 } from '../reference-routes';
 import { brandFor } from './site';
+import type { BrandCopy } from './site';
 import type { Breadcrumb, PageContent } from './types';
 
 /**
@@ -38,7 +39,7 @@ export function resolveEnglishContent(
     if (page && page.category === parts.category) {
       return {
         kind: 'reference',
-        title: `${page.title} - ${brand.name}`,
+        title: englishTitleFor(page.title, brand),
         description: page.description,
         breadcrumbs: [
           home,
@@ -60,7 +61,7 @@ export function resolveEnglishContent(
     const copy = CATEGORY_COPY[hub[1]];
     return {
       kind: 'hub',
-      title: `${copy.name} Reference Charts - ${brand.name}`,
+      title: englishTitleFor(`${copy.name} Charts`, brand),
       description: copy.intro,
       breadcrumbs: [home, { name: copy.name, path }],
       category: copy.name,
@@ -72,4 +73,19 @@ export function resolveEnglishContent(
   }
 
   return { kind: 'view', title: brand.name, description: brand.description, breadcrumbs: [home] };
+}
+
+/** 品牌短名，缺省退回全名。 */
+function titleBrand(brand: BrandCopy): string {
+  return brand.titleBrand ?? brand.name;
+}
+
+/**
+ * 英文面标题模板：意图修饰词在前、品牌在后。
+ *
+ * 只写 "Printable" 不写 "PDF"——我们提供的是浏览器打印，不发 PDF 文件；
+ * 宣称 PDF 而用户落地后找不到下载按钮就是跳出。
+ */
+export function englishTitleFor(subject: string, brand: BrandCopy): string {
+  return `Printable ${subject} – Free | ${titleBrand(brand)}`;
 }

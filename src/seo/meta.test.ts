@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { REFERENCE_PAGES } from '../data/reference';
 import { PRERENDER_PATHS } from '../prerender/routes';
+import { ENGLISH_HOME, ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { buildSeoMeta, canonicalUrl } from './meta';
 import { brandFor } from './site';
 
@@ -84,7 +85,7 @@ describe('buildSeoMeta', () => {
     for (const page of REFERENCE_PAGES) {
       const path = `/en/${page.category}/${page.slug}`;
       const meta = buildSeoMeta(path);
-      expect(meta.title).toBe(`${page.title} - ${EN.name}`);
+      expect(meta.title).toBe(`Printable ${page.title} – Free | ${EN.titleBrand}`);
       expect(meta.description).toBe(page.description);
       expect(meta.canonical).toBe(`https://syy.global/en/${page.category}/${page.slug}/`);
       expect(meta.htmlLang).toBe('en');
@@ -143,5 +144,28 @@ describe('JSON-LD for the English surface', () => {
       'WebPage',
       'BreadcrumbList',
     ]);
+  });
+});
+
+describe('English title template', () => {
+  it('leads with Printable and puts the intent modifier before the brand', () => {
+    expect(buildSeoMeta('/en/math/multiplication-chart').title).toBe(
+      'Printable Multiplication Chart (1–12) – Free | Shiyiyuan',
+    );
+    expect(buildSeoMeta('/en/math').title).toBe('Printable Math Charts – Free | Shiyiyuan');
+  });
+
+  it('keeps every English title inside the ~60 character SERP budget', () => {
+    for (const path of ENGLISH_ROUTE_PATHS) {
+      // 首页走的是「品牌 + tagline」，刻意不走这个模板，因此不在预算内。
+      if (path === ENGLISH_HOME) continue;
+      const title = buildSeoMeta(path).title;
+      expect(title.length, `${path} → ${title}`).toBeLessThanOrEqual(60);
+    }
+  });
+
+  it('leaves Chinese titles alone', () => {
+    expect(buildSeoMeta('/').title).toContain('拾艺院');
+    expect(buildSeoMeta('/').title).not.toContain('Printable');
   });
 });

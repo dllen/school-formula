@@ -8,6 +8,12 @@ export const SITE = {
 export interface BrandCopy {
   /** Full site name: title suffix, `og:site_name` and JSON-LD name. */
   name: string;
+  /**
+   * 短品牌名，**只用于 `<title>`**。全名（如 `Shiyiyuan Study Reference`，26 字符）
+   * 拼进标题会让总长超过 Google 约 60 字符的截断点，把意图修饰词挤掉。
+   * 不设则退回 `name`（中文标题因此不受影响）。
+   */
+  titleBrand?: string;
   /** Short one-line positioning used in the home title. */
   tagline: string;
   /** Default page description for the home page and unknown routes. */
@@ -27,6 +33,7 @@ const BRAND: Record<string, BrandCopy> = {
   },
   en: {
     name: 'Shiyiyuan Study Reference',
+    titleBrand: 'Shiyiyuan',
     tagline: 'Free printable math & science reference charts',
     description:
       'Free, printable reference charts for students, parents and teachers: multiplication tables, square and cube roots, trigonometric identities, physics constants, metric conversions and English irregular verbs.',
