@@ -2,9 +2,15 @@
 import { OG_ROUTES, type OgRoute } from './og-routes';
 import { SITE } from './site';
 
+/**
+ * OG 卡片的画布尺寸。**唯一来源**：satori 的渲染尺寸（src/prerender/og.ts）、
+ * 卡片布局（src/prerender/og-card.ts）与 `og:image:width/height` 元数据
+ * （src/seo/meta.ts）都从这里取——三处各写一遍的话，改了其中一处不同步就是错图或裁切。
+ */
+export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
+
 /** 去掉尾斜杠、查询串与片段，并把 `/en` 归一成 `/en/`。 */
-export function normalizeOgRoute(path: string): string {
-  const withoutQuery = path.split('#')[0].split('?')[0];
+export function normalizeOgRoute(path: string): string {  const withoutQuery = path.split('#')[0].split('?')[0];
   if (withoutQuery === '/' || withoutQuery === '') return '/';
   const trimmed = withoutQuery.replace(/\/+$/, '');
   return trimmed === '/en' ? '/en/' : trimmed;

@@ -1,6 +1,6 @@
 import { languageForPath, type Language } from '../i18n/languages';
 import { resolvePageContent } from './content';
-import { ogImageUrl } from './og';
+import { ogImageUrl, OG_IMAGE_SIZE } from './og';
 import type { PageContent } from './types';
 import { brandFor, SITE, type BrandCopy } from './site';
 
@@ -186,7 +186,7 @@ export function buildSeoMeta(
       title: content.title,
       description: content.description,
     },
-    ...(imageUrl ? { ogImage: { url: imageUrl, width: 1200, height: 630 } } : {}),
+    ...(imageUrl ? { ogImage: { url: imageUrl, ...OG_IMAGE_SIZE } } : {}),
     jsonLd: buildJsonLd(content, canonical, language, brand),
   };
 }

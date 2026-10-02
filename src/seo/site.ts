@@ -6,7 +6,7 @@ export const SITE = {
 } as const;
 
 export interface BrandCopy {
-  /** Full site name: title suffix, `og:site_name` and JSON-LD name. */
+  /** Full site name: `og:site_name`, JSON-LD name and the home title. */
   name: string;
   /**
    * 短品牌名，**只用于 `<title>`**。全名（如 `Shiyiyuan Study Reference`，26 字符）
