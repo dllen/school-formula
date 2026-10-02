@@ -4,44 +4,16 @@ import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';
 import satori from 'satori';
-import { pagesInCategory } from '../data/reference';
 import { CATEGORY_COPY } from '../data/reference/en/categories';
-import type { ReferenceCategory, ReferencePage } from '../data/reference/types';
 import { EN } from '../i18n/languages';
-import {
-  categoryPath,
-  ENGLISH_HOME,
-  REFERENCE_CATEGORIES,
-  referencePath,
-} from '../reference-routes';
+import { OG_ROUTES, type OgRoute } from '../seo/og-routes';
 import { brandFor } from '../seo/site';
 import { buildOgCard, buildOgCardFrom } from './og-card';
 
+export { OG_ROUTES, type OgRoute };
+
 const require = createRequire(import.meta.url);
 const FONT_DIR = join(process.cwd(), 'assets', 'fonts');
-
-/**
- * 一个待生成 OG 图的目标。刻意带上 kind，而不是从路径字符串反推是 hub 还是图表页——
- * 字符串反推很脆，判别联合也让 cardFor 成为一个干净的 switch。
- */
-export type OgRoute =
-  | { kind: 'home'; route: string; path: string }
-  | { kind: 'hub'; route: string; path: string; category: ReferenceCategory }
-  | { kind: 'chart'; route: string; path: string; page: ReferencePage };
-
-/** `/en/`、三个学科 hub、六张图表页——只覆盖英文面 10 页。 */
-export const OG_ROUTES: OgRoute[] = [
-  { kind: 'home', route: ENGLISH_HOME, path: 'og/en.png' },
-  ...REFERENCE_CATEGORIES.flatMap((category) => [
-    { kind: 'hub' as const, route: categoryPath(category), path: `og/${category}.png`, category },
-    ...pagesInCategory(category).map((page) => ({
-      kind: 'chart' as const,
-      route: referencePath(page.category, page.slug),
-      path: `og/${page.category}/${page.slug}.png`,
-      page,
-    })),
-  ]),
-];
 
 let initialised = false;
 

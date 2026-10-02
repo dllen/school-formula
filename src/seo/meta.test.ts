@@ -169,3 +169,23 @@ describe('English title template', () => {
     expect(buildSeoMeta('/').title).not.toContain('Printable');
   });
 });
+
+describe('og:image', () => {
+  it('points at the generated card for an English page', () => {
+    expect(buildSeoMeta('/en/math/multiplication-chart').ogImage).toEqual({
+      url: 'https://syy.global/og/math/multiplication-chart.png',
+      width: 1200,
+      height: 630,
+    });
+  });
+
+  it('is absent for pages with no generated image', () => {
+    expect(buildSeoMeta('/').ogImage).toBeUndefined();
+    expect(buildSeoMeta('/tutorial').ogImage).toBeUndefined();
+  });
+
+  it('uses a large twitter card only when there is an image', () => {
+    expect(buildSeoMeta('/en/math').twitter.card).toBe('summary_large_image');
+    expect(buildSeoMeta('/').twitter.card).toBe('summary');
+  });
+});

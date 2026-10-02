@@ -1,5 +1,6 @@
 import { languageForPath, type Language } from '../i18n/languages';
 import { resolvePageContent } from './content';
+import { ogImageUrl } from './og';
 import type { PageContent } from './types';
 import { brandFor, SITE, type BrandCopy } from './site';
 
@@ -18,6 +19,8 @@ export interface SeoMeta {
   alternates: AlternateLink[];
   og: { type: string; siteName: string; title: string; description: string; url: string; locale: string };
   twitter: { card: string; title: string; description: string };
+  /** 绝对 og:image URL 与尺寸。没有为该页生成图时为 undefined。 */
+  ogImage?: { url: string; width: number; height: number };
   jsonLd: Record<string, unknown>[];
 }
 
@@ -155,6 +158,7 @@ export function buildSeoMeta(path: string): SeoMeta {
   const brand = brandFor(language);
   const content = resolvePageContent(path);
   const canonical = canonicalUrl(path);
+  const imageUrl = ogImageUrl(path);
   const alternates: AlternateLink[] = [
     { hreflang: language.code, href: canonical },
     { hreflang: 'x-default', href: canonical },
@@ -174,7 +178,12 @@ export function buildSeoMeta(path: string): SeoMeta {
       url: canonical,
       locale: brand.ogLocale,
     },
-    twitter: { card: 'summary', title: content.title, description: content.description },
+    twitter: {
+      card: imageUrl ? 'summary_large_image' : 'summary',
+      title: content.title,
+      description: content.description,
+    },
+    ...(imageUrl ? { ogImage: { url: imageUrl, width: 1200, height: 630 } } : {}),
     jsonLd: buildJsonLd(content, canonical, language, brand),
   };
 }

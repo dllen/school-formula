@@ -43,3 +43,17 @@ describe('renderHead analytics', () => {
     expect(html).not.toContain('googletagmanager');
   });
 });
+
+describe('renderHead og:image', () => {
+  it('emits the image and its dimensions when present', () => {
+    const html = renderHead(buildSeoMeta('/en/math'));
+    expect(html).toContain('<meta property="og:image" content="https://syy.global/og/math.png" />');
+    expect(html).toContain('<meta property="og:image:width" content="1200" />');
+    expect(html).toContain('<meta property="og:image:height" content="630" />');
+  });
+
+  it('emits nothing when the page has no image', () => {
+    const html = renderHead(buildSeoMeta('/'));
+    expect(html).not.toContain('og:image');
+  });
+});

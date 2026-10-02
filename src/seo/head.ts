@@ -38,6 +38,17 @@ export function renderHead(meta: SeoMeta): string {
     `<meta property="og:description" content="${escapeHtml(meta.og.description)}" />`,
     `<meta property="og:url" content="${escapeHtml(meta.og.url)}" />`,
     `<meta property="og:locale" content="${escapeHtml(meta.og.locale)}" />`,
+  );
+
+  if (meta.ogImage) {
+    tags.push(
+      `<meta property="og:image" content="${escapeHtml(meta.ogImage.url)}" />`,
+      `<meta property="og:image:width" content="${meta.ogImage.width}" />`,
+      `<meta property="og:image:height" content="${meta.ogImage.height}" />`,
+    );
+  }
+
+  tags.push(
     `<meta name="twitter:card" content="${escapeHtml(meta.twitter.card)}" />`,
     `<meta name="twitter:title" content="${escapeHtml(meta.twitter.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(meta.twitter.description)}" />`,
