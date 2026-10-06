@@ -1,14 +1,26 @@
-# 出海变现扩张设计：付费 PDF 订阅 + Email drip
+# 出海变现扩张设计：付费 PDF 订阅 + Email drip（流量门控触发版）
 
 日期：2026-10-06
-状态：已确认（头脑风暴 6 个 section 全部按推荐方向通过）
+状态：已确认（修订：从 all-in 改为 **Milestone Gate** 触发版）
 上游：[2026-10-02 英文打印图表面扩充设计](./2026-10-02-english-seo-ads-design.md)（在其阶段 D/E 之上叠加变现层）
+备选：[d098fae（被本版本取代的 all-in 方案）](https://github.com/dllen/school-formula/commit/d098fae)
 
 ## 背景
 
 10-02 spec 锚定了「英文打印图表面 + AdSense」的窄面路线，目前阶段 A/B/C 已合并、阶段 D（合规四页 + AdSlot 修占位）即将进入、E（6→40→100 页）排期未定。AdSense 是被动流量变现，**单一变现路径**使 100 页英文图表 + 50k+ 流量的天花板被压到「流量 × $2-5 RPM ≈ $100-250/月」区间。
 
-本次改造在 10-02 阶段 D/E 之上**叠加变现层**，把单一广告收入扩展为「广告 + 付费 PDF + 订阅 + 邮件列表」的混合引擎，目标把每千次访问的 LTV 从 $2-5 拉到 $10-25。
+本次改造在 10-02 阶段 D/E 之上**叠加变现层**，把单一广告收入扩展为「广告 + 付费 PDF + 订阅 + 邮件列表」的混合引擎。
+
+### 为什么改成「流量门控触发」（从 all-in 退一步）
+
+原 spec（d098fae）设想 F1-F5 一次性推完（3-4 个月）。本次修订改为 **Milestone Gate 触发**：在 SEO 流量未到临界点之前**不动支付/Email/Drip 任何基础设施**，只把工程精力集中在内容产能（10-02 阶段 E）与 SEO（10-02 阶段 D）。
+
+理由：
+
+- **付费产品需要流量才有转化率**：月 PV < 10k 时，PDF Pack 月销可能 < 5 份，养不起支付/客服成本
+- **避免过早沉没成本**：Stripe + Resend + Puppeteer 是 2-3 个月工作量；如果 SEO 模型本身有问题（半年流量未过 10k），这些投入归零
+- **保留所有技术决策**：本 spec Sections 1-9 的设计**仍然是「触发后该怎么做」的标准答案**——只是不立即动手
+- **门控是单行道**：每个 Gate 通过才启动下一阶段；任一 Gate 未通过即暂停，回到「纯 AdSense + 内容」状态
 
 ## 现状盘点
 
@@ -41,9 +53,15 @@
 | Email 服务 | **Resend** + 自写 drip cron（前期）；量起来后迁 Loops |
 | Email 收集形态 | **Inline 表单**（每张图表页底部 + hub 页），**不弹窗**（教育类弹窗跳出率 >85%） |
 | 数据存储 | **D1**（Cloudflare 原生、与现有 auth/user 共表）；新增 `email_subscribers`、`payments`、`pdf_downloads` 三表 |
-| 上线顺序 | 阶段 F1 基础设施 → F2 PDF 买断 → F3 订阅 → F4 Email → F5 整合 |
+| 启动策略 | **流量门控触发**（Plan A）：先证明 SEO 模型，月 PV ≥ 10k 才启动支付侧 |
+| Gate 0（现在） | 仅做 10-02 阶段 D（合规四页）+ E（6→100 页内容）；AdSense 持续优化 |
+| Gate 1 触发（月 PV ≥ 10k 持续 3 个月） | 启动 F1（Stripe + D1 migration）+ F2（PDF Pack 一次性买断）；**跳过订阅与 Drip** |
+| Gate 2 触发（PDF Pack 月销 ≥ 30 份 持续 2 个月） | 启动 F3（月度/年订阅） |
+| Gate 3 触发（订阅月活 ≥ 100 人 持续 2 个月） | 启动 F4（完整 Drip + Resend 全套） |
+| Gate 4（持续） | F5 内容增量（每月新图表 + 练习题 + 教师备注） |
 | 合规 | GDPR / CAN-SPAM / Stripe Tax；`/pricing` `/checkout` 加 `noindex`；隐私政策增补「营销邮件 + 付费订阅」条款 |
 | 联系邮箱 | `support@syy.global`（沿用 10-02 决策） |
+| Gate 监测 | GA4 月度 review；任一 Gate 未通过即暂停，回到 Gate 0 + 内容扩容 |
 
 ## Section 1：产品形态与定价
 
@@ -539,84 +557,233 @@ CREATE INDEX idx_pdf_downloads_downloaded_at ON pdf_downloads(downloaded_at);
 | 购买漏斗 | CTA 点击 → Checkout 创建 → 支付完成 | 100% / 95% / 60% |
 | 续订漏斗 | D+30 自动续费 → 续费成功邮件 → 下月活跃 | 100% / 95% / 80% |
 
-## Section 10：实施阶段
+## Section 10：Milestone Gates 与启动集
 
-### 阶段 F1：基础设施（1-2 周）
+> 本节是本 spec 的**执行主干**——所有其他 section（1-9）是「触发后该怎么做」的技术参考。Gate 未通过则不动手。
 
-**目标**：Stripe 接入 + D1 迁移 + 用户状态贯通
+### Gate 总览
 
-1. Stripe Dashboard 创建产品（PDF Pack × 2 region + Subscription × 2 region）
+```
+  ┌─────────────────────────────────────────────────────────────┐
+  │ Gate 0（现在）                                              │
+  │   仅做：10-02 阶段 D（合规四页 + AdSlot 修占位）            │
+  │       + 阶段 E（6→40→100 页内容 + SEO 沉淀）                 │
+  │   监测：GA4 月 PV、CTR、SEO 排名                              │
+  │   持续优化：AdSense 广告位 / 标题 / 内链 / 速度               │
+  └─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼  月 PV ≥ 10k 持续 3 个月
+  ┌─────────────────────────────────────────────────────────────┐
+  │ Gate 1 触发 → 启动 F1（基础设施）+ F2（PDF Pack 一次性）    │
+  │   跳过 F3 / F4 / F5                                          │
+  │   目标：月销 PDF Pack ≥ 30 份                                │
+  └─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼  PDF Pack 月销 ≥ 30 份 持续 2 个月
+  ┌─────────────────────────────────────────────────────────────┐
+  │ Gate 2 触发 → 启动 F3（月度/年订阅）                         │
+  │   目标：订阅月活 ≥ 100 人                                    │
+  └─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼  订阅月活 ≥ 100 人
+  ┌─────────────────────────────────────────────────────────────┐
+  │ Gate 3 触发 → 启动 F4（完整 Drip + Resend 全套）            │
+  │   目标：Email 列表 ≥ 5,000 / 打开率 ≥ 40%                     │
+  └─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼  Gate 3 稳定 3 个月
+  ┌─────────────────────────────────────────────────────────────┐
+  │ Gate 4 启动 F5（内容增量：每月新图表 + 练习题 + 教师备注）   │
+  │   与 Gate 1-3 并行持续运行                                   │
+  └─────────────────────────────────────────────────────────────┘
+```
+
+### Gate 0：当前动作清单（不做任何支付基础设施）
+
+**只做**：
+
+1. 10-02 阶段 D：合规四页（/privacy /about /contact /terms）+ AdSlot 占位修复
+2. 10-02 阶段 E：6 → 40 → 100 页内容扩写
+3. AdSense 优化（广告位密度、位置、标题意图词）
+4. SEO 基础设施持续运营（内链、JSON-LD、og:image、sitemap）
+
+**不做**（Gate 1 触发前不允许做）：
+
+- ❌ Stripe 接入（Dashboard 配置 / API key / Webhook）
+- ❌ D1 schema migration（`0002_paid_pdfs.sql`）
+- ❌ Puppeteer PDF 流水线（`scripts/build-pdfs.mjs`）
+- ❌ Resend / 任何邮件服务
+- ❌ Inline Email 收集表单
+- ❌ `/pricing` `/checkout` 落地页
+- ❌ 订阅相关代码（无论中文 plus/pro 还是英文订阅）
+
+**Gate 0 验收**：
+- 100 张图表全部上线 + sitemap.xml 含全部
+- 合规四页就绪 + AdSense 账号申请提交
+- 月 PV ≥ 10k（GA4 验证）+ 持续 3 个月
+
+### Gate 1 启动集：F1（Stripe 基础）+ F2（PDF Pack 一次性买断）
+
+> Gate 1 触发后**同时启动 F1 与 F2**——因为 F2 完全依赖 F1 的 Stripe 接入。
+
+#### F1：Stripe 基础设施（1-2 周）
+
+1. Stripe Dashboard 创建产品（PDF Pack × 2 region：intl + eu）
 2. Worker 新增 `routes/checkout.ts` + `routes/webhooks.ts`
 3. D1 migration `0002_paid_pdfs.sql` 落地
-4. wrangler.toml 配置 Stripe + Resend secrets
-5. Webhook 验签 + 事件路由（仅处理 `checkout.session.completed` 与 `subscription.created`）
-6. 用户 tier 升级/降级逻辑 + `hasTierAccess` 扩展
+4. wrangler.toml 配置 Stripe secrets
+5. Webhook 验签 + 事件路由（仅处理 `checkout.session.completed`）
+6. 用户 tier 升级逻辑：`hasTierAccess` 扩展支持 `pack` tier
 7. 测试：Stripe CLI 模拟 webhook → D1 状态正确
 
-**验收**：
-- `npm test` 包含 stripe webhook 签名校验测试
+**F1 验收**：
+- `npm test` 含 stripe webhook 签名校验测试
 - `npm run build` 通过
 - 手动跑通：游客 checkout → webhook → D1.users.tier = 'pack'
 
-### 阶段 F2：PDF 一次性买断（2-3 周）
-
-**目标**：构建期 PDF 流水线 + 落地页 + 买断流程
+#### F2：PDF Pack 一次性买断（2-3 周）
 
 1. `scripts/build-pdfs.mjs` 实现（Puppeteer + 现有 vite preview）
-2. print=1 客户端模式（隐藏 nav / 广告 / 链接）
+2. `print=1` 客户端模式（隐藏 nav / 广告 / 链接）
 3. `/api/pdf/:slug` 路由 + access_token 校验
-4. `/pricing` 落地页（双轨定价展示）
+4. `/pricing` 落地页（**单轨**：只展示 PDF Pack）
 5. `/checkout/success` 页面
 6. PDF Pack 持有者 UI 解锁（隐藏"购买" CTA，显示"下载 PDF"）
-7. 测试：构建期 100 张 PDF 生成 + 文件大小 < 1MB/张 + 跨浏览器一致性（Chrome / Safari / Firefox 抽样）
+7. 测试：构建期 100 张 PDF 生成 + 文件大小 < 1MB/张 + 跨浏览器一致性
 
-**验收**：
+**F2 验收**：
 - 6 张图表手动跑通构建 → PDF 文件正确
 - 游客 checkout → 收到 magic link email → 下载 PDF
 - 已登录用户 checkout → tier 升级 → UI 解锁
 
-### 阶段 F3：订阅（1-2 周）
+### Gate 2 启动集：F3（月度/年订阅）
 
-**目标**：月度订阅 + 年度订阅 + 自动续费
+> 仅做**订阅**，**不做 Drip**。Drip 留到 Gate 3。
 
 1. Stripe Subscription 创建 + Webhook 处理（`customer.subscription.created/updated/deleted`）
-2. `/account/subscription` 用户自助管理页
-3. 取消订阅流程（立即取消 / 期末取消两种 UX）
-4. dunning 邮件（D+3 / D+7 / D+14 三封）
-5. 测试：Stripe test clock 模拟订阅生命周期
+2. `/pricing` 落地页扩为**双轨**（PDF Pack + Subscription）
+3. `/account/subscription` 用户自助管理页
+4. 取消订阅流程（立即取消 / 期末取消两种 UX）
+5. dunning 邮件（D+3 / D+7 / D+14 三封，**走 Resend 但用 transactional 模板而非 drip 引擎**）
+6. 测试：Stripe test clock 模拟订阅生命周期
 
-**验收**：
-- 订阅创建 → Day 30 自动续费 → 用户收到 invoice + 续费成功邮件
+**F3 验收**：
+- 订阅创建 → Day 30 自动续费 → 用户收到 invoice 邮件
 - 取消订阅 → 期末不续费 → tier 自动降级
 
-### 阶段 F4：Email 体系（2-3 周）
+### Gate 3 启动集：F4（完整 Drip 引擎）
 
-**目标**：Resend + Inline 表单 + Drip 引擎 + 退订
+> 这一阶段才需要 Resend drip 引擎与 Inline Email 表单。
 
 1. Resend API 集成 + React Email 模板（welcome / popular-3 / upsell-soft / feedback / reengage-30）
 2. `worker/cron/email-drip.ts` 每小时 cron
 3. Inline 表单组件 + `/api/email/subscribe` + `/api/email/confirm` + `/api/email/unsubscribe`
 4. DMARC / SPF / DKIM 配置 `mail.syy.global`
-5. `/email/unsubscribe?token=xxx` 落地页（一条文案 + 一个按钮）
-6. 测试：模拟订阅 → Day 0 / 3 / 7 / 14 / 30 全部收到 + 退订后停止
+5. `/email/unsubscribe?token=xxx` 落地页
+6. 测试：Drip 5 封全部到达收件箱（mail-tester.com ≥ 9/10）
 
-**验收**：
-- 5 封 drip 全部到达收件箱（用 mail-tester.com 跑分 > 9/10）
-- 退订链接生效（Drip 引擎跳过 status=unsubscribed）
-- Inline 表单转化率 ≥ 2%（GA4 监测）
+**F4 验收**：
+- 5 封 drip 全部送达 + 退订 1-click 生效
+- Inline 表单转化率 ≥ 2%（GA4）
 
-### 阶段 F5：内容增量与 Premium（持续，与阶段 F2/3/4 并行）
+### Gate 4（持续）：F5 内容增量
 
-**目标**：每月新增内容支撑订阅 LTV
+> Gate 3 稳定运行 3 个月后才启动。
 
 1. 新图表创作流程接入订阅 30 天独占窗口
 2. 每月 1 套练习题 PDF 创作（订阅独享）
 3. 教师备注 PDF（每月 1 篇）
 4. 月度内容回顾邮件（订阅用户专属 Day 30 变体）
 
-**验收**：
-- 每月 1 张新图表 + 1 套练习题稳定产出
-- 订阅用户留存率（D+30 active）≥ 75%
+**F5 验收**：每月 1 张新图表 + 1 套练习题稳定产出；订阅 D+30 留存 ≥ 75%
+
+### Gate 测量与决策
+
+#### GA4 报告配置（现在就建好 Gate 监测）
+
+- **Saved Report #1**：「Monthly Traffic Gate」—— `page_path matches /en/reference/`，过去 30 天 PV、UV、CTR
+- **Saved Report #2**：「SEO Performance」—— 自然搜索关键词 + 排名 + CTR
+- **Saved Report #3**：「AdSense Revenue」—— RPM × CTR × PV 月度趋势
+- 每月 1 号自动邮件给 owner
+
+#### 月度 review 决策树
+
+```
+月 PV < 5k
+  └── 暂停：SEO 模型未起来；回到 Gate 0 加内容
+5k ≤ 月 PV < 10k
+  └── 继续 Gate 0：扩内容 + 优化 SEO；下月再 review
+月 PV ≥ 10k（首次）
+  └── 标记「Gate 1 观察期」开始
+持续 3 个月月 PV ≥ 10k
+  └── ✅ Gate 1 通过 → 启动 F1+F2
+任意连续 2 个月月 PV 跌回 < 8k
+  └── ❌ Gate 1 未通过 → 回到 Gate 0 排查
+```
+
+#### Gate 失败的退出路径
+
+任一 Gate 失败（连续 2 个月未达阈值）→ 回到 Gate 0，把 spec 归档为 `docs/superpowers/specs/archived/2026-10-06-paid-pdf-email-monetization-design.milestone-blocked.md`，并：
+
+- 删除 Resend / Stripe 相关依赖与代码（防止腐烂）
+- 保留 Inline Email 表单（作为「纯 list-building」工具）
+- 重新评估是否需要修订 Gate 阈值（$9.99 订阅定价是否过高？SEO 模型是否需要调整？）
+
+## Section 11：Gate 评估时间表与可能路径
+
+### 时间表（best-case 推演）
+
+| 月份 | 假设条件 | Gate 状态 | 动作 |
+|---|---|---|---|
+| M1 (2026-10) | 100 页已上（继承 10-02 阶段 E） | Gate 0 启动 | AdSense + SEO 优化 |
+| M2 | 月 PV 5k，SEO 排名爬升中 | Gate 0 继续 | 扩内容 + 内链 |
+| M3 | 月 PV 8k | Gate 0 继续 | 同上 |
+| M4 | 月 PV 12k（**首次破 10k**） | Gate 1 观察期开始 | 监测稳定性 |
+| M5 | 月 PV 14k | Gate 1 观察期 | 同上 |
+| M6 | 月 PV 18k（**连续 3 个月 ≥ 10k**） | **Gate 1 通过** | 启动 F1 (Stripe 接入) |
+| M7-8 | F1 + F2 并行开发 | Gate 1 进行中 | Stripe + PDF Pack |
+| M9 | F2 上线，PDF Pack 月销 15 份 | Gate 2 观察期 | 优化定价 + 落地页 |
+| M10 | 月销 25 份 | Gate 2 观察期 | 同上 |
+| M11 | 月销 35 份（**连续 2 个月 ≥ 30**） | **Gate 2 通过** | 启动 F3 (订阅) |
+| M12 | F3 上线，订阅月活 30 人 | Gate 3 观察期 | 优化订阅 UX |
+| M13 | 订阅月活 70 人 | Gate 3 观察期 | 同上 |
+| M14 | 订阅月活 110 人（**首次破 100**） | **Gate 3 通过** | 启动 F4 (Drip) |
+| M15+ | Drip 持续，列表积累 | Gate 4 启动 F5 内容增量 | 每月新图表 + 练习题 |
+
+### 三种可能路径
+
+**Path A（理想）**：上述时间表按节奏推进 → 14 个月后到 F4 + F5 持续
+
+**Path B（SEO 顺利但付费冷启动慢）**：
+- M4-M6 提前到 M2-M4（SEO 起来比预期快）
+- 但 PDF Pack 月销破 30 可能要 M9-M11（用户对付费有抵抗）
+- 应对：把 Gate 2 阈值从 30 降到 15（前提是月销在稳定增长）
+
+**Path C（SEO 起来慢）**：
+- 6 个月内月 PV 未到 10k → SEO 模型需要修订
+- 应对：要么调内容方向（更窄的「教师素材」聚焦），要么调 SEO 策略（更激进的长尾 keyword 覆盖），要么承认模型不工作回到纯内容订阅（中文 plus/pro）
+
+### Gate 数据看板
+
+每月 1 号自动生成「出海仪表盘」（GA4 + Stripe + Resend API 拼装），给 owner 一封邮件摘要：
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+出海仪表盘 / 2026-11
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+AdSense 月收入：$XXX (上月 $XXX, Δ ±XX%)
+月 PV：XX,XXX (上月 XX,XXX, Δ ±XX%)
+GA4 自然搜索占比：XX%
+
+Gate 状态：
+  Gate 0 → 进行中（M2/12）
+  Gate 1 → 未启动（距触发还差月 PV X,XXX）
+
+订阅侧（暂未启动）
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
 ## 测试策略
 
@@ -734,19 +901,55 @@ CREATE INDEX idx_pdf_downloads_downloaded_at ON pdf_downloads(downloaded_at);
 - **Gift Card / 礼品订阅**——复杂度高，不在 MVP
 - **API 嵌入（让其他站点用我们的图表）**——属于 B2B SaaS 范畴，是后续 spec
 
-## 上线 Checklist
+## 上线 Checklist（按 Gate 分组）
 
-- [ ] Stripe Dashboard 产品 + 价格 + Webhook 配置就绪
-- [ ] wrangler secrets 全部注入
-- [ ] D1 migration 在 staging 跑通
-- [ ] `scripts/build-pdfs.mjs` 在 CI 跑通（产物 < 100MB）
-- [ ] Resend 域名 SPF / DKIM / DMARC 配置
+### Gate 0 上线 Checklist（**现在**就要做）
+
+- [ ] GA4 Saved Report #1/#2/#3 配置就绪（Monthly Traffic Gate / SEO Performance / AdSense Revenue）
+- [ ] 月度 review 邮件订阅配置（每月 1 号自动发摘要）
+- [ ] AdSense 账号申请提交（10-02 阶段 D 完成后立即）
+- [ ] 100 张图表上线 + sitemap.xml 含全部
+- [ ] 合规四页就绪
+- [ ] 内链密度、标题意图词、JSON-LD 抽样通过
+- [ ] **不启动** Stripe / Resend / Puppeteer 任何基础设施
+
+### Gate 1 启动 Checklist（PV ≥ 10k 持续 3 个月后）
+
+- [ ] Stripe Dashboard 创建 PDF Pack 产品（intl + eu 两个 Tax Behavior）
+- [ ] wrangler secrets 注入 STRIPE_SECRET_KEY + STRIPE_WEBHOOK_SECRET + 三个 STRIPE_PRICE_*
+- [ ] D1 migration `0002_paid_pdfs.sql` 在 staging 跑通
+- [ ] `scripts/build-pdfs.mjs` 在 CI 跑通（产物 < 100MB）+ 文件大小断言
+- [ ] `/pricing` 单轨落地页上线
+- [ ] `/api/pdf/:slug` access_token 校验
+- [ ] 游客 + 登录用户各跑通一次 checkout 流程
+- [ ] GA4 事件 `checkout_started` / `checkout_completed` / `pack_purchased` 埋点
+- [ ] Stripe webhook 失败告警（Cloudflare Workers Logs）
+- [ ] 月度 review 加 PDF Pack 月销行
+
+### Gate 2 启动 Checklist（PDF Pack 月销 ≥ 30 份持续 2 个月后）
+
+- [ ] Stripe Subscription 创建（monthly + yearly 两 SKU）
+- [ ] `/pricing` 扩为双轨
+- [ ] `/account/subscription` 自助管理页
+- [ ] dunning 邮件（D+3 / D+7 / D+14 transactional 模板）
+- [ ] Stripe test clock 跑通订阅生命周期
+- [ ] GA4 事件 `subscription_started` / `subscription_cancelled` 埋点
+
+### Gate 3 启动 Checklist（订阅月活 ≥ 100 人后）
+
+- [ ] Resend 域名 SPF / DKIM / DMARC 配置完成
 - [ ] mail-tester.com 评分 ≥ 9/10
+- [ ] 5 封 drip 模板（React Email）+ cron trigger
+- [ ] Inline 表单组件 + 退订 1-click
 - [ ] GDPR / CAN-SPAM 文案 review
 - [ ] 隐私政策 / 条款 增补营销邮件 + 订阅条款
 - [ ] Funding Choices CMP（10-02 阶段 D）已上线
-- [ ] GA4 事件埋点全部就位
-- [ ] 6 张图表 end-to-end 跑通（游客 + 登录用户各一次）
-- [ ] Stripe test clock 跑通订阅生命周期
-- [ ] 监控：Stripe webhook 失败告警 + Resend 送达率告警 + PDF 构建失败告警
+- [ ] Resend 送达率告警 + 退订率告警
+
+### Gate 4 启动 Checklist（Gate 3 稳定 3 个月后）
+
+- [ ] 每月新图表 + 练习题 + 教师备注创作流程建立
+- [ ] 订阅 30 天独占窗口接入发布流水线
+- [ ] 月度内容回顾邮件模板
+- [ ] 订阅留存看板（GA4 cohort）
 
