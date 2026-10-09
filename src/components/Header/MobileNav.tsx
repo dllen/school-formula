@@ -22,10 +22,11 @@ const NAV_GROUPS = [
     ],
   },
   {
-    label: '古籍阅读',
+    label: '经典阅读',
     views: [
       { value: 'zizhi', label: '资治通鉴' },
       { value: 'shiji', label: '史记' },
+      { value: 'poetry', label: '古诗词' },
     ],
   },
   {

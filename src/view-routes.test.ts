@@ -14,6 +14,7 @@ describe('view-routes', () => {
       zizhi: '/zizhi',
       shiji: '/shiji',
       'ai-chat': '/ai-chat',
+      poetry: '/poetry',
     });
   });
 

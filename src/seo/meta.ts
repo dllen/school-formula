@@ -75,6 +75,23 @@ function buildJsonLd(
     ];
   }
 
+  if (content.kind === 'poem') {
+    return [
+      {
+        '@context': context,
+        '@type': 'LearningResource',
+        name: content.resource.name,
+        description: content.resource.description,
+        url: canonical,
+        inLanguage,
+        learningResourceType: '古诗词',
+        author: content.resource.author,
+        about: `${content.resource.dynasty}代`,
+      },
+      breadcrumbJsonLd(content, context),
+    ];
+  }
+
   if (content.kind === 'reference') {
     return [
       {

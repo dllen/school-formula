@@ -4,7 +4,7 @@ const REDIRECT_HOSTS = new Set(['syy.mobi', 'www.syy.mobi', 'syy.one', 'www.syy.
 
 const KNOWN_VIEWS = new Set([
   'tutorial', 'cheatsheet', 'mental-math', 'formula', 'mastery',
-  'practice', 'notes', 'zizhi', 'shiji', 'ai-chat',
+  'practice', 'poetry', 'notes', 'zizhi', 'shiji', 'ai-chat',
 ]);
 
 export function hostRedirect(url: URL): string | null {

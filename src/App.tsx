@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home';
 import { KnowledgeDetail } from './components/KnowledgeDetail';
+import { PoemDetail } from './components/poetry/PoemDetail';
 import { ReferenceCategory } from './components/reference/ReferenceCategory';
 import { ReferenceIndex } from './components/reference/ReferenceIndex';
 import { ReferencePage } from './components/reference/ReferencePage';
@@ -19,6 +20,7 @@ function App() {
         <Route key={path} path={path} element={<Home />} />
       ))}
       <Route path="/knowledge/:id" element={<KnowledgeDetail />} />
+      <Route path="/poetry/:id" element={<PoemDetail />} />
       <Route path={ENGLISH_HOME} element={<ReferenceIndex />} />
       <Route path={ENGLISH_CATEGORY_ROUTE} element={<ReferenceCategory />} />
       <Route path={ENGLISH_REFERENCE_ROUTE} element={<ReferencePage />} />

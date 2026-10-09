@@ -11,6 +11,7 @@ export const VIEW_PATHS: Record<Exclude<ViewType, 'knowledge'>, `/${string}`> = 
   zizhi: '/zizhi',
   shiji: '/shiji',
   'ai-chat': '/ai-chat',
+  poetry: '/poetry',
 };
 
 export function pathForView(view: ViewType): string {
