@@ -78,6 +78,11 @@ const VIEW_CONTENT: Record<Exclude<ViewType, 'knowledge'>, { title: string; desc
     description:
       'AI 智能助教：围绕知识点生成深度解析、生活场景、亲子互动与实战测验，帮助家长更有方法地辅导孩子。',
   },
+  poetry: {
+    title: '古诗词学习',
+    description:
+      '收录新课标必背唐诗宋词，按朝代、学段、题材筛选。每首含原文、拼音、译文与赏析，方便中小学生背诵与理解。',
+  },
 };
 
 /** Resolve an unprefixed route to the Chinese app's page copy. */

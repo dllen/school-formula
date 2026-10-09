@@ -7,6 +7,7 @@ import { NotesView } from './NotesView';
 import { PracticeView } from './PracticeView';
 import { ShijiView } from './ShijiView';
 import { AIChatView } from './AIChatView';
+import { PoetryView } from './poetry/PoetryView';
 import { TutorialView } from './TutorialView';
 import { ZizhiView } from './ZizhiView';
 import { MasteryView } from './MasteryView';
@@ -115,6 +116,8 @@ export function Home() {
                     <ZizhiView />
                 ) : activeView === 'ai-chat' ? (
                     <AIChatView />
+                ) : activeView === 'poetry' ? (
+                    <PoetryView />
                 ) : (
                     <ShijiView />
                 )}

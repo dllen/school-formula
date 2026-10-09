@@ -9,4 +9,5 @@ export type ViewType =
   | 'notes'
   | 'zizhi'
   | 'shiji'
-  | 'ai-chat';
+  | 'ai-chat'
+  | 'poetry';
