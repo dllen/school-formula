@@ -32,4 +32,12 @@ export type PageContent =
       breadcrumbs: Breadcrumb[];
       category: string;
       charts: { name: string; path: string }[];
+    }
+  | {
+      /** /poetry/:id 单首诗页。 */
+      kind: 'poem';
+      title: string;
+      description: string;
+      breadcrumbs: Breadcrumb[];
+      resource: { name: string; description: string; author: string; dynasty: string };
     };

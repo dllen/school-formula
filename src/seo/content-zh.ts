@@ -1,5 +1,6 @@
 import type { ViewType } from '../components/Header/types';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
+import { ALL_POEMS } from '../data/poems';
 import type { GradeData, KnowledgePoint, Subject } from '../data/types';
 import type { Language } from '../i18n/languages';
 import { viewFromPath } from '../view-routes';
@@ -119,6 +120,30 @@ export function resolveChineseContent(appPath: string, path: string, language: L
         description: point.description,
         subject: subject.name,
         grade: grade.name,
+      },
+    };
+  }
+
+  const poemId = /^\/poetry\/([^/]+)\/?$/.exec(appPath)?.[1];
+  const poem = poemId ? ALL_POEMS.find((p) => p.id === poemId) : undefined;
+  if (poem) {
+    const dynastyLabel = poem.dynasty === 'tang' ? '唐' : '宋';
+    return {
+      kind: 'poem',
+      title: `${poem.title}（${dynastyLabel}·${poem.author}） - ${brand.name}`,
+      description: poem.appreciation
+        ? `${poem.translation} ${poem.appreciation}`
+        : poem.translation,
+      breadcrumbs: [
+        HOME_BREADCRUMB,
+        { name: '古诗词', path: '/poetry' },
+        { name: poem.title, path },
+      ],
+      resource: {
+        name: poem.title,
+        description: poem.translation,
+        author: poem.author,
+        dynasty: dynastyLabel,
       },
     };
   }
