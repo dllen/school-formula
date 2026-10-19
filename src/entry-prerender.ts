@@ -5,7 +5,7 @@ import { validateReferencePages } from './data/reference/validate';
 import { render } from './entry-server';
 import { injectPage, outputFileFor } from './prerender/inject';
 import { writeOgImages } from './prerender/og';
-import { PRERENDER_PATHS } from './prerender/routes';
+import { PRERENDER_PATHS, XML_SITEMAP_PATHS } from './prerender/routes';
 import { buildRobotsTxt, buildSitemap } from './seo/files';
 import { GA4_MEASUREMENT_ID } from './seo/analytics';
 import { renderHead } from './seo/head';
@@ -38,7 +38,7 @@ for (const route of PRERENDER_PATHS) {
 }
 
 writeFileSync(join(distDir, 'robots.txt'), buildRobotsTxt());
-writeFileSync(join(distDir, 'sitemap.xml'), buildSitemap(PRERENDER_PATHS));
+writeFileSync(join(distDir, 'sitemap.xml'), buildSitemap(XML_SITEMAP_PATHS));
 
 console.log(
   `prerendered ${written} pages (+ robots.txt, sitemap.xml, ${ogWritten.length} og images)`,

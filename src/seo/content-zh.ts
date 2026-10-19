@@ -3,6 +3,7 @@ import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { ALL_POEMS } from '../data/poems';
 import type { GradeData, KnowledgePoint, Subject } from '../data/types';
 import type { Language } from '../i18n/languages';
+import { HTML_SITEMAP_PATH } from '../sitemap';
 import { viewFromPath } from '../view-routes';
 import { brandFor } from './site';
 import type { Breadcrumb, PageContent } from './types';
@@ -145,6 +146,15 @@ export function resolveChineseContent(appPath: string, path: string, language: L
         author: poem.author,
         dynasty: dynastyLabel,
       },
+    };
+  }
+
+  if (appPath === HTML_SITEMAP_PATH) {
+    return {
+      kind: 'view',
+      title: `站点地图 - ${brand.name}`,
+      description: '拾艺院全部可索引页面索引：按学段、学科、古诗词与英文速查表分类。',
+      breadcrumbs: [HOME_BREADCRUMB, { name: '站点地图', path: HTML_SITEMAP_PATH }],
     };
   }
 
