@@ -2,6 +2,7 @@ import type { Env, UserResponse } from '../types';
 import { signJWT, verifyJWT, generateRefreshToken } from '../lib/jwt';
 import { hashPassword, verifyPassword } from '../lib/password';
 import { generateVerificationCode, sendVerificationEmail } from '../lib/email';
+import { rateLimitKey, takeRateLimit } from '../lib/rate-limit';
 
 function jsonResponse(data: object, status: number = 200): Response {
   return new Response(JSON.stringify(data), {
@@ -30,6 +31,37 @@ function toUserResponse(row: Record<string, unknown>): UserResponse {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** 各认证端点的限流阈值：邮箱+IP 共同配额，参考业内 OWASP 建议。 */
+const RATE_LIMITS = {
+  register: { limit: 5, windowSeconds: 60 * 60 }, // 5/小时
+  login: { limit: 10, windowSeconds: 15 * 60 }, // 10/15 分钟
+  forgot: { limit: 5, windowSeconds: 60 * 60 }, // 5/小时
+  reset: { limit: 10, windowSeconds: 15 * 60 }, // 10/15 分钟
+} as const;
+
+const CODE_ATTEMPT_LIMIT = 5;
+
+function clientIp(request: Request): string {
+  return request.headers.get('cf-connecting-ip') || 'unknown';
+}
+
+/**
+ * 统一封装：endpoint+email+IP 维度限流；返回 null 表示放行，
+ * 返回 Response 时直接把该 Response 作为 handler 返回（429 + RATE_LIMITED）。
+ */
+async function enforceRateLimit(
+  request: Request,
+  env: Env,
+  endpoint: keyof typeof RATE_LIMITS,
+  email: string,
+): Promise<Response | null> {
+  const config = RATE_LIMITS[endpoint];
+  const key = rateLimitKey(endpoint, clientIp(request), email);
+  const ok = await takeRateLimit(env, key, config.limit, config.windowSeconds);
+  if (!ok) return errorResponse('请求过于频繁，请稍后再试', 429, 'RATE_LIMITED');
+  return null;
+}
+
 async function hashToken(token: string): Promise<string> {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(token));
   return Array.from(new Uint8Array(buf))
@@ -56,6 +88,9 @@ export async function handleAuth(
     if (body.password.length < 8) {
       return errorResponse('密码至少 8 位');
     }
+
+    const limited = await enforceRateLimit(request, env, 'register', body.email);
+    if (limited) return limited;
 
     // 检查邮箱是否已注册
     const existing = await env.DB.prepare('SELECT id FROM users WHERE email = ?')
@@ -109,6 +144,9 @@ export async function handleAuth(
     if (!body?.email || !body?.password) {
       return errorResponse('邮箱和密码不能为空');
     }
+
+    const limited = await enforceRateLimit(request, env, 'login', body.email);
+    if (limited) return limited;
 
     const user = await env.DB.prepare('SELECT * FROM users WHERE email = ?')
       .bind(body.email.toLowerCase())
@@ -200,6 +238,9 @@ export async function handleAuth(
     const body = await request.json().catch(() => null) as { email?: string } | null;
     if (!body?.email) return errorResponse('邮箱不能为空');
 
+    const limited = await enforceRateLimit(request, env, 'forgot', body.email);
+    if (limited) return limited;
+
     const user = await env.DB.prepare('SELECT id FROM users WHERE email = ?')
       .bind(body.email.toLowerCase())
       .first();
@@ -230,13 +271,31 @@ export async function handleAuth(
       return errorResponse('密码至少 8 位');
     }
 
+    const limited = await enforceRateLimit(request, env, 'reset', body.email);
+    if (limited) return limited;
+
     const record = await env.DB.prepare(
-      'SELECT code, expires_at FROM email_verifications WHERE email = ? AND purpose = ? ORDER BY created_at DESC LIMIT 1'
+      'SELECT id, code, expires_at FROM email_verifications WHERE email = ? AND purpose = ? ORDER BY created_at DESC LIMIT 1'
     )
       .bind(body.email.toLowerCase(), 'reset_password')
-      .first<{ code: string; expires_at: string }>();
+      .first<{ id: string; code: string; expires_at: string }>();
 
     if (!record || record.code !== body.code) {
+      // 验证码错误：累加 attempts，到达上限即锁定（删除记录并拒绝继续尝试）
+      if (record) {
+        await env.DB.prepare('UPDATE email_verifications SET attempts = attempts + 1 WHERE id = ?')
+          .bind(record.id)
+          .run();
+        const updated = await env.DB.prepare('SELECT attempts FROM email_verifications WHERE id = ?')
+          .bind(record.id)
+          .first<{ attempts: number }>();
+        if (updated && updated.attempts >= CODE_ATTEMPT_LIMIT) {
+          await env.DB.prepare('DELETE FROM email_verifications WHERE id = ?')
+            .bind(record.id)
+            .run();
+          return errorResponse('验证码已失效，请重新申请', 400, 'CODE_LOCKED');
+        }
+      }
       return errorResponse('验证码错误', 400, 'INVALID_CODE');
     }
     if (new Date(record.expires_at) < new Date()) {
@@ -249,6 +308,13 @@ export async function handleAuth(
       .run();
 
     await env.DB.prepare('DELETE FROM email_verifications WHERE email = ?')
+      .bind(body.email.toLowerCase())
+      .run();
+
+    // 改密踢会话：让所有已签发的 refresh token 失效，逼迫用户重新登录
+    await env.DB.prepare(
+      'DELETE FROM sessions WHERE user_id = (SELECT id FROM users WHERE email = ?)'
+    )
       .bind(body.email.toLowerCase())
       .run();
 

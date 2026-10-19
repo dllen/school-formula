@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS auth_rate_limits (
+  key TEXT PRIMARY KEY,
+  count INTEGER NOT NULL DEFAULT 0,
+  window_start TEXT NOT NULL
+);
+ALTER TABLE email_verifications ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0;

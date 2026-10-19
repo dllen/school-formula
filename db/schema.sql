@@ -16,7 +16,14 @@ CREATE TABLE IF NOT EXISTS email_verifications (
   code TEXT NOT NULL,
   purpose TEXT DEFAULT 'register',
   expires_at TEXT NOT NULL,
+  attempts INTEGER NOT NULL DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS auth_rate_limits (
+  key TEXT PRIMARY KEY,
+  count INTEGER NOT NULL DEFAULT 0,
+  window_start TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS sessions (
