@@ -5,6 +5,7 @@ import { KNOWLEDGE_DATA } from '../../data/knowledge';
 import { getQuestionsByKnowledgePoint } from '../../data/questions';
 import { PromptModal } from '../prompts/PromptModal';
 import type { KnowledgePoint, Subject } from '../../data/types';
+import { Footer } from '../Footer';
 import { AIGenerator } from './AIGenerator';
 import { FunCorner } from './FunCorner';
 import { Header } from './Header';
@@ -57,8 +58,9 @@ export const KnowledgeDetail: React.FC = () => {
     const relatedQuestions = getQuestionsByKnowledgePoint(point.id);
 
     return (
-        <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800">
-            <div className="max-w-4xl mx-auto px-4 py-8">
+    <>
+        <div className="min-h-screen flex flex-col bg-[#F5F6F7] font-sans text-slate-800">
+            <div className="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
                 <button
                     onClick={() => navigate('/')}
                     className="mb-6 flex items-center text-[#646A73] hover:text-[#3370FF] transition-colors"
@@ -107,5 +109,7 @@ export const KnowledgeDetail: React.FC = () => {
                 knowledgePointGrade={grade.name}
             />
         </div>
+        <Footer />
+    </>
     );
 };
