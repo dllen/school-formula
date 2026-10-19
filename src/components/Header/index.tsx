@@ -32,7 +32,7 @@ export function Header({ activeView, onViewChange }: HeaderProps) {
           <Logo />
 
           <div className="flex items-center gap-3">
-            <NavMenu activeView={activeView} onViewChange={onViewChange} />
+            <NavMenu activeView={activeView} />
             <LanguageSwitcher />
             <UserMenu />
             <SettingsButton onClick={() => setIsSettingsOpen(true)} />

@@ -11,6 +11,7 @@ import { PoetryView } from './poetry/PoetryView';
 import { TutorialView } from './TutorialView';
 import { ZizhiView } from './ZizhiView';
 import { MasteryView } from './MasteryView';
+import { Footer } from './Footer';
 import { GradeSelector } from './GradeSelector';
 import { Header } from './Header';
 import { KnowledgeList } from './KnowledgeList';
@@ -24,13 +25,9 @@ export function Home() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const [selectedGradeId, setSelectedGradeId] = useState<GradeLevel>('primary');
-    const [selectedSubject, setSelectedSubject] = useState<Subject | null>(null);
-    const [year, setYear] = useState<number | null>(null);
-
-    useEffect(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- SSR-safe: render null on server, fill year after mount
-        setYear(new Date().getFullYear());
-    }, []);
+    const [selectedSubject, setSelectedSubject] = useState<Subject | null>(
+        KNOWLEDGE_DATA[0]?.subjects[0] ?? null,
+    );
 
     const activeView: ViewType = viewFromPath(location.pathname) ?? 'knowledge';
 
@@ -50,7 +47,8 @@ export function Home() {
 
     const handleGradeChange = (grade: GradeLevel) => {
         setSelectedGradeId(grade);
-        setSelectedSubject(null); // Reset subject when grade changes
+        const nextGrade = KNOWLEDGE_DATA.find(g => g.id === grade);
+        setSelectedSubject(nextGrade?.subjects[0] ?? null); // Reset subject to new grade's first subject
     };
 
     return (
@@ -124,9 +122,7 @@ export function Home() {
 
             </main>
 
-            <footer className="mt-12 py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2]">
-                <p>&copy; {year} 拾艺院 (Shi Yi Yuan). All rights reserved.</p>
-            </footer>
+            <Footer />
         </div>
     );
 }

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { ViewType } from './types';
+import { pathForView } from '../../view-routes';
 
 interface NavGroup {
   label: string;
@@ -43,10 +45,9 @@ const NAV_GROUPS: NavGroup[] = [
 
 interface NavMenuProps {
   activeView: ViewType;
-  onViewChange: (view: ViewType) => void;
 }
 
-export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
+export function NavMenu({ activeView }: NavMenuProps) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
   const closeTimer = useRef<number | null>(null);
 
@@ -106,22 +107,19 @@ export function NavMenu({ activeView, onViewChange }: NavMenuProps) {
               >
                 <div className="bg-white rounded-lg shadow-lg border border-[#F0F1F2] py-1">
                 {group.views.map((view) => (
-                  <button
+                  <Link
                     key={view.value}
-                    type="button"
+                    to={pathForView(view.value)}
                     role="menuitem"
-                    onClick={() => {
-                      onViewChange(view.value);
-                      setOpenGroup(null);
-                    }}
-                    className={`w-full text-left px-4 py-2 text-sm transition-colors ${
+                    onClick={() => setOpenGroup(null)}
+                    className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
                       activeView === view.value
                         ? 'text-[#3370FF] bg-[#E1EAFF] font-medium'
                         : 'text-[#1F2329] hover:bg-[#F5F6F7] hover:text-[#1F2329]'
                     }`}
                   >
                     {view.label}
-                  </button>
+                  </Link>
                 ))}
                 </div>
               </div>
