@@ -23,4 +23,14 @@ describe('Footer', () => {
         const sitemapLink = screen.getByRole('link', { name: /站点地图/ });
         expect(sitemapLink.getAttribute('href')).toBe('/sitemap');
     });
+
+    it('links to the privacy policy page', () => {
+        render(
+            <MemoryRouter>
+                <Footer />
+            </MemoryRouter>,
+        );
+        const privacyLink = screen.getByRole('link', { name: /隐私政策/ });
+        expect(privacyLink.getAttribute('href')).toBe('/privacy');
+    });
 });

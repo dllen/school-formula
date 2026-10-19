@@ -1,5 +1,6 @@
 import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { ALL_POEMS } from '../data/poems';
+import { LEGAL_PATHS } from '../components/legal/legal-content';
 import { ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { HTML_SITEMAP_PATH } from '../sitemap';
 import { VIEW_PATHS } from '../view-routes';
@@ -14,6 +15,7 @@ export const PRERENDER_PATHS: string[] = [
   ),
   ...ENGLISH_ROUTE_PATHS,
   ...ALL_POEMS.map((p) => `/poetry/${p.id}`),
+  ...LEGAL_PATHS,
   HTML_SITEMAP_PATH,
 ];
 

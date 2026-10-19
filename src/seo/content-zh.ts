@@ -1,4 +1,5 @@
 import type { ViewType } from '../components/Header/types';
+import { LEGAL_CONTENT, LEGAL_PATHS, type LegalPath } from '../components/legal/legal-content';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { ALL_POEMS } from '../data/poems';
 import type { GradeData, KnowledgePoint, Subject } from '../data/types';
@@ -155,6 +156,16 @@ export function resolveChineseContent(appPath: string, path: string, language: L
       title: `站点地图 - ${brand.name}`,
       description: '拾艺院全部可索引页面索引：按学段、学科、古诗词与英文速查表分类。',
       breadcrumbs: [HOME_BREADCRUMB, { name: '站点地图', path: HTML_SITEMAP_PATH }],
+    };
+  }
+
+  if ((LEGAL_PATHS as readonly string[]).includes(appPath)) {
+    const c = LEGAL_CONTENT[appPath as LegalPath];
+    return {
+      kind: 'view',
+      title: `${c.title} - ${brand.name}`,
+      description: c.description,
+      breadcrumbs: [HOME_BREADCRUMB, { name: c.title, path: appPath }],
     };
   }
 

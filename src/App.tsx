@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HtmlSitemap } from './components/HtmlSitemap';
+import { LegalPage } from './components/legal/LegalPage';
 import { ROUTE_COMPONENTS } from './routing/route-modules';
 import {
   ENGLISH_CATEGORY_ROUTE,
@@ -35,6 +36,10 @@ function App() {
         <Route path={ENGLISH_HOME} element={<ReferenceIndex />} />
         <Route path={ENGLISH_CATEGORY_ROUTE} element={<ReferenceCategory />} />
         <Route path={ENGLISH_REFERENCE_ROUTE} element={<ReferencePage />} />
+        <Route path="/privacy" element={<LegalPage />} />
+        <Route path="/terms" element={<LegalPage />} />
+        <Route path="/about" element={<LegalPage />} />
+        <Route path="/contact" element={<LegalPage />} />
       </Routes>
     </Suspense>
   );

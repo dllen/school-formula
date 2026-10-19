@@ -1,5 +1,6 @@
 import { CATEGORY_COPY } from './data/reference/en/categories';
 import { REFERENCE_PAGES } from './data/reference';
+import { LEGAL_CONTENT, LEGAL_PATHS } from './components/legal/legal-content';
 import { ALL_POEMS } from './data/poems';
 import { KNOWLEDGE_DATA } from './data/knowledge';
 import {
@@ -95,7 +96,12 @@ export function buildHtmlSitemap(): SitemapGroup[] {
     })),
   };
 
-  return [learningViews, ...knowledgeGroups, poetryGroup, englishReference, englishHubs];
+  const legalGroup: SitemapGroup = {
+    title: '站点信息',
+    links: LEGAL_PATHS.map((p) => ({ label: LEGAL_CONTENT[p].title, path: p })),
+  };
+
+  return [learningViews, ...knowledgeGroups, poetryGroup, englishReference, englishHubs, legalGroup];
 }
 
 /** Flatten the grouped structure into a list of paths in display order. */

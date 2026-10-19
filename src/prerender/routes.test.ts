@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { ALL_POEMS } from '../data/poems';
+import { LEGAL_PATHS } from '../components/legal/legal-content';
 import { ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { HTML_SITEMAP_PATH } from '../sitemap';
 import { VIEW_PATHS } from '../view-routes';
@@ -22,6 +23,9 @@ describe('PRERENDER_PATHS', () => {
     expect(PRERENDER_PATHS).toContain('/en/science/');
     expect(PRERENDER_PATHS).toContain('/en/english/');
     expect(PRERENDER_PATHS).toContain('/en/math/multiplication-chart/');
+    for (const path of LEGAL_PATHS) {
+      expect(PRERENDER_PATHS).toContain(path);
+    }
     expect(PRERENDER_PATHS.filter((p) => p.startsWith('/knowledge/'))).toHaveLength(kpCount);
     expect(PRERENDER_PATHS).toHaveLength(
       1 +
@@ -29,6 +33,7 @@ describe('PRERENDER_PATHS', () => {
         kpCount +
         ENGLISH_ROUTE_PATHS.length +
         ALL_POEMS.length +
+        LEGAL_PATHS.length +
         1,
     );
     expect(PRERENDER_PATHS).toContain(HTML_SITEMAP_PATH);

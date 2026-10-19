@@ -31,6 +31,12 @@ export function ReferenceLayout({ children }: { children: ReactNode }) {
 
       <footer className="py-8 text-center text-sm text-[#8F959E] bg-white border-t border-[#F0F1F2] print:hidden">
         <p>Free printable reference charts for students, parents and teachers.</p>
+        <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm print:hidden">
+          <a href="/privacy" className="text-[#646A73] hover:text-[#1F2329] transition-colors">Privacy</a>
+          <a href="/terms" className="text-[#646A73] hover:text-[#1F2329] transition-colors">Terms</a>
+          <a href="/about" className="text-[#646A73] hover:text-[#1F2329] transition-colors">About</a>
+          <a href="/contact" className="text-[#646A73] hover:text-[#1F2329] transition-colors">Contact</a>
+        </div>
       </footer>
     </div>
   );

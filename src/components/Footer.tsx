@@ -7,6 +7,10 @@ const FOOTER_LINKS = [
   { label: '题库练习', to: '/practice' },
   { label: '古诗词', to: '/poetry' },
   { label: '站点地图', to: '/sitemap' },
+  { label: '隐私政策', to: '/privacy' },
+  { label: '服务条款', to: '/terms' },
+  { label: '关于我们', to: '/about' },
+  { label: '联系我们', to: '/contact' },
 ] as const;
 
 export function Footer() {
