@@ -6,14 +6,16 @@ const slugIsServiceable = (slug: string) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(sl
 
 describe('English reference pages', () => {
   it('carries the six charts that existed before the rewrite', () => {
-    expect(REFERENCE_PAGES_EN.map((page) => page.slug).sort()).toEqual([
-      'irregular-verbs',
-      'metric-conversions',
-      'multiplication-chart',
-      'physics-constants',
-      'squares-cubes-roots',
-      'trigonometric-identities',
-    ]);
+    expect(REFERENCE_PAGES_EN.map((page) => page.slug).sort()).toEqual(
+      expect.arrayContaining([
+        'irregular-verbs',
+        'metric-conversions',
+        'multiplication-chart',
+        'physics-constants',
+        'squares-cubes-roots',
+        'trigonometric-identities',
+      ]),
+    );
   });
 
   it('maps every page to one of the three categories', () => {

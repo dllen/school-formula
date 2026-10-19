@@ -57,6 +57,14 @@ export const MATH_PAGES: ReferencePage[] = [
         q: 'Can I print it in black and white?',
         a: 'Yes. The grid uses borders rather than shading, so it stays readable on a mono printer.',
       },
+      {
+        q: 'What patterns should I look for?',
+        a: 'Every product is mirrored across the diagonal of square numbers, and the 10s, 11s and 5s columns run in obvious sequences. Spotting those three columns first turns the rest of the grid into something to predict rather than to learn cell by cell.',
+      },
+      {
+        q: 'Does this help with long multiplication?',
+        a: 'Yes, in two ways. Knowing the single-digit products cuts the time spent working them out, and the grid shows which double-digit products like 11 × 12 or 12 × 12 are still single cells, so they become the answer rather than another step to break down.',
+      },
     ],
     related: ['squares-cubes-roots', 'metric-conversions', 'trigonometric-identities'],
   },
@@ -98,6 +106,14 @@ export const MATH_PAGES: ReferencePage[] = [
         q: 'What is a perfect square?',
         a: 'A number whose square root is a whole number, such as 1, 4, 9, 16, 25 and 36.',
       },
+      {
+        q: 'Why does the table stop at 20?',
+        a: 'Past 20, the squares and cubes keep growing without adding patterns that students meet in everyday work, and the square roots become harder to read at a glance. Twenty covers the values most often asked about in algebra and geometry problems in middle and early high school.',
+      },
+      {
+        q: 'How can I tell whether a square root is a whole number?',
+        a: 'A square root is a whole number exactly when the original number is a perfect square — 1, 4, 9, 16, 25, 36 and so on. For any other input the decimal keeps going, so the rounded value in the table is a reading aid rather than an exact answer.',
+      },
     ],
     related: ['multiplication-chart', 'trigonometric-identities', 'physics-constants'],
   },
@@ -132,6 +148,18 @@ export const MATH_PAGES: ReferencePage[] = [
       {
         q: 'Why do some formulas use both ± and ∓?',
         a: 'The two signs move together but in opposite directions. When the left side uses +, the matching term on the right uses −, and the other way round.',
+      },
+      {
+        q: 'What is the difference between an identity and an equation?',
+        a: 'An equation asks you to find the angle that satisfies a condition and has at most a handful of solutions; an identity is a relation that holds for every angle. That is why identities can be substituted into problems to simplify them, rather than solved.',
+      },
+      {
+        q: 'Do these identities work in degrees or radians?',
+        a: 'Both, because the identities are algebraic relations between trigonometric functions rather than numerical values of angles. Convert to whichever unit your problem uses, then apply the identity without changing it.',
+      },
+      {
+        q: 'Which identity should I start with if I am stuck?',
+        a: 'Almost always sin²θ + cos²θ = 1. It is the one identity that turns a square of a function into a simpler expression, which then unlocks most of the rest.',
       },
     ],
     related: ['squares-cubes-roots', 'physics-constants', 'metric-conversions'],
@@ -173,6 +201,14 @@ export const MATH_PAGES: ReferencePage[] = [
       {
         q: 'Is a millilitre the same as a cubic centimetre?',
         a: 'Yes, exactly — 1 mL = 1 cm³. That is why volume and capacity convert so cleanly in the metric system.',
+      },
+      {
+        q: 'Do I need to memorise the conversions?',
+        a: 'Most of them follow the decimal trick, so recognising the prefix is enough. The exceptions are the time rows — those are the only ones worth memorising because the powers-of-ten rule does not apply.',
+      },
+      {
+        q: 'What is the largest metric prefix on the table?',
+        a: 'For length it is kilo- and for mass it is tonne, both of which convert to the base unit by a factor of one thousand. For time, the largest unit on the table is the day; larger intervals like weeks and months vary enough that they are not part of a fixed conversion table.',
       },
     ],
     related: ['physics-constants', 'multiplication-chart', 'squares-cubes-roots'],

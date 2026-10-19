@@ -61,6 +61,14 @@ export const SCIENCE_PAGES: ReferencePage[] = [
         q: 'Are these values in SI units?',
         a: 'Yes. Masses are in kilograms, speeds in metres per second, the Planck constant in joule-seconds, and charge in coulombs.',
       },
+      {
+        q: 'Why is the speed of light written to only three figures?',
+        a: 'Because school problems almost never need more, and the unrounded value 299 792 458 m/s would clutter the row. Once a problem asks for the exact laboratory value, the table can be replaced with the cited figure from the textbook.',
+      },
+      {
+        q: 'What does mₑ actually stand for?',
+        a: 'The mass of an electron at rest, written with a subscript e so it is not confused with the proton mass mₚ on the row below. They look similar in print, which is why the how-to-use section calls the mix-up out before it happens.',
+      },
     ],
     related: ['metric-conversions', 'trigonometric-identities', 'squares-cubes-roots'],
   },

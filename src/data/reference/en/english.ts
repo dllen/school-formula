@@ -22,6 +22,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
       'Cover the last two columns and test yourself from the base form — recognition is much easier than recall, and recall is what exams ask for.',
       'Read the past participle aloud with "have" in front of it, because that is how it appears in a sentence.',
       'Group the verbs by pattern as you learn them: "break, broke, broken" and "speak, spoke, spoken" change in the same way.',
+      'Read the whole list aloud once before memorising, because hearing the past simple and past participle together catches the silent letters that reading alone misses, especially in British pronunciation.',
     ],
     faq: [
       {
@@ -40,7 +41,11 @@ export const ENGLISH_PAGES: ReferencePage[] = [
         q: 'Why does "get" have two past participles?',
         a: '"Got" is standard in British English and "gotten" in American English. Both are correct — pick one and stay consistent.',
       },
+      {
+        q: 'Why do some past participles drop a letter that the past simple kept?',
+        a: 'Some verbs shorten the past simple to form the past participle, while others keep the same form for both. "Write, wrote, written" keeps the change, but "buy, bought, bought" and "bring, brought, brought" do not. Spotting which group each verb falls into is a useful shortcut when revising a longer list.',
+      },
     ],
-    related: [],
+    related: ['multiplication-chart', 'metric-conversions'],
   },
 ];
