@@ -156,7 +156,7 @@ export default {
       } else if (path.startsWith('/api/user/')) {
         response = await handleUser(request, env, path);
       } else if (path.startsWith('/api/ai/')) {
-        response = await handleAI(request, env);
+        response = await handleAI(request, env, ctx);
       } else if (path === '/api/health') {
         response = new Response(JSON.stringify({ status: 'ok' }), { headers: corsHeaders });
       } else {
@@ -172,8 +172,11 @@ export default {
       }
       return new Response(response.body, { status: response.status, headers: newHeaders });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Internal server error';
-      return new Response(JSON.stringify({ error: message }), { status: 500, headers: corsHeaders });
+      // 故意不回传 err.message：它可能包含 D1 / KV / 上游 AI 网关的内部细节
+      // （路径、token、上游错误体），对客户端没有用处，又会泄漏 PII / 内部拓扑。
+      // 仍然在服务端用 console.error 留出可观测性。
+      console.error('worker fetch error', err);
+      return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500, headers: corsHeaders });
     }
   },
 };
