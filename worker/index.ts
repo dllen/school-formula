@@ -3,7 +3,8 @@ import { handleUser } from './routes/user';
 import { handleAI } from './routes/ai';
 import { hostRedirect, isRedirectableMethod, legacyReferenceRedirect, legacyViewRedirect } from './lib/redirect';
 import { assetCandidates, isSeoFile } from './lib/static-paths';
-import type { Env } from './types';
+import { cacheControlFor } from './lib/cache';
+import type { Env, ExecutionContext } from './types';
 
 /** 404 响应体。刻意不用应用外壳——软 404 会被爬虫当作可索引的薄页面。 */
 function notFoundBody(): string {
@@ -65,8 +66,59 @@ async function serveStatic(request: Request, env: Env): Promise<Response> {
   });
 }
 
+/**
+ * 边缘缓存：把 prerendered HTML 写到 `caches.default`，给所有响应加 `Cache-Control` 头。
+ * 只缓存 GET 的、成功的、HTML 响应；`/api/*` 和非 GET 不缓存（auth/session 语义必须
+ * 不被 CDN 持有）。缓存键用 `url.origin + path`，剥掉 query 以避免每个 query 都生
+ * 一份单独的缓存条目。
+ *
+ * 在 Node 测试环境下没有 `caches`，所有分支都用 `typeof` 守卫跳过。
+ */
+async function applyEdgeCache(
+  request: Request,
+  url: URL,
+  response: Response,
+  ctx: ExecutionContext,
+): Promise<Response> {
+  const contentType = response.headers.get('Content-Type') ?? '';
+  const cacheControl = cacheControlFor(url.pathname, contentType);
+  const newHeaders = new Headers(response.headers);
+  newHeaders.set('Cache-Control', cacheControl);
+  const built = new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: newHeaders,
+  });
+
+  // 只缓存 GET HTML 响应；其它情况直接返回带头的副本。
+  const isHtml = contentType.includes('text/html');
+  const isGet = request.method === 'GET';
+  const cacheable = isGet && isHtml && response.ok;
+  if (!cacheable || typeof caches === 'undefined' || !caches.default) {
+    return built;
+  }
+
+  const cacheKey = new Request(url.origin + url.pathname);
+  const cached = await caches.default.match(cacheKey);
+  if (cached) {
+    const hitHeaders = new Headers(cached.headers);
+    hitHeaders.set('X-Cache', 'HIT');
+    hitHeaders.set('Cache-Control', cacheControl);
+    return new Response(cached.body, {
+      status: cached.status,
+      statusText: cached.statusText,
+      headers: hitHeaders,
+    });
+  }
+
+  // 命中失败：clone 一个写入缓存，原响应（body 流）照常返回给客户端。
+  const clone = built.clone();
+  ctx.waitUntil(caches.default.put(cacheKey, clone));
+  return built;
+}
+
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const path = url.pathname;
     const corsOrigin = getAllowedOrigin(request, env);
@@ -109,7 +161,7 @@ export default {
         response = new Response(JSON.stringify({ status: 'ok' }), { headers: corsHeaders });
       } else {
         response = await serveStatic(request, env);
-        return response;
+        return await applyEdgeCache(request, url, response, ctx);
       }
 
       const newHeaders = new Headers(response.headers);

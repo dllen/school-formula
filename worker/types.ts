@@ -42,3 +42,14 @@ export interface AuthResult {
   user: UserResponse;
   tokens: TokenPair;
 }
+
+/**
+ * Minimal subset of Cloudflare's `ExecutionContext` that the Worker actually uses.
+ * `waitUntil` lets us finish cache writes / background tasks after the response is
+ * returned to the client. The full type ships with `@cloudflare/workers-types`
+ * which is not in this repo; redeclare locally so we don't add a runtime dep.
+ */
+export interface ExecutionContext {
+  waitUntil(promise: Promise<unknown>): void;
+  passThroughOnException(): void;
+}
