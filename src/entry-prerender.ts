@@ -26,8 +26,9 @@ const ogRoutes = writtenRouteSet(ogWritten);
 let written = 0;
 for (const route of PRERENDER_PATHS) {
   const meta = buildSeoMeta(route, ogRoutes);
+  const appHtml = await render(route);
   const html = injectPage(template, {
-    appHtml: render(route),
+    appHtml,
     headHtml: renderHead(meta, GA4_MEASUREMENT_ID),
     htmlLang: meta.htmlLang,
   });

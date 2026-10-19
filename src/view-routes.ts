@@ -14,6 +14,8 @@ export const VIEW_PATHS: Record<Exclude<ViewType, 'knowledge'>, `/${string}`> = 
   poetry: '/poetry',
 };
 
+export const INITIAL_VIEW_PATHS = Object.values(VIEW_PATHS);
+
 export function pathForView(view: ViewType): string {
   return view === 'knowledge' ? '/' : VIEW_PATHS[view];
 }

@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/AuthContext.tsx'
+import { preloadRoute } from './routing/preload'
 
 const container = document.getElementById('root')!
 const app = (
@@ -16,8 +17,9 @@ const app = (
   </StrictMode>
 )
 
-if (container.hasChildNodes()) {
-  hydrateRoot(container, app)
-} else {
-  createRoot(container).render(app)
+const start = () => {
+  if (container.hasChildNodes()) hydrateRoot(container, app)
+  else createRoot(container).render(app)
 }
+
+preloadRoute(window.location.pathname).then(start, start)
