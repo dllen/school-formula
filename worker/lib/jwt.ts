@@ -13,14 +13,11 @@ function base64UrlDecode(str: string): Uint8Array {
   return Uint8Array.from(binary, (c) => c.charCodeAt(0));
 }
 
-const FALLBACK_JWT_SECRET = 'dev-jwt-secret-change-me-in-prod';
-
 async function importHMACSecret(secret: string): Promise<CryptoKey> {
+  if (!secret) throw new Error('JWT_SECRET is not configured');
   const encoder = new TextEncoder();
-  const keyData = encoder.encode(secret || FALLBACK_JWT_SECRET);
-  if (keyData.length === 0) {
-    throw new Error('JWT secret is empty — set JWT_SECRET in wrangler.toml or .env');
-  }
+  const keyData = encoder.encode(secret);
+  if (keyData.length === 0) throw new Error('JWT_SECRET is not configured');
   return crypto.subtle.importKey(
     'raw', keyData,
     { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify']
