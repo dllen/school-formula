@@ -65,9 +65,12 @@ describe('ReferencePage', () => {
     expect(screen.getByText('sin²θ + cos²θ = 1')).toBeTruthy();
   });
 
-  it('omits the related section when a chart has no siblings', () => {
+  it('renders the related section when a chart has siblings', () => {
     renderChart('/en/english/irregular-verbs');
-    expect(screen.queryByRole('heading', { name: 'Related charts' })).toBeNull();
+    const heading = screen.getByRole('heading', { name: 'Related charts' });
+    const section = heading.closest('section');
+    expect(section?.querySelector('a[href="/en/math/multiplication-chart/"]')).toBeTruthy();
+    expect(section?.querySelector('a[href="/en/math/metric-conversions/"]')).toBeTruthy();
   });
 
   it('404s on an unknown slug', () => {
