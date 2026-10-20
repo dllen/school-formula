@@ -34,6 +34,9 @@ jobs:
         # secret 没配时 GitHub 传空串，构建仍然正常（只是不注入分析标签）。
         env:
           VITE_GA4_ID: ${{ secrets.VITE_GA4_ID }}
+          VITE_ADSENSE_SLOT_KNOWLEDGE_MID: ${{ secrets.VITE_ADSENSE_SLOT_KNOWLEDGE_MID }}
+          VITE_ADSENSE_SLOT_KNOWLEDGE_BOTTOM: ${{ secrets.VITE_ADSENSE_SLOT_KNOWLEDGE_BOTTOM }}
+          VITE_ADSENSE_SLOT_REFERENCE_BOTTOM: ${{ secrets.VITE_ADSENSE_SLOT_REFERENCE_BOTTOM }}
         run: npm run build
 
       - name: Apply D1 migrations
