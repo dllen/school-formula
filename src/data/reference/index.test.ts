@@ -4,7 +4,7 @@ import { validateReferencePages } from './validate';
 
 describe('reference page index', () => {
   it('exposes every authored page', () => {
-    expect(REFERENCE_PAGES).toHaveLength(6);
+    expect(REFERENCE_PAGES).toHaveLength(7);
   });
 
   // 构建期只在 entry-prerender 里校验一次，validate.test.ts 又只用合成页面——
@@ -24,6 +24,7 @@ describe('reference page index', () => {
       'squares-cubes-roots',
       'trigonometric-identities',
       'metric-conversions',
+      'hundreds-chart',
     ]);
     expect(pagesInCategory('science').map((page) => page.slug)).toEqual(['physics-constants']);
     expect(pagesInCategory('english').map((page) => page.slug)).toEqual(['irregular-verbs']);

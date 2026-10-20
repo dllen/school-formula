@@ -2,6 +2,7 @@ import { metricConversionGroups, type ConversionGroupKey } from '../neutral/conv
 import { range } from '../neutral/numeric';
 import { multiplicationRows, squaresCubesRootsRows } from '../neutral/tables';
 import type { ReferencePage } from '../types';
+import { HUNDREDS_CHART_BLANK_ROWS, HUNDREDS_CHART_ROWS } from './data/hundredsChart';
 import { TRIG_IDENTITY_GROUPS } from './data/trigIdentities';
 
 /** 分组显示名。英文文案就住在这里——neutral 层只给 key。 */
@@ -212,5 +213,57 @@ export const MATH_PAGES: ReferencePage[] = [
       },
     ],
     related: ['physics-constants', 'multiplication-chart', 'squares-cubes-roots'],
+  },
+  {
+    slug: 'hundreds-chart',
+    category: 'math',
+    title: 'Hundreds Chart (1–100)',
+    summary: 'Printable 1–100 hundreds chart with a blank grid for counting and skip-counting practice.',
+    description:
+      'Printable hundreds chart from 1 to 100 in a 10×10 grid, plus a blank 10×10 grid for fill-in practice. A4 and Letter friendly, free, no signup required.',
+    intro:
+      'A hundreds chart is a 10-by-10 grid that lists the numbers from 1 to 100, row by row. It is one of the most-used early-grade classroom resources for kindergarten through grade 2, because every pattern children need in skip-counting and basic arithmetic is visible on a single sheet. Reading down a column shows the tens digit increasing by one while the ones digit stays the same. The blank grid underneath lets a child fill in numbers they are still learning, and is the reason to print this page rather than use a generic worksheet.',
+    blocks: [
+      {
+        kind: 'table',
+        headers: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+        rows: HUNDREDS_CHART_ROWS,
+      },
+      {
+        kind: 'table',
+        headers: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+        rows: HUNDREDS_CHART_BLANK_ROWS,
+        caption: 'Blank grid for fill-in practice.',
+      },
+    ],
+    howToUse: [
+      'Start at 1 and read every number in order, either row-by-row or column-by-column — column reading is usually the harder and more useful one.',
+      'Practice skip-counting by 2s, 5s and 10s: highlight every 5th cell to show the count by fives, then do the same for twos and tens.',
+      'Use the blank grid to ask the child to write in a missing number. Pick a cell they cannot guess at random by asking for the number that sits between, say, 27 and 29.',
+      'Print at 100% rather than "fit to page" so the 10×10 cells stay square — this matters for visual pattern work.',
+    ],
+    faq: [
+      {
+        q: 'What is a hundreds chart?',
+        a: 'It is a 10-by-10 grid listing the numbers from 1 to 100, row by row. It is one of the most-used early-grade math resources because it shows place value, skip-counting and simple arithmetic patterns all at the same time.',
+      },
+      {
+        q: 'What age or grade is a hundreds chart for?',
+        a: 'It is most often used in kindergarten through second grade (ages 5 to 7) for counting to 100 and the basic patterns around it, and then again in grade 3 and 4 for multi-digit addition and subtraction practice.',
+      },
+      {
+        q: 'Why is a hundreds chart useful for skip-counting?',
+        a: 'Reading down any column shows how counting by 2s, 5s or 10s repeats the same pattern — twos skip a cell, fives skip four cells, tens skip nine cells — so the chart turns an abstract counting pattern into something a child can see and point at.',
+      },
+      {
+        q: 'What is the blank grid for?',
+        a: 'It turns the chart into a fill-in worksheet. A child fills in missing numbers, or counts by 2s, 5s or 10s and writes the numbers in the right cells, instead of looking at a finished chart and reading off an answer.',
+      },
+      {
+        q: 'Does a hundreds chart work on A4 and Letter?',
+        a: 'Yes. The grid is small enough that both sheet sizes leave comfortable margins around it without rescaling; print at 100% scale, not "fit to page", so the cells stay square.',
+      },
+    ],
+    related: ['multiplication-chart', 'squares-cubes-roots'],
   },
 ];

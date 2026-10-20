@@ -4,7 +4,7 @@
 
 | # | slug | 主关键词 | 状态 | 上线日期 | GSC impressions |
 |---|------|----------|------|----------|-----------------|
-| 1 | math/hundreds-chart | printable hundreds chart | ⬜ | | |
+| 1 | math/hundreds-chart | printable hundreds chart | ✅ | 2026-10-20 | |
 | 2 | math/place-value-chart | printable place value chart | ⬜ | | |
 | 3 | math/number-line | printable number line | ⬜ | | |
 | 4 | math/roman-numerals | roman numerals chart | ⬜ | | |
