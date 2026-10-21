@@ -9,7 +9,7 @@ export const highBiologyQuestions: Question[] = [
   {
     id: 'q-hb-001-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"分子与细胞"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '分子与细胞是生物学习的基础内容，需要认真掌握。',
     tags: ['分子与细胞'],
@@ -196,7 +196,7 @@ export const highBiologyQuestions: Question[] = [
   {
     id: 'q-hb-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"遗传与进化"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '遗传与进化是生物学习的基础内容，需要认真掌握。',
     tags: ['遗传与进化'],
@@ -383,7 +383,7 @@ export const highBiologyQuestions: Question[] = [
   {
     id: 'q-hb-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"稳态与环境"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '稳态与环境是生物学习的基础内容，需要认真掌握。',
     tags: ['稳态与环境'],

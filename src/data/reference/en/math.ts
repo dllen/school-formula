@@ -309,7 +309,7 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'number-line',
     category: 'math',
-    title: 'Printable Number Line (−20 to 100)',
+    title: 'Number Line (−20 to 100)',
     summary: 'Printable number line from negative twenty to one hundred with marks every ten.',
     description:
       'Printable number line from -20 to 100 with marks every ten units and labels at every ten, sized for a single A4 or Letter page. Free to print. Free to print.',
@@ -441,7 +441,7 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'fraction-decimal-percent',
     category: 'math',
-    title: 'Fraction / Decimal / Percent Chart',
+    title: 'Fraction & Percent Chart',
     summary: 'Common fractions with their decimal and percent values, on one printable table.',
     description:
       'Printable fraction, decimal and percent conversion chart covering halves, thirds, quarters, fifths and eighths. A4 and Letter friendly, free. Free to print.',
@@ -475,7 +475,7 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'area-perimeter-volume-formulas',
     category: 'math',
-    title: 'Area, Perimeter & Volume Formulas',
+    title: 'Area & Volume Formulas',
     summary: 'Area, perimeter, volume and surface-area formulae for the standard shapes.',
     description:
       'Printable geometry formulas summary: area, perimeter and circumference for 2D shapes, and volume and surface area for 3D shapes. Free to print. Free to print.',

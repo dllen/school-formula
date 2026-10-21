@@ -773,7 +773,7 @@ export const middleEnglishQuestions: Question[] = [
   {
     id: 'q-me-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"词法综合"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '词法综合是英语学习的基础内容，需要认真掌握。',
     tags: ['词法综合'],
@@ -960,7 +960,7 @@ export const middleEnglishQuestions: Question[] = [
   {
     id: 'q-me-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"情景交际"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '情景交际是英语学习的基础内容，需要认真掌握。',
     tags: ['情景交际'],
@@ -1147,7 +1147,7 @@ export const middleEnglishQuestions: Question[] = [
   {
     id: 'q-me-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"阅读理解"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '阅读理解是英语学习的基础内容，需要认真掌握。',
     tags: ['阅读理解'],
@@ -1334,7 +1334,7 @@ export const middleEnglishQuestions: Question[] = [
   {
     id: 'q-me-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"书面表达"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '书面表达是英语学习的基础内容，需要认真掌握。',
     tags: ['书面表达'],

@@ -1028,7 +1028,7 @@ export const middleHistoryQuestions: Question[] = [
   {
     id: 'q-mi-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"材料解析题"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '材料解析题是历史学习的基础内容，需要认真掌握。',
     tags: ['材料解析题'],

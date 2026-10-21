@@ -196,7 +196,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"静力学"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '静力学是物理学习的基础内容，需要认真掌握。',
     tags: ['静力学'],
@@ -383,7 +383,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"牛顿运动定律"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '牛顿运动定律是物理学习的基础内容，需要认真掌握。',
     tags: ['牛顿运动定律'],
@@ -570,7 +570,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"功与能"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '功与能是物理学习的基础内容，需要认真掌握。',
     tags: ['功与能'],
@@ -757,7 +757,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"动量"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '动量是物理学习的基础内容，需要认真掌握。',
     tags: ['动量'],
@@ -944,7 +944,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"电场"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '电场是物理学习的基础内容，需要认真掌握。',
     tags: ['电场'],
@@ -1131,7 +1131,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"电路"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '电路是物理学习的基础内容，需要认真掌握。',
     tags: ['电路'],
@@ -1318,7 +1318,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-008-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"磁场"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '磁场是物理学习的基础内容，需要认真掌握。',
     tags: ['磁场'],
@@ -1505,7 +1505,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-009-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"电磁感应"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '电磁感应是物理学习的基础内容，需要认真掌握。',
     tags: ['电磁感应'],
@@ -1692,7 +1692,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-010-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"交变电流"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '交变电流是物理学习的基础内容，需要认真掌握。',
     tags: ['交变电流'],
@@ -1879,7 +1879,7 @@ export const highPhysicsQuestions: Question[] = [
   {
     id: 'q-hp-011-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"近代物理"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '近代物理是物理学习的基础内容，需要认真掌握。',
     tags: ['近代物理'],

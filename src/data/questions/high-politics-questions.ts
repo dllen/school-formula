@@ -9,7 +9,7 @@ export const highPoliticsQuestions: Question[] = [
   {
     id: 'q-hl-001-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"经济生活"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '经济生活是思想政治学习的基础内容，需要认真掌握。',
     tags: ['经济生活'],
@@ -196,7 +196,7 @@ export const highPoliticsQuestions: Question[] = [
   {
     id: 'q-hl-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"政治生活"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '政治生活是思想政治学习的基础内容，需要认真掌握。',
     tags: ['政治生活'],
@@ -383,7 +383,7 @@ export const highPoliticsQuestions: Question[] = [
   {
     id: 'q-hl-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"文化生活"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '文化生活是思想政治学习的基础内容，需要认真掌握。',
     tags: ['文化生活'],
@@ -570,7 +570,7 @@ export const highPoliticsQuestions: Question[] = [
   {
     id: 'q-hl-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"生活与哲学"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '生活与哲学是思想政治学习的基础内容，需要认真掌握。',
     tags: ['生活与哲学'],

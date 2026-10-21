@@ -9,7 +9,7 @@ export const highGeographyQuestions: Question[] = [
   {
     id: 'q-hg-001-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"自然地理"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '自然地理是地理学习的基础内容，需要认真掌握。',
     tags: ['自然地理'],
@@ -196,7 +196,7 @@ export const highGeographyQuestions: Question[] = [
   {
     id: 'q-hg-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"人文地理"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '人文地理是地理学习的基础内容，需要认真掌握。',
     tags: ['人文地理'],
@@ -383,7 +383,7 @@ export const highGeographyQuestions: Question[] = [
   {
     id: 'q-hg-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"区域地理"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '区域地理是地理学习的基础内容，需要认真掌握。',
     tags: ['区域地理'],

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
-import { REFERENCE_PAGES } from '../data/reference';
+import { pagesInCategory, REFERENCE_PAGES } from '../data/reference';
 import { PRERENDER_PATHS } from '../prerender/routes';
 import { ENGLISH_HOME, ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { buildSeoMeta, canonicalUrl } from './meta';
@@ -131,7 +131,7 @@ describe('JSON-LD for the English surface', () => {
     expect(types).toEqual(['CollectionPage', 'ItemList', 'BreadcrumbList']);
 
     const list = meta.jsonLd[1] as { numberOfItems: number; itemListElement: { name: string; url: string }[] };
-    expect(list.numberOfItems).toBe(4);
+    expect(list.numberOfItems).toBe(pagesInCategory('math').length);
     expect(list.itemListElement[0].name).toBe('Multiplication Chart (1–12)');
     expect(list.itemListElement[0].url).toBe('https://syy.global/en/math/multiplication-chart/');
   });

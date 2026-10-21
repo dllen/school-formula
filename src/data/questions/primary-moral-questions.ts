@@ -7,7 +7,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 个人生活 (p-mor-001) ====================
   {
-    id: 'q-pm-1-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-1-1', type: 'choice', difficulty: 'basic',
     stem: '下列哪种做法是正确的个人生活卫生习惯？',
     options: ['A. 饭前便后洗手', 'B. 不洗手就吃东西', 'C. 长时间不洗澡', 'D. 随地吐痰'],
     answer: 'A',
@@ -16,7 +16,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-1-2', type: 'fill-blank', difficulty: 'basic',
     stem: '每天要保证______小时的睡眠，才能健康成长。',
     answer: '9-10',
     explanation: '小学生每天需要9-10小时的睡眠，才能保证身体和大脑的健康发育。',
@@ -24,7 +24,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-1-3', type: 'true-false', difficulty: 'basic',
     stem: '小学生可以长时间玩电子游戏。',
     answer: 'false',
     explanation: '长时间玩电子游戏对眼睛和身体都不好，应该合理安排时间。',
@@ -32,7 +32,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-1-4', type: 'choice', difficulty: 'basic',
     stem: '下列哪种食物对身体有益？',
     options: ['A. 蔬菜水果', 'B. 只吃零食', 'C. 只吃肉类', 'D. 不吃早餐'],
     answer: 'A',
@@ -41,7 +41,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-1-5', type: 'fill-blank', difficulty: 'basic',
     stem: '为了保护眼睛，看书时眼睛要保持______的距离。',
     answer: '一尺（约33厘米）',
     explanation: '正确的读写姿势：眼睛离书本一尺，胸口离桌沿一拳，手指离笔尖一寸。',
@@ -49,7 +49,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-1-6', type: 'true-false', difficulty: 'basic',
     stem: '睡前吃太多甜食对牙齿不好。',
     answer: 'true',
     explanation: '睡前吃太多甜食容易导致蛀牙，应该少吃甜食，睡前刷牙。',
@@ -57,7 +57,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-1-7', type: 'choice', difficulty: 'basic',
     stem: '下列哪种行为是良好的生活习惯？',
     options: ['A. 早睡早起', 'B. 熬夜', 'C. 不运动', 'D. 暴饮暴食'],
     answer: 'A',
@@ -66,7 +66,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-1-8', type: 'choice', difficulty: 'intermediate',
     stem: '当你在家里独自一人时，有陌生人敲门，你应该（    ）。',
     options: ['A. 立即开门', 'B. 不开门，询问是谁', 'C. 让他进来', 'D. 不理睬'],
     answer: 'B',
@@ -75,7 +75,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-1-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '为了保护个人隐私，不要随意告诉陌生人自己的______。',
     answer: '家庭住址、电话等信息',
     explanation: '保护个人隐私，不要随意告诉陌生人自己的家庭住址、电话等信息。',
@@ -83,7 +83,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-1-10', type: 'true-false', difficulty: 'intermediate',
     stem: '小学生可以随意使用爸爸妈妈的手机。',
     answer: 'false',
     explanation: '使用手机需要经过爸爸妈妈的同意，不能随意使用。',
@@ -91,7 +91,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-1-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列哪种做法有助于保持心理健康？',
     options: ['A. 遇到问题独自承受', 'B. 与家人朋友交流', 'C. 不与人交往', 'D. 总是生气'],
     answer: 'B',
@@ -100,7 +100,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-1-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '当遇到烦恼时，可以向______倾诉。',
     answer: '家人、朋友或老师',
     explanation: '遇到烦恼时，可以向家人、朋友或老师倾诉，寻求帮助。',
@@ -108,7 +108,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-1-13', type: 'true-false', difficulty: 'intermediate',
     stem: '保持良好的心情对身体健康有益。',
     answer: 'true',
     explanation: '良好的心情有助于身体健康，要学会调节情绪。',
@@ -116,7 +116,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-1-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列哪种行为是合理安排时间？',
     options: ['A. 先玩后写作业', 'B. 先完成作业再玩', 'C. 不写作业', 'D. 熬夜写作业'],
     answer: 'B',
@@ -125,7 +125,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-1-15', type: 'choice', difficulty: 'advanced',
     stem: '当你在家里闻到煤气味时，应该（    ）。',
     options: ['A. 开灯查看', 'B. 打开手机', 'C. 开窗通风，迅速离开', 'D. 点火检查'],
     answer: 'C',
@@ -134,7 +134,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-1-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '独自在家时，如果着火了，应该______，然后______。',
     answer: '迅速离开 拨打119',
     explanation: '发生火灾时，首先要迅速离开，然后拨打119报警。',
@@ -142,7 +142,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-1-17', type: 'true-false', difficulty: 'advanced',
     stem: '小学生可以独自去河边游泳。',
     answer: 'false',
     explanation: '小学生不能独自去河边游泳，必须有大人陪同。',
@@ -150,7 +150,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-1-18', type: 'choice', difficulty: 'advanced',
     stem: '你认为健康生活的方式不包括（    ）。',
     options: ['A. 均衡饮食', 'B. 适量运动', 'C. 长期熬夜', 'D. 保持好心情'],
     answer: 'C',
@@ -159,7 +159,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-1-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '制定合理的作息时间表，有助于______。',
     answer: '提高学习效率，保持健康',
     explanation: '合理的作息时间表能帮助我们有规律地生活，提高学习效率，保持健康。',
@@ -167,7 +167,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-1-20', type: 'true-false', difficulty: 'advanced',
     stem: '个人卫生只需要在学校保持，在家里不需要。',
     answer: 'false',
     explanation: '无论在学校还是家里，都应该保持良好的个人卫生习惯。',
@@ -175,7 +175,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-1-21', type: 'choice', difficulty: 'advanced',
     stem: '当你在家里发现有人触电时，应该（    ）。',
     options: ['A. 用手拉开触电的人', 'B. 先切断电源', 'C. 浇水', 'D. 不管'],
     answer: 'B',
@@ -184,7 +184,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-001'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-1-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-1-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '健康生活需要______、______、______三个方面的平衡。',
     answer: '饮食 运动 睡眠',
     explanation: '健康生活需要饮食、运动、睡眠三个方面的平衡。',
@@ -194,7 +194,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 学校生活 (p-mor-002) ====================
   {
-    id: 'q-pm-2-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-2-1', type: 'choice', difficulty: 'basic',
     stem: '在学校里，应该怎样对待老师？',
     options: ['A. 尊敬老师', 'B. 顶撞老师', 'C. 不理老师', 'D. 背后说老师坏话'],
     answer: 'A',
@@ -203,7 +203,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-2-2', type: 'fill-blank', difficulty: 'basic',
     stem: '上课时，应该______听讲，积极______。',
     answer: '认真 发言',
     explanation: '上课时要认真听讲，积极发言，这是良好的学习态度。',
@@ -211,7 +211,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-2-3', type: 'true-false', difficulty: 'basic',
     stem: '在课堂上可以随意讲话。',
     answer: 'false',
     explanation: '在课堂上不能随意讲话，要遵守课堂纪律。',
@@ -219,7 +219,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-2-4', type: 'choice', difficulty: 'basic',
     stem: '下列哪种行为是正确的学校生活？',
     options: ['A. 按时到校', 'B. 迟到', 'C. 早退', 'D. 旷课'],
     answer: 'A',
@@ -228,7 +228,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-2-5', type: 'fill-blank', difficulty: 'basic',
     stem: '课间活动时，不应该______，以免发生危险。',
     answer: '追逐打闹',
     explanation: '课间活动时，不应该追逐打闹，以免发生危险。',
@@ -236,7 +236,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-2-6', type: 'true-false', difficulty: 'basic',
     stem: '在学校里，同学之间应该互相帮助。',
     answer: 'true',
     explanation: '在学校里，同学之间应该互相帮助，团结友爱。',
@@ -244,7 +244,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-2-7', type: 'choice', difficulty: 'basic',
     stem: '当同学遇到困难时，你应该（    ）。',
     options: ['A. 嘲笑他', 'B. 帮助他', 'C. 不理他', 'D. 告诉别人'],
     answer: 'B',
@@ -253,7 +253,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-2-8', type: 'choice', difficulty: 'intermediate',
     stem: '当你在学校里与同学发生矛盾时，应该（    ）。',
     options: ['A. 打架', 'B. 冷静沟通', 'C. 告诉家长来学校闹', 'D. 不理对方'],
     answer: 'B',
@@ -262,7 +262,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-2-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '在学校里，要遵守______，维护______。',
     answer: '校规校纪 学校秩序',
     explanation: '在学校里，要遵守校规校纪，维护学校秩序。',
@@ -270,7 +270,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-2-10', type: 'true-false', difficulty: 'intermediate',
     stem: '小学生可以带手机到学校。',
     answer: 'false',
     explanation: '小学生一般不允许带手机到学校，以免影响学习。',
@@ -278,7 +278,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-2-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列哪种行为是正确的学习态度？',
     options: ['A. 抄袭作业', 'B. 独立完成作业', 'C. 不写作业', 'D. 让别人代写'],
     answer: 'B',
@@ -287,7 +287,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-2-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '当你在课堂上听不懂时，应该______。',
     answer: '举手提问或课后问老师',
     explanation: '课堂上听不懂时，应该举手提问或课后问老师，及时解决问题。',
@@ -295,7 +295,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-2-13', type: 'true-false', difficulty: 'intermediate',
     stem: '在学校里，可以随意拿别人的东西。',
     answer: 'false',
     explanation: '不能随意拿别人的东西，要尊重他人的物品所有权。',
@@ -303,7 +303,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-2-14', type: 'choice', difficulty: 'intermediate',
     stem: '当老师批评你时，你应该（    ）。',
     options: ['A. 顶撞老师', 'B. 虚心接受', 'C. 不理老师', 'D. 记恨老师'],
     answer: 'B',
@@ -312,7 +312,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-2-15', type: 'choice', difficulty: 'advanced',
     stem: '当你在学校里发现同学被欺凌时，应该（    ）。',
     options: ['A. 看热闹', 'B. 告诉老师', 'C. 参与欺凌', 'D. 不管'],
     answer: 'B',
@@ -321,7 +321,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-2-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '在学校里，要培养______、______、______的好习惯。',
     answer: '守时 守纪 守信',
     explanation: '在学校里，要培养守时、守纪、守信的好习惯。',
@@ -329,7 +329,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-2-17', type: 'true-false', difficulty: 'advanced',
     stem: '在学校里，可以随意给同学起外号。',
     answer: 'false',
     explanation: '不能随意给同学起外号，要尊重他人。',
@@ -337,7 +337,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-2-18', type: 'choice', difficulty: 'advanced',
     stem: '你认为良好的班级氛围不包括（    ）。',
     options: ['A. 团结友爱', 'B. 互相帮助', 'C. 欺凌弱小', 'D. 共同进步'],
     answer: 'C',
@@ -346,7 +346,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-2-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '当你在学校里捡到东西时，应该______。',
     answer: '交给老师或失物招领处',
     explanation: '在学校里捡到东西时，应该交给老师或失物招领处。',
@@ -354,7 +354,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-2-20', type: 'true-false', difficulty: 'advanced',
     stem: '在学校里，可以随意破坏公物。',
     answer: 'false',
     explanation: '不能随意破坏公物，要爱护学校的公共财物。',
@@ -362,7 +362,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-2-21', type: 'choice', difficulty: 'advanced',
     stem: '当你在学校里遇到紧急情况时，应该（    ）。',
     options: ['A. 慌张乱跑', 'B. 听从老师指挥', 'C. 躲在角落里', 'D. 自己跑回家'],
     answer: 'B',
@@ -371,7 +371,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-002'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-2-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-2-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '在学校里，要与同学建立______的关系。',
     answer: '友好、互助',
     explanation: '在学校里，要与同学建立友好、互助的关系。',
@@ -381,7 +381,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 家庭生活 (p-mor-003) ====================
   {
-    id: 'q-pm-3-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-3-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"家庭生活"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -390,7 +390,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-3-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"家庭生活"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习家庭生活需要认真学习、积极实践。',
@@ -398,7 +398,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-3-3', type: 'true-false', difficulty: 'basic',
     stem: '"家庭生活"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '家庭生活是小学道德与法治学习的重要内容。',
@@ -406,7 +406,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-3-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"家庭生活"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -415,7 +415,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-3-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"家庭生活"的关键是______。',
     answer: '理解和实践',
     explanation: '学习家庭生活的关键是理解和实践。',
@@ -423,7 +423,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-3-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"家庭生活"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习家庭生活需要付诸行动，不能只靠记忆。',
@@ -431,7 +431,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-3-7', type: 'choice', difficulty: 'basic',
     stem: '关于"家庭生活"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -440,7 +440,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-3-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"家庭生活"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -449,7 +449,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-3-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"家庭生活"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用家庭生活的知识描述一个行为。',
@@ -457,7 +457,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-3-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"家庭生活"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '家庭生活在任何地方都需要遵守。',
@@ -465,7 +465,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-3-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"家庭生活"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -474,7 +474,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-3-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"家庭生活"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '家庭生活与道德与法治学习密切相关。',
@@ -482,7 +482,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-3-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"家庭生活"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解家庭生活。',
@@ -490,7 +490,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-3-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"家庭生活"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -499,7 +499,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-3-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"家庭生活"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -508,7 +508,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-3-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"家庭生活"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用家庭生活知识分析行为。',
@@ -516,7 +516,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-3-17', type: 'true-false', difficulty: 'advanced',
     stem: '"家庭生活"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '家庭生活在不同场合中的要求可能不同。',
@@ -524,7 +524,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-3-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"家庭生活"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -533,7 +533,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-3-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"家庭生活"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述家庭生活的重要性。',
@@ -541,7 +541,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-3-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"家庭生活"需要长期坚持。',
     answer: 'true',
     explanation: '家庭生活的学习需要长期坚持。',
@@ -549,7 +549,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-3-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"家庭生活"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -558,7 +558,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-003'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-3-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-3-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"家庭生活"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行家庭生活。',
@@ -568,7 +568,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 公共生活 (p-mor-004) ====================
   {
-    id: 'q-pm-4-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-4-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"公共生活"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -577,7 +577,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-4-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"公共生活"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习公共生活需要认真学习、积极实践。',
@@ -585,7 +585,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-4-3', type: 'true-false', difficulty: 'basic',
     stem: '"公共生活"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '公共生活是小学道德与法治学习的重要内容。',
@@ -593,7 +593,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-4-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"公共生活"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -602,7 +602,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-4-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"公共生活"的关键是______。',
     answer: '理解和实践',
     explanation: '学习公共生活的关键是理解和实践。',
@@ -610,7 +610,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-4-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"公共生活"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习公共生活需要付诸行动，不能只靠记忆。',
@@ -618,7 +618,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-4-7', type: 'choice', difficulty: 'basic',
     stem: '关于"公共生活"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -627,7 +627,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-4-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"公共生活"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -636,7 +636,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-4-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"公共生活"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用公共生活的知识描述一个行为。',
@@ -644,7 +644,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-4-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"公共生活"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '公共生活在任何地方都需要遵守。',
@@ -652,7 +652,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-4-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"公共生活"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -661,7 +661,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-4-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"公共生活"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '公共生活与道德与法治学习密切相关。',
@@ -669,7 +669,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-4-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"公共生活"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解公共生活。',
@@ -677,7 +677,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-4-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"公共生活"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -686,7 +686,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-4-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"公共生活"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -695,7 +695,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-4-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"公共生活"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用公共生活知识分析行为。',
@@ -703,7 +703,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-4-17', type: 'true-false', difficulty: 'advanced',
     stem: '"公共生活"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '公共生活在不同场合中的要求可能不同。',
@@ -711,7 +711,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-4-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"公共生活"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -720,7 +720,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-4-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"公共生活"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述公共生活的重要性。',
@@ -728,7 +728,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-4-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"公共生活"需要长期坚持。',
     answer: 'true',
     explanation: '公共生活的学习需要长期坚持。',
@@ -736,7 +736,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-4-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"公共生活"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -745,7 +745,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-004'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-4-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-4-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"公共生活"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行公共生活。',
@@ -755,7 +755,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 认识自己 (p-mor-009) ====================
   {
-    id: 'q-pm-9-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-9-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"认识自己"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -764,7 +764,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-9-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"认识自己"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习认识自己需要认真学习、积极实践。',
@@ -772,7 +772,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-9-3', type: 'true-false', difficulty: 'basic',
     stem: '"认识自己"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '认识自己是小学道德与法治学习的重要内容。',
@@ -780,7 +780,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-9-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"认识自己"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -789,7 +789,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-9-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"认识自己"的关键是______。',
     answer: '理解和实践',
     explanation: '学习认识自己的关键是理解和实践。',
@@ -797,7 +797,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-9-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"认识自己"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习认识自己需要付诸行动，不能只靠记忆。',
@@ -805,7 +805,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-9-7', type: 'choice', difficulty: 'basic',
     stem: '关于"认识自己"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -814,7 +814,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-9-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"认识自己"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -823,7 +823,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-9-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"认识自己"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用认识自己的知识描述一个行为。',
@@ -831,7 +831,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-9-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"认识自己"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '认识自己在任何地方都需要遵守。',
@@ -839,7 +839,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-9-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"认识自己"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -848,7 +848,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-9-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"认识自己"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '认识自己与道德与法治学习密切相关。',
@@ -856,7 +856,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-9-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"认识自己"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解认识自己。',
@@ -864,7 +864,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-9-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"认识自己"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -873,7 +873,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-9-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"认识自己"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -882,7 +882,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-9-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"认识自己"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用认识自己知识分析行为。',
@@ -890,7 +890,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-9-17', type: 'true-false', difficulty: 'advanced',
     stem: '"认识自己"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '认识自己在不同场合中的要求可能不同。',
@@ -898,7 +898,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-9-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"认识自己"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -907,7 +907,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-9-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"认识自己"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述认识自己的重要性。',
@@ -915,7 +915,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-9-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"认识自己"需要长期坚持。',
     answer: 'true',
     explanation: '认识自己的学习需要长期坚持。',
@@ -923,7 +923,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-9-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"认识自己"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -932,7 +932,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-009'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-9-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-9-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"认识自己"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行认识自己。',
@@ -942,7 +942,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 我的家 (p-mor-010) ====================
   {
-    id: 'q-pm-10-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-10-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"我的家"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -951,7 +951,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-10-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"我的家"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习我的家需要认真学习、积极实践。',
@@ -959,7 +959,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-10-3', type: 'true-false', difficulty: 'basic',
     stem: '"我的家"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '我的家是小学道德与法治学习的重要内容。',
@@ -967,7 +967,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-10-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"我的家"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -976,7 +976,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-10-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"我的家"的关键是______。',
     answer: '理解和实践',
     explanation: '学习我的家的关键是理解和实践。',
@@ -984,7 +984,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-10-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"我的家"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习我的家需要付诸行动，不能只靠记忆。',
@@ -992,7 +992,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-10-7', type: 'choice', difficulty: 'basic',
     stem: '关于"我的家"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1001,7 +1001,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-10-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"我的家"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1010,7 +1010,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-10-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"我的家"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用我的家的知识描述一个行为。',
@@ -1018,7 +1018,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-10-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"我的家"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '我的家在任何地方都需要遵守。',
@@ -1026,7 +1026,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-10-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"我的家"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1035,7 +1035,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-10-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"我的家"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '我的家与道德与法治学习密切相关。',
@@ -1043,7 +1043,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-10-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"我的家"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解我的家。',
@@ -1051,7 +1051,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-10-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"我的家"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1060,7 +1060,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-10-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"我的家"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -1069,7 +1069,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-10-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"我的家"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用我的家知识分析行为。',
@@ -1077,7 +1077,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-10-17', type: 'true-false', difficulty: 'advanced',
     stem: '"我的家"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '我的家在不同场合中的要求可能不同。',
@@ -1085,7 +1085,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-10-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"我的家"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -1094,7 +1094,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-10-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"我的家"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述我的家的重要性。',
@@ -1102,7 +1102,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-10-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"我的家"需要长期坚持。',
     answer: 'true',
     explanation: '我的家的学习需要长期坚持。',
@@ -1110,7 +1110,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-10-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"我的家"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -1119,7 +1119,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-010'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-10-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-10-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"我的家"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行我的家。',
@@ -1129,7 +1129,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 学校生活 (p-mor-011) ====================
   {
-    id: 'q-pm-11-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-11-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"学校生活"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -1138,7 +1138,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-11-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"学校生活"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习学校生活需要认真学习、积极实践。',
@@ -1146,7 +1146,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-11-3', type: 'true-false', difficulty: 'basic',
     stem: '"学校生活"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '学校生活是小学道德与法治学习的重要内容。',
@@ -1154,7 +1154,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-11-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"学校生活"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1163,7 +1163,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-11-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"学校生活"的关键是______。',
     answer: '理解和实践',
     explanation: '学习学校生活的关键是理解和实践。',
@@ -1171,7 +1171,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-11-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"学校生活"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习学校生活需要付诸行动，不能只靠记忆。',
@@ -1179,7 +1179,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-11-7', type: 'choice', difficulty: 'basic',
     stem: '关于"学校生活"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1188,7 +1188,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-11-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"学校生活"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1197,7 +1197,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-11-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"学校生活"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用学校生活的知识描述一个行为。',
@@ -1205,7 +1205,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-11-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"学校生活"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '学校生活在任何地方都需要遵守。',
@@ -1213,7 +1213,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-11-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"学校生活"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1222,7 +1222,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-11-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"学校生活"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '学校生活与道德与法治学习密切相关。',
@@ -1230,7 +1230,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-11-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"学校生活"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解学校生活。',
@@ -1238,7 +1238,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-11-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"学校生活"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1247,7 +1247,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-11-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"学校生活"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -1256,7 +1256,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-11-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"学校生活"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用学校生活知识分析行为。',
@@ -1264,7 +1264,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-11-17', type: 'true-false', difficulty: 'advanced',
     stem: '"学校生活"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '学校生活在不同场合中的要求可能不同。',
@@ -1272,7 +1272,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-11-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"学校生活"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -1281,7 +1281,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-11-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"学校生活"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述学校生活的重要性。',
@@ -1289,7 +1289,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-11-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"学校生活"需要长期坚持。',
     answer: 'true',
     explanation: '学校生活的学习需要长期坚持。',
@@ -1297,7 +1297,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-11-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"学校生活"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -1306,7 +1306,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-011'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-11-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-11-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"学校生活"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行学校生活。',
@@ -1316,7 +1316,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 课间安全 (p-mor-012) ====================
   {
-    id: 'q-pm-12-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-12-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"课间安全"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -1325,7 +1325,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-12-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"课间安全"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习课间安全需要认真学习、积极实践。',
@@ -1333,7 +1333,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-12-3', type: 'true-false', difficulty: 'basic',
     stem: '"课间安全"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '课间安全是小学道德与法治学习的重要内容。',
@@ -1341,7 +1341,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-12-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"课间安全"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1350,7 +1350,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-12-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"课间安全"的关键是______。',
     answer: '理解和实践',
     explanation: '学习课间安全的关键是理解和实践。',
@@ -1358,7 +1358,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-12-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"课间安全"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习课间安全需要付诸行动，不能只靠记忆。',
@@ -1366,7 +1366,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-12-7', type: 'choice', difficulty: 'basic',
     stem: '关于"课间安全"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1375,7 +1375,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-12-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"课间安全"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1384,7 +1384,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-12-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"课间安全"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用课间安全的知识描述一个行为。',
@@ -1392,7 +1392,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-12-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"课间安全"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '课间安全在任何地方都需要遵守。',
@@ -1400,7 +1400,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-12-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"课间安全"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1409,7 +1409,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-12-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"课间安全"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '课间安全与道德与法治学习密切相关。',
@@ -1417,7 +1417,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-12-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"课间安全"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解课间安全。',
@@ -1425,7 +1425,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-12-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"课间安全"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1434,7 +1434,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-12-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"课间安全"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -1443,7 +1443,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-12-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"课间安全"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用课间安全知识分析行为。',
@@ -1451,7 +1451,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-12-17', type: 'true-false', difficulty: 'advanced',
     stem: '"课间安全"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '课间安全在不同场合中的要求可能不同。',
@@ -1459,7 +1459,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-12-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"课间安全"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -1468,7 +1468,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-12-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"课间安全"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述课间安全的重要性。',
@@ -1476,7 +1476,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-12-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"课间安全"需要长期坚持。',
     answer: 'true',
     explanation: '课间安全的学习需要长期坚持。',
@@ -1484,7 +1484,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-12-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"课间安全"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -1493,7 +1493,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-012'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-12-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-12-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"课间安全"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行课间安全。',
@@ -1503,7 +1503,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 交通安全 (p-mor-013) ====================
   {
-    id: 'q-pm-13-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-13-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"交通安全"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -1512,7 +1512,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-13-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"交通安全"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习交通安全需要认真学习、积极实践。',
@@ -1520,7 +1520,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-13-3', type: 'true-false', difficulty: 'basic',
     stem: '"交通安全"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '交通安全是小学道德与法治学习的重要内容。',
@@ -1528,7 +1528,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-13-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"交通安全"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1537,7 +1537,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-13-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"交通安全"的关键是______。',
     answer: '理解和实践',
     explanation: '学习交通安全的关键是理解和实践。',
@@ -1545,7 +1545,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-13-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"交通安全"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习交通安全需要付诸行动，不能只靠记忆。',
@@ -1553,7 +1553,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-13-7', type: 'choice', difficulty: 'basic',
     stem: '关于"交通安全"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1562,7 +1562,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-13-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"交通安全"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1571,7 +1571,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-13-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"交通安全"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用交通安全的知识描述一个行为。',
@@ -1579,7 +1579,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-13-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"交通安全"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '交通安全在任何地方都需要遵守。',
@@ -1587,7 +1587,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-13-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"交通安全"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1596,7 +1596,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-13-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"交通安全"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '交通安全与道德与法治学习密切相关。',
@@ -1604,7 +1604,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-13-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"交通安全"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解交通安全。',
@@ -1612,7 +1612,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-13-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"交通安全"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1621,7 +1621,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-13-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"交通安全"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -1630,7 +1630,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-13-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"交通安全"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用交通安全知识分析行为。',
@@ -1638,7 +1638,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-13-17', type: 'true-false', difficulty: 'advanced',
     stem: '"交通安全"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '交通安全在不同场合中的要求可能不同。',
@@ -1646,7 +1646,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-13-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"交通安全"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -1655,7 +1655,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-13-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"交通安全"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述交通安全的重要性。',
@@ -1663,7 +1663,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-13-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"交通安全"需要长期坚持。',
     answer: 'true',
     explanation: '交通安全的学习需要长期坚持。',
@@ -1671,7 +1671,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-13-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"交通安全"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -1680,7 +1680,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-013'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-13-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-13-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"交通安全"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行交通安全。',
@@ -1690,7 +1690,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 消防安全 (p-mor-014) ====================
   {
-    id: 'q-pm-14-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-14-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"消防安全"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -1699,7 +1699,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-14-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"消防安全"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习消防安全需要认真学习、积极实践。',
@@ -1707,7 +1707,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-14-3', type: 'true-false', difficulty: 'basic',
     stem: '"消防安全"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '消防安全是小学道德与法治学习的重要内容。',
@@ -1715,7 +1715,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-14-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"消防安全"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1724,7 +1724,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-14-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"消防安全"的关键是______。',
     answer: '理解和实践',
     explanation: '学习消防安全的关键是理解和实践。',
@@ -1732,7 +1732,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-14-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"消防安全"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习消防安全需要付诸行动，不能只靠记忆。',
@@ -1740,7 +1740,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-14-7', type: 'choice', difficulty: 'basic',
     stem: '关于"消防安全"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1749,7 +1749,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-14-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"消防安全"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1758,7 +1758,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-14-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"消防安全"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用消防安全的知识描述一个行为。',
@@ -1766,7 +1766,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-14-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"消防安全"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '消防安全在任何地方都需要遵守。',
@@ -1774,7 +1774,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-14-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"消防安全"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1783,7 +1783,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-14-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"消防安全"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '消防安全与道德与法治学习密切相关。',
@@ -1791,7 +1791,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-14-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"消防安全"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解消防安全。',
@@ -1799,7 +1799,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-14-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"消防安全"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1808,7 +1808,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-14-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"消防安全"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -1817,7 +1817,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-14-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"消防安全"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用消防安全知识分析行为。',
@@ -1825,7 +1825,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-14-17', type: 'true-false', difficulty: 'advanced',
     stem: '"消防安全"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '消防安全在不同场合中的要求可能不同。',
@@ -1833,7 +1833,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-14-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"消防安全"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -1842,7 +1842,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-14-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"消防安全"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述消防安全的重要性。',
@@ -1850,7 +1850,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-14-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"消防安全"需要长期坚持。',
     answer: 'true',
     explanation: '消防安全的学习需要长期坚持。',
@@ -1858,7 +1858,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-14-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"消防安全"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -1867,7 +1867,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-014'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-14-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-14-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"消防安全"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行消防安全。',
@@ -1877,7 +1877,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 防溺水 (p-mor-015) ====================
   {
-    id: 'q-pm-15-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-15-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"防溺水"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -1886,7 +1886,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-15-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"防溺水"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习防溺水需要认真学习、积极实践。',
@@ -1894,7 +1894,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-15-3', type: 'true-false', difficulty: 'basic',
     stem: '"防溺水"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '防溺水是小学道德与法治学习的重要内容。',
@@ -1902,7 +1902,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-15-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"防溺水"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1911,7 +1911,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-15-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"防溺水"的关键是______。',
     answer: '理解和实践',
     explanation: '学习防溺水的关键是理解和实践。',
@@ -1919,7 +1919,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-15-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"防溺水"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习防溺水需要付诸行动，不能只靠记忆。',
@@ -1927,7 +1927,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-15-7', type: 'choice', difficulty: 'basic',
     stem: '关于"防溺水"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -1936,7 +1936,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-15-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"防溺水"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -1945,7 +1945,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-15-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"防溺水"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用防溺水的知识描述一个行为。',
@@ -1953,7 +1953,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-15-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"防溺水"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '防溺水在任何地方都需要遵守。',
@@ -1961,7 +1961,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-15-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"防溺水"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -1970,7 +1970,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-15-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"防溺水"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '防溺水与道德与法治学习密切相关。',
@@ -1978,7 +1978,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-15-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"防溺水"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解防溺水。',
@@ -1986,7 +1986,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-15-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"防溺水"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -1995,7 +1995,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-15-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"防溺水"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2004,7 +2004,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-15-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"防溺水"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用防溺水知识分析行为。',
@@ -2012,7 +2012,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-15-17', type: 'true-false', difficulty: 'advanced',
     stem: '"防溺水"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '防溺水在不同场合中的要求可能不同。',
@@ -2020,7 +2020,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-15-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"防溺水"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2029,7 +2029,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-15-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"防溺水"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述防溺水的重要性。',
@@ -2037,7 +2037,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-15-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"防溺水"需要长期坚持。',
     answer: 'true',
     explanation: '防溺水的学习需要长期坚持。',
@@ -2045,7 +2045,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-15-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"防溺水"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2054,7 +2054,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-015'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-15-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-15-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"防溺水"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行防溺水。',
@@ -2064,7 +2064,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 网络安全 (p-mor-016) ====================
   {
-    id: 'q-pm-16-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-16-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"网络安全"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -2073,7 +2073,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-16-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"网络安全"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习网络安全需要认真学习、积极实践。',
@@ -2081,7 +2081,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-16-3', type: 'true-false', difficulty: 'basic',
     stem: '"网络安全"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '网络安全是小学道德与法治学习的重要内容。',
@@ -2089,7 +2089,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-16-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"网络安全"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2098,7 +2098,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-16-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"网络安全"的关键是______。',
     answer: '理解和实践',
     explanation: '学习网络安全的关键是理解和实践。',
@@ -2106,7 +2106,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-16-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"网络安全"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习网络安全需要付诸行动，不能只靠记忆。',
@@ -2114,7 +2114,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-16-7', type: 'choice', difficulty: 'basic',
     stem: '关于"网络安全"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -2123,7 +2123,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-16-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"网络安全"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -2132,7 +2132,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-16-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"网络安全"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用网络安全的知识描述一个行为。',
@@ -2140,7 +2140,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-16-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"网络安全"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '网络安全在任何地方都需要遵守。',
@@ -2148,7 +2148,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-16-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"网络安全"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -2157,7 +2157,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-16-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"网络安全"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '网络安全与道德与法治学习密切相关。',
@@ -2165,7 +2165,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-16-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"网络安全"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解网络安全。',
@@ -2173,7 +2173,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-16-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"网络安全"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2182,7 +2182,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-16-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"网络安全"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2191,7 +2191,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-16-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"网络安全"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用网络安全知识分析行为。',
@@ -2199,7 +2199,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-16-17', type: 'true-false', difficulty: 'advanced',
     stem: '"网络安全"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '网络安全在不同场合中的要求可能不同。',
@@ -2207,7 +2207,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-16-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"网络安全"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2216,7 +2216,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-16-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"网络安全"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述网络安全的重要性。',
@@ -2224,7 +2224,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-16-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"网络安全"需要长期坚持。',
     answer: 'true',
     explanation: '网络安全的学习需要长期坚持。',
@@ -2232,7 +2232,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-16-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"网络安全"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2241,7 +2241,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-016'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-16-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-16-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"网络安全"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行网络安全。',
@@ -2251,7 +2251,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 诚实做人 (p-mor-017) ====================
   {
-    id: 'q-pm-17-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-17-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"诚实做人"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -2260,7 +2260,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-17-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"诚实做人"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习诚实做人需要认真学习、积极实践。',
@@ -2268,7 +2268,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-17-3', type: 'true-false', difficulty: 'basic',
     stem: '"诚实做人"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '诚实做人是小学道德与法治学习的重要内容。',
@@ -2276,7 +2276,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-17-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"诚实做人"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2285,7 +2285,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-17-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"诚实做人"的关键是______。',
     answer: '理解和实践',
     explanation: '学习诚实做人的关键是理解和实践。',
@@ -2293,7 +2293,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-17-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"诚实做人"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习诚实做人需要付诸行动，不能只靠记忆。',
@@ -2301,7 +2301,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-17-7', type: 'choice', difficulty: 'basic',
     stem: '关于"诚实做人"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -2310,7 +2310,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-17-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"诚实做人"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -2319,7 +2319,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-17-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"诚实做人"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用诚实做人的知识描述一个行为。',
@@ -2327,7 +2327,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-17-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"诚实做人"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '诚实做人在任何地方都需要遵守。',
@@ -2335,7 +2335,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-17-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"诚实做人"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -2344,7 +2344,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-17-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"诚实做人"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '诚实做人与道德与法治学习密切相关。',
@@ -2352,7 +2352,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-17-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"诚实做人"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解诚实做人。',
@@ -2360,7 +2360,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-17-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"诚实做人"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2369,7 +2369,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-17-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"诚实做人"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2378,7 +2378,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-17-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"诚实做人"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用诚实做人知识分析行为。',
@@ -2386,7 +2386,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-17-17', type: 'true-false', difficulty: 'advanced',
     stem: '"诚实做人"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '诚实做人在不同场合中的要求可能不同。',
@@ -2394,7 +2394,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-17-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"诚实做人"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2403,7 +2403,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-17-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"诚实做人"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述诚实做人的重要性。',
@@ -2411,7 +2411,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-17-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"诚实做人"需要长期坚持。',
     answer: 'true',
     explanation: '诚实做人的学习需要长期坚持。',
@@ -2419,7 +2419,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-17-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"诚实做人"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2428,7 +2428,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-017'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-17-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-17-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"诚实做人"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行诚实做人。',
@@ -2438,7 +2438,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 信守承诺 (p-mor-018) ====================
   {
-    id: 'q-pm-18-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-18-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"信守承诺"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -2447,7 +2447,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-18-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"信守承诺"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习信守承诺需要认真学习、积极实践。',
@@ -2455,7 +2455,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-18-3', type: 'true-false', difficulty: 'basic',
     stem: '"信守承诺"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '信守承诺是小学道德与法治学习的重要内容。',
@@ -2463,7 +2463,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-18-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"信守承诺"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2472,7 +2472,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-18-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"信守承诺"的关键是______。',
     answer: '理解和实践',
     explanation: '学习信守承诺的关键是理解和实践。',
@@ -2480,7 +2480,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-18-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"信守承诺"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习信守承诺需要付诸行动，不能只靠记忆。',
@@ -2488,7 +2488,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-18-7', type: 'choice', difficulty: 'basic',
     stem: '关于"信守承诺"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -2497,7 +2497,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-18-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"信守承诺"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -2506,7 +2506,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-18-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"信守承诺"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用信守承诺的知识描述一个行为。',
@@ -2514,7 +2514,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-18-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"信守承诺"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '信守承诺在任何地方都需要遵守。',
@@ -2522,7 +2522,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-18-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"信守承诺"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -2531,7 +2531,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-18-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"信守承诺"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '信守承诺与道德与法治学习密切相关。',
@@ -2539,7 +2539,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-18-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"信守承诺"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解信守承诺。',
@@ -2547,7 +2547,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-18-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"信守承诺"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2556,7 +2556,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-18-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"信守承诺"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2565,7 +2565,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-18-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"信守承诺"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用信守承诺知识分析行为。',
@@ -2573,7 +2573,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-18-17', type: 'true-false', difficulty: 'advanced',
     stem: '"信守承诺"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '信守承诺在不同场合中的要求可能不同。',
@@ -2581,7 +2581,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-18-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"信守承诺"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2590,7 +2590,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-18-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"信守承诺"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述信守承诺的重要性。',
@@ -2598,7 +2598,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-18-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"信守承诺"需要长期坚持。',
     answer: 'true',
     explanation: '信守承诺的学习需要长期坚持。',
@@ -2606,7 +2606,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-18-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"信守承诺"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2615,7 +2615,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-018'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-18-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-18-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"信守承诺"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行信守承诺。',
@@ -2625,7 +2625,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 尊重他人 (p-mor-019) ====================
   {
-    id: 'q-pm-19-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-19-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"尊重他人"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -2634,7 +2634,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-19-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"尊重他人"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习尊重他人需要认真学习、积极实践。',
@@ -2642,7 +2642,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-19-3', type: 'true-false', difficulty: 'basic',
     stem: '"尊重他人"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '尊重他人是小学道德与法治学习的重要内容。',
@@ -2650,7 +2650,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-19-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"尊重他人"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2659,7 +2659,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-19-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"尊重他人"的关键是______。',
     answer: '理解和实践',
     explanation: '学习尊重他人的关键是理解和实践。',
@@ -2667,7 +2667,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-19-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"尊重他人"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习尊重他人需要付诸行动，不能只靠记忆。',
@@ -2675,7 +2675,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-19-7', type: 'choice', difficulty: 'basic',
     stem: '关于"尊重他人"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -2684,7 +2684,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-19-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"尊重他人"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -2693,7 +2693,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-19-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"尊重他人"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用尊重他人的知识描述一个行为。',
@@ -2701,7 +2701,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-19-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"尊重他人"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '尊重他人在任何地方都需要遵守。',
@@ -2709,7 +2709,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-19-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"尊重他人"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -2718,7 +2718,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-19-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"尊重他人"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '尊重他人与道德与法治学习密切相关。',
@@ -2726,7 +2726,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-19-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"尊重他人"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解尊重他人。',
@@ -2734,7 +2734,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-19-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"尊重他人"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2743,7 +2743,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-19-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"尊重他人"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2752,7 +2752,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-19-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"尊重他人"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用尊重他人知识分析行为。',
@@ -2760,7 +2760,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-19-17', type: 'true-false', difficulty: 'advanced',
     stem: '"尊重他人"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '尊重他人在不同场合中的要求可能不同。',
@@ -2768,7 +2768,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-19-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"尊重他人"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2777,7 +2777,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-19-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"尊重他人"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述尊重他人的重要性。',
@@ -2785,7 +2785,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-19-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"尊重他人"需要长期坚持。',
     answer: 'true',
     explanation: '尊重他人的学习需要长期坚持。',
@@ -2793,7 +2793,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-19-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"尊重他人"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2802,7 +2802,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-019'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-19-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-19-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"尊重他人"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行尊重他人。',
@@ -2812,7 +2812,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 合作分享 (p-mor-020) ====================
   {
-    id: 'q-pm-20-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-20-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"合作分享"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -2821,7 +2821,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-20-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"合作分享"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习合作分享需要认真学习、积极实践。',
@@ -2829,7 +2829,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-20-3', type: 'true-false', difficulty: 'basic',
     stem: '"合作分享"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '合作分享是小学道德与法治学习的重要内容。',
@@ -2837,7 +2837,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-20-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"合作分享"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2846,7 +2846,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-20-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"合作分享"的关键是______。',
     answer: '理解和实践',
     explanation: '学习合作分享的关键是理解和实践。',
@@ -2854,7 +2854,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-20-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"合作分享"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习合作分享需要付诸行动，不能只靠记忆。',
@@ -2862,7 +2862,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-20-7', type: 'choice', difficulty: 'basic',
     stem: '关于"合作分享"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -2871,7 +2871,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-20-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"合作分享"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -2880,7 +2880,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-20-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"合作分享"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用合作分享的知识描述一个行为。',
@@ -2888,7 +2888,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-20-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"合作分享"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '合作分享在任何地方都需要遵守。',
@@ -2896,7 +2896,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-20-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"合作分享"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -2905,7 +2905,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-20-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"合作分享"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '合作分享与道德与法治学习密切相关。',
@@ -2913,7 +2913,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-20-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"合作分享"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解合作分享。',
@@ -2921,7 +2921,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-20-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"合作分享"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -2930,7 +2930,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-20-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"合作分享"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -2939,7 +2939,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-20-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"合作分享"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用合作分享知识分析行为。',
@@ -2947,7 +2947,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-20-17', type: 'true-false', difficulty: 'advanced',
     stem: '"合作分享"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '合作分享在不同场合中的要求可能不同。',
@@ -2955,7 +2955,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-20-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"合作分享"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -2964,7 +2964,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-20-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"合作分享"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述合作分享的重要性。',
@@ -2972,7 +2972,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-20-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"合作分享"需要长期坚持。',
     answer: 'true',
     explanation: '合作分享的学习需要长期坚持。',
@@ -2980,7 +2980,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-20-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"合作分享"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -2989,7 +2989,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-020'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-20-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-20-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"合作分享"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行合作分享。',
@@ -2999,7 +2999,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 帮助他人 (p-mor-021) ====================
   {
-    id: 'q-pm-21-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-21-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"帮助他人"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3008,7 +3008,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-21-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"帮助他人"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习帮助他人需要认真学习、积极实践。',
@@ -3016,7 +3016,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-21-3', type: 'true-false', difficulty: 'basic',
     stem: '"帮助他人"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '帮助他人是小学道德与法治学习的重要内容。',
@@ -3024,7 +3024,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-21-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"帮助他人"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3033,7 +3033,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-21-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"帮助他人"的关键是______。',
     answer: '理解和实践',
     explanation: '学习帮助他人的关键是理解和实践。',
@@ -3041,7 +3041,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-21-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"帮助他人"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习帮助他人需要付诸行动，不能只靠记忆。',
@@ -3049,7 +3049,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-21-7', type: 'choice', difficulty: 'basic',
     stem: '关于"帮助他人"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3058,7 +3058,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-21-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"帮助他人"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -3067,7 +3067,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-21-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"帮助他人"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用帮助他人的知识描述一个行为。',
@@ -3075,7 +3075,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-21-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"帮助他人"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '帮助他人在任何地方都需要遵守。',
@@ -3083,7 +3083,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-21-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"帮助他人"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -3092,7 +3092,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-21-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"帮助他人"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '帮助他人与道德与法治学习密切相关。',
@@ -3100,7 +3100,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-21-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"帮助他人"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解帮助他人。',
@@ -3108,7 +3108,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-21-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"帮助他人"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3117,7 +3117,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-21-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"帮助他人"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -3126,7 +3126,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-21-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"帮助他人"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用帮助他人知识分析行为。',
@@ -3134,7 +3134,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-21-17', type: 'true-false', difficulty: 'advanced',
     stem: '"帮助他人"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '帮助他人在不同场合中的要求可能不同。',
@@ -3142,7 +3142,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-21-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"帮助他人"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -3151,7 +3151,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-21-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"帮助他人"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述帮助他人的重要性。',
@@ -3159,7 +3159,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-21-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"帮助他人"需要长期坚持。',
     answer: 'true',
     explanation: '帮助他人的学习需要长期坚持。',
@@ -3167,7 +3167,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-21-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"帮助他人"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -3176,7 +3176,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-021'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-21-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-21-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"帮助他人"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行帮助他人。',
@@ -3186,7 +3186,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 班级规则 (p-mor-022) ====================
   {
-    id: 'q-pm-22-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-22-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"班级规则"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3195,7 +3195,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-22-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"班级规则"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习班级规则需要认真学习、积极实践。',
@@ -3203,7 +3203,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-22-3', type: 'true-false', difficulty: 'basic',
     stem: '"班级规则"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '班级规则是小学道德与法治学习的重要内容。',
@@ -3211,7 +3211,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-22-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"班级规则"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3220,7 +3220,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-22-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"班级规则"的关键是______。',
     answer: '理解和实践',
     explanation: '学习班级规则的关键是理解和实践。',
@@ -3228,7 +3228,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-22-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"班级规则"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习班级规则需要付诸行动，不能只靠记忆。',
@@ -3236,7 +3236,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-22-7', type: 'choice', difficulty: 'basic',
     stem: '关于"班级规则"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3245,7 +3245,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-22-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"班级规则"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -3254,7 +3254,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-22-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"班级规则"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用班级规则的知识描述一个行为。',
@@ -3262,7 +3262,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-22-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"班级规则"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '班级规则在任何地方都需要遵守。',
@@ -3270,7 +3270,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-22-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"班级规则"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -3279,7 +3279,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-22-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"班级规则"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '班级规则与道德与法治学习密切相关。',
@@ -3287,7 +3287,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-22-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"班级规则"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解班级规则。',
@@ -3295,7 +3295,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-22-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"班级规则"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3304,7 +3304,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-22-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"班级规则"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -3313,7 +3313,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-22-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"班级规则"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用班级规则知识分析行为。',
@@ -3321,7 +3321,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-22-17', type: 'true-false', difficulty: 'advanced',
     stem: '"班级规则"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '班级规则在不同场合中的要求可能不同。',
@@ -3329,7 +3329,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-22-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"班级规则"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -3338,7 +3338,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-22-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"班级规则"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述班级规则的重要性。',
@@ -3346,7 +3346,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-22-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"班级规则"需要长期坚持。',
     answer: 'true',
     explanation: '班级规则的学习需要长期坚持。',
@@ -3354,7 +3354,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-22-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"班级规则"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -3363,7 +3363,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-022'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-22-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-22-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"班级规则"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行班级规则。',
@@ -3373,7 +3373,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 爱护公物 (p-mor-023) ====================
   {
-    id: 'q-pm-23-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-23-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"爱护公物"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3382,7 +3382,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-23-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"爱护公物"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习爱护公物需要认真学习、积极实践。',
@@ -3390,7 +3390,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-23-3', type: 'true-false', difficulty: 'basic',
     stem: '"爱护公物"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '爱护公物是小学道德与法治学习的重要内容。',
@@ -3398,7 +3398,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-23-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"爱护公物"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3407,7 +3407,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-23-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"爱护公物"的关键是______。',
     answer: '理解和实践',
     explanation: '学习爱护公物的关键是理解和实践。',
@@ -3415,7 +3415,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-23-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"爱护公物"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习爱护公物需要付诸行动，不能只靠记忆。',
@@ -3423,7 +3423,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-23-7', type: 'choice', difficulty: 'basic',
     stem: '关于"爱护公物"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3432,7 +3432,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-23-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"爱护公物"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -3441,7 +3441,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-23-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"爱护公物"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用爱护公物的知识描述一个行为。',
@@ -3449,7 +3449,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-23-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"爱护公物"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '爱护公物在任何地方都需要遵守。',
@@ -3457,7 +3457,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-23-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"爱护公物"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -3466,7 +3466,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-23-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"爱护公物"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '爱护公物与道德与法治学习密切相关。',
@@ -3474,7 +3474,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-23-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"爱护公物"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解爱护公物。',
@@ -3482,7 +3482,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-23-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"爱护公物"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3491,7 +3491,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-23-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"爱护公物"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -3500,7 +3500,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-23-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"爱护公物"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用爱护公物知识分析行为。',
@@ -3508,7 +3508,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-23-17', type: 'true-false', difficulty: 'advanced',
     stem: '"爱护公物"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '爱护公物在不同场合中的要求可能不同。',
@@ -3516,7 +3516,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-23-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"爱护公物"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -3525,7 +3525,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-23-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"爱护公物"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述爱护公物的重要性。',
@@ -3533,7 +3533,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-23-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"爱护公物"需要长期坚持。',
     answer: 'true',
     explanation: '爱护公物的学习需要长期坚持。',
@@ -3541,7 +3541,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-23-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"爱护公物"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -3550,7 +3550,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-023'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-23-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-23-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"爱护公物"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行爱护公物。',
@@ -3560,7 +3560,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 垃圾分类 (p-mor-024) ====================
   {
-    id: 'q-pm-24-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-24-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"垃圾分类"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3569,7 +3569,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-24-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"垃圾分类"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习垃圾分类需要认真学习、积极实践。',
@@ -3577,7 +3577,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-24-3', type: 'true-false', difficulty: 'basic',
     stem: '"垃圾分类"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '垃圾分类是小学道德与法治学习的重要内容。',
@@ -3585,7 +3585,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-24-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"垃圾分类"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3594,7 +3594,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-24-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"垃圾分类"的关键是______。',
     answer: '理解和实践',
     explanation: '学习垃圾分类的关键是理解和实践。',
@@ -3602,7 +3602,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-24-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"垃圾分类"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习垃圾分类需要付诸行动，不能只靠记忆。',
@@ -3610,7 +3610,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-24-7', type: 'choice', difficulty: 'basic',
     stem: '关于"垃圾分类"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3619,7 +3619,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-24-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"垃圾分类"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -3628,7 +3628,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-24-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"垃圾分类"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用垃圾分类的知识描述一个行为。',
@@ -3636,7 +3636,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-24-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"垃圾分类"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '垃圾分类在任何地方都需要遵守。',
@@ -3644,7 +3644,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-24-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"垃圾分类"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -3653,7 +3653,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-24-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"垃圾分类"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '垃圾分类与道德与法治学习密切相关。',
@@ -3661,7 +3661,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-24-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"垃圾分类"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解垃圾分类。',
@@ -3669,7 +3669,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-24-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"垃圾分类"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3678,7 +3678,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-24-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"垃圾分类"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -3687,7 +3687,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-24-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"垃圾分类"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用垃圾分类知识分析行为。',
@@ -3695,7 +3695,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-24-17', type: 'true-false', difficulty: 'advanced',
     stem: '"垃圾分类"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '垃圾分类在不同场合中的要求可能不同。',
@@ -3703,7 +3703,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-24-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"垃圾分类"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -3712,7 +3712,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-24-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"垃圾分类"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述垃圾分类的重要性。',
@@ -3720,7 +3720,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-24-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"垃圾分类"需要长期坚持。',
     answer: 'true',
     explanation: '垃圾分类的学习需要长期坚持。',
@@ -3728,7 +3728,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-24-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"垃圾分类"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -3737,7 +3737,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-024'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-24-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-24-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"垃圾分类"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行垃圾分类。',
@@ -3747,7 +3747,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 节约用水 (p-mor-025) ====================
   {
-    id: 'q-pm-25-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-25-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"节约用水"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3756,7 +3756,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-25-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"节约用水"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习节约用水需要认真学习、积极实践。',
@@ -3764,7 +3764,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-25-3', type: 'true-false', difficulty: 'basic',
     stem: '"节约用水"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '节约用水是小学道德与法治学习的重要内容。',
@@ -3772,7 +3772,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-25-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"节约用水"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3781,7 +3781,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-25-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"节约用水"的关键是______。',
     answer: '理解和实践',
     explanation: '学习节约用水的关键是理解和实践。',
@@ -3789,7 +3789,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-25-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"节约用水"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习节约用水需要付诸行动，不能只靠记忆。',
@@ -3797,7 +3797,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-25-7', type: 'choice', difficulty: 'basic',
     stem: '关于"节约用水"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3806,7 +3806,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-25-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"节约用水"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -3815,7 +3815,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-25-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"节约用水"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用节约用水的知识描述一个行为。',
@@ -3823,7 +3823,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-25-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"节约用水"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '节约用水在任何地方都需要遵守。',
@@ -3831,7 +3831,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-25-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"节约用水"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -3840,7 +3840,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-25-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"节约用水"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '节约用水与道德与法治学习密切相关。',
@@ -3848,7 +3848,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-25-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"节约用水"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解节约用水。',
@@ -3856,7 +3856,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-25-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"节约用水"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3865,7 +3865,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-25-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"节约用水"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -3874,7 +3874,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-25-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"节约用水"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用节约用水知识分析行为。',
@@ -3882,7 +3882,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-25-17', type: 'true-false', difficulty: 'advanced',
     stem: '"节约用水"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '节约用水在不同场合中的要求可能不同。',
@@ -3890,7 +3890,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-25-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"节约用水"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -3899,7 +3899,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-25-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"节约用水"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述节约用水的重要性。',
@@ -3907,7 +3907,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-25-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"节约用水"需要长期坚持。',
     answer: 'true',
     explanation: '节约用水的学习需要长期坚持。',
@@ -3915,7 +3915,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-25-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"节约用水"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -3924,7 +3924,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-025'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-25-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-25-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"节约用水"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行节约用水。',
@@ -3934,7 +3934,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 节约粮食 (p-mor-026) ====================
   {
-    id: 'q-pm-26-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-26-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"节约粮食"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -3943,7 +3943,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-26-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"节约粮食"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习节约粮食需要认真学习、积极实践。',
@@ -3951,7 +3951,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-26-3', type: 'true-false', difficulty: 'basic',
     stem: '"节约粮食"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '节约粮食是小学道德与法治学习的重要内容。',
@@ -3959,7 +3959,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-26-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"节约粮食"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -3968,7 +3968,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-26-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"节约粮食"的关键是______。',
     answer: '理解和实践',
     explanation: '学习节约粮食的关键是理解和实践。',
@@ -3976,7 +3976,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-26-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"节约粮食"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习节约粮食需要付诸行动，不能只靠记忆。',
@@ -3984,7 +3984,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-26-7', type: 'choice', difficulty: 'basic',
     stem: '关于"节约粮食"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -3993,7 +3993,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-26-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"节约粮食"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4002,7 +4002,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-26-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"节约粮食"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用节约粮食的知识描述一个行为。',
@@ -4010,7 +4010,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-26-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"节约粮食"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '节约粮食在任何地方都需要遵守。',
@@ -4018,7 +4018,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-26-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"节约粮食"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4027,7 +4027,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-26-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"节约粮食"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '节约粮食与道德与法治学习密切相关。',
@@ -4035,7 +4035,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-26-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"节约粮食"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解节约粮食。',
@@ -4043,7 +4043,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-26-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"节约粮食"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4052,7 +4052,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-26-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"节约粮食"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4061,7 +4061,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-26-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"节约粮食"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用节约粮食知识分析行为。',
@@ -4069,7 +4069,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-26-17', type: 'true-false', difficulty: 'advanced',
     stem: '"节约粮食"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '节约粮食在不同场合中的要求可能不同。',
@@ -4077,7 +4077,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-26-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"节约粮食"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -4086,7 +4086,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-26-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"节约粮食"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述节约粮食的重要性。',
@@ -4094,7 +4094,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-26-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"节约粮食"需要长期坚持。',
     answer: 'true',
     explanation: '节约粮食的学习需要长期坚持。',
@@ -4102,7 +4102,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-26-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"节约粮食"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -4111,7 +4111,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-026'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-26-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-26-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"节约粮食"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行节约粮食。',
@@ -4121,7 +4121,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 尊老爱幼 (p-mor-027) ====================
   {
-    id: 'q-pm-27-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-27-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"尊老爱幼"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -4130,7 +4130,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-27-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"尊老爱幼"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习尊老爱幼需要认真学习、积极实践。',
@@ -4138,7 +4138,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-27-3', type: 'true-false', difficulty: 'basic',
     stem: '"尊老爱幼"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '尊老爱幼是小学道德与法治学习的重要内容。',
@@ -4146,7 +4146,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-27-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"尊老爱幼"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4155,7 +4155,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-27-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"尊老爱幼"的关键是______。',
     answer: '理解和实践',
     explanation: '学习尊老爱幼的关键是理解和实践。',
@@ -4163,7 +4163,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-27-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"尊老爱幼"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习尊老爱幼需要付诸行动，不能只靠记忆。',
@@ -4171,7 +4171,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-27-7', type: 'choice', difficulty: 'basic',
     stem: '关于"尊老爱幼"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -4180,7 +4180,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-27-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"尊老爱幼"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4189,7 +4189,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-27-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"尊老爱幼"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用尊老爱幼的知识描述一个行为。',
@@ -4197,7 +4197,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-27-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"尊老爱幼"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '尊老爱幼在任何地方都需要遵守。',
@@ -4205,7 +4205,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-27-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"尊老爱幼"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4214,7 +4214,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-27-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"尊老爱幼"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '尊老爱幼与道德与法治学习密切相关。',
@@ -4222,7 +4222,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-27-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"尊老爱幼"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解尊老爱幼。',
@@ -4230,7 +4230,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-27-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"尊老爱幼"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4239,7 +4239,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-27-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"尊老爱幼"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4248,7 +4248,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-27-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"尊老爱幼"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用尊老爱幼知识分析行为。',
@@ -4256,7 +4256,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-27-17', type: 'true-false', difficulty: 'advanced',
     stem: '"尊老爱幼"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '尊老爱幼在不同场合中的要求可能不同。',
@@ -4264,7 +4264,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-27-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"尊老爱幼"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -4273,7 +4273,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-27-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"尊老爱幼"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述尊老爱幼的重要性。',
@@ -4281,7 +4281,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-27-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"尊老爱幼"需要长期坚持。',
     answer: 'true',
     explanation: '尊老爱幼的学习需要长期坚持。',
@@ -4289,7 +4289,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-27-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"尊老爱幼"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -4298,7 +4298,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-027'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-27-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-27-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"尊老爱幼"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行尊老爱幼。',
@@ -4308,7 +4308,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 爱国情感 (p-mor-028) ====================
   {
-    id: 'q-pm-28-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-28-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"爱国情感"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -4317,7 +4317,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-28-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"爱国情感"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习爱国情感需要认真学习、积极实践。',
@@ -4325,7 +4325,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-28-3', type: 'true-false', difficulty: 'basic',
     stem: '"爱国情感"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '爱国情感是小学道德与法治学习的重要内容。',
@@ -4333,7 +4333,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-28-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"爱国情感"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4342,7 +4342,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-28-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"爱国情感"的关键是______。',
     answer: '理解和实践',
     explanation: '学习爱国情感的关键是理解和实践。',
@@ -4350,7 +4350,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-28-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"爱国情感"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习爱国情感需要付诸行动，不能只靠记忆。',
@@ -4358,7 +4358,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-28-7', type: 'choice', difficulty: 'basic',
     stem: '关于"爱国情感"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -4367,7 +4367,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-28-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"爱国情感"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4376,7 +4376,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-28-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"爱国情感"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用爱国情感的知识描述一个行为。',
@@ -4384,7 +4384,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-28-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"爱国情感"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '爱国情感在任何地方都需要遵守。',
@@ -4392,7 +4392,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-28-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"爱国情感"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4401,7 +4401,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-28-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"爱国情感"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '爱国情感与道德与法治学习密切相关。',
@@ -4409,7 +4409,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-28-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"爱国情感"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解爱国情感。',
@@ -4417,7 +4417,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-28-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"爱国情感"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4426,7 +4426,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-28-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"爱国情感"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4435,7 +4435,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-28-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"爱国情感"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用爱国情感知识分析行为。',
@@ -4443,7 +4443,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-28-17', type: 'true-false', difficulty: 'advanced',
     stem: '"爱国情感"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '爱国情感在不同场合中的要求可能不同。',
@@ -4451,7 +4451,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-28-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"爱国情感"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -4460,7 +4460,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-28-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"爱国情感"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述爱国情感的重要性。',
@@ -4468,7 +4468,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-28-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"爱国情感"需要长期坚持。',
     answer: 'true',
     explanation: '爱国情感的学习需要长期坚持。',
@@ -4476,7 +4476,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-28-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"爱国情感"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -4485,7 +4485,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-028'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-28-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-28-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"爱国情感"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行爱国情感。',
@@ -4495,7 +4495,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 传统文化 (p-mor-029) ====================
   {
-    id: 'q-pm-29-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-29-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"传统文化"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -4504,7 +4504,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-29-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"传统文化"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习传统文化需要认真学习、积极实践。',
@@ -4512,7 +4512,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-29-3', type: 'true-false', difficulty: 'basic',
     stem: '"传统文化"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '传统文化是小学道德与法治学习的重要内容。',
@@ -4520,7 +4520,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-29-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"传统文化"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4529,7 +4529,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-29-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"传统文化"的关键是______。',
     answer: '理解和实践',
     explanation: '学习传统文化的关键是理解和实践。',
@@ -4537,7 +4537,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-29-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"传统文化"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习传统文化需要付诸行动，不能只靠记忆。',
@@ -4545,7 +4545,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-29-7', type: 'choice', difficulty: 'basic',
     stem: '关于"传统文化"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -4554,7 +4554,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-29-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"传统文化"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4563,7 +4563,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-29-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"传统文化"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用传统文化的知识描述一个行为。',
@@ -4571,7 +4571,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-29-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"传统文化"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '传统文化在任何地方都需要遵守。',
@@ -4579,7 +4579,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-29-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"传统文化"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4588,7 +4588,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-29-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"传统文化"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '传统文化与道德与法治学习密切相关。',
@@ -4596,7 +4596,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-29-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"传统文化"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解传统文化。',
@@ -4604,7 +4604,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-29-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"传统文化"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4613,7 +4613,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-29-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"传统文化"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4622,7 +4622,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-29-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"传统文化"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用传统文化知识分析行为。',
@@ -4630,7 +4630,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-29-17', type: 'true-false', difficulty: 'advanced',
     stem: '"传统文化"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '传统文化在不同场合中的要求可能不同。',
@@ -4638,7 +4638,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-29-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"传统文化"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -4647,7 +4647,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-29-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"传统文化"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述传统文化的重要性。',
@@ -4655,7 +4655,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-29-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"传统文化"需要长期坚持。',
     answer: 'true',
     explanation: '传统文化的学习需要长期坚持。',
@@ -4663,7 +4663,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-29-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"传统文化"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -4672,7 +4672,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-029'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-29-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-29-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"传统文化"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行传统文化。',
@@ -4682,7 +4682,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 环境保护 (p-mor-030) ====================
   {
-    id: 'q-pm-30-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-30-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"环境保护"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -4691,7 +4691,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-30-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"环境保护"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习环境保护需要认真学习、积极实践。',
@@ -4699,7 +4699,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-30-3', type: 'true-false', difficulty: 'basic',
     stem: '"环境保护"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '环境保护是小学道德与法治学习的重要内容。',
@@ -4707,7 +4707,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-30-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"环境保护"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4716,7 +4716,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-30-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"环境保护"的关键是______。',
     answer: '理解和实践',
     explanation: '学习环境保护的关键是理解和实践。',
@@ -4724,7 +4724,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-30-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"环境保护"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习环境保护需要付诸行动，不能只靠记忆。',
@@ -4732,7 +4732,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-30-7', type: 'choice', difficulty: 'basic',
     stem: '关于"环境保护"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -4741,7 +4741,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-30-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"环境保护"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4750,7 +4750,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-30-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"环境保护"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用环境保护的知识描述一个行为。',
@@ -4758,7 +4758,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-30-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"环境保护"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '环境保护在任何地方都需要遵守。',
@@ -4766,7 +4766,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-30-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"环境保护"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4775,7 +4775,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-30-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"环境保护"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '环境保护与道德与法治学习密切相关。',
@@ -4783,7 +4783,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-30-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"环境保护"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解环境保护。',
@@ -4791,7 +4791,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-30-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"环境保护"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4800,7 +4800,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-30-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"环境保护"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4809,7 +4809,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-30-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"环境保护"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用环境保护知识分析行为。',
@@ -4817,7 +4817,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-30-17', type: 'true-false', difficulty: 'advanced',
     stem: '"环境保护"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '环境保护在不同场合中的要求可能不同。',
@@ -4825,7 +4825,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-30-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"环境保护"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -4834,7 +4834,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-30-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"环境保护"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述环境保护的重要性。',
@@ -4842,7 +4842,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-30-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"环境保护"需要长期坚持。',
     answer: 'true',
     explanation: '环境保护的学习需要长期坚持。',
@@ -4850,7 +4850,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-30-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"环境保护"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -4859,7 +4859,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-030'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-30-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-30-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"环境保护"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行环境保护。',
@@ -4869,7 +4869,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 紧急求助 (p-mor-031) ====================
   {
-    id: 'q-pm-31-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-31-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"紧急求助"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -4878,7 +4878,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-31-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"紧急求助"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习紧急求助需要认真学习、积极实践。',
@@ -4886,7 +4886,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-31-3', type: 'true-false', difficulty: 'basic',
     stem: '"紧急求助"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '紧急求助是小学道德与法治学习的重要内容。',
@@ -4894,7 +4894,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-31-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"紧急求助"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4903,7 +4903,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-31-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"紧急求助"的关键是______。',
     answer: '理解和实践',
     explanation: '学习紧急求助的关键是理解和实践。',
@@ -4911,7 +4911,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-31-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"紧急求助"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习紧急求助需要付诸行动，不能只靠记忆。',
@@ -4919,7 +4919,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-31-7', type: 'choice', difficulty: 'basic',
     stem: '关于"紧急求助"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -4928,7 +4928,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-31-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"紧急求助"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -4937,7 +4937,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-31-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"紧急求助"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用紧急求助的知识描述一个行为。',
@@ -4945,7 +4945,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-31-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"紧急求助"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '紧急求助在任何地方都需要遵守。',
@@ -4953,7 +4953,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-31-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"紧急求助"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -4962,7 +4962,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-31-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"紧急求助"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '紧急求助与道德与法治学习密切相关。',
@@ -4970,7 +4970,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-31-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"紧急求助"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解紧急求助。',
@@ -4978,7 +4978,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-31-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"紧急求助"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -4987,7 +4987,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-31-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"紧急求助"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -4996,7 +4996,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-31-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"紧急求助"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用紧急求助知识分析行为。',
@@ -5004,7 +5004,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-31-17', type: 'true-false', difficulty: 'advanced',
     stem: '"紧急求助"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '紧急求助在不同场合中的要求可能不同。',
@@ -5012,7 +5012,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-31-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"紧急求助"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5021,7 +5021,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-31-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"紧急求助"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述紧急求助的重要性。',
@@ -5029,7 +5029,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-31-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"紧急求助"需要长期坚持。',
     answer: 'true',
     explanation: '紧急求助的学习需要长期坚持。',
@@ -5037,7 +5037,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-31-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"紧急求助"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5046,7 +5046,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-031'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-31-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-31-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"紧急求助"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行紧急求助。',
@@ -5056,7 +5056,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 拒绝欺凌 (p-mor-032) ====================
   {
-    id: 'q-pm-32-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-32-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"拒绝欺凌"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -5065,7 +5065,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-32-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"拒绝欺凌"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习拒绝欺凌需要认真学习、积极实践。',
@@ -5073,7 +5073,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-32-3', type: 'true-false', difficulty: 'basic',
     stem: '"拒绝欺凌"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '拒绝欺凌是小学道德与法治学习的重要内容。',
@@ -5081,7 +5081,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-32-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"拒绝欺凌"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5090,7 +5090,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-32-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"拒绝欺凌"的关键是______。',
     answer: '理解和实践',
     explanation: '学习拒绝欺凌的关键是理解和实践。',
@@ -5098,7 +5098,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-32-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"拒绝欺凌"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习拒绝欺凌需要付诸行动，不能只靠记忆。',
@@ -5106,7 +5106,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-32-7', type: 'choice', difficulty: 'basic',
     stem: '关于"拒绝欺凌"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -5115,7 +5115,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-32-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"拒绝欺凌"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -5124,7 +5124,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-32-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"拒绝欺凌"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用拒绝欺凌的知识描述一个行为。',
@@ -5132,7 +5132,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-32-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"拒绝欺凌"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '拒绝欺凌在任何地方都需要遵守。',
@@ -5140,7 +5140,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-32-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"拒绝欺凌"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -5149,7 +5149,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-32-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"拒绝欺凌"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '拒绝欺凌与道德与法治学习密切相关。',
@@ -5157,7 +5157,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-32-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"拒绝欺凌"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解拒绝欺凌。',
@@ -5165,7 +5165,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-32-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"拒绝欺凌"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5174,7 +5174,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-32-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"拒绝欺凌"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -5183,7 +5183,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-32-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"拒绝欺凌"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用拒绝欺凌知识分析行为。',
@@ -5191,7 +5191,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-32-17', type: 'true-false', difficulty: 'advanced',
     stem: '"拒绝欺凌"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '拒绝欺凌在不同场合中的要求可能不同。',
@@ -5199,7 +5199,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-32-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"拒绝欺凌"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5208,7 +5208,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-32-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"拒绝欺凌"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述拒绝欺凌的重要性。',
@@ -5216,7 +5216,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-32-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"拒绝欺凌"需要长期坚持。',
     answer: 'true',
     explanation: '拒绝欺凌的学习需要长期坚持。',
@@ -5224,7 +5224,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-32-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"拒绝欺凌"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5233,7 +5233,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-032'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-32-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-32-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"拒绝欺凌"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行拒绝欺凌。',
@@ -5243,7 +5243,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 合理安排时间 (p-mor-033) ====================
   {
-    id: 'q-pm-33-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-33-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"合理安排时间"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -5252,7 +5252,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-33-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"合理安排时间"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习合理安排时间需要认真学习、积极实践。',
@@ -5260,7 +5260,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-33-3', type: 'true-false', difficulty: 'basic',
     stem: '"合理安排时间"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '合理安排时间是小学道德与法治学习的重要内容。',
@@ -5268,7 +5268,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-33-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"合理安排时间"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5277,7 +5277,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-33-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"合理安排时间"的关键是______。',
     answer: '理解和实践',
     explanation: '学习合理安排时间的关键是理解和实践。',
@@ -5285,7 +5285,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-33-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"合理安排时间"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习合理安排时间需要付诸行动，不能只靠记忆。',
@@ -5293,7 +5293,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-33-7', type: 'choice', difficulty: 'basic',
     stem: '关于"合理安排时间"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -5302,7 +5302,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-33-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"合理安排时间"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -5311,7 +5311,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-33-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"合理安排时间"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用合理安排时间的知识描述一个行为。',
@@ -5319,7 +5319,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-33-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"合理安排时间"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '合理安排时间在任何地方都需要遵守。',
@@ -5327,7 +5327,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-33-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"合理安排时间"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -5336,7 +5336,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-33-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"合理安排时间"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '合理安排时间与道德与法治学习密切相关。',
@@ -5344,7 +5344,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-33-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"合理安排时间"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解合理安排时间。',
@@ -5352,7 +5352,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-33-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"合理安排时间"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5361,7 +5361,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-33-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"合理安排时间"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -5370,7 +5370,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-33-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"合理安排时间"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用合理安排时间知识分析行为。',
@@ -5378,7 +5378,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-33-17', type: 'true-false', difficulty: 'advanced',
     stem: '"合理安排时间"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '合理安排时间在不同场合中的要求可能不同。',
@@ -5386,7 +5386,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-33-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"合理安排时间"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5395,7 +5395,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-33-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"合理安排时间"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述合理安排时间的重要性。',
@@ -5403,7 +5403,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-33-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"合理安排时间"需要长期坚持。',
     answer: 'true',
     explanation: '合理安排时间的学习需要长期坚持。',
@@ -5411,7 +5411,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-33-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"合理安排时间"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5420,7 +5420,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-033'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-33-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-33-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"合理安排时间"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行合理安排时间。',
@@ -5430,7 +5430,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 应对挫折 (p-mor-034) ====================
   {
-    id: 'q-pm-34-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-34-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"应对挫折"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -5439,7 +5439,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-34-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"应对挫折"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习应对挫折需要认真学习、积极实践。',
@@ -5447,7 +5447,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-34-3', type: 'true-false', difficulty: 'basic',
     stem: '"应对挫折"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '应对挫折是小学道德与法治学习的重要内容。',
@@ -5455,7 +5455,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-34-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"应对挫折"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5464,7 +5464,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-34-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"应对挫折"的关键是______。',
     answer: '理解和实践',
     explanation: '学习应对挫折的关键是理解和实践。',
@@ -5472,7 +5472,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-34-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"应对挫折"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习应对挫折需要付诸行动，不能只靠记忆。',
@@ -5480,7 +5480,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-34-7', type: 'choice', difficulty: 'basic',
     stem: '关于"应对挫折"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -5489,7 +5489,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-34-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"应对挫折"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -5498,7 +5498,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-34-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"应对挫折"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用应对挫折的知识描述一个行为。',
@@ -5506,7 +5506,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-34-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"应对挫折"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '应对挫折在任何地方都需要遵守。',
@@ -5514,7 +5514,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-34-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"应对挫折"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -5523,7 +5523,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-34-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"应对挫折"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '应对挫折与道德与法治学习密切相关。',
@@ -5531,7 +5531,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-34-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"应对挫折"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解应对挫折。',
@@ -5539,7 +5539,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-34-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"应对挫折"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5548,7 +5548,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-34-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"应对挫折"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -5557,7 +5557,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-34-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"应对挫折"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用应对挫折知识分析行为。',
@@ -5565,7 +5565,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-34-17', type: 'true-false', difficulty: 'advanced',
     stem: '"应对挫折"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '应对挫折在不同场合中的要求可能不同。',
@@ -5573,7 +5573,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-34-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"应对挫折"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5582,7 +5582,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-34-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"应对挫折"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述应对挫折的重要性。',
@@ -5590,7 +5590,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-34-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"应对挫折"需要长期坚持。',
     answer: 'true',
     explanation: '应对挫折的学习需要长期坚持。',
@@ -5598,7 +5598,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-34-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"应对挫折"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5607,7 +5607,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-034'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-34-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-34-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"应对挫折"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行应对挫折。',
@@ -5617,7 +5617,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 表达情绪 (p-mor-035) ====================
   {
-    id: 'q-pm-35-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-35-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"表达情绪"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -5626,7 +5626,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-35-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"表达情绪"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习表达情绪需要认真学习、积极实践。',
@@ -5634,7 +5634,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-35-3', type: 'true-false', difficulty: 'basic',
     stem: '"表达情绪"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '表达情绪是小学道德与法治学习的重要内容。',
@@ -5642,7 +5642,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-35-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"表达情绪"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5651,7 +5651,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-35-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"表达情绪"的关键是______。',
     answer: '理解和实践',
     explanation: '学习表达情绪的关键是理解和实践。',
@@ -5659,7 +5659,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-35-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"表达情绪"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习表达情绪需要付诸行动，不能只靠记忆。',
@@ -5667,7 +5667,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-35-7', type: 'choice', difficulty: 'basic',
     stem: '关于"表达情绪"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -5676,7 +5676,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-35-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"表达情绪"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -5685,7 +5685,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-35-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"表达情绪"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用表达情绪的知识描述一个行为。',
@@ -5693,7 +5693,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-35-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"表达情绪"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '表达情绪在任何地方都需要遵守。',
@@ -5701,7 +5701,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-35-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"表达情绪"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -5710,7 +5710,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-35-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"表达情绪"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '表达情绪与道德与法治学习密切相关。',
@@ -5718,7 +5718,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-35-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"表达情绪"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解表达情绪。',
@@ -5726,7 +5726,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-35-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"表达情绪"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5735,7 +5735,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-35-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"表达情绪"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -5744,7 +5744,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-35-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"表达情绪"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用表达情绪知识分析行为。',
@@ -5752,7 +5752,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-35-17', type: 'true-false', difficulty: 'advanced',
     stem: '"表达情绪"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '表达情绪在不同场合中的要求可能不同。',
@@ -5760,7 +5760,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-35-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"表达情绪"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5769,7 +5769,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-35-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"表达情绪"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述表达情绪的重要性。',
@@ -5777,7 +5777,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-35-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"表达情绪"需要长期坚持。',
     answer: 'true',
     explanation: '表达情绪的学习需要长期坚持。',
@@ -5785,7 +5785,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-35-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"表达情绪"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5794,7 +5794,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-035'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-35-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-35-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"表达情绪"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行表达情绪。',
@@ -5804,7 +5804,7 @@ export const primaryMoralQuestions: Question[] = [
 
   // ==================== 自我保护 (p-mor-036) ====================
   {
-    id: 'q-pm-36-1', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-36-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"自我保护"的说法，正确的是（    ）。',
     options: ['A. 它是道德与法治学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要实践'],
     answer: 'A',
@@ -5813,7 +5813,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-2', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-36-2', type: 'fill-blank', difficulty: 'basic',
     stem: '学习"自我保护"要______。',
     answer: '认真学习、积极实践',
     explanation: '学习自我保护需要认真学习、积极实践。',
@@ -5821,7 +5821,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-3', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-36-3', type: 'true-false', difficulty: 'basic',
     stem: '"自我保护"是小学道德与法治学习的重要内容。',
     answer: 'true',
     explanation: '自我保护是小学道德与法治学习的重要内容。',
@@ -5829,7 +5829,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-4', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-36-4', type: 'choice', difficulty: 'basic',
     stem: '下列例子中，与"自我保护"相关的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5838,7 +5838,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-5', type: 'fill-blank', difficulty: 'basic',
+    id: 'q-pmo-36-5', type: 'fill-blank', difficulty: 'basic',
     stem: '"自我保护"的关键是______。',
     answer: '理解和实践',
     explanation: '学习自我保护的关键是理解和实践。',
@@ -5846,7 +5846,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-6', type: 'true-false', difficulty: 'basic',
+    id: 'q-pmo-36-6', type: 'true-false', difficulty: 'basic',
     stem: '学习"自我保护"只需要记忆，不需要行动。',
     answer: 'false',
     explanation: '学习自我保护需要付诸行动，不能只靠记忆。',
@@ -5854,7 +5854,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-7', type: 'choice', difficulty: 'basic',
+    id: 'q-pmo-36-7', type: 'choice', difficulty: 'basic',
     stem: '关于"自我保护"的学习方法，下列说法正确的是（    ）。',
     options: ['A. 学习与实践结合', 'B. 不实践', 'C. 只听讲', 'D. 不思考'],
     answer: 'A',
@@ -5863,7 +5863,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-8', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-36-8', type: 'choice', difficulty: 'intermediate',
     stem: '运用"自我保护"知识，下列行为最恰当的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'B',
@@ -5872,7 +5872,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-9', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-36-9', type: 'fill-blank', difficulty: 'intermediate',
     stem: '请写出一个体现"自我保护"的行为：______。',
     answer: '开放性答案',
     explanation: '请运用自我保护的知识描述一个行为。',
@@ -5880,7 +5880,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-10', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-36-10', type: 'true-false', difficulty: 'intermediate',
     stem: '"自我保护"只在学校里需要遵守，在家里不需要。',
     answer: 'false',
     explanation: '自我保护在任何地方都需要遵守。',
@@ -5888,7 +5888,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-11', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-36-11', type: 'choice', difficulty: 'intermediate',
     stem: '下列关于"自我保护"的理解，正确的是（    ）。',
     options: ['A. 需要理解践行', 'B. 不需要理解', 'C. 只在高年级用', 'D. 不重要'],
     answer: 'A',
@@ -5897,7 +5897,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-12', type: 'fill-blank', difficulty: 'intermediate',
+    id: 'q-pmo-36-12', type: 'fill-blank', difficulty: 'intermediate',
     stem: '"自我保护"与道德与法治学习的关系是______。',
     answer: '密切相关',
     explanation: '自我保护与道德与法治学习密切相关。',
@@ -5905,7 +5905,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-13', type: 'true-false', difficulty: 'intermediate',
+    id: 'q-pmo-36-13', type: 'true-false', difficulty: 'intermediate',
     stem: '学习"自我保护"需要联系生活实际。',
     answer: 'true',
     explanation: '联系生活实际有助于理解自我保护。',
@@ -5913,7 +5913,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-14', type: 'choice', difficulty: 'intermediate',
+    id: 'q-pmo-36-14', type: 'choice', difficulty: 'intermediate',
     stem: '下列行为中，"自我保护"践行正确的是（    ）。',
     options: ['A. 例一', 'B. 例二', 'C. 例三', 'D. 例四'],
     answer: 'A',
@@ -5922,7 +5922,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-15', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-36-15', type: 'choice', difficulty: 'advanced',
     stem: '观察下列行为，分析其中"自我保护"的意义，正确的是（    ）。',
     options: ['A. 意义一', 'B. 意义二', 'C. 意义三', 'D. 意义四'],
     answer: 'C',
@@ -5931,7 +5931,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-16', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-36-16', type: 'fill-blank', difficulty: 'advanced',
     stem: '请运用"自我保护"分析下面的行为：______。',
     answer: '开放性答案',
     explanation: '请运用自我保护知识分析行为。',
@@ -5939,7 +5939,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-17', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-36-17', type: 'true-false', difficulty: 'advanced',
     stem: '"自我保护"在不同场合中的要求可能不同。',
     answer: 'true',
     explanation: '自我保护在不同场合中的要求可能不同。',
@@ -5947,7 +5947,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-18', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-36-18', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"自我保护"的理解，最深刻的是（    ）。',
     options: ['A. 表面理解', 'B. 浅层理解', 'C. 深层理解', 'D. 错误理解'],
     answer: 'C',
@@ -5956,7 +5956,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-19', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-36-19', type: 'fill-blank', difficulty: 'advanced',
     stem: '请用一段话描述"自我保护"的重要性：______。',
     answer: '开放性答案',
     explanation: '请描述自我保护的重要性。',
@@ -5964,7 +5964,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-20', type: 'true-false', difficulty: 'advanced',
+    id: 'q-pmo-36-20', type: 'true-false', difficulty: 'advanced',
     stem: '掌握"自我保护"需要长期坚持。',
     answer: 'true',
     explanation: '自我保护的学习需要长期坚持。',
@@ -5972,7 +5972,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-21', type: 'choice', difficulty: 'advanced',
+    id: 'q-pmo-36-21', type: 'choice', difficulty: 'advanced',
     stem: '下列关于"自我保护"的应用，最恰当的是（    ）。',
     options: ['A. 应用一', 'B. 应用二', 'C. 应用三', 'D. 应用四'],
     answer: 'B',
@@ -5981,7 +5981,7 @@ export const primaryMoralQuestions: Question[] = [
     knowledgePointIds: ['p-mor-036'], subject: '道法', grade: 'primary',
   },
   {
-    id: 'q-pm-36-22', type: 'fill-blank', difficulty: 'advanced',
+    id: 'q-pmo-36-22', type: 'fill-blank', difficulty: 'advanced',
     stem: '请设计一个践行"自我保护"的活动：______。',
     answer: '开放性答案',
     explanation: '请设计活动践行自我保护。',

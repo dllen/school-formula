@@ -196,7 +196,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"函数"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '函数是数学学习的基础内容，需要认真掌握。',
     tags: ['函数'],
@@ -383,7 +383,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"三角函数"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '三角函数是数学学习的基础内容，需要认真掌握。',
     tags: ['三角函数'],
@@ -570,7 +570,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"数列"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '数列是数学学习的基础内容，需要认真掌握。',
     tags: ['数列'],
@@ -757,7 +757,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"平面向量"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '平面向量是数学学习的基础内容，需要认真掌握。',
     tags: ['平面向量'],
@@ -944,7 +944,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"不等式"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '不等式是数学学习的基础内容，需要认真掌握。',
     tags: ['不等式'],
@@ -1131,7 +1131,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"立体几何"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '立体几何是数学学习的基础内容，需要认真掌握。',
     tags: ['立体几何'],
@@ -1318,7 +1318,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-008-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"解析几何"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '解析几何是数学学习的基础内容，需要认真掌握。',
     tags: ['解析几何'],
@@ -1505,7 +1505,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-009-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"概率与统计"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '概率与统计是数学学习的基础内容，需要认真掌握。',
     tags: ['概率与统计'],
@@ -1692,7 +1692,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-010-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"导数及其应用"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '导数及其应用是数学学习的基础内容，需要认真掌握。',
     tags: ['导数及其应用'],
@@ -1879,7 +1879,7 @@ export const highMathQuestions: Question[] = [
   {
     id: 'q-hm-011-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"复数"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '复数是数学学习的基础内容，需要认真掌握。',
     tags: ['复数'],

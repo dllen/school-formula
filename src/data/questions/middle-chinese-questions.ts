@@ -408,7 +408,7 @@ export const middleChineseQuestions: Question[] = [
   {
     id: 'q-mh-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"汉字与语法"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '汉字与语法是语文学习的基础内容，需要认真掌握。',
     tags: ['汉字与语法'],
@@ -595,7 +595,7 @@ export const middleChineseQuestions: Question[] = [
   {
     id: 'q-mh-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"病句修改"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '病句修改是语文学习的基础内容，需要认真掌握。',
     tags: ['病句修改'],
@@ -782,7 +782,7 @@ export const middleChineseQuestions: Question[] = [
   {
     id: 'q-mh-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"语言运用"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '语言运用是语文学习的基础内容，需要认真掌握。',
     tags: ['语言运用'],
@@ -969,7 +969,7 @@ export const middleChineseQuestions: Question[] = [
   {
     id: 'q-mh-008-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"写作技巧"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '写作技巧是语文学习的基础内容，需要认真掌握。',
     tags: ['写作技巧'],

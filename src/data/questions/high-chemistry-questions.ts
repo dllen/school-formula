@@ -9,7 +9,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-001-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"化学计量"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '化学计量是化学学习的基础内容，需要认真掌握。',
     tags: ['化学计量'],
@@ -196,7 +196,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-002-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"氧化还原反应"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '氧化还原反应是化学学习的基础内容，需要认真掌握。',
     tags: ['氧化还原反应'],
@@ -383,7 +383,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-003-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"离子反应"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '离子反应是化学学习的基础内容，需要认真掌握。',
     tags: ['离子反应'],
@@ -570,7 +570,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"金属及其化合物"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '金属及其化合物是化学学习的基础内容，需要认真掌握。',
     tags: ['金属及其化合物'],
@@ -757,7 +757,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"非金属及其化合物"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '非金属及其化合物是化学学习的基础内容，需要认真掌握。',
     tags: ['非金属及其化合物'],
@@ -944,7 +944,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"元素周期律"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '元素周期律是化学学习的基础内容，需要认真掌握。',
     tags: ['元素周期律'],
@@ -1131,7 +1131,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"化学反应原理"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '化学反应原理是化学学习的基础内容，需要认真掌握。',
     tags: ['化学反应原理'],
@@ -1318,7 +1318,7 @@ export const highChemistryQuestions: Question[] = [
   {
     id: 'q-hc-008-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"有机化学基础"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '有机化学基础是化学学习的基础内容，需要认真掌握。',
     tags: ['有机化学基础'],

@@ -1028,7 +1028,7 @@ export const middleBiologyQuestions: Question[] = [
   {
     id: 'q-mb-005-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"生物的多样性"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '生物的多样性是生物学习的基础内容，需要认真掌握。',
     tags: ['生物的多样性'],
@@ -1215,7 +1215,7 @@ export const middleBiologyQuestions: Question[] = [
   {
     id: 'q-mb-006-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"生物的进化"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '生物的进化是生物学习的基础内容，需要认真掌握。',
     tags: ['生物的进化'],
@@ -1402,7 +1402,7 @@ export const middleBiologyQuestions: Question[] = [
   {
     id: 'q-mb-007-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"健康地生活"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '健康地生活是生物学习的基础内容，需要认真掌握。',
     tags: ['健康地生活'],

@@ -9,13 +9,13 @@ import { CARD, measureOgCard } from './og-card';
 import { OG_ROUTES, cardFor, cardInputFor, loadFonts, writeOgImages } from './og';
 
 describe('OG_ROUTES', () => {
-  it('covers the English surface only: home, three hubs, six charts', () => {
-    expect(OG_ROUTES).toHaveLength(10);
+  it('covers the English surface only: home, three hubs, every chart', () => {
+    expect(OG_ROUTES).toHaveLength(OG_ROUTES.filter((e) => e.kind === 'chart').length + 4);
     // 名字里的 1/3/6 必须真被断言。只写 toHaveLength(10) 的话，把一张图表页换成
     // 第二个 hub 照样能过——真正有鉴别力的是这条拆分。
     expect(OG_ROUTES.filter((entry) => entry.kind === 'home')).toHaveLength(1);
     expect(OG_ROUTES.filter((entry) => entry.kind === 'hub')).toHaveLength(3);
-    expect(OG_ROUTES.filter((entry) => entry.kind === 'chart')).toHaveLength(6);
+    expect(OG_ROUTES.filter((entry) => entry.kind === 'chart').length).toBeGreaterThanOrEqual(20);
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/en.png');
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/math.png');
     expect(OG_ROUTES.map((entry) => entry.path)).toContain('og/math/multiplication-chart.png');
@@ -41,7 +41,7 @@ describe('writeOgImages', () => {
     const distDir = mkdtempSync(join(tmpdir(), 'og-test-'));
     try {
       const written = await writeOgImages(distDir);
-      expect(written).toHaveLength(10);
+      expect(written).toHaveLength(OG_ROUTES.length);
       // 返回值是「真的写成功的路由」——标签的有无以它为准，所以它必须与 OG_ROUTES 一一对应。
       expect(new Set(written.map((entry) => entry.path))).toEqual(
         new Set(OG_ROUTES.map((entry) => entry.path)),
@@ -63,7 +63,7 @@ describe('writeOgImages', () => {
       });
 
       // 十张内容互不相同——同一张图复制十份同样是坏的。
-      expect(new Set(pngs.map((png) => png.toString('base64'))).size).toBe(10);
+      expect(new Set(pngs.map((png) => png.toString('base64'))).size).toBe(OG_ROUTES.length);
 
       expect(readdirSync(join(distDir, 'og/math'))).toContain('metric-conversions.png');
     } finally {

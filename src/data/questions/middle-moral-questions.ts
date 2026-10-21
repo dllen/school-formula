@@ -773,7 +773,7 @@ export const middleMoralQuestions: Question[] = [
   {
     id: 'q-mm-004-1', type: 'choice', difficulty: 'basic',
     stem: '下列关于"权利与义务"的说法，正确的是（    ）。',
-    options: ['A. 它是${subject}学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
+    options: ['A. 它是该科目学习的基础', 'B. 它不重要', 'C. 它只在高年级学习', 'D. 它不需要练习'],
     answer: 'A',
     explanation: '权利与义务是道法学习的基础内容，需要认真掌握。',
     tags: ['权利与义务'],
