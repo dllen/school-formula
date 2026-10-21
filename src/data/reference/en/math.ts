@@ -273,7 +273,7 @@ export const MATH_PAGES: ReferencePage[] = [
         a: 'Yes. The grid is small enough that both sheet sizes leave comfortable margins around it without rescaling; print at 100% scale, not "fit to page", so the cells stay square.',
       },
     ],
-    related: ['multiplication-chart', 'squares-cubes-roots'],
+    related: ['place-value-chart', 'number-line', 'multiplication-chart'],
   },
   {
     slug: 'place-value-chart',
