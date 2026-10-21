@@ -43,6 +43,9 @@ jobs:
       # schema.sql 全是 CREATE TABLE IF NOT EXISTS，重复执行安全；先补齐基础表，
       # 再让 migrations 里的 ALTER TABLE 有表可改。
       - name: Ensure base schema
+        # 临时非阻塞：CLOUDFLARE_API_TOKEN 目前没有 D1 权限（步骤 3 秒内失败）。
+        # 先保证 Worker 能部署；D1 权限补齐后去掉 continue-on-error。
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -50,6 +53,7 @@ jobs:
           command: d1 execute school-formula-db --remote --file=db/schema.sql --yes
 
       - name: Apply D1 migrations
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
