@@ -39,6 +39,16 @@ jobs:
           VITE_ADSENSE_SLOT_REFERENCE_BOTTOM: ${{ secrets.VITE_ADSENSE_SLOT_REFERENCE_BOTTOM }}
         run: npm run build
 
+      # 远端库可能从未跑过 db/schema.sql（部署历史上只在本地建过库）。
+      # schema.sql 全是 CREATE TABLE IF NOT EXISTS，重复执行安全；先补齐基础表，
+      # 再让 migrations 里的 ALTER TABLE 有表可改。
+      - name: Ensure base schema
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute school-formula-db --remote --file=db/schema.sql --yes
+
       - name: Apply D1 migrations
         uses: cloudflare/wrangler-action@v3
         with:
