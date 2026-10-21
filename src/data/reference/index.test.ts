@@ -4,7 +4,7 @@ import { validateReferencePages } from './validate';
 
 describe('reference page index', () => {
   it('exposes every authored page', () => {
-    expect(REFERENCE_PAGES).toHaveLength(7);
+    expect(REFERENCE_PAGES).toHaveLength(15);
   });
 
   // 构建期只在 entry-prerender 里校验一次，validate.test.ts 又只用合成页面——
@@ -25,6 +25,14 @@ describe('reference page index', () => {
       'trigonometric-identities',
       'metric-conversions',
       'hundreds-chart',
+      'place-value-chart',
+      'number-line',
+      'roman-numerals',
+      'prime-numbers',
+      'divisibility-rules',
+      'fraction-decimal-percent',
+      'area-perimeter-volume-formulas',
+      'customary-unit-conversions',
     ]);
     expect(pagesInCategory('science').map((page) => page.slug)).toEqual(['physics-constants']);
     expect(pagesInCategory('english').map((page) => page.slug)).toEqual(['irregular-verbs']);

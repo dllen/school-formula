@@ -1,0 +1,25 @@
+// siUnitPrefixes
+
+export const SI_UNIT_PREFIXES_ROWS: string[][] = [
+    ["yotta", "Y", "10²⁴"],
+    ["zetta", "Z", "10²¹"],
+    ["exa", "E", "10¹⁸"],
+    ["peta", "P", "10¹⁵"],
+    ["tera", "T", "10¹²"],
+    ["giga", "G", "10⁹"],
+    ["mega", "M", "10⁶"],
+    ["kilo", "k", "10³"],
+    ["hecto", "h", "10²"],
+    ["deca", "da", "10¹"],
+    ["(base)", "—", "10⁰"],
+    ["deci", "d", "10⁻¹"],
+    ["centi", "c", "10⁻²"],
+    ["milli", "m", "10⁻³"],
+    ["micro", "μ", "10⁻⁶"],
+    ["nano", "n", "10⁻⁹"],
+    ["pico", "p", "10⁻¹²"],
+    ["femto", "f", "10⁻¹⁵"],
+    ["atto", "a", "10⁻¹⁸"],
+    ["zepto", "z", "10⁻²¹"],
+    ["yocto", "y", "10⁻²⁴"],
+  ];
