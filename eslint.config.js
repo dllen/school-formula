@@ -14,6 +14,8 @@ export default tseslint.config(
       '.wrangler/**',
       'scripts/**/*.mjs',
       'scripts/extract-data/dist/**',
+      // 本地 git worktree（隔离开发分支用）不应被主 checkout 的 lint 扫到。
+      '.agents/**',
     ],
   },
   js.configs.recommended,
