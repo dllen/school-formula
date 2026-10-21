@@ -42,6 +42,8 @@ jobs:
       # 远端库可能从未跑过 db/schema.sql（部署历史上只在本地建过库）。
       # schema.sql 全是 CREATE TABLE IF NOT EXISTS，重复执行安全；先补齐基础表，
       # 再让 migrations 里的 ALTER TABLE 有表可改。
+      # 用绑定名 DB（而不是 database_name）定位库：CLI 按名字可能解析到
+      # 另一个同名库，导致迁移打在 A 库、Worker 绑定的却是 B 库。
       - name: Ensure base schema
         # 临时非阻塞：CLOUDFLARE_API_TOKEN 目前没有 D1 权限（步骤 3 秒内失败）。
         # 先保证 Worker 能部署；D1 权限补齐后去掉 continue-on-error。
@@ -50,7 +52,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 execute school-formula-db --remote --file=db/schema.sql --yes
+          command: d1 execute DB --remote --file=db/schema.sql --yes
 
       - name: Apply D1 migrations
         continue-on-error: true
@@ -58,7 +60,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 migrations apply school-formula-db --remote
+          command: d1 migrations apply DB --remote
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
