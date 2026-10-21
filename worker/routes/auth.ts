@@ -283,17 +283,22 @@ export async function handleAuth(
     if (!record || record.code !== body.code) {
       // 验证码错误：累加 attempts，到达上限即锁定（删除记录并拒绝继续尝试）
       if (record) {
-        await env.DB.prepare('UPDATE email_verifications SET attempts = attempts + 1 WHERE id = ?')
-          .bind(record.id)
-          .run();
-        const updated = await env.DB.prepare('SELECT attempts FROM email_verifications WHERE id = ?')
-          .bind(record.id)
-          .first<{ attempts: number }>();
-        if (updated && updated.attempts >= CODE_ATTEMPT_LIMIT) {
-          await env.DB.prepare('DELETE FROM email_verifications WHERE id = ?')
+        // 绑定的 D1 可能还没有 attempts 列；缺列时跳过锁定，不要让整个重置流程 500。
+        try {
+          await env.DB.prepare('UPDATE email_verifications SET attempts = attempts + 1 WHERE id = ?')
             .bind(record.id)
             .run();
-          return errorResponse('验证码已失效，请重新申请', 400, 'CODE_LOCKED');
+          const updated = await env.DB.prepare('SELECT attempts FROM email_verifications WHERE id = ?')
+            .bind(record.id)
+            .first<{ attempts: number }>();
+          if (updated && updated.attempts >= CODE_ATTEMPT_LIMIT) {
+            await env.DB.prepare('DELETE FROM email_verifications WHERE id = ?')
+              .bind(record.id)
+              .run();
+            return errorResponse('验证码已失效，请重新申请', 400, 'CODE_LOCKED');
+          }
+        } catch (err) {
+          console.error('verification attempts unavailable; skipping lockout', err);
         }
       }
       return errorResponse('验证码错误', 400, 'INVALID_CODE');

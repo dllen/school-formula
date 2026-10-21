@@ -157,18 +157,6 @@ export default {
         response = await handleUser(request, env, path);
       } else if (path.startsWith('/api/ai/')) {
         response = await handleAI(request, env, ctx);
-      } else if (path === '/api/health/db') {
-        // TEMP DIAGNOSTIC — remove after checking D1 state in production.
-        try {
-          const result = await env.DB.prepare(
-            "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name",
-          ).all();
-          const tables = (result.results as Array<{ name: string }>).map((row) => row.name);
-          response = new Response(JSON.stringify({ ok: true, tables }), { headers: corsHeaders });
-        } catch (err) {
-          const message = err instanceof Error ? err.message : String(err);
-          response = new Response(JSON.stringify({ ok: false, error: message }), { headers: corsHeaders });
-        }
       } else if (path === '/api/health') {
         response = new Response(JSON.stringify({ status: 'ok' }), { headers: corsHeaders });
       } else {

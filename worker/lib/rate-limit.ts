@@ -48,7 +48,11 @@ export function checkRateLimit(
  *
  * D1 / SQLite 的 ALTER TABLE ADD COLUMN 与 julianday() 都是 D1 支持的标准 SQL。
  */
-export async function takeRateLimit(
+const CREATE_TABLE_SQL =
+  'CREATE TABLE IF NOT EXISTS auth_rate_limits (' +
+  'key TEXT PRIMARY KEY, count INTEGER NOT NULL DEFAULT 0, window_start TEXT NOT NULL)';
+
+async function bumpRateLimit(
   env: RateLimitEnv,
   key: string,
   limit: number,
@@ -64,6 +68,30 @@ export async function takeRateLimit(
   const row = await env.DB.prepare('SELECT count FROM auth_rate_limits WHERE key = ?')
     .bind(key).first<{ count: number }>();
   return (row?.count ?? 1) <= limit;
+}
+
+/**
+ * 生产包装：绑定的 D1 可能早于 auth_rate_limits 迁移（历史部署遗留）。
+ * 首次失败时尝试自建表并重试；仍失败则 fail-open，避免把登录/注册整体打成 500。
+ */
+export async function takeRateLimit(
+  env: RateLimitEnv,
+  key: string,
+  limit: number,
+  windowSeconds: number,
+): Promise<boolean> {
+  try {
+    return await bumpRateLimit(env, key, limit, windowSeconds);
+  } catch (err) {
+    console.error('auth rate limit failed; retrying after self-heal', err);
+    try {
+      await env.DB.prepare(CREATE_TABLE_SQL).run();
+      return await bumpRateLimit(env, key, limit, windowSeconds);
+    } catch (retryErr) {
+      console.error('auth rate limit self-heal failed; failing open', retryErr);
+      return true;
+    }
+  }
 }
 
 /**
