@@ -1,0 +1,353 @@
+{
+  "generatedAt": "2026-10-25T10:21:17.118Z",
+  "source": "cn-math-taxonomy",
+  "subject": "english",
+  "filter": {
+    "grade": 3,
+    "domains": [
+      "语音",
+      "词汇",
+      "语法",
+      "日常表达"
+    ]
+  },
+  "total": 56,
+  "items": [
+    {
+      "cnId": "cne_p001",
+      "cnName": "英语字母表",
+      "generatedId": "p-english-g3-001",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p002",
+      "cnName": "字母的大写和小写",
+      "generatedId": "p-english-g3-002",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p003",
+      "cnName": "元音字母",
+      "generatedId": "p-english-g3-003",
+      "chapter": "三年级上册 第6单元 Useful numbers"
+    },
+    {
+      "cnId": "cne_p004",
+      "cnName": "辅音字母 b 的开头音",
+      "generatedId": "p-english-g3-004",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p005",
+      "cnName": "问候用语",
+      "generatedId": "p-english-g3-005",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p006",
+      "cnName": "be 动词 am",
+      "generatedId": "p-english-g3-006",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p007",
+      "cnName": "问候、告别和致谢",
+      "generatedId": "p-english-g3-007",
+      "chapter": "三年级上册 第1单元 Making friends"
+    },
+    {
+      "cnId": "cne_p009",
+      "cnName": "颜色",
+      "generatedId": "p-english-g3-008",
+      "chapter": "三年级上册 第5单元 The colourful world"
+    },
+    {
+      "cnId": "cne_p010",
+      "cnName": "It is 说明颜色",
+      "generatedId": "p-english-g3-009",
+      "chapter": "三年级上册 第5单元 The colourful world"
+    },
+    {
+      "cnId": "cne_p011",
+      "cnName": "询问颜色",
+      "generatedId": "p-english-g3-010",
+      "chapter": "三年级上册 第5单元 The colourful world"
+    },
+    {
+      "cnId": "cne_p013",
+      "cnName": "身体部位",
+      "generatedId": "p-english-g3-011",
+      "chapter": "三年级下册 第2单元 My words and actions"
+    },
+    {
+      "cnId": "cne_p014",
+      "cnName": "This is 与 That is",
+      "generatedId": "p-english-g3-012",
+      "chapter": "三年级上册 第2单元 Different families"
+    },
+    {
+      "cnId": "cne_p015",
+      "cnName": "介绍身体部位",
+      "generatedId": "p-english-g3-013",
+      "chapter": "三年级下册 第2单元 My words and actions"
+    },
+    {
+      "cnId": "cne_p017",
+      "cnName": "动物",
+      "generatedId": "p-english-g3-014",
+      "chapter": "三年级上册 第3单元 Our animal friends"
+    },
+    {
+      "cnId": "cne_p018",
+      "cnName": "用 This is a 介绍动物",
+      "generatedId": "p-english-g3-015",
+      "chapter": "三年级上册 第3单元 Our animal friends"
+    },
+    {
+      "cnId": "cne_p020",
+      "cnName": "食物",
+      "generatedId": "p-english-g3-016",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    },
+    {
+      "cnId": "cne_p021",
+      "cnName": "I like 表达喜好",
+      "generatedId": "p-english-g3-017",
+      "chapter": "三年级上册 第4单元 Plants around us"
+    },
+    {
+      "cnId": "cne_p022",
+      "cnName": "表达想吃什么",
+      "generatedId": "p-english-g3-018",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    },
+    {
+      "cnId": "cne_p024",
+      "cnName": "1 到 10",
+      "generatedId": "p-english-g3-019",
+      "chapter": "三年级上册 第6单元 Useful numbers"
+    },
+    {
+      "cnId": "cne_p025",
+      "cnName": "玩具和礼物",
+      "generatedId": "p-english-g3-020",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p026",
+      "cnName": "How many 问数量",
+      "generatedId": "p-english-g3-021",
+      "chapter": "三年级上册 第6单元 Useful numbers"
+    },
+    {
+      "cnId": "cne_p027",
+      "cnName": "询问年龄",
+      "generatedId": "p-english-g3-022",
+      "chapter": "三年级上册 第6单元 Useful numbers"
+    },
+    {
+      "cnId": "cne_p029",
+      "cnName": "短元音 a",
+      "generatedId": "p-english-g3-023",
+      "chapter": "三年级下册 第1单元 Meeting new people"
+    },
+    {
+      "cnId": "cne_p030",
+      "cnName": "国家和来自哪里",
+      "generatedId": "p-english-g3-024",
+      "chapter": "三年级下册 第1单元 Meeting new people"
+    },
+    {
+      "cnId": "cne_p031",
+      "cnName": "I am from 说明来自哪里",
+      "generatedId": "p-english-g3-025",
+      "chapter": "三年级下册 第1单元 Meeting new people"
+    },
+    {
+      "cnId": "cne_p032",
+      "cnName": "询问来自哪里",
+      "generatedId": "p-english-g3-026",
+      "chapter": "三年级下册 第1单元 Meeting new people"
+    },
+    {
+      "cnId": "cne_p034",
+      "cnName": "短元音 e",
+      "generatedId": "p-english-g3-027",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p035",
+      "cnName": "家庭成员",
+      "generatedId": "p-english-g3-028",
+      "chapter": "三年级上册 第2单元 Different families"
+    },
+    {
+      "cnId": "cne_p036",
+      "cnName": "Who is 询问是谁",
+      "generatedId": "p-english-g3-029",
+      "chapter": "三年级上册 第2单元 Different families"
+    },
+    {
+      "cnId": "cne_p037",
+      "cnName": "介绍家人",
+      "generatedId": "p-english-g3-030",
+      "chapter": "三年级上册 第2单元 Different families"
+    },
+    {
+      "cnId": "cne_p039",
+      "cnName": "短元音 i",
+      "generatedId": "p-english-g3-031",
+      "chapter": "三年级下册 第2单元 My words and actions"
+    },
+    {
+      "cnId": "cne_p040",
+      "cnName": "大小和高矮",
+      "generatedId": "p-english-g3-032",
+      "chapter": "三年级上册 第3单元 Our animal friends"
+    },
+    {
+      "cnId": "cne_p041",
+      "cnName": "用形容词说大小高矮",
+      "generatedId": "p-english-g3-033",
+      "chapter": "三年级上册 第3单元 Our animal friends"
+    },
+    {
+      "cnId": "cne_p043",
+      "cnName": "短元音 o",
+      "generatedId": "p-english-g3-034",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p044",
+      "cnName": "房间里的物品",
+      "generatedId": "p-english-g3-035",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p045",
+      "cnName": "in、on、under",
+      "generatedId": "p-english-g3-036",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p046",
+      "cnName": "询问位置",
+      "generatedId": "p-english-g3-037",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p048",
+      "cnName": "短元音 u",
+      "generatedId": "p-english-g3-038",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    },
+    {
+      "cnId": "cne_p049",
+      "cnName": "五个短元音复习",
+      "generatedId": "p-english-g3-039",
+      "chapter": "三年级下册 第6单元 Numbers in life"
+    },
+    {
+      "cnId": "cne_p050",
+      "cnName": "水果",
+      "generatedId": "p-english-g3-040",
+      "chapter": "三年级上册 第4单元 Plants around us"
+    },
+    {
+      "cnId": "cne_p051",
+      "cnName": "Do you like 一般疑问句",
+      "generatedId": "p-english-g3-041",
+      "chapter": "三年级上册 第4单元 Plants around us"
+    },
+    {
+      "cnId": "cne_p052",
+      "cnName": "可数名词复数",
+      "generatedId": "p-english-g3-042",
+      "chapter": "三年级上册 第4单元 Plants around us"
+    },
+    {
+      "cnId": "cne_p054",
+      "cnName": "11 到 20",
+      "generatedId": "p-english-g3-043",
+      "chapter": "三年级下册 第6单元 Numbers in life"
+    },
+    {
+      "cnId": "cne_p055",
+      "cnName": "How many 与 11 到 20",
+      "generatedId": "p-english-g3-044",
+      "chapter": "三年级下册 第6单元 Numbers in life"
+    },
+    {
+      "cnId": "cne_p057",
+      "cnName": "a-e 的读音",
+      "generatedId": "p-english-g3-045",
+      "chapter": "三年级下册 第1单元 Meeting new people"
+    },
+    {
+      "cnId": "cne_p058",
+      "cnName": "教室物品",
+      "generatedId": "p-english-g3-046",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p059",
+      "cnName": "Let's 建议句",
+      "generatedId": "p-english-g3-047",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p060",
+      "cnName": "教室里的建议",
+      "generatedId": "p-english-g3-048",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p062",
+      "cnName": "i-e 的读音",
+      "generatedId": "p-english-g3-049",
+      "chapter": "三年级下册 第2单元 My words and actions"
+    },
+    {
+      "cnId": "cne_p063",
+      "cnName": "书包里的文具",
+      "generatedId": "p-english-g3-050",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p064",
+      "cnName": "谈论书包里有什么",
+      "generatedId": "p-english-g3-051",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p066",
+      "cnName": "o-e 的读音",
+      "generatedId": "p-english-g3-052",
+      "chapter": "三年级下册 第3单元 Tools and senses for learning"
+    },
+    {
+      "cnId": "cne_p071",
+      "cnName": "u-e 的读音",
+      "generatedId": "p-english-g3-053",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    },
+    {
+      "cnId": "cne_p076",
+      "cnName": "长元音 e",
+      "generatedId": "p-english-g3-054",
+      "chapter": "三年级下册 第5单元 Old things"
+    },
+    {
+      "cnId": "cne_p077",
+      "cnName": "晚餐食物",
+      "generatedId": "p-english-g3-055",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    },
+    {
+      "cnId": "cne_p078",
+      "cnName": "Would you like 用餐",
+      "generatedId": "p-english-g3-056",
+      "chapter": "三年级下册 第4单元 Healthy food"
+    }
+  ]
+}

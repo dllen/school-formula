@@ -1,0 +1,209 @@
+{
+  "generatedAt": "2026-10-25T11:40:39.335Z",
+  "source": "cn-math-taxonomy",
+  "subject": "english",
+  "filter": {
+    "grade": 4,
+    "domains": [
+      "语音",
+      "词汇",
+      "语法",
+      "日常表达"
+    ]
+  },
+  "total": 32,
+  "items": [
+    {
+      "cnId": "cne_p067",
+      "cnName": "描述朋友",
+      "generatedId": "p-english-g4-001",
+      "chapter": "四年级上册 第2单元 My friends"
+    },
+    {
+      "cnId": "cne_p068",
+      "cnName": "He has 与 I have",
+      "generatedId": "p-english-g4-002",
+      "chapter": "四年级上册 第2单元 My friends"
+    },
+    {
+      "cnId": "cne_p069",
+      "cnName": "介绍朋友",
+      "generatedId": "p-english-g4-003",
+      "chapter": "四年级上册 第2单元 My friends"
+    },
+    {
+      "cnId": "cne_p072",
+      "cnName": "家里的房间",
+      "generatedId": "p-english-g4-004",
+      "chapter": "四年级上册 第3单元 Places we live in"
+    },
+    {
+      "cnId": "cne_p073",
+      "cnName": "is 和 are 说明人在哪里",
+      "generatedId": "p-english-g4-005",
+      "chapter": "四年级上册 第3单元 Places we live in"
+    },
+    {
+      "cnId": "cne_p074",
+      "cnName": "询问家人在哪个房间",
+      "generatedId": "p-english-g4-006",
+      "chapter": "四年级上册 第3单元 Places we live in"
+    },
+    {
+      "cnId": "cne_p080",
+      "cnName": "职业",
+      "generatedId": "p-english-g4-007",
+      "chapter": "四年级上册 第1单元 Helping at home"
+    },
+    {
+      "cnId": "cne_p081",
+      "cnName": "询问职业与 his、her",
+      "generatedId": "p-english-g4-008",
+      "chapter": "四年级上册 第1单元 Helping at home"
+    },
+    {
+      "cnId": "cne_p082",
+      "cnName": "介绍家人的职业",
+      "generatedId": "p-english-g4-009",
+      "chapter": "四年级上册 第1单元 Helping at home"
+    },
+    {
+      "cnId": "cne_p084",
+      "cnName": "学校场所",
+      "generatedId": "p-english-g4-010",
+      "chapter": "四年级上册 第4单元 Helping in the community"
+    },
+    {
+      "cnId": "cne_p085",
+      "cnName": "楼层与 first、second",
+      "generatedId": "p-english-g4-011",
+      "chapter": "四年级上册 第4单元 Helping in the community"
+    },
+    {
+      "cnId": "cne_p086",
+      "cnName": "问路：学校里的场所",
+      "generatedId": "p-english-g4-012",
+      "chapter": "四年级上册 第4单元 Helping in the community"
+    },
+    {
+      "cnId": "cne_p088",
+      "cnName": "一天中的活动",
+      "generatedId": "p-english-g4-013",
+      "chapter": "四年级下册 第3单元 Time for school"
+    },
+    {
+      "cnId": "cne_p089",
+      "cnName": "What time is it",
+      "generatedId": "p-english-g4-014",
+      "chapter": "四年级下册 第3单元 Time for school"
+    },
+    {
+      "cnId": "cne_p090",
+      "cnName": "说时刻和该做的事",
+      "generatedId": "p-english-g4-015",
+      "chapter": "四年级下册 第3单元 Time for school"
+    },
+    {
+      "cnId": "cne_p092",
+      "cnName": "天气",
+      "generatedId": "p-english-g4-016",
+      "chapter": "四年级上册 第5单元 The weather and us"
+    },
+    {
+      "cnId": "cne_p093",
+      "cnName": "It is 描述天气",
+      "generatedId": "p-english-g4-017",
+      "chapter": "四年级上册 第5单元 The weather and us"
+    },
+    {
+      "cnId": "cne_p094",
+      "cnName": "谈论天气并给建议",
+      "generatedId": "p-english-g4-018",
+      "chapter": "四年级上册 第5单元 The weather and us"
+    },
+    {
+      "cnId": "cne_p096",
+      "cnName": "农场",
+      "generatedId": "p-english-g4-019",
+      "chapter": "四年级下册 第5单元 Farms and us"
+    },
+    {
+      "cnId": "cne_p097",
+      "cnName": "These are 与 Those are",
+      "generatedId": "p-english-g4-020",
+      "chapter": "四年级下册 第5单元 Farms and us"
+    },
+    {
+      "cnId": "cne_p098",
+      "cnName": "在农场谈论动物和蔬菜",
+      "generatedId": "p-english-g4-021",
+      "chapter": "四年级下册 第5单元 Farms and us"
+    },
+    {
+      "cnId": "cne_p100",
+      "cnName": "衣服",
+      "generatedId": "p-english-g4-022",
+      "chapter": "四年级上册 第6单元 Changing for the seasons"
+    },
+    {
+      "cnId": "cne_p101",
+      "cnName": "Whose 与名词所有格",
+      "generatedId": "p-english-g4-023",
+      "chapter": "四年级上册 第6单元 Changing for the seasons"
+    },
+    {
+      "cnId": "cne_p102",
+      "cnName": "谈论穿着",
+      "generatedId": "p-english-g4-024",
+      "chapter": "四年级上册 第6单元 Changing for the seasons"
+    },
+    {
+      "cnId": "cne_p104",
+      "cnName": "商店物品",
+      "generatedId": "p-english-g4-025",
+      "chapter": "四年级下册 第4单元 Going shopping"
+    },
+    {
+      "cnId": "cne_p105",
+      "cnName": "How much 询问价格",
+      "generatedId": "p-english-g4-026",
+      "chapter": "四年级下册 第4单元 Going shopping"
+    },
+    {
+      "cnId": "cne_p106",
+      "cnName": "在商店购物",
+      "generatedId": "p-english-g4-027",
+      "chapter": "四年级下册 第4单元 Going shopping"
+    },
+    {
+      "cnId": "cne_p151",
+      "cnName": "规则用词",
+      "generatedId": "p-english-g4-028",
+      "chapter": "四年级下册 第1单元 Class rules"
+    },
+    {
+      "cnId": "cne_p152",
+      "cnName": "祈使句",
+      "generatedId": "p-english-g4-029",
+      "chapter": "四年级下册 第1单元 Class rules"
+    },
+    {
+      "cnId": "cne_p153",
+      "cnName": "说规则",
+      "generatedId": "p-english-g4-030",
+      "chapter": "四年级下册 第1单元 Class rules"
+    },
+    {
+      "cnId": "cne_p199",
+      "cnName": "家规：have to 与 can't",
+      "generatedId": "p-english-g4-031",
+      "chapter": "四年级下册 第2单元 Family rules"
+    },
+    {
+      "cnId": "cne_p200",
+      "cnName": "从农场到餐桌的食物",
+      "generatedId": "p-english-g4-032",
+      "chapter": "四年级下册 第6单元 From farm to table"
+    }
+  ]
+}

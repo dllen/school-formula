@@ -1,0 +1,191 @@
+{
+  "generatedAt": "2026-10-25T13:39:13.438Z",
+  "source": "cn-math-taxonomy",
+  "subject": "english",
+  "filter": {
+    "grade": 6,
+    "domains": [
+      "语音",
+      "词汇",
+      "语法",
+      "日常表达"
+    ]
+  },
+  "total": 29,
+  "items": [
+    {
+      "cnId": "cne_p155",
+      "cnName": "城市场所",
+      "generatedId": "p-english-g6-001",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p156",
+      "cnName": "左转、右转和直行",
+      "generatedId": "p-english-g6-002",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p157",
+      "cnName": "问路和指路",
+      "generatedId": "p-english-g6-003",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p159",
+      "cnName": "交通工具",
+      "generatedId": "p-english-g6-004",
+      "chapter": "六年级上册 第6单元 Energy, nature and us"
+    },
+    {
+      "cnId": "cne_p160",
+      "cnName": "must 与交通规则",
+      "generatedId": "p-english-g6-005",
+      "chapter": "六年级上册 第6单元 Energy, nature and us"
+    },
+    {
+      "cnId": "cne_p161",
+      "cnName": "说明出行方式",
+      "generatedId": "p-english-g6-006",
+      "chapter": "六年级上册 第6单元 Energy, nature and us"
+    },
+    {
+      "cnId": "cne_p163",
+      "cnName": "周末计划",
+      "generatedId": "p-english-g6-007",
+      "chapter": "六年级上册 第2单元 Getting together"
+    },
+    {
+      "cnId": "cne_p164",
+      "cnName": "be going to 一般将来时",
+      "generatedId": "p-english-g6-008",
+      "chapter": "六年级上册 第2单元 Getting together"
+    },
+    {
+      "cnId": "cne_p165",
+      "cnName": "谈论计划",
+      "generatedId": "p-english-g6-009",
+      "chapter": "六年级上册 第2单元 Getting together"
+    },
+    {
+      "cnId": "cne_p176",
+      "cnName": "should 提建议",
+      "generatedId": "p-english-g6-010",
+      "chapter": "六年级上册 第3单元 Healthy life"
+    },
+    {
+      "cnId": "cne_p179",
+      "cnName": "陈述句和疑问句的语调",
+      "generatedId": "p-english-g6-011",
+      "chapter": "六年级下册 第1单元 How tall are you"
+    },
+    {
+      "cnId": "cne_p180",
+      "cnName": "身高和体重",
+      "generatedId": "p-english-g6-012",
+      "chapter": "六年级下册 第1单元 How tall are you"
+    },
+    {
+      "cnId": "cne_p181",
+      "cnName": "形容词比较级",
+      "generatedId": "p-english-g6-013",
+      "chapter": "六年级下册 第1单元 How tall are you"
+    },
+    {
+      "cnId": "cne_p182",
+      "cnName": "用 than 比较",
+      "generatedId": "p-english-g6-014",
+      "chapter": "六年级下册 第1单元 How tall are you"
+    },
+    {
+      "cnId": "cne_p183",
+      "cnName": "询问身高",
+      "generatedId": "p-english-g6-015",
+      "chapter": "六年级下册 第1单元 How tall are you"
+    },
+    {
+      "cnId": "cne_p185",
+      "cnName": "规则动词过去式",
+      "generatedId": "p-english-g6-016",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p186",
+      "cnName": "Did 提问",
+      "generatedId": "p-english-g6-017",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p187",
+      "cnName": "谈论上周末",
+      "generatedId": "p-english-g6-018",
+      "chapter": "六年级下册 第2单元 Last weekend"
+    },
+    {
+      "cnId": "cne_p189",
+      "cnName": "不规则动词过去式",
+      "generatedId": "p-english-g6-019",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p190",
+      "cnName": "谈论去过哪里",
+      "generatedId": "p-english-g6-020",
+      "chapter": "六年级上册 第1单元 Amazing places"
+    },
+    {
+      "cnId": "cne_p192",
+      "cnName": "过去和现在",
+      "generatedId": "p-english-g6-021",
+      "chapter": "六年级下册 第4单元 Then and now"
+    },
+    {
+      "cnId": "cne_p193",
+      "cnName": "was 与 were",
+      "generatedId": "p-english-g6-022",
+      "chapter": "六年级下册 第4单元 Then and now"
+    },
+    {
+      "cnId": "cne_p194",
+      "cnName": "比较过去和现在",
+      "generatedId": "p-english-g6-023",
+      "chapter": "六年级下册 第4单元 Then and now"
+    },
+    {
+      "cnId": "cne_p196",
+      "cnName": "易混词 there、its、too",
+      "generatedId": "p-english-g6-024",
+      "chapter": "六年级下册 第4单元 Then and now"
+    },
+    {
+      "cnId": "cne_p201",
+      "cnName": "金钱与花销词汇",
+      "generatedId": "p-english-g6-025",
+      "chapter": "六年级上册 第4单元 Managing money well"
+    },
+    {
+      "cnId": "cne_p202",
+      "cnName": "用 hundred 和 thousand 说价格",
+      "generatedId": "p-english-g6-026",
+      "chapter": "六年级上册 第4单元 Managing money well"
+    },
+    {
+      "cnId": "cne_p204",
+      "cnName": "太空词汇",
+      "generatedId": "p-english-g6-027",
+      "chapter": "六年级上册 第5单元 Exploring space"
+    },
+    {
+      "cnId": "cne_p205",
+      "cnName": "用 will 说未来的太空生活",
+      "generatedId": "p-english-g6-028",
+      "chapter": "六年级上册 第5单元 Exploring space"
+    },
+    {
+      "cnId": "cne_p207",
+      "cnName": "能源与节约词汇",
+      "generatedId": "p-english-g6-029",
+      "chapter": "六年级上册 第6单元 Energy, nature and us"
+    }
+  ]
+}

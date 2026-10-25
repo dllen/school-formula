@@ -1,0 +1,260 @@
+{
+  "generatedAt": "2026-10-25T13:18:59.150Z",
+  "source": "cn-math-taxonomy",
+  "subject": "chinese",
+  "filter": {
+    "grade": 5,
+    "domains": [
+      "阅读理解",
+      "识字写字",
+      "拼音",
+      "习作基础",
+      "古诗文积累",
+      "句子",
+      "词语"
+    ]
+  },
+  "total": 40,
+  "items": [
+    {
+      "cnId": "cnc_p323",
+      "cnName": "易读错的字音",
+      "generatedId": "p-chinese-g5-001",
+      "chapter": "五年级上册 第1单元 课文·白鹭"
+    },
+    {
+      "cnId": "cnc_p324",
+      "cnName": "阅读《白鹭》",
+      "generatedId": "p-chinese-g5-002",
+      "chapter": "五年级上册 第1单元 课文·白鹭"
+    },
+    {
+      "cnId": "cnc_p325",
+      "cnName": "阅读《落花生》",
+      "generatedId": "p-chinese-g5-003",
+      "chapter": "五年级上册 第1单元 课文·白鹭"
+    },
+    {
+      "cnId": "cnc_p326",
+      "cnName": "阅读《桂花雨》",
+      "generatedId": "p-chinese-g5-004",
+      "chapter": "五年级上册 第1单元 课文·白鹭"
+    },
+    {
+      "cnId": "cnc_p327",
+      "cnName": "多音字：强、鲜、弹、模",
+      "generatedId": "p-chinese-g5-005",
+      "chapter": "五年级上册 第2单元 课文·将相和"
+    },
+    {
+      "cnId": "cnc_p328",
+      "cnName": "成语运用",
+      "generatedId": "p-chinese-g5-006",
+      "chapter": "五年级上册 第2单元 课文·将相和"
+    },
+    {
+      "cnId": "cnc_p329",
+      "cnName": "阅读《将相和》",
+      "generatedId": "p-chinese-g5-007",
+      "chapter": "五年级上册 第2单元 课文·将相和"
+    },
+    {
+      "cnId": "cnc_p330",
+      "cnName": "阅读《猎人海力布》",
+      "generatedId": "p-chinese-g5-008",
+      "chapter": "五年级上册 第3单元 民间故事·牛郎织女"
+    },
+    {
+      "cnId": "cnc_p331",
+      "cnName": "阅读《牛郎织女》",
+      "generatedId": "p-chinese-g5-009",
+      "chapter": "五年级上册 第3单元 民间故事·牛郎织女"
+    },
+    {
+      "cnId": "cnc_p332",
+      "cnName": "古诗《示儿》",
+      "generatedId": "p-chinese-g5-010",
+      "chapter": "五年级上册 第4单元 古诗·示儿"
+    },
+    {
+      "cnId": "cnc_p333",
+      "cnName": "古诗《题临安邸》",
+      "generatedId": "p-chinese-g5-011",
+      "chapter": "五年级上册 第4单元 古诗·示儿"
+    },
+    {
+      "cnId": "cnc_p334",
+      "cnName": "阅读《少年中国说》节选",
+      "generatedId": "p-chinese-g5-012",
+      "chapter": "五年级上册 第4单元 古诗·示儿"
+    },
+    {
+      "cnId": "cnc_p335",
+      "cnName": "修改病句",
+      "generatedId": "p-chinese-g5-013",
+      "chapter": "五年级上册 第5单元 习作·把事情写清楚"
+    },
+    {
+      "cnId": "cnc_p336",
+      "cnName": "把事情的经过写清楚",
+      "generatedId": "p-chinese-g5-014",
+      "chapter": "五年级上册 第5单元 习作·把事情写清楚"
+    },
+    {
+      "cnId": "cnc_p337",
+      "cnName": "形近字：戴、载、裁",
+      "generatedId": "p-chinese-g5-015",
+      "chapter": "五年级上册 第6单元 课文·圆明园的毁灭"
+    },
+    {
+      "cnId": "cnc_p338",
+      "cnName": "阅读《圆明园的毁灭》",
+      "generatedId": "p-chinese-g5-016",
+      "chapter": "五年级上册 第6单元 课文·圆明园的毁灭"
+    },
+    {
+      "cnId": "cnc_p339",
+      "cnName": "联系上下文理解词语",
+      "generatedId": "p-chinese-g5-017",
+      "chapter": "五年级上册 第6单元 课文·圆明园的毁灭"
+    },
+    {
+      "cnId": "cnc_p340",
+      "cnName": "阅读《鸟的天堂》",
+      "generatedId": "p-chinese-g5-018",
+      "chapter": "五年级上册 第7单元 课文·鸟的天堂"
+    },
+    {
+      "cnId": "cnc_p341",
+      "cnName": "古诗《枫桥夜泊》",
+      "generatedId": "p-chinese-g5-019",
+      "chapter": "五年级上册 第7单元 课文·鸟的天堂"
+    },
+    {
+      "cnId": "cnc_p342",
+      "cnName": "阅读《父爱之舟》",
+      "generatedId": "p-chinese-g5-020",
+      "chapter": "五年级上册 第8单元 课文·父爱之舟"
+    },
+    {
+      "cnId": "cnc_p343",
+      "cnName": "易错字音：削、骨、血、处",
+      "generatedId": "p-chinese-g5-021",
+      "chapter": "五年级下册 第1单元 古诗·稚子弄冰"
+    },
+    {
+      "cnId": "cnc_p344",
+      "cnName": "古诗《稚子弄冰》",
+      "generatedId": "p-chinese-g5-022",
+      "chapter": "五年级下册 第1单元 古诗·稚子弄冰"
+    },
+    {
+      "cnId": "cnc_p345",
+      "cnName": "古诗《村晚》",
+      "generatedId": "p-chinese-g5-023",
+      "chapter": "五年级下册 第1单元 古诗·稚子弄冰"
+    },
+    {
+      "cnId": "cnc_p346",
+      "cnName": "古诗《游子吟》",
+      "generatedId": "p-chinese-g5-024",
+      "chapter": "五年级下册 第1单元 古诗·稚子弄冰"
+    },
+    {
+      "cnId": "cnc_p347",
+      "cnName": "阅读《祖父的园子》",
+      "generatedId": "p-chinese-g5-025",
+      "chapter": "五年级下册 第1单元 古诗·稚子弄冰"
+    },
+    {
+      "cnId": "cnc_p348",
+      "cnName": "成语：神机妙算、完好无缺",
+      "generatedId": "p-chinese-g5-026",
+      "chapter": "五年级下册 第2单元 名著·草船借箭"
+    },
+    {
+      "cnId": "cnc_p349",
+      "cnName": "阅读《草船借箭》",
+      "generatedId": "p-chinese-g5-027",
+      "chapter": "五年级下册 第2单元 名著·草船借箭"
+    },
+    {
+      "cnId": "cnc_p350",
+      "cnName": "阅读《景阳冈》",
+      "generatedId": "p-chinese-g5-028",
+      "chapter": "五年级下册 第2单元 名著·草船借箭"
+    },
+    {
+      "cnId": "cnc_p351",
+      "cnName": "阅读《猴王出世》",
+      "generatedId": "p-chinese-g5-029",
+      "chapter": "五年级下册 第2单元 名著·草船借箭"
+    },
+    {
+      "cnId": "cnc_p352",
+      "cnName": "汉字的偏旁和字义",
+      "generatedId": "p-chinese-g5-030",
+      "chapter": "五年级下册 第3单元 综合性学习·遨游汉字王国"
+    },
+    {
+      "cnId": "cnc_p353",
+      "cnName": "象形字和会意字",
+      "generatedId": "p-chinese-g5-031",
+      "chapter": "五年级下册 第3单元 综合性学习·遨游汉字王国"
+    },
+    {
+      "cnId": "cnc_p354",
+      "cnName": "古诗《从军行》",
+      "generatedId": "p-chinese-g5-032",
+      "chapter": "五年级下册 第4单元 课文·军神"
+    },
+    {
+      "cnId": "cnc_p355",
+      "cnName": "阅读《军神》",
+      "generatedId": "p-chinese-g5-033",
+      "chapter": "五年级下册 第4单元 课文·军神"
+    },
+    {
+      "cnId": "cnc_p356",
+      "cnName": "描写人物的词语",
+      "generatedId": "p-chinese-g5-034",
+      "chapter": "五年级下册 第5单元 习作·写人"
+    },
+    {
+      "cnId": "cnc_p357",
+      "cnName": "写人要抓住特点",
+      "generatedId": "p-chinese-g5-035",
+      "chapter": "五年级下册 第5单元 习作·写人"
+    },
+    {
+      "cnId": "cnc_p358",
+      "cnName": "缩句和扩句",
+      "generatedId": "p-chinese-g5-036",
+      "chapter": "五年级下册 第6单元 文言文·自相矛盾"
+    },
+    {
+      "cnId": "cnc_p359",
+      "cnName": "文言文《自相矛盾》",
+      "generatedId": "p-chinese-g5-037",
+      "chapter": "五年级下册 第6单元 文言文·自相矛盾"
+    },
+    {
+      "cnId": "cnc_p360",
+      "cnName": "文言文《田忌赛马》",
+      "generatedId": "p-chinese-g5-038",
+      "chapter": "五年级下册 第6单元 文言文·自相矛盾"
+    },
+    {
+      "cnId": "cnc_p361",
+      "cnName": "阅读《跳水》",
+      "generatedId": "p-chinese-g5-039",
+      "chapter": "五年级下册 第7单元 课文·跳水"
+    },
+    {
+      "cnId": "cnc_p362",
+      "cnName": "阅读《威尼斯的小艇》",
+      "generatedId": "p-chinese-g5-040",
+      "chapter": "五年级下册 第8单元 课文·威尼斯小艇"
+    }
+  ]
+}

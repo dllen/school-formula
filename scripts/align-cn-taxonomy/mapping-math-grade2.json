@@ -1,0 +1,203 @@
+{
+  "generatedAt": "2026-10-25T10:44:51.084Z",
+  "source": "cn-math-taxonomy",
+  "subject": "math",
+  "filter": {
+    "grade": 2,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 31,
+  "items": [
+    {
+      "cnId": "cnm_p037",
+      "cnName": "分类与整理",
+      "generatedId": "p-math-g2-001",
+      "chapter": "二年级上册 第1单元 分类与整理"
+    },
+    {
+      "cnId": "cnm_p038",
+      "cnName": "乘法的意义",
+      "generatedId": "p-math-g2-002",
+      "chapter": "二年级上册 第2单元 1到6的表内乘法"
+    },
+    {
+      "cnId": "cnm_p039",
+      "cnName": "2到6的乘法口诀",
+      "generatedId": "p-math-g2-003",
+      "chapter": "二年级上册 第2单元 1到6的表内乘法"
+    },
+    {
+      "cnId": "cnm_p040",
+      "cnName": "认识厘米",
+      "generatedId": "p-math-g2-004",
+      "chapter": "二年级上册 第4单元 厘米和米"
+    },
+    {
+      "cnId": "cnm_p041",
+      "cnName": "认识米",
+      "generatedId": "p-math-g2-005",
+      "chapter": "二年级上册 第4单元 厘米和米"
+    },
+    {
+      "cnId": "cnm_p042",
+      "cnName": "7、8、9的乘法口诀",
+      "generatedId": "p-math-g2-006",
+      "chapter": "二年级上册 第5单元 7到9的表内乘、除法"
+    },
+    {
+      "cnId": "cnm_p043",
+      "cnName": "除法的意义",
+      "generatedId": "p-math-g2-007",
+      "chapter": "二年级上册 第3单元 1到6的表内除法"
+    },
+    {
+      "cnId": "cnm_p044",
+      "cnName": "用7、8、9的口诀求商",
+      "generatedId": "p-math-g2-008",
+      "chapter": "二年级上册 第5单元 7到9的表内乘、除法"
+    },
+    {
+      "cnId": "cnm_p045",
+      "cnName": "用身体上的长度估测",
+      "generatedId": "p-math-g2-009",
+      "chapter": "二年级上册 综合与实践 身体上的尺子"
+    },
+    {
+      "cnId": "cnm_p046",
+      "cnName": "用1到6的口诀求商",
+      "generatedId": "p-math-g2-010",
+      "chapter": "二年级上册 第3单元 1到6的表内除法"
+    },
+    {
+      "cnId": "cnm_p047",
+      "cnName": "用乘法验算除法",
+      "generatedId": "p-math-g2-011",
+      "chapter": "二年级上册 第3单元 1到6的表内除法"
+    },
+    {
+      "cnId": "cnm_p048",
+      "cnName": "表内乘法解决实际问题",
+      "generatedId": "p-math-g2-012",
+      "chapter": "二年级上册 第2单元 1到6的表内乘法"
+    },
+    {
+      "cnId": "cnm_p049",
+      "cnName": "东、南、西、北",
+      "generatedId": "p-math-g2-013",
+      "chapter": "二年级上册 综合与实践 校园小导游"
+    },
+    {
+      "cnId": "cnm_p050",
+      "cnName": "有余数除法的意义",
+      "generatedId": "p-math-g2-014",
+      "chapter": "二年级下册 第1单元 有余数的除法"
+    },
+    {
+      "cnId": "cnm_p051",
+      "cnName": "用口诀求商和余数",
+      "generatedId": "p-math-g2-015",
+      "chapter": "二年级下册 第1单元 有余数的除法"
+    },
+    {
+      "cnId": "cnm_p052",
+      "cnName": "有余数除法的应用",
+      "generatedId": "p-math-g2-016",
+      "chapter": "二年级下册 第1单元 有余数的除法"
+    },
+    {
+      "cnId": "cnm_p053",
+      "cnName": "万以内数的认识",
+      "generatedId": "p-math-g2-017",
+      "chapter": "二年级下册 第3单元 万以内数的认识"
+    },
+    {
+      "cnId": "cnm_p054",
+      "cnName": "万以内数的大小比较",
+      "generatedId": "p-math-g2-018",
+      "chapter": "二年级下册 第3单元 万以内数的认识"
+    },
+    {
+      "cnId": "cnm_p055",
+      "cnName": "万以内数的组成",
+      "generatedId": "p-math-g2-019",
+      "chapter": "二年级下册 第3单元 万以内数的认识"
+    },
+    {
+      "cnId": "cnm_p057",
+      "cnName": "乘加乘减的运算顺序",
+      "generatedId": "p-math-g2-020",
+      "chapter": "二年级上册 第2单元 1到6的表内乘法"
+    },
+    {
+      "cnId": "cnm_p060",
+      "cnName": "简单的变化规律",
+      "generatedId": "p-math-g2-021",
+      "chapter": "二年级下册 第5单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p061",
+      "cnName": "秒的认识",
+      "generatedId": "p-math-g2-022",
+      "chapter": "二年级下册 综合与实践 时间在哪里"
+    },
+    {
+      "cnId": "cnm_p062",
+      "cnName": "时、分、秒的进率",
+      "generatedId": "p-math-g2-023",
+      "chapter": "二年级下册 综合与实践 时间在哪里"
+    },
+    {
+      "cnId": "cnm_p063",
+      "cnName": "经过时间",
+      "generatedId": "p-math-g2-024",
+      "chapter": "二年级下册 综合与实践 时间在哪里"
+    },
+    {
+      "cnId": "cnm_p064",
+      "cnName": "几百几十的口算加法",
+      "generatedId": "p-math-g2-025",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    },
+    {
+      "cnId": "cnm_p065",
+      "cnName": "几百几十的口算减法",
+      "generatedId": "p-math-g2-026",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    },
+    {
+      "cnId": "cnm_p066",
+      "cnName": "加法的估算",
+      "generatedId": "p-math-g2-027",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    },
+    {
+      "cnId": "cnm_p071",
+      "cnName": "三位数加法笔算",
+      "generatedId": "p-math-g2-028",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    },
+    {
+      "cnId": "cnm_p072",
+      "cnName": "三位数减法笔算",
+      "generatedId": "p-math-g2-029",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    },
+    {
+      "cnId": "cnm_p219",
+      "cnName": "数量间的乘除关系",
+      "generatedId": "p-math-g2-030",
+      "chapter": "二年级下册 第2单元 数量间的乘除关系"
+    },
+    {
+      "cnId": "cnm_p220",
+      "cnName": "加减法各部分间的关系",
+      "generatedId": "p-math-g2-031",
+      "chapter": "二年级下册 第4单元 万以内的加法和减法"
+    }
+  ]
+}

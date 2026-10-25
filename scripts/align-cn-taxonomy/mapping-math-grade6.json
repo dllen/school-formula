@@ -1,0 +1,275 @@
+{
+  "generatedAt": "2026-10-25T13:38:01.968Z",
+  "source": "cn-math-taxonomy",
+  "subject": "math",
+  "filter": {
+    "grade": 6,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 43,
+  "items": [
+    {
+      "cnId": "cnm_p136",
+      "cnName": "用数对确定位置",
+      "generatedId": "p-math-g6-001",
+      "chapter": "六年级上册 第1单元 确定位置"
+    },
+    {
+      "cnId": "cnm_p177",
+      "cnName": "分数乘整数",
+      "generatedId": "p-math-g6-002",
+      "chapter": "六年级上册 第2单元 分数乘法"
+    },
+    {
+      "cnId": "cnm_p178",
+      "cnName": "分数乘分数",
+      "generatedId": "p-math-g6-003",
+      "chapter": "六年级上册 第2单元 分数乘法"
+    },
+    {
+      "cnId": "cnm_p179",
+      "cnName": "分数乘法的应用",
+      "generatedId": "p-math-g6-004",
+      "chapter": "六年级上册 第2单元 分数乘法"
+    },
+    {
+      "cnId": "cnm_p180",
+      "cnName": "根据方向和距离确定位置",
+      "generatedId": "p-math-g6-005",
+      "chapter": "六年级上册 第1单元 确定位置"
+    },
+    {
+      "cnId": "cnm_p181",
+      "cnName": "描述简单路线图",
+      "generatedId": "p-math-g6-006",
+      "chapter": "六年级上册 第1单元 确定位置"
+    },
+    {
+      "cnId": "cnm_p182",
+      "cnName": "分数除以整数",
+      "generatedId": "p-math-g6-007",
+      "chapter": "六年级上册 第3单元 分数除法"
+    },
+    {
+      "cnId": "cnm_p183",
+      "cnName": "分数除法",
+      "generatedId": "p-math-g6-008",
+      "chapter": "六年级上册 第3单元 分数除法"
+    },
+    {
+      "cnId": "cnm_p184",
+      "cnName": "分数除法的应用",
+      "generatedId": "p-math-g6-009",
+      "chapter": "六年级上册 第3单元 分数除法"
+    },
+    {
+      "cnId": "cnm_p185",
+      "cnName": "比的意义",
+      "generatedId": "p-math-g6-010",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p186",
+      "cnName": "化简比",
+      "generatedId": "p-math-g6-011",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p187",
+      "cnName": "按比分配",
+      "generatedId": "p-math-g6-012",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p188",
+      "cnName": "圆的认识",
+      "generatedId": "p-math-g6-013",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p189",
+      "cnName": "圆周率",
+      "generatedId": "p-math-g6-014",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p190",
+      "cnName": "圆的周长",
+      "generatedId": "p-math-g6-015",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p191",
+      "cnName": "圆的周长的应用",
+      "generatedId": "p-math-g6-016",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p192",
+      "cnName": "圆的面积",
+      "generatedId": "p-math-g6-017",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p193",
+      "cnName": "扇形的认识",
+      "generatedId": "p-math-g6-018",
+      "chapter": "六年级上册 第4单元 圆"
+    },
+    {
+      "cnId": "cnm_p194",
+      "cnName": "百分数的意义",
+      "generatedId": "p-math-g6-019",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p195",
+      "cnName": "百分数与分数、小数互化",
+      "generatedId": "p-math-g6-020",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p196",
+      "cnName": "求一个数的百分之几",
+      "generatedId": "p-math-g6-021",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p197",
+      "cnName": "求百分率",
+      "generatedId": "p-math-g6-022",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p198",
+      "cnName": "已知一个数的百分之几求这个数",
+      "generatedId": "p-math-g6-023",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p199",
+      "cnName": "扇形统计图",
+      "generatedId": "p-math-g6-024",
+      "chapter": "六年级下册 第6单元 整理和复习"
+    },
+    {
+      "cnId": "cnm_p200",
+      "cnName": "数与形",
+      "generatedId": "p-math-g6-025",
+      "chapter": "六年级下册 第6单元 整理和复习"
+    },
+    {
+      "cnId": "cnm_p201",
+      "cnName": "认识负数",
+      "generatedId": "p-math-g6-026",
+      "chapter": "六年级上册 综合与实践 生活中的负数"
+    },
+    {
+      "cnId": "cnm_p202",
+      "cnName": "用负数表示相反意义的量",
+      "generatedId": "p-math-g6-027",
+      "chapter": "六年级上册 综合与实践 生活中的负数"
+    },
+    {
+      "cnId": "cnm_p203",
+      "cnName": "折扣",
+      "generatedId": "p-math-g6-028",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p204",
+      "cnName": "利率",
+      "generatedId": "p-math-g6-029",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p205",
+      "cnName": "百分数的应用",
+      "generatedId": "p-math-g6-030",
+      "chapter": "六年级上册 第5单元 百分数"
+    },
+    {
+      "cnId": "cnm_p206",
+      "cnName": "圆柱的认识",
+      "generatedId": "p-math-g6-031",
+      "chapter": "六年级下册 第3单元 圆柱与圆锥"
+    },
+    {
+      "cnId": "cnm_p207",
+      "cnName": "圆柱的体积",
+      "generatedId": "p-math-g6-032",
+      "chapter": "六年级下册 第3单元 圆柱与圆锥"
+    },
+    {
+      "cnId": "cnm_p208",
+      "cnName": "圆柱的表面积",
+      "generatedId": "p-math-g6-033",
+      "chapter": "六年级下册 第3单元 圆柱与圆锥"
+    },
+    {
+      "cnId": "cnm_p209",
+      "cnName": "圆锥的体积",
+      "generatedId": "p-math-g6-034",
+      "chapter": "六年级下册 第3单元 圆柱与圆锥"
+    },
+    {
+      "cnId": "cnm_p210",
+      "cnName": "比例的意义和基本性质",
+      "generatedId": "p-math-g6-035",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p211",
+      "cnName": "解比例",
+      "generatedId": "p-math-g6-036",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p212",
+      "cnName": "比例尺",
+      "generatedId": "p-math-g6-037",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p213",
+      "cnName": "正比例",
+      "generatedId": "p-math-g6-038",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p214",
+      "cnName": "反比例",
+      "generatedId": "p-math-g6-039",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p215",
+      "cnName": "用比例解决实际问题",
+      "generatedId": "p-math-g6-040",
+      "chapter": "六年级下册 第4单元 比例"
+    },
+    {
+      "cnId": "cnm_p216",
+      "cnName": "鸽巢问题",
+      "generatedId": "p-math-g6-041",
+      "chapter": "六年级上册 第7单元 数学广角——鸽巢问题"
+    },
+    {
+      "cnId": "cnm_p241",
+      "cnName": "体育中的数学",
+      "generatedId": "p-math-g6-042",
+      "chapter": "六年级上册 综合与实践 体育中的数学"
+    },
+    {
+      "cnId": "cnm_p242",
+      "cnName": "水是生命之源",
+      "generatedId": "p-math-g6-043",
+      "chapter": "六年级上册 综合与实践 水是生命之源"
+    }
+  ]
+}

@@ -1,0 +1,512 @@
+{
+  "generatedAt": "2026-10-25T11:12:02.932Z",
+  "source": "cn-math-taxonomy",
+  "subject": "chinese",
+  "filter": {
+    "grade": 3,
+    "domains": [
+      "阅读理解",
+      "识字写字",
+      "拼音",
+      "习作基础",
+      "古诗文积累",
+      "句子",
+      "词语"
+    ]
+  },
+  "total": 82,
+  "items": [
+    {
+      "cnId": "cnc_p158",
+      "cnName": "阅读《大青树下的小学》",
+      "generatedId": "p-chinese-g3-001",
+      "chapter": "三年级上册 第1单元 课文·大青树下的小学"
+    },
+    {
+      "cnId": "cnc_p159",
+      "cnName": "阅读《花的学校》",
+      "generatedId": "p-chinese-g3-002",
+      "chapter": "三年级上册 第1单元 课文·大青树下的小学"
+    },
+    {
+      "cnId": "cnc_p160",
+      "cnName": "阅读《不懂就要问》",
+      "generatedId": "p-chinese-g3-003",
+      "chapter": "三年级上册 第1单元 课文·大青树下的小学"
+    },
+    {
+      "cnId": "cnc_p161",
+      "cnName": "语文园地一·音序查字典",
+      "generatedId": "p-chinese-g3-004",
+      "chapter": "三年级上册 第1单元 课文·大青树下的小学"
+    },
+    {
+      "cnId": "cnc_p162",
+      "cnName": "语文园地一·部首查字典",
+      "generatedId": "p-chinese-g3-005",
+      "chapter": "三年级上册 第1单元 课文·大青树下的小学"
+    },
+    {
+      "cnId": "cnc_p163",
+      "cnName": "古诗《望洞庭》",
+      "generatedId": "p-chinese-g3-006",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p164",
+      "cnName": "古诗《山行》",
+      "generatedId": "p-chinese-g3-007",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p165",
+      "cnName": "古诗《夜书所见》",
+      "generatedId": "p-chinese-g3-008",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p166",
+      "cnName": "阅读《铺满金色巴掌的水泥道》",
+      "generatedId": "p-chinese-g3-009",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p167",
+      "cnName": "阅读《秋天的雨》",
+      "generatedId": "p-chinese-g3-010",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p168",
+      "cnName": "阅读《听听，秋的声音》",
+      "generatedId": "p-chinese-g3-011",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p169",
+      "cnName": "习作：写日记",
+      "generatedId": "p-chinese-g3-012",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p170",
+      "cnName": "语文园地二·ABB 和 AABB 式词语",
+      "generatedId": "p-chinese-g3-013",
+      "chapter": "三年级上册 第2单元 古诗·山行"
+    },
+    {
+      "cnId": "cnc_p171",
+      "cnName": "阅读《总也倒不了的老屋》",
+      "generatedId": "p-chinese-g3-014",
+      "chapter": "三年级上册 第3单元 预测·总也倒不了的老屋"
+    },
+    {
+      "cnId": "cnc_p172",
+      "cnName": "阅读《犟龟》",
+      "generatedId": "p-chinese-g3-015",
+      "chapter": "三年级上册 第3单元 预测·总也倒不了的老屋"
+    },
+    {
+      "cnId": "cnc_p173",
+      "cnName": "阅读《小狗学叫》",
+      "generatedId": "p-chinese-g3-016",
+      "chapter": "三年级上册 第3单元 预测·总也倒不了的老屋"
+    },
+    {
+      "cnId": "cnc_p174",
+      "cnName": "语文园地三·续写故事",
+      "generatedId": "p-chinese-g3-017",
+      "chapter": "三年级上册 第3单元 预测·总也倒不了的老屋"
+    },
+    {
+      "cnId": "cnc_p175",
+      "cnName": "阅读《宝葫芦的秘密》（节选）",
+      "generatedId": "p-chinese-g3-018",
+      "chapter": "三年级上册 第4单元 童话·在牛肚子里旅行"
+    },
+    {
+      "cnId": "cnc_p176",
+      "cnName": "阅读《在牛肚子里旅行》",
+      "generatedId": "p-chinese-g3-019",
+      "chapter": "三年级上册 第4单元 童话·在牛肚子里旅行"
+    },
+    {
+      "cnId": "cnc_p177",
+      "cnName": "阅读《一块奶酪》",
+      "generatedId": "p-chinese-g3-020",
+      "chapter": "三年级上册 第4单元 童话·在牛肚子里旅行"
+    },
+    {
+      "cnId": "cnc_p178",
+      "cnName": "语文园地四·我来编童话",
+      "generatedId": "p-chinese-g3-021",
+      "chapter": "三年级上册 第4单元 童话·在牛肚子里旅行"
+    },
+    {
+      "cnId": "cnc_p179",
+      "cnName": "快乐读书吧：在那奇妙的王国里",
+      "generatedId": "p-chinese-g3-022",
+      "chapter": "三年级上册 第4单元 童话·在牛肚子里旅行"
+    },
+    {
+      "cnId": "cnc_p180",
+      "cnName": "阅读《搭船的鸟》",
+      "generatedId": "p-chinese-g3-023",
+      "chapter": "三年级上册 第5单元 习作·我们眼中的缤纷世界"
+    },
+    {
+      "cnId": "cnc_p181",
+      "cnName": "阅读《金色的草地》",
+      "generatedId": "p-chinese-g3-024",
+      "chapter": "三年级上册 第5单元 习作·我们眼中的缤纷世界"
+    },
+    {
+      "cnId": "cnc_p182",
+      "cnName": "习作：我们眼中的缤纷世界",
+      "generatedId": "p-chinese-g3-025",
+      "chapter": "三年级上册 第5单元 习作·我们眼中的缤纷世界"
+    },
+    {
+      "cnId": "cnc_p183",
+      "cnName": "习作：我们眼中的缤纷世界·的、地、得",
+      "generatedId": "p-chinese-g3-026",
+      "chapter": "三年级上册 第5单元 习作·我们眼中的缤纷世界"
+    },
+    {
+      "cnId": "cnc_p184",
+      "cnName": "阅读《富饶的西沙群岛》",
+      "generatedId": "p-chinese-g3-027",
+      "chapter": "三年级上册 第6单元 课文·富饶的西沙群岛"
+    },
+    {
+      "cnId": "cnc_p185",
+      "cnName": "阅读《海滨小城》",
+      "generatedId": "p-chinese-g3-028",
+      "chapter": "三年级上册 第6单元 课文·富饶的西沙群岛"
+    },
+    {
+      "cnId": "cnc_p186",
+      "cnName": "阅读《美丽的小兴安岭》",
+      "generatedId": "p-chinese-g3-029",
+      "chapter": "三年级上册 第6单元 课文·富饶的西沙群岛"
+    },
+    {
+      "cnId": "cnc_p187",
+      "cnName": "阅读《香港，璀璨的明珠》",
+      "generatedId": "p-chinese-g3-030",
+      "chapter": "三年级上册 第6单元 课文·富饶的西沙群岛"
+    },
+    {
+      "cnId": "cnc_p188",
+      "cnName": "语文园地六·这儿真美",
+      "generatedId": "p-chinese-g3-031",
+      "chapter": "三年级上册 第6单元 课文·富饶的西沙群岛"
+    },
+    {
+      "cnId": "cnc_p189",
+      "cnName": "古诗《鹿柴》",
+      "generatedId": "p-chinese-g3-032",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p190",
+      "cnName": "古诗《望天门山》",
+      "generatedId": "p-chinese-g3-033",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p191",
+      "cnName": "古诗《饮湖上初晴后雨》",
+      "generatedId": "p-chinese-g3-034",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p192",
+      "cnName": "阅读《大自然的声音》",
+      "generatedId": "p-chinese-g3-035",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p193",
+      "cnName": "阅读《读不完的大书》",
+      "generatedId": "p-chinese-g3-036",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p194",
+      "cnName": "语文园地七·我有一个想法",
+      "generatedId": "p-chinese-g3-037",
+      "chapter": "三年级上册 第7单元 古诗·望天门山"
+    },
+    {
+      "cnId": "cnc_p195",
+      "cnName": "文言文《司马光》",
+      "generatedId": "p-chinese-g3-038",
+      "chapter": "三年级上册 第8单元 文言文·司马光"
+    },
+    {
+      "cnId": "cnc_p196",
+      "cnName": "阅读《一定要争气》",
+      "generatedId": "p-chinese-g3-039",
+      "chapter": "三年级上册 第8单元 文言文·司马光"
+    },
+    {
+      "cnId": "cnc_p197",
+      "cnName": "阅读《手术台就是阵地》",
+      "generatedId": "p-chinese-g3-040",
+      "chapter": "三年级上册 第8单元 文言文·司马光"
+    },
+    {
+      "cnId": "cnc_p198",
+      "cnName": "阅读《一个粗瓷大碗》",
+      "generatedId": "p-chinese-g3-041",
+      "chapter": "三年级上册 第8单元 文言文·司马光"
+    },
+    {
+      "cnId": "cnc_p199",
+      "cnName": "语文园地八·那次经历真难忘",
+      "generatedId": "p-chinese-g3-042",
+      "chapter": "三年级上册 第8单元 文言文·司马光"
+    },
+    {
+      "cnId": "cnc_p200",
+      "cnName": "古诗《绝句》：迟日江山丽",
+      "generatedId": "p-chinese-g3-043",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p201",
+      "cnName": "古诗《惠崇春江晚景》",
+      "generatedId": "p-chinese-g3-044",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p202",
+      "cnName": "古诗《三衢道中》",
+      "generatedId": "p-chinese-g3-045",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p203",
+      "cnName": "阅读《燕子》",
+      "generatedId": "p-chinese-g3-046",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p204",
+      "cnName": "阅读《荷花》",
+      "generatedId": "p-chinese-g3-047",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p205",
+      "cnName": "阅读《昆虫备忘录》",
+      "generatedId": "p-chinese-g3-048",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p206",
+      "cnName": "语文园地一·比喻和拟人",
+      "generatedId": "p-chinese-g3-049",
+      "chapter": "三年级下册 第1单元 古诗·绝句"
+    },
+    {
+      "cnId": "cnc_p207",
+      "cnName": "阅读《守株待兔》",
+      "generatedId": "p-chinese-g3-050",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p208",
+      "cnName": "阅读《会摇尾巴的狼》",
+      "generatedId": "p-chinese-g3-051",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p209",
+      "cnName": "阅读《鹿角和鹿腿》",
+      "generatedId": "p-chinese-g3-052",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p210",
+      "cnName": "阅读《池子与河流》",
+      "generatedId": "p-chinese-g3-053",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p211",
+      "cnName": "语文园地二·守株待兔与亡羊补牢",
+      "generatedId": "p-chinese-g3-054",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p212",
+      "cnName": "快乐读书吧：小故事大道理",
+      "generatedId": "p-chinese-g3-055",
+      "chapter": "三年级下册 第2单元 寓言·守株待兔"
+    },
+    {
+      "cnId": "cnc_p213",
+      "cnName": "阅读《海底世界》",
+      "generatedId": "p-chinese-g3-056",
+      "chapter": "三年级下册 第3单元 课文·海底世界"
+    },
+    {
+      "cnId": "cnc_p214",
+      "cnName": "阅读《石蜂》",
+      "generatedId": "p-chinese-g3-057",
+      "chapter": "三年级下册 第3单元 课文·海底世界"
+    },
+    {
+      "cnId": "cnc_p215",
+      "cnName": "阅读《小虾》",
+      "generatedId": "p-chinese-g3-058",
+      "chapter": "三年级下册 第3单元 课文·海底世界"
+    },
+    {
+      "cnId": "cnc_p216",
+      "cnName": "语文园地三·我做了一项小实验",
+      "generatedId": "p-chinese-g3-059",
+      "chapter": "三年级下册 第3单元 课文·海底世界"
+    },
+    {
+      "cnId": "cnc_p217",
+      "cnName": "古诗《元日》",
+      "generatedId": "p-chinese-g3-060",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p218",
+      "cnName": "古诗《清明》",
+      "generatedId": "p-chinese-g3-061",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p219",
+      "cnName": "古诗《九月九日忆山东兄弟》",
+      "generatedId": "p-chinese-g3-062",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p220",
+      "cnName": "阅读《纸的发明》",
+      "generatedId": "p-chinese-g3-063",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p221",
+      "cnName": "阅读《赵州桥》",
+      "generatedId": "p-chinese-g3-064",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p222",
+      "cnName": "阅读《一幅名扬中外的画》",
+      "generatedId": "p-chinese-g3-065",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p223",
+      "cnName": "语文园地四·中华传统节日",
+      "generatedId": "p-chinese-g3-066",
+      "chapter": "三年级下册 第4单元 古诗·元日"
+    },
+    {
+      "cnId": "cnc_p224",
+      "cnName": "阅读《胡萝卜先生的长胡子》",
+      "generatedId": "p-chinese-g3-067",
+      "chapter": "三年级下册 第5单元 习作·奇妙的想象"
+    },
+    {
+      "cnId": "cnc_p225",
+      "cnName": "阅读《我变成了一棵树》",
+      "generatedId": "p-chinese-g3-068",
+      "chapter": "三年级下册 第5单元 习作·奇妙的想象"
+    },
+    {
+      "cnId": "cnc_p226",
+      "cnName": "习作：奇妙的想象",
+      "generatedId": "p-chinese-g3-069",
+      "chapter": "三年级下册 第5单元 习作·奇妙的想象"
+    },
+    {
+      "cnId": "cnc_p227",
+      "cnName": "阅读《童年的水墨画》",
+      "generatedId": "p-chinese-g3-070",
+      "chapter": "三年级下册 第6单元 课文·肥皂泡"
+    },
+    {
+      "cnId": "cnc_p228",
+      "cnName": "阅读《肥皂泡》",
+      "generatedId": "p-chinese-g3-071",
+      "chapter": "三年级下册 第6单元 课文·肥皂泡"
+    },
+    {
+      "cnId": "cnc_p229",
+      "cnName": "阅读《灰雀》",
+      "generatedId": "p-chinese-g3-072",
+      "chapter": "三年级下册 第6单元 课文·肥皂泡"
+    },
+    {
+      "cnId": "cnc_p230",
+      "cnName": "阅读《我不能失信》",
+      "generatedId": "p-chinese-g3-073",
+      "chapter": "三年级下册 第6单元 课文·肥皂泡"
+    },
+    {
+      "cnId": "cnc_p231",
+      "cnName": "语文园地六·身边那些有特点的人",
+      "generatedId": "p-chinese-g3-074",
+      "chapter": "三年级下册 第6单元 课文·肥皂泡"
+    },
+    {
+      "cnId": "cnc_p232",
+      "cnName": "阅读《火烧云》",
+      "generatedId": "p-chinese-g3-075",
+      "chapter": "三年级下册 第7单元 课文·火烧云"
+    },
+    {
+      "cnId": "cnc_p233",
+      "cnName": "阅读《暴风雨来临之前》",
+      "generatedId": "p-chinese-g3-076",
+      "chapter": "三年级下册 第7单元 课文·火烧云"
+    },
+    {
+      "cnId": "cnc_p234",
+      "cnName": "阅读《我们奇妙的世界》",
+      "generatedId": "p-chinese-g3-077",
+      "chapter": "三年级下册 第7单元 课文·火烧云"
+    },
+    {
+      "cnId": "cnc_p235",
+      "cnName": "语文园地七·国宝大熊猫",
+      "generatedId": "p-chinese-g3-078",
+      "chapter": "三年级下册 第7单元 课文·火烧云"
+    },
+    {
+      "cnId": "cnc_p236",
+      "cnName": "阅读《慢性子裁缝和急性子顾客》",
+      "generatedId": "p-chinese-g3-079",
+      "chapter": "三年级下册 第8单元 童话·漏"
+    },
+    {
+      "cnId": "cnc_p237",
+      "cnName": "阅读《漏》",
+      "generatedId": "p-chinese-g3-080",
+      "chapter": "三年级下册 第8单元 童话·漏"
+    },
+    {
+      "cnId": "cnc_p238",
+      "cnName": "阅读《枣核》",
+      "generatedId": "p-chinese-g3-081",
+      "chapter": "三年级下册 第8单元 童话·漏"
+    },
+    {
+      "cnId": "cnc_p239",
+      "cnName": "语文园地八·趣味故事会",
+      "generatedId": "p-chinese-g3-082",
+      "chapter": "三年级下册 第8单元 童话·漏"
+    }
+  ]
+}

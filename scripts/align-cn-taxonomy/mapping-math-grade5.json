@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-10-25T13:18:28.441Z",
+  "source": "cn-math-taxonomy",
+  "subject": "math",
+  "filter": {
+    "grade": 5,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 49,
+  "items": [
+    {
+      "cnId": "cnm_p098",
+      "cnName": "公顷和平方千米",
+      "generatedId": "p-math-g5-001",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    },
+    {
+      "cnId": "cnm_p132",
+      "cnName": "小数乘整数",
+      "generatedId": "p-math-g5-002",
+      "chapter": "五年级上册 第2单元 小数乘法"
+    },
+    {
+      "cnId": "cnm_p133",
+      "cnName": "小数乘小数",
+      "generatedId": "p-math-g5-003",
+      "chapter": "五年级上册 第2单元 小数乘法"
+    },
+    {
+      "cnId": "cnm_p134",
+      "cnName": "小数乘法的应用",
+      "generatedId": "p-math-g5-004",
+      "chapter": "五年级上册 第2单元 小数乘法"
+    },
+    {
+      "cnId": "cnm_p135",
+      "cnName": "积的近似数",
+      "generatedId": "p-math-g5-005",
+      "chapter": "五年级上册 第8单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p137",
+      "cnName": "除数是整数的小数除法",
+      "generatedId": "p-math-g5-006",
+      "chapter": "五年级上册 第3单元 小数除法"
+    },
+    {
+      "cnId": "cnm_p138",
+      "cnName": "一个数除以小数",
+      "generatedId": "p-math-g5-007",
+      "chapter": "五年级上册 第3单元 小数除法"
+    },
+    {
+      "cnId": "cnm_p139",
+      "cnName": "小数除法的应用",
+      "generatedId": "p-math-g5-008",
+      "chapter": "五年级上册 第3单元 小数除法"
+    },
+    {
+      "cnId": "cnm_p140",
+      "cnName": "可能性",
+      "generatedId": "p-math-g5-009",
+      "chapter": "五年级上册 第7单元 可能性"
+    },
+    {
+      "cnId": "cnm_p141",
+      "cnName": "可能性的大小",
+      "generatedId": "p-math-g5-010",
+      "chapter": "五年级上册 第7单元 可能性"
+    },
+    {
+      "cnId": "cnm_p142",
+      "cnName": "用字母表示数",
+      "generatedId": "p-math-g5-011",
+      "chapter": "五年级上册 第5单元 用字母表示数和数量关系"
+    },
+    {
+      "cnId": "cnm_p143",
+      "cnName": "方程的意义",
+      "generatedId": "p-math-g5-012",
+      "chapter": "五年级上册 第8单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p144",
+      "cnName": "等式的性质",
+      "generatedId": "p-math-g5-013",
+      "chapter": "五年级上册 第5单元 用字母表示数和数量关系"
+    },
+    {
+      "cnId": "cnm_p145",
+      "cnName": "解简易方程",
+      "generatedId": "p-math-g5-014",
+      "chapter": "五年级上册 第8单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p146",
+      "cnName": "列方程解决实际问题",
+      "generatedId": "p-math-g5-015",
+      "chapter": "五年级上册 第8单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p147",
+      "cnName": "平行四边形的面积",
+      "generatedId": "p-math-g5-016",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    },
+    {
+      "cnId": "cnm_p148",
+      "cnName": "三角形的面积",
+      "generatedId": "p-math-g5-017",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    },
+    {
+      "cnId": "cnm_p149",
+      "cnName": "梯形的面积",
+      "generatedId": "p-math-g5-018",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    },
+    {
+      "cnId": "cnm_p150",
+      "cnName": "组合图形的面积",
+      "generatedId": "p-math-g5-019",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    },
+    {
+      "cnId": "cnm_p151",
+      "cnName": "植树问题",
+      "generatedId": "p-math-g5-020",
+      "chapter": "五年级上册 第8单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p152",
+      "cnName": "根据三个方向辨认物体",
+      "generatedId": "p-math-g5-021",
+      "chapter": "五年级下册 第1单元 观察物体（三）"
+    },
+    {
+      "cnId": "cnm_p153",
+      "cnName": "因数和倍数",
+      "generatedId": "p-math-g5-022",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p154",
+      "cnName": "2和5的倍数的特征",
+      "generatedId": "p-math-g5-023",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p155",
+      "cnName": "3的倍数的特征",
+      "generatedId": "p-math-g5-024",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p156",
+      "cnName": "奇数和偶数",
+      "generatedId": "p-math-g5-025",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p157",
+      "cnName": "质数和合数",
+      "generatedId": "p-math-g5-026",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p158",
+      "cnName": "最大公因数",
+      "generatedId": "p-math-g5-027",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p159",
+      "cnName": "最小公倍数",
+      "generatedId": "p-math-g5-028",
+      "chapter": "五年级下册 第2单元 因数与倍数"
+    },
+    {
+      "cnId": "cnm_p160",
+      "cnName": "长方体和正方体的认识",
+      "generatedId": "p-math-g5-029",
+      "chapter": "五年级下册 第3单元 长方体和正方体"
+    },
+    {
+      "cnId": "cnm_p161",
+      "cnName": "长方体的表面积",
+      "generatedId": "p-math-g5-030",
+      "chapter": "五年级下册 第3单元 长方体和正方体"
+    },
+    {
+      "cnId": "cnm_p162",
+      "cnName": "体积单位",
+      "generatedId": "p-math-g5-031",
+      "chapter": "五年级下册 第3单元 长方体和正方体"
+    },
+    {
+      "cnId": "cnm_p163",
+      "cnName": "长方体和正方体的体积",
+      "generatedId": "p-math-g5-032",
+      "chapter": "五年级下册 第3单元 长方体和正方体"
+    },
+    {
+      "cnId": "cnm_p164",
+      "cnName": "容积",
+      "generatedId": "p-math-g5-033",
+      "chapter": "五年级下册 第3单元 长方体和正方体"
+    },
+    {
+      "cnId": "cnm_p165",
+      "cnName": "分数的意义",
+      "generatedId": "p-math-g5-034",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p166",
+      "cnName": "真分数、假分数和带分数",
+      "generatedId": "p-math-g5-035",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p167",
+      "cnName": "分数的基本性质",
+      "generatedId": "p-math-g5-036",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p168",
+      "cnName": "约分",
+      "generatedId": "p-math-g5-037",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p169",
+      "cnName": "分数的大小比较",
+      "generatedId": "p-math-g5-038",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p170",
+      "cnName": "分数和小数互化",
+      "generatedId": "p-math-g5-039",
+      "chapter": "五年级下册 第4单元 分数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p171",
+      "cnName": "旋转",
+      "generatedId": "p-math-g5-040",
+      "chapter": "五年级下册 第5单元 图形的运动（三）"
+    },
+    {
+      "cnId": "cnm_p172",
+      "cnName": "通分",
+      "generatedId": "p-math-g5-041",
+      "chapter": "五年级下册 第6单元 分数的加法和减法"
+    },
+    {
+      "cnId": "cnm_p173",
+      "cnName": "异分母分数加减",
+      "generatedId": "p-math-g5-042",
+      "chapter": "五年级下册 第6单元 分数的加法和减法"
+    },
+    {
+      "cnId": "cnm_p174",
+      "cnName": "分数加减混合",
+      "generatedId": "p-math-g5-043",
+      "chapter": "五年级下册 第6单元 分数的加法和减法"
+    },
+    {
+      "cnId": "cnm_p175",
+      "cnName": "折线统计图",
+      "generatedId": "p-math-g5-044",
+      "chapter": "五年级下册 第7单元 折线统计图"
+    },
+    {
+      "cnId": "cnm_p176",
+      "cnName": "找次品",
+      "generatedId": "p-math-g5-045",
+      "chapter": "五年级下册 第8单元 数学广角——找次品"
+    },
+    {
+      "cnId": "cnm_p237",
+      "cnName": "观察简单组合体",
+      "generatedId": "p-math-g5-046",
+      "chapter": "五年级上册 第1单元 观察简单组合体"
+    },
+    {
+      "cnId": "cnm_p238",
+      "cnName": "图形的运动",
+      "generatedId": "p-math-g5-047",
+      "chapter": "五年级上册 第4单元 图形的运动"
+    },
+    {
+      "cnId": "cnm_p239",
+      "cnName": "有趣的密铺",
+      "generatedId": "p-math-g5-048",
+      "chapter": "五年级上册 综合与实践 有趣的密铺"
+    },
+    {
+      "cnId": "cnm_p240",
+      "cnName": "平行四边形的底和高",
+      "generatedId": "p-math-g5-049",
+      "chapter": "五年级上册 第6单元 多边形的面积"
+    }
+  ]
+}

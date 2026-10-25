@@ -1,0 +1,3 @@
+# Ollama API response caches (regenerable)
+.enrich-*-cache.json
+.cache/

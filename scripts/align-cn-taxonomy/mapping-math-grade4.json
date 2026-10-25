@@ -1,0 +1,263 @@
+{
+  "generatedAt": "2026-10-25T11:39:31.298Z",
+  "source": "cn-math-taxonomy",
+  "subject": "math",
+  "filter": {
+    "grade": 4,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 41,
+  "items": [
+    {
+      "cnId": "cnm_p086",
+      "cnName": "两位数乘两位数",
+      "generatedId": "p-math-g4-001",
+      "chapter": "四年级上册 第3单元 多位数乘两位数"
+    },
+    {
+      "cnId": "cnm_p087",
+      "cnName": "两位数乘法的应用",
+      "generatedId": "p-math-g4-002",
+      "chapter": "四年级上册 第3单元 多位数乘两位数"
+    },
+    {
+      "cnId": "cnm_p096",
+      "cnName": "亿以内数的认识",
+      "generatedId": "p-math-g4-003",
+      "chapter": "四年级上册 第1单元 万以上数的认识"
+    },
+    {
+      "cnId": "cnm_p097",
+      "cnName": "大数的改写和近似",
+      "generatedId": "p-math-g4-004",
+      "chapter": "四年级上册 第1单元 万以上数的认识"
+    },
+    {
+      "cnId": "cnm_p100",
+      "cnName": "角的度量",
+      "generatedId": "p-math-g4-005",
+      "chapter": "四年级上册 第2单元 角的度量"
+    },
+    {
+      "cnId": "cnm_p102",
+      "cnName": "多位数乘两位数",
+      "generatedId": "p-math-g4-006",
+      "chapter": "四年级上册 第3单元 多位数乘两位数"
+    },
+    {
+      "cnId": "cnm_p103",
+      "cnName": "垂直",
+      "generatedId": "p-math-g4-007",
+      "chapter": "四年级上册 第5单元 平行四边形和梯形"
+    },
+    {
+      "cnId": "cnm_p104",
+      "cnName": "平行",
+      "generatedId": "p-math-g4-008",
+      "chapter": "四年级上册 第5单元 平行四边形和梯形"
+    },
+    {
+      "cnId": "cnm_p105",
+      "cnName": "平行四边形和梯形的特征",
+      "generatedId": "p-math-g4-009",
+      "chapter": "四年级上册 第5单元 平行四边形和梯形"
+    },
+    {
+      "cnId": "cnm_p106",
+      "cnName": "除数是两位数的除法",
+      "generatedId": "p-math-g4-010",
+      "chapter": "四年级下册 第9单元 除数是两位数的除法"
+    },
+    {
+      "cnId": "cnm_p107",
+      "cnName": "商不变的规律",
+      "generatedId": "p-math-g4-011",
+      "chapter": "四年级下册 第9单元 除数是两位数的除法"
+    },
+    {
+      "cnId": "cnm_p108",
+      "cnName": "条形统计图",
+      "generatedId": "p-math-g4-012",
+      "chapter": "四年级上册 第6单元 条形统计图"
+    },
+    {
+      "cnId": "cnm_p110",
+      "cnName": "四则运算各部分间的关系",
+      "generatedId": "p-math-g4-013",
+      "chapter": "四年级下册 第1单元 四则运算"
+    },
+    {
+      "cnId": "cnm_p111",
+      "cnName": "常见数量关系",
+      "generatedId": "p-math-g4-014",
+      "chapter": "四年级上册 第4单元 加法模型和乘法模型"
+    },
+    {
+      "cnId": "cnm_p112",
+      "cnName": "整数四则混合运算",
+      "generatedId": "p-math-g4-015",
+      "chapter": "四年级下册 第1单元 四则运算"
+    },
+    {
+      "cnId": "cnm_p113",
+      "cnName": "从不同方向观察物体",
+      "generatedId": "p-math-g4-016",
+      "chapter": "四年级下册 第2单元 观察物体（二）"
+    },
+    {
+      "cnId": "cnm_p114",
+      "cnName": "加法交换律和结合律",
+      "generatedId": "p-math-g4-017",
+      "chapter": "四年级下册 第3单元 运算定律"
+    },
+    {
+      "cnId": "cnm_p115",
+      "cnName": "乘法交换律和结合律",
+      "generatedId": "p-math-g4-018",
+      "chapter": "四年级下册 第3单元 运算定律"
+    },
+    {
+      "cnId": "cnm_p116",
+      "cnName": "乘法分配律",
+      "generatedId": "p-math-g4-019",
+      "chapter": "四年级下册 第3单元 运算定律"
+    },
+    {
+      "cnId": "cnm_p117",
+      "cnName": "用运算律简便计算",
+      "generatedId": "p-math-g4-020",
+      "chapter": "四年级下册 第3单元 运算定律"
+    },
+    {
+      "cnId": "cnm_p118",
+      "cnName": "小数的意义",
+      "generatedId": "p-math-g4-021",
+      "chapter": "四年级下册 第4单元 小数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p119",
+      "cnName": "比较小数的大小",
+      "generatedId": "p-math-g4-022",
+      "chapter": "四年级下册 第4单元 小数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p120",
+      "cnName": "小数点移动引起的大小变化",
+      "generatedId": "p-math-g4-023",
+      "chapter": "四年级下册 第4单元 小数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p121",
+      "cnName": "求小数的近似数",
+      "generatedId": "p-math-g4-024",
+      "chapter": "四年级下册 第4单元 小数的意义和性质"
+    },
+    {
+      "cnId": "cnm_p122",
+      "cnName": "三角形的分类",
+      "generatedId": "p-math-g4-025",
+      "chapter": "四年级下册 第5单元 三角形"
+    },
+    {
+      "cnId": "cnm_p123",
+      "cnName": "三角形的三边关系",
+      "generatedId": "p-math-g4-026",
+      "chapter": "四年级下册 第5单元 三角形"
+    },
+    {
+      "cnId": "cnm_p124",
+      "cnName": "三角形的内角和",
+      "generatedId": "p-math-g4-027",
+      "chapter": "四年级下册 第5单元 三角形"
+    },
+    {
+      "cnId": "cnm_p125",
+      "cnName": "小数加减法",
+      "generatedId": "p-math-g4-028",
+      "chapter": "四年级下册 第6单元 小数的加法和减法"
+    },
+    {
+      "cnId": "cnm_p126",
+      "cnName": "小数加减解决实际问题",
+      "generatedId": "p-math-g4-029",
+      "chapter": "四年级下册 第6单元 小数的加法和减法"
+    },
+    {
+      "cnId": "cnm_p127",
+      "cnName": "轴对称",
+      "generatedId": "p-math-g4-030",
+      "chapter": "四年级下册 第7单元 图形的运动（二）"
+    },
+    {
+      "cnId": "cnm_p128",
+      "cnName": "平移",
+      "generatedId": "p-math-g4-031",
+      "chapter": "四年级下册 第7单元 图形的运动（二）"
+    },
+    {
+      "cnId": "cnm_p129",
+      "cnName": "平均数",
+      "generatedId": "p-math-g4-032",
+      "chapter": "四年级下册 第8单元 平均数与条形统计图"
+    },
+    {
+      "cnId": "cnm_p130",
+      "cnName": "复式条形统计图",
+      "generatedId": "p-math-g4-033",
+      "chapter": "四年级上册 第6单元 条形统计图"
+    },
+    {
+      "cnId": "cnm_p131",
+      "cnName": "鸡兔同笼",
+      "generatedId": "p-math-g4-034",
+      "chapter": "四年级上册 第8单元 数学广角——鸡兔同笼"
+    },
+    {
+      "cnId": "cnm_p230",
+      "cnName": "加法模型",
+      "generatedId": "p-math-g4-035",
+      "chapter": "四年级上册 第4单元 加法模型和乘法模型"
+    },
+    {
+      "cnId": "cnm_p231",
+      "cnName": "乘法模型",
+      "generatedId": "p-math-g4-036",
+      "chapter": "四年级上册 第4单元 加法模型和乘法模型"
+    },
+    {
+      "cnId": "cnm_p232",
+      "cnName": "平角、周角和角的分类",
+      "generatedId": "p-math-g4-037",
+      "chapter": "四年级上册 第2单元 角的度量"
+    },
+    {
+      "cnId": "cnm_p233",
+      "cnName": "用估算解决问题",
+      "generatedId": "p-math-g4-038",
+      "chapter": "四年级上册 第3单元 多位数乘两位数"
+    },
+    {
+      "cnId": "cnm_p234",
+      "cnName": "用尺规画平行线",
+      "generatedId": "p-math-g4-039",
+      "chapter": "四年级上册 第5单元 平行四边形和梯形"
+    },
+    {
+      "cnId": "cnm_p235",
+      "cnName": "寻找宝藏",
+      "generatedId": "p-math-g4-040",
+      "chapter": "四年级上册 综合与实践 寻找宝藏"
+    },
+    {
+      "cnId": "cnm_p236",
+      "cnName": "1亿有多大",
+      "generatedId": "p-math-g4-041",
+      "chapter": "四年级上册 第1单元 万以上数的认识"
+    }
+  ]
+}

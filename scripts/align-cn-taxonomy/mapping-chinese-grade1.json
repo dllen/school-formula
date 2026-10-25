@@ -1,0 +1,494 @@
+{
+  "generatedAt": "2026-10-25T10:20:30.217Z",
+  "source": "cn-math-taxonomy",
+  "subject": "chinese",
+  "filter": {
+    "grade": 1,
+    "domains": [
+      "阅读理解",
+      "识字写字",
+      "拼音",
+      "习作基础",
+      "古诗文积累",
+      "句子",
+      "词语"
+    ]
+  },
+  "total": 79,
+  "items": [
+    {
+      "cnId": "cnc_p001",
+      "cnName": "识字：天地人",
+      "generatedId": "p-chinese-g1-001",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p002",
+      "cnName": "识字：金木水火土",
+      "generatedId": "p-chinese-g1-002",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p003",
+      "cnName": "识字：口耳目手足",
+      "generatedId": "p-chinese-g1-003",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p004",
+      "cnName": "识字：日月山川",
+      "generatedId": "p-chinese-g1-004",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p005",
+      "cnName": "入学教育：我上学了",
+      "generatedId": "p-chinese-g1-005",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p006",
+      "cnName": "语文园地一·我说你做",
+      "generatedId": "p-chinese-g1-006",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p007",
+      "cnName": "快乐读书吧：读书真快乐",
+      "generatedId": "p-chinese-g1-007",
+      "chapter": "一年级上册 第1单元 识字·天地人"
+    },
+    {
+      "cnId": "cnc_p008",
+      "cnName": "单韵母 a、o、e 和四声",
+      "generatedId": "p-chinese-g1-008",
+      "chapter": "一年级上册 第2单元 汉语拼音·单韵母"
+    },
+    {
+      "cnId": "cnc_p009",
+      "cnName": "单韵母 i、u、ü",
+      "generatedId": "p-chinese-g1-009",
+      "chapter": "一年级上册 第2单元 汉语拼音·单韵母"
+    },
+    {
+      "cnId": "cnc_p010",
+      "cnName": "声母 b、p、m、f",
+      "generatedId": "p-chinese-g1-010",
+      "chapter": "一年级上册 第2单元 汉语拼音·单韵母"
+    },
+    {
+      "cnId": "cnc_p011",
+      "cnName": "声母 d、t、n、l",
+      "generatedId": "p-chinese-g1-011",
+      "chapter": "一年级上册 第2单元 汉语拼音·单韵母"
+    },
+    {
+      "cnId": "cnc_p012",
+      "cnName": "语文园地二·日积月累《画》",
+      "generatedId": "p-chinese-g1-012",
+      "chapter": "一年级上册 第2单元 汉语拼音·单韵母"
+    },
+    {
+      "cnId": "cnc_p013",
+      "cnName": "声母 g、k、h",
+      "generatedId": "p-chinese-g1-013",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p014",
+      "cnName": "声母 j、q、x",
+      "generatedId": "p-chinese-g1-014",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p015",
+      "cnName": "平舌声母 z、c、s",
+      "generatedId": "p-chinese-g1-015",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p016",
+      "cnName": "翘舌声母 zh、ch、sh、r",
+      "generatedId": "p-chinese-g1-016",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p017",
+      "cnName": "声母 y、w",
+      "generatedId": "p-chinese-g1-017",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p018",
+      "cnName": "语文园地三·整体认读音节",
+      "generatedId": "p-chinese-g1-018",
+      "chapter": "一年级上册 第3单元 汉语拼音·声母"
+    },
+    {
+      "cnId": "cnc_p019",
+      "cnName": "复韵母 ai、ei、ui、ao、ou、iu",
+      "generatedId": "p-chinese-g1-019",
+      "chapter": "一年级上册 第4单元 汉语拼音·复韵母"
+    },
+    {
+      "cnId": "cnc_p020",
+      "cnName": "特殊韵母 ie、üe、er",
+      "generatedId": "p-chinese-g1-020",
+      "chapter": "一年级上册 第4单元 汉语拼音·复韵母"
+    },
+    {
+      "cnId": "cnc_p021",
+      "cnName": "鼻韵母 an、en、in、un、ün 和 ang、eng、ing、ong",
+      "generatedId": "p-chinese-g1-021",
+      "chapter": "一年级上册 第4单元 汉语拼音·复韵母"
+    },
+    {
+      "cnId": "cnc_p022",
+      "cnName": "拼读音节",
+      "generatedId": "p-chinese-g1-022",
+      "chapter": "一年级上册 第4单元 汉语拼音·复韵母"
+    },
+    {
+      "cnId": "cnc_p023",
+      "cnName": "语文园地四·给音节标调",
+      "generatedId": "p-chinese-g1-023",
+      "chapter": "一年级上册 第4单元 汉语拼音·复韵母"
+    },
+    {
+      "cnId": "cnc_p024",
+      "cnName": "阅读《秋天》",
+      "generatedId": "p-chinese-g1-024",
+      "chapter": "一年级上册 第5单元 课文·秋天"
+    },
+    {
+      "cnId": "cnc_p025",
+      "cnName": "阅读《江南》",
+      "generatedId": "p-chinese-g1-025",
+      "chapter": "一年级上册 第5单元 课文·秋天"
+    },
+    {
+      "cnId": "cnc_p026",
+      "cnName": "阅读《雪地里的小画家》",
+      "generatedId": "p-chinese-g1-026",
+      "chapter": "一年级上册 第5单元 课文·秋天"
+    },
+    {
+      "cnId": "cnc_p027",
+      "cnName": "阅读《四季》",
+      "generatedId": "p-chinese-g1-027",
+      "chapter": "一年级上册 第5单元 课文·秋天"
+    },
+    {
+      "cnId": "cnc_p028",
+      "cnName": "语文园地五·把话说完整",
+      "generatedId": "p-chinese-g1-028",
+      "chapter": "一年级上册 第5单元 课文·秋天"
+    },
+    {
+      "cnId": "cnc_p029",
+      "cnName": "识字：对韵歌",
+      "generatedId": "p-chinese-g1-029",
+      "chapter": "一年级上册 第6单元 识字·对韵歌"
+    },
+    {
+      "cnId": "cnc_p030",
+      "cnName": "识字：日月明",
+      "generatedId": "p-chinese-g1-030",
+      "chapter": "一年级上册 第6单元 识字·对韵歌"
+    },
+    {
+      "cnId": "cnc_p031",
+      "cnName": "识字：小书包",
+      "generatedId": "p-chinese-g1-031",
+      "chapter": "一年级上册 第6单元 识字·对韵歌"
+    },
+    {
+      "cnId": "cnc_p032",
+      "cnName": "阅读《升国旗》",
+      "generatedId": "p-chinese-g1-032",
+      "chapter": "一年级上册 第6单元 识字·对韵歌"
+    },
+    {
+      "cnId": "cnc_p033",
+      "cnName": "语文园地六·大小多少与量词",
+      "generatedId": "p-chinese-g1-033",
+      "chapter": "一年级上册 第6单元 识字·对韵歌"
+    },
+    {
+      "cnId": "cnc_p034",
+      "cnName": "阅读《小小的船》",
+      "generatedId": "p-chinese-g1-034",
+      "chapter": "一年级上册 第7单元 课文·小小的船"
+    },
+    {
+      "cnId": "cnc_p035",
+      "cnName": "阅读《影子》",
+      "generatedId": "p-chinese-g1-035",
+      "chapter": "一年级上册 第7单元 课文·小小的船"
+    },
+    {
+      "cnId": "cnc_p036",
+      "cnName": "阅读《两件宝》",
+      "generatedId": "p-chinese-g1-036",
+      "chapter": "一年级上册 第7单元 课文·小小的船"
+    },
+    {
+      "cnId": "cnc_p037",
+      "cnName": "语文园地七·用多大的声音",
+      "generatedId": "p-chinese-g1-037",
+      "chapter": "一年级上册 第7单元 课文·小小的船"
+    },
+    {
+      "cnId": "cnc_p038",
+      "cnName": "阅读《比尾巴》",
+      "generatedId": "p-chinese-g1-038",
+      "chapter": "一年级上册 第8单元 课文·比尾巴"
+    },
+    {
+      "cnId": "cnc_p039",
+      "cnName": "阅读《乌鸦喝水》",
+      "generatedId": "p-chinese-g1-039",
+      "chapter": "一年级上册 第8单元 课文·比尾巴"
+    },
+    {
+      "cnId": "cnc_p040",
+      "cnName": "阅读《雨点儿》",
+      "generatedId": "p-chinese-g1-040",
+      "chapter": "一年级上册 第8单元 课文·比尾巴"
+    },
+    {
+      "cnId": "cnc_p041",
+      "cnName": "语文园地八·看图说出谁在做什么",
+      "generatedId": "p-chinese-g1-041",
+      "chapter": "一年级上册 第8单元 课文·比尾巴"
+    },
+    {
+      "cnId": "cnc_p042",
+      "cnName": "识字：春夏秋冬",
+      "generatedId": "p-chinese-g1-042",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p043",
+      "cnName": "识字：姓氏歌",
+      "generatedId": "p-chinese-g1-043",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p044",
+      "cnName": "识字：小青蛙",
+      "generatedId": "p-chinese-g1-044",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p045",
+      "cnName": "识字：猜字谜",
+      "generatedId": "p-chinese-g1-045",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p046",
+      "cnName": "口语交际：请你帮个忙",
+      "generatedId": "p-chinese-g1-046",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p047",
+      "cnName": "快乐读书吧：读读童谣和儿歌",
+      "generatedId": "p-chinese-g1-047",
+      "chapter": "一年级下册 第1单元 识字·春夏秋冬"
+    },
+    {
+      "cnId": "cnc_p048",
+      "cnName": "阅读《热爱中国共产党》",
+      "generatedId": "p-chinese-g1-048",
+      "chapter": "一年级下册 第2单元 课文·吃水不忘挖井人"
+    },
+    {
+      "cnId": "cnc_p049",
+      "cnName": "阅读《吃水不忘挖井人》",
+      "generatedId": "p-chinese-g1-049",
+      "chapter": "一年级下册 第2单元 课文·吃水不忘挖井人"
+    },
+    {
+      "cnId": "cnc_p050",
+      "cnName": "阅读《我多想去看看》",
+      "generatedId": "p-chinese-g1-050",
+      "chapter": "一年级下册 第2单元 课文·吃水不忘挖井人"
+    },
+    {
+      "cnId": "cnc_p051",
+      "cnName": "语文园地二·形近字和同音字",
+      "generatedId": "p-chinese-g1-051",
+      "chapter": "一年级下册 第2单元 课文·吃水不忘挖井人"
+    },
+    {
+      "cnId": "cnc_p052",
+      "cnName": "阅读《小公鸡和小鸭子》",
+      "generatedId": "p-chinese-g1-052",
+      "chapter": "一年级下册 第3单元 课文·小公鸡和小鸭子"
+    },
+    {
+      "cnId": "cnc_p053",
+      "cnName": "阅读《树和喜鹊》",
+      "generatedId": "p-chinese-g1-053",
+      "chapter": "一年级下册 第3单元 课文·小公鸡和小鸭子"
+    },
+    {
+      "cnId": "cnc_p054",
+      "cnName": "阅读《怎么都快乐》",
+      "generatedId": "p-chinese-g1-054",
+      "chapter": "一年级下册 第3单元 课文·小公鸡和小鸭子"
+    },
+    {
+      "cnId": "cnc_p055",
+      "cnName": "口语交际：打电话",
+      "generatedId": "p-chinese-g1-055",
+      "chapter": "一年级下册 第3单元 课文·小公鸡和小鸭子"
+    },
+    {
+      "cnId": "cnc_p056",
+      "cnName": "古诗《静夜思》",
+      "generatedId": "p-chinese-g1-056",
+      "chapter": "一年级下册 第4单元 课文·静夜思"
+    },
+    {
+      "cnId": "cnc_p057",
+      "cnName": "阅读《夜色》",
+      "generatedId": "p-chinese-g1-057",
+      "chapter": "一年级下册 第4单元 课文·静夜思"
+    },
+    {
+      "cnId": "cnc_p058",
+      "cnName": "阅读《端午粽》",
+      "generatedId": "p-chinese-g1-058",
+      "chapter": "一年级下册 第4单元 课文·静夜思"
+    },
+    {
+      "cnId": "cnc_p059",
+      "cnName": "语文园地四·标点与词语",
+      "generatedId": "p-chinese-g1-059",
+      "chapter": "一年级下册 第4单元 课文·静夜思"
+    },
+    {
+      "cnId": "cnc_p060",
+      "cnName": "识字：动物儿歌",
+      "generatedId": "p-chinese-g1-060",
+      "chapter": "一年级下册 第5单元 识字·人之初"
+    },
+    {
+      "cnId": "cnc_p061",
+      "cnName": "识字：古对今",
+      "generatedId": "p-chinese-g1-061",
+      "chapter": "一年级下册 第5单元 识字·人之初"
+    },
+    {
+      "cnId": "cnc_p062",
+      "cnName": "识字：操场上",
+      "generatedId": "p-chinese-g1-062",
+      "chapter": "一年级下册 第5单元 识字·人之初"
+    },
+    {
+      "cnId": "cnc_p063",
+      "cnName": "识字：《人之初》",
+      "generatedId": "p-chinese-g1-063",
+      "chapter": "一年级下册 第5单元 识字·人之初"
+    },
+    {
+      "cnId": "cnc_p064",
+      "cnName": "口语交际：一起做游戏",
+      "generatedId": "p-chinese-g1-064",
+      "chapter": "一年级下册 第5单元 识字·人之初"
+    },
+    {
+      "cnId": "cnc_p065",
+      "cnName": "古诗《池上》",
+      "generatedId": "p-chinese-g1-065",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p066",
+      "cnName": "古诗《小池》",
+      "generatedId": "p-chinese-g1-066",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p067",
+      "cnName": "阅读《浪花》",
+      "generatedId": "p-chinese-g1-067",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p068",
+      "cnName": "阅读《荷叶圆圆》",
+      "generatedId": "p-chinese-g1-068",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p069",
+      "cnName": "阅读《要下雨了》",
+      "generatedId": "p-chinese-g1-069",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p070",
+      "cnName": "语文园地六·量词和重叠词",
+      "generatedId": "p-chinese-g1-070",
+      "chapter": "一年级下册 第6单元 古诗·池上"
+    },
+    {
+      "cnId": "cnc_p071",
+      "cnName": "阅读《文具的家》",
+      "generatedId": "p-chinese-g1-071",
+      "chapter": "一年级下册 第7单元 课文·文具的家"
+    },
+    {
+      "cnId": "cnc_p072",
+      "cnName": "阅读《一分钟》",
+      "generatedId": "p-chinese-g1-072",
+      "chapter": "一年级下册 第7单元 课文·文具的家"
+    },
+    {
+      "cnId": "cnc_p073",
+      "cnName": "阅读《动物王国开大会》",
+      "generatedId": "p-chinese-g1-073",
+      "chapter": "一年级下册 第7单元 课文·文具的家"
+    },
+    {
+      "cnId": "cnc_p074",
+      "cnName": "阅读《小猴子下山》",
+      "generatedId": "p-chinese-g1-074",
+      "chapter": "一年级下册 第7单元 课文·文具的家"
+    },
+    {
+      "cnId": "cnc_p075",
+      "cnName": "口语交际：听故事，讲故事",
+      "generatedId": "p-chinese-g1-075",
+      "chapter": "一年级下册 第7单元 课文·文具的家"
+    },
+    {
+      "cnId": "cnc_p076",
+      "cnName": "阅读《棉花姑娘》",
+      "generatedId": "p-chinese-g1-076",
+      "chapter": "一年级下册 第8单元 课文·小壁虎借尾巴"
+    },
+    {
+      "cnId": "cnc_p077",
+      "cnName": "阅读《咕咚》",
+      "generatedId": "p-chinese-g1-077",
+      "chapter": "一年级下册 第8单元 课文·小壁虎借尾巴"
+    },
+    {
+      "cnId": "cnc_p078",
+      "cnName": "阅读《小壁虎借尾巴》",
+      "generatedId": "p-chinese-g1-078",
+      "chapter": "一年级下册 第8单元 课文·小壁虎借尾巴"
+    },
+    {
+      "cnId": "cnc_p079",
+      "cnName": "语文园地八·看图把事情说清楚",
+      "generatedId": "p-chinese-g1-079",
+      "chapter": "一年级下册 第8单元 课文·小壁虎借尾巴"
+    }
+  ]
+}

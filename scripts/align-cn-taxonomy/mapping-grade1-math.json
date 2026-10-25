@@ -1,0 +1,540 @@
+{
+  "generatedAt": "2026-10-25T09:45:50.388Z",
+  "source": "cn-math-taxonomy",
+  "filter": {
+    "grade": 1,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 38,
+  "items": [
+    {
+      "cnId": "cnm_p001",
+      "cnName": "1到5各数的认识",
+      "generatedId": "p-math-g1-001",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p002",
+      "cnName": "5以内数的大小",
+      "generatedId": "p-math-g1-002",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p003",
+      "cnName": "几和第几",
+      "generatedId": "p-math-g1-003",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p004",
+      "cnName": "5以内数的分与合",
+      "generatedId": "p-math-g1-004",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p005",
+      "cnName": "0的认识",
+      "generatedId": "p-math-g1-005",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p006",
+      "cnName": "5以内的加法",
+      "generatedId": "p-math-g1-006",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p007",
+      "cnName": "5以内的减法",
+      "generatedId": "p-math-g1-007",
+      "chapter": "一年级上册 第1单元 5以内数的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p008",
+      "cnName": "6到10各数的认识",
+      "generatedId": "p-math-g1-008",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p009",
+      "cnName": "10以内数的比较",
+      "generatedId": "p-math-g1-009",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p010",
+      "cnName": "10以内的加法",
+      "generatedId": "p-math-g1-010",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p011",
+      "cnName": "10以内的减法",
+      "generatedId": "p-math-g1-011",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p012",
+      "cnName": "连加和连减",
+      "generatedId": "p-math-g1-012",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p013",
+      "cnName": "10以内加减混合",
+      "generatedId": "p-math-g1-013",
+      "chapter": "一年级上册 第2单元 6到10的认识和加、减法"
+    },
+    {
+      "cnId": "cnm_p014",
+      "cnName": "认识长方体、正方体、圆柱和球",
+      "generatedId": "p-math-g1-014",
+      "chapter": "一年级上册 第3单元 认识立体图形"
+    },
+    {
+      "cnId": "cnm_p015",
+      "cnName": "上下前后左右",
+      "generatedId": "p-math-g1-015",
+      "chapter": "一年级上册 综合与实践 我的教室"
+    },
+    {
+      "cnId": "cnm_p016",
+      "cnName": "11到20各数的认识",
+      "generatedId": "p-math-g1-016",
+      "chapter": "一年级上册 第4单元 11到20的认识"
+    },
+    {
+      "cnId": "cnm_p017",
+      "cnName": "十位和个位",
+      "generatedId": "p-math-g1-017",
+      "chapter": "一年级上册 第4单元 11到20的认识"
+    },
+    {
+      "cnId": "cnm_p018",
+      "cnName": "20以内不进位加法",
+      "generatedId": "p-math-g1-018",
+      "chapter": "一年级上册 第4单元 11到20的认识"
+    },
+    {
+      "cnId": "cnm_p019",
+      "cnName": "凑十法",
+      "generatedId": "p-math-g1-019",
+      "chapter": "一年级上册 第5单元 20以内的进位加法"
+    },
+    {
+      "cnId": "cnm_p020",
+      "cnName": "9加几",
+      "generatedId": "p-math-g1-020",
+      "chapter": "一年级上册 第5单元 20以内的进位加法"
+    },
+    {
+      "cnId": "cnm_p021",
+      "cnName": "8、7、6加几",
+      "generatedId": "p-math-g1-021",
+      "chapter": "一年级上册 第5单元 20以内的进位加法"
+    },
+    {
+      "cnId": "cnm_p022",
+      "cnName": "用数介绍和简单分类",
+      "generatedId": "p-math-g1-022",
+      "chapter": "一年级上册 综合与实践 数学游戏分享"
+    },
+    {
+      "cnId": "cnm_p023",
+      "cnName": "认识长方形、正方形、三角形和圆",
+      "generatedId": "p-math-g1-023",
+      "chapter": "一年级下册 第1单元 认识平面图形"
+    },
+    {
+      "cnId": "cnm_p024",
+      "cnName": "平面图形的拼组",
+      "generatedId": "p-math-g1-024",
+      "chapter": "一年级下册 第1单元 认识平面图形"
+    },
+    {
+      "cnId": "cnm_p025",
+      "cnName": "十几减9",
+      "generatedId": "p-math-g1-025",
+      "chapter": "一年级下册 第2单元 20以内的退位减法"
+    },
+    {
+      "cnId": "cnm_p026",
+      "cnName": "十几减8、7、6",
+      "generatedId": "p-math-g1-026",
+      "chapter": "一年级下册 第2单元 20以内的退位减法"
+    },
+    {
+      "cnId": "cnm_p027",
+      "cnName": "十几减5、4、3、2",
+      "generatedId": "p-math-g1-027",
+      "chapter": "一年级下册 第2单元 20以内的退位减法"
+    },
+    {
+      "cnId": "cnm_p028",
+      "cnName": "100以内数的认识",
+      "generatedId": "p-math-g1-028",
+      "chapter": "一年级下册 第3单元 100以内数的认识"
+    },
+    {
+      "cnId": "cnm_p029",
+      "cnName": "100以内数的大小",
+      "generatedId": "p-math-g1-029",
+      "chapter": "一年级下册 第3单元 100以内数的认识"
+    },
+    {
+      "cnId": "cnm_p030",
+      "cnName": "整十数的加减",
+      "generatedId": "p-math-g1-030",
+      "chapter": "一年级下册 第3单元 100以内数的认识"
+    },
+    {
+      "cnId": "cnm_p031",
+      "cnName": "100以内口算加法",
+      "generatedId": "p-math-g1-031",
+      "chapter": "一年级下册 第4单元 100以内的口算加、减法"
+    },
+    {
+      "cnId": "cnm_p032",
+      "cnName": "100以内口算减法",
+      "generatedId": "p-math-g1-032",
+      "chapter": "一年级下册 第4单元 100以内的口算加、减法"
+    },
+    {
+      "cnId": "cnm_p033",
+      "cnName": "100以内笔算加法",
+      "generatedId": "p-math-g1-033",
+      "chapter": "一年级下册 第5单元 100以内的笔算加、减法"
+    },
+    {
+      "cnId": "cnm_p034",
+      "cnName": "100以内笔算减法",
+      "generatedId": "p-math-g1-034",
+      "chapter": "一年级下册 第5单元 100以内的笔算加、减法"
+    },
+    {
+      "cnId": "cnm_p035",
+      "cnName": "部分与总数",
+      "generatedId": "p-math-g1-035",
+      "chapter": "一年级下册 第6单元 数量间的加减关系"
+    },
+    {
+      "cnId": "cnm_p036",
+      "cnName": "认识人民币",
+      "generatedId": "p-math-g1-036",
+      "chapter": "一年级下册 综合与实践 欢乐购物街"
+    },
+    {
+      "cnId": "cnm_p217",
+      "cnName": "求两数相差几",
+      "generatedId": "p-math-g1-037",
+      "chapter": "一年级下册 第6单元 数量间的加减关系"
+    },
+    {
+      "cnId": "cnm_p218",
+      "cnName": "求比一个数多（少）几的数",
+      "generatedId": "p-math-g1-038",
+      "chapter": "一年级下册 第6单元 数量间的加减关系"
+    }
+  ],
+  "prerequisites": [
+    {
+      "topicId": "cnm_p002",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「5以内数的大小」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p003",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「几和第几」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p004",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「5以内数的分与合」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p005",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「0的认识」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p006",
+      "prerequisiteId": "cnm_p004",
+      "strength": "hard",
+      "reason": "学习「5以内的加法」需要先掌握「5以内数的分与合」。"
+    },
+    {
+      "topicId": "cnm_p007",
+      "prerequisiteId": "cnm_p006",
+      "strength": "hard",
+      "reason": "学习「5以内的减法」需要先掌握「5以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p008",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「6到10各数的认识」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p009",
+      "prerequisiteId": "cnm_p008",
+      "strength": "hard",
+      "reason": "学习「10以内数的比较」需要先掌握「6到10各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p009",
+      "prerequisiteId": "cnm_p002",
+      "strength": "hard",
+      "reason": "学习「10以内数的比较」需要先掌握「5以内数的大小」。"
+    },
+    {
+      "topicId": "cnm_p010",
+      "prerequisiteId": "cnm_p006",
+      "strength": "hard",
+      "reason": "学习「10以内的加法」需要先掌握「5以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p010",
+      "prerequisiteId": "cnm_p008",
+      "strength": "hard",
+      "reason": "学习「10以内的加法」需要先掌握「6到10各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p011",
+      "prerequisiteId": "cnm_p007",
+      "strength": "hard",
+      "reason": "学习「10以内的减法」需要先掌握「5以内的减法」。"
+    },
+    {
+      "topicId": "cnm_p011",
+      "prerequisiteId": "cnm_p010",
+      "strength": "hard",
+      "reason": "学习「10以内的减法」需要先掌握「10以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p012",
+      "prerequisiteId": "cnm_p011",
+      "strength": "hard",
+      "reason": "学习「连加和连减」需要先掌握「10以内的减法」。"
+    },
+    {
+      "topicId": "cnm_p013",
+      "prerequisiteId": "cnm_p012",
+      "strength": "hard",
+      "reason": "学习「10以内加减混合」需要先掌握「连加和连减」。"
+    },
+    {
+      "topicId": "cnm_p014",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「认识长方体、正方体、圆柱和球」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p015",
+      "prerequisiteId": "cnm_p001",
+      "strength": "hard",
+      "reason": "学习「上下前后左右」需要先掌握「1到5各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p016",
+      "prerequisiteId": "cnm_p008",
+      "strength": "hard",
+      "reason": "学习「11到20各数的认识」需要先掌握「6到10各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p017",
+      "prerequisiteId": "cnm_p016",
+      "strength": "hard",
+      "reason": "学习「十位和个位」需要先掌握「11到20各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p018",
+      "prerequisiteId": "cnm_p017",
+      "strength": "hard",
+      "reason": "学习「20以内不进位加法」需要先掌握「十位和个位」。"
+    },
+    {
+      "topicId": "cnm_p018",
+      "prerequisiteId": "cnm_p010",
+      "strength": "hard",
+      "reason": "学习「20以内不进位加法」需要先掌握「10以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p019",
+      "prerequisiteId": "cnm_p010",
+      "strength": "hard",
+      "reason": "学习「凑十法」需要先掌握「10以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p020",
+      "prerequisiteId": "cnm_p019",
+      "strength": "hard",
+      "reason": "学习「9加几」需要先掌握「凑十法」。"
+    },
+    {
+      "topicId": "cnm_p021",
+      "prerequisiteId": "cnm_p020",
+      "strength": "hard",
+      "reason": "学习「8、7、6加几」需要先掌握「9加几」。"
+    },
+    {
+      "topicId": "cnm_p022",
+      "prerequisiteId": "cnm_p008",
+      "strength": "hard",
+      "reason": "学习「用数介绍和简单分类」需要先掌握「6到10各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p023",
+      "prerequisiteId": "cnm_p014",
+      "strength": "hard",
+      "reason": "学习「认识长方形、正方形、三角形和圆」需要先掌握「认识长方体、正方体、圆柱和球」。"
+    },
+    {
+      "topicId": "cnm_p024",
+      "prerequisiteId": "cnm_p023",
+      "strength": "hard",
+      "reason": "学习「平面图形的拼组」需要先掌握「认识长方形、正方形、三角形和圆」。"
+    },
+    {
+      "topicId": "cnm_p025",
+      "prerequisiteId": "cnm_p020",
+      "strength": "hard",
+      "reason": "学习「十几减9」需要先掌握「9加几」。"
+    },
+    {
+      "topicId": "cnm_p026",
+      "prerequisiteId": "cnm_p025",
+      "strength": "hard",
+      "reason": "学习「十几减8、7、6」需要先掌握「十几减9」。"
+    },
+    {
+      "topicId": "cnm_p026",
+      "prerequisiteId": "cnm_p021",
+      "strength": "hard",
+      "reason": "学习「十几减8、7、6」需要先掌握「8、7、6加几」。"
+    },
+    {
+      "topicId": "cnm_p027",
+      "prerequisiteId": "cnm_p026",
+      "strength": "hard",
+      "reason": "学习「十几减5、4、3、2」需要先掌握「十几减8、7、6」。"
+    },
+    {
+      "topicId": "cnm_p028",
+      "prerequisiteId": "cnm_p016",
+      "strength": "hard",
+      "reason": "学习「100以内数的认识」需要先掌握「11到20各数的认识」。"
+    },
+    {
+      "topicId": "cnm_p029",
+      "prerequisiteId": "cnm_p028",
+      "strength": "hard",
+      "reason": "学习「100以内数的大小」需要先掌握「100以内数的认识」。"
+    },
+    {
+      "topicId": "cnm_p029",
+      "prerequisiteId": "cnm_p009",
+      "strength": "hard",
+      "reason": "学习「100以内数的大小」需要先掌握「10以内数的比较」。"
+    },
+    {
+      "topicId": "cnm_p030",
+      "prerequisiteId": "cnm_p028",
+      "strength": "hard",
+      "reason": "学习「整十数的加减」需要先掌握「100以内数的认识」。"
+    },
+    {
+      "topicId": "cnm_p030",
+      "prerequisiteId": "cnm_p010",
+      "strength": "hard",
+      "reason": "学习「整十数的加减」需要先掌握「10以内的加法」。"
+    },
+    {
+      "topicId": "cnm_p031",
+      "prerequisiteId": "cnm_p030",
+      "strength": "hard",
+      "reason": "学习「100以内口算加法」需要先掌握「整十数的加减」。"
+    },
+    {
+      "topicId": "cnm_p031",
+      "prerequisiteId": "cnm_p021",
+      "strength": "hard",
+      "reason": "学习「100以内口算加法」需要先掌握「8、7、6加几」。"
+    },
+    {
+      "topicId": "cnm_p032",
+      "prerequisiteId": "cnm_p031",
+      "strength": "hard",
+      "reason": "学习「100以内口算减法」需要先掌握「100以内口算加法」。"
+    },
+    {
+      "topicId": "cnm_p032",
+      "prerequisiteId": "cnm_p027",
+      "strength": "hard",
+      "reason": "学习「100以内口算减法」需要先掌握「十几减5、4、3、2」。"
+    },
+    {
+      "topicId": "cnm_p033",
+      "prerequisiteId": "cnm_p031",
+      "strength": "hard",
+      "reason": "学习「100以内笔算加法」需要先掌握「100以内口算加法」。"
+    },
+    {
+      "topicId": "cnm_p034",
+      "prerequisiteId": "cnm_p032",
+      "strength": "hard",
+      "reason": "学习「100以内笔算减法」需要先掌握「100以内口算减法」。"
+    },
+    {
+      "topicId": "cnm_p034",
+      "prerequisiteId": "cnm_p033",
+      "strength": "hard",
+      "reason": "学习「100以内笔算减法」需要先掌握「100以内笔算加法」。"
+    },
+    {
+      "topicId": "cnm_p035",
+      "prerequisiteId": "cnm_p034",
+      "strength": "hard",
+      "reason": "学习「部分与总数」需要先掌握「100以内笔算减法」。"
+    },
+    {
+      "topicId": "cnm_p036",
+      "prerequisiteId": "cnm_p030",
+      "strength": "hard",
+      "reason": "学习「认识人民币」需要先掌握「整十数的加减」。"
+    },
+    {
+      "topicId": "cnm_p217",
+      "prerequisiteId": "cnm_p034",
+      "strength": "hard",
+      "reason": "学习「求两数相差几」需要先掌握「100以内笔算减法」。"
+    },
+    {
+      "topicId": "cnm_p217",
+      "prerequisiteId": "cnm_p009",
+      "strength": "soft",
+      "reason": "学习「求两数相差几」需要先掌握「10以内数的比较」。"
+    },
+    {
+      "topicId": "cnm_p218",
+      "prerequisiteId": "cnm_p217",
+      "strength": "hard",
+      "reason": "学习「求比一个数多（少）几的数」需要先掌握「求两数相差几」。"
+    },
+    {
+      "topicId": "cnm_p218",
+      "prerequisiteId": "cnm_p033",
+      "strength": "hard",
+      "reason": "学习「求比一个数多（少）几的数」需要先掌握「100以内笔算加法」。"
+    }
+  ]
+}

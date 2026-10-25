@@ -1,0 +1,518 @@
+{
+  "generatedAt": "2026-10-25T11:40:04.798Z",
+  "source": "cn-math-taxonomy",
+  "subject": "chinese",
+  "filter": {
+    "grade": 4,
+    "domains": [
+      "阅读理解",
+      "识字写字",
+      "拼音",
+      "习作基础",
+      "古诗文积累",
+      "句子",
+      "词语"
+    ]
+  },
+  "total": 83,
+  "items": [
+    {
+      "cnId": "cnc_p240",
+      "cnName": "阅读《观潮》",
+      "generatedId": "p-chinese-g4-001",
+      "chapter": "四年级上册 第1单元 课文·观潮"
+    },
+    {
+      "cnId": "cnc_p241",
+      "cnName": "阅读《繁星》",
+      "generatedId": "p-chinese-g4-002",
+      "chapter": "四年级上册 第1单元 课文·观潮"
+    },
+    {
+      "cnId": "cnc_p242",
+      "cnName": "现代诗二首",
+      "generatedId": "p-chinese-g4-003",
+      "chapter": "四年级上册 第1单元 课文·观潮"
+    },
+    {
+      "cnId": "cnc_p243",
+      "cnName": "语文园地一·多音字：朝、涨、似、还",
+      "generatedId": "p-chinese-g4-004",
+      "chapter": "四年级上册 第1单元 课文·观潮"
+    },
+    {
+      "cnId": "cnc_p244",
+      "cnName": "阅读《一个豆荚里的五粒豆》",
+      "generatedId": "p-chinese-g4-005",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p245",
+      "cnName": "阅读《夜间飞行的秘密》",
+      "generatedId": "p-chinese-g4-006",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p246",
+      "cnName": "阅读《方帽子店》",
+      "generatedId": "p-chinese-g4-007",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p247",
+      "cnName": "阅读《田忌赛马》",
+      "generatedId": "p-chinese-g4-008",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p248",
+      "cnName": "语文园地二·形近字：辨、辩、辫、瓣",
+      "generatedId": "p-chinese-g4-009",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p249",
+      "cnName": "语文园地二·同音字：在和再、做和作",
+      "generatedId": "p-chinese-g4-010",
+      "chapter": "四年级上册 第2单元 课文·一个豆荚里的五粒豆"
+    },
+    {
+      "cnId": "cnc_p250",
+      "cnName": "古诗《暮江吟》",
+      "generatedId": "p-chinese-g4-011",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p251",
+      "cnName": "古诗《题西林壁》",
+      "generatedId": "p-chinese-g4-012",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p252",
+      "cnName": "古诗《雪梅》",
+      "generatedId": "p-chinese-g4-013",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p253",
+      "cnName": "阅读《爬山虎的脚》",
+      "generatedId": "p-chinese-g4-014",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p254",
+      "cnName": "阅读《蟋蟀的住宅》",
+      "generatedId": "p-chinese-g4-015",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p255",
+      "cnName": "语文园地三·近义词辨析",
+      "generatedId": "p-chinese-g4-016",
+      "chapter": "四年级上册 第3单元 古诗·题西林壁"
+    },
+    {
+      "cnId": "cnc_p256",
+      "cnName": "阅读《盘古开天地》",
+      "generatedId": "p-chinese-g4-017",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p257",
+      "cnName": "阅读《精卫填海》",
+      "generatedId": "p-chinese-g4-018",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p258",
+      "cnName": "阅读《普罗米修斯》",
+      "generatedId": "p-chinese-g4-019",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p259",
+      "cnName": "阅读《女娲补天》",
+      "generatedId": "p-chinese-g4-020",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p260",
+      "cnName": "语文园地四·习作：我和____过一天",
+      "generatedId": "p-chinese-g4-021",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p261",
+      "cnName": "快乐读书吧：很久很久以前",
+      "generatedId": "p-chinese-g4-022",
+      "chapter": "四年级上册 第4单元 神话·盘古开天地"
+    },
+    {
+      "cnId": "cnc_p262",
+      "cnName": "阅读《麻雀》",
+      "generatedId": "p-chinese-g4-023",
+      "chapter": "四年级上册 第5单元 习作·生活万花筒"
+    },
+    {
+      "cnId": "cnc_p263",
+      "cnName": "阅读《爬天都峰》",
+      "generatedId": "p-chinese-g4-024",
+      "chapter": "四年级上册 第5单元 习作·生活万花筒"
+    },
+    {
+      "cnId": "cnc_p264",
+      "cnName": "习作：生活万花筒 ·把景物/事情写具体",
+      "generatedId": "p-chinese-g4-025",
+      "chapter": "四年级上册 第5单元 习作·生活万花筒"
+    },
+    {
+      "cnId": "cnc_p265",
+      "cnName": "阅读《长城》",
+      "generatedId": "p-chinese-g4-026",
+      "chapter": "四年级上册 第6单元 课文·长城"
+    },
+    {
+      "cnId": "cnc_p266",
+      "cnName": "阅读《颐和园》",
+      "generatedId": "p-chinese-g4-027",
+      "chapter": "四年级上册 第6单元 课文·长城"
+    },
+    {
+      "cnId": "cnc_p267",
+      "cnName": "阅读《秦兵马俑》",
+      "generatedId": "p-chinese-g4-028",
+      "chapter": "四年级上册 第6单元 课文·长城"
+    },
+    {
+      "cnId": "cnc_p268",
+      "cnName": "语文园地六·我是小小讲解员",
+      "generatedId": "p-chinese-g4-029",
+      "chapter": "四年级上册 第6单元 课文·长城"
+    },
+    {
+      "cnId": "cnc_p269",
+      "cnName": "阅读《牛和鹅》",
+      "generatedId": "p-chinese-g4-030",
+      "chapter": "四年级上册 第7单元 课文·牛和鹅"
+    },
+    {
+      "cnId": "cnc_p270",
+      "cnName": "阅读《一只窝囊的大老虎》",
+      "generatedId": "p-chinese-g4-031",
+      "chapter": "四年级上册 第7单元 课文·牛和鹅"
+    },
+    {
+      "cnId": "cnc_p271",
+      "cnName": "阅读《陀螺》",
+      "generatedId": "p-chinese-g4-032",
+      "chapter": "四年级上册 第7单元 课文·牛和鹅"
+    },
+    {
+      "cnId": "cnc_p272",
+      "cnName": "文言文《王戎不取道旁李》",
+      "generatedId": "p-chinese-g4-033",
+      "chapter": "四年级上册 第7单元 课文·牛和鹅"
+    },
+    {
+      "cnId": "cnc_p273",
+      "cnName": "语文园地七·关联词：因为所以、虽然但是",
+      "generatedId": "p-chinese-g4-034",
+      "chapter": "四年级上册 第7单元 课文·牛和鹅"
+    },
+    {
+      "cnId": "cnc_p274",
+      "cnName": "阅读《我将无我，不负人民》",
+      "generatedId": "p-chinese-g4-035",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p275",
+      "cnName": "阅读《为中华之崛起而读书》",
+      "generatedId": "p-chinese-g4-036",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p276",
+      "cnName": "阅读《延安，我把你追寻》",
+      "generatedId": "p-chinese-g4-037",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p277",
+      "cnName": "古诗《凉州词》",
+      "generatedId": "p-chinese-g4-038",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p278",
+      "cnName": "古诗《出塞》",
+      "generatedId": "p-chinese-g4-039",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p279",
+      "cnName": "古诗《夏日绝句》",
+      "generatedId": "p-chinese-g4-040",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p280",
+      "cnName": "语文园地八·习作：写信",
+      "generatedId": "p-chinese-g4-041",
+      "chapter": "四年级上册 第8单元 课文·为中华之崛起而读书"
+    },
+    {
+      "cnId": "cnc_p281",
+      "cnName": "古诗《四时田园杂兴》",
+      "generatedId": "p-chinese-g4-042",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p282",
+      "cnName": "古诗《宿新市徐公店》",
+      "generatedId": "p-chinese-g4-043",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p283",
+      "cnName": "词《清平乐·村居》",
+      "generatedId": "p-chinese-g4-044",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p284",
+      "cnName": "阅读《乡下人家》",
+      "generatedId": "p-chinese-g4-045",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p285",
+      "cnName": "阅读《天窗》",
+      "generatedId": "p-chinese-g4-046",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p286",
+      "cnName": "阅读《三月桃花水》",
+      "generatedId": "p-chinese-g4-047",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p287",
+      "cnName": "语文园地一·形声字：清、晴、情、请",
+      "generatedId": "p-chinese-g4-048",
+      "chapter": "四年级下册 第1单元 古诗·四时田园杂兴"
+    },
+    {
+      "cnId": "cnc_p288",
+      "cnName": "阅读《琥珀》",
+      "generatedId": "p-chinese-g4-049",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p289",
+      "cnName": "阅读《飞向蓝天的恐龙》",
+      "generatedId": "p-chinese-g4-050",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p290",
+      "cnName": "阅读《纳米技术就在我们身边》",
+      "generatedId": "p-chinese-g4-051",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p291",
+      "cnName": "阅读《千年梦圆在今朝》",
+      "generatedId": "p-chinese-g4-052",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p292",
+      "cnName": "语文园地二·多音字：假、散、便、发",
+      "generatedId": "p-chinese-g4-053",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p293",
+      "cnName": "语文园地二·形近字：幕、慕、暮、墓",
+      "generatedId": "p-chinese-g4-054",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p294",
+      "cnName": "快乐读书吧：十万个为什么",
+      "generatedId": "p-chinese-g4-055",
+      "chapter": "四年级下册 第2单元 课文·琥珀"
+    },
+    {
+      "cnId": "cnc_p295",
+      "cnName": "短诗三首·繁星",
+      "generatedId": "p-chinese-g4-056",
+      "chapter": "四年级下册 第3单元 课文·绿"
+    },
+    {
+      "cnId": "cnc_p296",
+      "cnName": "阅读《绿》",
+      "generatedId": "p-chinese-g4-057",
+      "chapter": "四年级下册 第3单元 课文·绿"
+    },
+    {
+      "cnId": "cnc_p297",
+      "cnName": "阅读《白桦》",
+      "generatedId": "p-chinese-g4-058",
+      "chapter": "四年级下册 第3单元 课文·绿"
+    },
+    {
+      "cnId": "cnc_p298",
+      "cnName": "阅读《在天晴了的时候》",
+      "generatedId": "p-chinese-g4-059",
+      "chapter": "四年级下册 第3单元 课文·绿"
+    },
+    {
+      "cnId": "cnc_p299",
+      "cnName": "语文园地三·词语搭配：严格、严厉、严密",
+      "generatedId": "p-chinese-g4-060",
+      "chapter": "四年级下册 第3单元 课文·绿"
+    },
+    {
+      "cnId": "cnc_p300",
+      "cnName": "阅读《猫》",
+      "generatedId": "p-chinese-g4-061",
+      "chapter": "四年级下册 第4单元 课文·猫"
+    },
+    {
+      "cnId": "cnc_p301",
+      "cnName": "阅读《母鸡》",
+      "generatedId": "p-chinese-g4-062",
+      "chapter": "四年级下册 第4单元 课文·猫"
+    },
+    {
+      "cnId": "cnc_p302",
+      "cnName": "阅读《白鹅》",
+      "generatedId": "p-chinese-g4-063",
+      "chapter": "四年级下册 第4单元 课文·猫"
+    },
+    {
+      "cnId": "cnc_p303",
+      "cnName": "语文园地四·词语的感情色彩",
+      "generatedId": "p-chinese-g4-064",
+      "chapter": "四年级下册 第4单元 课文·猫"
+    },
+    {
+      "cnId": "cnc_p304",
+      "cnName": "阅读《海上日出》",
+      "generatedId": "p-chinese-g4-065",
+      "chapter": "四年级下册 第5单元 习作·游_____"
+    },
+    {
+      "cnId": "cnc_p305",
+      "cnName": "阅读《记金华的双龙洞》",
+      "generatedId": "p-chinese-g4-066",
+      "chapter": "四年级下册 第5单元 习作·游_____"
+    },
+    {
+      "cnId": "cnc_p306",
+      "cnName": "习作：游_____ ·把游览中的见闻写具体",
+      "generatedId": "p-chinese-g4-067",
+      "chapter": "四年级下册 第5单元 习作·游_____"
+    },
+    {
+      "cnId": "cnc_p307",
+      "cnName": "文言文二则",
+      "generatedId": "p-chinese-g4-068",
+      "chapter": "四年级下册 第6单元 文言文·囊萤夜读"
+    },
+    {
+      "cnId": "cnc_p308",
+      "cnName": "阅读《小英雄雨来》",
+      "generatedId": "p-chinese-g4-069",
+      "chapter": "四年级下册 第6单元 文言文·囊萤夜读"
+    },
+    {
+      "cnId": "cnc_p309",
+      "cnName": "阅读《我们家的男子汉》",
+      "generatedId": "p-chinese-g4-070",
+      "chapter": "四年级下册 第6单元 文言文·囊萤夜读"
+    },
+    {
+      "cnId": "cnc_p310",
+      "cnName": "阅读《芦花鞋》",
+      "generatedId": "p-chinese-g4-071",
+      "chapter": "四年级下册 第6单元 文言文·囊萤夜读"
+    },
+    {
+      "cnId": "cnc_p311",
+      "cnName": "语文园地六·对话和双引号",
+      "generatedId": "p-chinese-g4-072",
+      "chapter": "四年级下册 第6单元 文言文·囊萤夜读"
+    },
+    {
+      "cnId": "cnc_p312",
+      "cnName": "古诗《芙蓉楼送辛渐》",
+      "generatedId": "p-chinese-g4-073",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p313",
+      "cnName": "古诗《塞下曲》",
+      "generatedId": "p-chinese-g4-074",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p314",
+      "cnName": "古诗《墨梅》",
+      "generatedId": "p-chinese-g4-075",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p315",
+      "cnName": "阅读《黄继光》",
+      "generatedId": "p-chinese-g4-076",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p316",
+      "cnName": "阅读《“诺曼底号”遇难记》",
+      "generatedId": "p-chinese-g4-077",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p317",
+      "cnName": "阅读《挑山工》",
+      "generatedId": "p-chinese-g4-078",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p318",
+      "cnName": "语文园地七·自我介绍和自画像",
+      "generatedId": "p-chinese-g4-079",
+      "chapter": "四年级下册 第7单元 古诗·芙蓉楼送辛渐"
+    },
+    {
+      "cnId": "cnc_p319",
+      "cnName": "阅读《宝葫芦的秘密》（节选）",
+      "generatedId": "p-chinese-g4-080",
+      "chapter": "四年级下册 第8单元 童话·巨人的花园"
+    },
+    {
+      "cnId": "cnc_p320",
+      "cnName": "阅读《巨人的花园》",
+      "generatedId": "p-chinese-g4-081",
+      "chapter": "四年级下册 第8单元 童话·巨人的花园"
+    },
+    {
+      "cnId": "cnc_p321",
+      "cnName": "阅读《海的女儿》",
+      "generatedId": "p-chinese-g4-082",
+      "chapter": "四年级下册 第8单元 童话·巨人的花园"
+    },
+    {
+      "cnId": "cnc_p322",
+      "cnName": "语文园地八·故事新编",
+      "generatedId": "p-chinese-g4-083",
+      "chapter": "四年级下册 第8单元 童话·巨人的花园"
+    }
+  ]
+}

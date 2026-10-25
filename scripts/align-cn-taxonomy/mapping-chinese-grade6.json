@@ -1,0 +1,260 @@
+{
+  "generatedAt": "2026-10-25T13:38:35.028Z",
+  "source": "cn-math-taxonomy",
+  "subject": "chinese",
+  "filter": {
+    "grade": 6,
+    "domains": [
+      "阅读理解",
+      "识字写字",
+      "拼音",
+      "习作基础",
+      "古诗文积累",
+      "句子",
+      "词语"
+    ]
+  },
+  "total": 40,
+  "items": [
+    {
+      "cnId": "cnc_p363",
+      "cnName": "易错字音：屹、悼、炽、湃",
+      "generatedId": "p-chinese-g6-001",
+      "chapter": "六年级上册 第1单元 古诗·西江月"
+    },
+    {
+      "cnId": "cnc_p364",
+      "cnName": "古诗《西江月·夜行黄沙道中》",
+      "generatedId": "p-chinese-g6-002",
+      "chapter": "六年级上册 第1单元 古诗·西江月"
+    },
+    {
+      "cnId": "cnc_p365",
+      "cnName": "古诗《宿建德江》",
+      "generatedId": "p-chinese-g6-003",
+      "chapter": "六年级上册 第1单元 古诗·西江月"
+    },
+    {
+      "cnId": "cnc_p366",
+      "cnName": "古诗《六月二十七日望湖楼醉书》",
+      "generatedId": "p-chinese-g6-004",
+      "chapter": "六年级上册 第1单元 古诗·西江月"
+    },
+    {
+      "cnId": "cnc_p367",
+      "cnName": "阅读《丁香结》",
+      "generatedId": "p-chinese-g6-005",
+      "chapter": "六年级上册 第1单元 古诗·西江月"
+    },
+    {
+      "cnId": "cnc_p368",
+      "cnName": "古诗《七律·长征》",
+      "generatedId": "p-chinese-g6-006",
+      "chapter": "六年级上册 第2单元 古诗·七律长征"
+    },
+    {
+      "cnId": "cnc_p369",
+      "cnName": "阅读《开国大典》",
+      "generatedId": "p-chinese-g6-007",
+      "chapter": "六年级上册 第2单元 古诗·七律长征"
+    },
+    {
+      "cnId": "cnc_p370",
+      "cnName": "阅读《竹节人》",
+      "generatedId": "p-chinese-g6-008",
+      "chapter": "六年级上册 第3单元 课文·竹节人"
+    },
+    {
+      "cnId": "cnc_p371",
+      "cnName": "形近字：慨、概、溉",
+      "generatedId": "p-chinese-g6-009",
+      "chapter": "六年级上册 第3单元 课文·竹节人"
+    },
+    {
+      "cnId": "cnc_p372",
+      "cnName": "阅读《宇宙生命之谜》",
+      "generatedId": "p-chinese-g6-010",
+      "chapter": "六年级上册 第3单元 课文·竹节人"
+    },
+    {
+      "cnId": "cnc_p373",
+      "cnName": "阅读《桥》",
+      "generatedId": "p-chinese-g6-011",
+      "chapter": "六年级上册 第4单元 小说·桥"
+    },
+    {
+      "cnId": "cnc_p374",
+      "cnName": "阅读《穷人》",
+      "generatedId": "p-chinese-g6-012",
+      "chapter": "六年级上册 第4单元 小说·桥"
+    },
+    {
+      "cnId": "cnc_p375",
+      "cnName": "品味含义深刻的词句",
+      "generatedId": "p-chinese-g6-013",
+      "chapter": "六年级上册 第4单元 小说·桥"
+    },
+    {
+      "cnId": "cnc_p376",
+      "cnName": "写场景要有画面",
+      "generatedId": "p-chinese-g6-014",
+      "chapter": "六年级上册 第5单元 习作·写场景"
+    },
+    {
+      "cnId": "cnc_p377",
+      "cnName": "关联词：不但而且、只要就",
+      "generatedId": "p-chinese-g6-015",
+      "chapter": "六年级上册 第5单元 习作·写场景"
+    },
+    {
+      "cnId": "cnc_p378",
+      "cnName": "文言文《学弈》",
+      "generatedId": "p-chinese-g6-016",
+      "chapter": "六年级上册 第6单元 文言文·学弈"
+    },
+    {
+      "cnId": "cnc_p379",
+      "cnName": "文言文《伯牙鼓琴》",
+      "generatedId": "p-chinese-g6-017",
+      "chapter": "六年级上册 第6单元 文言文·学弈"
+    },
+    {
+      "cnId": "cnc_p380",
+      "cnName": "文言虚词：之、其、而",
+      "generatedId": "p-chinese-g6-018",
+      "chapter": "六年级上册 第6单元 文言文·学弈"
+    },
+    {
+      "cnId": "cnc_p381",
+      "cnName": "阅读《故宫博物院》",
+      "generatedId": "p-chinese-g6-019",
+      "chapter": "六年级上册 第7单元 课文·故宫博物院"
+    },
+    {
+      "cnId": "cnc_p382",
+      "cnName": "阅读《狼牙山五壮士》",
+      "generatedId": "p-chinese-g6-020",
+      "chapter": "六年级上册 第8单元 课文·狼牙山五壮士"
+    },
+    {
+      "cnId": "cnc_p383",
+      "cnName": "易错字音：粥、宵、饺、祭",
+      "generatedId": "p-chinese-g6-021",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p384",
+      "cnName": "古诗《寒食》",
+      "generatedId": "p-chinese-g6-022",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p385",
+      "cnName": "古诗《迢迢牵牛星》",
+      "generatedId": "p-chinese-g6-023",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p386",
+      "cnName": "古诗《十五夜望月》",
+      "generatedId": "p-chinese-g6-024",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p387",
+      "cnName": "阅读《北京的春节》",
+      "generatedId": "p-chinese-g6-025",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p388",
+      "cnName": "阅读《腊八粥》",
+      "generatedId": "p-chinese-g6-026",
+      "chapter": "六年级下册 第1单元 课文·北京的春节"
+    },
+    {
+      "cnId": "cnc_p389",
+      "cnName": "多音字：泊、漂、载、难",
+      "generatedId": "p-chinese-g6-027",
+      "chapter": "六年级下册 第2单元 名著·鲁滨逊漂流记"
+    },
+    {
+      "cnId": "cnc_p390",
+      "cnName": "词语的语境义",
+      "generatedId": "p-chinese-g6-028",
+      "chapter": "六年级下册 第2单元 名著·鲁滨逊漂流记"
+    },
+    {
+      "cnId": "cnc_p391",
+      "cnName": "阅读《鲁滨逊漂流记》",
+      "generatedId": "p-chinese-g6-029",
+      "chapter": "六年级下册 第2单元 名著·鲁滨逊漂流记"
+    },
+    {
+      "cnId": "cnc_p392",
+      "cnName": "阅读《骑鹅旅行记》",
+      "generatedId": "p-chinese-g6-030",
+      "chapter": "六年级下册 第2单元 名著·鲁滨逊漂流记"
+    },
+    {
+      "cnId": "cnc_p393",
+      "cnName": "省略号和破折号",
+      "generatedId": "p-chinese-g6-031",
+      "chapter": "六年级下册 第3单元 散文·匆匆"
+    },
+    {
+      "cnId": "cnc_p394",
+      "cnName": "阅读《匆匆》",
+      "generatedId": "p-chinese-g6-032",
+      "chapter": "六年级下册 第3单元 散文·匆匆"
+    },
+    {
+      "cnId": "cnc_p395",
+      "cnName": "阅读《那个星期天》",
+      "generatedId": "p-chinese-g6-033",
+      "chapter": "六年级下册 第3单元 散文·匆匆"
+    },
+    {
+      "cnId": "cnc_p396",
+      "cnName": "文言文《两小儿辩日》",
+      "generatedId": "p-chinese-g6-034",
+      "chapter": "六年级下册 第4单元 文言文·两小儿辩日"
+    },
+    {
+      "cnId": "cnc_p397",
+      "cnName": "围绕中心选择材料",
+      "generatedId": "p-chinese-g6-035",
+      "chapter": "六年级下册 第5单元 习作·选材"
+    },
+    {
+      "cnId": "cnc_p398",
+      "cnName": "毕业赠言要具体",
+      "generatedId": "p-chinese-g6-036",
+      "chapter": "六年级下册 第6单元 综合性学习·难忘小学生活"
+    },
+    {
+      "cnId": "cnc_p399",
+      "cnName": "阅读《汤姆·索亚历险记》",
+      "generatedId": "p-chinese-g6-037",
+      "chapter": "六年级下册 第7单元 课文·汤姆索亚历险记"
+    },
+    {
+      "cnId": "cnc_p400",
+      "cnName": "古诗《石灰吟》",
+      "generatedId": "p-chinese-g6-038",
+      "chapter": "六年级下册 第8单元 古诗·石灰吟"
+    },
+    {
+      "cnId": "cnc_p401",
+      "cnName": "古诗《竹石》",
+      "generatedId": "p-chinese-g6-039",
+      "chapter": "六年级下册 第8单元 古诗·石灰吟"
+    },
+    {
+      "cnId": "cnc_p402",
+      "cnName": "古诗《书湖阴先生壁》",
+      "generatedId": "p-chinese-g6-040",
+      "chapter": "六年级下册 第8单元 古诗·石灰吟"
+    }
+  ]
+}

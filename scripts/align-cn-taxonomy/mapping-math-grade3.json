@@ -1,0 +1,251 @@
+{
+  "generatedAt": "2026-10-25T11:11:25.741Z",
+  "source": "cn-math-taxonomy",
+  "subject": "math",
+  "filter": {
+    "grade": 3,
+    "domains": [
+      "数与代数",
+      "图形与几何",
+      "统计与概率",
+      "综合与实践"
+    ]
+  },
+  "total": 39,
+  "items": [
+    {
+      "cnId": "cnm_p056",
+      "cnName": "克和千克",
+      "generatedId": "p-math-g3-001",
+      "chapter": "三年级上册 综合与实践 曹冲称象的故事"
+    },
+    {
+      "cnId": "cnm_p058",
+      "cnName": "带小括号的两步运算",
+      "generatedId": "p-math-g3-002",
+      "chapter": "三年级上册 第2单元 混合运算"
+    },
+    {
+      "cnId": "cnm_p059",
+      "cnName": "两步加减应用",
+      "generatedId": "p-math-g3-003",
+      "chapter": "三年级上册 第2单元 混合运算"
+    },
+    {
+      "cnId": "cnm_p067",
+      "cnName": "毫米",
+      "generatedId": "p-math-g3-004",
+      "chapter": "三年级上册 第3单元 毫米、分米和千米"
+    },
+    {
+      "cnId": "cnm_p068",
+      "cnName": "分米",
+      "generatedId": "p-math-g3-005",
+      "chapter": "三年级上册 第3单元 毫米、分米和千米"
+    },
+    {
+      "cnId": "cnm_p069",
+      "cnName": "千米",
+      "generatedId": "p-math-g3-006",
+      "chapter": "三年级上册 第3单元 毫米、分米和千米"
+    },
+    {
+      "cnId": "cnm_p070",
+      "cnName": "吨的认识",
+      "generatedId": "p-math-g3-007",
+      "chapter": "三年级上册 综合与实践 曹冲称象的故事"
+    },
+    {
+      "cnId": "cnm_p073",
+      "cnName": "倍的认识",
+      "generatedId": "p-math-g3-008",
+      "chapter": "三年级上册 第7单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p074",
+      "cnName": "多位数乘一位数",
+      "generatedId": "p-math-g3-009",
+      "chapter": "三年级上册 第4单元 多位数乘一位数"
+    },
+    {
+      "cnId": "cnm_p075",
+      "cnName": "因数中间或末尾有 0 的乘法",
+      "generatedId": "p-math-g3-010",
+      "chapter": "三年级上册 第4单元 多位数乘一位数"
+    },
+    {
+      "cnId": "cnm_p076",
+      "cnName": "数字编码",
+      "generatedId": "p-math-g3-011",
+      "chapter": "三年级上册 综合与实践 数字编码"
+    },
+    {
+      "cnId": "cnm_p077",
+      "cnName": "长方形和正方形的特征",
+      "generatedId": "p-math-g3-012",
+      "chapter": "三年级下册 第3单元 长方形和正方形"
+    },
+    {
+      "cnId": "cnm_p078",
+      "cnName": "长方形和正方形的周长",
+      "generatedId": "p-math-g3-013",
+      "chapter": "三年级下册 第3单元 长方形和正方形"
+    },
+    {
+      "cnId": "cnm_p079",
+      "cnName": "几分之一",
+      "generatedId": "p-math-g3-014",
+      "chapter": "三年级上册 第6单元 分数的初步认识"
+    },
+    {
+      "cnId": "cnm_p080",
+      "cnName": "同分母分数的初步加减",
+      "generatedId": "p-math-g3-015",
+      "chapter": "三年级上册 第6单元 分数的初步认识"
+    },
+    {
+      "cnId": "cnm_p081",
+      "cnName": "集合图里的重叠",
+      "generatedId": "p-math-g3-016",
+      "chapter": "三年级上册 第7单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p082",
+      "cnName": "东北、东南、西北、西南",
+      "generatedId": "p-math-g3-017",
+      "chapter": "三年级下册 第7单元 复习与关联"
+    },
+    {
+      "cnId": "cnm_p083",
+      "cnName": "除数是一位数的除法",
+      "generatedId": "p-math-g3-018",
+      "chapter": "三年级下册 第2单元 除数是一位数的除法"
+    },
+    {
+      "cnId": "cnm_p084",
+      "cnName": "除法解决实际问题",
+      "generatedId": "p-math-g3-019",
+      "chapter": "三年级下册 第2单元 除数是一位数的除法"
+    },
+    {
+      "cnId": "cnm_p085",
+      "cnName": "复式统计表",
+      "generatedId": "p-math-g3-020",
+      "chapter": "三年级下册 第5单元 数据的收集与整理"
+    },
+    {
+      "cnId": "cnm_p088",
+      "cnName": "面积的意义",
+      "generatedId": "p-math-g3-021",
+      "chapter": "三年级下册 第4单元 图形的面积"
+    },
+    {
+      "cnId": "cnm_p089",
+      "cnName": "长方形和正方形的面积",
+      "generatedId": "p-math-g3-022",
+      "chapter": "三年级下册 第4单元 图形的面积"
+    },
+    {
+      "cnId": "cnm_p090",
+      "cnName": "面积单位的换算",
+      "generatedId": "p-math-g3-023",
+      "chapter": "三年级下册 第4单元 图形的面积"
+    },
+    {
+      "cnId": "cnm_p091",
+      "cnName": "年、月、日",
+      "generatedId": "p-math-g3-024",
+      "chapter": "三年级下册 综合与实践 年、月、日的秘密"
+    },
+    {
+      "cnId": "cnm_p092",
+      "cnName": "24时记时法",
+      "generatedId": "p-math-g3-025",
+      "chapter": "三年级下册 综合与实践 年、月、日的秘密"
+    },
+    {
+      "cnId": "cnm_p093",
+      "cnName": "一位小数的初步认识",
+      "generatedId": "p-math-g3-026",
+      "chapter": "三年级下册 第6单元 小数的初步认识"
+    },
+    {
+      "cnId": "cnm_p094",
+      "cnName": "一位小数的加减",
+      "generatedId": "p-math-g3-027",
+      "chapter": "三年级下册 第6单元 小数的初步认识"
+    },
+    {
+      "cnId": "cnm_p095",
+      "cnName": "简单的搭配",
+      "generatedId": "p-math-g3-028",
+      "chapter": "三年级上册 第8单元 数学广角——搭配问题"
+    },
+    {
+      "cnId": "cnm_p099",
+      "cnName": "线段、直线和射线",
+      "generatedId": "p-math-g3-029",
+      "chapter": "三年级上册 第5单元 线和角"
+    },
+    {
+      "cnId": "cnm_p101",
+      "cnName": "锐角、直角和钝角",
+      "generatedId": "p-math-g3-030",
+      "chapter": "三年级上册 第5单元 线和角"
+    },
+    {
+      "cnId": "cnm_p221",
+      "cnName": "观察简单的立体积木",
+      "generatedId": "p-math-g3-031",
+      "chapter": "三年级上册 第1单元 观察物体"
+    },
+    {
+      "cnId": "cnm_p222",
+      "cnName": "长方体纸盒的展开图",
+      "generatedId": "p-math-g3-032",
+      "chapter": "三年级上册 第1单元 观察物体"
+    },
+    {
+      "cnId": "cnm_p223",
+      "cnName": "同级运算与两级运算的运算顺序",
+      "generatedId": "p-math-g3-033",
+      "chapter": "三年级上册 第2单元 混合运算"
+    },
+    {
+      "cnId": "cnm_p224",
+      "cnName": "等量代换（曹冲称象）",
+      "generatedId": "p-math-g3-034",
+      "chapter": "三年级上册 综合与实践 曹冲称象的故事"
+    },
+    {
+      "cnId": "cnm_p225",
+      "cnName": "角的认识",
+      "generatedId": "p-math-g3-035",
+      "chapter": "三年级上册 第5单元 线和角"
+    },
+    {
+      "cnId": "cnm_p226",
+      "cnName": "几分之几",
+      "generatedId": "p-math-g3-036",
+      "chapter": "三年级上册 第6单元 分数的初步认识"
+    },
+    {
+      "cnId": "cnm_p227",
+      "cnName": "简单的分数大小比较",
+      "generatedId": "p-math-g3-037",
+      "chapter": "三年级上册 第6单元 分数的初步认识"
+    },
+    {
+      "cnId": "cnm_p228",
+      "cnName": "生活中的运动现象",
+      "generatedId": "p-math-g3-038",
+      "chapter": "三年级下册 第1单元 生活中的运动现象"
+    },
+    {
+      "cnId": "cnm_p229",
+      "cnName": "多边形的认识",
+      "generatedId": "p-math-g3-039",
+      "chapter": "三年级下册 第3单元 长方形和正方形"
+    }
+  ]
+}
