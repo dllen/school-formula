@@ -1,0 +1,3 @@
+[submodule ".claude/skills/cn-math-taxonomy/repo"]
+	path = .claude/skills/cn-math-taxonomy/repo
+	url = https://github.com/xiaoyang111222/cn-math-taxonomy

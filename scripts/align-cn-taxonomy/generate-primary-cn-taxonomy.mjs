@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..', '..');
-const skillRoot = path.resolve(projectRoot, '.claude', 'skills', 'cn-math-taxonomy');
+const skillRoot = path.resolve(projectRoot, '.claude', 'skills', 'cn-math-taxonomy', 'repo');
 
 const SUBJECT_CONFIG = {
   math: {

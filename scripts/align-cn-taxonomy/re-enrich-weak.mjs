@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, '..', '..');
-const skillRoot = path.resolve(projectRoot, '.claude', 'skills', 'cn-math-taxonomy');
+const skillRoot = path.resolve(projectRoot, '.claude', 'skills', 'cn-math-taxonomy', 'repo');
 
 const MODEL = process.env.OLLAMA_MODEL || 'gemma4:31b-cloud';
 const OLLAMA_URL = process.env.OLLAMA_URL || 'http://localhost:11434';
