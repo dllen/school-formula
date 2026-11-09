@@ -45,8 +45,12 @@ binding = "ASSETS"
 
 [vars]
 FRONTEND_URL = "https://syy.global"
-# AI Gateway（Cloudflare），用户免费层：<a href="https://ai.cloudflare.com">ai.cloudflare.com</a> 手动创建网关后填网关 Base URL（留空则 AI 接口返回 503 GATEWAY_NOT_CONFIGURED）
-AI_GATEWAY_BASE = ""
+# AI 上游 Base URL，Worker 会拼 /chat/completions。
+# 当前直连 DeepSeek：有 key 就够，不需要先建 AI Gateway。
+# 想换成网关（要缓存/日志/重试）时改成下面这行，并按 docs/cloudflare-ai.md 补 cf-aig-authorization：
+# AI_GATEWAY_BASE = "https://gateway.ai.cloudflare.com/v1/<account_id>/<gateway_id>/deepseek"
+# 留空则 AI 接口返回 503 GATEWAY_NOT_CONFIGURED。
+AI_GATEWAY_BASE = "https://api.deepseek.com"
 # 网关 Token / 或直连时的 provider key。**生产请用 `wrangler secret put`**，
 # 不要在这个文件里写真实值（[vars] 是明文且会提交进 git）。
 AI_GATEWAY_TOKEN = ""

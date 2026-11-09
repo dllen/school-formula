@@ -1,6 +1,6 @@
 # Cloudflare AI 功能开发指南
 
-- **Status:** 代码已就绪；生产配置未完成（`AI_GATEWAY_BASE` / `AI_GATEWAY_TOKEN` 在 `wrangler.toml` 里仍是空串）
+- **Status:** 已切到 DeepSeek 直连（`AI_GATEWAY_BASE = https://api.deepseek.com`）；`AI_GATEWAY_TOKEN` 用 `wrangler secret put` 注入，仓库内保持空串
 - **适用范围:** `worker/routes/ai.ts`、`src/services/gateway.ts`、`src/services/ai.ts`、`wrangler.toml`
 - **相关文档:** [DEPLOYMENT.md](../DEPLOYMENT.md)、[DEPLOY_AUTH.md](../DEPLOY_AUTH.md)、[adsense.md](adsense.md)
 

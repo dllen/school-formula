@@ -290,7 +290,7 @@ worker/
 |------|------|
 | `FRONTEND_URL` | 前端 URL（`https://syy.global`） |
 | `ALLOWED_ORIGINS` | CORS 允许的源（逗号分隔） |
-| `AI_GATEWAY_BASE` | Cloudflare AI Gateway Base URL |
+| `AI_GATEWAY_BASE` | AI 上游 Base URL（当前直连 `https://api.deepseek.com`；改用 AI Gateway 时填网关地址） |
 | `AI_GATEWAY_TOKEN` | AI Gateway 鉴权 Token |
 | `AI_GATEWAY_MODEL` | 默认模型（`deepseek-flash`；旧名 `deepseek-chat` 已于 2026-07-24 下线） |
 | `AI_THINKING` | DeepSeek thinking 模式，`enabled` / `disabled`（默认 `disabled`，首 token 更快） |
