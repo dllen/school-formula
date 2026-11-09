@@ -257,7 +257,10 @@ export async function handleAuth(
       .bind(body.email.toLowerCase(), code, 'reset_password', expiresAt)
       .run();
 
-    await sendVerificationEmail(body.email.toLowerCase(), code, env);
+    const sent = await sendVerificationEmail(body.email.toLowerCase(), code, env);
+    // 不把失败暴露给客户端（避免邮箱枚举），但必须在服务端留痕，
+    // 否则「一直收不到验证码」在日志里完全静默。
+    if (!sent.ok) console.error('reset code not delivered:', sent.reason);
     return jsonResponse({ message: '如果邮箱存在，验证码已发送' });
   }
 

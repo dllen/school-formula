@@ -15,6 +15,18 @@ export interface Env {
   AI_GATEWAY_MODEL: string;
   /** DeepSeek thinking 模式：'enabled' | 'disabled'（默认 disabled，见 routes/ai.ts） */
   AI_THINKING?: string;
+  /** Cloudflare Email Service 的 send_email 绑定；未配置时回落到 Resend */
+  EMAIL?: {
+    send(message: {
+      to: string;
+      from: string;
+      subject: string;
+      html?: string;
+      text?: string;
+    }): Promise<{ messageId: string }>;
+  };
+  /** Resend API key（未绑定 EMAIL 时使用） */
+  RESEND_API_KEY?: string;
   ASSETS: Fetcher;
   ENVIRONMENT: string;
 }

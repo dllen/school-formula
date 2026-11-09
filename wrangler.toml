@@ -60,5 +60,11 @@ AI_GATEWAY_MODEL = "deepseek-flash"
 # DeepSeek V4 默认开启 thinking（首 token 要等推理结束）。家长辅导场景关掉更跟手。
 AI_THINKING = "disabled"
 FROM_EMAIL = "noreply@syy.global"
+# 邮件通道（二选一，详见 docs/email.md）：
+# 1) Cloudflare Email Service：控制台 onboard syy.global 后，取消下面两行注释并重新部署
+# [[send_email]]
+# name = "EMAIL"
+# 2) Resend：npx wrangler secret put RESEND_API_KEY
+# 注意：MailChannels 免费接口已于 2024-06-30 停止，旧的 api.mailchannels.net 调用会 401。
 ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
