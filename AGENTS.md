@@ -156,6 +156,7 @@ npm run ingest:dry       # 校验但不写盘
 - **AI 调用**：`src/services/ai.ts` 使用 `openai` SDK 在浏览器端直接请求用户配置的 API Endpoint（OpenAI / DeepSeek / 智谱 / 自定义）。API Key 仅保存在浏览器 `localStorage`（`school_formula_ai_config`），不会发送到项目方的服务器。
 - **注意**：因为 API Key 在浏览器中使用，该设计依赖用户自行保管密钥；不要建议将密钥硬编码进源码。
 - **AI 接入指南**：AI Gateway 配置、鉴权头（`cf-aig-authorization`）、Workers AI 兜底与 Vectorize RAG 方案见 [docs/cloudflare-ai.md](docs/cloudflare-ai.md)。
+- **邮件通道**：验证码 / 密码重置邮件走 Resend（`RESEND_API_KEY`）或 Cloudflare Email Service 绑定（`EMAIL`），MailChannels 免费接口已于 2024-06-30 停服；配置、排错与应急取码见 [docs/email.md](docs/email.md)。
 
 ---
 

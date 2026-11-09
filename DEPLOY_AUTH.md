@@ -39,16 +39,17 @@ npx wrangler secret put JWT_SECRET
 # 输入：至少 32 字符的随机字符串（openssl rand -hex 32）
 ```
 
-### 5. 配置邮件发送（MailChannels）
+### 5. 配置邮件发送（Resend）
 
-验证码邮件走 **Cloudflare MailChannels** 集成（`worker/lib/email.ts`），无需第三方 SaaS Key：
+验证码 / 密码重置邮件走 **Resend**（`worker/lib/email.ts`）。旧的 MailChannels 免费接口已于 2024-06-30 停服，不要再按老文档配置。
 
-1. Cloudflare Dashboard → 域名 → DNS → 新增 TXT 记录：
-   - 名称 `@`，内容 `v=spf1 include:_spf.mx.cloudflare.net ~all`
-2. Cloudflare Dashboard → Email → Email Workers → 启用并完成发件域名验证
-3. `wrangler.toml` 的 `[vars]` 里 `FROM_EMAIL` 填验证过的发件地址（当前 `noreply@syy.global`）
+1. 在 [Resend](https://resend.com/domains) 添加并验证 `syy.global`（MX / SPF / DKIM 三条记录加到 Cloudflare DNS）
+2. 写入 secret：`npx wrangler secret put RESEND_API_KEY`
+3. `wrangler.toml` 的 `[vars]` 里 `FROM_EMAIL` 必须是已验证域名下的地址（当前 `noreply@syy.global`）
 
-免费额度 3000 封/月。本地 `wrangler dev` 未配置发件地址时，验证码会直接打印到 wrangler 控制台，便于本地验收。
+备选方案是 Cloudflare Email Service 的 `[[send_email]]` 绑定（`EMAIL`），代码会优先使用它、Resend 退为兜底。
+
+完整步骤、排错表与应急取码方式见 [docs/email.md](docs/email.md)。本地 `wrangler dev` 未配置任何通道时，验证码会打印到 wrangler 控制台。
 
 ### 6. 配置 AI 网关（可选）
 
@@ -84,7 +85,7 @@ CORS 白名单由 `[vars]` 的 `ALLOWED_ORIGINS` 控制（当前为三个站点�
 ## 认证流程说明
 
 - **注册免验证**（方案 2）：`POST /api/auth/register` 直接激活账号（`email_verified=1`），邮箱仅用于找回密码，注册时**不**发验证码邮件。
-- **找回密码**：`POST /api/auth/forgot` 发送 6 位验证码（10 分钟有效，MailChannels 发出）→ `POST /api/auth/reset` 重置。为防邮箱枚举，forgot 对不存在的邮箱也返回相同文案。
+- **找回密码**：`POST /api/auth/forgot` 发送 6 位验证码（10 分钟有效，经 Resend 或 Cloudflare Email Service 发出）→ `POST /api/auth/reset` 重置。为防邮箱枚举，forgot 对不存在的邮箱也返回相同文案。
 - **会话**：JWT access token + KV 中的 refresh token（`/api/auth/refresh` 轮换，`/api/auth/logout` 失效）。
 
 ### 端点清单
@@ -116,7 +117,7 @@ CORS 白名单由 `[vars]` 的 `ALLOWED_ORIGINS` 控制（当前为三个站点�
 │   ├── lib/
 │   │   ├── jwt.ts              # JWT 签名/验证
 │   │   ├── password.ts         # PBKDF2 密码哈希
-│   │   └── email.ts            # MailChannels 验证码邮件
+│   │   └── email.ts            # 验证码邮件（EMAIL 绑定 / Resend）
 │   └── routes/
 │       ├── auth.ts             # /api/auth/*（register/login/refresh/logout/forgot/reset）
 │       ├── user.ts             # /api/user/*（me/config）

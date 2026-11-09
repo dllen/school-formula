@@ -73,7 +73,7 @@ npx wrangler d1 execute school-formula-db --file=db/schema.sql
 | 后端 API | Cloudflare Workers | `school-formula-api` Worker |
 | 数据库 | Cloudflare D1（SQLite） | `school-formula-db` |
 | 会话存储 | Cloudflare KV | `SESSIONS` 命名空间 |
-| AI 代理 | Cloudflare AI Gateway | 外部服务（DeepSeek 等） |
+| AI 调用 | DeepSeek 直连（Worker 代理）；可选 Cloudflare AI Gateway | 外部服务（DeepSeek 等） |
 
 ### 前端架构
 
@@ -119,7 +119,7 @@ worker/
 ├── lib/
 │   ├── jwt.ts           # JWT 签名/验证（HS256，Web Crypto API）
 │   ├── password.ts      # PBKDF2 密码哈希（100000 轮 SHA-256）
-│   └── email.ts         # 邮件发送（Cloudflare MailChannels，免费 3000 封/月）
+│   └── email.ts         # 邮件发送（EMAIL 绑定 / Resend，见 docs/email.md）
 ├── routes/
 │   ├── auth.ts          # /api/auth/*（register/login/refresh/logout/forgot/reset）
 │   ├── user.ts          # /api/user/*（me/config）
@@ -143,6 +143,8 @@ worker/
 
 1. **直连模式**：浏览器端通过 `openai` SDK 直接调用用户配置的 API（OpenAI/DeepSeek/智谱/自定义），API Key 存 localStorage
 2. **Gateway 模式**：前端 → Worker `/api/ai/gateway` → Cloudflare AI Gateway → DeepSeek，Worker 负责 JWT 验证、配额管理、SSE 流式透传
+
+> 生产当前是**直连**：`AI_GATEWAY_BASE = https://api.deepseek.com`，没有启用 AI Gateway。切网关只需改这个变量并补 `cf-aig-authorization`。
 
 **配额**：plus 50 次/天，pro 无限，free 无权限
 
@@ -301,7 +303,10 @@ worker/
 
 | Secret | 说明 |
 |--------|------|
-| `JWT_SECRET` | JWT 签名密钥（至少 32 字符） |
+| `JWT_SECRET` | JWT 签名密钥（至少 32 字符）；缺失时登录/注册/me 全部 500 |
+| `RESEND_API_KEY` | 验证码邮件（Resend）；未配置 `EMAIL` 绑定时使用 |
+
+> 邮件通道二选一：`EMAIL`（`[[send_email]]` 绑定，需在控制台 onboard 域名）或 `RESEND_API_KEY`，优先级见 [docs/email.md](docs/email.md)。
 
 ## 多域名架构
 

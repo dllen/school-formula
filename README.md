@@ -65,7 +65,7 @@ npm run ingest:dry     # 校验但不写盘
 - **Cloudflare Workers**（主）：push 到 `main` 或手动触发 `.github/workflows/deploy-cloudflare.yml`，把 `dist/` 作为静态资源 + Worker 提供 `/api/*`（D1 迁移 → wrangler deploy）。
 - **GitHub Pages**（备用/遗留）：`.github/workflows/deploy.yml` 推送到 `gh-pages` 分支，纯静态、无后端能力。
 
-详细步骤与首次初始化见 [DEPLOYMENT.md](DEPLOYMENT.md)；用户体系（D1/KV/MailChannels/AI 网关）配置见 [DEPLOY_AUTH.md](DEPLOY_AUTH.md)。
+详细步骤与首次初始化见 [DEPLOYMENT.md](DEPLOYMENT.md)；用户体系（D1/KV/Resend 邮件/AI 网关）配置见 [DEPLOY_AUTH.md](DEPLOY_AUTH.md)，邮件通道细节见 [docs/email.md](docs/email.md)。
 
 ## 更多文档
 
