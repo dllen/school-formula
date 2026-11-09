@@ -58,7 +58,7 @@ npx wrangler secret put JWT_SECRET
 2. `wrangler.toml` 的 `[vars]` 填：
    - `AI_GATEWAY_BASE` = 网关 Base URL
    - `AI_GATEWAY_TOKEN` = 网关 Service Token 或 Cloudflare API Token
-   - `AI_GATEWAY_MODEL` = 默认模型（当前 `deepseek-chat`）
+   - `AI_GATEWAY_MODEL` = 默认模型（当前 `deepseek-flash`；旧名 `deepseek-chat` / `deepseek-reasoner` 已于 2026-07-24 下线）
 
 ### 7. 本地开发
 

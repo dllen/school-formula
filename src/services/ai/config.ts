@@ -12,8 +12,10 @@ export const PROVIDER_DEFAULTS: Record<string, Partial<AIConfig>> = {
         model: 'gpt-4o',
     },
     deepseek: {
-        baseUrl: 'https://api.deepseek.com',
-        model: 'deepseek-chat',
+        baseUrl: 'https://api.deepseek.com/v1',
+        // DeepSeek 旧名 deepseek-chat / deepseek-reasoner 已于 2026-07-24 下线，
+        // 现行模型是 deepseek-flash（V4.1-Flash）与 deepseek-v4-pro。
+        model: 'deepseek-flash',
     },
     zhipu: {
         baseUrl: 'https://open.bigmodel.cn/api/paas/v4',

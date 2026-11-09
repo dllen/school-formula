@@ -146,6 +146,8 @@ worker/
 
 **配额**：plus 50 次/天，pro 无限，free 无权限
 
+> 网关配置、`cf-aig-authorization` 鉴权头、Workers AI 兜底与 RAG 方案见 [docs/cloudflare-ai.md](docs/cloudflare-ai.md)。
+
 ### 会员体系
 
 | 等级 | AI 调用 | 功能 |
@@ -290,7 +292,8 @@ worker/
 | `ALLOWED_ORIGINS` | CORS 允许的源（逗号分隔） |
 | `AI_GATEWAY_BASE` | Cloudflare AI Gateway Base URL |
 | `AI_GATEWAY_TOKEN` | AI Gateway 鉴权 Token |
-| `AI_GATEWAY_MODEL` | 默认模型（`deepseek-chat`） |
+| `AI_GATEWAY_MODEL` | 默认模型（`deepseek-flash`；旧名 `deepseek-chat` 已于 2026-07-24 下线） |
+| `AI_THINKING` | DeepSeek thinking 模式，`enabled` / `disabled`（默认 `disabled`，首 token 更快） |
 | `FROM_EMAIL` | 发件地址（`noreply@syy.global`） |
 | `ENVIRONMENT` | 环境标识（`production`） |
 

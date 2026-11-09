@@ -28,6 +28,10 @@ package-lock.json
 .vitest/
 .wrangler/
 
+# Wrangler 本地 secrets（含 AI_GATEWAY_TOKEN 等，禁止提交）
+.dev.vars
+.dev.vars.*
+
 # 生成脚本配置（含 apiKey，勿提交脚本内网配置）
 scripts/generate-config.json
 scripts/._checkpoint_*.json

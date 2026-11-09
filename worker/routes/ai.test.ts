@@ -120,7 +120,7 @@ function makeEnv(db: FakeD1, overrides: Partial<Env> = {}): Env {
     ALLOWED_ORIGINS: '',
     AI_GATEWAY_BASE: 'https://gateway.example.test',
     AI_GATEWAY_TOKEN: 'test-token',
-    AI_GATEWAY_MODEL: 'deepseek-chat',
+    AI_GATEWAY_MODEL: 'deepseek-flash',
     ASSETS: {} as Fetcher,
     ENVIRONMENT: 'test',
     ...overrides,
@@ -155,7 +155,7 @@ function postRequest(path: string, body: object, auth: string): Request {
 
 interface FetchCall {
   url: string;
-  body: { model?: string; stream?: boolean; messages?: unknown };
+  body: { model?: string; stream?: boolean; messages?: unknown; thinking?: unknown };
 }
 
 /**
@@ -272,8 +272,8 @@ describe('handleAI model allowlist', () => {
     );
     expect(res.status).toBe(200);
     expect(stub.calls.length).toBe(1);
-    // 白名单只放 deepseek-chat / deepseek-reasoner；gpt-5 应被回退到默认
-    expect(stub.calls[0].body.model).toBe('deepseek-chat');
+    // 白名单只放 deepseek-flash / deepseek-v4-pro；gpt-5 应被回退到默认
+    expect(stub.calls[0].body.model).toBe('deepseek-flash');
   });
 
   it('passes through allowlisted model names unchanged', async () => {
@@ -283,11 +283,11 @@ describe('handleAI model allowlist', () => {
     );
     restoreFetch = stub.restore;
     await handleAI(
-      postRequest('/api/ai/chat', { prompt: 'hi', model: 'deepseek-reasoner', stream: false }, `Bearer ${token}`),
+      postRequest('/api/ai/chat', { prompt: 'hi', model: 'deepseek-v4-pro', stream: false }, `Bearer ${token}`),
       env,
       buildCtx(),
     );
-    expect(stub.calls[0].body.model).toBe('deepseek-reasoner');
+    expect(stub.calls[0].body.model).toBe('deepseek-v4-pro');
   });
 
   it('falls back to env.AI_GATEWAY_MODEL when model is omitted', async () => {
@@ -301,7 +301,36 @@ describe('handleAI model allowlist', () => {
       env,
       buildCtx(),
     );
-    expect(stub.calls[0].body.model).toBe('deepseek-chat');
+    expect(stub.calls[0].body.model).toBe('deepseek-flash');
+  });
+
+  it('disables DeepSeek thinking mode by default', async () => {
+    const token = await signToken(env, 'user-2c', 'plus');
+    const stub = stubFetchOk(() =>
+      jsonReply({ choices: [{ message: { content: 'ok' } }] }),
+    );
+    restoreFetch = stub.restore;
+    await handleAI(
+      postRequest('/api/ai/chat', { prompt: 'hi', stream: false }, `Bearer ${token}`),
+      env,
+      buildCtx(),
+    );
+    expect(stub.calls[0].body.thinking).toEqual({ type: 'disabled' });
+  });
+
+  it('keeps thinking mode when AI_THINKING=enabled', async () => {
+    env = makeEnv(db, { AI_THINKING: 'enabled' });
+    const token = await signToken(env, 'user-2d', 'plus');
+    const stub = stubFetchOk(() =>
+      jsonReply({ choices: [{ message: { content: 'ok' } }] }),
+    );
+    restoreFetch = stub.restore;
+    await handleAI(
+      postRequest('/api/ai/chat', { prompt: 'hi', stream: false }, `Bearer ${token}`),
+      env,
+      buildCtx(),
+    );
+    expect(stub.calls[0].body.thinking).toBeUndefined();
   });
 });
 

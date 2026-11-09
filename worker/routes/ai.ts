@@ -19,22 +19,35 @@ function errorResponse(error: string, status: number = 400, code?: string): Resp
 /**
  * 通过 Worker 暴露的模型白名单。
  *
- * - 默认值（`wrangler.toml` 的 `AI_GATEWAY_MODEL`）是 `deepseek-chat`；
- * - 计划 / 文档里显式提到 `deepseek-reasoner`（DeepSeek 推理模型）作为白名单成员；
- * - 只允许这两个：用户/前端把任意字符串塞进 `request.model` 时，Worker 应当
- *   静默回退到默认模型而不是允许任意上游调用。
+ * DeepSeek 已于 2026-07-24 下线 `deepseek-chat` / `deepseek-reasoner` 两个旧名
+ * （https://api-docs.deepseek.com/updates），现行模型名是：
+ * - `deepseek-flash`：DeepSeek-V4.1-Flash，便宜、快，作为默认值；
+ * - `deepseek-v4-pro`：V4 Pro，面向复杂推理，单价更高。
+ * 继续发旧名上游会返回 400 Model Not Exist，所以白名单必须跟随上游。
  *
  * 白名单外的请求不会报错——只是被替换为 `env.AI_GATEWAY_MODEL`，
  * 避免单次用户输入把整个 AI 路径拒掉。
  */
-const ALLOWED_MODELS: ReadonlySet<string> = new Set(['deepseek-chat', 'deepseek-reasoner']);
+const ALLOWED_MODELS: ReadonlySet<string> = new Set(['deepseek-flash', 'deepseek-v4-pro']);
 
 /** Resolve the model name actually sent to the gateway. */
 function resolveModel(requested: string | undefined, env: Env): string {
-  const fallback = env.AI_GATEWAY_MODEL || 'deepseek-chat';
+  const fallback = env.AI_GATEWAY_MODEL || 'deepseek-flash';
   const candidate = requested?.trim();
   if (!candidate) return fallback;
   return ALLOWED_MODELS.has(candidate) ? candidate : fallback;
+}
+
+/**
+ * DeepSeek V4 默认开启 thinking 模式（effort=high）：首 token 要等推理结束，
+ * 而前端 SSE 解析器只读 `delta.content`，推理阶段的 `reasoning_content` 不会显示，
+ * 用户看到的是长时间空白，同时推理 token 也要计费。
+ *
+ * 家长辅导场景不需要长推理，默认关闭；要恢复思考链设 `AI_THINKING=enabled`。
+ */
+function thinkingParam(env: Env): Record<string, unknown> {
+  const mode = (env.AI_THINKING ?? 'disabled').trim().toLowerCase();
+  return mode === 'enabled' ? {} : { thinking: { type: 'disabled' } };
 }
 
 /** 当日 UTC 日期键（YYYY-MM-DD），用于用户级每日额度统计 */
@@ -202,6 +215,7 @@ async function proxyToGateway(
     model,
     stream,
     messages,
+    ...thinkingParam(env),
   });
 
   let upstream: Response;

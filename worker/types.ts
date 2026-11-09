@@ -6,8 +6,15 @@ export interface Env {
   FRONTEND_URL: string;
   ALLOWED_ORIGINS: string;
   AI_GATEWAY_BASE: string;
+  /**
+   * 直连模式下就是 provider key（DeepSeek 的 sk-...），会被放进 `Authorization: Bearer`；
+   * 走 AI Gateway 且网关开了鉴权时，它应是 Cloudflare AI Gateway token 并改发
+   * `cf-aig-authorization`（当前实现只发 Authorization，见 docs/cloudflare-ai.md）。
+   */
   AI_GATEWAY_TOKEN: string;
   AI_GATEWAY_MODEL: string;
+  /** DeepSeek thinking 模式：'enabled' | 'disabled'（默认 disabled，见 routes/ai.ts） */
+  AI_THINKING?: string;
   ASSETS: Fetcher;
   ENVIRONMENT: string;
 }

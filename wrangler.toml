@@ -47,9 +47,14 @@ binding = "ASSETS"
 FRONTEND_URL = "https://syy.global"
 # AI Gateway（Cloudflare），用户免费层：<a href="https://ai.cloudflare.com">ai.cloudflare.com</a> 手动创建网关后填网关 Base URL（留空则 AI 接口返回 503 GATEWAY_NOT_CONFIGURED）
 AI_GATEWAY_BASE = ""
-# Workers 调网关的鉴权 Token（在网关生成 Service Token 或 Cloudflare API Token）
+# 网关 Token / 或直连时的 provider key。**生产请用 `wrangler secret put`**，
+# 不要在这个文件里写真实值（[vars] 是明文且会提交进 git）。
 AI_GATEWAY_TOKEN = ""
-AI_GATEWAY_MODEL = "deepseek-chat"
+# DeepSeek 现行模型名：deepseek-flash（默认，便宜快）/ deepseek-v4-pro（复杂推理）。
+# 旧名 deepseek-chat / deepseek-reasoner 已于 2026-07-24 下线，别再使用。
+AI_GATEWAY_MODEL = "deepseek-flash"
+# DeepSeek V4 默认开启 thinking（首 token 要等推理结束）。家长辅导场景关掉更跟手。
+AI_THINKING = "disabled"
 FROM_EMAIL = "noreply@syy.global"
 ALLOWED_ORIGINS = "https://syy.global,https://syy.mobi,https://syy.one"
 ENVIRONMENT = "production"
