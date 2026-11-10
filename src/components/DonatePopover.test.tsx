@@ -32,4 +32,22 @@ describe('DonatePopover', () => {
 
     expect(screen.queryByAltText('支付宝收款码')).toBeNull();
   });
+
+  it('按 Esc 关闭', () => {
+    renderPopover();
+    fireEvent.click(screen.getByRole('button', { name: '赞赏支持' }));
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(screen.queryByAltText('支付宝收款码')).toBeNull();
+  });
+
+  it('点击 Popover 外部关闭', () => {
+    renderPopover();
+    fireEvent.click(screen.getByRole('button', { name: '赞赏支持' }));
+
+    fireEvent.mouseDown(document.body);
+
+    expect(screen.queryByAltText('支付宝收款码')).toBeNull();
+  });
 });
