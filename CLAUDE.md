@@ -80,11 +80,16 @@ npx wrangler d1 execute school-formula-db --file=db/schema.sql
 ```
 src/
 ├── components/          # React 组件（按功能分子目录）
+│   ├── AIChatView/      # AI 助教对话（会话列表 / 消息区 / 气泡）
 │   ├── auth/            # 登录/注册/忘记密码/会员拦截
 │   ├── Header/          # 导航栏（Logo、NavMenu、MobileNav、UserMenu）
 │   ├── icons/           # 统一 SVG 图标（Icon.tsx）+ emoji 映射（iconFor.ts）
+│   ├── KnowledgeDetail/ # 知识点详情（教程 / 练习 / 趣味角 / AI 生成）
+│   ├── legal/           # 隐私政策等服务条款
+│   ├── poetry/          # 古诗词浏览与阅读
 │   ├── practice/        # 练习系统（QuestionCard、ErrorBook、PracticeResult 等）
 │   ├── prompts/         # 提示词库（PromptCard、PromptDetail、PromptModal 等）
+│   ├── reference/       # 英文可打印速查表（/en）
 │   └── tutorials/       # 教程组件（TutorialUnitDetail、TutorialLearnTab 等）
 ├── context/             # AuthContext + auth-context.ts（useAuth hook）
 ├── hooks/               # 自定义 hooks
@@ -106,12 +111,13 @@ src/
 │   └── RequireTier.tsx  # 会员等级拦截（free/plus/pro）
 ├── utils/
 │   ├── jwt.ts           # JWT token 存储/读取
-│   └── questionUtils.ts # 题库工具函数
-├── styles/              # 设计 token（tokens.css + base.css）
+│   ├── questionUtils.ts # 题库工具函数
+│   └── markdown.ts      # 渲染前剥离 Markdown 标题里的装饰 emoji
+├── styles/              # 设计系统：tokens.css + base.css + ui.css（见 design.md）
 ├── prerender/           # 预渲染引擎（run.ts、inject.ts、og.ts、routes.ts）
 ├── entry-server.tsx     # SSR 渲染入口（renderToString）
 ├── entry-prerender.ts   # 预渲染 runner（无顶层 await）
-├── App.tsx              # 路由配置（/ 和 /knowledge/:id）
+├── App.tsx              # 路由配置（视图 / 详情 / 英文站 / 法务 / sitemap）
 └── main.tsx             # 应用入口（AuthProvider + BrowserRouter）
 ```
 
@@ -175,12 +181,17 @@ worker/
 | `/mastery` | `Home` | 掌握度 |
 | `/practice` | `Home` | 练习 |
 | `/notes` | `Home` | 笔记 |
-| `/zizhi` | `Home` | 自知 |
-| `/shiji` | `Home` | 实践 |
+| `/zizhi` | `Home` | 资治通鉴 |
+| `/shiji` | `Home` | 史记 |
 | `/ai-chat` | `Home` | AI 对话 |
+| `/poetry` | `Home` | 古诗词 |
 | `/knowledge/:id` | `KnowledgeDetail` | 知识点详情 + AI 生成 |
+| `/poetry/:id` | `PoemDetail` | 古诗词详情（带站点页头/页脚） |
+| `/en/` `/en/:category/` `/en/:category/:slug/` | `Reference*` | 英文可打印速查表（独立布局） |
+| `/sitemap` | `HtmlSitemap` | HTML 站点地图 |
+| `/privacy` `/terms` `/about` `/contact` | `LegalPage` | 法务页 |
 
-`Home` 组件的 `ViewType`：`knowledge` | `tutorial` | `cheatsheet` | `mental-math` | `formula` | `mastery` | `practice` | `notes` | `zizhi` | `shiji` | `ai-chat`
+`Home` 组件的 `ViewType`：`knowledge` | `tutorial` | `cheatsheet` | `mental-math` | `formula` | `mastery` | `practice` | `notes` | `zizhi` | `shiji` | `ai-chat` | `poetry`
 
 视图路径由 `src/view-routes.ts` 的 `VIEW_PATHS` 定义（`pathForView` / `viewFromPath` / `isViewName`）；Worker 端 `KNOWN_VIEWS`（`worker/index.ts`）是同步副本——新增视图时两处都要改。
 
@@ -231,7 +242,7 @@ worker/
 | `techniques` | `techniques` | `Technique[]` |
 | `prompts` | `prompts` | `PromptTemplate[]` |
 
-> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本的测试已统一到 Vitest：根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 一并跑通 `src/**` 与 `scripts/**`（164 个测试，26 个 test files）；两个子包各自 `cd scripts/<sub> && npm test`（`vitest run`）也可独立运行。
+> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本的测试已统一到 Vitest：根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 一并跑通 `src/**` 与 `scripts/**`（563 个测试，98 个 test files）；两个子包各自 `cd scripts/<sub> && npm test`（`vitest run`）也可独立运行。
 
 ## 部署
 
@@ -273,18 +284,26 @@ worker/
 ### 组件约定
 
 - 命名导出（named export）：`export const Home = () => ...`
+- 新增页面按 `docs/ui-system.md` 的骨架写：`page-shell` + `Header` + `container-page pt-10` + `page-head` + `Footer`；内容用目录行 / 发丝线分区，不另起一套卡片。
 - 数据文件集中在 `src/data/`，类型定义在对应 `types.ts`
 - 知识点 ID 全局唯一，作为路由参数 `/knowledge/:id`
 
-### 样式
+### 样式与设计系统
 
-- Tailwind CSS v4，通过 `@import "tailwindcss";` 引入。
-- 设计 token 集中管理在 `src/styles/tokens.css`（palette、type scale、spacing、easing、shadow、z）与 `src/styles/base.css`（canvas、focus、selection、scrollbar、motion contract）。**所有色值均为 OKLCH**——不用 hex，不用 Tailwind 内置调色板。
-- 语义 token：`accent` / `paper` / `ink` / `rule` / `success` / `error` / `warning` / `info`。页面底色用 `bg-paper-2`，不是 `bg-gray-50`。
-- 图标：`src/components/icons/Icon.tsx`（76 枚 24×24 描边 SVG，1.8px 描边）+ `src/components/icons/iconFor.ts`（将数据层原有 emoji 映射为图标名）。组件只导一次：`import { Icon } from './icons/Icon'`，emoji 映射用 `import { iconFor } from './icons/iconFor'`。
-- 动效：禁 `transition-all`，显式写 `transition-colors` / `transition-opacity` / `transition-transform`。入场 `--ease-out`（`cubic-bezier(0.16, 1, 0.3, 1)`），hover `--dur-micro`（120ms）。
-- `html` 与 `body` 必须 `overflow-x: clip`（不用 `hidden`）。交互元素必须有即时 `:focus-visible`，装饰性 SVG 必须带 `aria-hidden="true"`。
-- 古典文学（poetry/shiji/zizhi）用 `font-serif`（已在 `tokens.css` 声明）。
+> 事实来源：根目录 `design.md`（锁定的决策）+ `src/styles/{tokens,base,ui}.css`（实现）。施工指南见 `docs/ui-system.md`（页面骨架、组件原语、表面阶梯、检查清单、陷阱）。
+
+- Tailwind CSS v4，入口 `src/index.css`：`@import "tailwindcss";` 之后依次 `tokens.css` → `base.css` → `ui.css`。
+- `tokens.css`（`@theme`）：OKLCH 色板、字体栈、字号、间距、圆角、阴影、缓动、时长、z-index、容器。**所有色值均为 OKLCH**——不用 hex，不用 Tailwind 内置调色板。
+- 语义 token：`accent`（品牌蓝：主操作 / 选中 / 焦点）、`paper` / `card` / `well`（表面）、`ink`（四级文字）、`rule` / `divider`、`success` / `error` / `warning` / `info`（各有 fill / `-ink` / `-bg`）。页面底色 `bg-paper`，成组次要内容 `bg-paper-2`。
+- `ui.css`（`@layer components`）：页面骨架与组件原语，新页面优先复用，不要另拼一套：`page-shell` / `container-page` / `page-head` / `page-title` / `page-lead`、`seg` + `seg-btn`、`btn` + `btn-primary` / `btn-secondary` / `btn-ghost`、`rail` / `rail-item`、`index-head` / `kp-row`、`section` / `section-head`、`well` / `sheet`、`prose-body`、`toc`、`tag`、`breadcrumb`、`empty-state`、`table-basic`、`field` / `input`、`chat-layout` 等。
+- **表面阶梯**：whitespace → 1px divider → paper-2 well → card（border 与 shadow 二选一）。不做卡片套卡片；不给内容卡片加阴影；一页一种主按钮样式。
+- **Tailwind v4 陷阱**：`bg-[paper-2]`、`text-[ink]` 这类「方括号主题名」编译成 `background-color: paper-2`（无效 CSS，静默丢弃）。必须用主题工具类：`bg-paper-2`、`text-ink-2`、`border-divider`。历史上清理过 466 处。
+- Markdown：项目**没有** `@tailwindcss/typography`，`prose` 类无效；Markdown 输出放进 `.prose-body`。标题里的装饰 emoji 用 `stripHeadingEmoji()` 在渲染前剥离。
+- 图标：`src/components/icons/Icon.tsx` 唯一图标集（24×24，1.8px 描边）+ `iconFor()` 映射数据 emoji；不使用 emoji 当图标。组件只导一次：`import { Icon } from './icons/Icon'`。
+- 动效：禁 `transition-all`；只动 `transform` / `opacity` / 颜色；颜色过渡 `--dur-micro`（120ms），入场 `--ease-out`。`base.css` 统一收起 `prefers-reduced-motion`。
+- `html` 与 `body` 用 `overflow-x: clip`（不用 `hidden`）。交互元素必须有即时 `:focus-visible`，装饰性 SVG 必须带 `aria-hidden="true"`。
+- 古典文学（poetry/shiji/zizhi）用 `font-serif`；其余页面不用衬线。
+- 暗色模式尚未实现（`color-scheme: light`）。
 - UI 文本以简体中文为主
 
 ## 环境变量

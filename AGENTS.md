@@ -8,12 +8,15 @@
 
 `school-formula` 是一个面向家长与学生的**中小学核心知识点学习平台**，品牌名为 **拾艺院 · 核心知识点库**。前端为 React SPA，后端为 Cloudflare Workers（认证/会员/AI 网关），学习数据（知识点、速查表、教程、题库等）以静态 TypeScript 模块形式内置在仓库中。
 
-主要功能模块：
+主要功能模块（入口都在 `Home` 的视图路由里，另有详情页与英文站）：
 
-- **知识点库**：按小学 / 初中 / 高中分学段，展示各学科核心知识点，点击可进入详情页。
-- **速查表**：提供九九乘法表、除法表、拼音、常用汉字、成语、元素周期表、不规则动词、三角函数公式、物理常数等可打印表格。
-- **古籍阅读**：内置《资治通鉴》与《史记》部分篇章，供学生在线阅读。
-- **AI 智能助教**：在知识点详情页可调用大模型生成家长辅导指南（深度解析、生活场景、亲子互动、实战测验），通过流式输出展示。
+- **知识点库**：按小学 / 初中 / 高中分学段、分学科展示知识点，进入详情页可看系统教程、例题、练习与趣味角。
+- **教程 / 题库练习**：结构化教程单元（教 / 学 / 练）与专题练习，带进度、错题本与掌握度。
+- **速查表 / 公式 / 口算**：可打印的表格与公式、速算口诀。
+- **古诗词 / 古籍阅读**：古诗词浏览与阅读，《资治通鉴》《史记》章节阅读。
+- **AI 智能助教**：知识点详情页的家长辅导指南、经典阅读的 AI 解读，以及独立的 AI 对话页（会话历史存在本地）。
+- **学习笔记**：本地保存的学习笔记（`localStorage`）。
+- **英文站**：`/en` 下语言中立的可打印速查表。
 
 当前仓库源：`git@github.com:dllen/school-formula.git`，默认分支 `main`。
 
@@ -38,7 +41,8 @@
 
 - `npm run build`（TypeScript 项目引用编译 + Vite 构建）：✅ 通过
 - `npm run lint`（ESLint flat config）：✅ 零错误（含 `scripts/` 下两个子包）
-- `npm test`（Vitest）：164 个测试通过（26 个 test files，跨 `app` + `scripts` 两份 workspace project），零 "No test suite found"。
+- `npm test`（Vitest）：563 个测试通过（98 个 test files，跨 `app` + `scripts` 两份 workspace project），零 "No test suite found"。
+- `npm run lint` 的忽略列表包含第三方 submodule `.claude/**`（其自带构建，不归本仓库检查）。
 
 ---
 
@@ -50,7 +54,11 @@
 .
 ├── .github/workflows/             # CI/CD（deploy.yml 与 deploy-cloudflare.yml）
 ├── db/schema.sql                  # D1 表结构
-├── docs/superpowers/              # 设计 specs 与实现 plans
+├── design.md                      # 锁定的 UI 设计系统（shape / theme / 控件 / 表面 / 动效）
+├── docs/
+│   ├── ui-system.md               # UI 施工指南：页面骨架 / 组件原语 / 检查清单 / 陷阱
+│   ├── adsense.md / cloudflare-ai.md / email.md / seo/
+│   └── superpowers/               # 设计 specs 与实现 plans
 ├── extra-data/                    # 原始数据文件（常用汉字库 2000/3500）
 ├── public/                        # 静态资源（vite.svg 等）
 ├── scripts/
@@ -62,19 +70,17 @@
 ├── worker/                        # Cloudflare Workers 后端（auth/user/ai 路由）
 ├── src/
 │   ├── assets/                    # 图片/图标资源
-│   ├── components/                # React 组件
-│   │   ├── CheatSheetCard.tsx
-│   │   ├── CheatSheetListItem.tsx
-│   │   ├── CheatSheetView.tsx
-│   │   ├── GradeSelector.tsx
-│   │   ├── Header.tsx
-│   │   ├── Home.tsx               # 主页面（包含四个视图的路由/切换）
-│   │   ├── KnowledgeDetail.tsx    # 知识点详情 + AI 生成
-│   │   ├── KnowledgeList.tsx
-│   │   ├── SettingsModal.tsx      # AI 配置弹窗
-│   │   ├── ShijiView.tsx          # 史记阅读视图
-│   │   ├── SubjectGrid.tsx
-│   │   └── ZizhiView.tsx          # 资治通鉴阅读视图
+│   ├── components/                # React 组件（按功能分子目录）
+│   │   ├── Header/                # Logo / NavMenu / MobileNav / UserMenu / LanguageSwitcher
+│   │   ├── KnowledgeDetail/       # 知识点详情 + 教程 / 练习 / 趣味角 / AI 生成
+│   │   ├── AIChatView/            # AI 助教对话（会话列表 / 消息区 / 气泡）
+│   │   ├── practice/ tutorials/ poetry/ prompts/ reference/ auth/ legal/
+│   │   ├── Home.tsx               # 主页面：11 个视图的路由/切换
+│   │   ├── KnowledgeList.tsx / SubjectGrid.tsx / GradeSelector.tsx
+│   │   ├── CheatSheet*.tsx / FormulaView.tsx / MentalMathView.tsx / NotesView.tsx
+│   │   ├── Mastery*View.tsx / TutorialView.tsx / ZizhiView.tsx / ShijiView.tsx
+│   │   ├── Footer.tsx / AuthModal.tsx / SettingsModal.tsx / HtmlSitemap.tsx
+│   │   └── icons/                 # Icon.tsx（统一图标集）+ iconFor.ts（数据 emoji 映射）
 │   ├── data/                      # 静态数据与类型定义
 │   │   ├── characters2000.ts
 │   │   ├── characters3500.ts
@@ -89,12 +95,13 @@
 │   │   ├── shiji.ts
 │   │   ├── types.ts               # 核心类型：GradeLevel、KnowledgePoint、Subject、GradeData
 │   │   └── zizhi.ts
-│   ├── services/
-│   │   └── ai.ts                  # AI 配置读写 + 流式生成逻辑
-│   ├── App.tsx                    # 路由配置：/ 与 /knowledge/:id
+│   ├── services/                  # ai.ts / gateway.ts / auth.ts
+│   ├── styles/                    # 设计系统：tokens.css + base.css + ui.css
+│   ├── utils/                     # jwt / questionUtils / markdown（渲染前剥离标题 emoji）
+│   ├── App.tsx                    # 路由配置
 │   ├── main.tsx                   # 应用入口（React 19 createRoot + StrictMode）
 │   ├── App.css                    # Vite 模板遗留样式，当前未在 main.tsx 中引入
-│   └── index.css                  # 仅包含 @import "tailwindcss";
+│   └── index.css                  # 入口：Hallmark stamp + @import（tailwindcss → tokens → base → ui）
 ├── index.html                     # 应用 HTML 入口，title: 拾艺院 - 核心知识点库
 ├── package.json
 ├── vite.config.ts
@@ -150,8 +157,10 @@ npm run ingest:dry       # 校验但不写盘
 
 - **纯静态 SPA**：`index.html` 加载 `src/main.tsx`，React 接管 `#root`。
 - **客户端路由**：使用 `BrowserRouter`，路由定义在 `src/App.tsx`：
-  - `/` → `Home` 组件（内部通过 `activeView` 状态切换知识点/速查表/资治通鉴/史记）
-  - `/knowledge/:id` → `KnowledgeDetail` 组件
+  - `/` 与 11 个视图路径（`/tutorial`、`/cheatsheet`、`/mental-math`、`/formula`、`/mastery`、`/practice`、`/notes`、`/zizhi`、`/shiji`、`/ai-chat`、`/poetry`）→ `Home` 组件，按路径切换视图
+  - `/knowledge/:id` → `KnowledgeDetail`；`/poetry/:id` → `PoemDetail`
+  - `/en/`、`/en/:category/`、`/en/:category/:slug/` → 英文速查表（独立布局）
+  - `/sitemap`、`/privacy`、`/terms`、`/about`、`/contact` → 站点地图与法务页
 - **数据流**：无全局状态管理，组件间状态通过 React `useState` 在 `Home` 等父组件中维护。
 - **AI 调用**：`src/services/ai.ts` 使用 `openai` SDK 在浏览器端直接请求用户配置的 API Endpoint（OpenAI / DeepSeek / 智谱 / 自定义）。API Key 仅保存在浏览器 `localStorage`（`school_formula_ai_config`），不会发送到项目方的服务器。
 - **注意**：因为 API Key 在浏览器中使用，该设计依赖用户自行保管密钥；不要建议将密钥硬编码进源码。
@@ -177,7 +186,7 @@ src/seo/
 ```
 
 - `src/prerender/inject.ts` 的 `injectPage(template, appHtml, headHtml)` 负责最终的文档拼装：用 `renderHead(...)` 的输出替换模板里的 `<title>`，再把 SSR 出的 app HTML 注入 `#root`。
-- `src/entry-prerender.ts` 遍历 `PRERENDER_PATHS`，为每条路由生成 head + HTML，并写出 `dist/robots.txt` 与 `dist/sitemap.xml`（294 个 URL）。
+- `src/entry-prerender.ts` 遍历 `PRERENDER_PATHS`，为每条路由生成 head + HTML，并写出 `dist/robots.txt` 与 `dist/sitemap.xml`（1122 个 URL，构建时打印 1123 条预渲染路由）。
 - canonical 采用「目录式」URL（非根路径带尾斜杠），与 Worker 的 `/tutorial` → 308 → `/tutorial/` 行为一致。
 - 标题/描述文案：中文改 `src/seo/content-zh.ts`，英文改 `src/seo/content-en.ts`；站点域名/品牌改 `src/seo/site.ts`。客户端路由切换不会更新 head（静态页面由预渲染产出，爬虫可见）。
 - Worker 侧 `worker/lib/static-paths.ts` 的 `isSeoFile()` 保证 `/robots.txt`、`/sitemap.xml` 缺失时返回 404，而不是被 SPA fallback 换成 app HTML。
@@ -235,20 +244,28 @@ src/seo/
 - 仅检查 `**/*.{ts,tsx}`，`dist/` 与 `scripts/*/node_modules/**` 被忽略。
 - 运行命令：`npm run lint`（一次跑通主应用与两个子包）。
 
-### 6.3 样式
+### 6.3 样式与设计系统
 
-- 使用 Tailwind CSS v4，通过 `src/index.css` 中的 `@import "tailwindcss";` 引入。
-- 设计 token 在 `src/styles/tokens.css` 与 `src/styles/base.css` 中集中管理（palette、type scale、spacing、easing、shadow 与 z-index）。所有色值均为 OKLCH —— 不使用 hex 或 Tailwind 内置调色板。
-- 语义 token 命名：`accent` / `paper` / `ink` / `rule` / `success` / `error` / `warning` / `info`（分别对应表面、墨水、分隔线与状态色）。页面底色使用 `paper-2`（`bg-paper-2`），不是 `bg-gray-50`。
-- 图标：使用 `src/components/icons/Icon.tsx` 中统一的 SVG 描边图标（24×24，1.8px 描边）；不使用 emoji。组件只需一次导入：`import { Icon } from './icons/Icon'`。项目原有数据中的 emoji 通过 `iconFor()` 映射为图标名（所有映射表在 `src/components/icons/iconFor.ts` 中）。
-- 动效：不使用 `transition-all` —— 显式指定过渡属性（`transition-colors`、`transition-opacity`、`transition-transform`）。入场动画使用 `--ease-out`（`cubic-bezier(0.16, 1, 0.3, 1)`），hover 采用 `--dur-micro`（120ms）。
-- 通用规则：`body` 与 `html` 强制使用 `overflow-x: clip`（不用 `hidden`）。交互元素必须有即时 `:focus-visible` 提示（从不为装饰性 SVG 省略 `aria-hidden`）。
-- UI 文本以简体中文为主，面向中小学家长与学生。
-- 用于古典文学文本（诗歌、史记、资治通鉴）的衬线字体标记为 `font-serif`（已在 `tokens.css` 中声明）。
+> 事实来源：根目录 `design.md`（锁定的系统决策）与 `src/styles/{tokens,base,ui}.css`（实现）。新增页面前先读 `docs/ui-system.md`，那里有页面骨架、组件原语、表面阶梯、检查清单和陷阱。
+
+- Tailwind CSS v4，入口 `src/index.css`：`@import "tailwindcss";` 之后依次 `tokens.css` → `base.css` → `ui.css`。
+- `tokens.css`（`@theme`）：OKLCH 色板、字体栈、字号、间距、圆角、阴影、缓动、时长、z-index、容器宽度。所有色值均为 OKLCH，不写 hex、不用 Tailwind 内置调色板。
+- 语义 token：`accent`（品牌蓝：主操作 / 选中 / 焦点）、`paper` / `card` / `well`（表面）、`ink`（四级文字）、`rule` / `divider`、`success` / `error` / `warning` / `info`（各有 fill / `-ink` / `-bg`）。页面底色是 `bg-paper`，成组次要内容用 `bg-paper-2`。
+- `base.css`：画布、`:focus-visible`、`::selection`、滚动条、标题换行、`prefers-reduced-motion`（全站统一）。
+- `ui.css`（`@layer components`）：页面骨架与组件原语，新页面优先复用：`page-shell` / `container-page` / `page-head` / `page-title` / `page-lead`、`seg` + `seg-btn`、`btn` + `btn-primary` / `btn-secondary` / `btn-ghost`、`rail` / `rail-item`、`index-head` / `kp-row`、`section` / `section-head`、`well` / `sheet`、`prose-body`、`toc`、`tag`、`breadcrumb`、`empty-state`、`table-basic`、`field` / `input`、`chat-layout` 等。
+- **表面阶梯**：whitespace → 1px divider → paper-2 well → card（border 与 shadow 二选一）。不做卡片套卡片；不给内容卡片加阴影；一页一种主按钮样式。
+- **Tailwind v4 陷阱**：不要写 `bg-[paper-2]`、`text-[ink]` 这类「方括号主题名」——编译结果是 `background-color: paper-2`（无效 CSS，静默丢弃）。必须写主题工具类：`bg-paper-2`、`text-ink-2`、`border-divider`、`bg-accent-soft`。历史上清理过 466 处这种写法。
+- Markdown：项目**没有** `@tailwindcss/typography`，`prose` 类无效；所有 Markdown 输出放进 `.prose-body`（段落间距、列表符号、表格、代码块由 `ui.css` 提供）。标题里的装饰 emoji 用 `src/utils/markdown.ts` 的 `stripHeadingEmoji()` 在渲染前剥掉。
+- 图标：`src/components/icons/Icon.tsx` 唯一图标集（24×24，1.8px 描边）+ `iconFor()`；不使用 emoji 当图标。组件只导一次：`import { Icon } from './icons/Icon'`。
+- 动效：禁 `transition-all`；只动 `transform` / `opacity` / 颜色；颜色过渡 `--dur-micro`（120ms），入场 `--ease-out`（`cubic-bezier(0.16, 1, 0.3, 1)`）。`base.css` 已统一收起 `prefers-reduced-motion`。
+- 通用规则：`html` / `body` 用 `overflow-x: clip`（不用 `hidden`）；交互元素必须有即时 `:focus-visible`；装饰性 SVG 必须 `aria-hidden="true"`。
+- UI 文本以简体中文为主；古典文学（诗词 / 史记 / 资治通鉴）用 `font-serif`，其余页面不用衬线。
+- 暗色模式尚未实现（`color-scheme: light`）。
 
 ### 6.4 组件与数据约定
 
 - 组件文件默认以命名导出（named export）形式导出组件，例如 `export const Home = () => ...`。
+- 新增页面按 `docs/ui-system.md` 的骨架写：`page-shell` + `Header` + `container-page pt-10` + `page-head` + `Footer`，内容用目录行 / 发丝线分区，不另起一套卡片。
 - 数据文件集中放在 `src/data/`，类型定义在 `src/data/types.ts`。
 - 知识点 ID 需要全局唯一，作为路由参数 `/knowledge/:id` 使用。
 - 新增知识点时，应同步更新对应学段的数据文件（`primary.ts` / `middle.ts` / `high.ts`），并确保 ID 不重复。

@@ -25,6 +25,17 @@
 | 会话 | Cloudflare KV |
 | AI | `openai` SDK（直连）或 Worker `/api/ai/gateway`（Cloudflare AI Gateway 代理） |
 
+## UI 设计系统
+
+全站共用一套设计系统，事实来源是根目录 `design.md`（锁定的决策）与 `src/styles/`（token、基础层、组件原语）：
+
+- `src/styles/tokens.css` — OKLCH 色板、字号、间距、圆角、阴影、动效、z-index
+- `src/styles/base.css` — 画布、焦点环、选择色、滚动条、`prefers-reduced-motion`
+- `src/styles/ui.css` — 页面骨架与组件原语（`page-head`、`seg`、`btn`、`rail`、`kp-row`、`prose-body` 等）
+- `src/components/icons/` — 唯一图标集；数据层 emoji 通过 `iconFor()` 映射
+
+新增页面前请读 [docs/ui-system.md](docs/ui-system.md)：页面骨架、表面阶梯、组件清单、施工检查清单和常见陷阱（例如 `bg-[paper-2]` 这类写法在 Tailwind v4 里是无效 CSS，必须写 `bg-paper-2`）。
+
 ## 快速开始
 
 ```bash
@@ -33,7 +44,7 @@ npm run dev          # 开发服务器（http://localhost:5173）
 npm run build        # 类型检查 + 生产构建（输出 dist/）
 npm run preview      # 预览生产构建
 npm run lint         # ESLint 代码检查（含 scripts/ 两个子包）
-npm test             # 运行测试（Vitest workspace：app + scripts 双 project，164 个用例）
+npm test             # 运行测试（Vitest workspace：app + scripts 双 project，563 个用例）
 npm run test:watch   # watch 模式
 npm run coverage     # 覆盖率报告
 ```
@@ -71,6 +82,8 @@ npm run ingest:dry     # 校验但不写盘
 
 - `CLAUDE.md` — 面向 Claude Code 的项目指引（架构、数据层、开发约定、环境变量）。
 - `AGENTS.md` — 面向 AI 编程助手的项目说明。
+- `design.md` — 锁定的 UI 设计系统（shape / theme / 控件 / 表面 / 动效）。
+- `docs/ui-system.md` — UI 施工指南：页面骨架、组件原语、检查清单与陷阱。
 - `DEPLOYMENT.md` / `DEPLOY_AUTH.md` — 部署与用户体系配置。
 - `scripts/pi-agent-edu/README.md` / `scripts/ingest-data/README.md` — 数据生产管线两侧子包说明。
 - `docs/superpowers/specs/` — 设计文档；`docs/superpowers/plans/` — 实现计划。
