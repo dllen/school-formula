@@ -50,4 +50,28 @@ describe('DonatePopover', () => {
 
     expect(screen.queryByAltText('支付宝收款码')).toBeNull();
   });
+
+  it('打开时焦点进入面板，关闭后回到触发器', () => {
+    renderPopover();
+    const trigger = screen.getByRole('button', { name: '赞赏支持' });
+
+    fireEvent.click(trigger);
+    expect(document.activeElement?.getAttribute('role')).toBe('dialog');
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(document.activeElement).toBe(trigger);
+  });
+
+  it('面板带 dialog 角色与无障碍名称，触发器暴露展开状态', () => {
+    renderPopover();
+    const trigger = screen.getByRole('button', { name: '赞赏支持' });
+
+    expect(trigger.getAttribute('aria-haspopup')).toBe('dialog');
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+
+    fireEvent.click(trigger);
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(screen.getByRole('dialog', { name: '赞赏支持' })).toBeTruthy();
+  });
 });

@@ -20,6 +20,8 @@ export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
   const panelId = useId();
 
   // 关闭：点击组件外部
@@ -42,6 +44,17 @@ export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
+  // 焦点：打开时移入面板，关闭时还给触发器。
+  // wasOpenRef 让首次挂载（open 为 false）不要去抢页面焦点。
+  useEffect(() => {
+    if (open) {
+      panelRef.current?.focus();
+      wasOpenRef.current = true;
+    } else if (wasOpenRef.current) {
+      triggerRef.current?.focus();
+    }
+  }, [open]);
+
   return (
     <div ref={rootRef} className="relative inline-block">
       <button
@@ -59,6 +72,7 @@ export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
       {open && (
         <div
           id={panelId}
+          ref={panelRef}
           role="dialog"
           aria-label="赞赏支持"
           tabIndex={-1}
