@@ -1,8 +1,11 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { Icon } from './icons/Icon';
 
 interface DonatePopoverProps {
   /** 触发按钮的文字，如「赞赏支持」「赞赏」 */
   triggerLabel: string;
+  /** 触发按钮的视觉变体，默认 text */
+  triggerVariant?: 'text' | 'tag';
 }
 
 const CHANNELS = [
@@ -16,7 +19,7 @@ const CHANNELS = [
  * 根节点是定位锚点；面板内容只在打开时挂载，所以二维码图片不会进首屏，
  * 预渲染输出的 HTML 里也只有一个触发按钮。
  */
-export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
+export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonatePopoverProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -55,6 +58,12 @@ export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
     }
   }, [open]);
 
+  // 页脚用 text（低调的文字链），详情页用 tag（带图标的标签）。
+  const triggerClass =
+    triggerVariant === 'tag'
+      ? 'inline-flex items-center gap-1.5 rounded-lg border border-rule bg-card px-3 py-1.5 text-sm text-ink-2 transition-colors hover:border-accent hover:text-accent'
+      : 'text-sm text-ink-2 transition-colors hover:text-accent';
+
   return (
     <div ref={rootRef} className="relative inline-block">
       <button
@@ -64,8 +73,9 @@ export function DonatePopover({ triggerLabel }: DonatePopoverProps) {
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-controls={open ? panelId : undefined}
-        className="text-sm text-ink-2 transition-colors hover:text-accent"
+        className={triggerClass}
       >
+        {triggerVariant === 'tag' && <Icon name="sparkle" className="h-4 w-4" />}
         {triggerLabel}
       </button>
 

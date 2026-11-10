@@ -74,4 +74,13 @@ describe('DonatePopover', () => {
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
     expect(screen.getByRole('dialog', { name: '赞赏支持' })).toBeTruthy();
   });
+
+  it('tag 变体渲染图标，默认的 text 变体不渲染', () => {
+    const tag = render(<DonatePopover triggerLabel="赞赏" triggerVariant="tag" />);
+    expect(tag.container.querySelector('svg')).not.toBeNull();
+    tag.unmount();
+
+    const text = render(<DonatePopover triggerLabel="赞赏支持" />);
+    expect(text.container.querySelector('svg')).toBeNull();
+  });
 });
