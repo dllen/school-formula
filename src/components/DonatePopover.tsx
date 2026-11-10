@@ -21,6 +21,7 @@ const CHANNELS = [
  */
 export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonatePopoverProps) {
   const [open, setOpen] = useState(false);
+  const [failed, setFailed] = useState<Record<string, boolean>>({});
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -92,11 +93,18 @@ export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonateP
           <div className="flex items-start gap-4">
             {CHANNELS.map((channel) => (
               <figure key={channel.src} className="m-0">
-                <img
-                  src={channel.src}
-                  alt={channel.alt}
-                  className="h-auto max-h-[260px] w-[148px] rounded-md border border-rule bg-card object-contain sm:w-[168px]"
-                />
+                {failed[channel.src] ? (
+                  <div className="flex h-[148px] w-[148px] items-center justify-center rounded-md border border-rule bg-card px-2 text-center text-xs text-ink-3 sm:h-[168px] sm:w-[168px]">
+                    二维码加载失败
+                  </div>
+                ) : (
+                  <img
+                    src={channel.src}
+                    alt={channel.alt}
+                    onError={() => setFailed((prev) => ({ ...prev, [channel.src]: true }))}
+                    className="h-auto max-h-[260px] w-[148px] rounded-md border border-rule bg-card object-contain sm:w-[168px]"
+                  />
+                )}
                 <figcaption className="mt-1.5 text-center text-xs text-ink-2">
                   {channel.label}
                 </figcaption>

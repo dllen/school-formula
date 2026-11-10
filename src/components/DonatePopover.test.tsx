@@ -83,4 +83,15 @@ describe('DonatePopover', () => {
     const text = render(<DonatePopover triggerLabel="赞赏支持" />);
     expect(text.container.querySelector('svg')).toBeNull();
   });
+
+  it('图片加载失败时降级为文字提示，另一张不受影响', () => {
+    renderPopover();
+    fireEvent.click(screen.getByRole('button', { name: '赞赏支持' }));
+
+    fireEvent.error(screen.getByAltText('支付宝收款码'));
+
+    expect(screen.queryByAltText('支付宝收款码')).toBeNull();
+    expect(screen.getByText('二维码加载失败')).toBeTruthy();
+    expect(screen.getByAltText('微信收款码')).toBeTruthy();
+  });
 });
