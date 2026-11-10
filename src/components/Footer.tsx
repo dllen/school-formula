@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { DonatePopover } from './DonatePopover';
 
 const FOOTER_LINKS = [
   { label: '知识点', to: '/' },
@@ -24,6 +25,9 @@ export function Footer() {
             </Link>
           ))}
         </nav>
+        <div className="mt-4">
+          <DonatePopover triggerLabel="赞赏支持" />
+        </div>
         <p className="mt-4 text-sm text-[ink-2]">
           © {new Date().getFullYear()} 拾艺院 (Shi Yi Yuan). All rights reserved.
         </p>

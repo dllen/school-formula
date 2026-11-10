@@ -33,4 +33,13 @@ describe('Footer', () => {
         const privacyLink = screen.getByRole('link', { name: /隐私政策/ });
         expect(privacyLink.getAttribute('href')).toBe('/privacy');
     });
+
+    it('renders the donate entry', () => {
+        render(
+            <MemoryRouter>
+                <Footer />
+            </MemoryRouter>,
+        );
+        expect(screen.getByRole('button', { name: '赞赏支持' })).toBeTruthy();
+    });
 });
