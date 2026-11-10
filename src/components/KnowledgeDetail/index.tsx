@@ -7,6 +7,7 @@ import { relatedKnowledgePoints } from '../../data/knowledge/related';
 import { PromptModal } from '../prompts/PromptModal';
 import type { KnowledgePoint, Subject } from '../../data/types';
 import { Footer } from '../Footer';
+import { DonatePopover } from '../DonatePopover';
 import { AIGenerator } from './AIGenerator';
 import { FunCorner } from './FunCorner';
 import { Header } from './Header';
@@ -109,6 +110,10 @@ export const KnowledgeDetail: React.FC = () => {
                                 </ul>
                             </section>
                         )}
+                        <div className="flex flex-col items-center gap-2 border-t border-divider pt-8">
+                            <p className="text-sm text-ink-3">这份内容帮到你了？</p>
+                            <DonatePopover triggerLabel="赞赏" triggerVariant="tag" />
+                        </div>
                     </div>
                 </div>
             </div>
