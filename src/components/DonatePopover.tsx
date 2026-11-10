@@ -93,18 +93,20 @@ export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonateP
           <div className="flex items-start gap-4">
             {CHANNELS.map((channel) => (
               <figure key={channel.src} className="m-0">
-                {failed[channel.src] ? (
-                  <div className="flex h-[148px] w-[148px] items-center justify-center rounded-md border border-rule bg-card px-2 text-center text-xs text-ink-3 sm:h-[168px] sm:w-[168px]">
-                    二维码加载失败
-                  </div>
-                ) : (
-                  <img
-                    src={channel.src}
-                    alt={channel.alt}
-                    onError={() => setFailed((prev) => ({ ...prev, [channel.src]: true }))}
-                    className="h-auto max-h-[260px] w-[148px] rounded-md border border-rule bg-card object-contain sm:w-[168px]"
-                  />
-                )}
+                {/* 两张源图比例不同（一张 720×1080、一张 720×977），用等高画框
+                    把图注压到同一条线上，否则并排时底部会参差。 */}
+                <div className="flex h-[200px] w-[148px] items-center justify-center rounded-md border border-rule bg-card sm:w-[168px]">
+                  {failed[channel.src] ? (
+                    <span className="px-2 text-center text-xs text-ink-3">二维码加载失败</span>
+                  ) : (
+                    <img
+                      src={channel.src}
+                      alt={channel.alt}
+                      onError={() => setFailed((prev) => ({ ...prev, [channel.src]: true }))}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  )}
+                </div>
                 <figcaption className="mt-1.5 text-center text-xs text-ink-2">
                   {channel.label}
                 </figcaption>
