@@ -1,15 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '../../context/AuthContext';
 import { PoemDetail } from './PoemDetail';
 
 function renderAt(path: string) {
   return render(
     <MemoryRouter initialEntries={[path]}>
-      <Routes>
-        <Route path="/poetry/:id" element={<PoemDetail />} />
-        <Route path="/poetry" element={<div>列表</div>} />
-      </Routes>
+      <AuthProvider>
+        <Routes>
+          <Route path="/poetry/:id" element={<PoemDetail />} />
+          <Route path="/poetry" element={<div>列表</div>} />
+        </Routes>
+      </AuthProvider>
     </MemoryRouter>,
   );
 }

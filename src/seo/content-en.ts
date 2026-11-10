@@ -95,5 +95,5 @@ export function englishChartSubject(categoryName: string): string {
  * 宣称 PDF 而用户落地后找不到下载按钮就是跳出。
  */
 export function englishTitleFor(subject: string, brand: BrandCopy): string {
-  return `Printable ${subject} – Free | ${titleBrand(brand)}`;
+  return `Printable ${subject} - Free | ${titleBrand(brand)}`;
 }

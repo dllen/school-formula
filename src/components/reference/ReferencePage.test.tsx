@@ -39,7 +39,7 @@ describe('ReferencePage', () => {
   it('renders the chart title, intro and table', () => {
     renderChart('/en/math/multiplication-chart');
     expect(screen.getByRole('heading', { level: 1 }).textContent).toBe(
-      'Multiplication Chart (1–12)',
+      'Multiplication Chart (1-12)',
     );
     expect(screen.getByText(/puts every times table on a single grid/)).toBeTruthy();
     expect(screen.getByRole('columnheader', { name: '×' })).toBeTruthy();

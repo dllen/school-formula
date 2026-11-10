@@ -62,8 +62,8 @@ export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonateP
   // 页脚用 text（低调的文字链），详情页用 tag（带图标的标签）。
   const triggerClass =
     triggerVariant === 'tag'
-      ? 'inline-flex items-center gap-1.5 rounded-lg border border-rule bg-card px-3 py-1.5 text-sm text-ink-2 transition-colors hover:border-accent hover:text-accent'
-      : 'text-sm text-ink-2 transition-colors hover:text-accent';
+      ? 'tap-44 inline-flex items-center gap-1.5 rounded-lg border border-rule bg-card px-3 py-1.5 text-sm text-ink-2 transition-colors hover:border-accent hover:text-accent'
+      : 'tap-44 inline-flex min-h-8 items-center rounded-md -mx-2 px-2 text-sm text-ink-2 transition-colors hover:text-accent';
 
   return (
     <div ref={rootRef} className="relative inline-block">
@@ -95,7 +95,7 @@ export function DonatePopover({ triggerLabel, triggerVariant = 'text' }: DonateP
               <figure key={channel.src} className="m-0">
                 {/* 两张图都是二维码正方形，画框跟着做成方的，码就尽量大。
                     画框底色接近纯白，等于把二维码的静区延续到图片之外。 */}
-                <div className="flex h-[148px] w-[148px] items-center justify-center rounded-md border border-rule bg-card sm:h-[168px] sm:w-[168px]">
+                <div className="flex h-[148px] w-[148px] items-center justify-center rounded-md sm:h-[168px] sm:w-[168px]">
                   {failed[channel.src] ? (
                     <span className="px-2 text-center text-xs text-ink-3">二维码加载失败</span>
                   ) : (

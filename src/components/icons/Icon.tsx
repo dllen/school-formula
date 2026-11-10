@@ -19,6 +19,7 @@ interface IconProps {
 }
 
 const PATHS: Record<IconName, string> = {
+  'arrow-left': 'M19 12H5m0 0 6-6m-6 6 6 6',
   ai: 'M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z',
   book: 'M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Zm3 0v16M10 8h5m-5 3.5h5',
   'book-open': 'M12 6.5C10.5 5 8.5 4.5 6 4.5H3v13h3c2.5 0 4.5.5 6 2m0-13c1.5-1.5 3.5-2 6-2h3v13h-3c-2.5 0-4.5.5-6 2m0-13v13',
@@ -51,6 +52,8 @@ const PATHS: Record<IconName, string> = {
   bridge: 'M3 17V9m18 8V9M3 12h18M7 17v-3m5 3v-5m5 5v-3M8 9V6m8 3V6M6 6h12',
   calendar: 'M5 6h14a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Zm-1 4h16M8 3v4m8-4v4',
   chart: 'M4 20V4m0 16h16M8 16v-4m4 4V8m4 8v-6',
+  'chevron-down': 'm6 9 6 6 6-6',
+  'chevron-right': 'm9 6 6 6-6 6',
   chess: 'M8 21h8M9 18h6M12 3a3 3 0 0 1 2.4 4.8l1.1 1.2H8.5l1.1-1.2A3 3 0 0 1 12 3ZM6 15h12l-1-4H7l-1 4Z',
   compass: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm3.5-12.5-2 5-5 2 2-5 5-2Z',
   dialogue: 'M20 15a1 1 0 0 1-1 1H8l-4 4V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v10ZM8 9h8m-8 3.5h5',

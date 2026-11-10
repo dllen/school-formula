@@ -23,7 +23,7 @@ const {
 function App() {
   return (
     <Suspense
-      fallback={<div className="min-h-screen bg-[paper-2]" data-testid="route-suspense-fallback" />}
+      fallback={<div className="min-h-screen bg-paper-2" data-testid="route-suspense-fallback" />}
     >
       <Routes>
         <Route path="/" element={<Home />} />

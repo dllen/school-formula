@@ -32,12 +32,12 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'multiplication-chart',
     category: 'math',
-    title: 'Multiplication Chart (1–12)',
-    summary: 'Every times table from 1 to 12 on one printable grid — free, and no signup needed.',
+    title: 'Multiplication Chart (1-12)',
+    summary: 'Every times table from 1 to 12 on one printable grid - free, and no signup needed.',
     description:
-      'Printable 1–12 multiplication chart with every times table, handy for homework and home practice. Borders not shading, so it prints in black and white. Free.',
+      'Printable 1-12 multiplication chart with every times table, handy for homework and home practice. Borders not shading, so it prints in black and white. Free.',
     intro:
-      'This 1–12 multiplication chart puts every times table on a single grid. Find the row for one number and the column for the other, and the cell where they meet is the product — so 7 × 8 is the number where row 7 meets column 8. Printing it and keeping it on a desk or in a homework folder gives children a fast way to check their own work instead of reaching for a calculator. It is also a compact way to notice the patterns that make times tables easier to remember: the diagonal of square numbers, the symmetry either side of it, and the easy 10s column.',
+      'This 1-12 multiplication chart puts every times table on a single grid. Find the row for one number and the column for the other, and the cell where they meet is the product - so 7 × 8 is the number where row 7 meets column 8. Printing it and keeping it on a desk or in a homework folder gives children a fast way to check their own work instead of reaching for a calculator. It is also a compact way to notice the patterns that make times tables easier to remember: the diagonal of square numbers, the symmetry either side of it, and the easy 10s column.',
     blocks: [
       {
         kind: 'table',
@@ -47,7 +47,7 @@ export const MATH_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'Put one finger on the row for the first number and one on the column for the second, then read the cell where they meet.',
-      'Read down the 10s column first — it is the quickest win, and it makes the rest of the grid less intimidating.',
+      'Read down the 10s column first - it is the quickest win, and it makes the rest of the grid less intimidating.',
       'Print at 100% rather than "fit to page" so the grid stays square and easy to scan.',
     ],
     faq: [
@@ -82,7 +82,7 @@ export const MATH_PAGES: ReferencePage[] = [
     slug: 'squares-cubes-roots',
     category: 'math',
     title: 'Squares, Cubes & Square Roots',
-    summary: 'n², n³ and √n for n from 1 to 20, rounded to 3 decimals — free to print.',
+    summary: 'n², n³ and √n for n from 1 to 20, rounded to 3 decimals - free to print.',
     description:
       'Printable table of squares, cubes and square roots for numbers 1 to 20, with irrational square roots rounded to three decimals. Free to print. Free to print.',
     intro:
@@ -95,9 +95,9 @@ export const MATH_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Learn the squares of 1 to 12 first — they come up most often, and they are the ones tests expect you to know without working them out.',
+      'Learn the squares of 1 to 12 first - they come up most often, and they are the ones tests expect you to know without working them out.',
       'Use the square root column as a sanity check: if an answer must lie between two whole numbers, the roots bracket it.',
-      'Treat the rounded roots as a reading aid, not an exact value — most of them are irrational and go on forever.',
+      'Treat the rounded roots as a reading aid, not an exact value - most of them are irrational and go on forever.',
     ],
     faq: [
       {
@@ -110,7 +110,7 @@ export const MATH_PAGES: ReferencePage[] = [
       },
       {
         q: 'Why are the square roots rounded to three decimals?',
-        a: 'Most square roots are irrational — they go on forever without repeating. Three decimals is enough to compare values or check an answer, but it is not an exact value, so avoid it in a calculation that needs precision.',
+        a: 'Most square roots are irrational - they go on forever without repeating. Three decimals is enough to compare values or check an answer, but it is not an exact value, so avoid it in a calculation that needs precision.',
       },
       {
         q: 'What is a perfect square?',
@@ -122,7 +122,7 @@ export const MATH_PAGES: ReferencePage[] = [
       },
       {
         q: 'How can I tell whether a square root is a whole number?',
-        a: 'A square root is a whole number exactly when the original number is a perfect square — 1, 4, 9, 16, 25, 36 and so on. For any other input the decimal keeps going, so the rounded value in the table is a reading aid rather than an exact answer.',
+        a: 'A square root is a whole number exactly when the original number is a perfect square - 1, 4, 9, 16, 25, 36 and so on. For any other input the decimal keeps going, so the rounded value in the table is a reading aid rather than an exact answer.',
       },
     ],
     related: ['multiplication-chart', 'trigonometric-identities', 'physics-constants'],
@@ -138,7 +138,7 @@ export const MATH_PAGES: ReferencePage[] = [
       'This sheet collects the trigonometric identities that come up most often in algebra, geometry and physics, grouped by the kind of problem they solve rather than by difficulty. Angles are written as α, β and θ, and every line holds for any angle. Use it as a lookup while working: start from the group that matches the shape of the problem in front of you, then work back towards the Pythagorean identities if you need something simpler to substitute in.',
     blocks: [{ kind: 'formulas', groups: TRIG_IDENTITY_GROUPS }],
     howToUse: [
-      'Start from the Pythagorean identities — most of the others can be derived from them if you forget one.',
+      'Start from the Pythagorean identities - most of the others can be derived from them if you forget one.',
       'When a problem mixes two different angles, reach for the sum and difference group; when it doubles or halves one angle, use the double-angle and half-angle groups.',
       'Watch the ∓ and ± signs: they flip between the top and bottom lines of a sum or difference formula.',
     ],
@@ -193,7 +193,7 @@ export const MATH_PAGES: ReferencePage[] = [
     howToUse: [
       'Move the decimal point instead of multiplying: one step down the prefixes is one place to the right.',
       'Write the unit next to every number while converting. Most mistakes here are unit mistakes, not arithmetic ones.',
-      'Treat the time rows separately — unlike length and mass, time is not decimal, so the powers-of-ten shortcut does not apply.',
+      'Treat the time rows separately - unlike length and mass, time is not decimal, so the powers-of-ten shortcut does not apply.',
     ],
     faq: [
       {
@@ -210,11 +210,11 @@ export const MATH_PAGES: ReferencePage[] = [
       },
       {
         q: 'Is a millilitre the same as a cubic centimetre?',
-        a: 'Yes, exactly — 1 mL = 1 cm³. That is why volume and capacity convert so cleanly in the metric system.',
+        a: 'Yes, exactly - 1 mL = 1 cm³. That is why volume and capacity convert so cleanly in the metric system.',
       },
       {
         q: 'Do I need to memorise the conversions?',
-        a: 'Most of them follow the decimal trick, so recognising the prefix is enough. The exceptions are the time rows — those are the only ones worth memorising because the powers-of-ten rule does not apply.',
+        a: 'Most of them follow the decimal trick, so recognising the prefix is enough. The exceptions are the time rows - those are the only ones worth memorising because the powers-of-ten rule does not apply.',
       },
       {
         q: 'What is the largest metric prefix on the table?',
@@ -226,8 +226,8 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'hundreds-chart',
     category: 'math',
-    title: 'Hundreds Chart (1–100)',
-    summary: 'Printable 1–100 hundreds chart with a blank grid for counting and skip-counting practice.',
+    title: 'Hundreds Chart (1-100)',
+    summary: 'Printable 1-100 hundreds chart with a blank grid for counting and skip-counting practice.',
     description:
       'Printable hundreds chart from 1 to 100 in a 10×10 grid, plus a blank 10×10 grid for fill-in practice. A4 and Letter friendly, free. Free to print, no signup.',
     intro:
@@ -246,10 +246,10 @@ export const MATH_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Start at 1 and read every number in order, either row-by-row or column-by-column — column reading is usually the harder and more useful one.',
+      'Start at 1 and read every number in order, either row-by-row or column-by-column - column reading is usually the harder and more useful one.',
       'Practice skip-counting by 2s, 5s and 10s: highlight every 5th cell to show the count by fives, then do the same for twos and tens.',
       'Use the blank grid to ask the child to write in a missing number. Pick a cell they cannot guess at random by asking for the number that sits between, say, 27 and 29.',
-      'Print at 100% rather than "fit to page" so the 10×10 cells stay square — this matters for visual pattern work.',
+      'Print at 100% rather than "fit to page" so the 10×10 cells stay square - this matters for visual pattern work.',
     ],
     faq: [
       {
@@ -262,7 +262,7 @@ export const MATH_PAGES: ReferencePage[] = [
       },
       {
         q: 'Why is a hundreds chart useful for skip-counting?',
-        a: 'Reading down any column shows how counting by 2s, 5s or 10s repeats the same pattern — twos skip a cell, fives skip four cells, tens skip nine cells — so the chart turns an abstract counting pattern into something a child can see and point at.',
+        a: 'Reading down any column shows how counting by 2s, 5s or 10s repeats the same pattern - twos skip a cell, fives skip four cells, tens skip nine cells - so the chart turns an abstract counting pattern into something a child can see and point at.',
       },
       {
         q: 'What is the blank grid for?',
@@ -293,9 +293,9 @@ export const MATH_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'Read each row from the largest value down to the smallest, and connect it to the matching digit position in a number like 12,345.67.',
-      'Compare 0.45 with 0.5 by writing them on a chart — the digit in the tenths row decides, regardless of how many digits come after.',
+      'Compare 0.45 with 0.5 by writing them on a chart - the digit in the tenths row decides, regardless of how many digits come after.',
       'Use the chart with whole-number arithmetic: place the digits of 1,247 in the right rows, then do the math row by row to see why regrouping works the way it does.',
-      'Pair the chart with the number-line chart when teaching subtraction across zero — place 7 on the chart, then walk one step at a time down to negative values.',
+      'Pair the chart with the number-line chart when teaching subtraction across zero - place 7 on the chart, then walk one step at a time down to negative values.',
     ],
     faq: [
       { q: 'What is place value?', a: 'It is the value of a digit based on its position in a number. The digit 3 in 345 stands for 300, but the same digit in 0.345 stands for three tenths.' },
@@ -323,7 +323,7 @@ export const MATH_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Have the child hop their finger from 0 toward a target number, counting aloud each time they cross a tall mark — this turns the line into a physical counting track.',
+      'Have the child hop their finger from 0 toward a target number, counting aloud each time they cross a tall mark - this turns the line into a physical counting track.',
       'Use the line for subtraction by starting at the larger number and hopping left the right number of steps; for addition, start at one number and hop right.',
       'Show negative numbers by starting to the left of zero and hopping right; show "less than zero" by starting to the right of zero and hopping left.',
       'Practise counting on the line by saying each number aloud as the finger lands on its mark, especially across zero into negative values.',
@@ -340,7 +340,7 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'roman-numerals',
     category: 'math',
-    title: 'Roman Numerals Chart (1–3,000)',
+    title: 'Roman Numerals Chart (1-3,000)',
     summary: 'Roman numerals from I to MMM, with the seven symbols and key combinations.',
     description:
       'Printable Roman numerals chart listing the seven basic symbols, the subtractive combinations for 4, 9, 40, 90, 400 and 900, and example values. Free. Free.',
@@ -374,7 +374,7 @@ export const MATH_PAGES: ReferencePage[] = [
   {
     slug: 'prime-numbers',
     category: 'math',
-    title: 'Prime Numbers Chart (1–100)',
+    title: 'Prime Numbers Chart (1-100)',
     summary: 'Every prime from 1 to 100 marked on a single grid, with a quick divisibility reminder.',
     description:
       'Printable prime numbers chart from 1 to 100, with primes marked and non-primes left blank. Includes a quick divisibility reminder. Free to print. Free to print.',
@@ -389,7 +389,7 @@ export const MATH_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'Read down and notice that 2 is the only even prime, and 5 is the only prime ending in 5.',
-      'Test whether a number from 1 to 100 is prime by checking it is not divisible by 2, 3, 5 or 7 — once those four fail, no smaller prime can divide it.',
+      'Test whether a number from 1 to 100 is prime by checking it is not divisible by 2, 3, 5 or 7 - once those four fail, no smaller prime can divide it.',
       'Pair the chart with the divisibility-rules page for a single self-contained reference sheet.',
       'Use the chart as a quick read-along when reviewing the prime-numbers song or poem your class has memorised.',
       'Cover the "Yes" column and have a child write the prime from 2 up to 100 by skipping non-primes.',
@@ -397,11 +397,11 @@ export const MATH_PAGES: ReferencePage[] = [
     faq: [
       { q: 'What is a prime number?', a: 'A whole number greater than 1 whose only factors are 1 and itself. 2, 3, 5, 7, 11, 13, 17 and 19 are the first eight primes.' },
       { q: 'Why is 1 not prime?', a: 'By the modern definition a prime must have exactly two distinct factors; 1 has only one (itself), so it is neither prime nor composite.' },
-      { q: 'Why is 2 the only even prime?', a: 'Every other even number is divisible by 2, so it has at least the factors 1, 2 and itself — more than two factors — so it is not prime.' },
+      { q: 'Why is 2 the only even prime?', a: 'Every other even number is divisible by 2, so it has at least the factors 1, 2 and itself - more than two factors - so it is not prime.' },
       { q: 'How many primes are below 100?', a: 'There are 25 primes between 1 and 100, and the chart marks all 25. The next prime after 97 is 101.' },
       { q: 'How do I test if a larger number is prime?', a: 'Trial-divide by every prime up to its square root. If none divide it, the number is prime.' },
       { q: 'Why does the prime-numbers test use 2, 3, 5 and 7?', a: 'Because those are the only primes less than or equal to the square root of 100. If none of them divide a number below 100, no smaller prime can either.' },
-      { q: 'How do primes appear in the world?', a: 'In the patterns of insect wings, the seeds of sunflowers, the rings of pineapples, and the rhythm of cicada broods — all counted by prime intervals.' },
+      { q: 'How do primes appear in the world?', a: 'In the patterns of insect wings, the seeds of sunflowers, the rings of pineapples, and the rhythm of cicada broods - all counted by prime intervals.' },
     ],
     related: ['divisibility-rules', 'hundreds-chart', 'roman-numerals'],
   },
@@ -413,7 +413,7 @@ export const MATH_PAGES: ReferencePage[] = [
     description:
       'Printable divisibility rules for the divisors 2 through 12, each phrased as a quick test a child can apply by hand. Free to print, no signup needed. Free.',
     intro:
-      'A divisibility rule is a quick test that tells you whether a number is divisible by another without doing the long division. The rules below cover the divisors that come up most often in elementary and middle-school arithmetic: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12. Most of them are about looking at the last digit, the last two digits or the sum of the digits. The rule for 7 is the trickiest — it uses the digit-sum trick in reverse — and the chart gives the exact wording so the test can be repeated.',
+      'A divisibility rule is a quick test that tells you whether a number is divisible by another without doing the long division. The rules below cover the divisors that come up most often in elementary and middle-school arithmetic: 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12. Most of them are about looking at the last digit, the last two digits or the sum of the digits. The rule for 7 is the trickiest - it uses the digit-sum trick in reverse - and the chart gives the exact wording so the test can be repeated.',
     blocks: [
       {
         kind: 'table',
@@ -423,7 +423,7 @@ export const MATH_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'Print one copy per child. Cover the answer column and have the child work each rule on a number of their choice.',
-      'Use the chart as a quick check while doing long division or simplifying fractions — the rule tells you whether a common factor exists before you start.',
+      'Use the chart as a quick check while doing long division or simplifying fractions - the rule tells you whether a common factor exists before you start.',
       'Pair with the prime-numbers chart on the back of the same sheet: the rules for 2, 3, 5 and 7 are exactly what the prime-numbers test uses.',
       'Use the chart as a self-quiz: pick a number, then apply each rule in turn and mark which ones pass.',
     ],
@@ -446,7 +446,7 @@ export const MATH_PAGES: ReferencePage[] = [
     description:
       'Printable fraction, decimal and percent conversion chart covering halves, thirds, quarters, fifths and eighths. A4 and Letter friendly, free. Free to print.',
     intro:
-      'This chart lists every common fraction with its decimal and percent equivalents, so a fraction line in a question can be turned into a percent on the same line. The fractions covered — halves, thirds, quarters, fifths and eighths — are the ones that come up most often in elementary and middle-school word problems. Reading down the chart, the percent column is the easiest one to remember because percents are all out of one hundred. The same three columns let a child read 1/4, 0.25 and 25% from a single row. The chart is sized for a single page and prints in black and white.',
+      'This chart lists every common fraction with its decimal and percent equivalents, so a fraction line in a question can be turned into a percent on the same line. The fractions covered - halves, thirds, quarters, fifths and eighths - are the ones that come up most often in elementary and middle-school word problems. Reading down the chart, the percent column is the easiest one to remember because percents are all out of one hundred. The same three columns let a child read 1/4, 0.25 and 25% from a single row. The chart is sized for a single page and prints in black and white.',
     blocks: [
       {
         kind: 'table',
@@ -455,19 +455,19 @@ export const MATH_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Use the chart to convert any fraction into a percent quickly — read across the row to find the percent.',
+      'Use the chart to convert any fraction into a percent quickly - read across the row to find the percent.',
       'Reverse the chart for percentages: a question that asks "what is 80% of 250" can be turned into "what is 0.8 × 250" via the decimal column.',
       'Memorise the most common values first (1/2 = 50%, 1/4 = 25%, 3/4 = 75%, 1/3 ≈ 33.3%, 2/3 ≈ 66.7%); the chart covers the rest.',
       'Use the chart for mental-arithmetic practice: have a child convert a fraction into decimal in decimal and into percent, then check the chart.',
       'Use the chart to estimate before calculating: if 0.75 of a number is asked, you can already guess three quarters and then refine.',
     ],
     faq: [
-      { q: 'Why do 1/3 and 2/3 have repeating decimals?', a: 'Because 3 does not divide any power of 10 evenly — every third decimal place must carry over, so the digit 3 (or 6) repeats forever.' },
+      { q: 'Why do 1/3 and 2/3 have repeating decimals?', a: 'Because 3 does not divide any power of 10 evenly - every third decimal place must carry over, so the digit 3 (or 6) repeats forever.' },
       { q: 'What is the easiest way to convert a percent into a fraction?', a: 'Write the percent over 100 and simplify. 75% becomes 75/100, then 3/4.' },
       { q: 'What is the easiest way to convert a fraction into a percent?', a: 'Multiply by 100. 3/4 × 100 = 75, so 3/4 = 75%.' },
       { q: 'Why does this chart only go to eighths?', a: 'Halves, thirds, quarters, fifths and eighths cover almost every value that comes up in everyday word problems.' },
       { q: 'What is the percent column for?', a: 'It turns the fraction into a percent on the same row, so a question that asks for 25% of a number can be answered by reading across to 1/4.' },
-      { q: 'Why does 1/3 appear as 0.333 instead of a rounded value?', a: 'Because 1/3 is a repeating decimal — its digits go on forever. The chart shows three decimal places because that is enough to compare values.' },
+      { q: 'Why does 1/3 appear as 0.333 instead of a rounded value?', a: 'Because 1/3 is a repeating decimal - its digits go on forever. The chart shows three decimal places because that is enough to compare values.' },
       { q: 'What fraction is the same as 12.5%?', a: '1/8. The percent column for 1/8 in the chart is exactly 12.5%.' },
     ],
     related: ['divisibility-rules', 'prime-numbers', 'multiplication-chart'],
@@ -489,7 +489,7 @@ export const MATH_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'Group the formulas by the shape they apply to: rectangle formulas live with rectangles, prism formulas with prisms, and so on.',
-      'Always write the variable names next to every number while computing a value — most mistakes here are unit mistakes, not arithmetic ones.',
+      'Always write the variable names next to every number while computing a value - most mistakes here are unit mistakes, not arithmetic ones.',
       'Use the chart to double-check a formula you have just derived: a typo in a constant (like π vs 2π) is easier to spot when the formula is printed next to a list of alternatives.',
       'Pair the chart with the metric-conversions page when computing surface area in unfamiliar units.',
     ],
@@ -512,7 +512,7 @@ export const MATH_PAGES: ReferencePage[] = [
     description:
       'Printable US customary unit conversion table covering length (inches to miles), volume (fluid ounces to gallons) and mass (ounces to short tons). Free.',
     intro:
-      'This chart converts between US customary units and metric. Each row is a single equality — 1 inch is 2.54 cm, 1 gallon is about 3.785 L, 1 pound is about 453.6 g — so a problem that crosses the two systems becomes a single read instead of a chain of conversions. The chart is intended to sit on a desk next to a homework book so the values do not need to be memorised; they are looked up the moment they are needed.',
+      'This chart converts between US customary units and metric. Each row is a single equality - 1 inch is 2.54 cm, 1 gallon is about 3.785 L, 1 pound is about 453.6 g - so a problem that crosses the two systems becomes a single read instead of a chain of conversions. The chart is intended to sit on a desk next to a homework book so the values do not need to be memorised; they are looked up the moment they are needed.',
     blocks: [
       {
         kind: 'table',

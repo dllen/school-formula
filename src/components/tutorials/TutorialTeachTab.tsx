@@ -9,37 +9,38 @@ interface TutorialTeachTabProps {
 
 export const TutorialTeachTab: React.FC<TutorialTeachTabProps> = ({ unit }) => {
   return (
-    <div className="space-y-8">
-      <section>
-        <h3 className="flex items-center text-xl font-bold text-accent-active mb-4">
-          <Icon name="target" className="mr-2 w-5 h-5" /> 学习目标
-        </h3>
-        <div className="grid gap-3 sm:grid-cols-2">
+    <div>
+      <section className="section" aria-labelledby="teach-objectives">
+        <h2 id="teach-objectives" className="section-head">
+          <Icon name="target" className="h-5 w-5" />
+          学习目标
+        </h2>
+        <ol className="mt-3 max-w-prose divide-y divide-divider border-y border-rule">
           {unit.objectives.map((obj, idx) => (
-            <div key={idx} className="bg-accent-soft p-4 rounded-xl border border-accent-soft flex items-start">
-              <span className="bg-accent-soft-hover text-accent-active w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">
-                {idx + 1}
-              </span>
-              <p className="text-accent-active">{obj}</p>
-            </div>
+            <li key={idx} className="flex items-start gap-3 py-2.5">
+              <span className="tabular pt-0.5 text-caption text-ink-3">{idx + 1}</span>
+              <p className="text-body-s text-ink">{obj}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
-      <section>
-        <h3 className="flex items-center text-xl font-bold text-warning-ink mb-4">
-          <Icon name="book-open" className="mr-2 w-5 h-5" /> 课程引入
-        </h3>
-        <div className="bg-warning-bg/60 border border-warning-bg rounded-2xl p-6 prose prose-amber max-w-none">
+      <section className="section" aria-labelledby="teach-hook">
+        <h2 id="teach-hook" className="section-head">
+          <Icon name="book-open" className="h-5 w-5" />
+          课程引入
+        </h2>
+        <div className="prose-body mt-3">
           <ReactMarkdown>{unit.teach.hook}</ReactMarkdown>
         </div>
       </section>
 
-      <section>
-        <h3 className="flex items-center text-xl font-bold text-ink mb-4">
-          <Icon name="idea" className="mr-2 w-5 h-5" /> 本课概要
-        </h3>
-        <div className="bg-paper-2 border border-paper-3 rounded-2xl p-6 prose prose-indigo max-w-none">
+      <section className="section" aria-labelledby="teach-summary">
+        <h2 id="teach-summary" className="section-head">
+          <Icon name="idea" className="h-5 w-5" />
+          本课概要
+        </h2>
+        <div className="prose-body mt-3">
           <ReactMarkdown>{unit.teach.summary}</ReactMarkdown>
         </div>
       </section>

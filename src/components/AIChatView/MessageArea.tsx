@@ -1,14 +1,17 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { Icon } from '../icons/Icon';
 import { MessageBubble } from './MessageBubble';
 import type { MessageAreaProps } from './types';
 
 export function MessageArea({ messages, isLoading, error, onSend, onClear }: MessageAreaProps) {
   const [input, setInput] = useState('');
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
   }, []);
 
   useEffect(() => {
@@ -40,66 +43,60 @@ export function MessageArea({ messages, isLoading, error, onSend, onClear }: Mes
   };
 
   return (
-    <div className="flex flex-col flex-1 h-full">
-      <div className="flex items-center justify-between px-6 py-4 border-b border-[divider]">
-        <div>
-          <h2 className="text-lg font-bold text-[ink]">AI 助教</h2>
-          <p className="text-xs text-[ink-3]">智能问答助手</p>
-        </div>
-        <button
-          type="button"
-          onClick={onClear}
-          className="px-3 py-1.5 text-xs text-[ink-2] hover:text-[ink] hover:bg-[paper-2] rounded-lg transition-colors border border-[rule]"
-        >
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex items-center justify-between gap-3 border-b border-divider px-4 py-2">
+        <h2 className="text-label font-semibold text-ink-2">对话</h2>
+        <button type="button" onClick={onClear} className="btn btn-ghost">
           清空对话
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+      <div
+        ref={scrollRef}
+        className="flex-1 space-y-4 overflow-y-auto px-4 py-4"
+        role="log"
+        aria-live="polite"
+        aria-label="对话内容"
+      >
         {messages.map(msg => (
           <MessageBubble key={msg.id} message={msg} />
         ))}
+
         {isLoading && messages[messages.length - 1]?.content === '' && (
-          <div className="flex items-center gap-2 px-4 py-3">
-            <div className="flex gap-1">
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse [animation-delay:0ms]" />
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse [animation-delay:150ms]" />
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse [animation-delay:300ms]" />
-            </div>
-            <span className="text-sm text-[ink-3]">思考中…</span>
-          </div>
+          <p className="flex items-center gap-2 text-body-s text-ink-3" role="status">
+            <Icon name="ai" className="h-4 w-4 shrink-0 text-accent" />
+            正在思考
+          </p>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {error && (
-        <div className="mx-6 mb-3 px-4 py-3 bg-error-bg border border-error-bg rounded-lg text-sm text-error">
+        <p className="mx-4 mb-2 rounded-lg bg-error-bg px-3 py-2 text-body-s text-error-ink" role="alert">
           {error}
-        </div>
+        </p>
       )}
 
-      <div className="px-6 pb-4">
-        <div className="border border-[rule] rounded-xl bg-white p-3 shadow-sm focus-within:border-[accent] focus-within:ring-2 focus-within:ring-[accent-soft] transition-colors">
-          <div className="flex items-end gap-3">
-            <textarea
-              ref={textareaRef}
-              value={input}
-              onChange={handleInputChange}
-              onKeyDown={handleKeyDown}
-              placeholder="输入你的问题…（Shift+Enter 换行）"
-              rows={1}
-              className="flex-1 resize-none outline-none text-sm text-[ink] placeholder:text-[ink-3] max-h-40"
-              disabled={isLoading}
-            />
-            <button
-              type="button"
-              onClick={handleSend}
-              disabled={!input.trim() || isLoading}
-              className="px-4 py-2 bg-[accent] text-white text-sm font-medium rounded-lg hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0"
-            >
-              发送
-            </button>
-          </div>
+      <div className="px-4 pb-3">
+        <div className="composer">
+          <textarea
+            ref={textareaRef}
+            value={input}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            placeholder="输入你的问题"
+            aria-label="输入你的问题"
+            rows={1}
+            className="composer__input"
+            disabled={isLoading}
+          />
+          <button
+            type="button"
+            onClick={handleSend}
+            disabled={!input.trim() || isLoading}
+            className="btn btn-primary shrink-0"
+          >
+            发送
+          </button>
         </div>
       </div>
     </div>

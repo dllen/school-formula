@@ -7,6 +7,7 @@
 export type IconName =
   | 'ai'
   | 'anchor'
+  | 'arrow-left'
   | 'atom'
   | 'balance'
   | 'beaker'
@@ -17,6 +18,8 @@ export type IconName =
   | 'brush'
   | 'calendar'
   | 'chart'
+  | 'chevron-down'
+  | 'chevron-right'
   | 'check'
   | 'check-circle'
   | 'chess'

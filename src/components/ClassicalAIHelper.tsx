@@ -10,10 +10,15 @@ interface ClassicalAIHelperProps {
     content: string[];
 }
 
+/**
+ * 古文解读的一段平铺章节：标题、一个主动作、流式结果落在纸面凹槽里。
+ * 加载与失败都是文字，不是空转的骨架块。
+ */
 export const ClassicalAIHelper: React.FC<ClassicalAIHelperProps> = ({ title, source, content }) => {
     const [aiContent, setAiContent] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [error, setError] = useState('');
 
     const handleGenerate = async () => {
         const config = getAIConfig();
@@ -24,64 +29,78 @@ export const ClassicalAIHelper: React.FC<ClassicalAIHelperProps> = ({ title, sou
 
         setIsGenerating(true);
         setAiContent('');
+        setError('');
 
         try {
             await generateClassicalInterpretation(title, source, content, (chunk) => {
                 setAiContent(prev => prev + chunk);
             });
-        } catch (error) {
-            console.error(error);
-            alert('生成失败，请检查 API 配置');
+        } catch (generateError) {
+            console.error(generateError);
+            setError('生成失败，请检查 API 配置后重试。');
         } finally {
             setIsGenerating(false);
         }
     };
 
-    const isShiji = source === 'shiji';
-    const actionColor = isShiji ? 'bg-ink text-ink-inverse' : 'bg-warning text-white';
-    const shadowColor = isShiji ? 'hover:shadow-rule' : 'hover:shadow-warning-bg';
-    const ringColor = isShiji ? 'ring-paper-2/50' : 'ring-warning-bg/50';
-    const borderColor = isShiji ? 'border-paper-3' : 'border-warning-bg';
-    const bgColor = isShiji ? 'bg-paper-2' : 'bg-warning-bg';
-    const textColor = isShiji ? 'text-ink' : 'text-warning-ink';
+    const sourceLabel = source === 'shiji' ? '史记' : '资治通鉴';
 
     return (
-        <div className="mt-8 pt-8 border-t border-paper-3">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <h3 className="flex items-center text-xl font-bold text-ink">
-                    <Icon name="sparkle" className="mr-2 w-5 h-5" /> AI 名师解读
-                    <span className="ml-3 text-sm font-normal text-ink-3 bg-paper-3 px-2 py-0.5 rounded-full">
-                        {isShiji ? '史记' : '资治通鉴'}
-                    </span>
-                </h3>
-                {!aiContent && !isGenerating && (
-                    <button
-                        onClick={handleGenerate}
-                        className={`px-6 py-2 ${actionColor} rounded-xl font-bold ${shadowColor} transition-[transform,box-shadow] flex items-center gap-2`}
-                    >
-                        <span>生成深度解读</span>
+        <section className="section" aria-labelledby="classical-ai-heading">
+            <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <h2 id="classical-ai-heading" className="section-head">
+                        <Icon name="sparkle" className="h-4 w-4" />
+                        AI 名师解读
+                    </h2>
+                    <span className="tag">{sourceLabel}</span>
+                </div>
+                {!isGenerating && !aiContent && !error && (
+                    <button type="button" onClick={handleGenerate} className="btn btn-primary">
+                        生成深度解读
+                    </button>
+                )}
+                {!isGenerating && (aiContent || error) && (
+                    <button type="button" onClick={handleGenerate} className="btn btn-secondary">
+                        重新生成
                     </button>
                 )}
             </div>
 
             {isGenerating && !aiContent && (
-                <div className={`${bgColor} p-8 rounded-2xl border ${borderColor} text-center animate-pulse`}>
-                    <p className={`${textColor} font-medium`}>正在为您生成古文深度解读…</p>
-                </div>
+                <p className="mt-6 flex items-center gap-2 text-body-s text-ink-2" role="status" aria-live="polite">
+                    <span
+                        className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-divider border-t-accent"
+                        aria-hidden="true"
+                    />
+                    正在为您生成古文深度解读…
+                </p>
             )}
 
-            {(aiContent || (isGenerating && aiContent)) && (
-                <div className={`bg-white border ${borderColor} rounded-2xl p-8 shadow-sm ring-4 ${ringColor}`}>
-                    <div className="prose max-w-none">
-                        <ReactMarkdown>{aiContent}</ReactMarkdown>
+            {error && (
+                <p className="mt-6 text-body-s text-error-ink" role="alert">
+                    {error}
+                </p>
+            )}
+
+            {aiContent && (
+                <div className="well mt-6">
+                    <div className="prose-body">
+                        <ReactMarkdown components={{ h1: 'h3' }}>{aiContent}</ReactMarkdown>
                     </div>
                     {isGenerating && (
-                        <p className="mt-4 text-ink-3 animate-pulse text-sm">正在撰写…</p>
+                        <p className="mt-4 flex items-center gap-2 text-body-s text-ink-2" role="status" aria-live="polite">
+                            <span
+                                className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-divider border-t-accent"
+                                aria-hidden="true"
+                            />
+                            正在撰写…
+                        </p>
                     )}
                 </div>
             )}
 
             <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
-        </div>
+        </section>
     );
 };

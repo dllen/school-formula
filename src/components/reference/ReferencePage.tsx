@@ -14,8 +14,9 @@ import { RelatedCharts } from './RelatedCharts';
 /**
  * `/en/:category/:slug` —— 一张可打印的参考图表。
  *
- * 渲染顺序固定：面包屑 → H1 → intro → blocks → howToUse → 广告 → FAQ → related。
+ * 渲染顺序固定：面包屑，标题块（含打印动作），intro，blocks，howToUse，广告，FAQ，related。
  * 广告落在数据块之后、FAQ 之前，是为了让打印输出与正文阅读都不被广告打断。
+ * 打印输出保持原样：只有 H1 与数据块，其余分区都带 print:hidden。
  */
 export function ReferencePage(): ReactElement {
   const { category, slug } = useParams<{ category: string; slug: string }>();
@@ -38,50 +39,36 @@ export function ReferencePage(): ReactElement {
 
   return (
     <ReferenceLayout>
-      <nav aria-label="Breadcrumb" className="text-sm text-[ink-2] print:hidden">
-        <a href={ENGLISH_HOME} className="hover:text-[ink] transition-colors">
-          All charts
-        </a>
-        <span className="mx-2">/</span>
-        <a href={categoryPath(page.category)} className="hover:text-[ink] transition-colors">
-          {CATEGORY_COPY[page.category].name}
-        </a>
+      <nav aria-label="Breadcrumb" className="breadcrumb print:hidden">
+        <a href={ENGLISH_HOME}>All charts</a>
+        <span aria-hidden="true">/</span>
+        <a href={categoryPath(page.category)}>{CATEGORY_COPY[page.category].name}</a>
       </nav>
 
-      <article className="mt-4 bg-white rounded-2xl border border-[divider] shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-[divider] bg-accent-soft flex items-start justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold text-[ink]">{page.title}</h1>
-            <p className="mt-1 text-sm text-[ink-2] print:hidden">{page.description}</p>
-          </div>
-          <span className="shrink-0 px-3 py-1 bg-accent-soft text-[accent] text-xs font-medium rounded-full print:hidden">
-            {CATEGORY_COPY[page.category].name}
-          </span>
+      <div className="page-head mt-4">
+        <div className="page-head__text">
+          <h1 className="page-title">{page.title}</h1>
+          <p className="page-lead max-w-prose print:hidden">{page.description}</p>
         </div>
+        <PrintButton />
+      </div>
 
-        <div className="p-6">
-          <p className="text-[ink] leading-relaxed print:hidden">{page.intro}</p>
+      <p className="prose-body print:hidden">{page.intro}</p>
 
-          <BlockRenderer blocks={page.blocks} />
+      <BlockRenderer blocks={page.blocks} />
 
-          <section className="mt-10 print:hidden" aria-labelledby="how-to-use-heading">
-            <h2 id="how-to-use-heading" className="text-xl font-bold text-[ink]">
-              How to use it
-            </h2>
-            <ul className="mt-4 space-y-2 list-disc pl-5 text-[ink]">
-              {page.howToUse.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </section>
+      <section className="section print:hidden" aria-labelledby="how-to-use-heading">
+        <h2 id="how-to-use-heading" className="section-head">
+          How to use it
+        </h2>
+        <ul className="mt-3 max-w-prose list-disc space-y-2 pl-5 text-body text-ink">
+          {page.howToUse.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
 
-          <div className="mt-6 flex justify-end print:hidden">
-            <PrintButton />
-          </div>
-        </div>
-      </article>
-
-      <div className="print:hidden">
+      <div className="mt-10 print:hidden">
         <AdUnit placement="referenceBottom" />
       </div>
 

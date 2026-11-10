@@ -7,6 +7,8 @@ interface Props {
   onSelect: (technique: Technique) => void;
 }
 
+const STAGES = ['小学', '中学', '高中'] as const;
+
 export const MasteryLibraryView: React.FC<Props> = ({ onSelect }) => {
   const [search, setSearch] = useState('');
   const [stageFilter, setStageFilter] = useState('');
@@ -18,35 +20,39 @@ export const MasteryLibraryView: React.FC<Props> = ({ onSelect }) => {
     return true;
   });
 
-  const stages = ['小学', '中学', '高中'] as const;
-  const stageColors = {
-    小学: 'bg-success-bg text-success-ink border-success-bg',
-    中学: 'bg-info-bg text-info-ink border-info-bg',
-    高中: 'bg-warning-bg text-warning-ink border-warning-bg',
-  };
-
   return (
-    <div className="space-y-4">
-      <div className="flex gap-3">
-        <input
-          type="text"
-          placeholder="搜索方法..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="flex-1 px-3 py-2 border border-rule-strong rounded-lg text-sm focus:ring-2 focus:ring-accent-soft focus:border-accent-soft-hover outline-none transition-colors"
-        />
-        <div className="flex gap-1 bg-paper-3 rounded-lg p-0.5">
+    <div className="space-y-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="relative min-w-0 sm:w-64">
+          <Icon
+            name="search"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-3"
+          />
+          <input
+            type="search"
+            placeholder="搜索方法…"
+            aria-label="搜索方法"
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            className="input pl-9 text-body"
+          />
+        </div>
+        <div className="seg seg--wrap" role="group" aria-label="按学段筛选">
           <button
+            type="button"
+            aria-pressed={!stageFilter}
             onClick={() => setStageFilter('')}
-            className={`px-2 py-1 text-xs rounded-md transition-colors ${!stageFilter ? 'bg-white shadow text-ink font-medium' : 'text-ink-3 hover:text-ink-2'}`}
+            className="seg-btn"
           >
             全部
           </button>
-          {stages.map(s => (
+          {STAGES.map(s => (
             <button
               key={s}
+              type="button"
+              aria-pressed={stageFilter === s}
               onClick={() => setStageFilter(stageFilter === s ? '' : s)}
-              className={`px-2 py-1 text-xs rounded-md transition-colors ${stageFilter === s ? 'bg-white shadow text-ink font-medium' : 'text-ink-3 hover:text-ink-2'}`}
+              className="seg-btn"
             >
               {s}
             </button>
@@ -54,106 +60,108 @@ export const MasteryLibraryView: React.FC<Props> = ({ onSelect }) => {
         </div>
       </div>
 
-      {filtered.length === 0 && (
-        <p className="text-center py-8 text-ink-3 text-sm">没有找到匹配的方法</p>
-      )}
+      {filtered.length === 0 ? (
+        <div className="empty-state">
+          <Icon name="search" className="h-6 w-6" />
+          <p className="text-body-s">没有找到匹配的方法</p>
+        </div>
+      ) : (
+        <ul className="grid-tail-span grid grid-cols-1 gap-x-10 md:grid-cols-2">
+          {filtered.map(t => {
+            const isExpanded = expandedId === t.id;
+            const panelId = `technique-panel-${t.id}`;
 
-      <div className="space-y-2">
-        {filtered.map(t => {
-          const isExpanded = expandedId === t.id;
-          return (
-            <div
-              key={t.id}
-              className="bg-white rounded-xl border border-paper-3 overflow-hidden transition-colors transition-shadow hover:shadow-sm"
-            >
-              <button
-                onClick={() => setExpandedId(isExpanded ? null : t.id)}
-                className="w-full text-left px-4 py-3 flex items-center gap-3"
+            return (
+              <li
+                key={t.id}
+                className={`border-b border-divider ${isExpanded ? 'md:col-span-2' : ''}`}
               >
-                <span className={`text-xs px-2 py-0.5 rounded border font-medium ${stageColors[t.stage]}`}>
-                  {t.stage}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-ink">{t.name}</span>
-                    <span className="text-xs text-ink-3">{t.grade}</span>
-                  </div>
-                  <p className="text-xs text-ink-3 truncate mt-0.5">{t.summary}</p>
-                </div>
-                <svg
-                  className={`w-4 h-4 text-ink-3 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
-                  fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                 aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setExpandedId(isExpanded ? null : t.id)}
+                  aria-expanded={isExpanded}
+                  aria-controls={panelId}
+                  className="w-full px-2 py-3 text-left transition-colors hover:bg-paper-2"
+                >
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="min-w-0">
+                      <span className="block text-title font-semibold text-ink">{t.name}</span>
+                      <span className="mt-1 line-clamp-1 block text-body-s text-ink-2">
+                        {t.summary}
+                      </span>
+                    </span>
+                    <Icon
+                      name="chevron-down"
+                      className={`mt-1 h-4 w-4 shrink-0 text-ink-3 transition-transform ${
+                        isExpanded ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </span>
+                  <span className="mt-2 flex flex-wrap gap-2">
+                    <span className="tag">{t.stage}</span>
+                    <span className="tag">{t.grade}</span>
+                  </span>
+                </button>
 
-              {isExpanded && (
-                <div className="px-4 pb-4 space-y-3 border-t border-paper-2">
-                  {t.kou && (
-                    <div className="pt-3">
-                      <p className="text-xs text-warning leading-relaxed flex items-start gap-1.5"><Icon name="idea" className="w-4 h-4 shrink-0 mt-px" />{t.kou}</p>
-                    </div>
-                  )}
-
-                  {t.examples && t.examples.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold text-ink-2 mb-1">典型例题</p>
-                      <ul className="space-y-1">
-                        {t.examples.map((ex, i) => (
-                          <li key={i} className="text-xs text-ink-2 pl-3 py-1 bg-accent-soft/50 rounded-md leading-relaxed">
-                            {ex}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {t.mistakes && t.mistakes.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold text-ink-2 mb-1">常见错误</p>
-                      <ul className="space-y-1">
-                        {t.mistakes.map((m, i) => (
-                          <li key={i} className="text-xs text-ink-2 pl-3 py-1 bg-error-bg/50 rounded-md leading-relaxed flex items-start gap-1">
-                            <span className="text-error mt-0.5">×</span>
-                            <span>{m}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {t.realWorld && t.realWorld.length > 0 && (
-                    <div>
-                      <p className="text-xs font-semibold text-ink-2 mb-1 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-success inline-block"></span>
-                        生活应用
+                {isExpanded && (
+                  <div id={panelId} className="max-w-prose px-2 pb-5">
+                    {t.kou && (
+                      <p className="flex items-start gap-2 text-body-s text-ink-2">
+                        <Icon name="idea" className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
+                        <span>{t.kou}</span>
                       </p>
-                      <ul className="space-y-1">
-                        {t.realWorld.map((r, i) => (
-                          <li key={i} className="text-xs text-ink-2 pl-3 py-1 bg-success-bg/50 rounded-md leading-relaxed flex items-start gap-1">
-                            
-                            <span>{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                    )}
 
-                  <div className="pt-2">
+                    {t.examples && t.examples.length > 0 && (
+                      <div className="mt-4">
+                        <p className="text-label font-semibold text-ink-2">典型例题</p>
+                        <ul className="mt-2 list-disc space-y-1 pl-5 text-body-s text-ink-2 marker:text-ink-3">
+                          {t.examples.map((ex, i) => (
+                            <li key={i}>{ex}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {t.mistakes && t.mistakes.length > 0 && (
+                      <div className="mt-4">
+                        <p className="text-label font-semibold text-ink-2">常见错误</p>
+                        <ul className="mt-2 space-y-1 text-body-s text-ink-2">
+                          {t.mistakes.map((m, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <Icon name="cross" className="mt-0.5 h-4 w-4 shrink-0 text-error" />
+                              <span>{m}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {t.realWorld && t.realWorld.length > 0 && (
+                      <div className="mt-4">
+                        <p className="text-label font-semibold text-ink-2">生活应用</p>
+                        <ul className="mt-2 list-disc space-y-1 pl-5 text-body-s text-ink-2 marker:text-ink-3">
+                          {t.realWorld.map((r, i) => (
+                            <li key={i}>{r}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
                     <button
+                      type="button"
                       onClick={() => onSelect(t)}
-                      className="text-xs text-accent hover:text-accent-active font-medium transition-colors"
+                      className="btn btn-primary mt-4"
                     >
                       开始练习
                     </button>
                   </div>
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

@@ -9,33 +9,29 @@ interface SubjectGridProps {
     onSelectSubject: (subject: Subject) => void;
 }
 
+/** The subject rail beside the knowledge index. One list, not a grid of cards. */
 export const SubjectGrid: React.FC<SubjectGridProps> = ({ subjects, selectedSubjectId, onSelectSubject }) => {
     return (
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {subjects.map((subject) => (
-                <button
-                    key={subject.id}
-                    onClick={() => onSelectSubject(subject)}
-                    className={`
-            relative group flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-colors transition-shadow duration-300
-            ${selectedSubjectId === subject.id
-                            ? 'border-[accent] bg-[accent-soft]/50 ring-4 ring-accent-soft'
-                            : 'border-white bg-white hover:border-accent-soft-hover hover:shadow-lg hover:-translate-y-1 shadow-sm'
-                        }
-          `}
-                >
-                    <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                        <Icon name={iconFor(subject.icon)} className="w-7 h-7" />
-                    </div>
-                    <span className={`
-            font-bold text-lg
-            ${selectedSubjectId === subject.id ? 'text-[accent]' : 'text-[ink]'}
-          `}>
-                        {subject.name}
-                    </span>
-                    <span className="text-xs text-[ink-3] mt-1">{subject.knowledgePoints.length} 个知识点</span>
-                </button>
-            ))}
-        </div>
+        <nav aria-label="选择学科">
+            <ul className="rail">
+                {subjects.map((subject) => (
+                    <li key={subject.id}>
+                        <button
+                            type="button"
+                            aria-pressed={selectedSubjectId === subject.id}
+                            aria-label={`${subject.name}，${subject.knowledgePoints.length} 个知识点`}
+                            onClick={() => onSelectSubject(subject)}
+                            className="rail-item"
+                        >
+                            <Icon name={iconFor(subject.icon)} className="w-[18px] h-[18px] rail-item__icon" />
+                            <span className="truncate">{subject.name}</span>
+                            <span className="rail-count" aria-hidden="true">
+                                {subject.knowledgePoints.length}
+                            </span>
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </nav>
     );
 };

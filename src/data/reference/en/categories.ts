@@ -15,7 +15,7 @@ export const CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy> = {
     name: 'Math',
     summary: 'Times tables, roots, conversions and formula sheets.',
     intro:
-      'Printable maths reference charts for arithmetic, algebra and geometry — times tables, squares and roots, unit conversions and formula sheets. Every chart is laid out to be printed at full size and kept on a desk or in a homework folder.',
+      'Printable maths reference charts for arithmetic, algebra and geometry - times tables, squares and roots, unit conversions and formula sheets. Every chart is laid out to be printed at full size and kept on a desk or in a homework folder.',
   },
   science: {
     name: 'Science',
@@ -27,6 +27,6 @@ export const CATEGORY_COPY: Record<ReferenceCategory, CategoryCopy> = {
     name: 'English',
     summary: 'Grammar, spelling and vocabulary reference lists.',
     intro:
-      'Printable English reference charts covering grammar, spelling and vocabulary — word forms and the lists that are quicker to check than to recall. Each chart is laid out to be read at a glance and printed on a single page.',
+      'Printable English reference charts covering grammar, spelling and vocabulary - word forms and the lists that are quicker to check than to recall. Each chart is laid out to be read at a glance and printed on a single page.',
   },
 };

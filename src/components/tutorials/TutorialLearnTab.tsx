@@ -10,21 +10,20 @@ interface TutorialLearnTabProps {
 
 export const TutorialLearnTab: React.FC<TutorialLearnTabProps> = ({ unit }) => {
   return (
-    <div className="space-y-8">
+    <div>
       {unit.learn.sections.map((section, idx) => (
-        <section key={idx} className="bg-white border border-paper-3 rounded-2xl p-6 shadow-sm">
-          <h3 className="text-xl font-bold text-ink mb-4">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-accent-soft text-accent-hover text-sm font-bold mr-3">
-              {idx + 1}
-            </span>
+        <section key={idx} className="section">
+          <h2 className="section-head">
+            <span className="tabular text-caption font-normal text-ink-3">{idx + 1}</span>
             {section.title}
-          </h3>
-          <div className="prose prose-indigo max-w-none text-ink-2">
+          </h2>
+
+          <div className="prose-body mt-3">
             <ReactMarkdown>{section.content}</ReactMarkdown>
           </div>
 
           {section.diagrams && section.diagrams.length > 0 && (
-            <div className="mt-4 space-y-4">
+            <div className="mt-4">
               {section.diagrams.map((diagram, dIdx) => (
                 <TutorialDiagram key={dIdx} diagram={diagram} />
               ))}
@@ -32,42 +31,49 @@ export const TutorialLearnTab: React.FC<TutorialLearnTabProps> = ({ unit }) => {
           )}
 
           {section.examples && section.examples.length > 0 && (
-            <div className="mt-6 space-y-4">
-              <h4 className="text-lg font-bold text-ink">例题精讲</h4>
-              {section.examples.map((example, eIdx) => (
-                <div key={eIdx} className="bg-accent-soft/60 border border-accent-soft rounded-xl p-5">
-                  <div className="font-bold text-accent-active mb-2">{example.title}</div>
-                  <div className="text-ink mb-3">
-                    <span className="font-medium text-ink">题目：</span>{example.problem}
-                  </div>
-                  <div className="text-ink mb-2">
-                    <span className="font-medium text-ink">解答：</span>{example.solution}
-                  </div>
-                  <div className="text-sm text-accent-hover bg-white/60 rounded-lg p-2">
-                    <span className="font-medium flex items-start gap-1.5"><Icon name="idea" className="w-4 h-4 shrink-0 mt-0.5" />点拨：</span>{example.tip}
-                  </div>
-                </div>
-              ))}
+            <div className="mt-6">
+              <h3 className="text-subhead font-semibold text-ink">例题精讲</h3>
+              <div className="mt-3 divide-y divide-divider border-t border-rule">
+                {section.examples.map((example, eIdx) => (
+                  <article key={eIdx} className="py-4">
+                    <h4 className="text-title font-semibold text-ink">{example.title}</h4>
+                    <p className="mt-2 text-body-s text-ink">
+                      <span className="font-medium">题目：</span>
+                      {example.problem}
+                    </p>
+                    <p className="mt-1 text-body-s text-ink">
+                      <span className="font-medium">解答：</span>
+                      {example.solution}
+                    </p>
+                    <p className="mt-2 flex items-start gap-2 text-body-s text-ink-2">
+                      <Icon name="idea" className="mt-0.5 h-4 w-4 shrink-0 text-ink-3" />
+                      <span>
+                        <span className="font-medium text-ink-2">点拨：</span>
+                        {example.tip}
+                      </span>
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
           )}
         </section>
       ))}
 
       {unit.learn.tips.length > 0 && (
-        <section>
-          <h3 className="flex items-center text-xl font-bold text-warning-ink mb-4">
-            <Icon name="trophy" className="mr-2 w-5 h-5" /> 学习锦囊
-          </h3>
-          <div className="grid gap-4 sm:grid-cols-2">
+        <section className="section" aria-labelledby="learn-tips">
+          <h2 id="learn-tips" className="section-head">
+            <Icon name="trophy" className="h-5 w-5" />
+            学习锦囊
+          </h2>
+          <ol className="mt-3 max-w-prose divide-y divide-divider border-y border-rule">
             {unit.learn.tips.map((tip, idx) => (
-              <div key={idx} className="bg-warning-bg p-4 rounded-xl border border-warning-bg flex items-start">
-                <span className="bg-warning-bg text-warning-ink w-6 h-6 rounded-full flex items-center justify-center text-sm font-bold mr-3 flex-shrink-0">
-                  {idx + 1}
-                </span>
-                <p className="text-warning-ink">{tip}</p>
-              </div>
+              <li key={idx} className="flex items-start gap-3 py-2.5">
+                <span className="tabular pt-0.5 text-caption text-ink-3">{idx + 1}</span>
+                <p className="text-body-s text-ink-2">{tip}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </section>
       )}
     </div>

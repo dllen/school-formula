@@ -16,21 +16,27 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="mt-12 bg-white border-t border-[divider] print:hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <nav aria-label="页脚导航" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {FOOTER_LINKS.map((link) => (
-            <Link key={link.to} to={link.to} className="text-[ink-2] hover:text-[accent]">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="mt-4">
-          <DonatePopover triggerLabel="赞赏支持" />
+    <footer className="site-footer print:hidden">
+      <div className="container-page">
+        <div className="site-footer__inner">
+          <nav aria-label="页脚导航">
+            <ul className="footer-links">
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to}>{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="footer-meta">
+            <p className="text-label text-ink-3">
+              © {new Date().getFullYear()} 拾艺院 (Shi Yi Yuan). All rights reserved.
+            </p>
+            <span className="footer-meta__sep" aria-hidden="true" />
+            <DonatePopover triggerLabel="赞赏支持" />
+          </div>
         </div>
-        <p className="mt-4 text-sm text-[ink-2]">
-          © {new Date().getFullYear()} 拾艺院 (Shi Yi Yuan). All rights reserved.
-        </p>
       </div>
     </footer>
   );

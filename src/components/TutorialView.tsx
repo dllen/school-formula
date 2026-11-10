@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { ALL_TUTORIALS, type Tutorial, type TutorialUnit } from '../data/tutorials';
+import { TutorialUnitDetail } from './tutorials/TutorialUnitDetail';
+import { Icon, type IconName } from './icons/Icon';
+import { iconFor } from './icons/iconFor';
 
 type Subject = 'math' | 'chinese' | 'english' | 'science' | 'moral';
 
@@ -9,10 +13,6 @@ const SUBJECTS: { id: Subject; name: string; icon: IconName }[] = [
   { id: 'science', name: '科学', icon: 'lab' },
   { id: 'moral', name: '道德与法治', icon: 'balance' },
 ];
-import { ALL_TUTORIALS, type Tutorial, type TutorialUnit } from '../data/tutorials';
-import { TutorialUnitDetail } from './tutorials/TutorialUnitDetail';
-import { Icon, type IconName } from './icons/Icon';
-import { iconFor } from './icons/iconFor';
 
 const GRADES: { id: string; name: string }[] = [
   { id: '1', name: '一年级' },
@@ -73,98 +73,94 @@ export const TutorialView: React.FC = () => {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-[ink]">教程</h2>
-          <p className="text-sm text-[ink-2]">系统学习小学课程：教、学、练一体化</p>
+    <>
+      <div className="page-head">
+        <div className="page-head__text">
+          <h1 className="page-title">教程</h1>
+          <p className="page-lead">系统学习小学课程：教、学、练一体化</p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-          <div className="flex space-x-1 bg-[paper-2] p-1 rounded-xl shadow-inner">
+        <div className="page-controls w-full sm:w-auto">
+          <div className="seg seg--wrap" role="group" aria-label="选择学科">
             {SUBJECTS.map((subject) => (
               <button
                 key={subject.id}
+                type="button"
+                aria-pressed={selectedSubject === subject.id}
                 onClick={() => handleSubjectChange(subject.id)}
-                className={`flex-1 sm:flex-none px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 flex items-center gap-1 ${
-                  selectedSubject === subject.id
-                    ? 'bg-white text-accent shadow-sm ring-1 ring-black/5'
-                    : 'text-[ink-2] hover:text-[ink] hover:bg-rule/50'
-                }`}
+                className="seg-btn gap-1.5"
               >
-                <Icon name={subject.icon} className="w-5 h-5" />
-                <span>{subject.name}</span>
+                <Icon name={subject.icon} className="h-4 w-4" />
+                {subject.name}
               </button>
             ))}
           </div>
-        </div>
-        <div className="flex space-x-1 bg-[paper-2] p-1 rounded-xl shadow-inner sm:w-fit w-full">
-          {GRADES.map((grade) => (
-            <button
-              key={grade.id}
-              onClick={() => handleGradeChange(grade.id)}
-              className={`
-                flex-1 sm:flex-none px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200
-                ${selectedGrade === grade.id
-                  ? 'bg-white text-accent shadow-sm ring-1 ring-black/5'
-                  : 'text-[ink-2] hover:text-[ink] hover:bg-rule/50'
-                }
-              `}
-            >
-              {grade.name}
-            </button>
-          ))}
+          <div className="seg seg--wrap" role="group" aria-label="选择年级">
+            {GRADES.map((grade) => (
+              <button
+                key={grade.id}
+                type="button"
+                aria-pressed={selectedGrade === grade.id}
+                onClick={() => handleGradeChange(grade.id)}
+                className="seg-btn"
+              >
+                {grade.name}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {tutorial ? (
-        <div className="space-y-6">
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-[divider]">
-            <div className="flex items-center gap-3 mb-2">
-              <Icon name={iconFor(tutorial.subjectIcon)} className="w-8 h-8" />
-              <div>
-                <h3 className="text-xl font-bold text-[ink]">{tutorial.title}</h3>
-                <p className="text-sm text-[ink-2]">{tutorial.description}</p>
-              </div>
+        <section aria-labelledby="tutorial-title">
+          <div className="flex items-start gap-3 border-b border-divider pb-4">
+            <Icon
+              name={iconFor(tutorial.subjectIcon)}
+              className="mt-0.5 h-6 w-6 shrink-0 text-ink-3"
+            />
+            <div className="min-w-0">
+              <h2 id="tutorial-title" className="text-subhead font-semibold text-ink">
+                {tutorial.title}
+              </h2>
+              <p className="mt-1 text-body-s text-ink-2">{tutorial.description}</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="grid-tail-span grid grid-cols-1 gap-x-10 md:grid-cols-2">
             {tutorial.units.map((unit) => (
-              <button
-                key={unit.id}
-                onClick={() => handleSelectUnit(unit, tutorial)}
-                className="text-left bg-white p-6 rounded-2xl border border-[divider] shadow-sm hover:shadow-md hover:-translate-y-1 transition-colors transition-shadow group"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="bg-accent-soft text-accent-hover text-xs font-bold px-2.5 py-1 rounded-full">
-                    第 {unit.order} 课
+              <li key={unit.id} className="border-b border-divider">
+                <button
+                  type="button"
+                  onClick={() => handleSelectUnit(unit, tutorial)}
+                  className="block w-full px-2 py-3 text-left transition-colors hover:bg-paper-2"
+                >
+                  <span className="flex items-baseline justify-between gap-3 text-caption text-ink-3">
+                    <span className="tabular">第 {unit.order} 课</span>
+                    <span>{unit.duration}</span>
                   </span>
-                  <span className="text-xs text-[ink-3]">{unit.duration}</span>
-                </div>
-                <h4 className="text-lg font-bold text-[ink] group-hover:text-accent-hover transition-colors mb-3">
-                  {unit.title}
-                </h4>
-                <ul className="space-y-1.5">
-                  {unit.objectives.slice(0, 2).map((obj, idx) => (
-                    <li key={idx} className="text-sm text-[ink-2] flex items-start">
-                      <span className="text-accent-hover mr-2">•</span>
-                      <span className="line-clamp-2">{obj}</span>
-                    </li>
-                  ))}
-                  {unit.objectives.length > 2 && (
-                    <li className="text-xs text-[ink-3] pl-4">+{unit.objectives.length - 2} 项目标</li>
-                  )}
-                </ul>
-              </button>
+                  <h3 className="mt-1 text-title font-semibold text-ink">{unit.title}</h3>
+                  <ul className="mt-1 list-disc space-y-0.5 pl-4 text-body-s text-ink-2 marker:text-ink-3">
+                    {unit.objectives.slice(0, 2).map((obj, idx) => (
+                      <li key={idx} className="line-clamp-2">
+                        {obj}
+                      </li>
+                    ))}
+                    {unit.objectives.length > 2 && (
+                      <li className="list-none text-caption text-ink-3">
+                        +{unit.objectives.length - 2} 项目标
+                      </li>
+                    )}
+                  </ul>
+                </button>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
       ) : (
-        <div className="text-center py-12 bg-[paper-2] rounded-3xl border border-dashed border-[rule]">
-          <Icon name="book" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
-          <p className="text-lg text-[ink-3]">该年级暂无教程</p>
+        <div className="empty-state">
+          <Icon name="book" className="h-10 w-10" />
+          <p className="text-body-s text-ink-2">该年级暂无教程</p>
         </div>
       )}
-    </div>
+    </>
   );
 };

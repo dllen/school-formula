@@ -5,6 +5,10 @@ interface CheatSheetCardProps {
     cheatsheet: CheatSheet;
 }
 
+/**
+ * 速查表详情：标题块 + 一张真正的数据表，打印是这里唯一的主动作。
+ * 页面没有外层卡片，表格本身就是唯一的容器。
+ */
 export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) => {
     const handlePrint = () => {
         // Create a new window with only this cheatsheet
@@ -47,6 +51,7 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
               width: 100%;
               border-collapse: collapse;
               margin-bottom: 20px;
+              font-variant-numeric: tabular-nums;
             }
             th, td {
               border: 1px solid var(--print-rule);
@@ -64,6 +69,7 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
             @media print {
               body { padding: 10px; }
               @page { margin: 15mm; }
+              th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             }
           </style>
         </head>
@@ -102,63 +108,48 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-[divider] overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6 border-b border-[divider] bg-accent-soft">
-                <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-[ink]">{cheatsheet.title}</h3>
-                    <span className="px-3 py-1 bg-accent-soft text-[accent] text-xs font-medium rounded-full">
-                        {cheatsheet.category}
-                    </span>
+        <article className="pt-6">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                        <h1 className="text-display font-semibold leading-tight tracking-tight text-ink">
+                            {cheatsheet.title}
+                        </h1>
+                        <span className="tag">{cheatsheet.category}</span>
+                    </div>
+                    <p className="mt-2 max-w-2xl text-body-s text-ink-2">{cheatsheet.description}</p>
                 </div>
-                <p className="text-sm text-[ink-2]">{cheatsheet.description}</p>
+                <button type="button" onClick={handlePrint} className="btn btn-primary">
+                    打印
+                </button>
             </div>
 
-            <div className="p-6">
-                <div className="overflow-x-auto">
-                    <table className="w-full border-collapse text-sm">
-                        {cheatsheet.table.headers && (
-                            <thead>
-                                <tr className="bg-[paper-2]">
-                                    {cheatsheet.table.headers.map((header, idx) => (
-                                        <th
-                                            key={idx}
-                                            className="border border-[rule] px-3 py-2 text-left font-semibold text-[ink]"
-                                        >
-                                            {header}
-                                        </th>
-                                    ))}
-                                </tr>
-                            </thead>
-                        )}
-                        <tbody>
-                            {cheatsheet.table.rows.map((row, rowIdx) => (
-                                <tr key={rowIdx} className="hover:bg-[accent-soft]/30 transition-colors">
-                                    {row.map((cell, cellIdx) => (
-                                        <td
-                                            key={cellIdx}
-                                            className="border border-[rule] px-3 py-2 text-[ink]"
-                                        >
-                                            {cell}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div className="mt-4 flex justify-end">
-                    <button
-                        onClick={handlePrint}
-                        className="flex items-center gap-2 px-4 py-2 bg-[accent] text-white rounded-lg hover:bg-[accent-hover] transition-colors font-medium text-sm"
-                    >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
-                        </svg>
-                        打印
-                    </button>
-                </div>
+            <div className="mt-8 overflow-x-auto">
+                <table className="table-basic [&_td]:px-2 [&_th]:px-2 sm:[&_td]:px-3 sm:[&_th]:px-3">
+                    {cheatsheet.table.headers && (
+                        <thead>
+                            <tr>
+                                {cheatsheet.table.headers.map((header, idx) => (
+                                    <th key={idx} scope="col">
+                                        {header}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                    )}
+                    <tbody>
+                        {cheatsheet.table.rows.map((row, rowIdx) => (
+                            <tr key={rowIdx}>
+                                {row.map((cell, cellIdx) => (
+                                    <td key={cellIdx} className={cellIdx === 0 ? 'whitespace-nowrap' : undefined}>
+                                        {cell}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </article>
     );
 };

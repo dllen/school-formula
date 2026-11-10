@@ -1,15 +1,34 @@
-/* Hallmark · checked: 2026-11-10 · genre: modern-minimal (app screen)
- * floor: tokens and base live in ./styles; this file holds the app's own motion classes
- * built: the project · redesign: polish · v2.0.0
- *
- * The system is in two files:
- *   styles/tokens.css  the palette, type scale, spacing, radii, motion, z levels
- *   styles/base.css    the canvas, the focus ring, the browser surfaces, the motion contract
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: brand · redesign: full
+ * paper: oklch(0.982 0.004 258) · accent: oklch(0.50 0.19 258) · display: PingFang SC · body: PingFang SC
+ * nav: kept groups, flat text, dropdown panels · signature: the knowledge index, every point with its facts
+ * states: loading, empty, error, disabled · axes: paper / grotesk / cool · posture: restrained · contrast: pass · v2.0.0
+ * built: the project · redesign: full (core learning surfaces)
+ * finish-review: subagent · 8 findings · 8 resolved · gap: none · one recapture of a stale 375 shot
+ * finish-review (wave 2): subagent · 7 findings · 7 resolved · gap: none
  */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: V, the old app used the same card grid on every screen; the fix taken was one shared row-and-rail language, with each screen's own object leading (the index, the catalogue, the article, the topic table) */
+/* Hallmark · dismissed F4 · the segmented control's active step is a selection surface, not a second primary action; it never sits beside a filled action */
+/* Hallmark · dismissed 41 · accent-ink never lands on success-bg; the real pairing, accent-ink on accent, reads 5.7:1 */
+/* Hallmark · waive 39b · the 66 to 141px elements are catalogue and chapter rows, not controls · every control on these screens measures 32 to 40px with a 44px hit target */
+/* Hallmark · waive 49b · the sitemap labels are real page titles that cannot shorten · each wraps to two lines at most on a 320px screen */
+/* Hallmark · answered F25 · the 12x12 multiplication grid is a matrix; restacking it would destroy the chart, so it scrolls inside its figure on a phone */
+/* Hallmark · waive 72 · the 14px overflow is the closed details answer in the index, which is not painted · the well keeps its 16px padding on the visible text */
+/* Hallmark · dropped onPickTopic(t.kpId) · the button's disabled attribute carries the same count > 0 condition */
+/* Hallmark · dropped 2022 · the raw curriculum id left the row; the human 数与代数 tag and the detail data stay */
+/* Hallmark · dropped setSelected(null) · the library row now closes through setExpandedId(null), same state */
+/* Hallmark · dropped status !== 'locked' · the path row keeps that guard inside onClick with aria-disabled */
+/* Hallmark · dropped setQuestions(generateQuestions( · the restart handler kept, extracted from the inline version */
+/* Hallmark · dropped e.stopPropagation() · the delete row is a sibling button now, so no parent click to stop */
+/* Hallmark · reworded "拾艺院核心知识点库" to "拾艺院 核心知识点库" · 54, the wordmark carries it */
+/* Hallmark · reworded "选择年级" to "知识点" · 58, the page head now leads */
+/* Hallmark · reworded "小学学科" to "选择学科" · 54, the label became the rail's nav name */
+/* Hallmark · reworded "数的认识 详情" to "数的认识" · 63, the 详情 chip became the row link */
+/* Hallmark · reworded "点击查看详情揭晓答案 →" to "查看详情" · 63, an arrow was glued to the label */
 
 @import "tailwindcss";
 @import "./styles/tokens.css";
 @import "./styles/base.css";
+@import "./styles/ui.css";
 
 /* A quiet settle on a completed set */
 @keyframes celebrate {

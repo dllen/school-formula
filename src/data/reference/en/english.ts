@@ -22,7 +22,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Cover the last two columns and test yourself from the base form — recognition is much easier than recall, and recall is what exams ask for.',
+      'Cover the last two columns and test yourself from the base form - recognition is much easier than recall, and recall is what exams ask for.',
       'Read the past participle aloud with "have" in front of it, because that is how it appears in a sentence.',
       'Group the verbs by pattern as you learn them: "break, broke, broken" and "speak, spoke, spoken" change in the same way.',
       'Read the whole list aloud once before memorising, because hearing the past simple and past participle together catches the silent letters that reading alone misses, especially in British pronunciation.',
@@ -42,7 +42,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
       },
       {
         q: 'Why does "get" have two past participles?',
-        a: '"Got" is standard in British English and "gotten" in American English. Both are correct — pick one and stay consistent.',
+        a: '"Got" is standard in British English and "gotten" in American English. Both are correct - pick one and stay consistent.',
       },
       {
         q: 'Why do some past participles drop a letter that the past simple kept?',
@@ -74,7 +74,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
     ],
     faq: [
       { q: 'What is a phoneme?', a: 'The smallest unit of sound in a language. English uses around 44 of them, and the letters on the page are only symbols for them, so the same sound can be written in several ways.' },
-      { q: 'What is a grapheme?', a: 'The written form of a sound — a letter or a pair of letters. The digraphs such as ch, sh, th and the vowel pairs such as oo and ow are graphemes, because each one stands for a single sound.' },
+      { q: 'What is a grapheme?', a: 'The written form of a sound - a letter or a pair of letters. The digraphs such as ch, sh, th and the vowel pairs such as oo and ow are graphemes, because each one stands for a single sound.' },
       { q: 'Why is the th sound listed twice?', a: 'There is one sound but two graphemes, voiced and unvoiced. In this and the breathy sound the throat vibration differs, and a chart that lists only one of them teaches children to say the wrong one.' },
       { q: 'How many vowel sounds are in English?', a: 'Twenty, counting the long and short forms and the diphthongs separately. They are listed in the lower half of the chart, which is where most reading difficulty comes from.' },
       { q: 'Do I need to teach phonics before a child can read?', a: 'Phonics is one of the two methods for teaching reading, the other being whole-word recognition. Most classroom schemes teach both together, because phonics explains unfamiliar words while whole-word recognition makes reading feel fast.' },
@@ -119,7 +119,7 @@ export const ENGLISH_PAGES: ReferencePage[] = [
     description:
       'Printable parts of speech chart listing the eight parts of English with a short definition and three example words each, nouns to interjections. Free to print.',
     intro:
-      'Every English word belongs to one of eight parts of speech, and naming the part is the first step in understanding how a sentence works. The chart lists each one with a short definition and three picture examples, so the categories can be recognised by what they do in a sentence rather than by how they look on the page. A noun names a thing, a verb states an action or state, and an adjective or adverb describes one. The remaining four — pronouns, prepositions, conjunctions and interjections — are the linking parts that join the rest into a sentence. Printing the chart next to a writing exercise makes labelling a paragraph straightforward.',
+      'Every English word belongs to one of eight parts of speech, and naming the part is the first step in understanding how a sentence works. The chart lists each one with a short definition and three picture examples, so the categories can be recognised by what they do in a sentence rather than by how they look on the page. A noun names a thing, a verb states an action or state, and an adjective or adverb describes one. The remaining four - pronouns, prepositions, conjunctions and interjections - are the linking parts that join the rest into a sentence. Printing the chart next to a writing exercise makes labelling a paragraph straightforward.',
     blocks: [
       {
         kind: 'table',

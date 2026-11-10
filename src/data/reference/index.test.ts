@@ -14,7 +14,7 @@ describe('reference page index', () => {
   });
 
   it('looks a page up by slug', () => {
-    expect(getReferencePage('multiplication-chart')?.title).toBe('Multiplication Chart (1–12)');
+    expect(getReferencePage('multiplication-chart')?.title).toBe('Multiplication Chart (1-12)');
     expect(getReferencePage('no-such-chart')).toBeUndefined();
   });
 

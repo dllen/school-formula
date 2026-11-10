@@ -46,9 +46,9 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50">
             <div className="bg-white rounded-[12px] shadow-pop w-full max-w-md overflow-hidden">
-                <div className="p-6 border-b border-[divider] flex justify-between items-center bg-[paper-2]">
-                    <h2 className="text-[18px] font-semibold text-[ink]">AI 设置</h2>
-                    <button onClick={onClose} className="text-[ink-3] hover:text-[ink] transition-colors">
+                <div className="p-6 border-b border-divider flex justify-between items-center bg-paper-2">
+                    <h2 className="text-[18px] font-semibold text-ink">AI 设置</h2>
+                    <button onClick={onClose} className="text-ink-3 hover:text-ink transition-colors">
                         ✕
                     </button>
                 </div>
@@ -61,15 +61,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     )}
                     {/* Provider Selection */}
                     <div>
-                        <label className="block text-[14px] font-medium text-[ink] mb-2">服务提供商</label>
+                        <label className="block text-[14px] font-medium text-ink mb-2">服务提供商</label>
                         <div className="grid grid-cols-2 gap-3">
                             {(['openai', 'deepseek', 'zhipu', 'ollama', 'custom', 'gateway'] as const).map(p => (
                                 <button
                                     key={p}
                                     onClick={() => handleProviderChange(p)}
                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors border ${config.provider === p
-                                        ? 'bg-[accent-soft] border-[accent] text-[accent]'
-                                        : 'bg-white border-[rule] text-[ink-2] hover:border-[accent]'
+                                        ? 'bg-accent-soft border-accent text-accent'
+                                        : 'bg-white border-rule text-ink-2 hover:border-accent'
                                         }`}
                                 >
                                     {p === 'openai' && 'OpenAI'}
@@ -85,12 +85,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
                     {showApiKeyField && (
                         <div>
-                            <label className="block text-[14px] font-medium text-[ink] mb-1">API Key</label>
+                            <label className="block text-[14px] font-medium text-ink mb-1">API Key</label>
                             <input
                                 type="password"
                                 value={config.apiKey}
                                 onChange={e => setConfig({ ...config, apiKey: e.target.value })}
-                                className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors text-[14px]"
+                                className="w-full px-3 py-2 rounded-[6px] border border-rule focus:border-accent focus:ring-2 focus:ring-accent-soft outline-none transition-colors text-[14px]"
                                 placeholder="sk-..."
                             />
                             {config.provider === 'openai' && (
@@ -116,12 +116,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                             <OllamaGuide model={config.model || PROVIDER_DEFAULTS.ollama.model || ''} />
                             <div className="space-y-4">
                                 <div>
-                                    <label className="block text-[14px] font-medium text-[ink] mb-1">模型名称</label>
+                                    <label className="block text-[14px] font-medium text-ink mb-1">模型名称</label>
                                     <input
                                         type="text"
                                         value={config.model}
                                         onChange={e => setConfig({ ...config, model: e.target.value })}
-                                        className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors text-[14px]"
+                                        className="w-full px-3 py-2 rounded-[6px] border border-rule focus:border-accent focus:ring-2 focus:ring-accent-soft outline-none transition-colors text-[14px]"
                                         placeholder="qwen2.5"
                                     />
                                     <p className="mt-1 text-xs text-ink-3">
@@ -135,23 +135,23 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     {config.provider !== 'gateway' && config.provider !== 'ollama' && (
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-[14px] font-medium text-[ink] mb-1">Base URL</label>
+                            <label className="block text-[14px] font-medium text-ink mb-1">Base URL</label>
                             <input
                                 type="text"
                                 value={config.baseUrl}
                                 onChange={e => setConfig({ ...config, baseUrl: e.target.value })}
-                                className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors text-[14px]"
+                                className="w-full px-3 py-2 rounded-[6px] border border-rule focus:border-accent focus:ring-2 focus:ring-accent-soft outline-none transition-colors text-[14px]"
                                 placeholder="https://api.openai.com/v1"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-[14px] font-medium text-[ink] mb-1">模型名称</label>
+                            <label className="block text-[14px] font-medium text-ink mb-1">模型名称</label>
                             <input
                                 type="text"
                                 value={config.model}
                                 onChange={e => setConfig({ ...config, model: e.target.value })}
-                                className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors text-[14px]"
+                                className="w-full px-3 py-2 rounded-[6px] border border-rule focus:border-accent focus:ring-2 focus:ring-accent-soft outline-none transition-colors text-[14px]"
                                 placeholder="gpt-4o"
                             />
                         </div>

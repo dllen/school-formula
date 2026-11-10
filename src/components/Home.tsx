@@ -44,6 +44,10 @@ export function Home() {
     }, [location.pathname, searchParams, navigate]);
 
     const currentGradeData = KNOWLEDGE_DATA.find(g => g.id === selectedGradeId)!;
+    const totalPoints = currentGradeData.subjects.reduce(
+        (sum, subject) => sum + subject.knowledgePoints.length,
+        0,
+    );
 
     const handleGradeChange = (grade: GradeLevel) => {
         setSelectedGradeId(grade);
@@ -52,74 +56,65 @@ export function Home() {
     };
 
     return (
-        <div className="min-h-screen bg-[paper-2] font-sans text-ink flex flex-col">
+        <div className="page-shell">
             <Header activeView={activeView} onViewChange={(view) => navigate(pathForView(view))} />
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 flex-grow w-full">
-
+            <main id="main" tabIndex={-1} className="page-main">
                 {activeView === 'knowledge' ? (
-                    <>
-                        {/* Grade Selection Section */}
-                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                            <div>
-                                <h2 className="text-xl font-bold text-[ink]">选择年级</h2>
-                                <p className="text-sm text-[ink-2]">查看不同阶段的学科重点</p>
+                    <div className="container-page pt-10">
+                        <div className="page-head">
+                            <div className="page-head__text">
+                                <h1 className="page-title">知识点</h1>
+                                <p className="page-lead">
+                                    {currentGradeData.name}，{currentGradeData.subjects.length} 个学科，
+                                    {totalPoints} 个知识点
+                                </p>
                             </div>
-                            <GradeSelector
-                                selectedGrade={selectedGradeId}
-                                onSelectGrade={handleGradeChange}
-                            />
                         </div>
 
-                        {/* Content Section */}
-                        <div className="flex flex-col lg:flex-row gap-8 items-start">
+                        <div className="browse">
+                            <aside className="browse__rail" aria-label="学科导航">
+                                <GradeSelector
+                                    selectedGrade={selectedGradeId}
+                                    onSelectGrade={handleGradeChange}
+                                />
+                                <SubjectGrid
+                                    subjects={currentGradeData.subjects}
+                                    selectedSubjectId={selectedSubject?.id || null}
+                                    onSelectSubject={setSelectedSubject}
+                                />
+                            </aside>
 
-                            {/* Left: Subjects */}
-                            <div className="w-full lg:w-1/2 space-y-6">
-                                <div className="bg-white p-6 rounded-3xl shadow-sm border border-[divider]">
-                                    <div className="mb-6">
-                                        <h3 className="text-lg font-bold text-[ink]">{currentGradeData.name}学科</h3>
-                                        <p className="text-sm text-[ink-2]">点击卡片查看详细知识体系</p>
-                                    </div>
-                                    <SubjectGrid
-                                        subjects={currentGradeData.subjects}
-                                        selectedSubjectId={selectedSubject?.id || null}
-                                        onSelectSubject={setSelectedSubject}
-                                    />
-                                </div>
-                            </div>
-
-                            {/* Right: Knowledge Points */}
-                            <div className="w-full lg:w-1/2 sticky top-24">
-                                <KnowledgeList subject={selectedSubject} />
-                            </div>
-
+                            <KnowledgeList subject={selectedSubject} />
                         </div>
-                    </>
-                ) : activeView === 'tutorial' ? (
-                    <TutorialView />
-                ) : activeView === 'cheatsheet' ? (
-                    <CheatSheetView />
-                ) : activeView === 'mental-math' ? (
-                    <MentalMathView />
-                ) : activeView === 'formula' ? (
-                    <FormulaView />
-                ) : activeView === 'mastery' ? (
-                    <MasteryView />
-                ) : activeView === 'practice' ? (
-                    <PracticeView />
-                ) : activeView === 'notes' ? (
-                    <NotesView />
-                ) : activeView === 'zizhi' ? (
-                    <ZizhiView />
-                ) : activeView === 'ai-chat' ? (
-                    <AIChatView />
-                ) : activeView === 'poetry' ? (
-                    <PoetryView />
+                    </div>
                 ) : (
-                    <ShijiView />
+                    <div className="container-page pt-10 pb-8">
+                        {activeView === 'tutorial' ? (
+                            <TutorialView />
+                        ) : activeView === 'cheatsheet' ? (
+                            <CheatSheetView />
+                        ) : activeView === 'mental-math' ? (
+                            <MentalMathView />
+                        ) : activeView === 'formula' ? (
+                            <FormulaView />
+                        ) : activeView === 'mastery' ? (
+                            <MasteryView />
+                        ) : activeView === 'practice' ? (
+                            <PracticeView />
+                        ) : activeView === 'notes' ? (
+                            <NotesView />
+                        ) : activeView === 'zizhi' ? (
+                            <ZizhiView />
+                        ) : activeView === 'ai-chat' ? (
+                            <AIChatView />
+                        ) : activeView === 'poetry' ? (
+                            <PoetryView />
+                        ) : (
+                            <ShijiView />
+                        )}
+                    </div>
                 )}
-
             </main>
 
             <Footer />

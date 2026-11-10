@@ -1,15 +1,17 @@
-/* Hallmark · checked: 2026-11-10 · genre: modern-minimal (app screen)
- * floor: base layer — the decisions the Floor already made
- * built: the project · redesign: polish · v2.0.0
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: brand · redesign: full
+ * floor: base — the decisions the Floor already made
+ * built: the project · redesign: full
  *
- * Base holds what every page inherits: the canvas, the ink, the focus ring,
- * the browser surfaces, and the motion contract. Nothing here is decorative.
+ * Base holds what every screen inherits: the canvas, the ink, the focus
+ * ring, the browser surfaces, the type defaults and the motion contract.
  */
 
 @layer base {
   html {
     overflow-x: clip;
     -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-rule-strong) var(--color-paper);
+    scroll-padding-top: 96px;
   }
 
   body {
@@ -19,19 +21,19 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    caret-color: var(--color-accent);
   }
 
-  /* Focus: instant, 3:1 against paper and against the accent surface. */
+  /* Focus: instant, 5.6:1 against paper and 3:1 against the accent. */
   :focus-visible {
     outline: 2px solid var(--color-focus);
     outline-offset: 2px;
     border-radius: var(--radius-sm);
   }
 
-  /* Never remove a ring without replacing it. */
   :focus:not(:focus-visible) {
     outline: none;
   }
@@ -41,53 +43,58 @@
     color: var(--color-ink);
   }
 
-  /* The scrollbar is part of the browser surface; it takes the palette too. */
-  * {
-    scrollbar-color: var(--color-rule-strong) var(--color-paper-2);
-  }
+  /* The scrollbar is part of the browser surface; it takes the palette. */
   *::-webkit-scrollbar {
     width: 10px;
     height: 10px;
   }
   *::-webkit-scrollbar-track {
-    background-color: var(--color-paper-2);
+    background-color: var(--color-paper);
   }
   *::-webkit-scrollbar-thumb {
     background-color: var(--color-rule-strong);
     border-radius: var(--radius-sm);
-    border: 2px solid var(--color-paper-2);
+    border: 2px solid var(--color-paper);
   }
   *::-webkit-scrollbar-thumb:hover {
     background-color: var(--color-ink-3);
   }
 
   :root {
-    caret-color: var(--color-accent);
     color-scheme: light;
   }
 
-  /* Heads: balanced, never a stub on the last line. */
+  /* Heads: one family, one weight, no stub on the last line. */
   h1,
   h2,
   h3,
   h4 {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
     text-wrap: balance;
     overflow-wrap: break-word;
     min-width: 0;
   }
 
-  /* Body copy: pretty, so a paragraph never ends on one word. */
   p {
+    margin: 0;
     text-wrap: pretty;
   }
 
-  /* Figures that compare carry tabular numerals. */
-  table,
-  .tabular {
-    font-variant-numeric: tabular-nums;
+  /* Running prose keeps a readable measure on every screen. */
+  p:not([class]) {
+    max-width: 68ch;
   }
 
-  /* An image-bearing grid track never overflows its column. */
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
   img,
   svg,
   video {
@@ -104,6 +111,12 @@
   textarea {
     font: inherit;
     color: inherit;
+  }
+
+  /* Figures that compare carry tabular numerals. */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
   }
 
   /* Motion is state, never decoration; it stops when asked. */

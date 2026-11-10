@@ -1,13 +1,17 @@
 import React, { useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AdUnit } from '../../ads/AdUnit';
+import { AD_SLOTS, ADSENSE_CLIENT_ID, isAdConfigured } from '../../ads/config';
 import { KNOWLEDGE_DATA } from '../../data/knowledge';
 import { getQuestionsByKnowledgePoint } from '../../data/questions';
 import { relatedKnowledgePoints } from '../../data/knowledge/related';
 import { PromptModal } from '../prompts/PromptModal';
 import type { KnowledgePoint, Subject } from '../../data/types';
 import { Footer } from '../Footer';
+import { Header as SiteHeader } from '../Header';
+import { pathForView } from '../../view-routes';
 import { DonatePopover } from '../DonatePopover';
+import { Icon } from '../icons/Icon';
 import { AIGenerator } from './AIGenerator';
 import { FunCorner } from './FunCorner';
 import { Header } from './Header';
@@ -34,6 +38,7 @@ const findKnowledgePoint = (pointId: string | undefined): KnowledgeDetailData | 
 
 export const KnowledgeDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
     const [isPromptModalOpen, setIsPromptModalOpen] = useState(false);
 
     const data = useMemo(() => findKnowledgePoint(id), [id]);
@@ -41,11 +46,18 @@ export const KnowledgeDetail: React.FC = () => {
 
     if (!data) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[paper-2]">
-                <div className="text-center">
-                    <h2 className="text-2xl font-bold text-[ink] mb-4">未找到该知识点</h2>
-                    <Link to="/" className="text-[accent] hover:underline font-medium">返回首页</Link>
-                </div>
+            <div className="page-shell">
+                <SiteHeader activeView="knowledge" onViewChange={(view) => navigate(pathForView(view))} />
+                <main id="main" className="page-main">
+                    <div className="container-page py-24">
+                        <div className="empty-state">
+                            <Icon name="search" className="w-8 h-8" />
+                            <h1 className="text-subhead font-semibold text-ink">未找到该知识点</h1>
+                            <Link to="/" className="link">返回首页</Link>
+                        </div>
+                    </div>
+                </main>
+                <Footer />
             </div>
         );
     }
@@ -54,69 +66,131 @@ export const KnowledgeDetail: React.FC = () => {
     const context = `年级：${grade.name}，学科：${subject.name}，知识点：${point.title}，描述：${point.description}`;
     const relatedQuestions = getQuestionsByKnowledgePoint(point.id);
 
+    const hasFun = Boolean(point.funFact || point.funStory || point.funQuestion);
+    const hasTutorial = Boolean(point.tutorialContent);
+    const hasPractice = Boolean(point.practiceQuestions && point.practiceQuestions.length > 0);
+    const hasRelated = related.length > 0;
+    const hasMidAd = isAdConfigured(ADSENSE_CLIENT_ID, AD_SLOTS.knowledgeMid);
+    const hasBottomAd = isAdConfigured(ADSENSE_CLIENT_ID, AD_SLOTS.knowledgeBottom);
+
+    const toc = [
+        hasTutorial && { id: 'tutorial', label: '系统教程' },
+        hasPractice && { id: 'practice', label: '实战练习' },
+        relatedQuestions.length > 0 && { id: 'related-practice', label: '巩固练习' },
+        hasFun && { id: 'fun', label: '趣味角' },
+        { id: 'ai', label: 'AI 智能助教' },
+        hasRelated && { id: 'related', label: '相关知识点' },
+    ].filter((item): item is { id: string; label: string } => Boolean(item));
+
     return (
-    <>
-        <div className="min-h-screen flex flex-col bg-[paper-2] font-sans text-ink">
-            <div className="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
-                <Link to="/" className="mb-6 flex items-center text-[ink-2] hover:text-[accent] transition-colors" aria-label="返回首页">
-                    <span className="mr-2">←</span> 返回列表
-                </Link>
+        <div className="page-shell">
+            <SiteHeader activeView="knowledge" onViewChange={(view) => navigate(pathForView(view))} />
 
-                <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[ink-2]">
-                    <Link to="/" className="hover:text-[accent]">首页</Link>
-                    <span className="mx-2">/</span>
-                    <span>{grade.name} · {subject.name}</span>
-                </nav>
+            <main id="main" tabIndex={-1} className="page-main">
+                <div className="container-page">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pt-10 pb-6">
+                        <nav aria-label="Breadcrumb" className="breadcrumb">
+                            <Link to="/">首页</Link>
+                            <span aria-hidden="true">/</span>
+                            <span>{grade.name}</span>
+                            <span aria-hidden="true">/</span>
+                            <span>{subject.name}</span>
+                        </nav>
 
-                <div className="bg-white rounded-3xl shadow-sm border border-[divider] overflow-hidden">
+                        <Link to="/" className="inline-flex items-center gap-1 text-label text-ink-2 hover:text-ink transition-colors">
+                            <Icon name="arrow-left" className="w-4 h-4" />
+                            返回列表
+                        </Link>
+                    </div>
+
                     <Header point={point} subject={subject} />
-                    <div className="p-8 space-y-8">
-                        {point.tutorialContent && (
-                            <TutorialSection content={point.tutorialContent} />
-                        )}
-                        {point.practiceQuestions && point.practiceQuestions.length > 0 && (
-                            <PracticeQuestions questions={point.practiceQuestions} />
-                        )}
-                        <AdUnit placement="knowledgeMid" />
-                        {relatedQuestions.length > 0 && (
-                            <RelatedPractice
-                                pointId={point.id}
-                                relatedCount={relatedQuestions.length}
+
+                    <div className="detail-layout">
+                        <article className="min-w-0">
+                            {point.tutorialContent && (
+                                <TutorialSection content={point.tutorialContent} />
+                            )}
+
+                            {point.practiceQuestions && point.practiceQuestions.length > 0 && (
+                                <PracticeQuestions questions={point.practiceQuestions} />
+                            )}
+
+                            {hasMidAd && (
+                                <div className="section">
+                                    <AdUnit placement="knowledgeMid" />
+                                </div>
+                            )}
+
+                            {relatedQuestions.length > 0 && (
+                                <RelatedPractice
+                                    pointId={point.id}
+                                    relatedCount={relatedQuestions.length}
+                                />
+                            )}
+
+                            <FunCorner
+                                funFact={point.funFact}
+                                funStory={point.funStory}
+                                funQuestion={point.funQuestion}
+                                funQuestionAnswer={point.funQuestionAnswer}
                             />
-                        )}
-                        <FunCorner
-                            funFact={point.funFact}
-                            funStory={point.funStory}
-                            funQuestion={point.funQuestion}
-                            funQuestionAnswer={point.funQuestionAnswer}
-                        />
-                        <AIGenerator
-                            topic={point.title}
-                            context={context}
-                            knowledgePointTitle={point.title}
-                            knowledgePointGrade={grade.name}
-                            onPromptModalOpen={() => setIsPromptModalOpen(true)}
-                        />
-                        <AdUnit placement="knowledgeBottom" />
-                        {related.length > 0 && (
-                            <section aria-labelledby="related-heading">
-                                <h2 id="related-heading" className="text-lg font-bold text-[ink] mb-3">相关知识点</h2>
-                                <ul className="grid gap-2 sm:grid-cols-2">
-                                    {related.map((item) => (
+
+                            <AIGenerator
+                                topic={point.title}
+                                context={context}
+                                knowledgePointTitle={point.title}
+                                knowledgePointGrade={grade.name}
+                                onPromptModalOpen={() => setIsPromptModalOpen(true)}
+                            />
+
+                            {hasBottomAd && (
+                                <div className="section">
+                                    <AdUnit placement="knowledgeBottom" />
+                                </div>
+                            )}
+
+                            {related.length > 0 && (
+                                <section id="related" className="section" aria-labelledby="related-heading">
+                                    <h2 id="related-heading" className="section-head">
+                                        <Icon name="link" className="w-4 h-4" />
+                                        相关知识点
+                                    </h2>
+                                    <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                                        {related.map((item) => (
+                                            <li key={item.id}>
+                                                <Link to={`/knowledge/${item.id}`} className="link text-body-s">
+                                                    {item.title}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </section>
+                            )}
+
+                            <div className="section flex flex-col items-center gap-2">
+                                <p className="text-body-s text-ink-2">这份内容帮到你了？</p>
+                                <DonatePopover triggerLabel="赞赏" triggerVariant="tag" />
+                            </div>
+                        </article>
+
+                        <aside className="detail-aside">
+                            <nav aria-label="本页目录">
+                                <p className="text-caption font-medium text-ink-3 mb-2 px-3">本页内容</p>
+                                <ul className="toc">
+                                    {toc.map((item) => (
                                         <li key={item.id}>
-                                            <Link to={`/knowledge/${item.id}`} className="text-[accent] hover:underline">{item.title}</Link>
+                                            <a href={`#${item.id}`}>{item.label}</a>
                                         </li>
                                     ))}
                                 </ul>
-                            </section>
-                        )}
-                        <div className="flex flex-col items-center gap-2 border-t border-divider pt-8">
-                            <p className="text-sm text-ink-3">这份内容帮到你了？</p>
-                            <DonatePopover triggerLabel="赞赏" triggerVariant="tag" />
-                        </div>
+                            </nav>
+                        </aside>
                     </div>
                 </div>
-            </div>
+            </main>
+
+            <Footer />
+
             <PromptModal
                 isOpen={isPromptModalOpen}
                 onClose={() => setIsPromptModalOpen(false)}
@@ -124,7 +198,5 @@ export const KnowledgeDetail: React.FC = () => {
                 knowledgePointGrade={grade.name}
             />
         </div>
-        <Footer />
-    </>
     );
 };

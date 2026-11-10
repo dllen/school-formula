@@ -16,6 +16,8 @@ export default tseslint.config(
       'scripts/extract-data/dist/**',
       // 本地 git worktree（隔离开发分支用）不应被主 checkout 的 lint 扫到。
       '.agents/**',
+      // .claude/skills 下的第三方 submodule 有自己的构建，不归本仓库 lint。
+      '.claude/**',
     ],
   },
   js.configs.recommended,

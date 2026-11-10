@@ -44,18 +44,19 @@ export const PracticeView: React.FC = () => {
   }, [searchParams, setSearchParams]);
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <>
       <TopicPicker
         selectedGrade={selectedGrade}
         onGradeChange={setSelectedGrade}
         masteryById={topicMastery.masteryById}
         masteryPercent={topicMastery.masteryPercent}
         onPickTopic={openTopic}
-      />
-      <ProgressDashboard
-        progress={learningProgress.progress}
-        todayStats={learningProgress.getTodayStats()}
-      />
+      >
+        <ProgressDashboard
+          progress={learningProgress.progress}
+          todayStats={learningProgress.getTodayStats()}
+        />
+      </TopicPicker>
       {modalTopicId && (
         <PracticeModal
           topicId={modalTopicId}
@@ -63,6 +64,6 @@ export const PracticeView: React.FC = () => {
           onClose={closeModal}
         />
       )}
-    </div>
+    </>
   );
 };

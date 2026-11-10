@@ -9,32 +9,25 @@ export const PracticeQuestions: React.FC<PracticeQuestionsProps> = ({ questions 
     if (questions.length === 0) return null;
 
     return (
-        <div>
-            <h3 className="flex items-center text-xl font-bold text-success-ink mb-4">
-                <Icon name="pencil" className="mr-2 w-5 h-5" /> 实战练习
-            </h3>
-            <div className="space-y-4">
+        <section id="practice" className="section">
+            <h2 className="section-head">
+                <Icon name="pencil" className="h-5 w-5" />
+                实战练习
+            </h2>
+            <ol className="mt-6 space-y-3">
                 {questions.map((q, idx) => (
-                    <div
-                        key={idx}
-                        className="bg-white border border-success-bg rounded-xl overflow-hidden shadow-sm"
-                    >
-                        <div className="bg-success-bg p-4 border-b border-success-bg">
-                            <p className="font-bold text-success-ink">
-                                Q{idx + 1}: {q.question}
-                            </p>
-                        </div>
-                        <div className="p-4 bg-white">
-                            <p className="text-[ink-2]">
-                                <span className="font-medium text-[ink] bg-[paper-2] px-2 py-0.5 rounded mr-2">
-                                    参考答案
-                                </span>
-                                {q.answer}
-                            </p>
-                        </div>
-                    </div>
+                    <li key={idx} className="well">
+                        <p className="text-body text-ink">
+                            <span className="mr-2 font-semibold text-ink-3">Q{idx + 1}</span>
+                            {q.question}
+                        </p>
+                        <p className="mt-2 border-t border-divider pt-2 text-body-s text-ink-2">
+                            <span className="mr-2 font-medium text-ink">参考答案</span>
+                            {q.answer}
+                        </p>
+                    </li>
                 ))}
-            </div>
-        </div>
+            </ol>
+        </section>
     );
 };

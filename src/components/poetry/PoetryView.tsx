@@ -37,61 +37,54 @@ export function PoetryView() {
 
   if (selected) {
     return (
-      <div className="bg-white rounded-2xl shadow-sm border border-[divider]">
-        <BackBar onBack={() => setSelected(null)} />
+      <div className="mx-auto w-full max-w-[68ch]">
+        <button
+          type="button"
+          onClick={() => setSelected(null)}
+          className="btn btn-ghost -ml-2"
+        >
+          返回列表
+        </button>
         <PoemContent poem={selected} />
       </div>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-[ink]">古诗词</h2>
-          <p className="text-sm text-[ink-2]">浏览新课标必背唐诗宋词</p>
+    <>
+      <div className="page-head">
+        <div className="page-head__text">
+          <h1 className="page-title">古诗词</h1>
+          <p className="page-lead">浏览新课标必背唐诗宋词</p>
         </div>
-      </header>
+      </div>
 
       <FiltersBar value={filters} onChange={setFilters} />
 
+      <p className="tabular mt-6 text-label font-semibold text-ink-2">
+        共 {poems.length} 首
+      </p>
+
       {poems.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="mt-2 grid grid-cols-1 gap-x-10 border-t border-divider lg:grid-cols-3">
           {poems.map((poem) => (
             <PoemCard key={poem.id} poem={poem} onClick={() => setSelected(poem)} />
           ))}
-        </div>
+        </ul>
       ) : (
-        <div className="text-center py-12 bg-[paper-2] rounded-2xl border border-dashed border-[rule]">
-          <Icon name="scroll" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
-          <p className="text-lg text-[ink-3] mb-4">暂无符合条件的诗词</p>
+        <div className="empty-state mt-6">
+          <Icon name="scroll" className="h-10 w-10 text-ink-3" />
+          <p className="text-body-s text-ink-2">暂无符合条件的诗词</p>
           <button
             type="button"
             onClick={() => setFilters(DEFAULT_FILTERS)}
-            className="text-sm text-[accent] hover:underline"
+            className="btn btn-secondary"
           >
             清除筛选
           </button>
         </div>
       )}
-    </div>
-  );
-}
-
-function BackBar({ onBack }: { onBack: () => void }) {
-  return (
-    <div className="px-4 sm:px-6 pt-6">
-      <button
-        type="button"
-        onClick={onBack}
-        className="flex items-center text-[ink-2] hover:text-[ink] transition-colors"
-      >
-        <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
-        返回列表
-      </button>
-    </div>
+    </>
   );
 }
 
@@ -102,11 +95,12 @@ function BackBar({ onBack }: { onBack: () => void }) {
 function useHashPoem(): [Poem | null, (poem: Poem | null) => void] {
   const location = useLocation();
   const navigate = useNavigate();
+  const search = location.search;
   const hashId = location.hash.replace(/^#/, '');
   const poem = hashId ? ALL_POEMS.find((p) => p.id === hashId) ?? null : null;
   const setPoem = (next: Poem | null) => {
-    if (next) navigate({ hash: next.id });
-    else navigate({ hash: '' });
+    if (next) navigate({ search, hash: next.id });
+    else navigate({ search, hash: '' });
   };
   return [poem, setPoem];
 }

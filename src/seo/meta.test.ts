@@ -87,7 +87,7 @@ describe('buildSeoMeta', () => {
     for (const page of REFERENCE_PAGES) {
       const path = `/en/${page.category}/${page.slug}`;
       const meta = buildSeoMeta(path);
-      expect(meta.title).toBe(`Printable ${page.title} – Free | ${EN.titleBrand}`);
+      expect(meta.title).toBe(`Printable ${page.title} - Free | ${EN.titleBrand}`);
       expect(meta.description).toBe(page.description);
       expect(meta.canonical).toBe(`https://syy.global/en/${page.category}/${page.slug}/`);
       expect(meta.htmlLang).toBe('en');
@@ -132,7 +132,7 @@ describe('JSON-LD for the English surface', () => {
 
     const list = meta.jsonLd[1] as { numberOfItems: number; itemListElement: { name: string; url: string }[] };
     expect(list.numberOfItems).toBe(pagesInCategory('math').length);
-    expect(list.itemListElement[0].name).toBe('Multiplication Chart (1–12)');
+    expect(list.itemListElement[0].name).toBe('Multiplication Chart (1-12)');
     expect(list.itemListElement[0].url).toBe('https://syy.global/en/math/multiplication-chart/');
   });
 
@@ -152,9 +152,9 @@ describe('JSON-LD for the English surface', () => {
 describe('English title template', () => {
   it('leads with Printable and puts the intent modifier before the brand', () => {
     expect(buildSeoMeta('/en/math/multiplication-chart').title).toBe(
-      'Printable Multiplication Chart (1–12) – Free | Shiyiyuan',
+      'Printable Multiplication Chart (1-12) - Free | Shiyiyuan',
     );
-    expect(buildSeoMeta('/en/math').title).toBe('Printable Math Charts – Free | Shiyiyuan');
+    expect(buildSeoMeta('/en/math').title).toBe('Printable Math Charts - Free | Shiyiyuan');
   });
 
   it('keeps every English title inside the ~60 character SERP budget', () => {

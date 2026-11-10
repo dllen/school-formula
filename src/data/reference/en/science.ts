@@ -31,9 +31,9 @@ export const SCIENCE_PAGES: ReferencePage[] = [
     title: 'Physical Constants',
     summary: 'Common physical constants with symbols and values, free to print.',
     description:
-      'Printable table of common physical constants — gravitational acceleration, speed of light, Planck constant, Avogadro constant and more. Free to print.',
+      'Printable table of common physical constants - gravitational acceleration, speed of light, Planck constant, Avogadro constant and more. Free to print.',
     intro:
-      'This table lists the physical constants that appear in school and first-year physics: gravitational acceleration, the speed of light, the Planck constant, the elementary charge, the masses of the electron and proton, the Avogadro constant and the Coulomb constant. Each row gives the quantity, the symbol it is normally written with, and its value in SI units, to three significant figures — the precision most school problems expect. Printing it gives a single sheet to check a formula against while working.',
+      'This table lists the physical constants that appear in school and first-year physics: gravitational acceleration, the speed of light, the Planck constant, the elementary charge, the masses of the electron and proton, the Avogadro constant and the Coulomb constant. Each row gives the quantity, the symbol it is normally written with, and its value in SI units, to three significant figures - the precision most school problems expect. Printing it gives a single sheet to check a formula against while working.',
     blocks: [
       {
         kind: 'table',
@@ -42,7 +42,7 @@ export const SCIENCE_PAGES: ReferencePage[] = [
       },
     ],
     howToUse: [
-      'Check which value of g your course uses. Many courses use 10 m/s² to keep calculations simple, while the measured value is 9.8 m/s² — the table gives both.',
+      'Check which value of g your course uses. Many courses use 10 m/s² to keep calculations simple, while the measured value is 9.8 m/s² - the table gives both.',
       'Keep the symbol column in view while reading a formula: mₑ and mₚ are easy to mix up.',
       'Copy the units along with the number. Dropping them is the most common source of wrong answers in these problems.',
     ],
@@ -57,7 +57,7 @@ export const SCIENCE_PAGES: ReferencePage[] = [
       },
       {
         q: 'How many significant figures should I use?',
-        a: 'Match the precision of the question. These values are given to three significant figures, which is enough for most school work — carrying more digits does not make an answer more correct if the input was already rounded.',
+        a: 'Match the precision of the question. These values are given to three significant figures, which is enough for most school work - carrying more digits does not make an answer more correct if the input was already rounded.',
       },
       {
         q: 'Are these values in SI units?',
@@ -82,7 +82,7 @@ export const SCIENCE_PAGES: ReferencePage[] = [
     description:
       'Printable SI unit prefixes chart listing all twenty-one prefixes from yocto- to yotta-, with the symbol and the power of ten each one represents. Free.',
     intro:
-      'The SI prefix system multiplies or divides a unit by a power of ten, and the same twenty-one prefixes are used for every unit in the system. Reading the chart from top to bottom moves through the large prefixes first — yotta, zetta, exa, peta, tera, giga, mega, kilo — and then through hecto, deca, the unprefixed base, and down to the small ones such as milli, micro, nano and pico. Because every step is a factor of ten, a converted value is always a shift of the decimal point, and this chart makes those shifts countable rather than something to memorise.',
+      'The SI prefix system multiplies or divides a unit by a power of ten, and the same twenty-one prefixes are used for every unit in the system. Reading the chart from top to bottom moves through the large prefixes first - yotta, zetta, exa, peta, tera, giga, mega, kilo - and then through hecto, deca, the unprefixed base, and down to the small ones such as milli, micro, nano and pico. Because every step is a factor of ten, a converted value is always a shift of the decimal point, and this chart makes those shifts countable rather than something to memorise.',
     blocks: [
       {
         kind: 'table',
@@ -92,7 +92,7 @@ export const SCIENCE_PAGES: ReferencePage[] = [
     ],
     howToUse: [
       'To convert between prefixed units, count the rows between the two prefixes and move the decimal point that many places, in the direction the chart runs.',
-      'Learn the four that matter every day — kilo, centi, milli and micro — and read the rest off the chart when a problem needs them.',
+      'Learn the four that matter every day - kilo, centi, milli and micro - and read the rest off the chart when a problem needs them.',
       'Check a conversion against the chart before writing an answer: 1 gigahertz is 10 to the 9 hertz, so 2.4 GHz becomes 2 400 000 000 Hz.',
     ],
     faq: [
@@ -112,7 +112,7 @@ export const SCIENCE_PAGES: ReferencePage[] = [
     description:
       'Printable periodic table listing all 118 chemical elements with atomic number, symbol, name and period number, from hydrogen to oganesson. Free to print.',
     intro:
-      'This table lists every one of the 118 known chemical elements in atomic-number order, with the symbol, the full name and the period each one belongs to. Reading it in order makes the shell structure visible: the first two periods are short, then the table settles into a pattern of eight columns for the main group elements with the transition metals tucked between them. Atomic number is the one column worth memorising early, because every lookup — an ion written with charges, a molar mass, a group number in a question — starts from there. The chart prints on two sides of one sheet or across two sheets depending on paper size.',
+      'This table lists every one of the 118 known chemical elements in atomic-number order, with the symbol, the full name and the period each one belongs to. Reading it in order makes the shell structure visible: the first two periods are short, then the table settles into a pattern of eight columns for the main group elements with the transition metals tucked between them. Atomic number is the one column worth memorising early, because every lookup - an ion written with charges, a molar mass, a group number in a question - starts from there. The chart prints on two sides of one sheet or across two sheets depending on paper size.',
     blocks: [
       {
         kind: 'table',

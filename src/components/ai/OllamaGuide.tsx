@@ -50,10 +50,10 @@ const TROUBLESHOOTING = [
 /** 选中 Ollama 时在设置弹窗里展开的四步引导与常见报错对照。 */
 export function OllamaGuide({ model }: { model: string }): ReactElement {
     return (
-        <div className="rounded-lg bg-[paper-2] border border-[rule] p-4 space-y-4 text-sm">
+        <div className="rounded-lg bg-paper-2 border border-rule p-4 space-y-4 text-sm">
             <div>
-                <p className="font-medium text-[ink]">在本地跑 Ollama，无需 API Key</p>
-                <p className="mt-1 text-xs text-[ink-3]">
+                <p className="font-medium text-ink">在本地跑 Ollama，无需 API Key</p>
+                <p className="mt-1 text-xs text-ink-3">
                     模型在你的电脑上运行，对话内容不会发往任何第三方服务。
                 </p>
             </div>
@@ -61,11 +61,11 @@ export function OllamaGuide({ model }: { model: string }): ReactElement {
             <ol className="space-y-3">
                 {STEPS.map((step, index) => (
                     <li key={step.title}>
-                        <span className="font-medium text-[ink]">
+                        <span className="font-medium text-ink">
                             {index + 1}. {step.title}
                         </span>
-                        <p className="mt-0.5 text-xs text-[ink-2]">{step.detail}</p>
-                        <code className="mt-1 block rounded bg-white border border-[rule] px-2 py-1 font-mono text-xs text-[ink] break-all">
+                        <p className="mt-0.5 text-xs text-ink-2">{step.detail}</p>
+                        <code className="mt-1 block rounded bg-white border border-rule px-2 py-1 font-mono text-xs text-ink break-all">
                             {step.code || `ollama pull ${model}`}
                         </code>
                     </li>
@@ -73,12 +73,12 @@ export function OllamaGuide({ model }: { model: string }): ReactElement {
             </ol>
 
             <div>
-                <p className="font-medium text-[ink]">常见报错</p>
+                <p className="font-medium text-ink">常见报错</p>
                 <dl className="mt-1 space-y-1.5">
                     {TROUBLESHOOTING.map((entry) => (
                         <div key={entry.symptom}>
-                            <dt className="font-mono text-xs text-[ink]">{entry.symptom}</dt>
-                            <dd className="text-xs text-[ink-2]">{entry.meaning}</dd>
+                            <dt className="font-mono text-xs text-ink">{entry.symptom}</dt>
+                            <dd className="text-xs text-ink-2">{entry.meaning}</dd>
                         </div>
                     ))}
                 </dl>

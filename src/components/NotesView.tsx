@@ -100,92 +100,108 @@ export const NotesView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h2 className="text-2xl font-bold text-[ink]">学习笔记</h2>
-        <p className="text-sm text-[ink-2]">记录学习心得，数据保存在本地浏览器中</p>
+    <div>
+      <div className="page-head">
+        <div className="page-head__text">
+          <h1 className="page-title">学习笔记</h1>
+          <p className="page-lead">记录学习心得，数据保存在本地浏览器中</p>
+        </div>
       </div>
 
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-[divider] space-y-4">
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="笔记标题"
-          className="w-full px-4 py-2.5 rounded-xl bg-[paper-2] border border-[rule] outline-none text-[ink] placeholder:text-[ink-3] focus:border-accent-soft-hover"
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="记录你的学习心得、易错点或疑问……"
-          rows={4}
-          className="w-full px-4 py-2.5 rounded-xl bg-[paper-2] border border-[rule] outline-none text-[ink] placeholder:text-[ink-3] focus:border-accent-soft-hover resize-y"
-        />
-        <div className="flex justify-end gap-3">
-          {editingId && (
+      <section aria-label="写笔记">
+        <form
+          className="note-form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <div className="field">
+            <label className="field__label" htmlFor="note-title">
+              标题
+            </label>
+            <input
+              id="note-title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="笔记标题"
+              className="input"
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="field">
+            <label className="field__label" htmlFor="note-content">
+              内容
+            </label>
+            <textarea
+              id="note-content"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="记录你的学习心得、易错点或疑问……"
+              rows={4}
+              className="input"
+            />
+          </div>
+
+          <div className="flex justify-end gap-3">
+            {editingId && (
+              <button type="button" onClick={resetForm} className="btn btn-secondary">
+                取消编辑
+              </button>
+            )}
             <button
-              onClick={resetForm}
-              className="px-5 py-2.5 bg-[paper-2] text-[ink-2] text-sm font-medium rounded-xl hover:bg-rule transition-colors"
+              type="submit"
+              disabled={!title.trim() || !content.trim()}
+              className="btn btn-primary"
             >
-              取消编辑
+              {editingId ? '保存修改' : '添加笔记'}
             </button>
-          )}
-          <button
-            onClick={handleSubmit}
-            disabled={!title.trim() || !content.trim()}
-            className="px-5 py-2.5 bg-accent text-accent-ink text-sm font-medium rounded-xl hover:bg-accent-hover transition-colors transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {editingId ? '保存修改' : '添加笔记'}
-          </button>
+          </div>
+        </form>
+      </section>
+
+      <section className="section" aria-labelledby="notes-heading">
+        <div className="index-head">
+          <h2 id="notes-heading" className="index-title">
+            笔记
+          </h2>
+          <span className="index-meta">共 {sortedNotes.length} 条笔记</span>
         </div>
-      </div>
 
-      <div className="text-sm text-[ink-2]">
-        共 {sortedNotes.length} 条笔记
-      </div>
-
-      {sortedNotes.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedNotes.map((note) => (
-            <div
-              key={note.id}
-              className="bg-white rounded-2xl shadow-sm border border-[divider] overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-colors transition-shadow h-full flex flex-col"
-            >
-              <div className="p-6 border-b border-[divider] bg-accent-soft">
-                <div className="flex justify-between items-start gap-3">
-                  <h3 className="text-lg font-bold text-[ink] break-all">{note.title}</h3>
-                  <div className="flex gap-2 shrink-0">
-                    <button
-                      onClick={() => handleEdit(note)}
-                      className="text-xs text-accent hover:text-accent-active font-medium"
-                    >
-                      编辑
-                    </button>
-                    <button
-                      onClick={() => handleDelete(note.id)}
-                      className="text-xs text-error hover:text-error-ink font-medium"
-                    >
-                      删除
-                    </button>
-                  </div>
+        {sortedNotes.length > 0 ? (
+          <ul className="note-list">
+            {sortedNotes.map((note) => (
+              <li key={note.id} className="note-row">
+                <div className="min-w-0">
+                  <h3 className="text-title font-semibold text-ink break-words">{note.title}</h3>
+                  <p className="mt-0.5 text-caption text-ink-3">更新于 {formatTime(note.updatedAt)}</p>
+                  <p className="mt-2 whitespace-pre-line text-body-s text-ink-2">{note.content}</p>
                 </div>
-                <p className="text-xs text-[ink-3] mt-2">
-                  更新于 {formatTime(note.updatedAt)}
-                </p>
-              </div>
-              <div className="p-6 flex-1">
-                <p className="text-[ink] text-sm leading-relaxed whitespace-pre-line">{note.content}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12 bg-[paper-2] rounded-3xl border border-dashed border-[rule]">
-          <Icon name="book" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
-          <p className="text-lg text-[ink-3]">还没有笔记</p>
-          <p className="text-sm text-[ink-3] mt-1">在上方添加第一条学习笔记吧</p>
-        </div>
-      )}
+                <div className="flex shrink-0 gap-1">
+                  <button type="button" onClick={() => handleEdit(note)} className="btn btn-ghost">
+                    编辑
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDelete(note.id)}
+                    className="btn btn-ghost text-error-ink"
+                  >
+                    删除
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="empty-state mt-4">
+            <Icon name="book" className="h-8 w-8" />
+            <p className="text-body-s">还没有笔记</p>
+            <p className="text-caption">在上方添加第一条学习笔记吧</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 };

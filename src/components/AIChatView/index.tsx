@@ -30,7 +30,7 @@ const SYSTEM_PROMPT = `你是一位专业的中小学教育顾问 AI 助手，�
 const WELCOME_MESSAGE: ChatMessage = {
   id: 'welcome',
   role: 'assistant',
-  content: '你好！我是 **拾艺院助教** 👋\n\n我可以帮助你解答学科疑问、讲解知识点、设计练习题，或者分享学习方法。\n\n请问有什么可以帮你的？',
+  content: '你好！我是 **拾艺院助教**。\n\n我可以帮助你解答学科疑问、讲解知识点、设计练习题，或者分享学习方法。\n\n请问有什么可以帮你的？',
   timestamp: 0,
 };
 
@@ -140,7 +140,7 @@ export function AIChatView() {
       updateSessionMessages(sessionId, msgs =>
         msgs.map(m =>
           m.id === assistantMessage.id
-            ? { ...m, content: `⚠️ 出错了：${message}` }
+            ? { ...m, content: `出错了：${message}` }
             : m
         )
       );
@@ -176,21 +176,30 @@ export function AIChatView() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-120px)] max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-sm border border-[rule]">
-      <ConversationList
-        sessions={sessions}
-        activeSessionId={activeSessionId}
-        onSelectSession={handleSelectSession}
-        onNewSession={handleNewSession}
-        onDeleteSession={handleDeleteSession}
-      />
-      <MessageArea
-        messages={messages}
-        isLoading={isLoading}
-        error={error}
-        onSend={handleSend}
-        onClear={handleClear}
-      />
+    <div>
+      <div className="page-head">
+        <div className="page-head__text">
+          <h1 className="page-title">AI 助教</h1>
+          <p className="page-lead">解答学科疑问、讲解重难点、设计练习题</p>
+        </div>
+      </div>
+
+      <div className="chat-layout">
+        <ConversationList
+          sessions={sessions}
+          activeSessionId={activeSessionId}
+          onSelectSession={handleSelectSession}
+          onNewSession={handleNewSession}
+          onDeleteSession={handleDeleteSession}
+        />
+        <MessageArea
+          messages={messages}
+          isLoading={isLoading}
+          error={error}
+          onSend={handleSend}
+          onClear={handleClear}
+        />
+      </div>
     </div>
   );
 }

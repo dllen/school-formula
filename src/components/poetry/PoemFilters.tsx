@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import type {
   DynastyFilter,
   GradeFilter,
@@ -38,6 +38,9 @@ const THEME_OPTIONS: Array<{ value: ThemeFilter; label: string }> = [
 
 const THEME_COLLAPSED_COUNT = 8;
 
+/**
+ * 筛选是一条条平铺的行：标签在左，分段控件在右，行与行只用发丝线分隔。
+ */
 export function PoemFilters({ value, onChange }: PoemFiltersProps) {
   const [themeExpanded, setThemeExpanded] = useState(false);
   const visibleThemes = themeExpanded
@@ -49,93 +52,86 @@ export function PoemFilters({ value, onChange }: PoemFiltersProps) {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[divider] p-5 space-y-3">
-      <FilterRow label="朝代">
-        {DYNASTY_OPTIONS.map((opt) => (
-          <Chip
-            key={opt.value}
-            active={value.dynasty === opt.value}
-            onClick={() => set('dynasty', opt.value)}
-          >
-            {opt.label}
-          </Chip>
-        ))}
-      </FilterRow>
-      <FilterRow label="学段">
-        {GRADE_OPTIONS.map((opt) => (
-          <Chip
-            key={opt.value}
-            active={value.grade === opt.value}
-            onClick={() => set('grade', opt.value)}
-          >
-            {opt.label}
-          </Chip>
-        ))}
-      </FilterRow>
-      <FilterRow label="题材">
-        {visibleThemes.map((opt) => (
-          <Chip
-            key={opt.value}
-            active={value.theme === opt.value}
-            onClick={() => set('theme', opt.value)}
-          >
-            {opt.label}
-          </Chip>
-        ))}
-        {THEME_OPTIONS.length > THEME_COLLAPSED_COUNT && (
-          <button
-            type="button"
-            onClick={() => setThemeExpanded((v) => !v)}
-            className="text-xs text-[accent] hover:underline px-2"
-          >
-            {themeExpanded ? '收起' : `展开更多（${THEME_OPTIONS.length - THEME_COLLAPSED_COUNT}）`}
-          </button>
-        )}
-      </FilterRow>
-      <div className="pt-2">
-        <input
-          type="search"
-          value={value.query}
-          onChange={(e) => set('query', e.target.value)}
-          placeholder="搜索诗名或作者……"
-          aria-label="搜索诗名或作者"
-          className="w-full px-4 py-2 border border-[rule] rounded-lg text-sm focus:outline-none focus:border-[accent] focus:ring-2 focus:ring-[accent-soft]"
-        />
+    <section aria-label="筛选诗词" className="border-y border-divider py-4">
+      <div className="flex flex-col gap-3">
+        <FilterRow label="朝代">
+          <div className="seg" role="group" aria-label="按朝代筛选">
+            {DYNASTY_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                aria-pressed={value.dynasty === opt.value}
+                onClick={() => set('dynasty', opt.value)}
+                className="seg-btn"
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </FilterRow>
+
+        <FilterRow label="学段">
+          <div className="seg" role="group" aria-label="按学段筛选">
+            {GRADE_OPTIONS.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                aria-pressed={value.grade === opt.value}
+                onClick={() => set('grade', opt.value)}
+                className="seg-btn"
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </FilterRow>
+
+        <FilterRow label="题材">
+          <div className="seg seg--wrap" role="group" aria-label="按题材筛选">
+            {visibleThemes.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                aria-pressed={value.theme === opt.value}
+                onClick={() => set('theme', opt.value)}
+                className="seg-btn"
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          {THEME_OPTIONS.length > THEME_COLLAPSED_COUNT && (
+            <button
+              type="button"
+              onClick={() => setThemeExpanded((v) => !v)}
+              className="btn btn-ghost tap-44"
+            >
+              {themeExpanded ? '收起' : `展开更多（${THEME_OPTIONS.length - THEME_COLLAPSED_COUNT}）`}
+            </button>
+          )}
+        </FilterRow>
+
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+          <span className="shrink-0 text-label text-ink-2 sm:w-16">搜索</span>
+          <input
+            type="search"
+            value={value.query}
+            onChange={(e) => set('query', e.target.value)}
+            placeholder="搜索诗名或作者……"
+            aria-label="搜索诗名或作者"
+            className="input w-full sm:max-w-sm"
+          />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
-function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
+function FilterRow({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="flex items-start gap-3">
-      <span className="text-sm text-[ink-2] shrink-0 pt-1 w-12">{label}</span>
-      <div className="flex flex-wrap gap-2 flex-1">{children}</div>
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+      <span className="shrink-0 text-label text-ink-2 sm:w-16">{label}</span>
+      <div className="flex min-w-0 flex-wrap items-center gap-2">{children}</div>
     </div>
-  );
-}
-
-function Chip({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`px-3 py-1 text-xs rounded-full transition-colors ${
-        active
-          ? 'bg-[accent] text-white'
-          : 'bg-[paper-2] text-[ink-2] hover:bg-[accent-soft] hover:text-[accent]'
-      }`}
-    >
-      {children}
-    </button>
   );
 }

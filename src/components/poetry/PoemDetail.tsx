@@ -1,43 +1,58 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getPoemById } from '../../data/poems';
+import { Footer } from '../Footer';
+import { Header } from '../Header';
+import { pathForView } from '../../view-routes';
 import { PoemContent } from './PoemContent';
 import { Icon } from '../icons/Icon';
 
 export function PoemDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const poem = id ? getPoemById(id) : undefined;
 
+  const openView = (view: Parameters<typeof pathForView>[0]) => navigate(pathForView(view));
+
   if (!poem) {
-    return <NotFound />;
+    return <NotFound onNavigate={openView} />;
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[divider]">
-      <div className="px-4 sm:px-6 pt-6">
-        <Link
-          to="/poetry"
-          className="inline-flex items-center text-[ink-2] hover:text-[ink] transition-colors"
-        >
-          <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          返回诗词列表
-        </Link>
-      </div>
-      <PoemContent poem={poem} />
+    <div className="page-shell">
+      <Header activeView="poetry" onViewChange={openView} />
+      <main id="main" tabIndex={-1} className="page-main">
+        <div className="container-page py-8">
+          <div className="mx-auto w-full max-w-[68ch]">
+            <Link to="/poetry" className="btn btn-ghost -ml-2 inline-flex items-center gap-1">
+              <Icon name="arrow-left" className="h-4 w-4" />
+              返回诗词列表
+            </Link>
+            <PoemContent poem={poem} />
+          </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
 
-function NotFound() {
+function NotFound({ onNavigate }: { onNavigate: (view: Parameters<typeof pathForView>[0]) => void }) {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16 text-center space-y-4">
-      <Icon name="scroll" className="w-12 h-12 text-ink-3 opacity-40" />
-      <h1 className="text-2xl font-bold text-[ink]">未找到这首诗</h1>
-      <p className="text-sm text-[ink-2]">这首诗可能尚未收录，或链接已失效。</p>
-      <Link to="/poetry" className="inline-block text-[accent] hover:underline">
-        返回诗词列表
-      </Link>
+    <div className="page-shell">
+      <Header activeView="poetry" onViewChange={onNavigate} />
+      <main id="main" tabIndex={-1} className="page-main">
+        <div className="container-page py-16">
+          <div className="empty-state">
+            <Icon name="scroll" className="h-10 w-10 text-ink-3" />
+            <h1 className="text-section font-semibold text-ink">未找到这首诗</h1>
+            <p className="text-body-s text-ink-2">这首诗可能尚未收录，或链接已失效。</p>
+            <Link to="/poetry" className="btn btn-secondary">
+              返回诗词列表
+            </Link>
+          </div>
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }

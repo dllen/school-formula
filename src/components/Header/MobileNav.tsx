@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { SettingsButton } from './SettingsButton';
+import { useAuth } from '../../context/auth-context';
+import { Icon } from '../icons/Icon';
 import type { ViewType } from './types';
 
 const NAV_GROUPS = [
@@ -42,49 +45,44 @@ interface MobileNavProps {
   onClose: () => void;
   activeView: ViewType;
   onViewChange: (view: ViewType) => void;
+  onOpenSettings: () => void;
 }
 
-export function MobileNav({ isOpen, onClose, activeView, onViewChange }: MobileNavProps) {
+export function MobileNav({ isOpen, onClose, activeView, onViewChange, onOpenSettings }: MobileNavProps) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const { user, isAuthenticated, logout } = useAuth();
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="导航菜单">
-      <div className="absolute inset-0 bg-black/30" onClick={onClose} aria-hidden="true" />
-      <div className="absolute top-0 left-0 right-0 bg-white shadow-pop max-h-[80vh] overflow-y-auto">
-        <div className="flex items-center justify-between px-4 h-[60px] border-b border-[rule]">
-          <span className="text-[16px] font-medium text-[ink]">菜单</span>
+    <div className="drawer" role="dialog" aria-modal="true" aria-label="导航菜单">
+      <div className="drawer__scrim" onClick={onClose} aria-hidden="true" />
+      <div className="drawer__panel">
+        <div className="drawer__head">
+          <span className="text-body font-semibold text-ink">菜单</span>
           <button
             type="button"
             aria-label="关闭菜单"
             onClick={onClose}
-            className="p-2 text-[ink-2] hover:text-[ink] hover:bg-[paper-2] rounded-[6px] transition-colors"
+            className="icon-btn"
           >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <Icon name="cross" className="w-5 h-5" />
           </button>
         </div>
 
-        <nav aria-label="移动端导航" className="py-2">
+        <nav aria-label="移动端导航">
           {NAV_GROUPS.map((group) => {
             const isExpanded = openGroup === group.label;
             return (
-              <div key={group.label} className="border-b border-[divider] last:border-0">
+              <div key={group.label} className="drawer__group">
                 <button
                   type="button"
                   aria-expanded={isExpanded}
                   onClick={() => setOpenGroup(isExpanded ? null : group.label)}
-                  className="w-full text-left px-4 py-3 text-[14px] font-medium text-[ink] flex items-center justify-between"
+                  className="drawer__toggle"
                 >
                   {group.label}
-                  <svg
-                    className={`w-4 h-4 text-[ink-3] transition-transform ${isExpanded ? 'rotate-180' : ''}`}
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  <Icon name="chevron-down" className="w-4 h-4" />
                 </button>
                 {isExpanded && (
                   <div role="menu" aria-label={group.label}>
@@ -93,15 +91,12 @@ export function MobileNav({ isOpen, onClose, activeView, onViewChange }: MobileN
                         key={view.value}
                         type="button"
                         role="menuitem"
+                        data-active={activeView === view.value ? 'true' : undefined}
                         onClick={() => {
                           onViewChange(view.value);
                           onClose();
                         }}
-                        className={`w-full text-left px-6 py-[10px] text-[14px] transition-colors ${
-                          activeView === view.value
-                            ? 'text-[accent] bg-[accent-soft] font-medium'
-                            : 'text-[ink-2] hover:bg-[paper-2]'
-                        }`}
+                        className="drawer__item"
                       >
                         {view.label}
                       </button>
@@ -113,8 +108,34 @@ export function MobileNav({ isOpen, onClose, activeView, onViewChange }: MobileN
           })}
         </nav>
 
-        <div className="border-t border-[divider] px-4 py-3">
-          <LanguageSwitcher className="text-[14px] font-medium text-[accent] hover:underline" />
+        <div className="drawer__foot">
+          <LanguageSwitcher />
+          <span className="ml-auto flex items-center gap-1">
+            <SettingsButton onClick={onOpenSettings} />
+            {isAuthenticated && user ? (
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  logout();
+                  onClose();
+                }}
+              >
+                退出登录
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent('open-auth-modal'));
+                }}
+              >
+                登录
+              </button>
+            )}
+          </span>
         </div>
       </div>
     </div>

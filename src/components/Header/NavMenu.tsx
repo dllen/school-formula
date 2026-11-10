@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { ViewType } from './types';
 import { pathForView } from '../../view-routes';
+import { Icon } from '../icons/Icon';
 
 interface NavGroup {
   label: string;
@@ -69,7 +70,7 @@ export function NavMenu({ activeView }: NavMenuProps) {
   }, []);
 
   return (
-    <nav aria-label="主导航" className="hidden md:flex gap-1 bg-[paper-2] p-1 rounded-lg">
+    <nav aria-label="主导航" className="nav">
       {NAV_GROUPS.map((group) => {
         const isOpen = openGroup === group.label;
         const isActive = group.views.some((v) => v.value === activeView);
@@ -77,7 +78,7 @@ export function NavMenu({ activeView }: NavMenuProps) {
         return (
           <div
             key={group.label}
-            className="relative"
+            className="nav-wrap"
             onMouseEnter={() => open(group.label)}
             onMouseLeave={scheduleClose}
           >
@@ -85,43 +86,27 @@ export function NavMenu({ activeView }: NavMenuProps) {
               type="button"
               aria-expanded={isOpen}
               aria-haspopup="menu"
+              data-active={isActive ? 'true' : undefined}
               onClick={() => (isOpen ? setOpenGroup(null) : open(group.label))}
-              className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
-                isActive ? 'bg-white text-[accent] shadow-sm' : 'text-[ink-2] hover:text-[ink]'
-              }`}
+              className="nav-link"
             >
               {group.label}
-              <svg
-                className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`}
-                fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+              <Icon name="chevron-down" className="w-3 h-3" />
             </button>
 
             {isOpen && (
-              <div
-                role="menu"
-                aria-label={group.label}
-                className="absolute left-0 top-full pt-1 w-40 z-50"
-              >
-                <div className="bg-white rounded-lg shadow-lg border border-[divider] py-1">
+              <div role="menu" aria-label={group.label} className="nav-panel">
                 {group.views.map((view) => (
                   <Link
                     key={view.value}
                     to={pathForView(view.value)}
                     role="menuitem"
+                    data-active={activeView === view.value ? 'true' : undefined}
                     onClick={() => setOpenGroup(null)}
-                    className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
-                      activeView === view.value
-                        ? 'text-[accent] bg-[accent-soft] font-medium'
-                        : 'text-[ink] hover:bg-[paper-2] hover:text-[ink]'
-                    }`}
                   >
                     {view.label}
                   </Link>
                 ))}
-                </div>
               </div>
             )}
           </div>

@@ -63,7 +63,7 @@ export function buildHtmlSitemap(): SitemapGroup[] {
     title: grade.name,
     links: grade.subjects.flatMap((subject) =>
       subject.knowledgePoints.map((point) => ({
-        label: `${subject.name} · ${point.title}`,
+        label: `${subject.name}：${point.title}`,
         path: `/knowledge/${point.id}`,
       })),
     ),

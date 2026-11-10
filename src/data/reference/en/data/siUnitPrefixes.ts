@@ -11,7 +11,7 @@ export const SI_UNIT_PREFIXES_ROWS: string[][] = [
     ["kilo", "k", "10³"],
     ["hecto", "h", "10²"],
     ["deca", "da", "10¹"],
-    ["(base)", "—", "10⁰"],
+    ["(base)", "none", "10⁰"],
     ["deci", "d", "10⁻¹"],
     ["centi", "c", "10⁻²"],
     ["milli", "m", "10⁻³"],

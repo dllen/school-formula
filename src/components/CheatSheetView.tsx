@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { getCheatSheetsByGrade, type CheatSheet } from '../data/cheatsheets';
 import type { GradeLevel } from '../data/knowledge';
 import { CheatSheetCard } from './CheatSheetCard';
@@ -6,6 +6,10 @@ import { CheatSheetListItem } from './CheatSheetListItem';
 import { GradeSelector } from './GradeSelector';
 import { Icon } from './icons/Icon';
 
+/**
+ * 速查表是一份索引：分类是分组标题，条目是按行排列的目录。
+ * 选中一条后换成详情页，详情页自己带打印动作。
+ */
 export const CheatSheetView: React.FC = () => {
     const [selectedGrade, setSelectedGrade] = useState<GradeLevel>('primary');
     const [selectedSheet, setSelectedSheet] = useState<CheatSheet | null>(null);
@@ -16,18 +20,24 @@ export const CheatSheetView: React.FC = () => {
         setSelectedSheet(null);
     };
 
-    const cheatsheets = getCheatSheetsByGrade(selectedGrade);
+    const groups = useMemo(() => {
+        const byCategory = new Map<string, CheatSheet[]>();
+        getCheatSheetsByGrade(selectedGrade).forEach((sheet) => {
+            const bucket = byCategory.get(sheet.category);
+            if (bucket) bucket.push(sheet);
+            else byCategory.set(sheet.category, [sheet]);
+        });
+        return Array.from(byCategory, ([category, sheets]) => ({ category, sheets }));
+    }, [selectedGrade]);
 
     if (selectedSheet) {
         return (
-            <div className="space-y-6">
+            <div>
                 <button
+                    type="button"
                     onClick={() => setSelectedSheet(null)}
-                    className="flex items-center text-[ink-2] hover:text-[ink] transition-colors"
+                    className="btn btn-ghost -ml-2"
                 >
-                    <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
                     返回列表
                 </button>
                 <CheatSheetCard cheatsheet={selectedSheet} />
@@ -36,12 +46,11 @@ export const CheatSheetView: React.FC = () => {
     }
 
     return (
-        <div className="space-y-8">
-            {/* Header Section */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div>
-                    <h2 className="text-2xl font-bold text-[ink]">速查表</h2>
-                    <p className="text-sm text-[ink-2]">快速查看和打印各学科重点记忆表格</p>
+        <div>
+            <div className="page-head">
+                <div className="page-head__text">
+                    <h1 className="page-title">速查表</h1>
+                    <p className="page-lead">快速查看和打印各学科重点记忆表格</p>
                 </div>
                 <GradeSelector
                     selectedGrade={selectedGrade}
@@ -49,21 +58,31 @@ export const CheatSheetView: React.FC = () => {
                 />
             </div>
 
-            {/* CheatSheets Grid */}
-            {cheatsheets.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {cheatsheets.map(sheet => (
-                        <CheatSheetListItem
-                            key={sheet.id}
-                            cheatsheet={sheet}
-                            onClick={() => setSelectedSheet(sheet)}
-                        />
+            {groups.length > 0 ? (
+                <div className="flex flex-col gap-10">
+                    {groups.map(({ category, sheets }) => (
+                        <section key={category}>
+                            <div className="flex items-baseline gap-3">
+                                <h2 className="text-subhead font-semibold text-ink">{category}</h2>
+                                <span className="h-px flex-1 bg-divider" aria-hidden="true" />
+                                <span className="tabular text-caption text-ink-3">{sheets.length} 份</span>
+                            </div>
+                            <ul>
+                                {sheets.map((sheet) => (
+                                    <CheatSheetListItem
+                                        key={sheet.id}
+                                        cheatsheet={sheet}
+                                        onClick={() => setSelectedSheet(sheet)}
+                                    />
+                                ))}
+                            </ul>
+                        </section>
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12 bg-[paper-2] rounded-3xl border border-dashed border-[rule]">
-                    <Icon name="clipboard" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
-                    <p className="text-lg text-[ink-3]">该年级暂无速查表</p>
+                <div className="empty-state">
+                    <Icon name="clipboard" className="h-10 w-10 text-ink-3" />
+                    <p className="text-body-s text-ink-2">该年级暂无速查表</p>
                 </div>
             )}
         </div>

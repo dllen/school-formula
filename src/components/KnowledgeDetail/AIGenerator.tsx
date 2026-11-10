@@ -35,50 +35,54 @@ export const AIGenerator: React.FC<AIGeneratorProps> = ({
     };
 
     return (
-        <div className="pt-8 border-t border-[divider]">
-            <div className="flex items-center justify-between mb-6">
-                <h3 className="flex items-center text-xl font-bold text-accent-active">
-                    <Icon name="sparkle" className="mr-2 w-5 h-5" /> AI 智能助教
-                    <span className="ml-3 text-sm font-normal text-accent bg-accent-soft px-2 py-0.5 rounded-full">
-                        家长辅导助手
-                    </span>
-                </h3>
+        <section id="ai" className="section">
+            <div className="flex flex-wrap items-start justify-between gap-x-6 gap-y-3">
+                <div className="min-w-0">
+                    <h2 className="section-head">
+                        <Icon name="sparkle" className="h-5 w-5" />
+                        AI 智能助教
+                    </h2>
+                    <p className="section-note">家长辅导助手</p>
+                </div>
                 {!aiContent && !isGenerating && (
-                    <div className="flex gap-3">
-                        <button
-                            onClick={handleGenerateAI}
-                            className="px-6 py-2 bg-accent text-accent-ink rounded-xl font-bold hover:shadow-lg hover:shadow-accent-soft-hover transition-colors transition-shadow flex items-center gap-2"
-                        >
-                            <span>生成深度辅导指南</span>
+                    <div className="flex flex-wrap gap-2">
+                        <button type="button" className="btn btn-primary" onClick={handleGenerateAI}>
+                            生成深度辅导指南
                         </button>
-                        <button
-                            onClick={onPromptModalOpen}
-                            className="px-6 py-2 bg-warning text-white rounded-xl font-bold hover:shadow-lg hover:shadow-warning-bg transition-colors transition-shadow flex items-center gap-2"
-                        >
-                            <span className="flex items-center gap-1.5"><Icon name="clipboard" className="w-4 h-4" />模板模式</span>
+                        <button type="button" className="btn btn-secondary" onClick={onPromptModalOpen}>
+                            <Icon name="clipboard" className="h-4 w-4" />
+                            模板模式
                         </button>
                     </div>
                 )}
             </div>
 
             {isGenerating && !aiContent && (
-                <div className="bg-accent-soft p-8 rounded-2xl border border-accent-soft text-center animate-pulse">
-                    <p className="text-accent-active font-medium">
-                        正在思考中，为您生成专属辅导内容…
-                    </p>
+                <div className="mt-6 flex items-center gap-2" role="status" aria-live="polite">
+                    <span
+                        className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-divider border-t-accent"
+                        aria-hidden="true"
+                    />
+                    <span className="text-body-s text-ink-2">正在思考中，为您生成专属辅导内容…</span>
                 </div>
             )}
 
-            {(aiContent || (isGenerating && aiContent)) && (
-                <div className="bg-white border border-accent-soft rounded-2xl p-8 shadow-sm ring-4 ring-accent-soft/50">
-                    <div className="prose prose-purple max-w-none">
+            {aiContent && (
+                <div className="well mt-6">
+                    <div className="prose-body">
                         <ReactMarkdown>{aiContent}</ReactMarkdown>
                     </div>
                     {isGenerating && (
-                        <p className="mt-4 text-accent animate-pulse text-sm">正在撰写…</p>
+                        <p className="mt-4 flex items-center gap-2 text-body-s text-ink-2" role="status" aria-live="polite">
+                            <span
+                                className="h-3.5 w-3.5 shrink-0 animate-spin rounded-full border-2 border-divider border-t-accent"
+                                aria-hidden="true"
+                            />
+                            正在撰写…
+                        </p>
                     )}
                 </div>
             )}
-        </div>
+        </section>
     );
 };

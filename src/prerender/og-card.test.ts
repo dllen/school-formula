@@ -53,7 +53,7 @@ describe('buildOgCard', () => {
   it('shows the chart title and the brand', () => {
     const page = getReferencePage('multiplication-chart')!;
     const text = collectText(buildOgCard(page, brand));
-    expect(text).toContain('Multiplication Chart (1–12)');
+    expect(text).toContain('Multiplication Chart (1-12)');
     expect(text).toContain('Shiyiyuan');
   });
 

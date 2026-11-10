@@ -60,6 +60,6 @@ describe('App routes', () => {
   it('serves an English reference chart at /en/:category/:slug', async () => {
     await renderApp('/en/math/multiplication-chart');
     const heading = await screen.findByRole('heading', { level: 1 });
-    expect(heading.textContent).toBe('Multiplication Chart (1–12)');
+    expect(heading.textContent).toBe('Multiplication Chart (1-12)');
   });
 });

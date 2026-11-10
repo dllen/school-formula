@@ -4,38 +4,73 @@ import { ENGLISH_HOME } from '../../reference-routes';
 /** Shared chrome for the English reference surface (header, footer, language link). */
 export function ReferenceLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[paper-2] font-sans text-ink flex flex-col">
-      <header className="bg-white border-b border-[rule] sticky top-0 z-40 print:hidden">
-        <div className="max-w-5xl mx-auto px-6 h-[60px] flex items-center justify-between">
-          <a href={ENGLISH_HOME} className="flex items-center gap-2">
-            <span
-              className="bg-[accent] text-white w-[32px] h-[32px] rounded-[8px] flex items-center justify-center text-[18px] font-semibold"
-              aria-hidden="true"
-            >
-              拾
-            </span>
-            <span className="text-[18px] font-semibold text-[ink]">Shiyiyuan Study Reference</span>
-          </a>
-          <nav aria-label="Site" className="flex items-center gap-4 text-sm">
-            <a href={ENGLISH_HOME} className="text-[ink-2] hover:text-[ink] transition-colors">
-              All charts
+    <div className="page-shell">
+      <header className="site-header print:hidden">
+        <div className="container-page">
+          <div className="site-header__inner">
+            <a href={ENGLISH_HOME} className="wordmark tap-44" aria-label="Shiyiyuan Study Reference">
+              <span className="wordmark__mark" aria-hidden="true">
+                拾
+              </span>
+              <span className="wordmark__text">
+                <span className="wordmark__name">Shiyiyuan</span>
+                <span className="wordmark__sub">Study Reference</span>
+              </span>
             </a>
-            <a href="/" className="text-[accent] hover:underline" lang="zh-CN">
-              中文
-            </a>
-          </nav>
+
+            <nav aria-label="Site" className="flex items-center gap-1">
+              <a href={ENGLISH_HOME} className="nav-link tap-44">
+                All charts
+              </a>
+              <a href="/" className="nav-link tap-44" lang="zh-CN">
+                中文
+              </a>
+            </nav>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-8 flex-grow w-full">{children}</main>
+      <main id="main" tabIndex={-1} className="page-main">
+        <div className="container-page pt-10 pb-10">{children}</div>
+      </main>
 
-      <footer className="py-8 text-center text-sm text-[ink-3] bg-white border-t border-[divider] print:hidden">
-        <p>Free printable reference charts for students, parents and teachers.</p>
-        <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm print:hidden">
-          <a href="/privacy" className="text-[ink-2] hover:text-[ink] transition-colors">Privacy</a>
-          <a href="/terms" className="text-[ink-2] hover:text-[ink] transition-colors">Terms</a>
-          <a href="/about" className="text-[ink-2] hover:text-[ink] transition-colors">About</a>
-          <a href="/contact" className="text-[ink-2] hover:text-[ink] transition-colors">Contact</a>
+      <footer className="site-footer print:hidden">
+        <div className="container-page">
+          <div className="site-footer__inner">
+            <p className="max-w-prose text-body-s text-ink-2">
+              Free printable reference charts for students, parents and teachers.
+            </p>
+
+            <nav aria-label="Footer">
+              <ul className="footer-links">
+                <li>
+                  <a href="/privacy" className="tap-44 inline-flex items-center">
+                    Privacy
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms" className="tap-44 inline-flex items-center">
+                    Terms
+                  </a>
+                </li>
+                <li>
+                  <a href="/about" className="tap-44 inline-flex items-center">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="tap-44 inline-flex items-center">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <p className="max-w-prose text-label text-ink-3">
+              Open a chart and use your browser&rsquo;s Print command; each one is laid out at full
+              size.
+            </p>
+          </div>
         </div>
       </footer>
     </div>

@@ -9,84 +9,87 @@ interface PoemContentProps {
 const DYNASTY_LABEL: Record<Poem['dynasty'], string> = { tang: '唐', song: '宋' };
 const GRADE_LABEL: Record<Poem['grade'], string> = { primary: '小学', middle: '初中', high: '高中' };
 
+/**
+ * 一首诗的阅读面：题目居首，诗行用宋体排到 display-s，
+ * 译文与赏析各占一段，段与段之间只用发丝线相连。
+ */
 export function PoemContent({ poem }: PoemContentProps) {
   const [showPinyin, setShowPinyin] = useState(true);
 
   return (
-    <article className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-8">
-      {/* Header */}
-      <header className="text-center space-y-3">
-        <h1 className="text-3xl font-bold text-[ink] font-serif">
+    <article className="w-full pb-16">
+      <header className="pt-6">
+        <h1 className="font-serif text-display font-semibold text-ink">
           {poem.title}
         </h1>
-        <p className="text-base text-[ink-2] font-serif">
-          {poem.author}
-        </p>
-        <div className="flex flex-wrap gap-2 justify-center">
-          <Badge>{DYNASTY_LABEL[poem.dynasty]}</Badge>
-          <Badge>{GRADE_LABEL[poem.grade]}</Badge>
-          <Badge>{poem.theme}</Badge>
-          <Badge>{poem.form}</Badge>
-          {poem.cipai && <Badge>{poem.cipai}</Badge>}
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-serif text-body-s text-ink-3">
+          <span className="text-body text-ink-2">{poem.author}</span>
+          <MetaSep />
+          <span>{DYNASTY_LABEL[poem.dynasty]}</span>
+          <MetaSep />
+          <span>{GRADE_LABEL[poem.grade]}</span>
+          <MetaSep />
+          <span>{poem.theme}</span>
+          <MetaSep />
+          <span>{poem.form}</span>
+          {poem.cipai && (
+            <>
+              <MetaSep />
+              <span>{poem.cipai}</span>
+            </>
+          )}
         </div>
       </header>
 
-      {/* Body */}
-      <section className="space-y-4 py-4">
-        {poem.content.map((line, idx) => (
-          <div key={idx} className="text-center space-y-1">
-            <p className="text-2xl leading-relaxed text-[ink] font-serif">
-              {line}
-            </p>
-            {showPinyin && poem.pinyin[idx] && (
-              <p className="text-sm text-[ink-3]">{poem.pinyin[idx]}</p>
-            )}
-          </div>
-        ))}
+      <section aria-label="诗文" className="mt-10">
+        <div className="flex justify-end">
+          <button
+            type="button"
+            onClick={() => setShowPinyin((v) => !v)}
+            aria-pressed={showPinyin}
+            className="btn btn-ghost"
+          >
+            {showPinyin ? '隐藏拼音' : '显示拼音'}
+          </button>
+        </div>
+
+        <div className="mt-6 space-y-6 text-center">
+          {poem.content.map((line, idx) => (
+            <div key={idx} className="space-y-1.5">
+              <p className="font-serif text-display-s leading-relaxed text-ink">
+                {line}
+              </p>
+              {showPinyin && poem.pinyin[idx] && (
+                <p className="text-caption text-ink-3">{poem.pinyin[idx]}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Pinyin toggle */}
-      <div className="text-center">
-        <button
-          type="button"
-          onClick={() => setShowPinyin((v) => !v)}
-          className="text-xs text-[accent] hover:underline"
-        >
-          {showPinyin ? '隐藏拼音' : '显示拼音'}
-        </button>
-      </div>
-
-      <Divider />
-
-      {/* Translation */}
-      <section className="space-y-2">
-        <h2 className="text-sm font-medium text-[ink-2] flex items-center gap-2">
-          <Icon name="book-open" className="w-4 h-4" />译文
+      <section className="section">
+        <h2 className="section-head">
+          <Icon name="book-open" className="h-4 w-4" />
+          译文
         </h2>
-        <p className="text-base text-[ink] leading-relaxed">{poem.translation}</p>
+        <div className="prose-body mt-3">
+          <p>{poem.translation}</p>
+        </div>
       </section>
 
-      <Divider />
-
-      {/* Appreciation */}
-      <section className="space-y-2">
-        <h2 className="text-sm font-medium text-[ink-2] flex items-center gap-2">
-          <Icon name="sparkle" className="w-4 h-4" />赏析
+      <section className="section">
+        <h2 className="section-head">
+          <Icon name="sparkle" className="h-4 w-4" />
+          赏析
         </h2>
-        <p className="text-base text-[ink] leading-relaxed">{poem.appreciation}</p>
+        <div className="prose-body mt-3">
+          <p>{poem.appreciation}</p>
+        </div>
       </section>
     </article>
   );
 }
 
-function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block px-2 py-0.5 text-xs text-[ink-2] bg-[paper-2] rounded">
-      {children}
-    </span>
-  );
-}
-
-function Divider() {
-  return <hr className="border-t border-[divider]" />;
+function MetaSep() {
+  return <span aria-hidden="true" className="h-3 w-px bg-rule" />;
 }

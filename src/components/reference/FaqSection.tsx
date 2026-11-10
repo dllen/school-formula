@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { Icon } from '../icons/Icon';
 
 /** 图表页的 FAQ。同时是 FAQPage 结构化数据的数据源。 */
 export function FaqSection({
@@ -8,18 +9,24 @@ export function FaqSection({
 }): ReactElement | null {
   if (faq.length === 0) return null;
   return (
-    <section className="mt-10 print:hidden" aria-labelledby="faq-heading">
-      <h2 id="faq-heading" className="text-xl font-bold text-[ink]">
+    <section className="section print:hidden" aria-labelledby="faq-heading">
+      <h2 id="faq-heading" className="section-head">
         Frequently asked questions
       </h2>
-      <dl className="mt-4 space-y-3">
+      <div className="mt-3 border-t border-rule">
         {faq.map((entry) => (
-          <div key={entry.q} className="bg-white rounded-xl border border-[divider] p-5">
-            <dt className="font-semibold text-[ink]">{entry.q}</dt>
-            <dd className="mt-1 text-sm text-[ink-2]">{entry.a}</dd>
-          </div>
+          <details key={entry.q} className="group border-b border-divider">
+            <summary className="flex cursor-pointer list-none items-start justify-between gap-4 py-4 text-title font-semibold text-ink transition-colors hover:text-accent-hover [&::-webkit-details-marker]:hidden">
+              <span className="min-w-0">{entry.q}</span>
+              <Icon
+                name="chevron-down"
+                className="mt-1 h-4 w-4 shrink-0 text-ink-3 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <p className="max-w-prose pb-4 text-body-s text-ink-2">{entry.a}</p>
+          </details>
         ))}
-      </dl>
+      </div>
     </section>
   );
 }

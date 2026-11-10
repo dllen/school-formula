@@ -9,7 +9,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       aria-label="Switch to the English version"
       className={
         className ??
-        'px-2.5 py-1.5 text-[13px] font-medium text-[ink-2] hover:text-[ink] hover:bg-[paper-2] rounded-[6px] transition-colors'
+        'inline-flex items-center min-h-9 px-3 rounded-md text-label font-medium text-ink-2 hover:text-ink hover:bg-paper-2 whitespace-nowrap no-underline transition-colors'
       }
     >
       English

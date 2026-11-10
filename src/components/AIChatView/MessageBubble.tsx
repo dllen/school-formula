@@ -10,20 +10,22 @@ export function MessageBubble({ message }: MessageBubbleProps) {
 
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
-      <div className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-        isUser
-          ? 'bg-[accent] text-white rounded-br-sm'
-          : 'bg-white border border-[divider] text-[ink] rounded-bl-sm shadow-sm'
-      }`}>
+      <div
+        className={`max-w-[85%] rounded-xl px-4 py-2.5 ${
+          isUser ? 'bg-accent text-accent-ink' : 'bg-paper-2 text-ink'
+        }`}
+      >
         {isUser ? (
-          <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+          <p className="whitespace-pre-wrap text-body-s">{message.content}</p>
         ) : (
-          <div className="prose prose-sm prose-slate max-w-none prose-headings:text-[ink] prose-p:text-[ink] prose-strong:text-[ink] prose-code:text-[accent] prose-a:text-[accent] prose-li:marker:text-[ink-3]">
+          <div className="prose-body max-w-none text-body-s">
             <Markdown>{message.content}</Markdown>
           </div>
         )}
-        <div className={`mt-1 text-[10px] ${isUser ? 'text-white/60' : 'text-[ink-3]'}`}>
-          {message.timestamp > 0 ? new Date(message.timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) : null}
+        <div className={`mt-1 text-caption ${isUser ? 'text-accent-ink/75' : 'text-ink-3'}`}>
+          {message.timestamp > 0
+            ? new Date(message.timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })
+            : null}
         </div>
       </div>
     </div>

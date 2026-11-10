@@ -26,29 +26,36 @@ export function Header({ activeView, onViewChange }: HeaderProps) {
   }, []);
 
   return (
-    <header className="bg-white border-b border-[rule] sticky top-0 z-40">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex justify-between items-center h-[60px]">
+    <header className="site-header">
+      <a className="skip-link" href="#main">
+        跳到主要内容
+      </a>
+
+      <div className="container-page">
+        <div className="site-header__inner">
           <Logo />
 
-          <div className="flex items-center gap-3">
+          <div className="header-actions">
             <NavMenu activeView={activeView} />
-            <LanguageSwitcher />
-            <UserMenu />
-            <SettingsButton onClick={() => setIsSettingsOpen(true)} />
-          </div>
 
-          <button
-            type="button"
-            aria-label="打开导航菜单"
-            aria-expanded={isMobileNavOpen}
-            onClick={() => setIsMobileNavOpen(true)}
-            className="md:hidden p-2 text-[ink-2] hover:text-[ink] hover:bg-[paper-2] rounded-[6px] transition-colors"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+            <div className="header-actions nav-desktop-only">
+              <LanguageSwitcher />
+              <SettingsButton onClick={() => setIsSettingsOpen(true)} />
+              <UserMenu />
+            </div>
+
+            <button
+              type="button"
+              aria-label="打开导航菜单"
+              aria-expanded={isMobileNavOpen}
+              onClick={() => setIsMobileNavOpen(true)}
+              className="icon-btn nav-mobile-only"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -57,6 +64,7 @@ export function Header({ activeView, onViewChange }: HeaderProps) {
         onClose={() => setIsMobileNavOpen(false)}
         activeView={activeView}
         onViewChange={onViewChange}
+        onOpenSettings={() => setIsSettingsOpen(true)}
       />
 
       <SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />

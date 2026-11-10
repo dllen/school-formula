@@ -8,18 +8,14 @@ interface GradeSelectorProps {
 
 export const GradeSelector: React.FC<GradeSelectorProps> = ({ selectedGrade, onSelectGrade }) => {
     return (
-        <div className="flex space-x-1 bg-paper-3 p-1 rounded-xl shadow-inner sm:w-fit w-full">
+        <div className="seg" role="group" aria-label="选择学段">
             {KNOWLEDGE_DATA.map((grade) => (
                 <button
                     key={grade.id}
+                    type="button"
+                    aria-pressed={selectedGrade === grade.id}
                     onClick={() => onSelectGrade(grade.id)}
-                    className={`
-            flex-1 sm:flex-none px-6 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200
-            ${selectedGrade === grade.id
-                            ? 'bg-white text-accent shadow-sm ring-1 ring-black/5'
-                            : 'text-ink-3 hover:text-ink-2 hover:bg-rule/50'
-                        }
-          `}
+                    className="seg-btn"
                 >
                     {grade.name}
                 </button>

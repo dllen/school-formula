@@ -20,21 +20,20 @@ export const RelatedPractice: React.FC<RelatedPracticeProps> = ({
     };
 
     return (
-        <div className="pt-8 border-t border-[divider]">
-            <div className="flex items-center justify-between mb-6">
-                <h3 className="flex items-center text-xl font-bold text-success-ink">
-                    <Icon name="pencil" className="mr-2 w-5 h-5" /> 巩固练习
-                    <span className="ml-3 text-sm font-normal text-success bg-success-bg px-2 py-0.5 rounded-full">
-                        {relatedCount} 道题
-                    </span>
-                </h3>
-                <button
-                    onClick={handleStartPractice}
-                    className="px-6 py-2 bg-success text-white rounded-xl font-bold hover:shadow-lg hover:shadow-success-bg transition-colors transition-shadow"
-                >
+        <section id="related-practice" className="section">
+            <div className="well flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
+                    <h2 className="section-head">
+                        <Icon name="target" className="h-5 w-5" />
+                        巩固练习
+                        <span className="section-head__meta">{relatedCount} 道题</span>
+                    </h2>
+                    <p className="section-note">用本知识点的题目巩固。</p>
+                </div>
+                <button type="button" className="btn btn-secondary shrink-0" onClick={handleStartPractice}>
                     开始练习
                 </button>
             </div>
-        </div>
+        </section>
     );
 };

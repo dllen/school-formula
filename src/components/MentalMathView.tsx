@@ -25,103 +25,100 @@ export const MentalMathView: React.FC = () => {
   }, [allItems, query]);
 
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-[ink]">速算口诀</h2>
-          <p className="text-sm text-[ink-2]">小学到高中常用速算技巧与口诀</p>
+    <>
+      <div className="page-head">
+        <div className="page-head__text">
+          <h1 className="page-title">速算口诀</h1>
+          <p className="page-lead">小学到高中常用速算技巧与口诀</p>
         </div>
-        <GradeSelector selectedGrade={selectedGrade} onSelectGrade={setSelectedGrade} />
+        <div className="page-controls w-full sm:w-auto">
+          <GradeSelector selectedGrade={selectedGrade} onSelectGrade={setSelectedGrade} />
+          <div className="flex w-full items-center gap-2 sm:w-80">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="搜索口诀、场景或标签，如：凑十、平方、估算"
+              aria-label="搜索口诀"
+              autoComplete="off"
+              className="input min-w-0 flex-1"
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery('')}
+                className="btn btn-ghost"
+              >
+                清空
+              </button>
+            )}
+          </div>
+        </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl shadow-sm border border-[divider] flex items-center gap-3">
-        <svg className="w-5 h-5 text-[ink-3]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="搜索口诀、场景或标签，如：凑十、平方、估算"
-          className="flex-1 outline-none text-[ink] placeholder:text-[ink-3] bg-transparent"
-        />
-        {query && (
-          <button
-            onClick={() => setQuery('')}
-            className="text-sm text-[ink-3] hover:text-[ink-2]"
-          >
-            清空
-          </button>
-        )}
-      </div>
-
-      <div className="text-sm text-[ink-2]">
+      <p className="tabular text-label font-semibold text-ink-2">
         共 {filteredItems.length} 条口诀
-      </div>
+      </p>
 
       {filteredItems.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul className="mt-2 grid grid-cols-1 gap-x-10 border-t border-divider md:grid-cols-2">
           {filteredItems.map((item) => (
-            <MnemonicCard key={item.id} mnemonic={item} />
+            <MnemonicRow key={item.id} mnemonic={item} />
           ))}
-        </div>
+        </ul>
       ) : (
-        <div className="text-center py-12 bg-[paper-2] rounded-3xl border border-dashed border-[rule]">
-          <Icon name="math" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
-          <p className="text-lg text-[ink-3]">没有找到匹配的口诀</p>
-          <p className="text-sm text-[ink-3] mt-1">换个关键词试试</p>
+        <div className="empty-state mt-2">
+          <Icon name="math" className="h-10 w-10" />
+          <p className="text-body-s text-ink-2">没有找到匹配的口诀</p>
+          <p className="text-body-s text-ink-3">换个关键词试试</p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
-interface MnemonicCardProps {
+interface MnemonicRowProps {
   mnemonic: MentalMathMnemonic;
 }
 
-const MnemonicCard: React.FC<MnemonicCardProps> = ({ mnemonic }) => {
+const MnemonicRow: React.FC<MnemonicRowProps> = ({ mnemonic }) => {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[divider] overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-colors transition-shadow h-full flex flex-col">
-      <div className="p-6 border-b border-[divider] bg-accent-soft">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-lg font-bold text-[ink]">{mnemonic.title}</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
+    <li className="border-b border-divider py-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <h2 className="min-w-0 text-title font-semibold text-ink">{mnemonic.title}</h2>
+        <div className="flex flex-wrap gap-1.5">
           {mnemonic.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-0.5 bg-accent-soft text-accent-hover text-xs font-medium rounded-full"
-            >
+            <span key={tag} className="tag">
               {tag}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="p-6 space-y-4 flex-1">
+      <p className="mt-2 whitespace-pre-line text-body font-semibold text-ink">
+        {mnemonic.rhyme}
+      </p>
+
+      <dl className="mt-3 space-y-2">
         <div>
-          <p className="text-xs font-medium text-ink-3 mb-1">口诀</p>
-          <p className="text-[ink] font-medium leading-relaxed whitespace-pre-line">{mnemonic.rhyme}</p>
+          <dt className="text-caption text-ink-3">适用场景</dt>
+          <dd className="mt-0.5 text-body-s text-ink">{mnemonic.scene}</dd>
         </div>
 
         <div>
-          <p className="text-xs font-medium text-ink-3 mb-1">适用场景</p>
-          <p className="text-[ink] text-sm">{mnemonic.scene}</p>
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-ink-3 mb-1">示例</p>
-          <p className="text-[ink] text-sm font-mono bg-[paper-2] px-3 py-2 rounded-lg">{mnemonic.example}</p>
+          <dt className="text-caption text-ink-3">示例</dt>
+          <dd className="well tabular mt-1 overflow-x-auto whitespace-pre-line font-mono text-body-s text-ink">
+            {mnemonic.example}
+          </dd>
         </div>
 
         {mnemonic.explanation && (
           <div>
-            <p className="text-xs font-medium text-ink-3 mb-1">原理说明</p>
-            <p className="text-[ink-2] text-sm leading-relaxed">{mnemonic.explanation}</p>
+            <dt className="text-caption text-ink-3">原理说明</dt>
+            <dd className="mt-0.5 text-body-s text-ink-2">{mnemonic.explanation}</dd>
           </div>
         )}
-      </div>
-    </div>
+      </dl>
+    </li>
   );
 };

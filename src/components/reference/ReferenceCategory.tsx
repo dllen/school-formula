@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { pagesInCategory } from '../../data/reference';
 import { CATEGORY_COPY } from '../../data/reference/en/categories';
 import { ENGLISH_HOME, isReferenceCategory, referencePath } from '../../reference-routes';
+import { Icon } from '../icons/Icon';
 import { ReferenceLayout } from './ReferenceLayout';
 import { ReferenceNotFound } from './ReferenceNotFound';
 
@@ -23,26 +24,34 @@ export function ReferenceCategory(): ReactElement {
 
   return (
     <ReferenceLayout>
-      <nav aria-label="Breadcrumb" className="text-sm text-[ink-2] print:hidden">
-        <a href={ENGLISH_HOME} className="hover:text-[ink] transition-colors">
-          All charts
-        </a>
+      <nav aria-label="Breadcrumb" className="breadcrumb print:hidden">
+        <a href={ENGLISH_HOME}>All charts</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{copy.name}</span>
       </nav>
 
-      <section className="mt-4">
-        <h1 className="text-3xl font-bold text-[ink]">{copy.name}</h1>
-        <p className="mt-2 max-w-2xl text-[ink-2]">{copy.intro}</p>
-      </section>
+      <div className="page-head mt-4">
+        <div className="page-head__text">
+          <h1 className="page-title">{copy.name}</h1>
+          <p className="page-lead max-w-prose">{copy.intro}</p>
+        </div>
+      </div>
 
-      <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <ul className="border-t border-rule">
         {pages.map((page) => (
-          <li key={page.slug}>
+          <li key={page.slug} className="border-b border-divider">
             <a
               href={referencePath(page.category, page.slug)}
-              className="flex h-full flex-col bg-white rounded-2xl border border-[divider] shadow-sm hover:shadow-md transition-shadow p-6"
+              className="group -mx-3 flex items-start justify-between gap-4 rounded-md px-3 py-4 transition-colors hover:bg-paper-2"
             >
-              <h2 className="text-lg font-bold text-[ink]">{page.title}</h2>
-              <p className="mt-2 text-sm text-[ink-2]">{page.summary}</p>
+              <span className="min-w-0">
+                <h2 className="text-title font-semibold text-ink">{page.title}</h2>
+                <span className="mt-1 block max-w-prose text-body-s text-ink-2">{page.summary}</span>
+              </span>
+              <Icon
+                name="chevron-right"
+                className="mt-1 h-4 w-4 shrink-0 text-rule-strong transition-colors group-hover:text-ink-2"
+              />
             </a>
           </li>
         ))}

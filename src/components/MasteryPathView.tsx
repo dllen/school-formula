@@ -8,13 +8,38 @@ interface Props {
   onSelect: (technique: Technique) => void;
 }
 
+type PathStatus = 'locked' | 'unlocked' | 'learning' | 'completed';
+
+const STATUS_LABEL: Record<PathStatus, string> = {
+  completed: '已完成',
+  learning: '学习中',
+  unlocked: '可开始',
+  locked: '完成前置后解锁',
+};
+
+/* The row's state is carried by its left hairline and by a text label,
+   never by a decorative dot. */
+const STATUS_EDGE: Record<PathStatus, string> = {
+  completed: 'border-l-success',
+  learning: 'border-l-warning',
+  unlocked: 'border-l-rule-strong',
+  locked: 'border-l-divider',
+};
+
+const STATUS_TEXT: Record<PathStatus, string> = {
+  completed: 'text-success-ink',
+  learning: 'text-warning-ink',
+  unlocked: 'text-ink-2',
+  locked: 'text-ink-3',
+};
+
 export const MasteryPathView: React.FC<Props> = ({ onSelect }) => {
   const [progress] = useState<MasteryProgress>(() => loadProgress());
 
   const path = useMemo(() => getLearningPath(), []);
   const map = useMemo(() => new Map(TECHNIQUES.map(t => [t.id, t])), []);
 
-  const getStatus = (t: Technique): 'locked' | 'unlocked' | 'learning' | 'completed' => {
+  const getStatus = (t: Technique): PathStatus => {
     if (progress.completedTechniques.includes(t.id)) return 'completed';
     if (t.prereq && !progress.completedTechniques.includes(t.prereq)) return 'locked';
     if (progress.records[t.id]) return 'learning';
@@ -22,69 +47,71 @@ export const MasteryPathView: React.FC<Props> = ({ onSelect }) => {
   };
 
   const stages = ['小学', '中学', '高中'] as const;
-  const stageColors = {
-    小学: 'border-l-emerald-400',
-    中学: 'border-l-sky-400',
-    高中: 'border-l-amber-400',
-  };
 
   return (
-    <div className="space-y-8">
-      <p className="text-ink-3">按依赖关系排列的学习路径。完成前置方法后才能解锁下一个。</p>
+    <div className="space-y-10">
+      <p className="max-w-prose text-body-s text-ink-2">
+        按依赖关系排列的学习路径。完成前置方法后才能解锁下一个。
+      </p>
+
       {stages.map(stage => {
         const items = path.filter(t => t.stage === stage);
         if (items.length === 0) return null;
+
         return (
-          <div key={stage}>
-            <h3 className="text-lg font-gray-800 font-bold mb-3">{stage}</h3>
-            <div className="relative pl-6 space-y-2">
+          <section key={stage} aria-labelledby={`path-stage-${stage}`}>
+            <div className="index-head">
+              <h2 id={`path-stage-${stage}`} className="index-title">
+                {stage}
+              </h2>
+              <span className="index-meta">{items.length} 个方法</span>
+            </div>
+
+            <ul>
               {items.map(t => {
                 const status = getStatus(t);
                 const prereq = t.prereq ? map.get(t.prereq) : null;
-                const base = 'w-full flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-colors text-left';
-                const stageBorder = stageColors[t.stage];
-                const styles = {
-                  completed: `bg-success-bg border-success-bg ${stageBorder}`,
-                  learning: `bg-warning-bg border-warning-bg ${stageBorder}`,
-                  unlocked: `bg-white border-paper-3 cursor-pointer hover:border-accent-soft-hover hover:shadow-sm ${stageBorder}`,
-                  locked: `bg-paper-2 border-paper-3 opacity-50 cursor-not-allowed ${stageBorder}`,
-                };
+                const locked = status === 'locked';
 
                 return (
-                  <div key={t.id} className="relative flex items-center">
-                    {/* 前置连线 */}
-                    {prereq && (
-                      <div className="absolute -top-2 left-2 w-px h-2 bg-rule" />
-                    )}
+                  <li key={t.id} className="border-b border-divider">
                     <button
-                      className={`${base} ${styles[status]}`}
-                      onClick={() => status !== 'locked' && onSelect(t)}
+                      type="button"
+                      onClick={() => {
+                        if (!locked) onSelect(t);
+                      }}
+                      aria-disabled={locked || undefined}
+                      className={`flex w-full items-center gap-4 border-l-2 py-3 pl-3 pr-2 text-left transition-colors ${STATUS_EDGE[status]} ${
+                        locked ? 'cursor-not-allowed' : 'hover:bg-paper-2'
+                      }`}
                     >
-                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                        status === 'completed' ? 'bg-success' :
-                        status === 'learning' ? 'bg-warning' :
-                        status === 'unlocked' ? 'bg-accent-hover' : 'bg-rule-strong'
-                      }`} />
-                      <div className="flex-1 min-w-0">
-                        <span className="text-sm font-medium">{t.name}</span>
-                        {prereq && (
-                          <span className="text-xs text-ink-3 ml-2">前置：{prereq.name}</span>
-                        )}
-                      </div>
-                      <span className="text-xs text-ink-3">{t.grade}</span>
-                      <span className="text-xs">
-                        {status === 'completed' ? (
-                          <Icon name="check-circle" className="w-4 h-4 text-success" />
-                        ) : status === 'locked' ? (
-                          <Icon name="key" className="w-4 h-4 text-ink-3" />
-                        ) : null}
+                      <span className="min-w-0 flex-1">
+                        <span
+                          className={`block text-title font-semibold ${
+                            locked ? 'text-ink-3' : 'text-ink'
+                          }`}
+                        >
+                          {t.name}
+                        </span>
+                        <span className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-caption text-ink-3">
+                          <span>{t.grade}</span>
+                          {prereq && <span>前置：{prereq.name}</span>}
+                        </span>
+                      </span>
+
+                      <span
+                        className={`flex shrink-0 items-center gap-1.5 text-caption ${STATUS_TEXT[status]}`}
+                      >
+                        {status === 'completed' && <Icon name="check-circle" className="h-4 w-4" />}
+                        {status === 'locked' && <Icon name="key" className="h-4 w-4" />}
+                        {STATUS_LABEL[status]}
                       </span>
                     </button>
-                  </div>
+                  </li>
                 );
               })}
-            </div>
-          </div>
+            </ul>
+          </section>
         );
       })}
     </div>

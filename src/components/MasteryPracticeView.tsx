@@ -62,6 +62,17 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
     }
   };
 
+  const handleRestart = () => {
+    if (!technique) return;
+    setQuestions(generateQuestions(technique.id, 6));
+    setCurrentIdx(0);
+    setSelected(null);
+    setCorrectCount(0);
+    setFinished(false);
+    setShowExplanation(false);
+    setElapsed(0);
+  };
+
   const formatTime = (s: number) => {
     const m = Math.floor(s / 60);
     const sec = s % 60;
@@ -70,105 +81,163 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
 
   if (!technique) {
     return (
-      <div className="text-center py-12 text-ink-3">
-        <p className="mb-4">请从学习路径或方法库中选择一个方法开始练习</p>
-        <button onClick={onBack} className="text-accent hover:text-accent-active">← 返回学习路径</button>
+      <div className="empty-state">
+        <Icon name="route" className="h-8 w-8" />
+        <p className="text-body-s text-ink-2">请从学习路径或方法库中选择一个方法开始练习</p>
+        <button type="button" onClick={onBack} className="btn btn-secondary">
+          <Icon name="arrow-left" className="h-4 w-4" />
+          返回学习路径
+        </button>
       </div>
     );
   }
 
   if (questions.length === 0) {
-    return <div className="text-center py-12 text-ink-3">该方法的出题引擎尚未就绪，敬请期待</div>;
+    return (
+      <div className="empty-state">
+        <Icon name="hourglass" className="h-8 w-8" />
+        <p className="text-body-s text-ink-2">该方法的出题引擎尚未就绪，敬请期待</p>
+      </div>
+    );
   }
 
   if (finished) {
     const accuracy = Math.round((correctCount / questions.length) * 100);
     const avgTime = Math.round(elapsed / questions.length);
+
     return (
-      <div className="text-center py-12">
-        <div className="mb-4 flex justify-center">
+      <div className="mx-auto max-w-2xl">
+        <div className="flex items-center gap-3">
           {accuracy >= 80 ? (
-            <Icon name="trophy" className="w-10 h-10 text-success" />
+            <Icon name="trophy" className="h-8 w-8 text-success" />
           ) : accuracy >= 60 ? (
-            <Icon name="check-circle" className="w-10 h-10 text-accent" />
+            <Icon name="check-circle" className="h-8 w-8 text-accent" />
           ) : (
-            <Icon name="flame" className="w-10 h-10 text-warning" />
+            <Icon name="flame" className="h-8 w-8 text-warning" />
           )}
+          <h2 className="text-section font-semibold text-ink">练习完成</h2>
         </div>
-        <h3 className="text-xl font-bold mb-2">练习完成！</h3>
-        <p className="text-ink-2 mb-2">正确率：{correctCount}/{questions.length}（{accuracy}%）</p>
-        {timedMode && (
-          <p className="text-sm text-ink-3 mb-4">
-            总用时 {formatTime(elapsed)} · 平均每题 {avgTime}s
-          </p>
-        )}
-        <p className="text-sm text-ink-3 mb-6">
+
+        <dl className="mt-6 divide-y divide-divider border-y border-rule">
+          <div className="flex items-baseline justify-between gap-4 py-3">
+            <dt className="text-body-s text-ink-2">正确率</dt>
+            <dd className="tabular text-title font-semibold text-ink">
+              {correctCount}/{questions.length}（{accuracy}%）
+            </dd>
+          </div>
+          {timedMode && (
+            <>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-body-s text-ink-2">总用时</dt>
+                <dd className="tabular text-title font-semibold text-ink">{formatTime(elapsed)}</dd>
+              </div>
+              <div className="flex items-baseline justify-between gap-4 py-3">
+                <dt className="text-body-s text-ink-2">平均每题</dt>
+                <dd className="tabular text-title font-semibold text-ink">{avgTime}s</dd>
+              </div>
+            </>
+          )}
+        </dl>
+
+        <p className="mt-6 text-body-s text-ink-2">
           {accuracy >= 80 ? '恭喜通关！可以继续下一个方法了。' : '继续加油，多练习几次就能通关！'}
         </p>
-        <div className="flex gap-3 justify-center">
-          <button onClick={onBack} className="px-6 py-2 border border-rule-strong rounded-xl font-medium hover:bg-paper-2">返回路径</button>
-          <button onClick={() => { setQuestions(generateQuestions(technique.id, 6)); setCurrentIdx(0); setSelected(null); setCorrectCount(0); setFinished(false); setShowExplanation(false); setElapsed(0); }}
-            className="px-6 py-2 bg-accent text-accent-ink rounded-xl font-medium hover:bg-accent-hover">再练一组</button>
+
+        <div className="mt-6 flex flex-wrap gap-3">
+          <button type="button" onClick={onBack} className="btn btn-secondary">
+            返回路径
+          </button>
+          <button type="button" onClick={handleRestart} className="btn btn-primary">
+            再练一组
+          </button>
         </div>
       </div>
     );
   }
 
   const current = questions[currentIdx];
+  const isAnswered = selected !== null;
+  const isRight = selected === current.ans;
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <button onClick={onBack} className="text-ink-3 hover:text-ink-2 text-sm">← 返回</button>
-          <span className="font-medium text-ink">{technique.name}</span>
+    <div className="mx-auto max-w-3xl">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-divider pb-3">
+        <div className="flex min-w-0 items-center gap-2">
+          <button type="button" onClick={onBack} className="btn btn-ghost tap-44 -ml-2">
+            <Icon name="arrow-left" className="h-4 w-4" />
+            返回
+          </button>
+          <span className="truncate text-subhead font-semibold text-ink">{technique.name}</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4 text-label text-ink-3">
           {timedMode && (
-            <span className="text-sm font-mono text-warning bg-warning-bg px-2 py-0.5 rounded-md">
-              <span className="flex items-center gap-1"><Icon name="clock" className="w-3.5 h-3.5" />{formatTime(elapsed)}</span>
+            <span className="flex items-center gap-1.5 text-warning-ink">
+              <Icon name="clock" className="h-4 w-4" />
+              <span className="tabular font-mono">{formatTime(elapsed)}</span>
             </span>
           )}
-          <span className="text-sm text-ink-3">{currentIdx + 1} / {questions.length}</span>
+          <span className="tabular">
+            {currentIdx + 1} / {questions.length}
+          </span>
         </div>
       </div>
 
-      {/* 计时模式切换 */}
-      <div className="flex items-center gap-2">
-        <label className="flex items-center gap-2 text-xs text-ink-3 cursor-pointer select-none">
+      <div className="mt-3">
+        <label className="tap-44 inline-flex items-center gap-2 text-body-s text-ink-2">
           <input
             type="checkbox"
             checked={timedMode}
             onChange={e => setTimedMode(e.target.checked)}
-            className="w-3.5 h-3.5 rounded border-rule-strong text-accent focus:ring-accent"
+            className="h-4 w-4 accent-accent"
           />
-          <span className="flex items-center gap-1.5"><Icon name="clock" className="w-4 h-4" />计时挑战模式</span>
+          <span className="flex items-center gap-1.5">
+            <Icon name="clock" className="h-4 w-4 text-ink-3" />
+            计时挑战模式
+          </span>
         </label>
       </div>
 
-      <div className="bg-white rounded-2xl border border-paper-3 shadow-sm p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="bg-accent-soft text-accent-hover px-2.5 py-0.5 rounded-full text-xs font-bold">第 {currentIdx + 1} 题</span>
-          <span className="text-xs text-ink-3 flex items-center gap-1">难度：{[...Array(current.level)].map((_, i) => (
-              <Icon key={i} name="star" className="w-3.5 h-3.5" />
-            ))}</span>
+      <div className="well mt-4">
+        <div className="flex flex-wrap items-center gap-4 text-caption text-ink-3">
+          <span className="tabular">第 {currentIdx + 1} 题</span>
+          <span className="flex items-center gap-1">
+            难度
+            {[...Array(current.level)].map((_, i) => (
+              <Icon key={i} name="star" className="h-3.5 w-3.5" />
+            ))}
+          </span>
         </div>
-        <p className="text-ink font-medium mb-4 whitespace-pre-line">{current.q}</p>
-        <div className="space-y-2">
+
+        <p className="mt-2 whitespace-pre-line text-body font-medium text-ink">{current.q}</p>
+
+        <div className="mt-3 divide-y divide-rule">
           {current.opts.map((opt, idx) => {
-            let cls = 'w-full text-left px-4 py-3 rounded-xl border transition-colors text-sm ';
-            if (selected === null) {
-              cls += 'border-rule hover:border-accent-soft-hover hover:bg-accent-soft cursor-pointer';
-            } else if (idx === current.ans) {
-              cls += 'border-success bg-success-bg text-success-ink font-medium';
-            } else if (idx === selected) {
-              cls += 'border-error bg-error-bg text-error-ink';
-            } else {
-              cls += 'border-rule opacity-50';
-            }
+            const state = !isAnswered
+              ? 'border-l-transparent text-ink hover:bg-paper-3'
+              : idx === current.ans
+                ? 'border-l-success bg-success-bg text-ink'
+                : idx === selected
+                  ? 'border-l-error bg-error-bg text-ink'
+                  : 'border-l-transparent text-ink-3';
+
             return (
-              <button key={idx} className={cls} onClick={() => handleSelect(idx)} disabled={selected !== null}>
-                <span className="font-medium mr-2">{String.fromCharCode(65 + idx)}.</span>{opt}
+              <button
+                key={idx}
+                type="button"
+                onClick={() => handleSelect(idx)}
+                disabled={isAnswered}
+                className={`tap-44 flex w-full items-start gap-3 border-l-2 px-2 py-2.5 text-left text-body-s transition-colors disabled:cursor-default ${state}`}
+              >
+                <span className="tabular font-medium text-ink-3">
+                  {String.fromCharCode(65 + idx)}.
+                </span>
+                <span className="min-w-0 flex-1">{opt}</span>
+                {isAnswered && idx === current.ans && (
+                  <Icon name="check-circle" className="h-4 w-4 shrink-0 text-success" />
+                )}
+                {isAnswered && idx === selected && idx !== current.ans && (
+                  <Icon name="cross" className="h-4 w-4 shrink-0 text-error" />
+                )}
               </button>
             );
           })}
@@ -176,22 +245,33 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
       </div>
 
       {showExplanation && (
-        <div className={`mt-4 rounded-xl p-4 border ${selected === current.ans ? 'bg-success-bg border-success-bg' : 'bg-error-bg border-error-bg'}`}>
-          <div className="flex items-center gap-2 mb-2">
-            <Icon name={selected === current.ans ? 'check-circle' : 'cross'} className={`w-5 h-5 ${selected === current.ans ? 'text-success' : 'text-error'}`} />
-            <span className="font-medium text-sm">{selected === current.ans ? '回答正确！' : '回答错误'}</span>
+        <section className="mt-6 border-t border-divider pt-4">
+          <div className="flex items-center gap-2">
+            <Icon
+              name={isRight ? 'check-circle' : 'cross'}
+              className={`h-5 w-5 ${isRight ? 'text-success' : 'text-error'}`}
+            />
+            <h2 className="text-subhead font-semibold text-ink">
+              {isRight ? '回答正确' : '回答错误'}
+            </h2>
           </div>
-          <div className="text-sm text-ink-2">
-            <p className="font-medium mb-1 flex items-center gap-1.5"><Icon name="clipboard" className="w-4 h-4" />解析：</p>
-            <p className="whitespace-pre-line">{current.explain}</p>
+
+          <div className="mt-2">
+            <p className="flex items-center gap-1.5 text-label font-semibold text-ink-2">
+              <Icon name="clipboard" className="h-4 w-4" />
+              解析
+            </p>
+            <p className="mt-1 whitespace-pre-line text-body-s text-ink-2">{current.explain}</p>
           </div>
-          <div className="mt-2 text-xs text-ink-3"><span className="font-medium">得分点：</span>{current.point}</div>
-        </div>
+
+          <p className="mt-3 text-caption text-ink-3">
+            <span className="font-medium text-ink-2">得分点</span> {current.point}
+          </p>
+        </section>
       )}
 
       {showExplanation && (
-        <button onClick={handleNext}
-          className="w-full py-3 bg-ink text-white rounded-xl font-medium hover:bg-ink">
+        <button type="button" onClick={handleNext} className="btn btn-primary btn-lg mt-6 w-full">
           {currentIdx + 1 >= questions.length ? '查看结果' : '下一题'}
         </button>
       )}
