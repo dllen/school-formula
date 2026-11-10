@@ -49,7 +49,7 @@ export function PoemFilters({ value, onChange }: PoemFiltersProps) {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-[#F0F1F2] p-5 space-y-3">
+    <div className="bg-white rounded-2xl shadow-sm border border-[divider] p-5 space-y-3">
       <FilterRow label="朝代">
         {DYNASTY_OPTIONS.map((opt) => (
           <Chip
@@ -86,7 +86,7 @@ export function PoemFilters({ value, onChange }: PoemFiltersProps) {
           <button
             type="button"
             onClick={() => setThemeExpanded((v) => !v)}
-            className="text-xs text-[#3370FF] hover:underline px-2"
+            className="text-xs text-[accent] hover:underline px-2"
           >
             {themeExpanded ? '收起' : `展开更多（${THEME_OPTIONS.length - THEME_COLLAPSED_COUNT}）`}
           </button>
@@ -99,7 +99,7 @@ export function PoemFilters({ value, onChange }: PoemFiltersProps) {
           onChange={(e) => set('query', e.target.value)}
           placeholder="搜索诗名或作者……"
           aria-label="搜索诗名或作者"
-          className="w-full px-4 py-2 border border-[#E5E6EB] rounded-lg text-sm focus:outline-none focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF]"
+          className="w-full px-4 py-2 border border-[rule] rounded-lg text-sm focus:outline-none focus:border-[accent] focus:ring-2 focus:ring-[accent-soft]"
         />
       </div>
     </div>
@@ -109,7 +109,7 @@ export function PoemFilters({ value, onChange }: PoemFiltersProps) {
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="text-sm text-[#646A73] shrink-0 pt-1 w-12">{label}</span>
+      <span className="text-sm text-[ink-2] shrink-0 pt-1 w-12">{label}</span>
       <div className="flex flex-wrap gap-2 flex-1">{children}</div>
     </div>
   );
@@ -131,8 +131,8 @@ function Chip({
       aria-pressed={active}
       className={`px-3 py-1 text-xs rounded-full transition-colors ${
         active
-          ? 'bg-[#3370FF] text-white'
-          : 'bg-[#F5F6F7] text-[#646A73] hover:bg-[#E1EAFF] hover:text-[#3370FF]'
+          ? 'bg-[accent] text-white'
+          : 'bg-[paper-2] text-[ink-2] hover:bg-[accent-soft] hover:text-[accent]'
       }`}
     >
       {children}

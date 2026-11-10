@@ -28,6 +28,7 @@
   "exclude": [
     "src/data/tutorials/_template.ts",
     "src/entry-prerender.ts",
+    "src/prerender/run.ts",
     "src/prerender/og.ts",
     "src/prerender/og.test.ts"
   ]

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import type { Technique, Question } from '../data/mastery/types';
 import { generateQuestions } from '../data/mastery/qgen';
 import { recordAttempt } from '../data/mastery/progress';
+import { Icon } from './icons/Icon';
 
 interface Props {
   technique: Technique | null;
@@ -69,15 +70,15 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
 
   if (!technique) {
     return (
-      <div className="text-center py-12 text-gray-400">
+      <div className="text-center py-12 text-ink-3">
         <p className="mb-4">请从学习路径或方法库中选择一个方法开始练习</p>
-        <button onClick={onBack} className="text-blue-600 hover:text-blue-800">← 返回学习路径</button>
+        <button onClick={onBack} className="text-accent hover:text-accent-active">← 返回学习路径</button>
       </div>
     );
   }
 
   if (questions.length === 0) {
-    return <div className="text-center py-12 text-gray-400">该方法的出题引擎尚未就绪，敬请期待</div>;
+    return <div className="text-center py-12 text-ink-3">该方法的出题引擎尚未就绪，敬请期待</div>;
   }
 
   if (finished) {
@@ -85,21 +86,29 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
     const avgTime = Math.round(elapsed / questions.length);
     return (
       <div className="text-center py-12">
-        <div className="text-4xl mb-4">{accuracy >= 80 ? '🎉' : accuracy >= 60 ? '👍' : '💪'}</div>
+        <div className="mb-4 flex justify-center">
+          {accuracy >= 80 ? (
+            <Icon name="trophy" className="w-10 h-10 text-success" />
+          ) : accuracy >= 60 ? (
+            <Icon name="check-circle" className="w-10 h-10 text-accent" />
+          ) : (
+            <Icon name="flame" className="w-10 h-10 text-warning" />
+          )}
+        </div>
         <h3 className="text-xl font-bold mb-2">练习完成！</h3>
-        <p className="text-gray-600 mb-2">正确率：{correctCount}/{questions.length}（{accuracy}%）</p>
+        <p className="text-ink-2 mb-2">正确率：{correctCount}/{questions.length}（{accuracy}%）</p>
         {timedMode && (
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-ink-3 mb-4">
             总用时 {formatTime(elapsed)} · 平均每题 {avgTime}s
           </p>
         )}
-        <p className="text-sm text-gray-400 mb-6">
+        <p className="text-sm text-ink-3 mb-6">
           {accuracy >= 80 ? '恭喜通关！可以继续下一个方法了。' : '继续加油，多练习几次就能通关！'}
         </p>
         <div className="flex gap-3 justify-center">
-          <button onClick={onBack} className="px-6 py-2 border border-gray-300 rounded-xl font-medium hover:bg-gray-50">返回路径</button>
+          <button onClick={onBack} className="px-6 py-2 border border-rule-strong rounded-xl font-medium hover:bg-paper-2">返回路径</button>
           <button onClick={() => { setQuestions(generateQuestions(technique.id, 6)); setCurrentIdx(0); setSelected(null); setCorrectCount(0); setFinished(false); setShowExplanation(false); setElapsed(0); }}
-            className="px-6 py-2 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700">再练一组</button>
+            className="px-6 py-2 bg-accent text-accent-ink rounded-xl font-medium hover:bg-accent-hover">再练一组</button>
         </div>
       </div>
     );
@@ -111,49 +120,51 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <button onClick={onBack} className="text-gray-400 hover:text-gray-600 text-sm">← 返回</button>
-          <span className="font-medium text-gray-800">{technique.name}</span>
+          <button onClick={onBack} className="text-ink-3 hover:text-ink-2 text-sm">← 返回</button>
+          <span className="font-medium text-ink">{technique.name}</span>
         </div>
         <div className="flex items-center gap-3">
           {timedMode && (
-            <span className="text-sm font-mono text-orange-600 bg-orange-50 px-2 py-0.5 rounded-md">
-              ⏱ {formatTime(elapsed)}
+            <span className="text-sm font-mono text-warning bg-warning-bg px-2 py-0.5 rounded-md">
+              <span className="flex items-center gap-1"><Icon name="clock" className="w-3.5 h-3.5" />{formatTime(elapsed)}</span>
             </span>
           )}
-          <span className="text-sm text-gray-400">{currentIdx + 1} / {questions.length}</span>
+          <span className="text-sm text-ink-3">{currentIdx + 1} / {questions.length}</span>
         </div>
       </div>
 
       {/* 计时模式切换 */}
       <div className="flex items-center gap-2">
-        <label className="flex items-center gap-2 text-xs text-gray-500 cursor-pointer select-none">
+        <label className="flex items-center gap-2 text-xs text-ink-3 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={timedMode}
             onChange={e => setTimedMode(e.target.checked)}
-            className="w-3.5 h-3.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+            className="w-3.5 h-3.5 rounded border-rule-strong text-accent focus:ring-accent"
           />
-          ⏱ 计时挑战模式
+          <span className="flex items-center gap-1.5"><Icon name="clock" className="w-4 h-4" />计时挑战模式</span>
         </label>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <div className="bg-white rounded-2xl border border-paper-3 shadow-sm p-6">
         <div className="flex items-center gap-3 mb-4">
-          <span className="bg-blue-100 text-blue-700 px-2.5 py-0.5 rounded-full text-xs font-bold">第 {currentIdx + 1} 题</span>
-          <span className="text-xs text-gray-400">难度：{'⭐'.repeat(current.level)}</span>
+          <span className="bg-accent-soft text-accent-hover px-2.5 py-0.5 rounded-full text-xs font-bold">第 {currentIdx + 1} 题</span>
+          <span className="text-xs text-ink-3 flex items-center gap-1">难度：{[...Array(current.level)].map((_, i) => (
+              <Icon key={i} name="star" className="w-3.5 h-3.5" />
+            ))}</span>
         </div>
-        <p className="text-gray-800 font-medium mb-4 whitespace-pre-line">{current.q}</p>
+        <p className="text-ink font-medium mb-4 whitespace-pre-line">{current.q}</p>
         <div className="space-y-2">
           {current.opts.map((opt, idx) => {
-            let cls = 'w-full text-left px-4 py-3 rounded-xl border transition-all text-sm ';
+            let cls = 'w-full text-left px-4 py-3 rounded-xl border transition-colors text-sm ';
             if (selected === null) {
-              cls += 'border-gray-200 hover:border-blue-300 hover:bg-blue-50 cursor-pointer';
+              cls += 'border-rule hover:border-accent-soft-hover hover:bg-accent-soft cursor-pointer';
             } else if (idx === current.ans) {
-              cls += 'border-green-500 bg-green-50 text-green-700 font-medium';
+              cls += 'border-success bg-success-bg text-success-ink font-medium';
             } else if (idx === selected) {
-              cls += 'border-red-500 bg-red-50 text-red-700';
+              cls += 'border-error bg-error-bg text-error-ink';
             } else {
-              cls += 'border-gray-200 opacity-50';
+              cls += 'border-rule opacity-50';
             }
             return (
               <button key={idx} className={cls} onClick={() => handleSelect(idx)} disabled={selected !== null}>
@@ -165,22 +176,22 @@ export const MasteryPracticeView: React.FC<Props> = ({ technique, onBack }) => {
       </div>
 
       {showExplanation && (
-        <div className={`mt-4 rounded-xl p-4 border ${selected === current.ans ? 'bg-green-50 border-green-100' : 'bg-red-50 border-red-100'}`}>
+        <div className={`mt-4 rounded-xl p-4 border ${selected === current.ans ? 'bg-success-bg border-success-bg' : 'bg-error-bg border-error-bg'}`}>
           <div className="flex items-center gap-2 mb-2">
-            <span>{selected === current.ans ? '✅' : '❌'}</span>
+            <Icon name={selected === current.ans ? 'check-circle' : 'cross'} className={`w-5 h-5 ${selected === current.ans ? 'text-success' : 'text-error'}`} />
             <span className="font-medium text-sm">{selected === current.ans ? '回答正确！' : '回答错误'}</span>
           </div>
-          <div className="text-sm text-gray-700">
-            <p className="font-medium mb-1">📝 解析：</p>
+          <div className="text-sm text-ink-2">
+            <p className="font-medium mb-1 flex items-center gap-1.5"><Icon name="clipboard" className="w-4 h-4" />解析：</p>
             <p className="whitespace-pre-line">{current.explain}</p>
           </div>
-          <div className="mt-2 text-xs text-gray-500"><span className="font-medium">得分点：</span>{current.point}</div>
+          <div className="mt-2 text-xs text-ink-3"><span className="font-medium">得分点：</span>{current.point}</div>
         </div>
       )}
 
       {showExplanation && (
         <button onClick={handleNext}
-          className="w-full py-3 bg-gray-900 text-white rounded-xl font-medium hover:bg-gray-800">
+          className="w-full py-3 bg-ink text-white rounded-xl font-medium hover:bg-ink">
           {currentIdx + 1 >= questions.length ? '查看结果' : '下一题'}
         </button>
       )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { getQuestionById } from '../../data/questions';
+import { Icon } from '../icons/Icon';
 
 interface ErrorBookProps {
   errors: Array<{
@@ -53,7 +54,7 @@ export const ErrorBook: React.FC<ErrorBookProps> = ({ errors, onClose, onPractic
 
   return (
     <div
-      className="bg-white rounded-lg border border-gray-200 p-6 space-y-5 max-h-[85vh] flex flex-col"
+      className="bg-white rounded-lg border border-rule p-6 space-y-5 max-h-[85vh] flex flex-col"
       ref={modalRef}
       role="dialog"
       aria-modal="true"
@@ -61,13 +62,13 @@ export const ErrorBook: React.FC<ErrorBookProps> = ({ errors, onClose, onPractic
     >
       <div className="flex items-center justify-between shrink-0">
         <div>
-          <h2 className="text-base font-semibold text-gray-900">错题本</h2>
-          <p className="text-sm text-gray-500 mt-0.5">共 {errors.length} 道错题，定期复习巩固</p>
+          <h2 className="text-base font-semibold text-ink">错题本</h2>
+          <p className="text-sm text-ink-3 mt-0.5">共 {errors.length} 道错题，定期复习巩固</p>
         </div>
         <button
           ref={closeButtonRef}
           onClick={onClose}
-          className="w-8 h-8 flex items-center justify-center rounded-md text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+          className="w-8 h-8 flex items-center justify-center rounded-md text-ink-3 hover:text-ink-2 hover:bg-paper-3 transition-colors"
           aria-label="关闭"
         >
           ✕
@@ -75,8 +76,8 @@ export const ErrorBook: React.FC<ErrorBookProps> = ({ errors, onClose, onPractic
       </div>
 
       {errors.length === 0 ? (
-        <div className="text-center py-10 text-gray-400">
-          <div className="text-3xl mb-2">🎉</div>
+        <div className="text-center py-10 text-ink-3">
+          <Icon name="trophy" className="w-10 h-10 mb-2 text-success" />
           <p className="text-sm">暂无错题，继续保持！</p>
         </div>
       ) : (
@@ -89,42 +90,42 @@ export const ErrorBook: React.FC<ErrorBookProps> = ({ errors, onClose, onPractic
             return (
               <div
                 key={err.questionId}
-                className="border border-gray-200 rounded-md overflow-hidden"
+                className="border border-rule rounded-md overflow-hidden"
               >
                 <button
                   onClick={() => setSelectedId(isExpanded ? null : err.questionId)}
                   aria-expanded={isExpanded}
-                  className="w-full text-left p-3 hover:bg-gray-50 flex items-start gap-3 transition-colors"
+                  className="w-full text-left p-3 hover:bg-paper-2 flex items-start gap-3 transition-colors"
                 >
-                  <span className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-medium shrink-0 mt-0.5">
+                  <span className="w-5 h-5 rounded-full bg-error-bg text-error flex items-center justify-center text-xs font-medium shrink-0 mt-0.5">
                     {err.wrongCount}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800 font-medium truncate">{question.stem}</p>
-                    <div className="flex gap-2 mt-1 text-xs text-gray-400">
+                    <p className="text-sm text-ink font-medium truncate">{question.stem}</p>
+                    <div className="flex gap-2 mt-1 text-xs text-ink-3">
                       <span>{new Date(err.lastWrongAt).toLocaleDateString()}</span>
-                      <span className="px-1.5 py-0.5 bg-gray-100 rounded text-gray-500">{question.tags[0]}</span>
+                      <span className="px-1.5 py-0.5 bg-paper-3 rounded text-ink-3">{question.tags[0]}</span>
                     </div>
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="border-t border-gray-100 p-3 bg-gray-50 space-y-2">
+                  <div className="border-t border-paper-3 p-3 bg-paper-2 space-y-2">
                     <div className="text-sm">
-                      <span className="text-gray-500">你的答案：</span>
-                      <span className="text-red-600 ml-1">{err.userAnswer || '（未作答）'}</span>
+                      <span className="text-ink-3">你的答案：</span>
+                      <span className="text-error ml-1">{err.userAnswer || '（未作答）'}</span>
                     </div>
                     <div className="text-sm">
-                      <span className="text-gray-500">正确答案：</span>
-                      <span className="text-green-600 ml-1">{question.answer}</span>
+                      <span className="text-ink-3">正确答案：</span>
+                      <span className="text-success ml-1">{question.answer}</span>
                     </div>
-                    <div className="bg-blue-50 border border-blue-100 rounded p-2.5">
-                      <span className="text-xs font-medium text-blue-800">解析：</span>
-                      <p className="text-xs text-blue-700 mt-0.5">{question.explanation}</p>
+                    <div className="bg-accent-soft border border-accent-soft rounded p-2.5">
+                      <span className="text-xs font-medium text-accent-active">解析：</span>
+                      <p className="text-xs text-accent-hover mt-0.5">{question.explanation}</p>
                     </div>
                     <button
                       onClick={() => onPracticeError(err.questionId)}
-                      className="px-3 py-1.5 bg-gray-800 text-white text-xs rounded-md font-medium hover:bg-gray-900 btn-press"
+                      className="px-3 py-1.5 bg-ink text-white text-xs rounded-md font-medium hover:bg-ink btn-press"
                     >
                       单独练习此题
                     </button>

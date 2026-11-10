@@ -13,11 +13,11 @@ export function TableBlock({
         <table className="w-full border-collapse text-sm">
           {block.headers && (
             <thead>
-              <tr className="bg-[#F5F6F7]">
+              <tr className="bg-[paper-2]">
                 {block.headers.map((header, index) => (
                   <th
                     key={index}
-                    className="border border-[#E5E6EB] px-3 py-2 text-left font-semibold text-[#1F2329]"
+                    className="border border-[rule] px-3 py-2 text-left font-semibold text-[ink]"
                   >
                     {header}
                   </th>
@@ -27,9 +27,9 @@ export function TableBlock({
           )}
           <tbody>
             {block.rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-[#E1EAFF]/30 transition-colors">
+              <tr key={rowIndex} className="hover:bg-[accent-soft]/30 transition-colors">
                 {row.map((cell, cellIndex) => (
-                  <td key={cellIndex} className="border border-[#E5E6EB] px-3 py-2 text-[#1F2329]">
+                  <td key={cellIndex} className="border border-[rule] px-3 py-2 text-[ink]">
                     {cell}
                   </td>
                 ))}
@@ -39,7 +39,7 @@ export function TableBlock({
         </table>
       </div>
       {block.caption && (
-        <figcaption className="mt-2 text-xs text-[#8F959E]">{block.caption}</figcaption>
+        <figcaption className="mt-2 text-xs text-[ink-3]">{block.caption}</figcaption>
       )}
     </figure>
   );

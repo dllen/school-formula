@@ -122,21 +122,21 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/50"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="bg-white rounded-[12px] shadow-[0_12px_40px_rgba(0,0,0,0.16)] w-full max-w-md overflow-hidden">
+      <div className="bg-white rounded-[12px] shadow-pop w-full max-w-md overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-[#F0F1F2] flex justify-between items-center bg-[#F5F6F7]">
-          <h2 className="text-[18px] font-semibold text-[#1F2329]">
+        <div className="p-6 border-b border-[divider] flex justify-between items-center bg-[paper-2]">
+          <h2 className="text-[18px] font-semibold text-[ink]">
             {view === 'login' && '登录'}
             {view === 'register' && '注册'}
             {view === 'forgot' && '忘记密码'}
             {view === 'reset' && '重置密码'}
           </h2>
-          <button onClick={onClose} className="text-[#8F959E] hover:text-[#1F2329] transition-colors text-2xl leading-none">
+          <button onClick={onClose} className="text-[ink-3] hover:text-[ink] transition-colors text-2xl leading-none">
             ✕
           </button>
         </div>
@@ -153,7 +153,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   setSuccess('');
                 }}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  view === 'login' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  view === 'login' ? 'bg-accent text-accent-ink' : 'bg-paper-3 text-ink-2 hover:bg-rule'
                 }`}
               >
                 登录
@@ -166,7 +166,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   setSuccess('');
                 }}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  view === 'register' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  view === 'register' ? 'bg-accent text-accent-ink' : 'bg-paper-3 text-ink-2 hover:bg-rule'
                 }`}
               >
                 注册
@@ -176,33 +176,33 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
           {/* 错误 / 成功提示 */}
           {error && (
-            <div className="mb-4 px-4 py-3 rounded-lg bg-red-50 border border-red-100 text-red-600 text-sm">{error}</div>
+            <div className="mb-4 px-4 py-3 rounded-lg bg-error-bg border border-error-bg text-error text-sm">{error}</div>
           )}
           {success && (
-            <div className="mb-4 px-4 py-3 rounded-lg bg-green-50 border border-green-100 text-green-600 text-sm">{success}</div>
+            <div className="mb-4 px-4 py-3 rounded-lg bg-success-bg border border-success-bg text-success text-sm">{success}</div>
           )}
 
           {/* ============ 登录视图 ============ */}
           {view === 'login' && (
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
               </div>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">密码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="至少 8 位"
                   autoComplete="current-password"
                 />
@@ -215,7 +215,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     setError('');
                     setSuccess('');
                   }}
-                  className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                  className="text-sm text-accent hover:text-accent-active transition-colors"
                 >
                   忘记密码？
                 </button>
@@ -223,7 +223,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-blue-200"
+                className="w-full py-2.5 bg-accent text-accent-ink rounded-lg font-medium hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-accent-soft-hover"
               >
                 {loading ? '登录中...' : '登录'}
               </button>
@@ -234,34 +234,34 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           {view === 'register' && (
             <form onSubmit={handleRegister} className="space-y-4">
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
               </div>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">密码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="至少 8 位"
                   autoComplete="new-password"
                 />
               </div>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">确认密码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">确认密码</label>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="再次输入密码"
                   autoComplete="new-password"
                 />
@@ -269,7 +269,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-blue-200"
+                className="w-full py-2.5 bg-accent text-accent-ink rounded-lg font-medium hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-accent-soft-hover"
               >
                 {loading ? '注册中...' : '注册'}
               </button>
@@ -279,14 +279,14 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           {/* ============ 忘记密码视图 ============ */}
           {view === 'forgot' && (
             <form onSubmit={handleForgot} className="space-y-4">
-              <p className="text-sm text-gray-500">输入注册邮箱，我们将发送密码重置码。</p>
+              <p className="text-sm text-ink-3">输入注册邮箱，我们将发送密码重置码。</p>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">邮箱</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">邮箱</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="you@example.com"
                   autoComplete="email"
                 />
@@ -294,7 +294,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-blue-200"
+                className="w-full py-2.5 bg-accent text-accent-ink rounded-lg font-medium hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-accent-soft-hover"
               >
                 {loading ? '发送中...' : '发送重置码'}
               </button>
@@ -306,7 +306,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                     setError('');
                     setSuccess('');
                   }}
-                  className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                  className="text-sm text-ink-3 hover:text-ink-2 transition-colors"
                 >
                   返回登录
                 </button>
@@ -317,39 +317,39 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           {/* ============ 重置密码视图 ============ */}
           {view === 'reset' && (
             <form onSubmit={handleReset} className="space-y-4">
-              <p className="text-sm text-gray-500">
-                重置码已发送至 <span className="font-medium text-gray-700">{email}</span>，10 分钟内有效。
+              <p className="text-sm text-ink-3">
+                重置码已发送至 <span className="font-medium text-ink-2">{email}</span>，10 分钟内有效。
               </p>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">重置码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">重置码</label>
                 <input
                   type="text"
                   value={code}
                   onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all text-center text-xl tracking-[0.5em] font-mono"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors text-center text-xl tracking-[0.5em] font-mono"
                   placeholder="000000"
                   maxLength={6}
                   inputMode="numeric"
                 />
               </div>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">新密码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">新密码</label>
                 <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="至少 8 位"
                   autoComplete="new-password"
                 />
               </div>
               <div>
-                <label className="block text-[14px] font-medium text-[#1F2329] mb-1">确认新密码</label>
+                <label className="block text-[14px] font-medium text-[ink] mb-1">确认新密码</label>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-3 py-2 rounded-[6px] border border-[#E5E6EB] focus:border-[#3370FF] focus:ring-2 focus:ring-[#E1EAFF] outline-none transition-all"
+                  className="w-full px-3 py-2 rounded-[6px] border border-[rule] focus:border-[accent] focus:ring-2 focus:ring-[accent-soft] outline-none transition-colors"
                   placeholder="再次输入新密码"
                   autoComplete="new-password"
                 />
@@ -357,7 +357,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-2.5 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-blue-200"
+                className="w-full py-2.5 bg-accent text-accent-ink rounded-lg font-medium hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm shadow-accent-soft-hover"
               >
                 {loading ? '重置中...' : '重置密码'}
               </button>

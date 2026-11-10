@@ -12,19 +12,19 @@ interface QuestionCardProps {
 }
 
 const DIFFICULTY_STYLES: Record<string, string> = {
-  basic: 'bg-green-50 text-green-700 ring-1 ring-green-200',
-  intermediate: 'bg-amber-50 text-amber-700 ring-1 ring-amber-200',
-  advanced: 'bg-red-50 text-red-700 ring-1 ring-red-200',
+  basic: 'bg-success-bg text-success-ink ring-1 ring-success-bg',
+  intermediate: 'bg-warning-bg text-warning-ink ring-1 ring-warning-bg',
+  advanced: 'bg-error-bg text-error-ink ring-1 ring-error-bg',
 };
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({ question, onSubmit, disabled }) => {
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
+    <div className="bg-white rounded-lg border border-rule p-6">
       <div className="flex items-center gap-2 mb-4">
         <span className={`px-2 py-0.5 rounded text-xs font-medium ${DIFFICULTY_STYLES[question.difficulty]}`}>
           {getDifficultyLabel(question.difficulty)}
         </span>
-        <span className="px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-600 ring-1 ring-gray-200">
+        <span className="px-2 py-0.5 rounded text-xs font-medium bg-paper-2 text-ink-2 ring-1 ring-rule">
           {getTypeLabel(question.type)}
         </span>
       </div>

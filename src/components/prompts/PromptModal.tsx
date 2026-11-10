@@ -7,6 +7,7 @@ import { PromptFilterBar } from './PromptFilterBar';
 import { PromptGrid } from './PromptGrid';
 import { PromptDetail } from './PromptDetail';
 import { PromptResult } from './PromptResult';
+import { Icon } from '../icons/Icon';
 
 type ModalState = 'browse' | 'detail' | 'result';
 
@@ -120,8 +121,8 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50" onClick={onClose}>
       <div className="bg-white rounded-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between px-6 py-4 border-b">
-          <h2 className="text-lg font-bold">📝 教学提示词</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl">✕</button>
+          <h2 className="text-lg font-bold flex items-center gap-2"><Icon name="clipboard" className="w-5 h-5" />教学提示词</h2>
+          <button onClick={onClose} className="text-ink-3 hover:text-ink-2 text-xl">✕</button>
         </div>
         <div className="flex-1 overflow-y-auto p-6">
           {state === 'browse' && (
@@ -138,12 +139,12 @@ export const PromptModal: React.FC<Props> = ({ isOpen, onClose, knowledgePointTi
           {state === 'detail' && selectedTemplate && (
             <>
               {copied && (
-                <div className="mb-4 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800 animate-in fade-in slide-in-from-top-2 duration-300">
+                <div className="mb-4 rounded-xl border border-success-bg bg-success-bg px-4 py-3 text-sm text-success-ink animate-in fade-in slide-in-from-top-2 duration-300">
                   <div className="flex items-start gap-2">
-                    <span className="text-lg leading-none">✅</span>
+                    <Icon name="check-circle" className="w-5 h-5 text-success" />
                     <div className="space-y-1">
                       <p className="font-medium">已复制到剪贴板！</p>
-                      <p className="text-green-600 text-xs leading-relaxed">
+                      <p className="text-success text-xs leading-relaxed">
                         粘贴到任意 AI 对话窗口（如 ChatGPT、Claude、文心一言等）即可使用。<br />
                         提示词中的变量已替换为你填写的内容，直接发送即可 🎉
                       </p>

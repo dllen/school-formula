@@ -3,7 +3,7 @@ export function PrintButton() {
     <button
       type="button"
       onClick={() => window.print()}
-      className="flex items-center gap-2 px-4 py-2 bg-[#3370FF] text-white rounded-lg hover:bg-[#2962CC] transition-colors font-medium text-sm"
+      className="flex items-center gap-2 px-4 py-2 bg-[accent] text-white rounded-lg hover:bg-[accent-hover] transition-colors font-medium text-sm"
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path

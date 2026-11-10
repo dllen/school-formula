@@ -1,0 +1,120 @@
+/* Hallmark · checked: 2026-11-10 · genre: modern-minimal (app screen)
+ * floor: base layer — the decisions the Floor already made
+ * built: the project · redesign: polish · v2.0.0
+ *
+ * Base holds what every page inherits: the canvas, the ink, the focus ring,
+ * the browser surfaces, and the motion contract. Nothing here is decorative.
+ */
+
+@layer base {
+  html {
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    overflow-x: clip;
+    margin: 0;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus: instant, 3:1 against paper and against the accent surface. */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Never remove a ring without replacing it. */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft-hover);
+    color: var(--color-ink);
+  }
+
+  /* The scrollbar is part of the browser surface; it takes the palette too. */
+  * {
+    scrollbar-color: var(--color-rule-strong) var(--color-paper-2);
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background-color: var(--color-paper-2);
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-rule-strong);
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--color-paper-2);
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-ink-3);
+  }
+
+  :root {
+    caret-color: var(--color-accent);
+    color-scheme: light;
+  }
+
+  /* Heads: balanced, never a stub on the last line. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  /* Body copy: pretty, so a paragraph never ends on one word. */
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Figures that compare carry tabular numerals. */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* An image-bearing grid track never overflows its column. */
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+
+  img {
+    height: auto;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Motion is state, never decoration; it stops when asked. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

@@ -82,6 +82,7 @@ src/
 ├── components/          # React 组件（按功能分子目录）
 │   ├── auth/            # 登录/注册/忘记密码/会员拦截
 │   ├── Header/          # 导航栏（Logo、NavMenu、MobileNav、UserMenu）
+│   ├── icons/           # 统一 SVG 图标（Icon.tsx）+ emoji 映射（iconFor.ts）
 │   ├── practice/        # 练习系统（QuestionCard、ErrorBook、PracticeResult 等）
 │   ├── prompts/         # 提示词库（PromptCard、PromptDetail、PromptModal 等）
 │   └── tutorials/       # 教程组件（TutorialUnitDetail、TutorialLearnTab 等）
@@ -106,6 +107,10 @@ src/
 ├── utils/
 │   ├── jwt.ts           # JWT token 存储/读取
 │   └── questionUtils.ts # 题库工具函数
+├── styles/              # 设计 token（tokens.css + base.css）
+├── prerender/           # 预渲染引擎（run.ts、inject.ts、og.ts、routes.ts）
+├── entry-server.tsx     # SSR 渲染入口（renderToString）
+├── entry-prerender.ts   # 预渲染 runner（无顶层 await）
 ├── App.tsx              # 路由配置（/ 和 /knowledge/:id）
 └── main.tsx             # 应用入口（AuthProvider + BrowserRouter）
 ```
@@ -273,7 +278,13 @@ worker/
 
 ### 样式
 
-- Tailwind CSS v4，通过 `@import "tailwindcss";` 引入
+- Tailwind CSS v4，通过 `@import "tailwindcss";` 引入。
+- 设计 token 集中管理在 `src/styles/tokens.css`（palette、type scale、spacing、easing、shadow、z）与 `src/styles/base.css`（canvas、focus、selection、scrollbar、motion contract）。**所有色值均为 OKLCH**——不用 hex，不用 Tailwind 内置调色板。
+- 语义 token：`accent` / `paper` / `ink` / `rule` / `success` / `error` / `warning` / `info`。页面底色用 `bg-paper-2`，不是 `bg-gray-50`。
+- 图标：`src/components/icons/Icon.tsx`（76 枚 24×24 描边 SVG，1.8px 描边）+ `src/components/icons/iconFor.ts`（将数据层原有 emoji 映射为图标名）。组件只导一次：`import { Icon } from './icons/Icon'`，emoji 映射用 `import { iconFor } from './icons/iconFor'`。
+- 动效：禁 `transition-all`，显式写 `transition-colors` / `transition-opacity` / `transition-transform`。入场 `--ease-out`（`cubic-bezier(0.16, 1, 0.3, 1)`），hover `--dur-micro`（120ms）。
+- `html` 与 `body` 必须 `overflow-x: clip`（不用 `hidden`）。交互元素必须有即时 `:focus-visible`，装饰性 SVG 必须带 `aria-hidden="true"`。
+- 古典文学（poetry/shiji/zizhi）用 `font-serif`（已在 `tokens.css` 声明）。
 - UI 文本以简体中文为主
 
 ## 环境变量

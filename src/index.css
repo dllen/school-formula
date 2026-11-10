@@ -1,86 +1,59 @@
+/* Hallmark · checked: 2026-11-10 · genre: modern-minimal (app screen)
+ * floor: tokens and base live in ./styles; this file holds the app's own motion classes
+ * built: the project · redesign: polish · v2.0.0
+ *
+ * The system is in two files:
+ *   styles/tokens.css  the palette, type scale, spacing, radii, motion, z levels
+ *   styles/base.css    the canvas, the focus ring, the browser surfaces, the motion contract
+ */
+
 @import "tailwindcss";
+@import "./styles/tokens.css";
+@import "./styles/base.css";
 
-:root {
-  /* Semantic colors */
-  --color-success: #16a34a;
-  --color-success-bg: #f0fdf4;
-  --color-error: #dc2626;
-  --color-error-bg: #fef2f2;
-  --color-warning: #d97706;
-  --color-warning-bg: #fffbeb;
-  --color-info: #2563eb;
-  --color-info-bg: #eff6ff;
-
-  /* Feishu Blue tokens */
-  --color-primary: #3370FF;
-  --color-primary-hover: #2962CC;
-  --color-primary-active: #1F4FCC;
-  --color-primary-bg: #E1EAFF;
-  --color-page-bg: #F5F6F7;
-  --color-card-bg: #FFFFFF;
-  --color-border: #E5E6EB;
-  --color-divider: #F0F1F2;
-  --color-text-primary: #1F2329;
-  --color-text-secondary: #646A73;
-  --color-text-tertiary: #8F959E;
-
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-}
-
-/* Focus visible styles for accessibility */
-:focus-visible {
-  outline: 2px solid #3370FF;
-  outline-offset: 2px;
-}
-
-/* Smooth transitions for practice flow */
-.practice-fade-enter {
-  opacity: 0;
-  transform: translateY(8px);
-}
-.practice-fade-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 200ms ease-out, transform 200ms ease-out;
-}
-
-/* Subtle celebration animation */
+/* A quiet settle on a completed set */
 @keyframes celebrate {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 .animate-celebrate {
-  animation: celebrate 400ms ease-in-out;
+  animation: celebrate 400ms var(--ease-out);
 }
 
 @keyframes confetti-fall {
-  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(20px) rotate(360deg); opacity: 0; }
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px) rotate(360deg);
+    opacity: 0;
+  }
 }
 .animate-confetti {
-  animation: confetti-fall 800ms ease-out forwards;
+  animation: confetti-fall 800ms var(--ease-out) forwards;
 }
 
-/* Progress bar animation */
-.progress-bar-fill {
-  transition: width 300ms ease-out;
-}
-
-/* Button press feedback */
+/* Button press feedback: transform only */
 .btn-press:active:not(:disabled) {
   transform: scale(0.97);
 }
 
-/* Card hover lift */
+/* Card hover: one signal, on the container */
 .card-hover {
-  transition: border-color 150ms ease, box-shadow 150ms ease;
-  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--dur-micro) var(--ease-out),
+    box-shadow var(--dur-micro) var(--ease-out);
+  border-radius: var(--radius-card);
 }
 .card-hover:hover {
-  border-color: #E5E6EB;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-rule-strong);
+  box-shadow: var(--shadow-raised);
 }

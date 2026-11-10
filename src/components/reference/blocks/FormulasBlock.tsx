@@ -12,7 +12,7 @@ export function FormulasBlock({
       {block.groups.map((group, index) => (
         <section key={index}>
           {group.label && (
-            <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#8F959E]">
+            <h3 className="mb-2 text-sm font-semibold text-ink-3">
               {group.label}
             </h3>
           )}
@@ -20,7 +20,7 @@ export function FormulasBlock({
             {group.items.map((item) => (
               <li
                 key={item}
-                className="rounded-lg bg-white border border-[#F0F1F2] px-4 py-2 font-mono text-sm text-[#1F2329]"
+                className="rounded-lg bg-white border border-[divider] px-4 py-2 font-mono text-sm text-[ink]"
               >
                 {item}
               </li>

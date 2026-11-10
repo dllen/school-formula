@@ -9,7 +9,7 @@ interface Props {
 export const PromptGrid: React.FC<Props> = ({ templates, onSelect }) => {
   if (templates.length === 0) {
     return (
-      <div className="text-center py-12 text-gray-400">
+      <div className="text-center py-12 text-ink-3">
         <p>没有找到匹配的提示词模板</p>
       </div>
     );

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { Poem } from '../../data/poems/types';
+import { Icon } from '../icons/Icon';
 
 interface PoemContentProps {
   poem: Poem;
@@ -15,11 +16,11 @@ export function PoemContent({ poem }: PoemContentProps) {
     <article className="max-w-3xl mx-auto px-4 sm:px-6 py-8 space-y-8">
       {/* Header */}
       <header className="text-center space-y-3">
-        <h1 className="text-3xl font-bold text-[#1F2329] font-['Noto_Serif_SC']">
+        <h1 className="text-3xl font-bold text-[ink] font-serif">
           {poem.title}
         </h1>
-        <p className="text-base text-[#646A73] font-['Noto_Serif_SC']">
-          —— {poem.author} ——
+        <p className="text-base text-[ink-2] font-serif">
+          {poem.author}
         </p>
         <div className="flex flex-wrap gap-2 justify-center">
           <Badge>{DYNASTY_LABEL[poem.dynasty]}</Badge>
@@ -34,11 +35,11 @@ export function PoemContent({ poem }: PoemContentProps) {
       <section className="space-y-4 py-4">
         {poem.content.map((line, idx) => (
           <div key={idx} className="text-center space-y-1">
-            <p className="text-2xl leading-relaxed text-[#1F2329] font-['Noto_Serif_SC']">
+            <p className="text-2xl leading-relaxed text-[ink] font-serif">
               {line}
             </p>
             {showPinyin && poem.pinyin[idx] && (
-              <p className="text-sm text-[#8F959E]">{poem.pinyin[idx]}</p>
+              <p className="text-sm text-[ink-3]">{poem.pinyin[idx]}</p>
             )}
           </div>
         ))}
@@ -49,7 +50,7 @@ export function PoemContent({ poem }: PoemContentProps) {
         <button
           type="button"
           onClick={() => setShowPinyin((v) => !v)}
-          className="text-xs text-[#3370FF] hover:underline"
+          className="text-xs text-[accent] hover:underline"
         >
           {showPinyin ? '隐藏拼音' : '显示拼音'}
         </button>
@@ -59,20 +60,20 @@ export function PoemContent({ poem }: PoemContentProps) {
 
       {/* Translation */}
       <section className="space-y-2">
-        <h2 className="text-sm font-medium text-[#646A73] flex items-center gap-2">
-          <span aria-hidden="true">📖</span>译文
+        <h2 className="text-sm font-medium text-[ink-2] flex items-center gap-2">
+          <Icon name="book-open" className="w-4 h-4" />译文
         </h2>
-        <p className="text-base text-[#1F2329] leading-relaxed">{poem.translation}</p>
+        <p className="text-base text-[ink] leading-relaxed">{poem.translation}</p>
       </section>
 
       <Divider />
 
       {/* Appreciation */}
       <section className="space-y-2">
-        <h2 className="text-sm font-medium text-[#646A73] flex items-center gap-2">
-          <span aria-hidden="true">✨</span>赏析
+        <h2 className="text-sm font-medium text-[ink-2] flex items-center gap-2">
+          <Icon name="sparkle" className="w-4 h-4" />赏析
         </h2>
-        <p className="text-base text-[#1F2329] leading-relaxed">{poem.appreciation}</p>
+        <p className="text-base text-[ink] leading-relaxed">{poem.appreciation}</p>
       </section>
     </article>
   );
@@ -80,12 +81,12 @@ export function PoemContent({ poem }: PoemContentProps) {
 
 function Badge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-block px-2 py-0.5 text-xs text-[#646A73] bg-[#F5F6F7] rounded">
+    <span className="inline-block px-2 py-0.5 text-xs text-[ink-2] bg-[paper-2] rounded">
       {children}
     </span>
   );
 }
 
 function Divider() {
-  return <hr className="border-t border-[#F0F1F2]" />;
+  return <hr className="border-t border-[divider]" />;
 }

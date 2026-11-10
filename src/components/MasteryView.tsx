@@ -17,14 +17,14 @@ export const MasteryView: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper-2">
       <div className="max-w-5xl mx-auto px-4 py-8">
         <div className="flex items-center gap-4 mb-6 flex-wrap">
-          <h1 className="text-2xl font-bold text-gray-900">融会贯通</h1>
-          <div className="flex gap-1 bg-gray-100 rounded-xl p-1">
+          <h1 className="text-2xl font-bold text-ink">融会贯通</h1>
+          <div className="flex gap-1 bg-paper-3 rounded-xl p-1">
             {([['path', '学习路径'], ['practice', '练习'], ['library', '方法库'], ['progress', '进度']] as [SubView, string][]).map(([key, label]) => (
               <button key={key} onClick={() => setSubView(key)}
-                className={`px-3 py-1.5 text-sm rounded-lg transition-all ${subView === key ? 'bg-white shadow text-blue-600 font-medium' : 'text-gray-500 hover:text-gray-700'}`}>
+                className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${subView === key ? 'bg-white shadow text-accent font-medium' : 'text-ink-3 hover:text-ink-2'}`}>
                 {label}
               </button>
             ))}

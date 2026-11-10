@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { generateClassicalInterpretation, getAIConfig } from '../services/ai';
 import { SettingsModal } from './SettingsModal';
+import { Icon } from './icons/Icon';
 
 interface ClassicalAIHelperProps {
     title: string;
@@ -37,27 +38,26 @@ export const ClassicalAIHelper: React.FC<ClassicalAIHelperProps> = ({ title, sou
     };
 
     const isShiji = source === 'shiji';
-    const gradientFrom = isShiji ? 'from-stone-600' : 'from-amber-600';
-    const gradientTo = isShiji ? 'to-orange-700' : 'to-orange-600';
-    const shadowColor = isShiji ? 'shadow-stone-200' : 'shadow-amber-200';
-    const ringColor = isShiji ? 'ring-stone-50/50' : 'ring-amber-50/50';
-    const borderColor = isShiji ? 'border-stone-100' : 'border-amber-100';
-    const bgColor = isShiji ? 'bg-stone-50' : 'bg-amber-50';
-    const textColor = isShiji ? 'text-stone-800' : 'text-amber-800';
+    const actionColor = isShiji ? 'bg-ink text-ink-inverse' : 'bg-warning text-white';
+    const shadowColor = isShiji ? 'hover:shadow-rule' : 'hover:shadow-warning-bg';
+    const ringColor = isShiji ? 'ring-paper-2/50' : 'ring-warning-bg/50';
+    const borderColor = isShiji ? 'border-paper-3' : 'border-warning-bg';
+    const bgColor = isShiji ? 'bg-paper-2' : 'bg-warning-bg';
+    const textColor = isShiji ? 'text-ink' : 'text-warning-ink';
 
     return (
-        <div className="mt-8 pt-8 border-t border-gray-100">
+        <div className="mt-8 pt-8 border-t border-paper-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <h3 className="flex items-center text-xl font-bold text-gray-900">
-                    <span className="mr-2">✨</span> AI 名师解读
-                    <span className="ml-3 text-sm font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+                <h3 className="flex items-center text-xl font-bold text-ink">
+                    <Icon name="sparkle" className="mr-2 w-5 h-5" /> AI 名师解读
+                    <span className="ml-3 text-sm font-normal text-ink-3 bg-paper-3 px-2 py-0.5 rounded-full">
                         {isShiji ? '史记' : '资治通鉴'}
                     </span>
                 </h3>
                 {!aiContent && !isGenerating && (
                     <button
                         onClick={handleGenerate}
-                        className={`px-6 py-2 bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white rounded-xl font-bold hover:shadow-lg hover:${shadowColor} transition-all flex items-center gap-2`}
+                        className={`px-6 py-2 ${actionColor} rounded-xl font-bold ${shadowColor} transition-[transform,box-shadow] flex items-center gap-2`}
                     >
                         <span>生成深度解读</span>
                     </button>
@@ -66,7 +66,7 @@ export const ClassicalAIHelper: React.FC<ClassicalAIHelperProps> = ({ title, sou
 
             {isGenerating && !aiContent && (
                 <div className={`${bgColor} p-8 rounded-2xl border ${borderColor} text-center animate-pulse`}>
-                    <p className={`${textColor} font-medium`}>正在为您生成古文深度解读...</p>
+                    <p className={`${textColor} font-medium`}>正在为您生成古文深度解读…</p>
                 </div>
             )}
 
@@ -76,7 +76,7 @@ export const ClassicalAIHelper: React.FC<ClassicalAIHelperProps> = ({ title, sou
                         <ReactMarkdown>{aiContent}</ReactMarkdown>
                     </div>
                     {isGenerating && (
-                        <p className="mt-4 text-gray-400 animate-pulse text-sm">正在撰写...</p>
+                        <p className="mt-4 text-ink-3 animate-pulse text-sm">正在撰写…</p>
                     )}
                 </div>
             )}

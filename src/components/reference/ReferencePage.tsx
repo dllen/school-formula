@@ -38,37 +38,37 @@ export function ReferencePage(): ReactElement {
 
   return (
     <ReferenceLayout>
-      <nav aria-label="Breadcrumb" className="text-sm text-[#646A73] print:hidden">
-        <a href={ENGLISH_HOME} className="hover:text-[#1F2329] transition-colors">
+      <nav aria-label="Breadcrumb" className="text-sm text-[ink-2] print:hidden">
+        <a href={ENGLISH_HOME} className="hover:text-[ink] transition-colors">
           All charts
         </a>
         <span className="mx-2">/</span>
-        <a href={categoryPath(page.category)} className="hover:text-[#1F2329] transition-colors">
+        <a href={categoryPath(page.category)} className="hover:text-[ink] transition-colors">
           {CATEGORY_COPY[page.category].name}
         </a>
       </nav>
 
-      <article className="mt-4 bg-white rounded-2xl border border-[#F0F1F2] shadow-sm overflow-hidden">
-        <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white flex items-start justify-between gap-4">
+      <article className="mt-4 bg-white rounded-2xl border border-[divider] shadow-sm overflow-hidden">
+        <div className="p-6 border-b border-[divider] bg-accent-soft flex items-start justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-[#1F2329]">{page.title}</h1>
-            <p className="mt-1 text-sm text-[#646A73] print:hidden">{page.description}</p>
+            <h1 className="text-2xl font-bold text-[ink]">{page.title}</h1>
+            <p className="mt-1 text-sm text-[ink-2] print:hidden">{page.description}</p>
           </div>
-          <span className="shrink-0 px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full print:hidden">
+          <span className="shrink-0 px-3 py-1 bg-accent-soft text-[accent] text-xs font-medium rounded-full print:hidden">
             {CATEGORY_COPY[page.category].name}
           </span>
         </div>
 
         <div className="p-6">
-          <p className="text-[#1F2329] leading-relaxed print:hidden">{page.intro}</p>
+          <p className="text-[ink] leading-relaxed print:hidden">{page.intro}</p>
 
           <BlockRenderer blocks={page.blocks} />
 
           <section className="mt-10 print:hidden" aria-labelledby="how-to-use-heading">
-            <h2 id="how-to-use-heading" className="text-xl font-bold text-[#1F2329]">
+            <h2 id="how-to-use-heading" className="text-xl font-bold text-[ink]">
               How to use it
             </h2>
-            <ul className="mt-4 space-y-2 list-disc pl-5 text-[#1F2329]">
+            <ul className="mt-4 space-y-2 list-disc pl-5 text-[ink]">
               {page.howToUse.map((item) => (
                 <li key={item}>{item}</li>
               ))}

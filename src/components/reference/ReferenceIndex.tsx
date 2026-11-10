@@ -8,10 +8,10 @@ export function ReferenceIndex(): ReactElement {
   return (
     <ReferenceLayout>
       <section className="mb-8">
-        <h1 className="text-3xl font-bold text-[#1F2329]">Printable Study Reference</h1>
-        <p className="mt-2 max-w-2xl text-[#646A73]">
+        <h1 className="text-3xl font-bold text-[ink]">Printable Study Reference</h1>
+        <p className="mt-2 max-w-2xl text-[ink-2]">
           Free, printable reference charts for students, parents and teachers. Pick a subject to see
-          every chart — open one and print it in a single click.
+          every chart. Open one and print it in a single click.
         </p>
       </section>
 
@@ -22,10 +22,10 @@ export function ReferenceIndex(): ReactElement {
             <li key={category}>
               <a
                 href={categoryPath(category)}
-                className="flex h-full flex-col bg-white rounded-2xl border border-[#F0F1F2] shadow-sm hover:shadow-md transition-shadow p-6"
+                className="flex h-full flex-col bg-white rounded-2xl border border-[divider] shadow-sm hover:shadow-md transition-shadow p-6"
               >
-                <h2 className="text-lg font-bold text-[#1F2329]">{copy.name}</h2>
-                <p className="mt-2 text-sm text-[#646A73]">{copy.summary}</p>
+                <h2 className="text-lg font-bold text-[ink]">{copy.name}</h2>
+                <p className="mt-2 text-sm text-[ink-2]">{copy.summary}</p>
               </a>
             </li>
           );

@@ -11,6 +11,8 @@ import { useErrorBook } from '../../hooks/useErrorBook';
 import { useLearningProgress } from '../../hooks/useLearningProgress';
 import { useTopicMastery } from '../../hooks/useTopicMastery';
 import { checkAnswer } from '../../utils/questionUtils';
+import { Icon } from '../icons/Icon';
+import { iconFor } from '../icons/iconFor';
 
 const QUESTIONS_PER_TOPIC = 20;
 
@@ -30,7 +32,7 @@ function resolveTopic(topicId: string) {
         return {
           title: found.title,
           subjectName: subject.name,
-          icon: subject.icon ?? '📚',
+          icon: subject.icon ?? 'book',
           count: getQuestionsByKnowledgePoint(topicId).length,
         };
       }
@@ -193,7 +195,7 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
     >
       {/* 背景遮罩 */}
       <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
+        className="absolute inset-0 bg-ink/40"
         onClick={requestClose}
         aria-hidden="true"
       />
@@ -201,18 +203,18 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
       {/* Modal 主体 */}
       <div className="relative bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header：专题信息 + 关闭 */}
-        <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-gray-100 shrink-0">
+        <div className="flex items-center justify-between gap-3 px-6 py-4 border-b border-paper-3 shrink-0">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="text-2xl shrink-0" aria-hidden="true">{topic?.icon ?? '📚'}</span>
+            <Icon name={iconFor(topic?.icon)} className="w-6 h-6 shrink-0 text-accent" />
             <div className="min-w-0">
               <h2
                 id="practice-modal-title"
-                className="font-bold text-gray-900 truncate"
+                className="font-bold text-ink truncate"
               >
                 {topic?.title ?? '专题练习'}
               </h2>
               {topic && (
-                <p className="text-xs text-gray-500 truncate">
+                <p className="text-xs text-ink-3 truncate">
                   {topic.subjectName} · {topic.count} 道题
                 </p>
               )}
@@ -221,7 +223,7 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
           <button
             ref={closeButtonRef}
             onClick={requestClose}
-            className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors text-lg leading-none"
+            className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg text-ink-3 hover:text-ink-2 hover:bg-paper-3 transition-colors text-lg leading-none"
             aria-label="关闭练习"
           >
             ✕
@@ -232,20 +234,20 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
         <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
           {/* 阶段 1：专题介绍 + 开始 */}
           {session.phase === 'filtering' && topic && (
-            <div className="bg-white rounded-xl border border-gray-100 p-5">
-              <p className="text-sm text-gray-600 mb-5">
+            <div className="bg-white rounded-xl border border-paper-3 p-5">
+              <p className="text-sm text-ink-2 mb-5">
                 每次随机抽取 {Math.min(QUESTIONS_PER_TOPIC, topic.count)} 题，完成后记录专题掌握度。
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={doClose}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 btn-press"
+                  className="px-4 py-2 text-sm font-medium text-ink-2 bg-paper-3 rounded-lg hover:bg-rule btn-press"
                 >
                   返回专题列表
                 </button>
                 <button
                   onClick={handleStart}
-                  className="px-5 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900 btn-press"
+                  className="px-5 py-2 text-sm font-medium text-white bg-ink rounded-lg hover:bg-ink btn-press"
                 >
                   开始练习
                 </button>
@@ -314,12 +316,12 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
 
           {/* 防御：topicId 解析失败 */}
           {!topic && (
-            <div className="text-center py-10 text-gray-400 text-sm">
+            <div className="text-center py-10 text-ink-3 text-sm">
               未找到该专题，可能已被移除。
               <div className="mt-4">
                 <button
                   onClick={doClose}
-                  className="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900 btn-press"
+                  className="px-4 py-2 text-sm font-medium text-white bg-ink rounded-lg hover:bg-ink btn-press"
                 >
                   关闭
                 </button>
@@ -343,20 +345,20 @@ export const PracticeModal: React.FC<PracticeModalProps> = ({ topicId, isOpen, o
             aria-modal="true"
             aria-labelledby="exit-confirm-title"
           >
-            <h2 id="exit-confirm-title" className="text-base font-semibold text-gray-900 mb-2">
+            <h2 id="exit-confirm-title" className="text-base font-semibold text-ink mb-2">
               退出练习？
             </h2>
-            <p className="text-sm text-gray-600 mb-5">当前练习进度将不会保存。</p>
+            <p className="text-sm text-ink-2 mb-5">当前练习进度将不会保存。</p>
             <div className="flex gap-3 justify-end">
               <button
                 onClick={() => setShowExitConfirm(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 btn-press"
+                className="px-4 py-2 text-sm font-medium text-ink-2 bg-paper-3 rounded-md hover:bg-rule btn-press"
               >
                 继续练习
               </button>
               <button
                 onClick={confirmExit}
-                className="px-4 py-2 text-sm font-medium text-white bg-gray-800 rounded-md hover:bg-gray-900 btn-press"
+                className="px-4 py-2 text-sm font-medium text-white bg-ink rounded-md hover:bg-ink btn-press"
               >
                 确认退出
               </button>

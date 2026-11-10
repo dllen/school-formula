@@ -12,11 +12,11 @@ export function HtmlSitemap() {
   const groups = buildHtmlSitemap();
 
   return (
-    <div className="min-h-screen bg-[#F5F6F7] font-sans text-slate-800 flex flex-col">
+    <div className="min-h-screen bg-[paper-2] font-sans text-ink flex flex-col">
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10 flex-grow w-full">
         <header>
-          <h1 className="text-3xl font-bold text-[#1F2329]">站点地图</h1>
-          <p className="mt-2 max-w-3xl text-[#646A73]">
+          <h1 className="text-3xl font-bold text-[ink]">站点地图</h1>
+          <p className="mt-2 max-w-3xl text-[ink-2]">
             拾艺院全部可索引页面：按学习视图、学段知识点、古诗词、英文速查表与英文学科入口分组，方便快速定位。
           </p>
         </header>
@@ -33,7 +33,7 @@ export function HtmlSitemap() {
 function SitemapSection({ group }: { group: SitemapGroup }) {
   return (
     <section aria-labelledby={`sitemap-${group.title}`}>
-      <h2 id={`sitemap-${group.title}`} className="text-xl font-bold text-[#1F2329] mb-4">
+      <h2 id={`sitemap-${group.title}`} className="text-xl font-bold text-[ink] mb-4">
         {group.title}
       </h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
@@ -41,7 +41,7 @@ function SitemapSection({ group }: { group: SitemapGroup }) {
           <li key={link.path}>
             <Link
               to={link.path}
-              className="text-[#3370FF] hover:text-blue-800 hover:underline"
+              className="text-[accent] hover:text-accent-active hover:underline"
             >
               {link.label}
             </Link>

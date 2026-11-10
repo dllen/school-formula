@@ -34,7 +34,7 @@ export const TutorialDiagram = ({ diagram }: TutorialDiagramProps) => {
         }
       } catch {
         if (!cancelled && container) {
-          container.innerHTML = '<div class="text-center text-sm text-red-500 bg-red-50 p-2 rounded-lg">图表渲染失败，请检查 Mermaid 语法</div>';
+          container.innerHTML = '<div class="text-center text-sm text-error bg-error-bg p-2 rounded-lg">图表渲染失败，请检查 Mermaid 语法</div>';
         }
       }
     };
@@ -47,13 +47,13 @@ export const TutorialDiagram = ({ diagram }: TutorialDiagramProps) => {
   }, [diagram]);
 
   return (
-    <div className="my-6 bg-white border border-gray-100 rounded-2xl p-4 shadow-sm">
+    <div className="my-6 bg-white border border-paper-3 rounded-2xl p-4 shadow-sm">
       <div
         ref={containerRef}
         className="flex justify-center overflow-x-auto"
       />
       {diagram.caption && (
-        <div className="mt-3 text-center text-sm text-gray-500">
+        <div className="mt-3 text-center text-sm text-ink-3">
           {diagram.caption}
         </div>
       )}

@@ -76,21 +76,21 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-5">
+    <div className="bg-white rounded-lg border border-rule p-6 space-y-5">
       <div>
-        <h2 className="text-base font-semibold text-gray-900 mb-1">选择练习范围</h2>
-        <p className="text-sm text-gray-500">按年级和科目筛选，选择知识点标签、难度和题型开始练习</p>
+        <h2 className="text-base font-semibold text-ink mb-1">选择练习范围</h2>
+        <p className="text-sm text-ink-3">按年级和科目筛选，选择知识点标签、难度和题型开始练习</p>
       </div>
 
       {/* 年级 + 科目 下拉筛选 */}
       <fieldset>
-        <legend className="text-sm font-medium text-gray-700 mb-2">年级与科目</legend>
+        <legend className="text-sm font-medium text-ink-2 mb-2">年级与科目</legend>
         <div className="flex gap-3">
           <select
             value={filter.grade ?? ''}
             onChange={e => handleGradeChange(e.target.value ? (e.target.value as GradeLevel) : undefined)}
             aria-label="选择年级"
-            className="flex-1 min-w-0 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800 transition-colors"
+            className="flex-1 min-w-0 rounded-md border border-rule-strong bg-white px-3 py-2 text-sm text-ink shadow-sm focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink transition-colors"
           >
             <option value="">全部年级</option>
             {GRADE_OPTIONS.map(opt => (
@@ -102,7 +102,7 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
             onChange={e => handleSubjectChange(e.target.value || undefined)}
             aria-label="选择科目"
             disabled={!filter.grade}
-            className="flex-1 min-w-0 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 shadow-sm focus:border-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-800 transition-colors disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed"
+            className="flex-1 min-w-0 rounded-md border border-rule-strong bg-white px-3 py-2 text-sm text-ink shadow-sm focus:border-ink focus:outline-none focus:ring-1 focus:ring-ink transition-colors disabled:bg-paper-2 disabled:text-ink-3 disabled:cursor-not-allowed"
           >
             <option value="">{filter.grade ? '全部科目' : '请先选择年级'}</option>
             {subjects.map(s => (
@@ -114,10 +114,10 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
 
       {/* 知识点标签 — 按年级+科目联动 */}
       <fieldset>
-        <legend className="text-sm font-medium text-gray-700 mb-2">
+        <legend className="text-sm font-medium text-ink-2 mb-2">
           知识点标签
           {filter.subject && (
-            <span className="ml-2 text-xs font-normal text-gray-400">（{filter.subject}）</span>
+            <span className="ml-2 text-xs font-normal text-ink-3">（{filter.subject}）</span>
           )}
         </legend>
         {scopeTags.length > 0 ? (
@@ -129,8 +129,8 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
                 aria-pressed={filter.tags?.includes(tag) ?? false}
                 className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors btn-press ${
                   filter.tags?.includes(tag)
-                    ? 'bg-gray-800 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'bg-ink text-white'
+                    : 'bg-paper-3 text-ink-2 hover:bg-rule'
                 }`}
               >
                 {tag}
@@ -138,14 +138,14 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
             ))}
           </div>
         ) : (
-          <p className="text-sm text-gray-400 italic">
+          <p className="text-sm text-ink-3 italic">
             {filter.grade ? '该范围内暂无标签' : '请选择年级以查看标签'}
           </p>
         )}
       </fieldset>
 
       <fieldset>
-        <legend className="text-sm font-medium text-gray-700 mb-2">难度</legend>
+        <legend className="text-sm font-medium text-ink-2 mb-2">难度</legend>
         <div className="flex gap-2" role="group" aria-label="难度筛选">
           {DIFFICULTY_OPTIONS.map(opt => (
             <button
@@ -154,8 +154,8 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
               aria-pressed={filter.difficulty === opt.value}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors btn-press ${
                 filter.difficulty === opt.value
-                  ? 'bg-gray-800 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-ink text-white'
+                  : 'bg-paper-3 text-ink-2 hover:bg-rule'
               }`}
             >
               {opt.label}
@@ -165,7 +165,7 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
       </fieldset>
 
       <fieldset>
-        <legend className="text-sm font-medium text-gray-700 mb-2">题型</legend>
+        <legend className="text-sm font-medium text-ink-2 mb-2">题型</legend>
         <div className="flex gap-2" role="group" aria-label="题型筛选">
           {TYPE_OPTIONS.map(opt => (
             <button
@@ -174,8 +174,8 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
               aria-pressed={filter.type === opt.value}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors btn-press ${
                 filter.type === opt.value
-                  ? 'bg-gray-800 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  ? 'bg-ink text-white'
+                  : 'bg-paper-3 text-ink-2 hover:bg-rule'
               }`}
             >
               {opt.label}
@@ -184,14 +184,14 @@ export const PracticeFilter: React.FC<PracticeFilterProps> = ({
         </div>
       </fieldset>
 
-      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-        <span className="text-sm text-gray-500">
-          匹配题目：<span className="font-semibold text-gray-900">{availableCount}</span> 道
+      <div className="flex items-center justify-between pt-4 border-t border-paper-3">
+        <span className="text-sm text-ink-3">
+          匹配题目：<span className="font-semibold text-ink">{availableCount}</span> 道
         </span>
         <button
           onClick={onStart}
           disabled={availableCount === 0}
-          className="px-5 py-2.5 bg-gray-800 text-white rounded-md font-medium hover:bg-gray-900 transition-colors disabled:opacity-40 disabled:cursor-not-allowed btn-press"
+          className="px-5 py-2.5 bg-ink text-white rounded-md font-medium hover:bg-ink transition-colors disabled:opacity-40 disabled:cursor-not-allowed btn-press"
         >
           开始练习
         </button>

@@ -18,11 +18,11 @@ export const TrueFalseQuestion: React.FC<TrueFalseQuestionProps> = ({ question, 
 
   return (
     <div className="space-y-4">
-      <p className="text-base text-gray-900 leading-relaxed">{question.stem}</p>
+      <p className="text-base text-ink leading-relaxed">{question.stem}</p>
       <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-label="判断正误">
         {[
-          { value: 'true', label: '正确', color: 'border-green-300 bg-green-50 text-green-700', activeColor: 'border-green-600 bg-green-100 ring-2 ring-green-300' },
-          { value: 'false', label: '错误', color: 'border-red-300 bg-red-50 text-red-700', activeColor: 'border-red-600 bg-red-100 ring-2 ring-red-300' },
+          { value: 'true', label: '正确', color: 'border-success bg-success-bg text-success-ink', activeColor: 'border-success bg-success-bg ring-2 ring-success' },
+          { value: 'false', label: '错误', color: 'border-error bg-error-bg text-error-ink', activeColor: 'border-error bg-error-bg ring-2 ring-error' },
         ].map(opt => (
           <label
             key={opt.value}
@@ -48,7 +48,7 @@ export const TrueFalseQuestion: React.FC<TrueFalseQuestionProps> = ({ question, 
       <button
         onClick={handleSubmit}
         disabled={selected === null || disabled}
-        className="w-full py-2.5 bg-gray-800 text-white rounded-md font-medium hover:bg-gray-900 transition-colors disabled:opacity-40 disabled:cursor-not-allowed btn-press"
+        className="w-full py-2.5 bg-ink text-white rounded-md font-medium hover:bg-ink transition-colors disabled:opacity-40 disabled:cursor-not-allowed btn-press"
       >
         提交答案
       </button>

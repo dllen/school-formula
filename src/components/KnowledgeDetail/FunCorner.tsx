@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from '../icons/Icon';
 
 type FunCornerProps = {
     funFact?: string;
@@ -16,42 +17,42 @@ export const FunCorner: React.FC<FunCornerProps> = ({
     if (!funFact && !funStory && !funQuestion) return null;
 
     return (
-        <div className="pt-8 border-t border-[#F0F1F2]">
-            <h3 className="flex items-center text-xl font-bold text-amber-900 mb-4">
-                <span className="mr-2">🌟</span> 趣味角
+        <div className="pt-8 border-t border-[divider]">
+            <h3 className="flex items-center text-xl font-bold text-warning-ink mb-4">
+                <Icon name="sparkle" className="mr-2 w-5 h-5" /> 趣味角
             </h3>
             <div className="space-y-4">
                 {funFact && (
-                    <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5">
-                        <h4 className="font-bold text-amber-900 mb-2 flex items-center gap-2">
-                            <span>🧊</span> 冷知识
+                    <div className="bg-warning-bg border border-warning-bg rounded-2xl p-5">
+                        <h4 className="font-bold text-warning-ink mb-2 flex items-center gap-2">
+                            <Icon name="idea" className="w-4 h-4" /> 冷知识
                         </h4>
-                        <p className="text-amber-800 leading-relaxed">{funFact}</p>
+                        <p className="text-warning-ink leading-relaxed">{funFact}</p>
                     </div>
                 )}
 
                 {funStory && (
-                    <div className="bg-green-50 border border-green-100 rounded-2xl p-5">
-                        <h4 className="font-bold text-green-900 mb-2 flex items-center gap-2">
-                            <span>📖</span> 生活中的数学
+                    <div className="bg-success-bg border border-success-bg rounded-2xl p-5">
+                        <h4 className="font-bold text-success-ink mb-2 flex items-center gap-2">
+                            <Icon name="book-open" className="w-4 h-4" /> 生活中的数学
                         </h4>
-                        <p className="text-green-800 leading-relaxed">{funStory}</p>
+                        <p className="text-success-ink leading-relaxed">{funStory}</p>
                     </div>
                 )}
 
                 {funQuestion && (
-                    <div className="bg-purple-50 border border-purple-100 rounded-2xl p-5">
-                        <h4 className="font-bold text-purple-900 mb-2 flex items-center gap-2">
-                            <span>❓</span> 互动问答
+                    <div className="bg-accent-soft border border-accent-soft rounded-2xl p-5">
+                        <h4 className="font-bold text-accent-active mb-2 flex items-center gap-2">
+                            <Icon name="dialogue" className="w-4 h-4" /> 互动问答
                         </h4>
-                        <p className="text-purple-800 mb-3">{funQuestion}</p>
+                        <p className="text-accent-active mb-3">{funQuestion}</p>
                         <details className="group">
-                            <summary className="cursor-pointer text-sm font-medium text-purple-600 hover:text-purple-800 list-none flex items-center gap-1">
-                                <span className="group-open:rotate-90 transition-transform">▶</span>
+                            <summary className="cursor-pointer text-sm font-medium text-accent hover:text-accent-active list-none flex items-center gap-1">
+                                <Icon name="grid" className="w-3 h-3 group-open:rotate-90 transition-transform" />
                                 点击揭晓答案
                             </summary>
-                            <div className="mt-3 p-3 bg-white rounded-xl border border-purple-100">
-                                <p className="text-purple-700">
+                            <div className="mt-3 p-3 bg-white rounded-xl border border-accent-soft">
+                                <p className="text-accent-hover">
                                     {funQuestionAnswer || '暂无答案'}
                                 </p>
                             </div>

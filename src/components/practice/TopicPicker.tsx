@@ -42,7 +42,7 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
           kpId: kp.id,
           title: kp.title,
           subject: subject.name,
-          icon: subject.icon ?? '📚',
+          icon: subject.icon ?? 'book',
           count,
           mastery: masteryPercent(kp.id),
         });
@@ -56,18 +56,18 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
       {/* Grade tabs */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-[#1F2329]">选择练习专题</h2>
-          <p className="text-sm text-[#646A73]">每个专题 20-30 道题，按知识点逐个击破</p>
+          <h2 className="text-xl font-bold text-[ink]">选择练习专题</h2>
+          <p className="text-sm text-[ink-2]">每个专题 20-30 道题，按知识点逐个击破</p>
         </div>
-        <div className="inline-flex rounded-xl bg-white border border-[#E5E7EB] p-1 shadow-sm">
+        <div className="inline-flex rounded-xl bg-white border border-rule p-1 shadow-sm">
           {GRADE_TABS.map((tab) => (
             <button
               key={tab.id}
               onClick={() => onGradeChange(tab.id)}
               className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                 selectedGrade === tab.id
-                  ? 'bg-[#1F2329] text-white'
-                  : 'text-[#646A73] hover:text-[#1F2329]'
+                  ? 'bg-[ink] text-white'
+                  : 'text-[ink-2] hover:text-[ink]'
               }`}
             >
               {tab.label}
@@ -83,41 +83,38 @@ export const TopicPicker: React.FC<TopicPickerProps> = ({
             key={t.kpId}
             onClick={() => t.count > 0 && onPickTopic(t.kpId)}
             disabled={t.count === 0}
-            className={`group relative bg-white rounded-2xl border border-[#F0F1F2] p-5 text-left shadow-sm transition-all ${
+            className={`group relative bg-white rounded-2xl border border-[divider] p-5 text-left shadow-sm transition-colors transition-opacity transition-shadow ${
               t.count === 0
                 ? 'opacity-50 cursor-not-allowed'
-                : 'hover:shadow-md hover:border-[#D1D5DB] cursor-pointer'
+                : 'hover:shadow-md hover:border-rule-strong cursor-pointer'
             }`}
           >
             <div className="flex items-start justify-between mb-3">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">{t.icon}</span>
-                <div>
-                  <div className="font-semibold text-[#1F2329] text-sm">{t.title}</div>
-                  <div className="text-xs text-[#8F959E]">{t.subject} · {t.count} 题</div>
-                </div>
+              <div>
+                <div className="font-semibold text-[ink] text-sm">{t.title}</div>
+                <div className="text-xs text-[ink-3]">{t.subject} · {t.count} 题</div>
               </div>
-              <span className="text-xs font-medium text-[#646A73] bg-[#F5F6F7] px-2 py-0.5 rounded-full">
+              <span className="text-xs font-medium text-[ink-2] bg-[paper-2] px-2 py-0.5 rounded-full">
                 {t.mastery}%
               </span>
             </div>
 
             {/* Mastery progress bar */}
-            <div className="h-1.5 bg-[#F0F1F2] rounded-full overflow-hidden">
+            <div className="h-1.5 bg-[divider] rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full transition-all ${
+                className={`h-full rounded-full transition-colors ${
                   t.mastery >= 80
-                    ? 'bg-emerald-500'
+                    ? 'bg-success'
                     : t.mastery >= 50
-                    ? 'bg-amber-500'
-                    : 'bg-gray-300'
+                    ? 'bg-warning'
+                    : 'bg-rule-strong'
                 }`}
                 style={{ width: `${t.mastery}%` }}
               />
             </div>
 
             {t.count === 0 && (
-              <div className="mt-2 text-xs text-[#8F959E]">题目准备中…</div>
+              <div className="mt-2 text-xs text-[ink-3]">题目准备中…</div>
             )}
           </button>
         ))}

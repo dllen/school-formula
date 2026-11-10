@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { generateKnowledgeContent } from '../../services/ai';
+import { Icon } from '../icons/Icon';
 
 type AIGeneratorProps = {
     topic: string;
@@ -34,11 +35,11 @@ export const AIGenerator: React.FC<AIGeneratorProps> = ({
     };
 
     return (
-        <div className="pt-8 border-t border-[#F0F1F2]">
+        <div className="pt-8 border-t border-[divider]">
             <div className="flex items-center justify-between mb-6">
-                <h3 className="flex items-center text-xl font-bold text-purple-900">
-                    <span className="mr-2">✨</span> AI 智能助教
-                    <span className="ml-3 text-sm font-normal text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
+                <h3 className="flex items-center text-xl font-bold text-accent-active">
+                    <Icon name="sparkle" className="mr-2 w-5 h-5" /> AI 智能助教
+                    <span className="ml-3 text-sm font-normal text-accent bg-accent-soft px-2 py-0.5 rounded-full">
                         家长辅导助手
                     </span>
                 </h3>
@@ -46,35 +47,35 @@ export const AIGenerator: React.FC<AIGeneratorProps> = ({
                     <div className="flex gap-3">
                         <button
                             onClick={handleGenerateAI}
-                            className="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-purple-200 transition-all flex items-center gap-2"
+                            className="px-6 py-2 bg-accent text-accent-ink rounded-xl font-bold hover:shadow-lg hover:shadow-accent-soft-hover transition-colors transition-shadow flex items-center gap-2"
                         >
                             <span>生成深度辅导指南</span>
                         </button>
                         <button
                             onClick={onPromptModalOpen}
-                            className="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-bold hover:shadow-lg hover:shadow-amber-200 transition-all flex items-center gap-2"
+                            className="px-6 py-2 bg-warning text-white rounded-xl font-bold hover:shadow-lg hover:shadow-warning-bg transition-colors transition-shadow flex items-center gap-2"
                         >
-                            <span>📝 模板模式</span>
+                            <span className="flex items-center gap-1.5"><Icon name="clipboard" className="w-4 h-4" />模板模式</span>
                         </button>
                     </div>
                 )}
             </div>
 
             {isGenerating && !aiContent && (
-                <div className="bg-purple-50 p-8 rounded-2xl border border-purple-100 text-center animate-pulse">
-                    <p className="text-purple-800 font-medium">
-                        正在思考中，为您生成专属辅导内容...
+                <div className="bg-accent-soft p-8 rounded-2xl border border-accent-soft text-center animate-pulse">
+                    <p className="text-accent-active font-medium">
+                        正在思考中，为您生成专属辅导内容…
                     </p>
                 </div>
             )}
 
             {(aiContent || (isGenerating && aiContent)) && (
-                <div className="bg-white border border-purple-100 rounded-2xl p-8 shadow-sm ring-4 ring-purple-50/50">
+                <div className="bg-white border border-accent-soft rounded-2xl p-8 shadow-sm ring-4 ring-accent-soft/50">
                     <div className="prose prose-purple max-w-none">
                         <ReactMarkdown>{aiContent}</ReactMarkdown>
                     </div>
                     {isGenerating && (
-                        <p className="mt-4 text-purple-500 animate-pulse text-sm">正在撰写...</p>
+                        <p className="mt-4 text-accent animate-pulse text-sm">正在撰写…</p>
                     )}
                 </div>
             )}

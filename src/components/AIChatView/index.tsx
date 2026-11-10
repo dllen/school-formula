@@ -176,7 +176,7 @@ export function AIChatView() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-120px)] max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-sm border border-[#E5E6EB]">
+    <div className="flex h-[calc(100vh-120px)] max-w-6xl mx-auto rounded-2xl overflow-hidden shadow-sm border border-[rule]">
       <ConversationList
         sessions={sessions}
         activeSessionId={activeSessionId}

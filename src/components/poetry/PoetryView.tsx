@@ -12,6 +12,7 @@ import { PoemCard } from './PoemCard';
 import { PoemContent } from './PoemContent';
 import { PoemFilters as FiltersBar } from './PoemFilters';
 import type { Poem } from '../../data/poems/types';
+import { Icon } from '../icons/Icon';
 
 export function PoetryView() {
   const location = useLocation();
@@ -36,7 +37,7 @@ export function PoetryView() {
 
   if (selected) {
     return (
-      <div className="bg-white rounded-2xl shadow-sm border border-[#F0F1F2]">
+      <div className="bg-white rounded-2xl shadow-sm border border-[divider]">
         <BackBar onBack={() => setSelected(null)} />
         <PoemContent poem={selected} />
       </div>
@@ -47,8 +48,8 @@ export function PoetryView() {
     <div className="space-y-6">
       <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-[#1F2329]">古诗词</h2>
-          <p className="text-sm text-[#646A73]">浏览新课标必背唐诗宋词</p>
+          <h2 className="text-2xl font-bold text-[ink]">古诗词</h2>
+          <p className="text-sm text-[ink-2]">浏览新课标必背唐诗宋词</p>
         </div>
       </header>
 
@@ -61,13 +62,13 @@ export function PoetryView() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12 bg-[#F5F6F7] rounded-2xl border border-dashed border-[#E5E6EB]">
-          <div className="text-6xl mb-4 grayscale opacity-30">📜</div>
-          <p className="text-lg text-[#8F959E] mb-4">暂无符合条件的诗词</p>
+        <div className="text-center py-12 bg-[paper-2] rounded-2xl border border-dashed border-[rule]">
+          <Icon name="scroll" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
+          <p className="text-lg text-[ink-3] mb-4">暂无符合条件的诗词</p>
           <button
             type="button"
             onClick={() => setFilters(DEFAULT_FILTERS)}
-            className="text-sm text-[#3370FF] hover:underline"
+            className="text-sm text-[accent] hover:underline"
           >
             清除筛选
           </button>
@@ -83,7 +84,7 @@ function BackBar({ onBack }: { onBack: () => void }) {
       <button
         type="button"
         onClick={onBack}
-        className="flex items-center text-[#646A73] hover:text-[#1F2329] transition-colors"
+        className="flex items-center text-[ink-2] hover:text-[ink] transition-colors"
       >
         <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />

@@ -23,15 +23,15 @@ export function ReferenceCategory(): ReactElement {
 
   return (
     <ReferenceLayout>
-      <nav aria-label="Breadcrumb" className="text-sm text-[#646A73] print:hidden">
-        <a href={ENGLISH_HOME} className="hover:text-[#1F2329] transition-colors">
+      <nav aria-label="Breadcrumb" className="text-sm text-[ink-2] print:hidden">
+        <a href={ENGLISH_HOME} className="hover:text-[ink] transition-colors">
           All charts
         </a>
       </nav>
 
       <section className="mt-4">
-        <h1 className="text-3xl font-bold text-[#1F2329]">{copy.name}</h1>
-        <p className="mt-2 max-w-2xl text-[#646A73]">{copy.intro}</p>
+        <h1 className="text-3xl font-bold text-[ink]">{copy.name}</h1>
+        <p className="mt-2 max-w-2xl text-[ink-2]">{copy.intro}</p>
       </section>
 
       <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -39,10 +39,10 @@ export function ReferenceCategory(): ReactElement {
           <li key={page.slug}>
             <a
               href={referencePath(page.category, page.slug)}
-              className="flex h-full flex-col bg-white rounded-2xl border border-[#F0F1F2] shadow-sm hover:shadow-md transition-shadow p-6"
+              className="flex h-full flex-col bg-white rounded-2xl border border-[divider] shadow-sm hover:shadow-md transition-shadow p-6"
             >
-              <h2 className="text-lg font-bold text-[#1F2329]">{page.title}</h2>
-              <p className="mt-2 text-sm text-[#646A73]">{page.summary}</p>
+              <h2 className="text-lg font-bold text-[ink]">{page.title}</h2>
+              <p className="mt-2 text-sm text-[ink-2]">{page.summary}</p>
             </a>
           </li>
         ))}

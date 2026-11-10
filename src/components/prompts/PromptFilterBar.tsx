@@ -35,7 +35,7 @@ export const PromptFilterBar: React.FC<Props> = ({
         <select
           value={grade}
           onChange={e => onGradeChange(e.target.value as GradeLevel | '')}
-          className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-1.5 border border-rule-strong rounded-lg text-sm"
         >
           <option value="">全部年级</option>
           <option value="primary">小学</option>
@@ -45,7 +45,7 @@ export const PromptFilterBar: React.FC<Props> = ({
         <select
           value={subject}
           onChange={e => onSubjectChange(e.target.value)}
-          className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-1.5 border border-rule-strong rounded-lg text-sm"
         >
           <option value="">全部学科</option>
           {SUBJECTS.map(s => <option key={s} value={s}>{s}</option>)}
@@ -53,20 +53,20 @@ export const PromptFilterBar: React.FC<Props> = ({
         <select
           value={scenario}
           onChange={e => onScenarioChange(e.target.value as PromptScenario | '')}
-          className="px-3 py-1.5 border border-gray-300 rounded-lg text-sm"
+          className="px-3 py-1.5 border border-rule-strong rounded-lg text-sm"
         >
           <option value="">全部场景</option>
           {SCENARIOS.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
         </select>
         <input
           type="text"
-          placeholder="🔍 搜索提示词..."
+          placeholder="搜索提示词"
           value={searchQuery}
           onChange={e => onSearchChange(e.target.value)}
-          className="flex-1 min-w-[160px] px-3 py-1.5 border border-gray-300 rounded-lg text-sm"
+          className="flex-1 min-w-[160px] px-3 py-1.5 border border-rule-strong rounded-lg text-sm"
         />
       </div>
-      <p className="text-xs text-gray-400">共 {resultCount} 个模板</p>
+      <p className="text-xs text-ink-3">共 {resultCount} 个模板</p>
     </div>
   );
 };

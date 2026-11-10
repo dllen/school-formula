@@ -18,7 +18,7 @@ export function DiagramBlock({
         dangerouslySetInnerHTML={{ __html: block.svg }}
       />
       {block.caption && (
-        <figcaption className="mt-2 text-center text-xs text-[#8F959E]">{block.caption}</figcaption>
+        <figcaption className="mt-2 text-center text-xs text-[ink-3]">{block.caption}</figcaption>
       )}
     </figure>
   );

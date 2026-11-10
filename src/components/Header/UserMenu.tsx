@@ -33,7 +33,7 @@ export function UserMenu() {
         onClick={() => {
           window.dispatchEvent(new CustomEvent('open-auth-modal'));
         }}
-        className="px-4 py-2 text-[14px] font-medium text-white bg-[#3370FF] rounded-[6px] hover:bg-[#2962CC] transition-colors"
+        className="px-4 py-2 text-[14px] font-medium text-white bg-[accent] rounded-[6px] hover:bg-[accent-hover] transition-colors"
       >
         登录
       </button>
@@ -48,7 +48,7 @@ export function UserMenu() {
         aria-expanded={isOpen}
         aria-haspopup="menu"
         onClick={() => setIsOpen((o) => !o)}
-        className="flex items-center gap-1 p-[6px] rounded-[6px] hover:bg-[#F5F6F7] transition-colors"
+        className="flex items-center gap-1 p-[6px] rounded-[6px] hover:bg-[paper-2] transition-colors"
       >
         {user.avatar_url ? (
           <img
@@ -57,12 +57,12 @@ export function UserMenu() {
             className="w-8 h-8 rounded-full object-cover"
           />
         ) : (
-          <span className="w-8 h-8 rounded-full bg-[#3370FF] text-white flex items-center justify-center text-[13px] font-semibold uppercase" aria-hidden="true">
+          <span className="w-8 h-8 rounded-full bg-accent text-accent-ink flex items-center justify-center text-[13px] font-semibold" aria-hidden="true">
             {(user.nickname || user.email || 'U').charAt(0)}
           </span>
         )}
         <svg
-          className={`w-4 h-4 text-[#8F959E] transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 text-[ink-3] transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -73,11 +73,11 @@ export function UserMenu() {
         <div
           role="menu"
           aria-label="用户菜单"
-          className="absolute right-0 top-full mt-2 w-60 bg-white rounded-[12px] shadow-[0_8px_24px_rgba(0,0,0,0.12)] border border-[#E5E6EB] py-2 z-50"
+          className="absolute right-0 top-full mt-2 w-60 bg-white rounded-[12px] shadow-pop border border-[rule] py-2 z-50"
         >
-          <div className="px-4 py-3 border-b border-[#F0F1F2]">
-            <p className="text-[14px] font-medium text-[#1F2329] truncate">{user.nickname || user.email}</p>
-            <p className="text-[12px] text-[#8F959E] truncate">{user.email}</p>
+          <div className="px-4 py-3 border-b border-[divider]">
+            <p className="text-[14px] font-medium text-[ink] truncate">{user.nickname || user.email}</p>
+            <p className="text-[12px] text-[ink-3] truncate">{user.email}</p>
           </div>
           <button
             type="button"
@@ -86,7 +86,7 @@ export function UserMenu() {
               logout();
               setIsOpen(false);
             }}
-            className="w-full text-left px-4 py-[10px] text-[14px] text-[#D92D20] hover:bg-[#F5F6F7] transition-colors"
+            className="w-full text-left px-4 py-[10px] text-[14px] text-error-ink hover:bg-[paper-2] transition-colors"
           >
             退出登录
           </button>

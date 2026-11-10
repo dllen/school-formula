@@ -40,10 +40,10 @@ export const KnowledgeDetail: React.FC = () => {
 
     if (!data) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#F5F6F7]">
+            <div className="min-h-screen flex items-center justify-center bg-[paper-2]">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold text-[#1F2329] mb-4">未找到该知识点</h2>
-                    <Link to="/" className="text-[#3370FF] hover:underline font-medium">返回首页</Link>
+                    <h2 className="text-2xl font-bold text-[ink] mb-4">未找到该知识点</h2>
+                    <Link to="/" className="text-[accent] hover:underline font-medium">返回首页</Link>
                 </div>
             </div>
         );
@@ -55,19 +55,19 @@ export const KnowledgeDetail: React.FC = () => {
 
     return (
     <>
-        <div className="min-h-screen flex flex-col bg-[#F5F6F7] font-sans text-slate-800">
+        <div className="min-h-screen flex flex-col bg-[paper-2] font-sans text-ink">
             <div className="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
-                <Link to="/" className="mb-6 flex items-center text-[#646A73] hover:text-[#3370FF] transition-colors" aria-label="返回首页">
+                <Link to="/" className="mb-6 flex items-center text-[ink-2] hover:text-[accent] transition-colors" aria-label="返回首页">
                     <span className="mr-2">←</span> 返回列表
                 </Link>
 
-                <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[#646A73]">
-                    <Link to="/" className="hover:text-[#3370FF]">首页</Link>
+                <nav aria-label="Breadcrumb" className="mb-4 text-sm text-[ink-2]">
+                    <Link to="/" className="hover:text-[accent]">首页</Link>
                     <span className="mx-2">/</span>
                     <span>{grade.name} · {subject.name}</span>
                 </nav>
 
-                <div className="bg-white rounded-3xl shadow-sm border border-[#F0F1F2] overflow-hidden">
+                <div className="bg-white rounded-3xl shadow-sm border border-[divider] overflow-hidden">
                     <Header point={point} subject={subject} />
                     <div className="p-8 space-y-8">
                         {point.tutorialContent && (
@@ -99,11 +99,11 @@ export const KnowledgeDetail: React.FC = () => {
                         <AdUnit placement="knowledgeBottom" />
                         {related.length > 0 && (
                             <section aria-labelledby="related-heading">
-                                <h2 id="related-heading" className="text-lg font-bold text-[#1F2329] mb-3">相关知识点</h2>
+                                <h2 id="related-heading" className="text-lg font-bold text-[ink] mb-3">相关知识点</h2>
                                 <ul className="grid gap-2 sm:grid-cols-2">
                                     {related.map((item) => (
                                         <li key={item.id}>
-                                            <Link to={`/knowledge/${item.id}`} className="text-[#3370FF] hover:underline">{item.title}</Link>
+                                            <Link to={`/knowledge/${item.id}`} className="text-[accent] hover:underline">{item.title}</Link>
                                         </li>
                                     ))}
                                 </ul>

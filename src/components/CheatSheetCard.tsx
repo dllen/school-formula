@@ -20,19 +20,26 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
+            :root {
+              --print-ink: oklch(0.24 0.012 258);
+              --print-ink-2: oklch(0.44 0.014 258);
+              --print-rule: oklch(0.85 0.010 258);
+              --print-well: oklch(0.955 0.008 258);
+            }
             body {
-              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+              font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
               padding: 20px;
               max-width: 800px;
               margin: 0 auto;
+              color: var(--print-ink);
             }
             h1 {
               font-size: 24px;
               margin-bottom: 8px;
-              color: #1f2937;
+              color: var(--print-ink);
             }
             .description {
-              color: #6b7280;
+              color: var(--print-ink-2);
               margin-bottom: 20px;
               font-size: 14px;
             }
@@ -42,17 +49,17 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
               margin-bottom: 20px;
             }
             th, td {
-              border: 1px solid #d1d5db;
+              border: 1px solid var(--print-rule);
               padding: 8px 12px;
               text-align: left;
             }
             th {
-              background-color: #f3f4f6;
+              background-color: var(--print-well);
               font-weight: 600;
-              color: #374151;
+              color: var(--print-ink);
             }
             td {
-              color: #1f2937;
+              color: var(--print-ink);
             }
             @media print {
               body { padding: 10px; }
@@ -95,15 +102,15 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-sm border border-[#F0F1F2] overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6 border-b border-[#F0F1F2] bg-gradient-to-r from-blue-50 to-white">
+        <div className="bg-white rounded-2xl shadow-sm border border-[divider] overflow-hidden hover:shadow-md transition-shadow">
+            <div className="p-6 border-b border-[divider] bg-accent-soft">
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-[#1F2329]">{cheatsheet.title}</h3>
-                    <span className="px-3 py-1 bg-blue-100 text-[#3370FF] text-xs font-medium rounded-full">
+                    <h3 className="text-xl font-bold text-[ink]">{cheatsheet.title}</h3>
+                    <span className="px-3 py-1 bg-accent-soft text-[accent] text-xs font-medium rounded-full">
                         {cheatsheet.category}
                     </span>
                 </div>
-                <p className="text-sm text-[#646A73]">{cheatsheet.description}</p>
+                <p className="text-sm text-[ink-2]">{cheatsheet.description}</p>
             </div>
 
             <div className="p-6">
@@ -111,11 +118,11 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                     <table className="w-full border-collapse text-sm">
                         {cheatsheet.table.headers && (
                             <thead>
-                                <tr className="bg-[#F5F6F7]">
+                                <tr className="bg-[paper-2]">
                                     {cheatsheet.table.headers.map((header, idx) => (
                                         <th
                                             key={idx}
-                                            className="border border-[#E5E6EB] px-3 py-2 text-left font-semibold text-[#1F2329]"
+                                            className="border border-[rule] px-3 py-2 text-left font-semibold text-[ink]"
                                         >
                                             {header}
                                         </th>
@@ -125,11 +132,11 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                         )}
                         <tbody>
                             {cheatsheet.table.rows.map((row, rowIdx) => (
-                                <tr key={rowIdx} className="hover:bg-[#E1EAFF]/30 transition-colors">
+                                <tr key={rowIdx} className="hover:bg-[accent-soft]/30 transition-colors">
                                     {row.map((cell, cellIdx) => (
                                         <td
                                             key={cellIdx}
-                                            className="border border-[#E5E6EB] px-3 py-2 text-[#1F2329]"
+                                            className="border border-[rule] px-3 py-2 text-[ink]"
                                         >
                                             {cell}
                                         </td>
@@ -143,9 +150,9 @@ export const CheatSheetCard: React.FC<CheatSheetCardProps> = ({ cheatsheet }) =>
                 <div className="mt-4 flex justify-end">
                     <button
                         onClick={handlePrint}
-                        className="flex items-center gap-2 px-4 py-2 bg-[#3370FF] text-white rounded-lg hover:bg-[#2962CC] transition-colors font-medium text-sm"
+                        className="flex items-center gap-2 px-4 py-2 bg-[accent] text-white rounded-lg hover:bg-[accent-hover] transition-colors font-medium text-sm"
                     >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                         </svg>
                         打印

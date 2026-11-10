@@ -4,6 +4,7 @@ import type { GradeLevel } from '../data/knowledge';
 import { CheatSheetCard } from './CheatSheetCard';
 import { CheatSheetListItem } from './CheatSheetListItem';
 import { GradeSelector } from './GradeSelector';
+import { Icon } from './icons/Icon';
 
 export const CheatSheetView: React.FC = () => {
     const [selectedGrade, setSelectedGrade] = useState<GradeLevel>('primary');
@@ -22,9 +23,9 @@ export const CheatSheetView: React.FC = () => {
             <div className="space-y-6">
                 <button
                     onClick={() => setSelectedSheet(null)}
-                    className="flex items-center text-[#646A73] hover:text-[#1F2329] transition-colors"
+                    className="flex items-center text-[ink-2] hover:text-[ink] transition-colors"
                 >
-                    <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                     返回列表
@@ -39,8 +40,8 @@ export const CheatSheetView: React.FC = () => {
             {/* Header Section */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-2xl font-bold text-[#1F2329]">速查表</h2>
-                    <p className="text-sm text-[#646A73]">快速查看和打印各学科重点记忆表格</p>
+                    <h2 className="text-2xl font-bold text-[ink]">速查表</h2>
+                    <p className="text-sm text-[ink-2]">快速查看和打印各学科重点记忆表格</p>
                 </div>
                 <GradeSelector
                     selectedGrade={selectedGrade}
@@ -60,9 +61,9 @@ export const CheatSheetView: React.FC = () => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12 bg-[#F5F6F7] rounded-3xl border border-dashed border-[#E5E6EB]">
-                    <div className="text-6xl mb-4 grayscale opacity-30">📋</div>
-                    <p className="text-lg text-[#8F959E]">该年级暂无速查表</p>
+                <div className="text-center py-12 bg-[paper-2] rounded-3xl border border-dashed border-[rule]">
+                    <Icon name="clipboard" className="w-12 h-12 mb-4 text-ink-3 opacity-40" />
+                    <p className="text-lg text-[ink-3]">该年级暂无速查表</p>
                 </div>
             )}
         </div>

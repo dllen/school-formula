@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { ErrorBook } from './ErrorBook';
+import { Icon } from '../icons/Icon';
 
 interface ErrorBookButtonProps {
   errors: Array<{
@@ -21,13 +22,13 @@ export const ErrorBookButton: React.FC<ErrorBookButtonProps> = ({ errors, onPrac
     <>
       <button
         onClick={handleOpen}
-        className="relative px-4 py-2 bg-red-50 text-red-700 rounded-md font-medium hover:bg-red-100 transition-colors flex items-center gap-2 btn-press"
+        className="relative px-4 py-2 bg-error-bg text-error-ink rounded-md font-medium hover:bg-error-bg transition-colors flex items-center gap-2 btn-press"
         aria-label={`错题本，共 ${errors.length} 道错题`}
       >
-        <span aria-hidden="true">📕</span>
+        <Icon name="clipboard" className="w-4 h-4" />
         <span>错题本</span>
         {errors.length > 0 && (
-          <span className="bg-red-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
+          <span className="bg-error text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-medium">
             {errors.length}
           </span>
         )}

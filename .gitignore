@@ -51,6 +51,9 @@ scripts/knowledge-*.json
 scripts/id-mapping.json
 scripts/generate-config.json*
 
+# Hallmark 本地记录（截图与日志，不入库）
+.hallmark/
+
 # SDD 工作区（skill 说明为 git-ignored scratch，仓库原先未忽略）
 .superpowers/
 .claude/skills/os-taxonomy/

@@ -69,7 +69,7 @@ export function NavMenu({ activeView }: NavMenuProps) {
   }, []);
 
   return (
-    <nav aria-label="主导航" className="hidden md:flex gap-1 bg-[#F5F6F7] p-1 rounded-lg">
+    <nav aria-label="主导航" className="hidden md:flex gap-1 bg-[paper-2] p-1 rounded-lg">
       {NAV_GROUPS.map((group) => {
         const isOpen = openGroup === group.label;
         const isActive = group.views.some((v) => v.value === activeView);
@@ -87,7 +87,7 @@ export function NavMenu({ activeView }: NavMenuProps) {
               aria-haspopup="menu"
               onClick={() => (isOpen ? setOpenGroup(null) : open(group.label))}
               className={`px-4 py-1.5 text-sm font-medium rounded transition-colors flex items-center gap-1 ${
-                isActive ? 'bg-white text-[#3370FF] shadow-sm' : 'text-[#646A73] hover:text-[#1F2329]'
+                isActive ? 'bg-white text-[accent] shadow-sm' : 'text-[ink-2] hover:text-[ink]'
               }`}
             >
               {group.label}
@@ -105,7 +105,7 @@ export function NavMenu({ activeView }: NavMenuProps) {
                 aria-label={group.label}
                 className="absolute left-0 top-full pt-1 w-40 z-50"
               >
-                <div className="bg-white rounded-lg shadow-lg border border-[#F0F1F2] py-1">
+                <div className="bg-white rounded-lg shadow-lg border border-[divider] py-1">
                 {group.views.map((view) => (
                   <Link
                     key={view.value}
@@ -114,8 +114,8 @@ export function NavMenu({ activeView }: NavMenuProps) {
                     onClick={() => setOpenGroup(null)}
                     className={`block w-full text-left px-4 py-2 text-sm transition-colors ${
                       activeView === view.value
-                        ? 'text-[#3370FF] bg-[#E1EAFF] font-medium'
-                        : 'text-[#1F2329] hover:bg-[#F5F6F7] hover:text-[#1F2329]'
+                        ? 'text-[accent] bg-[accent-soft] font-medium'
+                        : 'text-[ink] hover:bg-[paper-2] hover:text-[ink]'
                     }`}
                   >
                     {view.label}

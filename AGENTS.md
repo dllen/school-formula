@@ -238,8 +238,13 @@ src/seo/
 ### 6.3 样式
 
 - 使用 Tailwind CSS v4，通过 `src/index.css` 中的 `@import "tailwindcss";` 引入。
-- 组件内直接写 Tailwind 工具类；少量自定义样式在 `App.css` 中，但该文件当前未被引入（Vite 模板遗留）。
+- 设计 token 在 `src/styles/tokens.css` 与 `src/styles/base.css` 中集中管理（palette、type scale、spacing、easing、shadow 与 z-index）。所有色值均为 OKLCH —— 不使用 hex 或 Tailwind 内置调色板。
+- 语义 token 命名：`accent` / `paper` / `ink` / `rule` / `success` / `error` / `warning` / `info`（分别对应表面、墨水、分隔线与状态色）。页面底色使用 `paper-2`（`bg-paper-2`），不是 `bg-gray-50`。
+- 图标：使用 `src/components/icons/Icon.tsx` 中统一的 SVG 描边图标（24×24，1.8px 描边）；不使用 emoji。组件只需一次导入：`import { Icon } from './icons/Icon'`。项目原有数据中的 emoji 通过 `iconFor()` 映射为图标名（所有映射表在 `src/components/icons/iconFor.ts` 中）。
+- 动效：不使用 `transition-all` —— 显式指定过渡属性（`transition-colors`、`transition-opacity`、`transition-transform`）。入场动画使用 `--ease-out`（`cubic-bezier(0.16, 1, 0.3, 1)`），hover 采用 `--dur-micro`（120ms）。
+- 通用规则：`body` 与 `html` 强制使用 `overflow-x: clip`（不用 `hidden`）。交互元素必须有即时 `:focus-visible` 提示（从不为装饰性 SVG 省略 `aria-hidden`）。
 - UI 文本以简体中文为主，面向中小学家长与学生。
+- 用于古典文学文本（诗歌、史记、资治通鉴）的衬线字体标记为 `font-serif`（已在 `tokens.css` 中声明）。
 
 ### 6.4 组件与数据约定
 

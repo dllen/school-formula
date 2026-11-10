@@ -12,15 +12,15 @@ export function LegalPage() {
   if (!isLegalPath(path)) return null;
   const content = LEGAL_CONTENT[path];
   return (
-    <div className="min-h-screen flex flex-col bg-[#F5F6F7]">
+    <div className="min-h-screen flex flex-col bg-[paper-2]">
       <main className="max-w-3xl mx-auto px-4 py-10 flex-grow w-full">
-        <Link to="/" className="text-sm text-[#3370FF] hover:underline">← 返回首页</Link>
-        <h1 className="mt-4 text-2xl font-bold text-[#1F2329]">{content.title}</h1>
+        <Link to="/" className="text-sm text-[accent] hover:underline">← 返回首页</Link>
+        <h1 className="mt-4 text-2xl font-bold text-[ink]">{content.title}</h1>
         {content.sections.map((section) => (
           <section key={section.heading} className="mt-6">
-            <h2 className="text-lg font-bold text-[#1F2329]">{section.heading}</h2>
+            <h2 className="text-lg font-bold text-[ink]">{section.heading}</h2>
             {section.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="mt-2 text-[#1F2329] leading-relaxed">{paragraph}</p>
+              <p key={paragraph} className="mt-2 text-[ink] leading-relaxed">{paragraph}</p>
             ))}
           </section>
         ))}

@@ -15,16 +15,16 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="mt-12 bg-white border-t border-[#F0F1F2] print:hidden">
+    <footer className="mt-12 bg-white border-t border-[divider] print:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <nav aria-label="页脚导航" className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {FOOTER_LINKS.map((link) => (
-            <Link key={link.to} to={link.to} className="text-[#646A73] hover:text-[#3370FF]">
+            <Link key={link.to} to={link.to} className="text-[ink-2] hover:text-[accent]">
               {link.label}
             </Link>
           ))}
         </nav>
-        <p className="mt-4 text-sm text-[#646A73]">
+        <p className="mt-4 text-sm text-[ink-2]">
           © {new Date().getFullYear()} 拾艺院 (Shi Yi Yuan). All rights reserved.
         </p>
       </div>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import type { PromptTemplate } from '../../data/prompts/types';
 import { PromptVariableInput } from './PromptVariableInput';
+import { Icon } from '../icons/Icon';
+import { iconFor } from '../icons/iconFor';
 
 interface Props {
   template: PromptTemplate;
@@ -31,11 +33,11 @@ export const PromptDetail: React.FC<Props> = ({ template, prefilledVars, onSend,
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <button onClick={onBack} className="text-gray-400 hover:text-gray-600">← 返回</button>
-        <span className="text-xl">{template.icon}</span>
+        <button onClick={onBack} className="text-ink-3 hover:text-ink-2">← 返回</button>
+        <Icon name={iconFor(template.icon)} className="w-6 h-6 text-accent" />
         <h3 className="text-lg font-bold">{template.title}</h3>
       </div>
-      <p className="text-sm text-gray-500">{template.description}</p>
+      <p className="text-sm text-ink-3">{template.description}</p>
       <div className="border-t pt-4">
         {template.variables.map(v => (
           <PromptVariableInput
@@ -50,19 +52,27 @@ export const PromptDetail: React.FC<Props> = ({ template, prefilledVars, onSend,
         <button
           onClick={() => onSend(variables)}
           disabled={!allRequiredFilled}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-blue-700 transition-colors"
+          className="px-4 py-2 bg-accent text-accent-ink rounded-lg text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-accent-hover transition-colors"
         >
-          🚀 发送 AI
+          <span className="flex items-center gap-1.5"><Icon name="spark" className="w-4 h-4" />发送 AI</span>
         </button>
         <button
           onClick={onCopy}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
             copied
-              ? 'bg-green-100 text-green-700 border border-green-200'
-              : 'border border-gray-300 hover:bg-gray-50'
+              ? 'bg-success-bg text-success-ink border border-success-bg'
+              : 'border border-rule-strong hover:bg-paper-2'
           }`}
         >
-          {copied ? '✅ 已复制!' : '📋 复制 Prompt'}
+          {copied ? (
+              <span className="flex items-center gap-1.5">
+                <Icon name="check" className="w-4 h-4" />已复制
+              </span>
+            ) : (
+              <span className="flex items-center gap-1.5">
+                <Icon name="copy" className="w-4 h-4" />复制 Prompt
+              </span>
+            )}
         </button>
       </div>
     </div>
