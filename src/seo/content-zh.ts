@@ -242,7 +242,7 @@ function resolveYuwenContent(appPath: string, brand: BrandCopy): PageContent | n
     const book = YUWEN_BOOKS.find((b) => b.id === lesson.bookId);
     return {
       kind: 'view',
-      title: lesson.title + ' · 生字与组词 - ' + brand.name,
+      title: (book ? book.title + ' · ' : '') + lesson.title + ' · 生字与组词 - ' + brand.name,
       description:
         (book ? book.title + ' · ' : '') + lesson.title + ' 的 ' + lesson.chars.length +
         ' 个生字：读音、同音字、形近字与组词，可一键生成听写单。',
