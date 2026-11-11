@@ -18,6 +18,15 @@ const {
   referenceIndex: ReferenceIndex,
   referenceCategory: ReferenceCategory,
   referencePage: ReferencePage,
+  yuwenIndex: YuwenIndex,
+  yuwenBook: YuwenBook,
+  yuwenLesson: YuwenLesson,
+  yuwenReview: YuwenReview,
+  yuwenTingxie: YuwenTingxie,
+  yuwenChar: YuwenChar,
+  yuwenPinyinIndex: YuwenPinyinIndex,
+  yuwenPinyinStem: YuwenPinyinStem,
+  yuwenDuoyin: YuwenDuoyin,
 } = ROUTE_COMPONENTS;
 
 function App() {
@@ -32,6 +41,15 @@ function App() {
         ))}
         <Route path="/knowledge/:id" element={<KnowledgeDetail />} />
         <Route path="/poetry/:id" element={<PoemDetail />} />
+        <Route path="/yuwen" element={<YuwenIndex />} />
+        <Route path="/yuwen/book/:bookId" element={<YuwenBook />} />
+        <Route path="/yuwen/lesson/:lessonId" element={<YuwenLesson />} />
+        <Route path="/yuwen/review/:bookId/:unitNo" element={<YuwenReview />} />
+        <Route path="/yuwen/tingxie/:bookId/:unitNo" element={<YuwenTingxie />} />
+        <Route path="/yuwen/char/:ch" element={<YuwenChar />} />
+        <Route path="/yuwen/pinyin" element={<YuwenPinyinIndex />} />
+        <Route path="/yuwen/pinyin/:stem" element={<YuwenPinyinStem />} />
+        <Route path="/yuwen/duoyin" element={<YuwenDuoyin />} />
         <Route path={HTML_SITEMAP_PATH} element={<HtmlSitemap />} />
         <Route path={ENGLISH_HOME} element={<ReferenceIndex />} />
         <Route path={ENGLISH_CATEGORY_ROUTE} element={<ReferenceCategory />} />
