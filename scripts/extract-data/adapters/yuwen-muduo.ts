@@ -152,6 +152,60 @@ export function parseLessonPage(lessonId: string, html: string): RawLesson {
   return { id: lessonId, title, chars, readings, words };
 }
 
+export interface RawPinyin {
+  stems: { stem: string; rows: { py: string; chars: string[] }[] }[];
+}
+
+export interface RawDuoyin {
+  entries: { ch: string; readings: { py: string; words: string[]; lessonId?: string }[] }[];
+}
+
+export function parsePinyinPage(html: string): RawPinyin {
+  const $ = load(html);
+  const stems: RawPinyin['stems'] = [];
+  $('section.stem').each((_, el) => {
+    const stem = $(el).find('h2 a').first().text().trim();
+    if (!stem) return;
+    const rows: { py: string; chars: string[] }[] = [];
+    $(el).find('.tone-row').each((__, row) => {
+      const py = $(row).find('.py-tag').first().text().trim();
+      if (!py) return;
+      const chars: string[] = [];
+      $(row).find('div.chips a.chip').each((___, a) => {
+        const ch = $(a).text().trim();
+        if (ch.length === 1) chars.push(ch);
+      });
+      rows.push({ py, chars });
+    });
+    stems.push({ stem, rows });
+  });
+  return { stems };
+}
+
+export function parseDuoyinPage(html: string): RawDuoyin {
+  const $ = load(html);
+  const entries: RawDuoyin['entries'] = [];
+  $('section.duoyin').each((_, el) => {
+    const ch = $(el).find('a.tzg').first().text().trim();
+    if (!ch) return;
+    const readings: RawDuoyin['entries'][number]['readings'] = [];
+    $(el).find('.duoyin-row').each((__, row) => {
+      const py = $(row).find('.py-tag').first().text().trim();
+      if (!py) return;
+      const words: string[] = [];
+      $(row).find('ul.words .say').each((___, s) => {
+        const w = ($(s).attr('data-say') ?? $(s).text()).trim();
+        if (w) words.push(w);
+      });
+      const href = $(row).find('a[href^="/lesson/"]').first().attr('href') ?? '';
+      const m = href.match(/^\/lesson\/(G[1-5][AB]\d{2})$/);
+      readings.push(m?.[1] ? { py, words, lessonId: m[1] } : { py, words });
+    });
+    entries.push({ ch, readings });
+  });
+  return { entries };
+}
+
 export function createYuwenMuduoAdapter(fetchHtml: FetchHtml = defaultFetchHtml): Adapter {
   return {
     kind: 'yuwen',

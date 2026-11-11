@@ -4,8 +4,10 @@ import { describe, expect, it } from 'vitest';
 import {
   createYuwenMuduoAdapter,
   parseBookPage,
+  parseDuoyinPage,
   parseIndexPage,
   parseLessonPage,
+  parsePinyinPage,
 } from './yuwen-muduo.js';
 
 const fixture = (name: string): string =>
@@ -96,5 +98,33 @@ describe('页面解析器：首页/册/课', () => {
       { ch: '我', words: ['你我'] },
       { ch: '他', words: ['他人'] },
     ]);
+  });
+});
+
+describe('页面解析器：拼音表 / 多音字', () => {
+  it('拼音表按韵母与声调分组', () => {
+    const { stems } = parsePinyinPage(fixture('pinyin'));
+    expect(stems[0]).toEqual({
+      stem: 'a',
+      rows: [
+        { py: 'ā', chars: ['阿', '啊', '呵'] },
+        { py: 'à', chars: ['啊'] },
+        { py: 'a', chars: ['啊', '呵'] },
+      ],
+    });
+    expect(stems.length).toBeGreaterThan(50);
+    expect(stems[1].stem).toBe('ai');
+  });
+
+  it('多音字按读音分组，带词与首次出现课', () => {
+    const { entries } = parseDuoyinPage(fixture('duoyin'));
+    expect(entries[0]).toEqual({
+      ch: '地',
+      readings: [
+        { py: 'dì', words: ['地方', '地上', '地球', '地区'] },
+        { py: 'de', words: [], lessonId: 'G1A22' },
+      ],
+    });
+    expect(entries.length).toBeGreaterThan(10);
   });
 });
