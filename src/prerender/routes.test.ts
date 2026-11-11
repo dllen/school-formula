@@ -5,6 +5,7 @@ import { LEGAL_PATHS } from '../components/legal/legal-content';
 import { ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { HTML_SITEMAP_PATH } from '../sitemap';
 import { VIEW_PATHS } from '../view-routes';
+import { allYuwenRoutePaths } from '../yuwen/paths';
 import { PRERENDER_PATHS, XML_SITEMAP_PATHS } from './routes';
 
 describe('PRERENDER_PATHS', () => {
@@ -34,6 +35,7 @@ describe('PRERENDER_PATHS', () => {
         ENGLISH_ROUTE_PATHS.length +
         ALL_POEMS.length +
         LEGAL_PATHS.length +
+        allYuwenRoutePaths().length +
         1,
     );
     expect(PRERENDER_PATHS).toContain(HTML_SITEMAP_PATH);
@@ -48,5 +50,27 @@ describe('XML_SITEMAP_PATHS', () => {
   it('excludes the HTML sitemap while keeping it in PRERENDER_PATHS', () => {
     expect(XML_SITEMAP_PATHS).not.toContain(HTML_SITEMAP_PATH);
     expect(PRERENDER_PATHS).toContain(HTML_SITEMAP_PATH);
+  });
+});
+describe('小学语文预渲染路由', () => {
+  it('9 类路由都在预渲染清单里', () => {
+    for (const path of [
+      '/yuwen',
+      '/yuwen/book/1a',
+      '/yuwen/lesson/G1A01',
+      '/yuwen/review/1a/1',
+      '/yuwen/tingxie/1a/1',
+      '/yuwen/char/天',
+      '/yuwen/pinyin',
+      '/yuwen/pinyin/a',
+      '/yuwen/duoyin',
+    ]) {
+      expect(PRERENDER_PATHS).toContain(path);
+    }
+  });
+
+  it('总数超过 5000 且 sitemap 去掉 HTML 站点地图本身', () => {
+    expect(PRERENDER_PATHS.length).toBeGreaterThan(5000);
+    expect(XML_SITEMAP_PATHS).not.toContain('/sitemap');
   });
 });
