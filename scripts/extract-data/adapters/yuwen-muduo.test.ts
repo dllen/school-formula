@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
   createYuwenMuduoAdapter,
+  normalizeYuwen,
   parseBookPage,
   parseCharPage,
   parseDuoyinPage,
@@ -152,5 +153,101 @@ describe('页面解析器：单字页', () => {
     expect(raw.words).toHaveLength(10);
     expect(raw.words).toContain('地方');
     expect(raw.words).toContain('草地');
+  });
+});
+
+function syntheticPages() {
+  return [
+    { kind: 'index', data: [{ id: '1a', title: '一年级上册', lessonCount: 2, charCount: 3 }] },
+    {
+      kind: 'book',
+      data: {
+        id: '1a',
+        units: [{ no: 1, lessonIds: ['G1A01', 'G1A02'] }],
+        lessons: [
+          { id: 'G1A01', unitNo: 1, title: '识字1：天地人', preview: '天地人' },
+          { id: 'G1A02', unitNo: 1, title: '识字2：金木水火土', preview: '一二三' },
+        ],
+      },
+    },
+    {
+      kind: 'lesson',
+      data: {
+        id: 'G1A01',
+        title: '识字1：天地人',
+        chars: ['天', '地'],
+        readings: [
+          { ch: '天', py: 'tiān' },
+          { ch: '地', py: 'dì' },
+        ],
+        words: [{ ch: '天', words: ['天天'] }],
+      },
+    },
+    {
+      kind: 'lesson',
+      data: {
+        id: 'G1A02',
+        title: '识字2：金木水火土',
+        chars: ['一'],
+        readings: [{ ch: '一', py: 'yī' }],
+        words: [],
+      },
+    },
+    {
+      kind: 'pinyin',
+      data: {
+        stems: [
+          { stem: 'a', rows: [{ py: 'ā', chars: ['阿'] }, { py: 'a', chars: ['啊'] }] },
+          { stem: 'di', rows: [{ py: 'dì', chars: ['地'] }] },
+          { stem: 'tian', rows: [{ py: 'tiān', chars: ['天'] }] },
+          { stem: 'yi', rows: [{ py: 'yī', chars: ['一'] }] },
+        ],
+      },
+    },
+    {
+      kind: 'char',
+      data: {
+        ch: '地',
+        heroReadings: ['dì'],
+        readings: [{ py: 'dì', words: ['地方'], lessonId: 'G1A01' }],
+        radicals: [{ name: '土', label: '提土旁', chars: ['地', '天', '不存在的字'] }],
+        words: ['地方', '土地'],
+      },
+    },
+    { kind: 'duoyin', data: { entries: [{ ch: '地', readings: [{ py: 'dì', words: ['地方'] }] }] } },
+  ];
+}
+
+describe('normalizeYuwen', () => {
+  it('合并成信封，并按字全集过滤部件', () => {
+    const env = normalizeYuwen(syntheticPages());
+
+    expect(env.source).toBe('yuwen-muduo');
+    expect(env.books).toHaveLength(1);
+    expect(env.books[0].id).toBe('1a');
+    expect(env.books[0].grade).toBe(1);
+    expect(env.books[0].term).toBe('a');
+    expect(env.books[0].units[0].lessonIds).toEqual(['G1A01', 'G1A02']);
+    expect(env.lessons.map((l) => l.id)).toEqual(['G1A01', 'G1A02']);
+    expect(env.stems).toHaveLength(4);
+    expect(env.chars.map((c) => c.ch).sort()).toEqual(['一', '天', '阿', '啊', '地'].sort());
+    const di = env.chars.find((c) => c.ch === '地')!;
+    expect(di.readings).toEqual([{ py: 'dì', stem: 'di', lessonId: 'G1A01', words: ['地方'] }]);
+    expect(di.radicals).toEqual(['土']);
+    expect(di.words).toEqual(['地方', '土地']);
+    expect(env.radicals).toEqual([{ name: '土', label: '提土旁', chars: ['地', '天'] }]);
+    expect(env.duoyin).toHaveLength(1);
+  });
+
+  it('课的字不在拼音表里时报错', () => {
+    const pages = syntheticPages();
+    (pages[3] as { data: { chars: string[] } }).data.chars = ['一', '乙'];
+    expect(() => normalizeYuwen(pages)).toThrow(/乙/);
+  });
+
+  it('过滤后不足 2 个字的部件被丢弃', () => {
+    const pages = syntheticPages();
+    (pages[5] as { data: { radicals: { name: string; chars: string[] }[] } }).data.radicals[0].chars = ['地'];
+    expect(normalizeYuwen(pages).radicals).toEqual([]);
   });
 });

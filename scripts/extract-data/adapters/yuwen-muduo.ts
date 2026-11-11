@@ -1,5 +1,14 @@
 // scripts/extract-data/adapters/yuwen-muduo.ts
 import { load } from 'cheerio';
+import type {
+  YuwenBook,
+  YuwenChar,
+  YuwenDuoyin,
+  YuwenEnvelope,
+  YuwenLesson,
+  YuwenRadical,
+  YuwenStem,
+} from '../../../src/data/yuwen/types';
 import type { Adapter } from '../core/adapter.js';
 
 const BASE_URL = 'http://yuwen.muduo.org';
@@ -271,6 +280,182 @@ export function parseCharPage(ch: string, html: string): RawChar {
   return { ch, heroReadings, readings, radicals, words };
 }
 
+type TaggedPage =
+  | { kind: 'index'; data: RawBookRef[] }
+  | { kind: 'book'; data: RawBook }
+  | { kind: 'lesson'; data: RawLesson }
+  | { kind: 'pinyin'; data: RawPinyin }
+  | { kind: 'duoyin'; data: RawDuoyin }
+  | { kind: 'char'; data: RawChar };
+
+export function normalizeYuwen(pages: unknown[]): YuwenEnvelope {
+  const refs: RawBookRef[] = [];
+  const bookPages: RawBook[] = [];
+  const lessonPages: RawLesson[] = [];
+  const charPages: RawChar[] = [];
+  const pinyinPages: RawPinyin[] = [];
+  const duoyinPages: RawDuoyin[] = [];
+
+  for (const page of pages as TaggedPage[]) {
+    switch (page.kind) {
+      case 'index': refs.push(...page.data); break;
+      case 'book': bookPages.push(page.data); break;
+      case 'lesson': lessonPages.push(page.data); break;
+      case 'pinyin': pinyinPages.push(page.data); break;
+      case 'duoyin': duoyinPages.push(page.data); break;
+      case 'char': charPages.push(page.data); break;
+    }
+  }
+
+  // 字全集与读音：以拼音表为准
+  const pinyinPage = pinyinPages[0];
+  if (!pinyinPage) throw new Error('缺少拼音表页，无法确定字全集');
+  const stems: YuwenStem[] = pinyinPage.stems;
+
+  const readingsByChar = new Map<string, { py: string; stem: string }[]>();
+  const charOrder: string[] = [];
+  for (const stem of stems) {
+    for (const row of stem.rows) {
+      for (const ch of row.chars) {
+        let list = readingsByChar.get(ch);
+        if (!list) {
+          list = [];
+          readingsByChar.set(ch, list);
+          charOrder.push(ch);
+        }
+        if (!list.some((r) => r.py === row.py)) list.push({ py: row.py, stem: stem.stem });
+      }
+    }
+  }
+  const charSet = new Set(charOrder);
+
+  // 课与册：课页必须存在、生字必须在拼音表字全集里，课数要与首页一致
+  const errs: string[] = [];
+  const lessons: YuwenLesson[] = [];
+  const books: YuwenBook[] = [];
+
+  for (const ref of refs) {
+    const page = bookPages.find((b) => b.id === ref.id);
+    if (!page) {
+      errs.push('缺少册页: ' + ref.id);
+      continue;
+    }
+    const bookLessons: YuwenLesson[] = [];
+    for (const raw of page.lessons) {
+      const parsed = lessonPages.find((l) => l.id === raw.id);
+      if (!parsed) {
+        errs.push('缺少课页: ' + raw.id);
+        continue;
+      }
+      if (!parsed.chars.length) errs.push('课没有生字: ' + raw.id);
+      for (const ch of parsed.chars) {
+        if (!charSet.has(ch)) errs.push('课 ' + raw.id + ' 的字不在拼音表中: ' + ch);
+      }
+      bookLessons.push({
+        id: raw.id,
+        bookId: ref.id,
+        unitNo: raw.unitNo,
+        title: raw.title,
+        preview: raw.preview,
+        chars: parsed.chars,
+      });
+    }
+    const uniqueChars = new Set(bookLessons.flatMap((l) => l.chars));
+    if (ref.lessonCount !== bookLessons.length) {
+      errs.push('册 ' + ref.id + ' 课数不一致：首页 ' + ref.lessonCount + ' / 明细 ' + bookLessons.length);
+    }
+    books.push({
+      id: ref.id,
+      title: ref.title,
+      grade: Number(ref.id[0]) as 1 | 2 | 3 | 4 | 5,
+      term: ref.id[1] as 'a' | 'b',
+      lessonCount: bookLessons.length,
+      charCount: uniqueChars.size,
+      units: page.units,
+    });
+    lessons.push(...bookLessons);
+  }
+
+  // 字 → 首次出现的课
+  const firstLessonOf = new Map<string, string>();
+  for (const lesson of lessons) {
+    for (const ch of lesson.chars) {
+      if (!firstLessonOf.has(ch)) firstLessonOf.set(ch, lesson.id);
+    }
+  }
+
+  // 单字
+  const charPageByChar = new Map<string, RawChar>();
+  for (const page of charPages) charPageByChar.set(page.ch, page);
+
+  const chars: YuwenChar[] = charOrder.map((ch) => {
+    const raw = charPageByChar.get(ch);
+    const readings = (readingsByChar.get(ch) ?? []).map((r) => {
+      const rawReading = raw?.readings.find((rr) => rr.py === r.py);
+      const out: YuwenChar['readings'][number] = {
+        py: r.py,
+        stem: r.stem,
+        words: rawReading?.words ?? [],
+      };
+      const lessonId = rawReading?.lessonId ?? firstLessonOf.get(ch);
+      if (lessonId) out.lessonId = lessonId;
+      return out;
+    });
+    const radicalNames = (raw?.radicals ?? []).map((r) => r.name);
+    return {
+      ch,
+      readings,
+      radicals: [...new Set(radicalNames)],
+      words: raw?.words ?? [],
+    };
+  });
+
+  // 部件：跨字页面合并，只保留字全集内的字，丢弃不足 2 个字的部件
+  const radicalMap = new Map<string, YuwenRadical>();
+  for (const page of charPages) {
+    for (const part of page.radicals) {
+      const kept = part.chars.filter((c) => charSet.has(c));
+      if (!kept.length) continue;
+      const prev = radicalMap.get(part.name);
+      if (prev) {
+        prev.chars = [...new Set([...prev.chars, ...kept])];
+        if (!prev.label && part.label) prev.label = part.label;
+      } else {
+        radicalMap.set(part.name, {
+          name: part.name,
+          chars: [...new Set(kept)],
+          ...(part.label ? { label: part.label } : {}),
+        });
+      }
+    }
+  }
+  const radicals = [...radicalMap.values()]
+    .filter((r) => r.chars.length >= 2)
+    .sort((a, b) => b.chars.length - a.chars.length);
+
+  // 多音字：只保留字全集内的
+  const duoyin: YuwenDuoyin[] = [];
+  for (const page of duoyinPages) {
+    for (const entry of page.entries) {
+      if (!charSet.has(entry.ch)) continue;
+      duoyin.push({ ch: entry.ch, readings: entry.readings });
+    }
+  }
+
+  if (errs.length) throw new Error('归一化校验失败:\n' + errs.join('\n'));
+
+  return {
+    source: 'yuwen-muduo',
+    extractedAt: new Date().toISOString(),
+    books,
+    lessons,
+    chars,
+    stems,
+    duoyin,
+    radicals,
+  };
+}
+
 export function createYuwenMuduoAdapter(fetchHtml: FetchHtml = defaultFetchHtml): Adapter {
   return {
     kind: 'yuwen',
@@ -299,12 +484,19 @@ export function createYuwenMuduoAdapter(fetchHtml: FetchHtml = defaultFetchHtml)
       return fetchHtml(url);
     },
 
-    async parseHtml(): Promise<unknown> {
-      throw new Error('parsers not implemented yet');
+    async parseHtml(url: string, html: string): Promise<unknown> {
+      const pathname = decodeURIComponent(new URL(url).pathname);
+      if (pathname === '/') return { kind: 'index', data: parseIndexPage(html) };
+      if (pathname.startsWith('/book/')) return { kind: 'book', data: parseBookPage(pathname.slice('/book/'.length), html) };
+      if (pathname.startsWith('/lesson/')) return { kind: 'lesson', data: parseLessonPage(pathname.slice('/lesson/'.length), html) };
+      if (pathname === '/pinyin') return { kind: 'pinyin', data: parsePinyinPage(html) };
+      if (pathname === '/duoyin') return { kind: 'duoyin', data: parseDuoyinPage(html) };
+      if (pathname.startsWith('/char/')) return { kind: 'char', data: parseCharPage(pathname.slice('/char/'.length), html) };
+      throw new Error('未知页面类型: ' + url);
     },
 
-    normalize(): never {
-      throw new Error('normalize not implemented yet');
+    normalize(pages: unknown[]): YuwenEnvelope {
+      return normalizeYuwen(pages);
     },
   };
 }
