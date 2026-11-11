@@ -3,7 +3,7 @@ import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { pagesInCategory, REFERENCE_PAGES } from '../data/reference';
 import { PRERENDER_PATHS } from '../prerender/routes';
 import { ENGLISH_HOME, ENGLISH_ROUTE_PATHS } from '../reference-routes';
-import { buildSeoMeta, canonicalUrl } from './meta';
+import { buildSeoMeta, canonicalUrl, encodePath } from './meta';
 import { writtenRouteSet } from './og';
 import { OG_ROUTES } from './og-routes';
 import { brandFor } from './site';
@@ -206,5 +206,21 @@ describe('og:image', () => {
   it('uses a large twitter card only when there is an image', () => {
     expect(buildSeoMeta('/en/math', ALL_WRITTEN).twitter.card).toBe('summary_large_image');
     expect(buildSeoMeta('/', ALL_WRITTEN).twitter.card).toBe('summary');
+  });
+});
+
+describe('encodePath / canonicalUrl 的中文路径', () => {
+  it('把中文路径编码成百分号形式', () => {
+    expect(encodePath('/yuwen/char/天')).toBe('/yuwen/char/%E5%A4%A9');
+  });
+
+  it('幂等：已编码的路径不会被二次编码', () => {
+    expect(encodePath('/yuwen/char/%E5%A4%A9')).toBe('/yuwen/char/%E5%A4%A9');
+  });
+
+  it('canonical 采用目录式并编码', () => {
+    expect(canonicalUrl('/yuwen/char/天')).toMatch(/\/yuwen\/char\/%E5%A4%A9\/$/);
+    expect(canonicalUrl('/yuwen/char/%E5%A4%A9')).toBe(canonicalUrl('/yuwen/char/天'));
+    expect(canonicalUrl('/tutorial')).toMatch(/\/tutorial\/$/);
   });
 });

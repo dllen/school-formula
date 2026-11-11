@@ -25,14 +25,29 @@ export interface SeoMeta {
 }
 
 /**
+ * 百分号编码一个站内路径，幂等：已编码的输入不会二次编码。
+ * 只用于 canonical / og:url / sitemap 这类对外 URL，不用于 <Link>。
+ */
+export function encodePath(path: string): string {
+  let decoded = path;
+  try {
+    decoded = decodeURI(path);
+  } catch {
+    decoded = path;
+  }
+  return encodeURI(decoded);
+}
+
+/**
  * Absolute canonical URL for a route. Directory routes resolve to their trailing-slash
  * form because that is what the worker serves (`/tutorial` → 308 → `/tutorial/`).
+ * 中文等非 ASCII 路径会被百分号编码（幂等），保证 canonical 是合法的对外 URL。
  */
 export function canonicalUrl(path: string): string {
   const withoutQuery = path.split('#')[0].split('?')[0];
-  const normalized =
-    withoutQuery === '/' || withoutQuery === '' ? '/' : `${withoutQuery.replace(/\/+$/, '')}/`;
-  return `${SITE.origin}${normalized}`;
+  if (withoutQuery === '/' || withoutQuery === '') return SITE.origin + '/';
+  const trimmed = withoutQuery.replace(/\/+$/, '');
+  return SITE.origin + encodePath(trimmed) + '/';
 }
 
 function buildJsonLd(

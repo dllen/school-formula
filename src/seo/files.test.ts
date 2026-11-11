@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PRERENDER_PATHS } from '../prerender/routes';
 import { buildRobotsTxt, buildSitemap } from './files';
+import { canonicalUrl } from './meta';
 
 describe('buildRobotsTxt', () => {
   it('allows the site and points at the sitemap', () => {
@@ -25,5 +26,13 @@ describe('buildSitemap', () => {
     const xml = buildSitemap(PRERENDER_PATHS);
     expect(xml.match(/<url>/g)).toHaveLength(PRERENDER_PATHS.length);
     expect(xml).toContain('<loc>https://syy.global/knowledge/p-eng-001/</loc>');
+  });
+});
+
+describe('sitemap 中文 URL', () => {
+  it('loc 使用百分号编码，且与 canonical 一致', () => {
+    const xml = buildSitemap(['/yuwen/char/天']);
+    expect(xml).toContain('<loc>' + canonicalUrl('/yuwen/char/天') + '</loc>');
+    expect(xml).toContain('%E5%A4%A9');
   });
 });
