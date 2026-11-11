@@ -1,56 +1,26 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { SettingsButton } from './SettingsButton';
 import { useAuth } from '../../context/auth-context';
 import { Icon } from '../icons/Icon';
 import type { ViewType } from './types';
-
-const NAV_GROUPS = [
-  {
-    label: '学科学习',
-    views: [
-      { value: 'knowledge', label: '知识点' },
-      { value: 'formula', label: '公式宝典' },
-      { value: 'mental-math', label: '速算口诀' },
-      { value: 'tutorial', label: '教程' },
-    ],
-  },
-  {
-    label: '工具速查',
-    views: [
-      { value: 'cheatsheet', label: '速查表' },
-      { value: 'practice', label: '专题练习' },
-      { value: 'mastery', label: '融会贯通' },
-      { value: 'notes', label: '学习笔记' },
-    ],
-  },
-  {
-    label: '经典阅读',
-    views: [
-      { value: 'zizhi', label: '资治通鉴' },
-      { value: 'shiji', label: '史记' },
-      { value: 'poetry', label: '古诗词' },
-    ],
-  },
-  {
-    label: 'AI 助手',
-    views: [
-      { value: 'ai-chat', label: 'AI 助教' },
-    ],
-  },
-] as const;
+import { NAV_GROUPS } from './nav-items';
 
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
-  activeView: ViewType;
+  activeView: ViewType | null;
   onViewChange: (view: ViewType) => void;
   onOpenSettings: () => void;
 }
 
 export function MobileNav({ isOpen, onClose, activeView, onViewChange, onOpenSettings }: MobileNavProps) {
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const { pathname } = useLocation();
   const { user, isAuthenticated, logout } = useAuth();
+
+  const pathnameMatches = (target: string) => pathname === target || pathname.startsWith(target + '/');
 
   if (!isOpen) return null;
 
@@ -86,21 +56,34 @@ export function MobileNav({ isOpen, onClose, activeView, onViewChange, onOpenSet
                 </button>
                 {isExpanded && (
                   <div role="menu" aria-label={group.label}>
-                    {group.views.map((view) => (
-                      <button
-                        key={view.value}
-                        type="button"
-                        role="menuitem"
-                        data-active={activeView === view.value ? 'true' : undefined}
-                        onClick={() => {
-                          onViewChange(view.value);
-                          onClose();
-                        }}
-                        className="drawer__item"
-                      >
-                        {view.label}
-                      </button>
-                    ))}
+                    {group.items.map((item) =>
+                      item.to ? (
+                        <Link
+                          key={item.label}
+                          to={item.to}
+                          role="menuitem"
+                          className="drawer__item"
+                          data-active={pathnameMatches(item.to) ? 'true' : undefined}
+                          onClick={onClose}
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <button
+                          key={item.label}
+                          type="button"
+                          role="menuitem"
+                          className="drawer__item"
+                          data-active={activeView === item.view ? 'true' : undefined}
+                          onClick={() => {
+                            if (item.view) onViewChange(item.view);
+                            onClose();
+                          }}
+                        >
+                          {item.label}
+                        </button>
+                      ),
+                    )}
                   </div>
                 )}
               </div>
