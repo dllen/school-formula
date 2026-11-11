@@ -2,28 +2,13 @@
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { YUWEN_LESSONS, bookById, charByChar, unitOf } from '../../data/yuwen';
 import { reviewPath } from '../../yuwen/paths';
+import { deterministicShuffle } from './tingxie-shuffle';
 import { YuwenPageShell } from './YuwenPageShell';
 
 interface TingxieChar {
   ch: string;
   py: string;
   word?: string;
-}
-
-/**
- * 固定种子的洗牌：预渲染与客户端必须得到同一顺序，不能用 Math.random。
- * 本文件是听写单的唯一归属；导出纯函数供测试复用，故对此文件关闭 fast-refresh 的「只导出组件」规则。
- */
-// eslint-disable-next-line react-refresh/only-export-components
-export function deterministicShuffle<T>(items: T[]): T[] {
-  const out = [...items];
-  for (let i = out.length - 1; i > 0; i -= 1) {
-    const j = (i * 7 + 3) % (i + 1);
-    const tmp = out[i] as T;
-    out[i] = out[j] as T;
-    out[j] = tmp;
-  }
-  return out;
 }
 
 export function YuwenTingxiePage() {
