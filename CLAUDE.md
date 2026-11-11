@@ -46,6 +46,11 @@ npm run gen:dsl          # 启动引导模式（8 种任务类型，生成 JSON 
 npm run ingest           # 把 staging/ 合并进 src/data/（校验 + 合并 + 接线）
 npm run ingest:list      # 列出 staging 文件
 npm run ingest:dry       # 校验但不写盘
+
+# 小学语文：重抓参考站（有缓存则很快） → 复制到仓库 staging → 入库
+EXTRACT_MIN_INTERVAL_MS=150 bash scripts/extract-data/extract.sh yuwen
+cp scripts/extract-data/staging/yuwen/*.json staging/yuwen/
+bash scripts/ingest-data/ingest.sh staging/yuwen/<上一步的文件>.json
 ```
 
 ### Worker 本地开发
@@ -90,7 +95,8 @@ src/
 │   ├── practice/        # 练习系统（QuestionCard、ErrorBook、PracticeResult 等）
 │   ├── prompts/         # 提示词库（PromptCard、PromptDetail、PromptModal 等）
 │   ├── reference/       # 英文可打印速查表（/en）
-│   └── tutorials/       # 教程组件（TutorialUnitDetail、TutorialLearnTab 等）
+│   ├── tutorials/       # 教程组件（TutorialUnitDetail、TutorialLearnTab 等）
+│   └── yuwen/           # 小学语文（/yuwen）：9 个页面 + 原语（田字格/拼音开关/朗读/笔顺/组词）
 ├── context/             # AuthContext + auth-context.ts（useAuth hook）
 ├── hooks/               # 自定义 hooks
 │   ├── useAuth.ts       # 认证消费 hook
@@ -102,6 +108,7 @@ src/
 │   ├── questions/       # 题库（按学科分文件）
 │   ├── tutorials/       # 教程内容（按学科分文件）
 │   ├── mastery/         # 掌握度系统（techniques、progress、qgen 题目生成器）
+│   ├── yuwen/           # 小学语文数据（生成文件 + 手写查询层，见「小学语文数据管线」）
 │   └── prompts/         # 提示词模板库（按场景分类：explain/generate/assess/plan 等）
 ├── services/
 │   ├── ai.ts            # AI 调用（直连 OpenAI/DeepSeek/智谱 或 gateway 代理）
@@ -187,6 +194,14 @@ worker/
 | `/poetry` | `Home` | 古诗词 |
 | `/knowledge/:id` | `KnowledgeDetail` | 知识点详情 + AI 生成 |
 | `/poetry/:id` | `PoemDetail` | 古诗词详情（带站点页头/页脚） |
+| `/yuwen` | `YuwenIndexPage` | 小学语文：10 册课本 + 拼音表/多音字入口 |
+| `/yuwen/book/:bookId` | `YuwenBookPage` | 一册：按单元列课文 + 单元复习/听写单入口 |
+| `/yuwen/lesson/:lessonId` | `YuwenLessonPage` | 一课：本课生字 + 组词 + 隐藏拼音 |
+| `/yuwen/review/:bookId/:unitNo` | `YuwenReviewPage` | 单元生字复习（按课分组的田字格） |
+| `/yuwen/tingxie/:bookId/:unitNo` | `YuwenTingxiePage` | 可打印听写单（`?shuffle=1&hint=1&answers=0`） |
+| `/yuwen/char/:ch` | `YuwenCharPage` | 单字：笔顺/读音/同音字/字形/组词 |
+| `/yuwen/pinyin`、`/yuwen/pinyin/:stem` | `YuwenPinyin*Page` | 拼音表与韵母页 |
+| `/yuwen/duoyin` | `YuwenDuoyinPage` | 多音字（158 个） |
 | `/en/` `/en/:category/` `/en/:category/:slug/` | `Reference*` | 英文可打印速查表（独立布局） |
 | `/sitemap` | `HtmlSitemap` | HTML 站点地图 |
 | `/privacy` `/terms` `/about` `/contact` | `LegalPage` | 法务页 |
@@ -199,9 +214,18 @@ worker/
 
 ## 数据层
 
+### 小学语文数据管线（/yuwen）
+
+1. 抓取：`EXTRACT_MIN_INTERVAL_MS=150 bash scripts/extract-data/extract.sh yuwen`（适配器 `scripts/extract-data/adapters/yuwen-muduo.ts`，约 3300 页；命中缓存时用 `EXTRACT_MIN_INTERVAL_MS=0` 可几秒重跑）。信封写在 `scripts/extract-data/staging/yuwen/extracted-*.json`，需要复制到仓库根的 `staging/yuwen/` 才能被入库脚本读到。
+2. 入库：`bash scripts/ingest-data/ingest.sh staging/yuwen/<file>.json`（适配器 `scripts/ingest-data/adapters/yuwen.ts`）。这是**唯一整树重写**的 kind：它独占 `src/data/yuwen/`，重跑会整体替换 6 个数据文件；`index.ts` 是手写查询层，不由脚本生成。
+3. 校验与页面：`./node_modules/.bin/vitest run src/data/yuwen src/yuwen`；路由路径唯一事实来源是 `src/yuwen/paths.ts` 的 `allYuwenRoutePaths()`（3878 条，进预渲染与 sitemap）。
+
+> 本机注意：`dist/` 预渲染到 5001 个目录后，`wrangler dev` 会因文件监听 EMFILE 起不来（macOS kqueue 限制），与代码无关；验证静态路由可改用 `assetCandidates` 直接对 dist 做存在性检查。
+
 ### 静态数据（打包进 bundle）
 
 - **知识点**：`src/data/knowledge/` 按学段（primary/middle/high）和学科分文件，汇总导出 `KNOWLEDGE_DATA`
+- **小学语文**：`src/data/yuwen/` 是**生成数据**（books/lessons/chars/pinyin/duoyin/radicals，来源 yuwen.muduo.org，勿手改）+ 手写查询层 `index.ts`；生产链路见上「小学语文数据管线」
 - **题库**：`src/data/questions/` 按学科分文件，支持选择题、填空题、判断题
 - **教程**：`src/data/tutorials/` 按学科分文件，包含教学目标、讲解、例题、互动、练习
 - **提示词模板**：`src/data/prompts/` 按场景分类（explain/generate/assess/plan/error-analysis/derivation/explore/interaction）
@@ -242,7 +266,7 @@ worker/
 | `techniques` | `techniques` | `Technique[]` |
 | `prompts` | `prompts` | `PromptTemplate[]` |
 
-> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。两个脚本的测试已统一到 Vitest：根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 一并跑通 `src/**` 与 `scripts/**`（563 个测试，98 个 test files）；两个子包各自 `cd scripts/<sub> && npm test`（`vitest run`）也可独立运行。
+> 端到端流程：`npm run gen:dsl` 生成 → `save` 写 `staging/` → `npm run ingest` 入库。入库脚本与生成器无关，任何来源产生的规范 JSON 都能入库。测试已统一到 Vitest：根 `npm test` 通过 `vitest.config.ts` 的 workspace `projects` 一并跑通 `src/**` 与 `scripts/**`（630 个测试，116 个 test files）；两个子包各自 `cd scripts/<sub> && npm test`（`vitest run`）也可独立运行。
 
 ## 部署
 
