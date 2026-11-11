@@ -1,0 +1,1 @@
+import{j as s,I as t}from"./index-BJ1dyR4M.js";import{u as r}from"./WordList-BXovHjxO.js";function c({text:n,label:o}){const{supported:a,speak:e}=r();return!a||!n?null:s.jsx("button",{type:"button",className:"icon-btn",title:"朗读："+n,"aria-label":o??"朗读 "+n,onClick:()=>e(n),children:s.jsx(t,{name:"mic",className:"w-4 h-4"})})}export{c as S};
