@@ -8,12 +8,13 @@ import { writeEnvelope } from '../cli/output.js';
 import { shijiKbAdapter } from '../adapters/shiji-kb.js';
 import { dutongjianAdapter } from '../adapters/dutongjian.js';
 import { hunterhugAdapter } from '../adapters/hunterhug.js';
+import { yuwenMuduoAdapter } from '../adapters/yuwen-muduo.js';
 import { inspectHtml, formatReport } from './inspect.js';
 
 const DEFAULT_MIN_INTERVAL_MS = Number(process.env.EXTRACT_MIN_INTERVAL_MS ?? 500);
 const DEFAULT_CACHE_DIR = '.cache';
 
-const REGISTRY: Adapter[] = [shijiKbAdapter, dutongjianAdapter, hunterhugAdapter];
+const REGISTRY: Adapter[] = [shijiKbAdapter, dutongjianAdapter, hunterhugAdapter, yuwenMuduoAdapter];
 
 export function listAdapters(): Adapter[] {
   return REGISTRY.slice();
