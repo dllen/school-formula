@@ -250,4 +250,19 @@ describe('normalizeYuwen', () => {
     (pages[5] as { data: { radicals: { name: string; chars: string[] }[] } }).data.radicals[0].chars = ['地'];
     expect(normalizeYuwen(pages).radicals).toEqual([]);
   });
+
+  it('读音排序把课文页教的读音放最前', () => {
+    const pages = syntheticPages();
+    // 拼音表里给「地」先加入一个 de 读音（stem de 排在 di 之前）
+    (pages[4] as { data: { stems: { stem: string; rows: { py: string; chars: string[] }[] }[] } }).data.stems.unshift({
+      stem: 'de',
+      rows: [{ py: 'de', chars: ['地'] }],
+    });
+    const env = normalizeYuwen(pages);
+    const di = env.chars.find((c) => c.ch === '地')!;
+    expect(di.readings.map((r) => r.py)).toEqual(['dì', 'de']);
+    // 没在课文页出现过的字保持拼音表顺序
+    const a = env.chars.find((c) => c.ch === '阿')!;
+    expect(a.readings.map((r) => r.py)).toEqual(['ā']);
+  });
 });

@@ -333,6 +333,8 @@ export function normalizeYuwen(pages: unknown[]): YuwenEnvelope {
   const errs: string[] = [];
   const lessons: YuwenLesson[] = [];
   const books: YuwenBook[] = [];
+  // 该字的优先读音：按课文顺序，取课页第一次教的读音（不覆盖已有值）
+  const preferredPy = new Map<string, string>();
 
   for (const ref of refs) {
     const page = bookPages.find((b) => b.id === ref.id);
@@ -346,6 +348,10 @@ export function normalizeYuwen(pages: unknown[]): YuwenEnvelope {
       if (!parsed) {
         errs.push('缺少课页: ' + raw.id);
         continue;
+      }
+      // 课页 readings 给出本课教学读音，作为该字读音排序的优先项
+      for (const reading of parsed.readings) {
+        if (reading.py && !preferredPy.has(reading.ch)) preferredPy.set(reading.ch, reading.py);
       }
       if (!parsed.chars.length) errs.push('课没有生字: ' + raw.id);
       for (const ch of parsed.chars) {
@@ -401,10 +407,16 @@ export function normalizeYuwen(pages: unknown[]): YuwenEnvelope {
       if (lessonId) out.lessonId = lessonId;
       return out;
     });
+    // 课文页教过的读音排最前；三态比较器 + 稳定排序，其余读音保持拼音表顺序
+    const preferred = preferredPy.get(ch);
+    const ordered =
+      preferred && readings.some((r) => r.py === preferred)
+        ? [...readings].sort((a, b) => (a.py === preferred ? -1 : b.py === preferred ? 1 : 0))
+        : readings;
     const radicalNames = (raw?.radicals ?? []).map((r) => r.name);
     return {
       ch,
-      readings,
+      readings: ordered,
       radicals: [...new Set(radicalNames)],
       words: raw?.words ?? [],
     };
