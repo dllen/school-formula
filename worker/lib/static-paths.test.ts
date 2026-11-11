@@ -49,3 +49,20 @@ describe('isSeoFile', () => {
     expect(isSeoFile('/tutorial')).toBe(false);
   });
 });
+
+describe('小学语文面（/yuwen）', () => {
+  it('百分号编码的中文路径解码后命中磁盘目录', () => {
+    expect(assetCandidates('/yuwen/char/' + encodeURIComponent('天'))).toEqual([
+      '/yuwen/char/天/index.html',
+    ]);
+  });
+
+  it('/yuwen 下不做 app shell 回退', () => {
+    expect(assetCandidates('/yuwen')).toEqual(['/yuwen/index.html']);
+    expect(assetCandidates('/yuwen/typo')).toEqual(['/yuwen/typo/index.html']);
+  });
+
+  it('/yuwenx 这类同前缀路径仍回退 app shell', () => {
+    expect(assetCandidates('/yuwenx')).toEqual(['/yuwenx/index.html', '/index.html']);
+  });
+});

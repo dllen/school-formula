@@ -2,6 +2,7 @@ import { CATEGORY_COPY } from './data/reference/en/categories';
 import { REFERENCE_PAGES } from './data/reference';
 import { LEGAL_CONTENT, LEGAL_PATHS } from './components/legal/legal-content';
 import { ALL_POEMS } from './data/poems';
+import { YUWEN_BOOKS } from './data/yuwen';
 import { KNOWLEDGE_DATA } from './data/knowledge';
 import {
   categoryPath,
@@ -101,7 +102,25 @@ export function buildHtmlSitemap(): SitemapGroup[] {
     links: LEGAL_PATHS.map((p) => ({ label: LEGAL_CONTENT[p].title, path: p })),
   };
 
-  return [learningViews, ...knowledgeGroups, poetryGroup, englishReference, englishHubs, legalGroup];
+  const yuwenGroup: SitemapGroup = {
+    title: '小学语文',
+    links: [
+      { label: '人教版小学语文（生字）', path: '/yuwen' },
+      { label: '拼音表', path: '/yuwen/pinyin' },
+      { label: '多音字', path: '/yuwen/duoyin' },
+      ...YUWEN_BOOKS.map((book) => ({ label: book.title, path: '/yuwen/book/' + book.id })),
+    ],
+  };
+
+  return [
+    learningViews,
+    yuwenGroup,
+    ...knowledgeGroups,
+    poetryGroup,
+    englishReference,
+    englishHubs,
+    legalGroup,
+  ];
 }
 
 /** Flatten the grouped structure into a list of paths in display order. */

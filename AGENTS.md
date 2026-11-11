@@ -16,6 +16,7 @@
 - **古诗词 / 古籍阅读**：古诗词浏览与阅读，《资治通鉴》《史记》章节阅读。
 - **AI 智能助教**：知识点详情页的家长辅导指南、经典阅读的 AI 解读，以及独立的 AI 对话页（会话历史存在本地）。
 - **学习笔记**：本地保存的学习笔记（`localStorage`）。
+- **小学语文**：`/yuwen` 下人教版 1–5 年级 10 册 / 326 课 / 2988 个生字，含拼音表、多音字、单元生字复习、可打印听写单，以及单字的笔顺 / 读音 / 同音字 / 字形 / 组词。
 - **英文站**：`/en` 下语言中立的可打印速查表。
 
 当前仓库源：`git@github.com:dllen/school-formula.git`，默认分支 `main`。
@@ -41,7 +42,7 @@
 
 - `npm run build`（TypeScript 项目引用编译 + Vite 构建）：✅ 通过
 - `npm run lint`（ESLint flat config）：✅ 零错误（含 `scripts/` 下两个子包）
-- `npm test`（Vitest）：563 个测试通过（98 个 test files，跨 `app` + `scripts` 两份 workspace project），零 "No test suite found"。
+- `npm test`（Vitest）：630 个测试通过（116 个 test files，跨 `app` + `scripts` 两份 workspace project），零 "No test suite found"。
 - `npm run lint` 的忽略列表包含第三方 submodule `.claude/**`（其自带构建，不归本仓库检查）。
 
 ---
@@ -76,6 +77,7 @@
 │   │   ├── AIChatView/            # AI 助教对话（会话列表 / 消息区 / 气泡）
 │   │   ├── practice/ tutorials/ poetry/ prompts/ reference/ auth/ legal/
 │   │   ├── Home.tsx               # 主页面：11 个视图的路由/切换
+│   │   ├── yuwen/                 # 小学语文（/yuwen）：9 个页面 + 原语（田字格/拼音开关/朗读/笔顺/组词）
 │   │   ├── KnowledgeList.tsx / SubjectGrid.tsx / GradeSelector.tsx
 │   │   ├── CheatSheet*.tsx / FormulaView.tsx / MentalMathView.tsx / NotesView.tsx
 │   │   ├── Mastery*View.tsx / TutorialView.tsx / ZizhiView.tsx / ShijiView.tsx
@@ -92,9 +94,11 @@
 │   │   │   ├── middle.ts
 │   │   │   └── high.ts
 │   │   ├── periodicTable.ts
+│   │   ├── yuwen/                 # 小学语文数据：生成文件 + 手写查询层（scripts 生成，勿手改生成文件）
 │   │   ├── shiji.ts
 │   │   ├── types.ts               # 核心类型：GradeLevel、KnowledgePoint、Subject、GradeData
 │   │   └── zizhi.ts
+│   ├── yuwen/                     # paths.ts：/yuwen 路由常量与 3878 条预渲染路径
 │   ├── services/                  # ai.ts / gateway.ts / auth.ts
 │   ├── styles/                    # 设计系统：tokens.css + base.css + ui.css
 │   ├── utils/                     # jwt / questionUtils / markdown（渲染前剥离标题 emoji）
@@ -186,7 +190,7 @@ src/seo/
 ```
 
 - `src/prerender/inject.ts` 的 `injectPage(template, appHtml, headHtml)` 负责最终的文档拼装：用 `renderHead(...)` 的输出替换模板里的 `<title>`，再把 SSR 出的 app HTML 注入 `#root`。
-- `src/entry-prerender.ts` 遍历 `PRERENDER_PATHS`，为每条路由生成 head + HTML，并写出 `dist/robots.txt` 与 `dist/sitemap.xml`（1122 个 URL，构建时打印 1123 条预渲染路由）。
+- `src/entry-prerender.ts` 遍历 `PRERENDER_PATHS`，为每条路由生成 head + HTML，并写出 `dist/robots.txt` 与 `dist/sitemap.xml`（5000 个 URL，构建时打印 5001 条预渲染路由；其中 3878 条来自 `/yuwen`）。
 - canonical 采用「目录式」URL（非根路径带尾斜杠），与 Worker 的 `/tutorial` → 308 → `/tutorial/` 行为一致。
 - 标题/描述文案：中文改 `src/seo/content-zh.ts`，英文改 `src/seo/content-en.ts`；站点域名/品牌改 `src/seo/site.ts`。客户端路由切换不会更新 head（静态页面由预渲染产出，爬虫可见）。
 - Worker 侧 `worker/lib/static-paths.ts` 的 `isSeoFile()` 保证 `/robots.txt`、`/sitemap.xml` 缺失时返回 404，而不是被 SPA fallback 换成 app HTML。

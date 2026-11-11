@@ -4,6 +4,7 @@ import { LEGAL_PATHS } from '../components/legal/legal-content';
 import { ENGLISH_ROUTE_PATHS } from '../reference-routes';
 import { HTML_SITEMAP_PATH } from '../sitemap';
 import { VIEW_PATHS } from '../view-routes';
+import { allYuwenRoutePaths } from '../yuwen/paths';
 
 export const PRERENDER_PATHS: string[] = [
   '/',
@@ -16,6 +17,7 @@ export const PRERENDER_PATHS: string[] = [
   ...ENGLISH_ROUTE_PATHS,
   ...ALL_POEMS.map((p) => `/poetry/${p.id}`),
   ...LEGAL_PATHS,
+  ...allYuwenRoutePaths(),
   HTML_SITEMAP_PATH,
 ];
 

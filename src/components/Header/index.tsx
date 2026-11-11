@@ -10,7 +10,7 @@ import { AuthModal } from '../AuthModal';
 import type { ViewType } from './types';
 
 interface HeaderProps {
-  activeView: ViewType;
+  activeView: ViewType | null;
   onViewChange: (view: ViewType) => void;
 }
 

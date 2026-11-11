@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>识字1：天地人</title>
+<link rel="icon" href="/static/yuwen.ico?v=b1d2a0ff5d">
+<link rel="stylesheet" href="/static/site.css?v=c21fbea933">
+<script>
+  try { if (localStorage.getItem('hide-py') === '1') document.documentElement.classList.add('hide-py'); } catch (e) {}
+</script>
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/">小学语文</a>
+    <nav>
+      <a href="/">课本</a>
+      <a href="/pinyin?lesson=G1A01">拼音表</a>
+      <a href="/duoyin?lesson=G1A01">多音字</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<nav class="crumbs"><a href="/">课本</a> › <a href="/book/1a">一年级上册</a> › 识字1：天地人</nav>
+
+
+
+<h1>识字1：天地人</h1>
+
+<section>
+  <div class="section-head">
+    <h2>本课生字</h2>
+    <div>
+      <a class="btn" href="/tingxie?start=G1A01&end=G1A01">听写单</a>
+      <button type="button" class="toggle" data-toggle-py><span class="on">隐藏拼音</span><span class="off">显示拼音</span></button>
+    </div>
+  </div>
+  <div class="grid">
+  <a class="zi " href="/char/天?lesson=G1A01"><span class="py">tiān</span><span class="tzg">天</span></a><a class="zi " href="/char/地?lesson=G1A01"><span class="py">dì</span><span class="tzg">地</span></a><a class="zi " href="/char/人?lesson=G1A01"><span class="py">rén</span><span class="tzg">人</span></a><a class="zi " href="/char/你?lesson=G1A01"><span class="py">nǐ</span><span class="tzg">你</span></a><a class="zi " href="/char/我?lesson=G1A01"><span class="py">wǒ</span><span class="tzg">我</span></a><a class="zi " href="/char/他?lesson=G1A01"><span class="py">tā</span><span class="tzg">他</span></a>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>组词</h2>
+    <a class="muted" href="/pinyin?lesson=G1A01">已学汉字</a>
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/天?lesson=G1A01"><span class="py">tiān</span><span class="tzg">天</span></a>
+    
+<div class="words-wrap">
+<ul class="words">
+<li><span class="say" data-say="天天">天天</span></li>
+</ul>
+
+</div>
+
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/地?lesson=G1A01"><span class="py">dì</span><span class="tzg">地</span></a>
+    
+<div class="words-wrap">
+<ul class="words">
+<li><span class="say" data-say="天地">天地</span></li>
+</ul>
+
+</div>
+
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/人?lesson=G1A01"><span class="py">rén</span><span class="tzg">人</span></a>
+    
+<div class="words-wrap">
+<ul class="words">
+<li><span class="say" data-say="人人">人人</span></li>
+</ul>
+
+</div>
+
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/你?lesson=G1A01"><span class="py">nǐ</span><span class="tzg">你</span></a>
+    
+<p class="muted">暂无已学组词</p>
+
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/我?lesson=G1A01"><span class="py">wǒ</span><span class="tzg">我</span></a>
+    
+<div class="words-wrap">
+<ul class="words">
+<li><span class="say" data-say="你我">你我</span></li>
+</ul>
+
+</div>
+
+  </div>
+  
+  <div class="word-row">
+    <a class="zi small" href="/char/他?lesson=G1A01"><span class="py">tā</span><span class="tzg">他</span></a>
+    
+<div class="words-wrap">
+<ul class="words">
+<li><span class="say" data-say="他人">他人</span></li>
+</ul>
+
+</div>
+
+  </div>
+  
+</section>
+
+<nav class="pager">
+  <span></span>
+  <a href="/lesson/G1A02">识字2：金木水火土 ›</a>
+</nav>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">本站：http://yuwen.muduo.org　反馈：yuwen_AT_muduo_DOT_org
+    
+    
+  </div>
+</footer>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QZTDZ4JJ8L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QZTDZ4JJ8L');
+</script>
+<script>
+  for (const b of document.querySelectorAll('[data-toggle-py]')) {
+    b.addEventListener('click', () => {
+      const hide = document.documentElement.classList.toggle('hide-py');
+      try { localStorage.setItem('hide-py', hide ? '1' : '0'); } catch (e) {}
+    });
+  }
+  // 朗读：用浏览器自带的中文语音读 data-say 的内容。浏览器不支持时什么也不做。
+  if ('speechSynthesis' in window) {
+    document.documentElement.classList.add('can-say');
+    for (const b of document.querySelectorAll('button.speak')) b.hidden = false;
+    document.addEventListener('click', e => {
+      const el = e.target.closest('[data-say]');
+      if (!el) return;
+      const u = new SpeechSynthesisUtterance(el.dataset.say);
+      u.lang = 'zh-CN';
+      u.rate = 0.8;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(u);
+    });
+  }
+</script>
+
+</body>
+</html>

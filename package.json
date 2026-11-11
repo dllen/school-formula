@@ -28,6 +28,7 @@
     "crawl:report": "ls -t staging/crawl-report-*.json 2>/dev/null | head -1 | xargs cat"
   },
   "dependencies": {
+    "hanzi-writer": "^3.7.3",
     "mermaid": "^11.16.0",
     "openai": "^6.15.0",
     "react": "^19.2.0",

@@ -2,11 +2,20 @@ import type { ViewType } from '../components/Header/types';
 import { LEGAL_CONTENT, LEGAL_PATHS, type LegalPath } from '../components/legal/legal-content';
 import { KNOWLEDGE_DATA } from '../data/knowledge';
 import { ALL_POEMS } from '../data/poems';
+import {
+  YUWEN_BOOKS,
+  YUWEN_CHARS,
+  YUWEN_DUOYIN,
+  YUWEN_LESSONS,
+  charByChar,
+  stemByStem,
+} from '../data/yuwen';
 import type { GradeData, KnowledgePoint, Subject } from '../data/types';
 import type { Language } from '../i18n/languages';
 import { HTML_SITEMAP_PATH } from '../sitemap';
 import { viewFromPath } from '../view-routes';
 import { brandFor } from './site';
+import type { BrandCopy } from './site';
 import type { Breadcrumb, PageContent } from './types';
 
 interface KnowledgeEntry {
@@ -180,5 +189,147 @@ export function resolveChineseContent(appPath: string, path: string, language: L
     };
   }
 
+  const yuwen = resolveYuwenContent(appPath, brand);
+  if (yuwen) return yuwen;
+
   return { kind: 'view', title: brand.name, description: brand.description, breadcrumbs: [HOME_BREADCRUMB] };
+}
+
+const YUWEN_BASE_CRUMB: Breadcrumb = { name: '小学语文', path: '/yuwen' };
+
+function notFoundYuwen(title: string, description: string): PageContent {
+  return {
+    kind: 'view',
+    title,
+    description,
+    breadcrumbs: [HOME_BREADCRUMB, YUWEN_BASE_CRUMB],
+  };
+}
+
+/** /yuwen 及子路由的 head 文案，全部按数据派生；未知子路径返回 null 走兜底。 */
+function resolveYuwenContent(appPath: string, brand: BrandCopy): PageContent | null {
+  if (appPath !== '/yuwen' && !appPath.startsWith('/yuwen/')) return null;
+  const crumbBase = [HOME_BREADCRUMB, YUWEN_BASE_CRUMB];
+
+  if (/^\/yuwen\/?$/.test(appPath)) {
+    return {
+      kind: 'view',
+      title: '小学语文生字表（人教版 1–5 年级） - ' + brand.name,
+      description:
+        '人教版小学语文 1–5 年级共 ' + YUWEN_BOOKS.length + ' 册、' + YUWEN_LESSONS.length + ' 课、' +
+        YUWEN_CHARS.length + ' 个生字：按课文查读音、同音字、形近字与组词，可按单元复习并打印听写单。',
+      breadcrumbs: crumbBase,
+    };
+  }
+
+  const bookMatch = /^\/yuwen\/book\/([^/]+)\/?$/.exec(appPath);
+  if (bookMatch) {
+    const book = YUWEN_BOOKS.find((b) => b.id === bookMatch[1]);
+    if (!book) return notFoundYuwen('小学语文 - ' + brand.name, '没有这册课本。');
+    return {
+      kind: 'view',
+      title: book.title + '生字表（' + book.lessonCount + ' 课 · ' + book.charCount + ' 字） - ' + brand.name,
+      description:
+        book.title + '按单元列出全部课文与生字，可进入单课看读音与组词，或按单元做生字复习、打印听写单。',
+      breadcrumbs: [...crumbBase, { name: book.title, path: '/yuwen/book/' + book.id }],
+    };
+  }
+
+  const lessonMatch = /^\/yuwen\/lesson\/([^/]+)\/?$/.exec(appPath);
+  if (lessonMatch) {
+    const lesson = YUWEN_LESSONS.find((l) => l.id === lessonMatch[1]);
+    if (!lesson) return notFoundYuwen('小学语文 - ' + brand.name, '没有这一课。');
+    const book = YUWEN_BOOKS.find((b) => b.id === lesson.bookId);
+    return {
+      kind: 'view',
+      title: (book ? book.title + ' · ' : '') + lesson.title + ' · 生字与组词 - ' + brand.name,
+      description:
+        (book ? book.title + ' · ' : '') + lesson.title + ' 的 ' + lesson.chars.length +
+        ' 个生字：读音、同音字、形近字与组词，可一键生成听写单。',
+      breadcrumbs: [
+        ...crumbBase,
+        ...(book ? [{ name: book.title, path: '/yuwen/book/' + book.id }] : []),
+        { name: lesson.title, path: '/yuwen/lesson/' + lesson.id },
+      ],
+    };
+  }
+
+  const reviewMatch = /^\/yuwen\/(review|tingxie)\/([1-5][ab])\/(\d+)\/?$/.exec(appPath);
+  if (reviewMatch) {
+    const book = YUWEN_BOOKS.find((b) => b.id === reviewMatch[2]);
+    if (!book) return notFoundYuwen('小学语文 - ' + brand.name, '没有这个单元。');
+    const isTingxie = reviewMatch[1] === 'tingxie';
+    return {
+      kind: 'view',
+      title:
+        book.title + '第 ' + reviewMatch[3] + ' 单元' + (isTingxie ? '听写单' : '生字复习') + ' - ' + brand.name,
+      description:
+        book.title + '第 ' + reviewMatch[3] + ' 单元的' +
+        (isTingxie
+          ? '可打印听写单：按课本顺序或打乱，可选是否给词语提示、是否附答案。'
+          : '生字复习：按课文分组列出本单元全部生字。'),
+      breadcrumbs: [
+        ...crumbBase,
+        { name: book.title, path: '/yuwen/book/' + book.id },
+        { name: '第 ' + reviewMatch[3] + ' 单元', path: '/yuwen/review/' + book.id + '/' + reviewMatch[3] },
+      ],
+    };
+  }
+
+  const charMatch = /^\/yuwen\/char\/([^/]+)\/?$/.exec(appPath);
+  if (charMatch) {
+    let ch: string;
+    try {
+      ch = decodeURIComponent(charMatch[1]);
+    } catch {
+      // 非法百分号编码：当作未知路由，走通用兜底而不是抛错
+      return null;
+    }
+    const item = charByChar(ch);
+    if (!item) return notFoundYuwen('小学语文 - ' + brand.name, '没有这个字。');
+    const readings = item.readings.map((r) => r.py).join('、');
+    return {
+      kind: 'view',
+      title: ch + '（' + readings + '）的读音、笔顺、组词与字形 - ' + brand.name,
+      description:
+        '「' + ch + '」的读音（' + readings + '）、笔顺动画、同音字、含该字的字形与组词，以及它出现在哪一课。',
+      breadcrumbs: [...crumbBase, { name: ch, path: '/yuwen/char/' + ch }],
+    };
+  }
+
+  if (/^\/yuwen\/pinyin\/?$/.test(appPath)) {
+    return {
+      kind: 'view',
+      title: '拼音表 · 按韵母与声调查生字 - ' + brand.name,
+      description: '按韵母与声调排列全部生字，点击任一字进入读音、组词与笔顺详情。',
+      breadcrumbs: [...crumbBase, { name: '拼音表', path: '/yuwen/pinyin' }],
+    };
+  }
+
+  const stemMatch = /^\/yuwen\/pinyin\/([^/]+)\/?$/.exec(appPath);
+  if (stemMatch) {
+    const stem = stemByStem(stemMatch[1]);
+    if (!stem) return notFoundYuwen('小学语文 - ' + brand.name, '没有这个韵母。');
+    return {
+      kind: 'view',
+      title: '拼音表 · ' + stem.stem + ' 的生字 - ' + brand.name,
+      description: '韵母 ' + stem.stem + ' 下按声调排列的全部生字，可进入单字看读音与组词。',
+      breadcrumbs: [
+        ...crumbBase,
+        { name: '拼音表', path: '/yuwen/pinyin' },
+        { name: stem.stem, path: '/yuwen/pinyin/' + stem.stem },
+      ],
+    };
+  }
+
+  if (/^\/yuwen\/duoyin\/?$/.test(appPath)) {
+    return {
+      kind: 'view',
+      title: '多音字（' + YUWEN_DUOYIN.length + ' 个） - ' + brand.name,
+      description: '小学阶段常见的 ' + YUWEN_DUOYIN.length + ' 个多音字：每个读音列出常用词与它出现的课文。',
+      breadcrumbs: [...crumbBase, { name: '多音字', path: '/yuwen/duoyin' }],
+    };
+  }
+
+  return null;
 }
