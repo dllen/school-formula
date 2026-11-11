@@ -51,6 +51,107 @@ export function extractAllChars(html: string): string[] {
   return out;
 }
 
+export interface RawBookRef {
+  id: string;
+  title: string;
+  lessonCount: number;
+  charCount: number;
+}
+
+export interface RawReading {
+  ch: string;
+  py: string;
+}
+
+export interface RawBook {
+  id: string;
+  units: { no: number; lessonIds: string[] }[];
+  lessons: { id: string; unitNo: number; title: string; preview: string }[];
+}
+
+export interface RawLesson {
+  id: string;
+  title: string;
+  chars: string[];
+  readings: RawReading[];
+  words: { ch: string; words: string[] }[];
+}
+
+export function parseIndexPage(html: string): RawBookRef[] {
+  const $ = load(html);
+  const books: RawBookRef[] = [];
+  $('.cards section.card').each((_, el) => {
+    const href = $(el).find('h2 a').attr('href') ?? '';
+    const m = href.match(/^\/book\/([1-5][ab])$/);
+    if (!m) return;
+    const title = $(el).find('h2').text().trim();
+    const meta = $(el).find('p.muted').text().trim();
+    const nums = meta.match(/(\d+)\s*课\s*·\s*(\d+)\s*个生字/);
+    books.push({
+      id: m[1]!,
+      title,
+      lessonCount: nums ? Number(nums[1]) : 0,
+      charCount: nums ? Number(nums[2]) : 0,
+    });
+  });
+  return books;
+}
+
+export function parseBookPage(bookId: string, html: string): RawBook {
+  const $ = load(html);
+  const units: RawBook['units'] = [];
+  const lessons: RawBook['lessons'] = [];
+  $('section.unit').each((unitIndex, el) => {
+    const unitNo = unitIndex + 1;
+    const lessonIds: string[] = [];
+    $(el).find('ul.lessons a[href]').each((_, a) => {
+      const m = ($(a).attr('href') ?? '').match(/^\/lesson\/(G[1-5][AB]\d{2})$/);
+      if (!m?.[1]) return;
+      const id = m[1];
+      lessonIds.push(id);
+      lessons.push({
+        id,
+        unitNo,
+        title: $(a).find('span.title').text().trim(),
+        preview: $(a).find('span.preview').text().trim(),
+      });
+    });
+    units.push({ no: unitNo, lessonIds });
+  });
+  return { id: bookId, units, lessons };
+}
+
+export function parseLessonPage(lessonId: string, html: string): RawLesson {
+  const $ = load(html);
+  const title = $('h1').first().text().trim();
+
+  const chars: string[] = [];
+  const readings: RawReading[] = [];
+  // 课页结构：第一个 section 的 .grid 是「本课生字」；组词区的 a.zi.small 不能算进来
+  const mainGrid = $('section').first().find('.grid').first();
+  mainGrid.find('a.zi').each((_, a) => {
+    const ch = $(a).find('span.tzg').text().trim();
+    const py = $(a).find('span.py').text().trim();
+    if (!ch) return;
+    chars.push(ch);
+    readings.push({ ch, py });
+  });
+
+  const words: RawLesson['words'] = [];
+  $('.word-row').each((_, row) => {
+    const ch = $(row).find('a.zi.small span.tzg').first().text().trim();
+    if (!ch) return;
+    const list: string[] = [];
+    $(row).find('ul.words .say').each((__, s) => {
+      const w = ($(s).attr('data-say') ?? $(s).text()).trim();
+      if (w) list.push(w);
+    });
+    words.push({ ch, words: list });
+  });
+
+  return { id: lessonId, title, chars, readings, words };
+}
+
 export function createYuwenMuduoAdapter(fetchHtml: FetchHtml = defaultFetchHtml): Adapter {
   return {
     kind: 'yuwen',

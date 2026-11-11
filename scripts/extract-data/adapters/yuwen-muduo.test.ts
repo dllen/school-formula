@@ -1,7 +1,12 @@
 // scripts/extract-data/adapters/yuwen-muduo.test.ts
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { createYuwenMuduoAdapter } from './yuwen-muduo.js';
+import {
+  createYuwenMuduoAdapter,
+  parseBookPage,
+  parseIndexPage,
+  parseLessonPage,
+} from './yuwen-muduo.js';
 
 const fixture = (name: string): string =>
   readFileSync(new URL('../__fixtures__/yuwen/' + name + '.html', import.meta.url), 'utf8');
@@ -47,5 +52,49 @@ describe('yuwenMuduoAdapter.listUrls', () => {
     expect(urls.filter((u) => u.includes('/char/')).length).toBeGreaterThan(100);
     expect(urls).toContain('http://yuwen.muduo.org/char/' + encodeURIComponent('阿'));
     expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+describe('页面解析器：首页/册/课', () => {
+  it('首页解析出 10 册与课数字数', () => {
+    const books = parseIndexPage(fixture('index'));
+    expect(books).toHaveLength(10);
+    expect(books[0]).toEqual({ id: '1a', title: '一年级上册', lessonCount: 41, charCount: 300 });
+    expect(books[9]).toEqual({ id: '5b', title: '五年级下册', lessonCount: 23, charCount: 197 });
+  });
+
+  it('册页解析出单元划分与课文', () => {
+    const book = parseBookPage('1a', fixture('book-1a'));
+    expect(book.units).toHaveLength(8);
+    expect(book.units[0].lessonIds).toEqual([
+      'G1A01', 'G1A02', 'G1A03', 'G1A04', 'G1A05', 'G1A06',
+    ]);
+    const first = book.lessons[0];
+    expect(first.id).toBe('G1A01');
+    expect(first.title).toBe('识字1：天地人');
+    expect(first.preview).toBe('天地人你我他');
+    expect(first.unitNo).toBe(1);
+  });
+
+  it('课页解析出有序生字与组词', () => {
+    const lesson = parseLessonPage('G1A01', fixture('lesson-G1A01'));
+    expect(lesson.title).toBe('识字1：天地人');
+    expect(lesson.chars).toEqual(['天', '地', '人', '你', '我', '他']);
+    expect(lesson.readings).toEqual([
+      { ch: '天', py: 'tiān' },
+      { ch: '地', py: 'dì' },
+      { ch: '人', py: 'rén' },
+      { ch: '你', py: 'nǐ' },
+      { ch: '我', py: 'wǒ' },
+      { ch: '他', py: 'tā' },
+    ]);
+    expect(lesson.words).toEqual([
+      { ch: '天', words: ['天天'] },
+      { ch: '地', words: ['天地'] },
+      { ch: '人', words: ['人人'] },
+      { ch: '你', words: [] },
+      { ch: '我', words: ['你我'] },
+      { ch: '他', words: ['他人'] },
+    ]);
   });
 });
