@@ -206,6 +206,71 @@ export function parseDuoyinPage(html: string): RawDuoyin {
   return { entries };
 }
 
+export interface RawChar {
+  ch: string;
+  heroReadings: string[];
+  readings: { py: string; words: string[]; lessonId?: string }[];
+  radicals: { name: string; label?: string; chars: string[] }[];
+  words: string[];
+}
+
+export function parseCharPage(ch: string, html: string): RawChar {
+  const $ = load(html);
+
+  const heroReadings = $('.hero-py')
+    .first()
+    .text()
+    .split('·')
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const readings: RawChar['readings'] = [];
+  $('section').each((_, section) => {
+    if ($(section).find('h2').first().text().trim() !== '读音') return;
+    $(section).find('.reading').each((__, el) => {
+      const py = $(el).find('a.py-tag').first().text().trim();
+      if (!py) return;
+      const words: string[] = [];
+      $(el).find('ul.words .say').each((___, s) => {
+        const w = ($(s).attr('data-say') ?? $(s).text()).trim();
+        if (w) words.push(w);
+      });
+      const href = $(el).find('p.muted a[href^="/lesson/"]').first().attr('href') ?? '';
+      const m = href.match(/^\/lesson\/(G[1-5][AB]\d{2})$/);
+      readings.push(m?.[1] ? { py, words, lessonId: m[1] } : { py, words });
+    });
+  });
+
+  const radicals: RawChar['radicals'] = [];
+  $('section').each((_, section) => {
+    if ($(section).find('h2').first().text().trim() !== '字形') return;
+    $(section).find('.part').each((__, part) => {
+      const name = $(part).find('a.part-name').first().text().trim();
+      if (!name) return;
+      const labelText = $(part).find('p.label').first().text().trim();
+      const labelMatch = labelText.match(/（([^）]+)）/);
+      const chars: string[] = [];
+      $(part).find('.grid a.zi').each((___, a) => {
+        const c = $(a).find('span.tzg').text().trim();
+        if (c.length === 1) chars.push(c);
+      });
+      radicals.push(labelMatch?.[1] ? { name, label: labelMatch[1], chars } : { name, chars });
+    });
+  });
+
+  const words: string[] = [];
+  $('section').each((_, section) => {
+    if ($(section).find('h2').first().text().trim() !== '组词') return;
+    // 只取 .words-wrap 的直接子 ul（默认 10 个）；details.more-words 里的扩展词不要
+    $(section).find('.words-wrap > ul.words li .say').each((__, s) => {
+      const w = ($(s).attr('data-say') ?? $(s).text()).trim();
+      if (w) words.push(w);
+    });
+  });
+
+  return { ch, heroReadings, readings, radicals, words };
+}
+
 export function createYuwenMuduoAdapter(fetchHtml: FetchHtml = defaultFetchHtml): Adapter {
   return {
     kind: 'yuwen',

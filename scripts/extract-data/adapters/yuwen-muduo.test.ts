@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import {
   createYuwenMuduoAdapter,
   parseBookPage,
+  parseCharPage,
   parseDuoyinPage,
   parseIndexPage,
   parseLessonPage,
@@ -126,5 +127,30 @@ describe('页面解析器：拼音表 / 多音字', () => {
       ],
     });
     expect(entries.length).toBeGreaterThan(10);
+  });
+});
+
+describe('页面解析器：单字页', () => {
+  it('解析读音、学于哪课、部件与组词', () => {
+    const raw = parseCharPage('地', fixture('char-di'));
+
+    expect(raw.ch).toBe('地');
+    expect(raw.heroReadings).toEqual(['dì', 'de']);
+    expect(raw.readings[0]).toEqual({
+      py: 'dì',
+      words: ['地方', '地上', '地球', '地区', '地面', '地点'],
+      lessonId: 'G1A01',
+    });
+    expect(raw.readings[1]).toEqual({ py: 'de', words: [], lessonId: 'G1A22' });
+
+    expect(raw.radicals[0].name).toBe('土');
+    expect(raw.radicals[0].label).toBe('提土旁');
+    expect(raw.radicals[0].chars).toContain('地');
+    expect(raw.radicals[0].chars.length).toBeGreaterThan(50);
+
+    // 只取默认展示的 10 个，不取 details 里的扩展词
+    expect(raw.words).toHaveLength(10);
+    expect(raw.words).toContain('地方');
+    expect(raw.words).toContain('草地');
   });
 });
