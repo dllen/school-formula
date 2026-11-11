@@ -52,7 +52,7 @@ yuwen.muduo.org
 staging/yuwen/generated-<ts>.json     单一信封：books/lessons/chars/stems/duoyin/radicals
    │  scripts/ingest-data/adapters/yuwen.ts（satisfies + TS 编译器真类型校验）
    ▼
-src/data/yuwen/{books,lessons,chars,pinyin,duoyin,radicals}.ts + index.ts（运行时索引）
+src/data/yuwen/{books,lessons,chars,pinyin,duoyin,radicals}.ts（生成）+ index.ts（手写查询层）
    │
    ├── src/components/yuwen/*（9 个页面 + 6 个原语 + 页面骨架）
    ├── src/prerender/routes.ts（3878 条路由 → 预渲染 + sitemap）
@@ -90,7 +90,7 @@ scripts/ingest-data/adapters/yuwen.test.ts
 
 src/data/yuwen/types.ts                               数据模型（手写）
 src/data/yuwen/{books,lessons,chars,pinyin,duoyin,radicals}.ts   生成
-src/data/yuwen/index.ts                               生成 + 运行时索引/查询
+src/data/yuwen/index.ts                               手写：运行时索引/查询（生成物只有 6 个数据文件）
 src/data/yuwen/index.test.ts
 
 src/yuwen/paths.ts                                    路由常量与 URL 构造/反解
@@ -173,6 +173,7 @@ export interface YuwenChar {
   ch: string;
   readings: YuwenReading[];
   radicals: string[];      // ['土']
+  words: string[];         // 组词：只取页面默认展示的前 10 个
 }
 
 export interface YuwenReading {
@@ -203,6 +204,8 @@ export interface YuwenRadical {
 ~~~
 
 **存储约简**：不存「每个字的同音字 / 形近字列表」，分别由 pinyin（按精确 py 分组）与 radicals（反查）在 index.ts 里一次建好 Map。这样同一信息不会在 2988 个条目里重复上百遍。
+
+**组词上限**：单字页的「组词」区默认展示 10 个，另有 `<details>` 里最多上百个扩展词。只取默认 10 个——全取会让数据膨胀约 3MB，页面上也变成噪声；读音分组的词（读音区，每个读音 4–6 个）照常保留。
 
 src/data/yuwen/index.ts 导出：
 
@@ -242,10 +245,11 @@ scripts/extract-data/adapters/yuwen-muduo.ts，实现现有 Adapter 契约（lis
 | /lesson/:id | 有序生字表、按字分组的组词 |
 | /pinyin | 393 个韵母条目、每个声调行的 py 与字 |
 | /duoyin | 158 个多音字的读音/词/首次出现课 |
-| /char/:ch | 读音（含学于哪课）、同音字、部件与含该部件的字、组词 |
+| /char/:ch | 读音（含学于哪课）、同音字、部件与含该部件的字、组词（只取默认展示的前 10 个，不取 details 里的扩展词） |
 
 - normalize() 归一为单一信封：{ source:'yuwen-muduo', extractedAt, books, lessons, chars, stems, duoyin, radicals }
-- 交叉校验（normalize 内）：课的生字 ⊆ 拼音表字全集；多音字的字 ⊆ 字全集；单元区间连续覆盖该册全部课；缺一即报错（**宁可失败也不产出半套数据**）。
+- **字形（部件）只保留字表内的字**：单字页「含 X 的字」会列出上百个不在本模块字表里的字，链过去是 404，也白白撑大数据量。归一化时按字全集过滤；过滤后不足 2 个字的部件整条丢弃。
+- 交叉校验（normalize 内，**字全集以拼音表为准**）：拼音表去重后必须正好 2988 字（实测 3156 个 chip、2988 个唯一字）；每课生字必须 ⊆ 该集合（实测 0 个越界）；每册课数与首页一致（实测 41/41、36/36 一致）；多音字的字 ⊆ 字全集；每课至少 1 字。**每册生字数只做警告不阻断**——实测一年级下册页面写 400，逐课明细去重是 405，原站概要数字本身有偏差，拿它当硬校验会误杀。
 - 限速 200ms/请求（约 11–13 分钟）；重试与 HTML 缓存由框架负责，重跑命中缓存。
 
 ## 9. 入库管线
@@ -255,7 +259,7 @@ scripts/ingest-data/adapters/yuwen.ts：
 - typeRef：src/data/yuwen/types.ts 下的一组类型，用 satisfies 做真类型校验（与其余 kind 同一套机制）。
 - validate() 业务规则：册 id 形如 [1-5][ab]；课 id 形如 G[1-5][AB]\d{2} 且前缀与册一致；每课至少 1 个生字；**各册 lessonCount/charCount 与 units/lessons 汇总一致**且课的生字并集等于字表全集；stem 与声调拼音一致；引用完整性（第 7 节不变量）。数量不写死，避免参考站内容增补后重跑被判失败。
 - merge()：**整文件重写** 6 个数据文件，文件头写「由 scripts/ingest-data 生成，请勿手改。来源：yuwen.muduo.org」。
-- wire()：重写 src/data/yuwen/index.ts（运行时索引与查询函数）。
+- wire()：返回空数组——查询层 src/data/yuwen/index.ts 是手写代码，不由脚本生成（生成手写逻辑会让 review 失去意义）。
 - --dry-run 只校验不写盘。
 
 **这是唯一偏离「只追加不覆盖」的 kind**，适配器文件顶部注释说明理由：参考站更新后必须整树替换，追加会产生新旧混杂。
@@ -321,7 +325,7 @@ YuwenPageShell：page-shell + Header（activeView=null）+ container-page pt-10 
 
 - **首页**：10 张册卡片（课数/生字数 + 单元按钮）；顶部两个工具入口；page-lead 说明。
 - **册页**：每单元一节，单元头带「生字复习」「听写单」两个次按钮，下面是课文列表（标题 + preview）。
-- **课页**：本课生字大字格 + 组词逐字行；「听写单」「隐藏拼音」按钮；底部上一课/下一课。
+- **课页**：本课生字大字格 + 组词逐字行（数据里没有课级词表，取该字的前 10 个词，不区分是否已学）；「听写单」「隐藏拼音」按钮；底部上一课/下一课。
 - **复习页**：按课分节的大字格；顶部「打印听写单」「隐藏拼音」。
 - **听写单**：三个下拉（顺序/提示/答案）即时切 URL 参数；纸张区域含标题、范围、姓名/日期/得分、题号 + 拼音 + 空田字格；附答案页；「打印」调 window.print()。
 - **字详情**：hero（大字 + 全部读音）→ 笔顺 → 读音（拼音标签、朗读、所属课、组词、同音字）→ 字形（部件 + 含该部件的字）→ 组词。
